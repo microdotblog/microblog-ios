@@ -8,6 +8,8 @@
 
 #import "RFAppDelegate.h"
 
+#import "RFSignInController.h"
+#import "RFMenuController.h"
 #import "RFTimelineController.h"
 
 @implementation RFAppDelegate
@@ -44,10 +46,18 @@
 - (void) setupWindow
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	
+	self.menuController = [[RFMenuController alloc] init];
 	self.timelineController = [[RFTimelineController alloc] init];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:self.menuController];
+	[nav_controller pushViewController:self.timelineController animated:NO];
 
     [self.window makeKeyAndVisible];
-	[self.window setRootViewController:self.timelineController];
+	[self.window setRootViewController:nav_controller];
+}
+
+- (void) setupAppearance
+{
 }
 
 @end

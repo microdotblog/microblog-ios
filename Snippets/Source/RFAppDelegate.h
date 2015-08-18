@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class RFSignInController;
+@class RFMenuController;
 @class RFTimelineController;
 
 @interface RFAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow* window;
+@property (strong, nonatomic) RFSignInController* signInController;
+@property (strong, nonatomic) RFMenuController* menuController;
 @property (strong, nonatomic) RFTimelineController* timelineController;
 
 @end
