@@ -8,6 +8,8 @@
 
 #import "RFTimelineController.h"
 
+#import "RFPostController.h"
+
 @implementation RFTimelineController
 
 - (instancetype) init
@@ -24,6 +26,16 @@
 	[super viewDidLoad];
 	
 	self.title = @"Timeline";
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(promptNewPost:)];
+	
+	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://snippets.today/"]]];
+}
+
+- (IBAction) promptNewPost:(id)sender
+{
+	RFPostController* post_controller = [[RFPostController alloc] init];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
+	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 @end

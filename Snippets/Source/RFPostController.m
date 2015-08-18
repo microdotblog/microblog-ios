@@ -19,11 +19,39 @@
 	return self;
 }
 
+- (instancetype) initWithReplyTo:(id)postID
+{
+	self = [self init];
+	if (self) {
+		self.isReply = YES;
+	}
+	
+	return self;
+}
+
 - (void) viewDidLoad
 {
 	[super viewDidLoad];
 	
-	self.title = @"New Post";
+	if (self.isReply) {
+		self.title = @"New Reply";
+	}
+	else {
+		self.title = @"New Post";
+	}
+
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(close:)];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
+}
+
+- (IBAction) sendPost:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (IBAction) close:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end
