@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFPostController">
             <connections>
+                <outlet property="textView" destination="F7T-Eg-dhD" id="bSs-O6-eB1"/>
                 <outlet property="view" destination="iN0-l3-epB" id="yA8-wJ-I5e"/>
             </connections>
         </placeholder>
@@ -21,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7T-Eg-dhD">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="311"/>
+                    <rect key="frame" x="5" y="5" width="310" height="306"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
@@ -31,10 +32,10 @@
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="F7T-Eg-dhD" secondAttribute="trailing" id="3Ex-gX-NUe"/>
-                <constraint firstItem="F7T-Eg-dhD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DUJ-ci-66G"/>
+                <constraint firstAttribute="trailing" secondItem="F7T-Eg-dhD" secondAttribute="trailing" constant="5" id="3Ex-gX-NUe"/>
+                <constraint firstItem="F7T-Eg-dhD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="DUJ-ci-66G"/>
                 <constraint firstAttribute="bottom" secondItem="F7T-Eg-dhD" secondAttribute="bottom" constant="257" id="GIi-Yp-8Ib"/>
-                <constraint firstItem="F7T-Eg-dhD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="P44-k2-smq"/>
+                <constraint firstItem="F7T-Eg-dhD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="P44-k2-smq"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

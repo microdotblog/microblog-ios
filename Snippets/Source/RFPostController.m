@@ -44,6 +44,11 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+	[self.textView becomeFirstResponder];
+}
+
 - (IBAction) sendPost:(id)sender
 {
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];

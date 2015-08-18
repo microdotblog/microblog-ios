@@ -10,6 +10,8 @@
 
 @interface RFPostController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITextView* textView;
+
 @property (assign, nonatomic) BOOL isReply;
 
 - (instancetype) initWithReplyTo:(id)postID;
