@@ -11,6 +11,7 @@
 #import "RFSignInController.h"
 #import "RFMenuController.h"
 #import "RFTimelineController.h"
+#import "SSKeychain.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -57,7 +58,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
 	[self setupTimeline];
-	[self setupSignin];
+	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
+	if (token == nil) {
+		[self setupSignin];
+	}
 }
 
 - (void) setupAppearance
