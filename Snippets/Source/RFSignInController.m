@@ -29,6 +29,9 @@
 
 - (IBAction) finish:(id)sender
 {
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"RFLoadTimelineNotification" object:self userInfo:@{
+		@"token": self.tokenField.text
+	}];
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
