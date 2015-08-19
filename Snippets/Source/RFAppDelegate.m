@@ -11,11 +11,14 @@
 #import "RFSignInController.h"
 #import "RFMenuController.h"
 #import "RFTimelineController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation RFAppDelegate
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	[self setupCrashlytics];
 	[self setupWindow];
 	[self setupAppearance];
 	
@@ -43,6 +46,11 @@
 }
 
 #pragma mark -
+
+- (void) setupCrashlytics
+{
+	[Fabric with:@[ CrashlyticsKit ]];
+}
 
 - (void) setupWindow
 {
