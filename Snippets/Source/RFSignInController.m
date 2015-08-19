@@ -23,7 +23,13 @@
 {
 	[super viewDidLoad];
 	
-	self.title = @"Sign In";
+	self.title = @"Welcome";
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
+}
+
+- (IBAction) finish:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

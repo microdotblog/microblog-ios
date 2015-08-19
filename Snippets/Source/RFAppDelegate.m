@@ -55,14 +55,9 @@
 - (void) setupWindow
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	
-	self.menuController = [[RFMenuController alloc] init];
-	self.timelineController = [[RFTimelineController alloc] init];
-	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:self.menuController];
-	[nav_controller pushViewController:self.timelineController animated:NO];
 
-    [self.window makeKeyAndVisible];
-	[self.window setRootViewController:nav_controller];
+	[self setupTimeline];
+	[self setupSignin];
 }
 
 - (void) setupAppearance
@@ -75,6 +70,24 @@
 		NSForegroundColorAttributeName: [UIColor colorWithWhite:0.259 alpha:1.000],
 		NSFontAttributeName: [UIFont fontWithName:@"Avenir-Medium" size:16]
 	} forState:UIControlStateNormal];
+}
+
+- (void) setupTimeline
+{
+	self.menuController = [[RFMenuController alloc] init];
+	self.timelineController = [[RFTimelineController alloc] init];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:self.menuController];
+	[nav_controller pushViewController:self.timelineController animated:NO];
+
+    [self.window makeKeyAndVisible];
+	[self.window setRootViewController:nav_controller];
+}
+
+- (void) setupSignin
+{
+	self.signInController = [[RFSignInController alloc] init];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:self.signInController];
+	[self.menuController.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 @end

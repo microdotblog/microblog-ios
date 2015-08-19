@@ -10,4 +10,6 @@
 
 @interface RFSignInController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITextField* tokenField;
+
 @end
