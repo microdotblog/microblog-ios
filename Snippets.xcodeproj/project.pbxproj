@@ -26,6 +26,11 @@
 		4BA9108E1B83E77C00D58F83 /* favorites_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9108C1B83E77C00D58F83 /* favorites_icon@3x.png */; };
 		4BA9108F1B83E77C00D58F83 /* replies_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9108D1B83E77C00D58F83 /* replies_icon@3x.png */; };
 		4BA910911B83E78A00D58F83 /* timeline_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910901B83E78A00D58F83 /* timeline_icon@3x.png */; };
+		4BA910941B84072000D58F83 /* back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910921B84072000D58F83 /* back_button@2x.png */; };
+		4BA910951B84072000D58F83 /* back_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910931B84072000D58F83 /* back_button@3x.png */; };
+		4BA910981B84077000D58F83 /* UIBarButtonItem+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */; };
+		4BA9109B1B840DCE00D58F83 /* close_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910991B840DCE00D58F83 /* close_button@2x.png */; };
+		4BA9109C1B840DCE00D58F83 /* close_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9109A1B840DCE00D58F83 /* close_button@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +72,12 @@
 		4BA9108C1B83E77C00D58F83 /* favorites_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "favorites_icon@3x.png"; path = "Resources/favorites_icon@3x.png"; sourceTree = "<group>"; };
 		4BA9108D1B83E77C00D58F83 /* replies_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "replies_icon@3x.png"; path = "Resources/replies_icon@3x.png"; sourceTree = "<group>"; };
 		4BA910901B83E78A00D58F83 /* timeline_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "timeline_icon@3x.png"; path = "Resources/timeline_icon@3x.png"; sourceTree = "<group>"; };
+		4BA910921B84072000D58F83 /* back_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back_button@2x.png"; path = "Resources/back_button@2x.png"; sourceTree = "<group>"; };
+		4BA910931B84072000D58F83 /* back_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back_button@3x.png"; path = "Resources/back_button@3x.png"; sourceTree = "<group>"; };
+		4BA910961B84077000D58F83 /* UIBarButtonItem+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+Extras.h"; path = "Source/UIBarButtonItem+Extras.h"; sourceTree = "<group>"; };
+		4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+Extras.m"; path = "Source/UIBarButtonItem+Extras.m"; sourceTree = "<group>"; };
+		4BA910991B840DCE00D58F83 /* close_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close_button@2x.png"; path = "Resources/close_button@2x.png"; sourceTree = "<group>"; };
+		4BA9109A1B840DCE00D58F83 /* close_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close_button@3x.png"; path = "Resources/close_button@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +132,8 @@
 				4BA2C9A21B210A9A0038C0E5 /* RFTimelineController.m */,
 				4BA910801B83D20C00D58F83 /* RFPostController.h */,
 				4BA910811B83D20C00D58F83 /* RFPostController.m */,
+				4BA910961B84077000D58F83 /* UIBarButtonItem+Extras.h */,
+				4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */,
 			);
 			name = Source;
 			path = Snippets;
@@ -159,6 +172,10 @@
 				4BA9108D1B83E77C00D58F83 /* replies_icon@3x.png */,
 				4BA910881B83E67100D58F83 /* favorites_icon@2x.png */,
 				4BA9108C1B83E77C00D58F83 /* favorites_icon@3x.png */,
+				4BA910921B84072000D58F83 /* back_button@2x.png */,
+				4BA910931B84072000D58F83 /* back_button@3x.png */,
+				4BA910991B840DCE00D58F83 /* close_button@2x.png */,
+				4BA9109A1B840DCE00D58F83 /* close_button@3x.png */,
 			);
 			name = Resources;
 			path = Snippets;
@@ -253,7 +270,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BA9109B1B840DCE00D58F83 /* close_button@2x.png in Resources */,
 				4BA2C9871B2109D10038C0E5 /* LaunchScreen.xib in Resources */,
+				4BA9109C1B840DCE00D58F83 /* close_button@3x.png in Resources */,
+				4BA910941B84072000D58F83 /* back_button@2x.png in Resources */,
+				4BA910951B84072000D58F83 /* back_button@3x.png in Resources */,
 				4BA910911B83E78A00D58F83 /* timeline_icon@3x.png in Resources */,
 				4BA910871B83E51000D58F83 /* timeline_icon@2x.png in Resources */,
 				4BA9108E1B83E77C00D58F83 /* favorites_icon@3x.png in Resources */,
@@ -286,6 +307,7 @@
 				4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */,
 				4BA9107F1B83CFFD00D58F83 /* RFSignInController.m in Sources */,
 				4BA910761B83CDC400D58F83 /* RFMenuController.m in Sources */,
+				4BA910981B84077000D58F83 /* UIBarButtonItem+Extras.m in Sources */,
 				4BA2C9A61B210C0E0038C0E5 /* RFAppDelegate.m in Sources */,
 				4BA910821B83D20C00D58F83 /* RFPostController.m in Sources */,
 			);

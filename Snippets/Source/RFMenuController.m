@@ -25,7 +25,7 @@
 {
 	[super viewDidLoad];
 	
-	self.title = @"Menu";
+	self.title = @"Snippets.today";
 }
 
 - (IBAction) showTimeline:(id)sender

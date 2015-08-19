@@ -9,6 +9,7 @@
 #import "RFTimelineController.h"
 
 #import "RFPostController.h"
+#import "UIBarButtonItem+Extras.h"
 
 @implementation RFTimelineController
 
@@ -26,9 +27,16 @@
 	[super viewDidLoad];
 	
 	self.title = @"Timeline";
+	
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(promptNewPost:)];
 	
 	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://snippets.today/"]]];
+}
+
+- (void) back:(id)sender
+{
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction) promptNewPost:(id)sender

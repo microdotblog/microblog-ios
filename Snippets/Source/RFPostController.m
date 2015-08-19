@@ -8,6 +8,8 @@
 
 #import "RFPostController.h"
 
+#import "UIBarButtonItem+Extras.h"
+
 @implementation RFPostController
 
 - (instancetype) init
@@ -40,7 +42,7 @@
 		self.title = @"New Post";
 	}
 
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(close:)];
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
 }
 
