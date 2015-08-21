@@ -59,7 +59,8 @@
 
 - (void) loadTimelineForToken:(NSString *)token
 {
-	NSString* url = [NSString stringWithFormat:@"http://snippets.today/iphone/signin?token=%@", token];
+	int width = [UIScreen mainScreen].bounds.size.width;
+	NSString* url = [NSString stringWithFormat:@"http://snippets.today/iphone/signin?token=%@&width=%d", token, width];
 	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 

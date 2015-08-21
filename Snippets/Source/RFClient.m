@@ -46,7 +46,9 @@ static NSString* const kServerSchemeAndHostname = @"http://snippets.today";
 	}
 	
 	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
-	[headers setObject:token forKey:@"X-Snippets-Token"];
+	if (token) {
+		[headers setObject:token forKey:@"X-Snippets-Token"];
+	}
 	request.headerFields = headers;
 }
 
