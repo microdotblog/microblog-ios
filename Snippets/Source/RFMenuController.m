@@ -9,6 +9,7 @@
 #import "RFMenuController.h"
 
 #import "RFTimelineController.h"
+#import "UUImageView.h"
 
 @implementation RFMenuController
 
@@ -26,6 +27,23 @@
 	[super viewDidLoad];
 	
 	self.title = @"Snippets.today";
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountUsername"];
+	NSString* gravatar_url = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountGravatarURL"];
+
+	if (username) {
+		self.usernameField.text = username;
+		self.profileImageView.layer.cornerRadius = self.profileImageView.bounds.size.width / 2.0;
+		[self.profileImageView uuLoadImageFromURL:[NSURL URLWithString:gravatar_url] defaultImage:nil loadCompleteHandler:NULL];
+	}
+	else {
+		self.usernameField.text = @"";
+	}
 }
 
 - (IBAction) showTimeline:(id)sender

@@ -8,6 +8,8 @@
 
 #import "RFPostController.h"
 
+#import "RFClient.h"
+#import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
 
 @implementation RFPostController

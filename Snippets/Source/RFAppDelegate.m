@@ -62,6 +62,7 @@
 	if (token == nil) {
 		[self setupSignin];
 	}
+		[self setupSignin];
 }
 
 - (void) setupAppearance
