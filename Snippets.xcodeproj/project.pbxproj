@@ -47,6 +47,8 @@
 		4BF8034D1B87AA2C00D6670C /* UUImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803411B87AA2C00D6670C /* UUImageView.m */; };
 		4BF8034E1B87AA2C00D6670C /* UUString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803431B87AA2C00D6670C /* UUString.m */; };
 		4BF803511B87AACF00D6670C /* RFClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803501B87AACF00D6670C /* RFClient.m */; };
+		4BF803551B87DB4F00D6670C /* Web.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF803531B87DB4F00D6670C /* Web.xib */; };
+		4BF803581B87DB7B00D6670C /* RFWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803571B87DB7B00D6670C /* RFWebController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,9 @@
 		4BF8034F1B87AACF00D6670C /* RFClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFClient.h; path = Source/RFClient.h; sourceTree = "<group>"; };
 		4BF803501B87AACF00D6670C /* RFClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFClient.m; path = Source/RFClient.m; sourceTree = "<group>"; };
 		4BF803521B87ADF900D6670C /* RFMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFMacros.h; path = Source/RFMacros.h; sourceTree = "<group>"; };
+		4BF803541B87DB4F00D6670C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Web.xib; sourceTree = "<group>"; };
+		4BF803561B87DB7B00D6670C /* RFWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFWebController.h; path = Source/RFWebController.h; sourceTree = "<group>"; };
+		4BF803571B87DB7B00D6670C /* RFWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFWebController.m; path = Source/RFWebController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +197,8 @@
 				4BA910751B83CDC400D58F83 /* RFMenuController.m */,
 				4BA2C9A11B210A9A0038C0E5 /* RFTimelineController.h */,
 				4BA2C9A21B210A9A0038C0E5 /* RFTimelineController.m */,
+				4BF803561B87DB7B00D6670C /* RFWebController.h */,
+				4BF803571B87DB7B00D6670C /* RFWebController.m */,
 				4BA910801B83D20C00D58F83 /* RFPostController.h */,
 				4BA910811B83D20C00D58F83 /* RFPostController.m */,
 				4BF8034F1B87AACF00D6670C /* RFClient.h */,
@@ -227,6 +234,7 @@
 				4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */,
 				4BA910771B83CE7600D58F83 /* Menu.xib */,
 				4BA2C99E1B210A620038C0E5 /* Timeline.xib */,
+				4BF803531B87DB4F00D6670C /* Web.xib */,
 				4BA9107A1B83CFD200D58F83 /* SignIn.xib */,
 				4BA910831B83D22900D58F83 /* Post.xib */,
 				4BA2C9831B2109D10038C0E5 /* Images.xcassets */,
@@ -392,6 +400,7 @@
 				4BA910791B83CE7600D58F83 /* Menu.xib in Resources */,
 				4BA2C9841B2109D10038C0E5 /* Images.xcassets in Resources */,
 				4BA9108F1B83E77C00D58F83 /* replies_icon@3x.png in Resources */,
+				4BF803551B87DB4F00D6670C /* Web.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +440,7 @@
 				4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */,
 				4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */,
 				4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */,
+				4BF803581B87DB7B00D6670C /* RFWebController.m in Sources */,
 				4BF803471B87AA2C00D6670C /* UUDate.m in Sources */,
 				4BA9107F1B83CFFD00D58F83 /* RFSignInController.m in Sources */,
 				4BA910761B83CDC400D58F83 /* RFMenuController.m in Sources */,
@@ -506,6 +516,14 @@
 				4BA910841B83D22900D58F83 /* Base */,
 			);
 			name = Post.xib;
+			sourceTree = "<group>";
+		};
+		4BF803531B87DB4F00D6670C /* Web.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BF803541B87DB4F00D6670C /* Base */,
+			);
+			name = Web.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

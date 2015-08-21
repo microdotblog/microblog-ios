@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFTimelineController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFWebController">
             <connections>
-                <outlet property="view" destination="iN0-l3-epB" id="F2Z-fl-oSs"/>
-                <outlet property="webView" destination="tcu-qO-vt8" id="kfJ-We-nW4"/>
+                <outlet property="view" destination="iN0-l3-epB" id="YTS-MY-ohe"/>
+                <outlet property="webView" destination="74z-HN-1Nj" id="tcI-FU-huc"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -16,26 +16,21 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcu-qO-vt8">
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74z-HN-1Nj">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <dataDetectorType key="dataDetectorTypes"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="aOY-35-dwv"/>
-                    </connections>
                 </webView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="tcu-qO-vt8" secondAttribute="trailing" id="BsN-oZ-ZAJ"/>
-                <constraint firstAttribute="bottom" secondItem="tcu-qO-vt8" secondAttribute="bottom" id="ho7-Xf-Sif"/>
-                <constraint firstItem="tcu-qO-vt8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mkb-dc-jE8"/>
-                <constraint firstItem="tcu-qO-vt8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oZ1-ff-ckF"/>
+                <constraint firstItem="74z-HN-1Nj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="RT8-MK-fsf"/>
+                <constraint firstAttribute="bottom" secondItem="74z-HN-1Nj" secondAttribute="bottom" id="h3M-SN-0Uv"/>
+                <constraint firstItem="74z-HN-1Nj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jPU-lK-4mz"/>
+                <constraint firstAttribute="trailing" secondItem="74z-HN-1Nj" secondAttribute="trailing" id="uKA-PX-3H9"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="220" y="319"/>
         </view>
     </objects>
 </document>

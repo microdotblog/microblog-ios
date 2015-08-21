@@ -9,8 +9,10 @@
 #import "RFTimelineController.h"
 
 #import "RFPostController.h"
+#import "RFWebController.h"
 #import "UIBarButtonItem+Extras.h"
 #import "SSKeychain.h"
+#import <SafariServices/SafariServices.h>
 
 @implementation RFTimelineController
 
@@ -84,6 +86,31 @@
 	NSString* token = [notification.userInfo objectForKey:@"token"];
 	[SSKeychain setPassword:token forService:@"Snippets" account:@"default"];
 	[self loadTimelineForToken:token];
+}
+
+- (void) showURL:(NSURL *)url
+{
+	Class safari_class = NSClassFromString (@"SFSafariViewController");
+	if (safari_class != nil) {
+		id safari_controller = [[safari_class alloc] initWithURL:url];
+		[self presentViewController:safari_controller animated:YES completion:NULL];
+	}
+	else {
+		RFWebController* web_controller = [[RFWebController alloc] initWithURL:url];
+		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:web_controller];
+		[self presentViewController:nav_controller animated:YES completion:NULL];
+	}
+}
+
+- (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+	if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+		[self showURL:request.URL];
+		return NO;
+	}
+	else {
+		return YES;
+	}
 }
 
 @end

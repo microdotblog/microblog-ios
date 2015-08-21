@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RFTimelineController : UIViewController
+@interface RFTimelineController : UIViewController <UIWebViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWebView* webView;
 
