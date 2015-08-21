@@ -8,6 +8,8 @@
 
 #import "RFClient.h"
 
+#import "SSKeychain.h"
+
 static NSString* const kServerSchemeAndHostname = @"http://snippets.today";
 
 @implementation RFClient
@@ -43,7 +45,8 @@ static NSString* const kServerSchemeAndHostname = @"http://snippets.today";
 		headers = [NSMutableDictionary dictionary];
 	}
 	
-//	[headers setObject:authToken forKey:@"X-Snippets-Token"];
+	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
+	[headers setObject:token forKey:@"X-Snippets-Token"];
 	request.headerFields = headers;
 }
 
@@ -58,6 +61,22 @@ static NSString* const kServerSchemeAndHostname = @"http://snippets.today";
 }
 
 #pragma mark -
+
+- (UUHttpRequest *) postWithParams:(NSDictionary *)params completion:(void (^)(UUHttpResponse* response))handler
+{
+	NSMutableString* body_s = [NSMutableString string];
+	for (NSString* key in [params allKeys]) {
+		NSString* val = params[key];
+		NSString* val_encoded = [val stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]];
+		[body_s appendFormat:@"%@=%@", key, val_encoded];
+	}
+	
+	NSData* d = [body_s dataUsingEncoding:NSUTF8StringEncoding];
+	UUHttpRequest* request = [UUHttpRequest postRequest:self.url queryArguments:nil body:d contentType:@"application/x-www-form-urlencoded"];
+	[self setupRequest:request];
+
+	return [UUHttpSession executeRequest:request completionHandler:handler];
+}
 
 - (UUHttpRequest *) postWithObject:(id)object completion:(void (^)(UUHttpResponse* response))handler
 {

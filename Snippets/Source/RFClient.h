@@ -19,6 +19,7 @@
 
 - (UUHttpRequest *) getWithQueryArguments:(NSDictionary *)args completion:(void (^)(UUHttpResponse* response))handler;
 
+- (UUHttpRequest *) postWithParams:(NSDictionary *)params completion:(void (^)(UUHttpResponse* response))handler;
 - (UUHttpRequest *) postWithObject:(id)object completion:(void (^)(UUHttpResponse* response))handler;
 - (UUHttpRequest *) postWithObject:(id)object queryArguments:(NSDictionary *)args completion:(void (^)(UUHttpResponse* response))handler;
 

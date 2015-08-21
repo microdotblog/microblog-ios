@@ -37,7 +37,7 @@
 	NSDictionary* args = @{
 		@"token": self.tokenField.text
 	};
-	[client postWithObject:nil queryArguments:args completion:^(UUHttpResponse* response) {
+	[client postWithParams:args completion:^(UUHttpResponse* response) {
 		NSString* error = [response.parsedResponse objectForKey:@"error"];
 		if (error) {
 			[UIAlertView uuShowOKCancelAlert:@"Error Signing In" message:error completionHandler:NULL];

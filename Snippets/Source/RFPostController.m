@@ -55,7 +55,15 @@
 
 - (IBAction) sendPost:(id)sender
 {
-	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+	RFClient* client = [[RFClient alloc] initWithPath:@"/pages/create"];
+	NSDictionary* args = @{
+		@"text": self.textView.text
+	};
+	[client postWithParams:args completion:^(UUHttpResponse* response) {
+		RFDispatchMainAsync (^{
+			[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+		});
+	}];
 }
 
 - (IBAction) close:(id)sender
