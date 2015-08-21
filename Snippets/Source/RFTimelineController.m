@@ -39,10 +39,11 @@
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTimelineNotification:) name:@"RFLoadTimelineNotification" object:nil];
 	
-	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
-	if (token) {
-		[self loadTimelineForToken:token];
-	}
+	[self refreshTimeline];
+
+	self.refreshControl = [[UIRefreshControl alloc] init];
+	[self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+	[self.webView.scrollView addSubview:self.refreshControl];
 }
 
 - (void) back:(id)sender
@@ -55,6 +56,20 @@
 	RFPostController* post_controller = [[RFPostController alloc] init];
 	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
 	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+}
+
+- (void) handleRefresh:(UIRefreshControl *)refresh
+{
+	[self refreshTimeline];
+	[refresh endRefreshing];
+}
+
+- (void) refreshTimeline
+{
+	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
+	if (token) {
+		[self loadTimelineForToken:token];
+	}
 }
 
 - (void) loadTimelineForToken:(NSString *)token

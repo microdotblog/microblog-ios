@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UIWebView* webView;
 
+@property (strong, nonatomic) UIRefreshControl* refreshControl;
+
 @end
