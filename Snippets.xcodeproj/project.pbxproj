@@ -49,6 +49,7 @@
 		4BF803511B87AACF00D6670C /* RFClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803501B87AACF00D6670C /* RFClient.m */; };
 		4BF803551B87DB4F00D6670C /* Web.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF803531B87DB4F00D6670C /* Web.xib */; };
 		4BF803581B87DB7B00D6670C /* RFWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803571B87DB7B00D6670C /* RFWebController.m */; };
+		4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8035A1B8898D900D6670C /* RFThinLineView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,8 @@
 		4BF803541B87DB4F00D6670C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Web.xib; sourceTree = "<group>"; };
 		4BF803561B87DB7B00D6670C /* RFWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFWebController.h; path = Source/RFWebController.h; sourceTree = "<group>"; };
 		4BF803571B87DB7B00D6670C /* RFWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFWebController.m; path = Source/RFWebController.m; sourceTree = "<group>"; };
+		4BF803591B8898D900D6670C /* RFThinLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFThinLineView.h; path = Source/RFThinLineView.h; sourceTree = "<group>"; };
+		4BF8035A1B8898D900D6670C /* RFThinLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFThinLineView.m; path = Source/RFThinLineView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +206,8 @@
 				4BA910811B83D20C00D58F83 /* RFPostController.m */,
 				4BF8034F1B87AACF00D6670C /* RFClient.h */,
 				4BF803501B87AACF00D6670C /* RFClient.m */,
+				4BF803591B8898D900D6670C /* RFThinLineView.h */,
+				4BF8035A1B8898D900D6670C /* RFThinLineView.m */,
 				4BA910961B84077000D58F83 /* UIBarButtonItem+Extras.h */,
 				4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */,
 			);
@@ -435,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */,
+				4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */,
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
 				4BF8034D1B87AA2C00D6670C /* UUImageView.m in Sources */,
 				4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */,

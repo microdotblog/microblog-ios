@@ -74,7 +74,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTE-zP-eNE">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTE-zP-eNE" customClass="RFThinLineView">
                     <rect key="frame" x="0.0" y="250" width="320" height="1"/>
                     <animations/>
                     <color key="backgroundColor" white="0.95453336148648649" alpha="1" colorSpace="calibratedWhite"/>
