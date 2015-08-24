@@ -39,6 +39,17 @@
 {
 	[super viewDidLoad];
 	
+	[self setupNavigation];
+	[self setupNotifications];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+	[self.textView becomeFirstResponder];
+}
+
+- (void) setupNavigation
+{
 	if (self.isReply) {
 		self.title = @"New Reply";
 	}
@@ -50,9 +61,37 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
 }
 
-- (void) viewDidAppear:(BOOL)animated
+- (void) setupNotifications
 {
-	[self.textView becomeFirstResponder];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void) keyboardWasShown:(NSNotification*)notification
+{
+    NSDictionary* info = [notification userInfo];
+    CGSize kb_size = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+
+	self.bottomConstraint.constant = kb_size.height;
+	[self.view layoutIfNeeded];
+}
+ 
+- (void) keyboardWillBeHidden:(NSNotification*)aNotification
+{
+	self.bottomConstraint.constant = 0;
+	[self.view layoutIfNeeded];
+}
+
+- (void) textViewDidChange:(UITextView *)textView
+{
+	NSInteger num_remaining = 280 - textView.text.length;
+	if (num_remaining < 0) {
+		self.remainingField.textColor = [UIColor colorWithRed:1.000 green:0.380 blue:0.349 alpha:1.000];
+	}
+	else {
+		self.remainingField.textColor = [UIColor blackColor];
+	}
+	self.remainingField.text = [NSString stringWithFormat:@"%ld", (long)num_remaining];
 }
 
 - (IBAction) sendPost:(id)sender
