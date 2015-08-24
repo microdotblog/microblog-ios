@@ -11,6 +11,8 @@
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "UUAlert.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation RFSignInController
 
@@ -40,7 +42,10 @@
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
 		NSString* error = [response.parsedResponse objectForKey:@"error"];
 		if (error) {
-			[UIAlertView uuShowOKCancelAlert:@"Error Signing In" message:error completionHandler:NULL];
+			RFDispatchMainAsync (^{
+				[Answers logLoginWithMethod:@"Token" success:@NO customAttributes:nil];
+				[UIAlertView uuShowOKCancelAlert:@"Error Signing In" message:error completionHandler:NULL];
+			});
 		}
 		else {
 			NSString* username = [response.parsedResponse objectForKey:@"username"];
@@ -49,6 +54,7 @@
 			[[NSUserDefaults standardUserDefaults] setObject:gravatar_url forKey:@"AccountGravatarURL"];
 		
 			RFDispatchMainAsync (^{
+				[Answers logLoginWithMethod:@"Token" success:@YES customAttributes:nil];
 				[[NSNotificationCenter defaultCenter] postNotificationName:@"RFLoadTimelineNotification" object:self userInfo:@{
 					@"token": self.tokenField.text
 				}];

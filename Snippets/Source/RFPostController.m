@@ -11,6 +11,8 @@
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation RFPostController
 
@@ -61,6 +63,7 @@
 	};
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
 		RFDispatchMainAsync (^{
+			[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
 			[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 		});
 	}];
