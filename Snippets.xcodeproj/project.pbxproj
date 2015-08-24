@@ -628,7 +628,7 @@
 				INFOPLIST_FILE = Snippets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d6f0f897-a426-49d9-a926-f8e31bd391cc";
+				PROVISIONING_PROFILE = "ef020485-b7e9-4044-a80b-e583b94ee8c5";
 			};
 			name = Debug;
 		};
@@ -646,7 +646,7 @@
 				INFOPLIST_FILE = Snippets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d6f0f897-a426-49d9-a926-f8e31bd391cc";
+				PROVISIONING_PROFILE = "ef020485-b7e9-4044-a80b-e583b94ee8c5";
 			};
 			name = Release;
 		};
