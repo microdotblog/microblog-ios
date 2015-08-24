@@ -115,7 +115,7 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="showReplies:" destination="-1" eventType="touchUpInside" id="UH6-nV-tpf"/>
+                        <action selector="showFavorites:" destination="-1" eventType="touchUpInside" id="ZB2-TN-Y6X"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorites" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oP2-k9-y3D">

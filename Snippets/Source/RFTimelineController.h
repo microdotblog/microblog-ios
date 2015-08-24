@@ -13,5 +13,9 @@
 @property (strong, nonatomic) IBOutlet UIWebView* webView;
 
 @property (strong, nonatomic) UIRefreshControl* refreshControl;
+@property (strong, nonatomic) NSString* endpoint;
+@property (strong, nonatomic) NSString* timelineTitle;
+
+- (instancetype) initWithEndpoint:(NSString *)endpoint title:(NSString *)title;
 
 @end

@@ -20,6 +20,19 @@
 {
 	self = [super initWithNibName:@"Timeline" bundle:nil];
 	if (self) {
+		self.endpoint = @"/iphone/timeline";
+		self.timelineTitle = @"Timeline";
+	}
+	
+	return self;
+}
+
+- (instancetype) initWithEndpoint:(NSString *)endpoint title:(NSString *)title
+{
+	self = [self init];
+	if (self) {
+		self.endpoint = endpoint;
+		self.timelineTitle = title;
 	}
 	
 	return self;
@@ -34,7 +47,7 @@
 {
 	[super viewDidLoad];
 	
-	self.title = @"Timeline";
+	self.title = self.timelineTitle;
 	
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(promptNewPost:)];
@@ -42,7 +55,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTimelineNotification:) name:@"RFLoadTimelineNotification" object:nil];
 	
 	[self refreshTimeline];
-
+	
 	self.refreshControl = [[UIRefreshControl alloc] init];
 	[self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
 	[self.webView.scrollView addSubview:self.refreshControl];
@@ -76,8 +89,17 @@
 
 - (void) loadTimelineForToken:(NSString *)token
 {
-	int width = [UIScreen mainScreen].bounds.size.width;
-	NSString* url = [NSString stringWithFormat:@"http://snippets.today/iphone/signin?token=%@&width=%d", token, width];
+	NSString* url;
+	if ([self.endpoint isEqual:@"/iphone/replies"]) {
+		url = @"http://snippets.today/iphone/replies";
+	}
+	else if ([self.endpoint isEqual:@"/iphone/favorites"]) {
+		url = @"http://snippets.today/iphone/favorites";
+	}
+	else {
+		int width = [UIScreen mainScreen].bounds.size.width;
+		url = [NSString stringWithFormat:@"http://snippets.today/iphone/signin?token=%@&width=%d", token, width];
+	}
 	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 

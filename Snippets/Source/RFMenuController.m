@@ -54,6 +54,14 @@
 
 - (IBAction) showReplies:(id)sender
 {
+	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/replies" title:@"Replies"];
+	[self.navigationController pushViewController:timeline_controller animated:YES];
+}
+
+- (IBAction) showFavorites:(id)sender
+{
+	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/favorites" title:@"Favorites"];
+	[self.navigationController pushViewController:timeline_controller animated:YES];
 }
 
 @end
