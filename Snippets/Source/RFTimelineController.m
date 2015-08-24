@@ -47,18 +47,56 @@
 {
 	[super viewDidLoad];
 	
+	[self setupNavigation];
+	[self setupNotifications];
+	[self setupRefresh];
+	[self setupGestures];
+	
+	[self refreshTimeline];
+}
+
+- (void) setupNavigation
+{
 	self.title = self.timelineTitle;
 	
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(promptNewPost:)];
-	
+}
+
+- (void) setupNotifications
+{
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTimelineNotification:) name:@"RFLoadTimelineNotification" object:nil];
-	
-	[self refreshTimeline];
-	
+}
+
+- (void) setupRefresh
+{
 	self.refreshControl = [[UIRefreshControl alloc] init];
 	[self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
 	[self.webView.scrollView addSubview:self.refreshControl];
+}
+
+- (void) setupGestures
+{
+	UISwipeGestureRecognizer* swipe_left_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft:)];
+	swipe_left_gesture.direction = UISwipeGestureRecognizerDirectionLeft;
+	[self.view addGestureRecognizer:swipe_left_gesture];
+
+	UISwipeGestureRecognizer* swipe_right_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
+	swipe_right_gesture.direction = UISwipeGestureRecognizerDirectionRight;
+	[self.view addGestureRecognizer:swipe_right_gesture];
+}
+
+#pragma mark -
+
+- (void) swipeLeft:(UIGestureRecognizer *)gesture
+{
+//	RFTimelineController* conversation_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/conversation" title:@"Conversation"];
+//	[self.navigationController pushViewController:conversation_controller animated:YES];
+}
+
+- (void) swipeRight:(UIGestureRecognizer *)gesture
+{
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) back:(id)sender
