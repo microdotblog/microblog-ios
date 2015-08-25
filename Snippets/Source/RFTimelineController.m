@@ -82,6 +82,24 @@
 	[self.view addGestureRecognizer:swipe_right_gesture];
 }
 
+- (CGRect) rectOfPostID:(NSString *)postID
+{
+	NSString* left_js = [NSString stringWithFormat:@"$(\"#post_%@\").position().left;", postID];
+	NSString* top_js = [NSString stringWithFormat:@"$(\"#post_%@\").position().top;", postID];
+	NSString* width_js = [NSString stringWithFormat:@"$(\"#post_%@\").width();", postID];
+	NSString* height_js = [NSString stringWithFormat:@"$(\"#post_%@\").height();", postID];
+	
+	NSString* left_s = [self.webView stringByEvaluatingJavaScriptFromString:left_js];
+	NSString* top_s = [self.webView stringByEvaluatingJavaScriptFromString:top_js];
+	NSString* width_s = [self.webView stringByEvaluatingJavaScriptFromString:width_js];
+	NSString* height_s = [self.webView stringByEvaluatingJavaScriptFromString:height_js];
+	
+	CGFloat top_f = [top_s floatValue];
+	top_f -= self.webView.scrollView.contentOffset.y;
+	
+	return CGRectMake ([left_s floatValue], top_f, [width_s floatValue], [height_s floatValue]);
+}
+
 #pragma mark -
 
 - (void) swipeRight:(UIGestureRecognizer *)gesture

@@ -10,6 +10,9 @@
 
 @interface RFOptionsController : UIViewController <UIPopoverPresentationControllerDelegate>
 
+@property (strong, nonatomic) NSString* postID;
+
+- (instancetype) initWithPostID:(NSString *)postID;
 - (void) attachToView:(UIView *)view atRect:(CGRect)rect;
 
 @end

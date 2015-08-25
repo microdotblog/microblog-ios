@@ -31,16 +31,10 @@
 {
 	NSString* post_id = [url.path stringByReplacingOccurrencesOfString:@"/" withString:@""];
 	if ([url.host isEqualToString:@"open"]) {
-		CGRect r = CGRectMake(0, 100, 320, 50);
-	
-		RFOptionsController* options_controller = [[RFOptionsController alloc] init];
-		[options_controller attachToView:self.navigationController.topViewController.view atRect:r];
-		[self.navigationController presentViewController:options_controller animated:YES completion:NULL];
+		[self showOptionsMenuWithPostID:post_id];
 	}
 	else if ([url.host isEqualToString:@"conversation"]) {
-		NSString* path = [NSString stringWithFormat:@"/iphone/conversation/%@", post_id];
-		RFTimelineController* conversation_controller = [[RFTimelineController alloc] initWithEndpoint:path title:@"Conversation"];
-		[self.navigationController pushViewController:conversation_controller animated:YES];
+		[self showConversationWithPostID:post_id];
 	}
 	
 	return YES;
@@ -112,6 +106,26 @@
 	self.signInController = [[RFSignInController alloc] init];
 	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:self.signInController];
 	[self.menuController.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+}
+
+#pragma mark -
+
+- (void) showOptionsMenuWithPostID:(NSString *)postID
+{
+	RFTimelineController* timeline_controller = (RFTimelineController *) self.navigationController.topViewController;
+	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
+		CGRect r = [timeline_controller rectOfPostID:postID];
+		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:postID];
+		[options_controller attachToView:timeline_controller.webView atRect:r];
+		[self.navigationController presentViewController:options_controller animated:YES completion:NULL];
+	}
+}
+
+- (void) showConversationWithPostID:(NSString *)postID
+{
+	NSString* path = [NSString stringWithFormat:@"/iphone/conversation/%@", postID];
+	RFTimelineController* conversation_controller = [[RFTimelineController alloc] initWithEndpoint:path title:@"Conversation"];
+	[self.navigationController pushViewController:conversation_controller animated:YES];
 }
 
 @end

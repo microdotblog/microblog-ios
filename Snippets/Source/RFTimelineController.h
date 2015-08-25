@@ -17,5 +17,6 @@
 @property (strong, nonatomic) NSString* timelineTitle;
 
 - (instancetype) initWithEndpoint:(NSString *)endpoint title:(NSString *)title;
+- (CGRect) rectOfPostID:(NSString *)postID;
 
 @end

@@ -10,12 +10,14 @@
 
 @implementation RFOptionsController
 
-- (instancetype) init
+- (instancetype) initWithPostID:(NSString *)postID
 {
 	self = [super initWithNibName:@"Options" bundle:nil];
 	if (self) {
+		self.postID = postID;
 		self.modalPresentationStyle = UIModalPresentationPopover;
 		self.popoverPresentationController.delegate = self;
+		self.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown | UIPopoverArrowDirectionUp;
 	}
 	
 	return self;
