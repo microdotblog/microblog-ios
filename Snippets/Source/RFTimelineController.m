@@ -77,22 +77,12 @@
 
 - (void) setupGestures
 {
-	UISwipeGestureRecognizer* swipe_left_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft:)];
-	swipe_left_gesture.direction = UISwipeGestureRecognizerDirectionLeft;
-	[self.view addGestureRecognizer:swipe_left_gesture];
-
 	UISwipeGestureRecognizer* swipe_right_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
 	swipe_right_gesture.direction = UISwipeGestureRecognizerDirectionRight;
 	[self.view addGestureRecognizer:swipe_right_gesture];
 }
 
 #pragma mark -
-
-- (void) swipeLeft:(UIGestureRecognizer *)gesture
-{
-//	RFTimelineController* conversation_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/conversation" title:@"Conversation"];
-//	[self.navigationController pushViewController:conversation_controller animated:YES];
-}
 
 - (void) swipeRight:(UIGestureRecognizer *)gesture
 {
@@ -128,11 +118,14 @@
 - (void) loadTimelineForToken:(NSString *)token
 {
 	NSString* url;
-	if ([self.endpoint isEqual:@"/iphone/replies"]) {
+	if ([self.endpoint isEqualToString:@"/iphone/replies"]) {
 		url = @"http://snippets.today/iphone/replies";
 	}
-	else if ([self.endpoint isEqual:@"/iphone/favorites"]) {
+	else if ([self.endpoint isEqualToString:@"/iphone/favorites"]) {
 		url = @"http://snippets.today/iphone/favorites";
+	}
+	else if ([self.endpoint containsString:@"/iphone/conversation"]) {
+		url = [NSString stringWithFormat:@"http://snippets.today%@", self.endpoint];
 	}
 	else {
 		int width = [UIScreen mainScreen].bounds.size.width;
@@ -171,6 +164,19 @@
 	else {
 		return YES;
 	}
+}
+
+- (void) webViewDidStartLoad:(UIWebView *)webView
+{
+}
+
+- (void) webViewDidFinishLoad:(UIWebView *)webView
+{
+}
+
+- (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+	NSLog (@"Web view error: %@", error);
 }
 
 @end

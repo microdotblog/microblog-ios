@@ -26,6 +26,20 @@
 	return YES;
 }
 
+- (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+	NSString* post_id = [url.path stringByReplacingOccurrencesOfString:@"/" withString:@""];
+	if ([url.host isEqualToString:@"open"]) {
+	}
+	else if ([url.host isEqualToString:@"conversation"]) {
+		NSString* path = [NSString stringWithFormat:@"/iphone/conversation/%@", post_id];
+		RFTimelineController* conversation_controller = [[RFTimelineController alloc] initWithEndpoint:path title:@"Conversation"];
+		[self.navigationController pushViewController:conversation_controller animated:YES];
+	}
+	
+	return YES;
+}
+
 - (void) applicationWillResignActive:(UIApplication *)application
 {
 }
@@ -80,11 +94,11 @@
 {
 	self.menuController = [[RFMenuController alloc] init];
 	self.timelineController = [[RFTimelineController alloc] init];
-	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:self.menuController];
-	[nav_controller pushViewController:self.timelineController animated:NO];
+	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.menuController];
+	[self.navigationController pushViewController:self.timelineController animated:NO];
 
     [self.window makeKeyAndVisible];
-	[self.window setRootViewController:nav_controller];
+	[self.window setRootViewController:self.navigationController];
 }
 
 - (void) setupSignin

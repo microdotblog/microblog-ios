@@ -15,6 +15,7 @@
 @interface RFAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow* window;
+@property (strong, nonatomic) UINavigationController* navigationController;
 @property (strong, nonatomic) RFSignInController* signInController;
 @property (strong, nonatomic) RFMenuController* menuController;
 @property (strong, nonatomic) RFTimelineController* timelineController;
