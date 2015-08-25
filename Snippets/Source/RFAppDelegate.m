@@ -12,6 +12,7 @@
 #import "RFMenuController.h"
 #import "RFTimelineController.h"
 #import "RFOptionsController.h"
+#import "RFConstants.h"
 #import "SSKeychain.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -23,6 +24,7 @@
 	[self setupCrashlytics];
 	[self setupWindow];
 	[self setupAppearance];
+	[self setupNotifications];
 	
 	return YES;
 }
@@ -108,7 +110,18 @@
 	[self.menuController.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 }
 
+- (void) setupNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConversationNotification:) name:kShowConversationNotification object:nil];
+}
+
 #pragma mark -
+
+- (void) showConversationNotification:(NSNotification *)notification
+{
+	NSString* post_id = [notification.userInfo objectForKey:kShowConversationPostKey];
+	[self showConversationWithPostID:post_id];
+}
 
 - (void) showOptionsMenuWithPostID:(NSString *)postID
 {

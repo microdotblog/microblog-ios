@@ -8,6 +8,8 @@
 
 #import "RFOptionsController.h"
 
+#import "RFConstants.h"
+
 @implementation RFOptionsController
 
 - (instancetype) initWithPostID:(NSString *)postID
@@ -40,6 +42,23 @@
 - (UIModalPresentationStyle) adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {
 	return UIModalPresentationNone;
+}
+
+#pragma mark -
+
+- (IBAction) reply:(id)sender
+{
+}
+
+- (IBAction) favorite:(id)sender
+{
+}
+
+- (IBAction) conversation:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kShowConversationNotification object:self userInfo:@{ kShowConversationPostKey: self.postID }];
+	}];
 }
 
 @end

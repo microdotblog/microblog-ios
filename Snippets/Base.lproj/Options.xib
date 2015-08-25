@@ -29,6 +29,9 @@
                     <state key="normal" title="Favorite">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="favorite:" destination="-1" eventType="touchUpInside" id="6ZR-70-3P3"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIA-Ni-yxe">
                     <rect key="frame" x="178" y="0.0" width="91" height="43"/>
@@ -37,6 +40,9 @@
                     <state key="normal" title="Conversation">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="conversation:" destination="-1" eventType="touchUpInside" id="oAp-Mc-b6N"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1K5-G8-wMd">
                     <rect key="frame" x="32" y="-1" width="39" height="43.5"/>
@@ -45,6 +51,9 @@
                     <state key="normal" title="Reply">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="reply:" destination="-1" eventType="touchUpInside" id="Udf-Wp-PWj"/>
+                    </connections>
                 </button>
             </subviews>
             <animations/>
