@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
 		4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */; };
+		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
+		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
 		4BA2C9841B2109D10038C0E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C9831B2109D10038C0E5 /* Images.xcassets */; };
 		4BA2C9871B2109D10038C0E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */; };
 		4BA2C9931B2109D10038C0E5 /* SnippetsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9921B2109D10038C0E5 /* SnippetsTests.m */; };
@@ -67,6 +69,9 @@
 		4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Shared/SSKeychain/SSKeychain.m; sourceTree = SOURCE_ROOT; };
 		4B1BAF001B852BC9008097F7 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychainQuery.h; path = Shared/SSKeychain/SSKeychainQuery.h; sourceTree = SOURCE_ROOT; };
 		4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychainQuery.m; path = Shared/SSKeychain/SSKeychainQuery.m; sourceTree = SOURCE_ROOT; };
+		4B5F75501B8CABC50074D88E /* RFOptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFOptionsController.h; path = Source/RFOptionsController.h; sourceTree = "<group>"; };
+		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
+		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
 		4BA2C9731B2109D10038C0E5 /* Snippets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snippets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA2C9771B2109D10038C0E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BA2C9831B2109D10038C0E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -200,6 +205,8 @@
 				4BA910751B83CDC400D58F83 /* RFMenuController.m */,
 				4BA2C9A11B210A9A0038C0E5 /* RFTimelineController.h */,
 				4BA2C9A21B210A9A0038C0E5 /* RFTimelineController.m */,
+				4B5F75501B8CABC50074D88E /* RFOptionsController.h */,
+				4B5F75511B8CABC50074D88E /* RFOptionsController.m */,
 				4BF803561B87DB7B00D6670C /* RFWebController.h */,
 				4BF803571B87DB7B00D6670C /* RFWebController.m */,
 				4BA910801B83D20C00D58F83 /* RFPostController.h */,
@@ -239,6 +246,7 @@
 				4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */,
 				4BA910771B83CE7600D58F83 /* Menu.xib */,
 				4BA2C99E1B210A620038C0E5 /* Timeline.xib */,
+				4B5F75531B8CABF30074D88E /* Options.xib */,
 				4BF803531B87DB4F00D6670C /* Web.xib */,
 				4BA9107A1B83CFD200D58F83 /* SignIn.xib */,
 				4BA910831B83D22900D58F83 /* Post.xib */,
@@ -403,6 +411,7 @@
 				4BA9107C1B83CFD200D58F83 /* SignIn.xib in Resources */,
 				4BA9108A1B83E67100D58F83 /* favorites_icon@2x.png in Resources */,
 				4BA910791B83CE7600D58F83 /* Menu.xib in Resources */,
+				4B5F75551B8CABF30074D88E /* Options.xib in Resources */,
 				4BA2C9841B2109D10038C0E5 /* Images.xcassets in Resources */,
 				4BA9108F1B83E77C00D58F83 /* replies_icon@3x.png in Resources */,
 				4BF803551B87DB4F00D6670C /* Web.xib in Resources */,
@@ -439,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */,
 				4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */,
 				4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */,
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
@@ -484,6 +494,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4B5F75531B8CABF30074D88E /* Options.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B5F75541B8CABF30074D88E /* Base */,
+			);
+			name = Options.xib;
+			sourceTree = "<group>";
+		};
 		4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

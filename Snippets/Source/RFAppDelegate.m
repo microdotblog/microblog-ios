@@ -11,6 +11,7 @@
 #import "RFSignInController.h"
 #import "RFMenuController.h"
 #import "RFTimelineController.h"
+#import "RFOptionsController.h"
 #import "SSKeychain.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -30,6 +31,11 @@
 {
 	NSString* post_id = [url.path stringByReplacingOccurrencesOfString:@"/" withString:@""];
 	if ([url.host isEqualToString:@"open"]) {
+		CGRect r = CGRectMake(0, 100, 320, 50);
+	
+		RFOptionsController* options_controller = [[RFOptionsController alloc] init];
+		[options_controller attachToView:self.navigationController.topViewController.view atRect:r];
+		[self.navigationController presentViewController:options_controller animated:YES completion:NULL];
 	}
 	else if ([url.host isEqualToString:@"conversation"]) {
 		NSString* path = [NSString stringWithFormat:@"/iphone/conversation/%@", post_id];
