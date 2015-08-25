@@ -8,7 +8,9 @@
 
 #import "RFOptionsController.h"
 
+#import "RFClient.h"
 #import "RFConstants.h"
+#import "RFMacros.h"
 
 @implementation RFOptionsController
 
@@ -48,10 +50,19 @@
 
 - (IBAction) reply:(id)sender
 {
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+	}];
 }
 
 - (IBAction) favorite:(id)sender
 {
+	RFClient* client = [[RFClient alloc] initWithPath:@"/posts/favorite"];
+	NSDictionary* args = @{ @"id": self.postID };
+	[client postWithParams:args completion:^(UUHttpResponse* response) {
+		RFDispatchMainAsync (^{
+			[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+		});
+	}];
 }
 
 - (IBAction) conversation:(id)sender
