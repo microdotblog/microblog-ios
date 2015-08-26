@@ -134,7 +134,8 @@
 	RFTimelineController* timeline_controller = (RFTimelineController *) self.navigationController.topViewController;
 	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
 		CGRect r = [timeline_controller rectOfPostID:postID];
-		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:postID];
+		RFOptionsPopoverType popover_type = [timeline_controller popoverTypeOfPostID:postID];
+		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:postID popoverType:popover_type];
 		[options_controller attachToView:timeline_controller.webView atRect:r];
 		[self.navigationController presentViewController:options_controller animated:YES completion:NULL];
 	}

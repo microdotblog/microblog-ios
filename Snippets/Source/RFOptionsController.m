@@ -14,11 +14,13 @@
 
 @implementation RFOptionsController
 
-- (instancetype) initWithPostID:(NSString *)postID
+- (instancetype) initWithPostID:(NSString *)postID popoverType:(RFOptionsPopoverType)popoverType
 {
 	self = [super initWithNibName:@"Options" bundle:nil];
 	if (self) {
 		self.postID = postID;
+		self.popoverType = popoverType;
+		
 		self.modalPresentationStyle = UIModalPresentationPopover;
 		self.popoverPresentationController.delegate = self;
 		self.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionDown | UIPopoverArrowDirectionUp;
@@ -30,9 +32,16 @@
 - (void) viewDidLoad
 {
 	[super viewDidLoad];
+	
+	if (self.popoverType == kOptionsPopoverWithUnfavorite) {
+		self.view = self.withUnfavoriteView;
+	}
+	else if (self.popoverType == kOptionsPopoverWithDelete) {
+		self.view = self.withDeleteView;
+	}
 
-	self.preferredContentSize = self.view.bounds.size;
 	self.popoverPresentationController.backgroundColor = self.view.backgroundColor;
+	self.preferredContentSize = self.view.bounds.size;
 }
 
 - (void) attachToView:(UIView *)view atRect:(CGRect)rect
@@ -65,10 +74,31 @@
 	}];
 }
 
+- (IBAction) unfavorite:(id)sender
+{
+	RFClient* client = [[RFClient alloc] initWithPath:@"/posts/unfavorite"];
+	NSDictionary* args = @{ @"id": self.postID };
+	[client postWithParams:args completion:^(UUHttpResponse* response) {
+		RFDispatchMainAsync (^{
+			[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+		});
+	}];
+}
+
 - (IBAction) conversation:(id)sender
 {
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
 		[[NSNotificationCenter defaultCenter] postNotificationName:kShowConversationNotification object:self userInfo:@{ kShowConversationPostKey: self.postID }];
+	}];
+}
+
+- (IBAction) deletePost:(id)sender
+{
+	RFClient* client = [[RFClient alloc] initWithFormat:@"/posts/%@", self.postID];
+	[client deleteWithObject:nil completion:^(UUHttpResponse* response) {
+		RFDispatchMainAsync (^{
+			[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+		});
 	}];
 }
 

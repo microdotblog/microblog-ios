@@ -84,10 +84,10 @@
 
 - (CGRect) rectOfPostID:(NSString *)postID
 {
-	NSString* left_js = [NSString stringWithFormat:@"$(\"#post_%@\").position().left;", postID];
-	NSString* top_js = [NSString stringWithFormat:@"$(\"#post_%@\").position().top;", postID];
-	NSString* width_js = [NSString stringWithFormat:@"$(\"#post_%@\").width();", postID];
-	NSString* height_js = [NSString stringWithFormat:@"$(\"#post_%@\").height();", postID];
+	NSString* left_js = [NSString stringWithFormat:@"$('#post_%@').position().left;", postID];
+	NSString* top_js = [NSString stringWithFormat:@"$('#post_%@').position().top;", postID];
+	NSString* width_js = [NSString stringWithFormat:@"$('#post_%@').width();", postID];
+	NSString* height_js = [NSString stringWithFormat:@"$('#post_%@').height();", postID];
 	
 	NSString* left_s = [self.webView stringByEvaluatingJavaScriptFromString:left_js];
 	NSString* top_s = [self.webView stringByEvaluatingJavaScriptFromString:top_js];
@@ -98,6 +98,25 @@
 	top_f -= self.webView.scrollView.contentOffset.y;
 	
 	return CGRectMake ([left_s floatValue], top_f, [width_s floatValue], [height_s floatValue]);
+}
+
+- (RFOptionsPopoverType) popoverTypeOfPostID:(NSString *)postID
+{
+	NSString* is_favorite_js = [NSString stringWithFormat:@"$('#post_%@').hasClass('is_favorite');", postID];
+	NSString* is_deletable_js = [NSString stringWithFormat:@"$('#post_%@').hasClass('is_deletable');", postID];
+
+	NSString* is_favorite_s = [self.webView stringByEvaluatingJavaScriptFromString:is_favorite_js];
+	NSString* is_deletable_s = [self.webView stringByEvaluatingJavaScriptFromString:is_deletable_js];
+
+	if ([is_favorite_s boolValue]) {
+		return kOptionsPopoverWithUnfavorite;
+	}
+	else if ([is_deletable_s boolValue]) {
+		return kOptionsPopoverWithDelete;
+	}
+	else {
+		return kOptionsPopoverDefault;
+	}
 }
 
 #pragma mark -

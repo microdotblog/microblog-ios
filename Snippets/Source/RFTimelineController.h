@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "RFOptionsController.h"
+
 @interface RFTimelineController : UIViewController <UIWebViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWebView* webView;
@@ -18,5 +20,6 @@
 
 - (instancetype) initWithEndpoint:(NSString *)endpoint title:(NSString *)title;
 - (CGRect) rectOfPostID:(NSString *)postID;
+- (RFOptionsPopoverType) popoverTypeOfPostID:(NSString *)postID;
 
 @end

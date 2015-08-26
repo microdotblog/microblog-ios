@@ -8,11 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+	kOptionsPopoverDefault = 0,
+	kOptionsPopoverWithUnfavorite = 1,
+	kOptionsPopoverWithDelete = 2
+} RFOptionsPopoverType;
+
 @interface RFOptionsController : UIViewController <UIPopoverPresentationControllerDelegate>
 
-@property (strong, nonatomic) NSString* postID;
+@property (strong, nonatomic) IBOutlet UIView* defaultView;
+@property (strong, nonatomic) IBOutlet UIView* withUnfavoriteView;
+@property (strong, nonatomic) IBOutlet UIView* withDeleteView;
 
-- (instancetype) initWithPostID:(NSString *)postID;
+@property (strong, nonatomic) NSString* postID;
+@property (assign, nonatomic) RFOptionsPopoverType popoverType;
+
+- (instancetype) initWithPostID:(NSString *)postID popoverType:(RFOptionsPopoverType)popoverType;
 - (void) attachToView:(UIView *)view atRect:(CGRect)rect;
 
 @end
