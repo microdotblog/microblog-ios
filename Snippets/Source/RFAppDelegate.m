@@ -112,10 +112,16 @@
 
 - (void) setupNotifications
 {
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConversationNotification:) name:kShowConversationNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSigninNotification:) name:kShowConversationNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConversationNotification:) name:kShowSigninNotification object:nil];
 }
 
 #pragma mark -
+
+- (void) showSigninNotification:(NSNotification *)notification
+{
+	[self setupSignin];
+}
 
 - (void) showConversationNotification:(NSNotification *)notification
 {

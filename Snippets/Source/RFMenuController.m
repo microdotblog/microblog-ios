@@ -9,7 +9,9 @@
 #import "RFMenuController.h"
 
 #import "RFTimelineController.h"
+#import "RFConstants.h"
 #import "UUImageView.h"
+#import "SSKeychain.h"
 
 @implementation RFMenuController
 
@@ -62,6 +64,15 @@
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/favorites" title:@"Favorites"];
 	[self.navigationController pushViewController:timeline_controller animated:YES];
+}
+
+- (IBAction) signOut:(id)sender
+{
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountUsername"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountGravatarURL"];
+	[SSKeychain deletePasswordForService:@"Snippets" account:@"default"];
+
+	[[NSNotificationCenter defaultCenter] postNotificationName:kShowSigninNotification object:self];
 }
 
 @end

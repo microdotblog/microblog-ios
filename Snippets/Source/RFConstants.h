@@ -8,3 +8,5 @@
 
 #define kShowConversationNotification @"RFShowConversationNotification"
 #define kShowConversationPostKey @"post_id"
+
+#define kShowSigninNotification @"RFShowSigninNotification"
