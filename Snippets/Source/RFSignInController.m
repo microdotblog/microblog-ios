@@ -44,7 +44,7 @@
 		if (error) {
 			RFDispatchMainAsync (^{
 				[Answers logLoginWithMethod:@"Token" success:@NO customAttributes:nil];
-				[UIAlertView uuShowOKCancelAlert:@"Error Signing In" message:error completionHandler:NULL];
+				[UIAlertView uuShowOneButtonAlert:@"Error Signing In" message:error button:@"OK" completionHandler:NULL];
 			});
 		}
 		else {
