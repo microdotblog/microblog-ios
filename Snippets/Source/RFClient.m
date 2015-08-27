@@ -67,10 +67,16 @@ static NSString* const kServerSchemeAndHostname = @"http://snippets.today";
 - (UUHttpRequest *) postWithParams:(NSDictionary *)params completion:(void (^)(UUHttpResponse* response))handler
 {
 	NSMutableString* body_s = [NSMutableString string];
-	for (NSString* key in [params allKeys]) {
+	
+	NSArray* all_keys = [params allKeys];
+	for (int i = 0; i < [all_keys count]; i++) {
+		NSString* key = [all_keys objectAtIndex:i];
 		NSString* val = params[key];
 		NSString* val_encoded = [val stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]];
 		[body_s appendFormat:@"%@=%@", key, val_encoded];
+		if (i != ([all_keys count] - 1)) {
+			[body_s appendString:@"&"];
+		}
 	}
 	
 	NSData* d = [body_s dataUsingEncoding:NSUTF8StringEncoding];

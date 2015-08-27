@@ -11,6 +11,7 @@
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
+#import "NSString+Extras.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -25,11 +26,13 @@
 	return self;
 }
 
-- (instancetype) initWithReplyTo:(id)postID
+- (instancetype) initWithReplyTo:(NSString *)postID replyUsername:(NSString *)username
 {
 	self = [self init];
 	if (self) {
 		self.isReply = YES;
+		self.replyPostID = postID;
+		self.replyUsername = username;
 	}
 	
 	return self;
@@ -40,6 +43,7 @@
 	[super viewDidLoad];
 	
 	[self setupNavigation];
+	[self setupText];
 	[self setupNotifications];
 }
 
@@ -59,6 +63,13 @@
 
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
+}
+
+- (void) setupText
+{
+	if (self.replyUsername) {
+		self.textView.text = [NSString stringWithFormat:@"@%@ ", self.replyUsername];
+	}
 }
 
 - (void) setupNotifications
@@ -96,16 +107,31 @@
 
 - (IBAction) sendPost:(id)sender
 {
-	RFClient* client = [[RFClient alloc] initWithPath:@"/pages/create"];
-	NSDictionary* args = @{
-		@"text": self.textView.text
-	};
-	[client postWithParams:args completion:^(UUHttpResponse* response) {
-		RFDispatchMainAsync (^{
-			[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
-			[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
-		});
-	}];
+	if (self.isReply) {
+		RFClient* client = [[RFClient alloc] initWithPath:@"/posts/reply"];
+		NSDictionary* args = @{
+			@"id": self.replyPostID,
+			@"text": self.textView.text
+		};
+		[client postWithParams:args completion:^(UUHttpResponse* response) {
+			RFDispatchMainAsync (^{
+				[Answers logCustomEventWithName:@"Sent Reply" customAttributes:nil];
+				[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+			});
+		}];
+	}
+	else {
+		RFClient* client = [[RFClient alloc] initWithPath:@"/pages/create"];
+		NSDictionary* args = @{
+			@"text": self.textView.text
+		};
+		[client postWithParams:args completion:^(UUHttpResponse* response) {
+			RFDispatchMainAsync (^{
+				[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
+				[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+			});
+		}];
+	}
 }
 
 - (IBAction) close:(id)sender

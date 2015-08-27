@@ -15,7 +15,9 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* bottomConstraint;
 
 @property (assign, nonatomic) BOOL isReply;
+@property (strong, nonatomic) NSString* replyPostID;
+@property (strong, nonatomic) NSString* replyUsername;
 
-- (instancetype) initWithReplyTo:(id)postID;
+- (instancetype) initWithReplyTo:(NSString *)postID replyUsername:(NSString *)username;
 
 @end

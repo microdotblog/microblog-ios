@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
 		4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */; };
+		4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */; };
 		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
 		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
 		4BA2C9841B2109D10038C0E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C9831B2109D10038C0E5 /* Images.xcassets */; };
@@ -69,6 +70,8 @@
 		4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Shared/SSKeychain/SSKeychain.m; sourceTree = SOURCE_ROOT; };
 		4B1BAF001B852BC9008097F7 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychainQuery.h; path = Shared/SSKeychain/SSKeychainQuery.h; sourceTree = SOURCE_ROOT; };
 		4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychainQuery.m; path = Shared/SSKeychain/SSKeychainQuery.m; sourceTree = SOURCE_ROOT; };
+		4B46631A1B8EA5C20034FC5C /* NSString+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Extras.h"; path = "Source/NSString+Extras.h"; sourceTree = "<group>"; };
+		4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Extras.m"; path = "Source/NSString+Extras.m"; sourceTree = "<group>"; };
 		4B5F75501B8CABC50074D88E /* RFOptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFOptionsController.h; path = Source/RFOptionsController.h; sourceTree = "<group>"; };
 		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
 		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 				4BF8035A1B8898D900D6670C /* RFThinLineView.m */,
 				4BA910961B84077000D58F83 /* UIBarButtonItem+Extras.h */,
 				4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */,
+				4B46631A1B8EA5C20034FC5C /* NSString+Extras.h */,
+				4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */,
 			);
 			name = Source;
 			path = Snippets;
@@ -456,6 +461,7 @@
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
 				4BF8034D1B87AA2C00D6670C /* UUImageView.m in Sources */,
 				4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */,
+				4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */,
 				4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */,
 				4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */,
 				4BF803581B87DB7B00D6670C /* RFWebController.m in Sources */,

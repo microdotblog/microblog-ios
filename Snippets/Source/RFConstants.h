@@ -7,7 +7,10 @@
 //
 
 #define kShowConversationNotification @"RFShowConversationNotification"
-#define kShowConversationPostKey @"post_id"
+#define kShowConversationPostIDKey @"post_id"
+
+#define kShowReplyPostNotification @"RFShowReplyPostNotification"
+#define kShowReplyPostIDKey @"post_id"
 
 #define kShowSigninNotification @"RFShowSigninNotification"
 

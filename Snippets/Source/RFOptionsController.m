@@ -9,6 +9,7 @@
 #import "RFOptionsController.h"
 
 #import "RFClient.h"
+#import "RFPostController.h"
 #import "RFConstants.h"
 #import "RFMacros.h"
 
@@ -60,6 +61,7 @@
 - (IBAction) reply:(id)sender
 {
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kShowReplyPostNotification object:self userInfo:@{ kShowReplyPostIDKey: self.postID }];
 	}];
 }
 
@@ -90,7 +92,7 @@
 - (IBAction) conversation:(id)sender
 {
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
-		[[NSNotificationCenter defaultCenter] postNotificationName:kShowConversationNotification object:self userInfo:@{ kShowConversationPostKey: self.postID }];
+		[[NSNotificationCenter defaultCenter] postNotificationName:kShowConversationNotification object:self userInfo:@{ kShowConversationPostIDKey: self.postID }];
 	}];
 }
 

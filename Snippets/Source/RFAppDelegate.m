@@ -11,6 +11,7 @@
 #import "RFSignInController.h"
 #import "RFMenuController.h"
 #import "RFTimelineController.h"
+#import "RFPostController.h"
 #import "RFOptionsController.h"
 #import "RFConstants.h"
 #import "SSKeychain.h"
@@ -114,6 +115,7 @@
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSigninNotification:) name:kShowSigninNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConversationNotification:) name:kShowConversationNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReplyPostNotification:) name:kShowReplyPostNotification object:nil];
 }
 
 #pragma mark -
@@ -125,8 +127,16 @@
 
 - (void) showConversationNotification:(NSNotification *)notification
 {
-	NSString* post_id = [notification.userInfo objectForKey:kShowConversationPostKey];
+	NSString* post_id = [notification.userInfo objectForKey:kShowConversationPostIDKey];
 	[self showConversationWithPostID:post_id];
+}
+
+- (void) showReplyPostNotification:(NSNotification *)notification
+{
+	NSString* post_id = [notification.userInfo objectForKey:kShowReplyPostIDKey];
+	RFPostController* post_controller = [[RFPostController alloc] initWithReplyTo:post_id replyUsername:@"hello"];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
+	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 - (void) showOptionsMenuWithPostID:(NSString *)postID
