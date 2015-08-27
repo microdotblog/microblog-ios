@@ -10,6 +10,12 @@
 		4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
 		4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */; };
 		4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */; };
+		4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631F1B8F51710034FC5C /* CColorConverter.m */; };
+		4B46632B1B8F51710034FC5C /* CMarkupTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663211B8F51710034FC5C /* CMarkupTransformer.m */; };
+		4B46632C1B8F51710034FC5C /* CSimpleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663231B8F51710034FC5C /* CSimpleMarkupParser.m */; };
+		4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663251B8F51710034FC5C /* NSString+MarkupExtensions.m */; };
+		4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */; };
+		4B46632F1B8F51710034FC5C /* UILabel+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */; };
 		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
 		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
 		4BA2C9841B2109D10038C0E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C9831B2109D10038C0E5 /* Images.xcassets */; };
@@ -72,6 +78,18 @@
 		4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychainQuery.m; path = Shared/SSKeychain/SSKeychainQuery.m; sourceTree = SOURCE_ROOT; };
 		4B46631A1B8EA5C20034FC5C /* NSString+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Extras.h"; path = "Source/NSString+Extras.h"; sourceTree = "<group>"; };
 		4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Extras.m"; path = "Source/NSString+Extras.m"; sourceTree = "<group>"; };
+		4B46631E1B8F51710034FC5C /* CColorConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CColorConverter.h; path = Shared/MarkupLabel/CColorConverter.h; sourceTree = SOURCE_ROOT; };
+		4B46631F1B8F51710034FC5C /* CColorConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CColorConverter.m; path = Shared/MarkupLabel/CColorConverter.m; sourceTree = SOURCE_ROOT; };
+		4B4663201B8F51710034FC5C /* CMarkupTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMarkupTransformer.h; path = Shared/MarkupLabel/CMarkupTransformer.h; sourceTree = SOURCE_ROOT; };
+		4B4663211B8F51710034FC5C /* CMarkupTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMarkupTransformer.m; path = Shared/MarkupLabel/CMarkupTransformer.m; sourceTree = SOURCE_ROOT; };
+		4B4663221B8F51710034FC5C /* CSimpleMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSimpleMarkupParser.h; path = Shared/MarkupLabel/CSimpleMarkupParser.h; sourceTree = SOURCE_ROOT; };
+		4B4663231B8F51710034FC5C /* CSimpleMarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSimpleMarkupParser.m; path = Shared/MarkupLabel/CSimpleMarkupParser.m; sourceTree = SOURCE_ROOT; };
+		4B4663241B8F51710034FC5C /* NSString+MarkupExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MarkupExtensions.h"; path = "Shared/MarkupLabel/NSString+MarkupExtensions.h"; sourceTree = SOURCE_ROOT; };
+		4B4663251B8F51710034FC5C /* NSString+MarkupExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MarkupExtensions.m"; path = "Shared/MarkupLabel/NSString+MarkupExtensions.m"; sourceTree = SOURCE_ROOT; };
+		4B4663261B8F51710034FC5C /* UIFont+StyleUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+StyleUtilities.h"; path = "Shared/MarkupLabel/UIFont+StyleUtilities.h"; sourceTree = SOURCE_ROOT; };
+		4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+StyleUtilities.m"; path = "Shared/MarkupLabel/UIFont+StyleUtilities.m"; sourceTree = SOURCE_ROOT; };
+		4B4663281B8F51710034FC5C /* UILabel+MarkupExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+MarkupExtensions.h"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.h"; sourceTree = SOURCE_ROOT; };
+		4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+MarkupExtensions.m"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.m"; sourceTree = SOURCE_ROOT; };
 		4B5F75501B8CABC50074D88E /* RFOptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFOptionsController.h; path = Source/RFOptionsController.h; sourceTree = "<group>"; };
 		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
 		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
@@ -175,6 +193,25 @@
 			name = SSKeychain;
 			sourceTree = "<group>";
 		};
+		4B46631D1B8F51670034FC5C /* MarkupLabel */ = {
+			isa = PBXGroup;
+			children = (
+				4B46631E1B8F51710034FC5C /* CColorConverter.h */,
+				4B46631F1B8F51710034FC5C /* CColorConverter.m */,
+				4B4663201B8F51710034FC5C /* CMarkupTransformer.h */,
+				4B4663211B8F51710034FC5C /* CMarkupTransformer.m */,
+				4B4663221B8F51710034FC5C /* CSimpleMarkupParser.h */,
+				4B4663231B8F51710034FC5C /* CSimpleMarkupParser.m */,
+				4B4663241B8F51710034FC5C /* NSString+MarkupExtensions.h */,
+				4B4663251B8F51710034FC5C /* NSString+MarkupExtensions.m */,
+				4B4663261B8F51710034FC5C /* UIFont+StyleUtilities.h */,
+				4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */,
+				4B4663281B8F51710034FC5C /* UILabel+MarkupExtensions.h */,
+				4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */,
+			);
+			name = MarkupLabel;
+			sourceTree = "<group>";
+		};
 		4BA2C96A1B2109D10038C0E5 = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +313,7 @@
 		4BA2C99D1B2109E10038C0E5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4B46631D1B8F51670034FC5C /* MarkupLabel */,
 				4BF8032D1B87AA2600D6670C /* UUToolbox */,
 				4B1BAEFD1B852BC0008097F7 /* SSKeychain */,
 			);
@@ -458,15 +496,19 @@
 				4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */,
 				4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */,
 				4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */,
+				4B46632B1B8F51710034FC5C /* CMarkupTransformer.m in Sources */,
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
 				4BF8034D1B87AA2C00D6670C /* UUImageView.m in Sources */,
 				4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */,
 				4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */,
 				4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */,
+				4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */,
 				4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */,
 				4BF803581B87DB7B00D6670C /* RFWebController.m in Sources */,
+				4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */,
 				4BF803471B87AA2C00D6670C /* UUDate.m in Sources */,
 				4BA9107F1B83CFFD00D58F83 /* RFSignInController.m in Sources */,
+				4B46632C1B8F51710034FC5C /* CSimpleMarkupParser.m in Sources */,
 				4BA910761B83CDC400D58F83 /* RFMenuController.m in Sources */,
 				4BF803491B87AA2C00D6670C /* UUHttpClient.m in Sources */,
 				4BF8034E1B87AA2C00D6670C /* UUString.m in Sources */,
@@ -474,11 +516,13 @@
 				4BA910981B84077000D58F83 /* UIBarButtonItem+Extras.m in Sources */,
 				4BF8034C1B87AA2C00D6670C /* UUImage.m in Sources */,
 				4BF803481B87AA2C00D6670C /* UUDictionary.m in Sources */,
+				4B46632F1B8F51710034FC5C /* UILabel+MarkupExtensions.m in Sources */,
 				4BA2C9A61B210C0E0038C0E5 /* RFAppDelegate.m in Sources */,
 				4BA910821B83D20C00D58F83 /* RFPostController.m in Sources */,
 				4BF803511B87AACF00D6670C /* RFClient.m in Sources */,
 				4BF803441B87AA2C00D6670C /* UUActionSheet.m in Sources */,
 				4BF8034B1B87AA2C00D6670C /* UUHttpSession.m in Sources */,
+				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
 				4BF803451B87AA2C00D6670C /* UUAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

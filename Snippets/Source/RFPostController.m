@@ -12,6 +12,7 @@
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
 #import "NSString+Extras.h"
+#import "UILabel+MarkupExtensions.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -70,12 +71,30 @@
 	if (self.replyUsername) {
 		self.textView.text = [NSString stringWithFormat:@"@%@ ", self.replyUsername];
 	}
+	
+	[self updateRemainingChars];
 }
 
 - (void) setupNotifications
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void) updateRemainingChars
+{
+	NSInteger max_chars = 280;
+	NSInteger num_chars = self.textView.text.length;
+	NSInteger num_remaining = max_chars - num_chars;
+	if (num_chars <= 140) {
+		[self.remainingField setMarkup:[NSString stringWithFormat:@"<font color=\"#428BCA\">%ld</font>/%ld", (long)num_chars, (long)max_chars]];
+	}
+	else if (num_remaining < 0) {
+		[self.remainingField setMarkup:[NSString stringWithFormat:@"<font color=\"#FF6057\">%ld</font>/%ld", (long)num_chars, (long)max_chars]];
+	}
+	else {
+		self.remainingField.text = [NSString stringWithFormat:@"%ld/%ld", (long)num_chars, (long)max_chars];
+	}
 }
 
 - (void) keyboardWasShown:(NSNotification*)notification
@@ -95,14 +114,7 @@
 
 - (void) textViewDidChange:(UITextView *)textView
 {
-	NSInteger num_remaining = 280 - textView.text.length;
-	if (num_remaining < 0) {
-		self.remainingField.textColor = [UIColor colorWithRed:1.000 green:0.380 blue:0.349 alpha:1.000];
-	}
-	else {
-		self.remainingField.textColor = [UIColor blackColor];
-	}
-	self.remainingField.text = [NSString stringWithFormat:@"%ld", (long)num_remaining];
+	[self updateRemainingChars];
 }
 
 - (IBAction) sendPost:(id)sender
