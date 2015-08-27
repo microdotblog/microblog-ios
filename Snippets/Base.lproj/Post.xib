@@ -31,7 +31,7 @@
                             <rect key="frame" x="5" y="5" width="310" height="537"/>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="twitter"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="A61-Zf-G8b"/>
