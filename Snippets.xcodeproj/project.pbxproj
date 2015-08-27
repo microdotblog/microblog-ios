@@ -18,6 +18,8 @@
 		4B46632F1B8F51710034FC5C /* UILabel+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */; };
 		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
 		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
+		4BA163D91B8F8B9B007B2EC4 /* new_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA163D71B8F8B9B007B2EC4 /* new_button@2x.png */; };
+		4BA163DA1B8F8B9B007B2EC4 /* new_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA163D81B8F8B9B007B2EC4 /* new_button@3x.png */; };
 		4BA2C9841B2109D10038C0E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C9831B2109D10038C0E5 /* Images.xcassets */; };
 		4BA2C9871B2109D10038C0E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */; };
 		4BA2C9931B2109D10038C0E5 /* SnippetsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9921B2109D10038C0E5 /* SnippetsTests.m */; };
@@ -94,6 +96,8 @@
 		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
 		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
 		4B5F75561B8CBA1F0074D88E /* RFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFConstants.h; path = Source/RFConstants.h; sourceTree = "<group>"; };
+		4BA163D71B8F8B9B007B2EC4 /* new_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "new_button@2x.png"; path = "Resources/new_button@2x.png"; sourceTree = "<group>"; };
+		4BA163D81B8F8B9B007B2EC4 /* new_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "new_button@3x.png"; path = "Resources/new_button@3x.png"; sourceTree = "<group>"; };
 		4BA2C9731B2109D10038C0E5 /* Snippets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snippets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA2C9771B2109D10038C0E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BA2C9831B2109D10038C0E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 				4BA910931B84072000D58F83 /* back_button@3x.png */,
 				4BA910991B840DCE00D58F83 /* close_button@2x.png */,
 				4BA9109A1B840DCE00D58F83 /* close_button@3x.png */,
+				4BA163D71B8F8B9B007B2EC4 /* new_button@2x.png */,
+				4BA163D81B8F8B9B007B2EC4 /* new_button@3x.png */,
 			);
 			name = Resources;
 			path = Snippets;
@@ -447,12 +453,14 @@
 				4BA9109C1B840DCE00D58F83 /* close_button@3x.png in Resources */,
 				4BA910941B84072000D58F83 /* back_button@2x.png in Resources */,
 				4BA910951B84072000D58F83 /* back_button@3x.png in Resources */,
+				4BA163D91B8F8B9B007B2EC4 /* new_button@2x.png in Resources */,
 				4BA910911B83E78A00D58F83 /* timeline_icon@3x.png in Resources */,
 				4BA910871B83E51000D58F83 /* timeline_icon@2x.png in Resources */,
 				4BA9108E1B83E77C00D58F83 /* favorites_icon@3x.png in Resources */,
 				4BA910851B83D22900D58F83 /* Post.xib in Resources */,
 				4BA9108B1B83E67100D58F83 /* replies_icon@2x.png in Resources */,
 				4BA2C9A01B210A620038C0E5 /* Timeline.xib in Resources */,
+				4BA163DA1B8F8B9B007B2EC4 /* new_button@3x.png in Resources */,
 				4BA9107C1B83CFD200D58F83 /* SignIn.xib in Resources */,
 				4BA9108A1B83E67100D58F83 /* favorites_icon@2x.png in Resources */,
 				4BA910791B83CE7600D58F83 /* Menu.xib in Resources */,
