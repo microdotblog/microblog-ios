@@ -69,6 +69,7 @@
 	NSDictionary* args = @{ @"id": self.postID };
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
 		RFDispatchMainAsync (^{
+			[[NSNotificationCenter defaultCenter] postNotificationName:kPostWasFavoritedNotification object:self userInfo:@{ kPostNotificationPostIDKey: self.postID}];
 			[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 		});
 	}];
@@ -80,6 +81,7 @@
 	NSDictionary* args = @{ @"id": self.postID };
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
 		RFDispatchMainAsync (^{
+			[[NSNotificationCenter defaultCenter] postNotificationName:kPostWasUnfavoritedNotification object:self userInfo:@{ kPostNotificationPostIDKey: self.postID}];
 			[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 		});
 	}];
@@ -97,6 +99,7 @@
 	RFClient* client = [[RFClient alloc] initWithFormat:@"/posts/%@", self.postID];
 	[client deleteWithObject:nil completion:^(UUHttpResponse* response) {
 		RFDispatchMainAsync (^{
+			[[NSNotificationCenter defaultCenter] postNotificationName:kPostWasDeletedNotification object:self userInfo:@{ kPostNotificationPostIDKey: self.postID}];
 			[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 		});
 	}];

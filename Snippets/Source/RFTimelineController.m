@@ -10,6 +10,7 @@
 
 #import "RFPostController.h"
 #import "RFWebController.h"
+#import "RFConstants.h"
 #import "UIBarButtonItem+Extras.h"
 #import "SSKeychain.h"
 #import <SafariServices/SafariServices.h>
@@ -66,6 +67,9 @@
 - (void) setupNotifications
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTimelineNotification:) name:@"RFLoadTimelineNotification" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasFavoritedNotification:) name:kPostWasFavoritedNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasUnfavoritedNotification:) name:kPostWasUnfavoritedNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasDeletedNotification:) name:kPostWasDeletedNotification object:nil];
 }
 
 - (void) setupRefresh
@@ -176,6 +180,27 @@
 	NSString* token = [notification.userInfo objectForKey:@"token"];
 	[SSKeychain setPassword:token forService:@"Snippets" account:@"default"];
 	[self loadTimelineForToken:token];
+}
+
+- (void) postWasFavoritedNotification:(NSNotification *)notification
+{
+	NSString* post_id = [notification.userInfo objectForKey:kPostNotificationPostIDKey];
+	NSString* js = [NSString stringWithFormat:@"$('#post_%@').addClass('is_favorite');", post_id];
+	[self.webView stringByEvaluatingJavaScriptFromString:js];
+}
+
+- (void) postWasUnfavoritedNotification:(NSNotification *)notification
+{
+	NSString* post_id = [notification.userInfo objectForKey:kPostNotificationPostIDKey];
+	NSString* js = [NSString stringWithFormat:@"$('#post_%@').removeClass('is_favorite');", post_id];
+	[self.webView stringByEvaluatingJavaScriptFromString:js];
+}
+
+- (void) postWasDeletedNotification:(NSNotification *)notification
+{
+	NSString* post_id = [notification.userInfo objectForKey:kPostNotificationPostIDKey];
+	NSString* js = [NSString stringWithFormat:@"$('#post_%@').hide(300);", post_id];
+	[self.webView stringByEvaluatingJavaScriptFromString:js];
 }
 
 - (void) showURL:(NSURL *)url

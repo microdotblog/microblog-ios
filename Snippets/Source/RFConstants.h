@@ -10,3 +10,8 @@
 #define kShowConversationPostKey @"post_id"
 
 #define kShowSigninNotification @"RFShowSigninNotification"
+
+#define kPostWasFavoritedNotification @"RFPostWasFavoritedNotification"
+#define kPostWasUnfavoritedNotification @"RFPostWasUnfavoritedNotification"
+#define kPostWasDeletedNotification @"RFPostWasDeletedNotification"
+#define kPostNotificationPostIDKey @"post_id"
