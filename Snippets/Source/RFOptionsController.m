@@ -15,11 +15,12 @@
 
 @implementation RFOptionsController
 
-- (instancetype) initWithPostID:(NSString *)postID popoverType:(RFOptionsPopoverType)popoverType
+- (instancetype) initWithPostID:(NSString *)postID username:(NSString *)username popoverType:(RFOptionsPopoverType)popoverType
 {
 	self = [super initWithNibName:@"Options" bundle:nil];
 	if (self) {
 		self.postID = postID;
+		self.username = username;
 		self.popoverType = popoverType;
 		
 		self.modalPresentationStyle = UIModalPresentationPopover;
@@ -61,7 +62,10 @@
 - (IBAction) reply:(id)sender
 {
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
-		[[NSNotificationCenter defaultCenter] postNotificationName:kShowReplyPostNotification object:self userInfo:@{ kShowReplyPostIDKey: self.postID }];
+		[[NSNotificationCenter defaultCenter] postNotificationName:kShowReplyPostNotification object:self userInfo:@{
+			kShowReplyPostIDKey: self.postID,
+			kShowReplyPostUsernameKey: self.username
+		}];
 	}];
 }
 

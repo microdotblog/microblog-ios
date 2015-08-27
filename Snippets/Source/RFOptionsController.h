@@ -21,9 +21,10 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIView* withDeleteView;
 
 @property (strong, nonatomic) NSString* postID;
+@property (strong, nonatomic) NSString* username;
 @property (assign, nonatomic) RFOptionsPopoverType popoverType;
 
-- (instancetype) initWithPostID:(NSString *)postID popoverType:(RFOptionsPopoverType)popoverType;
+- (instancetype) initWithPostID:(NSString *)postID username:(NSString *)username popoverType:(RFOptionsPopoverType)popoverType;
 - (void) attachToView:(UIView *)view atRect:(CGRect)rect;
 
 @end

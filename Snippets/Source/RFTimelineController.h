@@ -21,5 +21,6 @@
 - (instancetype) initWithEndpoint:(NSString *)endpoint title:(NSString *)title;
 - (CGRect) rectOfPostID:(NSString *)postID;
 - (RFOptionsPopoverType) popoverTypeOfPostID:(NSString *)postID;
+- (NSString *) usernameOfPostID:(NSString *)postID;
 
 @end

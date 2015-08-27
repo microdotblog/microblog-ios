@@ -11,6 +11,7 @@
 
 #define kShowReplyPostNotification @"RFShowReplyPostNotification"
 #define kShowReplyPostIDKey @"post_id"
+#define kShowReplyPostUsernameKey @"username"
 
 #define kShowSigninNotification @"RFShowSigninNotification"
 

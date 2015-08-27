@@ -134,7 +134,8 @@
 - (void) showReplyPostNotification:(NSNotification *)notification
 {
 	NSString* post_id = [notification.userInfo objectForKey:kShowReplyPostIDKey];
-	RFPostController* post_controller = [[RFPostController alloc] initWithReplyTo:post_id replyUsername:@"hello"];
+	NSString* username = [notification.userInfo objectForKey:kShowReplyPostUsernameKey];
+	RFPostController* post_controller = [[RFPostController alloc] initWithReplyTo:post_id replyUsername:username];
 	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
 	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 }
@@ -145,7 +146,8 @@
 	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
 		CGRect r = [timeline_controller rectOfPostID:postID];
 		RFOptionsPopoverType popover_type = [timeline_controller popoverTypeOfPostID:postID];
-		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:postID popoverType:popover_type];
+		NSString* username = [timeline_controller usernameOfPostID:postID];
+		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:postID username:username popoverType:popover_type];
 		[options_controller attachToView:timeline_controller.webView atRect:r];
 		[self.navigationController presentViewController:options_controller animated:YES completion:NULL];
 	}

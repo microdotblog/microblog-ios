@@ -123,6 +123,13 @@
 	}
 }
 
+- (NSString *) usernameOfPostID:(NSString *)postID
+{
+	NSString* username_js = [NSString stringWithFormat:@"$('#post_%@').find('.post_username').text();", postID];
+	NSString* username_s = [self.webView stringByEvaluatingJavaScriptFromString:username_js];
+	return [username_s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 #pragma mark -
 
 - (void) swipeRight:(UIGestureRecognizer *)gesture
