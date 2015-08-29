@@ -19,3 +19,5 @@
 #define kPostWasUnfavoritedNotification @"RFPostWasUnfavoritedNotification"
 #define kPostWasDeletedNotification @"RFPostWasDeletedNotification"
 #define kPostNotificationPostIDKey @"post_id"
+
+#define APPSTORE 1
