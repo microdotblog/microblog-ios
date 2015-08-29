@@ -417,6 +417,11 @@
 					4BA2C9721B2109D10038C0E5 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = S4E235RUB9;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					4BA2C98B1B2109D10038C0E5 = {
 						CreatedOnToolsVersion = 6.3.1;
