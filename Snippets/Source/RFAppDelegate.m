@@ -13,8 +13,10 @@
 #import "RFTimelineController.h"
 #import "RFPostController.h"
 #import "RFOptionsController.h"
+#import "RFClient.h"
 #import "RFConstants.h"
 #import "SSKeychain.h"
+#import "UUAlert.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -63,6 +65,36 @@
 {
 }
 
+- (void) application:(UIApplication *)inApplication didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)inDeviceToken
+{
+	const unsigned *bytes = [(NSData *)inDeviceToken bytes]; // borrowed from mattt's Orbiter
+	NSString* token_s = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x", ntohl(bytes[0]), ntohl(bytes[1]), ntohl(bytes[2]), ntohl(bytes[3]), ntohl(bytes[4]), ntohl(bytes[5]), ntohl(bytes[6]), ntohl(bytes[7])];
+
+#if APPSTORE
+	NSDictionary* args = @{
+		@"push_env": @"prod",
+		@"device_token": token_s
+	};
+#else
+	NSDictionary* args = @{
+		@"push_env": @"dev",
+		@"device_token": token_s
+	};
+#endif
+	
+	RFClient* client = [[RFClient alloc] initWithPath:@"/users/push/register"];
+	[client postWithParams:args completion:^(UUHttpResponse* response) {
+	}];
+}
+
+- (void) application:(UIApplication *)inApplication didReceiveRemoteNotification:(NSDictionary *)inUserInfo
+{
+	if (inApplication.applicationState == UIApplicationStateActive) {
+		NSString* message = [[inUserInfo valueForKey:@"aps"] valueForKey:@"alert"];
+		[UIAlertView uuShowOneButtonAlert:@"" message:message button:@"OK" completionHandler:NULL];
+	}
+}
+
 #pragma mark -
 
 - (void) setupCrashlytics
@@ -79,6 +111,16 @@
 	if (token == nil) {
 		[self setupSignin];
 	}
+	else {
+		[self setupPushNotifications];
+	}
+}
+
+- (void) setupPushNotifications
+{
+	UIUserNotificationSettings* settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];
+	[[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+	[[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
 - (void) setupAppearance
