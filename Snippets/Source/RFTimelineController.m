@@ -167,8 +167,8 @@
 - (void) loadTimelineForToken:(NSString *)token
 {
 	NSString* url;
-	if ([self.endpoint isEqualToString:@"/iphone/replies"]) {
-		url = @"http://snippets.today/iphone/replies";
+	if ([self.endpoint isEqualToString:@"/iphone/mentions"]) {
+		url = @"http://snippets.today/iphone/mentions";
 	}
 	else if ([self.endpoint isEqualToString:@"/iphone/favorites"]) {
 		url = @"http://snippets.today/iphone/favorites";

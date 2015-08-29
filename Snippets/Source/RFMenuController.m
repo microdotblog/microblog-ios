@@ -54,9 +54,9 @@
 	[self.navigationController pushViewController:timeline_controller animated:YES];
 }
 
-- (IBAction) showReplies:(id)sender
+- (IBAction) showMentions:(id)sender
 {
-	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/replies" title:@"Replies"];
+	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/mentions" title:@"Mentions"];
 	[self.navigationController pushViewController:timeline_controller animated:YES];
 }
 
