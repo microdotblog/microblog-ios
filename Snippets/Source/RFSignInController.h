@@ -11,5 +11,8 @@
 @interface RFSignInController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextField* tokenField;
+@property (strong, nonatomic) IBOutlet UILabel* instructionsField;
+
+- (void) updateToken:(NSString *)appToken;
 
 @end

@@ -14,6 +14,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFSignInController">
             <connections>
+                <outlet property="instructionsField" destination="OqG-Up-MMg" id="dTL-xC-cs7"/>
                 <outlet property="tokenField" destination="1ZD-8e-rD1" id="feo-wl-dem"/>
                 <outlet property="view" destination="iN0-l3-epB" id="1ij-Vc-zNB"/>
             </connections>
@@ -42,19 +43,19 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can find these or generate new ones from your account page on the web." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-Up-MMg">
-                    <rect key="frame" x="31" y="180" width="258" height="61"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can find these in your account page on the web. Or enter your email address to receive a sign-in link." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-Up-MMg">
+                    <rect key="frame" x="31" y="180" width="258" height="80"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="258" id="A9a-QO-YsC"/>
-                        <constraint firstAttribute="height" constant="61" id="MDh-X5-oty"/>
+                        <constraint firstAttribute="height" constant="80" id="MDh-X5-oty"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app requires a Snippets.today account. Snippets.today is a timeline and publishing service for microblogs." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-IB-pTa">
-                    <rect key="frame" x="31" y="257" width="258" height="85"/>
+                    <rect key="frame" x="31" y="276" width="258" height="85"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="85" id="axv-AS-sex"/>
@@ -64,7 +65,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="app token" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZD-8e-rD1">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="app token or email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZD-8e-rD1">
                     <rect key="frame" x="31" y="135" width="258" height="30"/>
                     <animations/>
                     <constraints>
@@ -75,7 +76,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTE-zP-eNE" customClass="RFThinLineView">
-                    <rect key="frame" x="0.0" y="250" width="320" height="1"/>
+                    <rect key="frame" x="0.0" y="269" width="320" height="1"/>
                     <animations/>
                     <color key="backgroundColor" white="0.95453336148648649" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>

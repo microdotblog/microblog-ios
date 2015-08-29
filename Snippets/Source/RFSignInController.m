@@ -33,7 +33,22 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
 }
 
+- (void) updateToken:(NSString *)appToken
+{
+	self.tokenField.text = appToken;
+}
+
 - (IBAction) finish:(id)sender
+{
+	if ([self.tokenField.text containsString:@"@"]) {
+		[self sendSigninEmail];
+	}
+	else {
+		[self verifyAppToken];
+	}
+}
+
+- (void) verifyAppToken
 {
 	RFClient* client = [[RFClient alloc] initWithPath:@"/iphone/verify"];
 	NSDictionary* args = @{
@@ -61,6 +76,26 @@
 				[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 			});
 		}
+	}];
+}
+
+- (void) sendSigninEmail
+{
+	RFClient* client = [[RFClient alloc] initWithPath:@"/account/signin"];
+	NSDictionary* args = @{
+		@"email": self.tokenField.text
+	};
+	[client postWithParams:args completion:^(UUHttpResponse* response) {
+		RFDispatchMainAsync ((^{
+			NSString* error = [response.parsedResponse objectForKey:@"error"];
+			if (error) {
+				self.instructionsField.text = [NSString stringWithFormat:@"Error: %@", error];
+			}
+			else {
+				self.tokenField.text = @"";
+				self.instructionsField.text = @"Email sent! Check your email on this device. Look for the special link that starts with snippets-today://.";
+			}
+		}));
 	}];
 }
 

@@ -41,6 +41,9 @@
 	else if ([url.host isEqualToString:@"conversation"]) {
 		[self showConversationWithPostID:post_id];
 	}
+	else if ([url.host isEqualToString:@"signin"]) {
+		[self showSigninWithToken:post_id];
+	}
 	
 	return YES;
 }
@@ -148,9 +151,18 @@
 
 - (void) setupSignin
 {
-	self.signInController = [[RFSignInController alloc] init];
-	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:self.signInController];
-	[self.menuController.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+	[self setupSigninWithToken:@""];
+}
+
+- (void) setupSigninWithToken:(NSString *)appToken
+{
+	if (self.signInController == nil) {
+		self.signInController = [[RFSignInController alloc] init];
+		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:self.signInController];
+		[self.menuController.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+	}
+	
+	[self.signInController updateToken:appToken];
 }
 
 - (void) setupNotifications
@@ -200,6 +212,11 @@
 	NSString* path = [NSString stringWithFormat:@"/iphone/conversation/%@", postID];
 	RFTimelineController* conversation_controller = [[RFTimelineController alloc] initWithEndpoint:path title:@"Conversation"];
 	[self.navigationController pushViewController:conversation_controller animated:YES];
+}
+
+- (void) showSigninWithToken:(NSString *)appToken
+{
+	[self setupSigninWithToken:appToken];
 }
 
 @end
