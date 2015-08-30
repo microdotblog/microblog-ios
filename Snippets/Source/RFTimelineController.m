@@ -166,6 +166,9 @@
 
 - (void) loadTimelineForToken:(NSString *)token
 {
+	NSDate* now = [NSDate date];
+	long timezone_offset = 0 - [[NSTimeZone systemTimeZone] secondsFromGMTForDate:now] / 60;
+
 	NSString* url;
 	if ([self.endpoint isEqualToString:@"/iphone/mentions"]) {
 		url = @"http://snippets.today/iphone/mentions";
@@ -178,7 +181,7 @@
 	}
 	else {
 		int width = [UIScreen mainScreen].bounds.size.width;
-		url = [NSString stringWithFormat:@"http://snippets.today/iphone/signin?token=%@&width=%d", token, width];
+		url = [NSString stringWithFormat:@"http://snippets.today/iphone/signin?token=%@&width=%d&minutes=%ld", token, width, timezone_offset];
 	}
 	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
