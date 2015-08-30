@@ -10,6 +10,7 @@
 
 #import "RFPostController.h"
 #import "RFWebController.h"
+#import "RFWordpressController.h"
 #import "RFConstants.h"
 #import "UIBarButtonItem+Extras.h"
 #import "SSKeychain.h"
@@ -87,6 +88,8 @@
 	[self.view addGestureRecognizer:swipe_right_gesture];
 }
 
+#pragma mark -
+
 - (CGRect) rectOfPostID:(NSString *)postID
 {
 	NSString* left_js = [NSString stringWithFormat:@"$('#post_%@').position().left;", postID];
@@ -131,6 +134,11 @@
 	return [username_s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
+- (BOOL) isSnippetsHostedBlog
+{
+	return NO;
+}
+
 #pragma mark -
 
 - (void) swipeRight:(UIGestureRecognizer *)gesture
@@ -145,9 +153,16 @@
 
 - (IBAction) promptNewPost:(id)sender
 {
-	RFPostController* post_controller = [[RFPostController alloc] init];
-	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
-	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+	if ([self isSnippetsHostedBlog]) {
+		RFPostController* post_controller = [[RFPostController alloc] init];
+		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
+		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+	}
+	else {
+		RFWordpressController* wordpress_controller = [[RFWordpressController alloc] init];
+		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:wordpress_controller];
+		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+	}
 }
 
 - (void) handleRefresh:(UIRefreshControl *)refresh

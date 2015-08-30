@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B0D554F1B9381550076AD9F /* RFXMLRPCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D554E1B9381550076AD9F /* RFXMLRPCParser.m */; };
+		4B0D55521B93827D0076AD9F /* RFXMLRPCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D55511B93827D0076AD9F /* RFXMLRPCRequest.m */; };
+		4B0D55551B93B3590076AD9F /* RFWordpressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D55541B93B3590076AD9F /* RFWordpressController.m */; };
+		4B0D55581B93B3F00076AD9F /* Wordpress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D55561B93B3F00076AD9F /* Wordpress.xib */; };
+		4B0D55691B93C0390076AD9F /* RFXMLRSDParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D55681B93C0390076AD9F /* RFXMLRSDParser.m */; };
 		4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
 		4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */; };
 		4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */; };
@@ -74,6 +79,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B0D554D1B9381550076AD9F /* RFXMLRPCParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFXMLRPCParser.h; path = Source/RFXMLRPCParser.h; sourceTree = "<group>"; };
+		4B0D554E1B9381550076AD9F /* RFXMLRPCParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFXMLRPCParser.m; path = Source/RFXMLRPCParser.m; sourceTree = "<group>"; };
+		4B0D55501B93827D0076AD9F /* RFXMLRPCRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFXMLRPCRequest.h; path = Source/RFXMLRPCRequest.h; sourceTree = "<group>"; };
+		4B0D55511B93827D0076AD9F /* RFXMLRPCRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFXMLRPCRequest.m; path = Source/RFXMLRPCRequest.m; sourceTree = "<group>"; };
+		4B0D55531B93B3590076AD9F /* RFWordpressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFWordpressController.h; path = Source/RFWordpressController.h; sourceTree = "<group>"; };
+		4B0D55541B93B3590076AD9F /* RFWordpressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFWordpressController.m; path = Source/RFWordpressController.m; sourceTree = "<group>"; };
+		4B0D55571B93B3F00076AD9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Wordpress.xib; sourceTree = "<group>"; };
+		4B0D55671B93C0390076AD9F /* RFXMLRSDParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFXMLRSDParser.h; path = Source/RFXMLRSDParser.h; sourceTree = "<group>"; };
+		4B0D55681B93C0390076AD9F /* RFXMLRSDParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFXMLRSDParser.m; path = Source/RFXMLRSDParser.m; sourceTree = "<group>"; };
 		4B1BAEFE1B852BC9008097F7 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = Shared/SSKeychain/SSKeychain.h; sourceTree = SOURCE_ROOT; };
 		4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Shared/SSKeychain/SSKeychain.m; sourceTree = SOURCE_ROOT; };
 		4B1BAF001B852BC9008097F7 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychainQuery.h; path = Shared/SSKeychain/SSKeychainQuery.h; sourceTree = SOURCE_ROOT; };
@@ -257,8 +271,16 @@
 				4BF803571B87DB7B00D6670C /* RFWebController.m */,
 				4BA910801B83D20C00D58F83 /* RFPostController.h */,
 				4BA910811B83D20C00D58F83 /* RFPostController.m */,
+				4B0D55531B93B3590076AD9F /* RFWordpressController.h */,
+				4B0D55541B93B3590076AD9F /* RFWordpressController.m */,
 				4BF8034F1B87AACF00D6670C /* RFClient.h */,
 				4BF803501B87AACF00D6670C /* RFClient.m */,
+				4B0D55501B93827D0076AD9F /* RFXMLRPCRequest.h */,
+				4B0D55511B93827D0076AD9F /* RFXMLRPCRequest.m */,
+				4B0D554D1B9381550076AD9F /* RFXMLRPCParser.h */,
+				4B0D554E1B9381550076AD9F /* RFXMLRPCParser.m */,
+				4B0D55671B93C0390076AD9F /* RFXMLRSDParser.h */,
+				4B0D55681B93C0390076AD9F /* RFXMLRSDParser.m */,
 				4BF803591B8898D900D6670C /* RFThinLineView.h */,
 				4BF8035A1B8898D900D6670C /* RFThinLineView.m */,
 				4BA910961B84077000D58F83 /* UIBarButtonItem+Extras.h */,
@@ -298,6 +320,7 @@
 				4BF803531B87DB4F00D6670C /* Web.xib */,
 				4BA9107A1B83CFD200D58F83 /* SignIn.xib */,
 				4BA910831B83D22900D58F83 /* Post.xib */,
+				4B0D55561B93B3F00076AD9F /* Wordpress.xib */,
 				4BA2C9831B2109D10038C0E5 /* Images.xcassets */,
 				4BA910861B83E51000D58F83 /* timeline_icon@2x.png */,
 				4BA910901B83E78A00D58F83 /* timeline_icon@3x.png */,
@@ -471,6 +494,7 @@
 				4BA910791B83CE7600D58F83 /* Menu.xib in Resources */,
 				4B5F75551B8CABF30074D88E /* Options.xib in Resources */,
 				4BA2C9841B2109D10038C0E5 /* Images.xcassets in Resources */,
+				4B0D55581B93B3F00076AD9F /* Wordpress.xib in Resources */,
 				4BA9108F1B83E77C00D58F83 /* replies_icon@3x.png in Resources */,
 				4BF803551B87DB4F00D6670C /* Web.xib in Resources */,
 			);
@@ -508,10 +532,12 @@
 			files = (
 				4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */,
 				4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */,
+				4B0D55691B93C0390076AD9F /* RFXMLRSDParser.m in Sources */,
 				4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */,
 				4B46632B1B8F51710034FC5C /* CMarkupTransformer.m in Sources */,
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
 				4BF8034D1B87AA2C00D6670C /* UUImageView.m in Sources */,
+				4B0D554F1B9381550076AD9F /* RFXMLRPCParser.m in Sources */,
 				4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */,
 				4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */,
 				4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */,
@@ -519,6 +545,7 @@
 				4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */,
 				4BF803581B87DB7B00D6670C /* RFWebController.m in Sources */,
 				4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */,
+				4B0D55521B93827D0076AD9F /* RFXMLRPCRequest.m in Sources */,
 				4BF803471B87AA2C00D6670C /* UUDate.m in Sources */,
 				4BA9107F1B83CFFD00D58F83 /* RFSignInController.m in Sources */,
 				4B46632C1B8F51710034FC5C /* CSimpleMarkupParser.m in Sources */,
@@ -533,6 +560,7 @@
 				4BA2C9A61B210C0E0038C0E5 /* RFAppDelegate.m in Sources */,
 				4BA910821B83D20C00D58F83 /* RFPostController.m in Sources */,
 				4BF803511B87AACF00D6670C /* RFClient.m in Sources */,
+				4B0D55551B93B3590076AD9F /* RFWordpressController.m in Sources */,
 				4BF803441B87AA2C00D6670C /* UUActionSheet.m in Sources */,
 				4BF8034B1B87AA2C00D6670C /* UUHttpSession.m in Sources */,
 				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
@@ -559,6 +587,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4B0D55561B93B3F00076AD9F /* Wordpress.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B0D55571B93B3F00076AD9F /* Base */,
+			);
+			name = Wordpress.xib;
+			sourceTree = "<group>";
+		};
 		4B5F75531B8CABF30074D88E /* Options.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
