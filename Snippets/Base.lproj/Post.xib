@@ -44,7 +44,7 @@
                                 <constraint firstAttribute="height" constant="24" id="NOL-2t-4nm"/>
                                 <constraint firstAttribute="width" constant="77" id="aNR-jT-LWU"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
