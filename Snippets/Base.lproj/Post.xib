@@ -8,11 +8,13 @@
         <mutableArray key="Avenir.ttc">
             <string>Avenir-Book</string>
             <string>Avenir-Light</string>
+            <string>Avenir-Light</string>
         </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFPostController">
             <connections>
+                <outlet property="blognameField" destination="boh-G1-f3J" id="uvn-XS-LQm"/>
                 <outlet property="bottomConstraint" destination="JZb-jo-aDJ" id="ec9-im-NL2"/>
                 <outlet property="remainingField" destination="qjg-el-aBq" id="rJl-gi-J1w"/>
                 <outlet property="textView" destination="F7T-Eg-dhD" id="bSs-O6-eB1"/>
@@ -48,6 +50,16 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username.snippets.today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boh-G1-f3J">
+                            <rect key="frame" x="5" y="544" width="225" height="24"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="252-7H-VXL"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,9 +67,12 @@
                         <constraint firstItem="F7T-Eg-dhD" firstAttribute="top" secondItem="VbH-di-quh" secondAttribute="top" constant="5" id="BvK-VL-hdz"/>
                         <constraint firstAttribute="bottom" secondItem="qjg-el-aBq" secondAttribute="bottom" id="JZb-jo-aDJ"/>
                         <constraint firstAttribute="trailing" secondItem="qjg-el-aBq" secondAttribute="trailing" constant="5" id="Jbf-ad-8hz"/>
+                        <constraint firstItem="boh-G1-f3J" firstAttribute="leading" secondItem="VbH-di-quh" secondAttribute="leading" constant="5" id="RSb-gG-keR"/>
                         <constraint firstItem="qjg-el-aBq" firstAttribute="top" secondItem="F7T-Eg-dhD" secondAttribute="bottom" constant="2" id="SYo-JA-hsn"/>
+                        <constraint firstItem="qjg-el-aBq" firstAttribute="leading" secondItem="boh-G1-f3J" secondAttribute="trailing" constant="8" id="W4t-CS-7hN"/>
                         <constraint firstItem="F7T-Eg-dhD" firstAttribute="leading" secondItem="VbH-di-quh" secondAttribute="leading" constant="5" id="bXJ-D8-NX2"/>
                         <constraint firstAttribute="trailing" secondItem="F7T-Eg-dhD" secondAttribute="trailing" constant="5" id="wis-jH-YNI"/>
+                        <constraint firstItem="boh-G1-f3J" firstAttribute="top" secondItem="F7T-Eg-dhD" secondAttribute="bottom" constant="2" id="wry-nA-2tZ"/>
                     </constraints>
                 </view>
             </subviews>

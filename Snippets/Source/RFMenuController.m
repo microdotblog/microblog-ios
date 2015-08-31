@@ -70,7 +70,11 @@
 {
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountUsername"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountGravatarURL"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogUsername"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"HasSnippetsBlog"];
+
 	[SSKeychain deletePasswordForService:@"Snippets" account:@"default"];
+	[SSKeychain deletePasswordForService:@"ExternalBlog" account:@"default"];
 
 	[[NSNotificationCenter defaultCenter] postNotificationName:kShowSigninNotification object:self];
 }

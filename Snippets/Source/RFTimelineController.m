@@ -134,9 +134,15 @@
 	return [username_s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-- (BOOL) isSnippetsHostedBlog
+- (BOOL) hasSnippetsBlog
 {
-	return NO;
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"HasSnippetsBlog"];
+}
+
+- (BOOL) hasExternalBlog
+{
+	NSString* blog_username = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogUsername"];
+	return blog_username.length > 0;
 }
 
 #pragma mark -
@@ -153,7 +159,7 @@
 
 - (IBAction) promptNewPost:(id)sender
 {
-	if ([self isSnippetsHostedBlog]) {
+	if ([self hasSnippetsBlog] || [self hasExternalBlog]) {
 		RFPostController* post_controller = [[RFPostController alloc] init];
 		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
 		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];

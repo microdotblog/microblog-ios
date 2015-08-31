@@ -10,9 +10,12 @@
 
 #import "RFClient.h"
 #import "RFMacros.h"
+#import "RFXMLRPCParser.h"
+#import "RFXMLRPCRequest.h"
 #import "UIBarButtonItem+Extras.h"
 #import "NSString+Extras.h"
 #import "UILabel+MarkupExtensions.h"
+#import "SSKeychain.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -46,6 +49,7 @@
 	[self setupNavigation];
 	[self setupText];
 	[self setupNotifications];
+	[self setupBlogName];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -79,6 +83,18 @@
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void) setupBlogName
+{
+	if ([self hasSnippetsBlog]) {
+		self.blognameField.hidden = YES;
+	}
+	else {
+		NSString* endpoint_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogEndpoint"];
+		NSURL* endpoint_url = [NSURL URLWithString:endpoint_s];
+		self.blognameField.text = endpoint_url.host;
+	}
 }
 
 - (void) updateRemainingChars
@@ -117,6 +133,11 @@
 	[self updateRemainingChars];
 }
 
+- (BOOL) hasSnippetsBlog
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"HasSnippetsBlog"];
+}
+
 - (IBAction) sendPost:(id)sender
 {
 	if (self.isReply) {
@@ -133,16 +154,20 @@
 		}];
 	}
 	else {
-		RFClient* client = [[RFClient alloc] initWithPath:@"/pages/create"];
-		NSDictionary* args = @{
-			@"text": self.textView.text
-		};
-		[client postWithParams:args completion:^(UUHttpResponse* response) {
-			RFDispatchMainAsync (^{
-				[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
-				[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
-			});
-		}];
+		if ([self hasSnippetsBlog]) {
+			RFClient* client = [[RFClient alloc] initWithPath:@"/pages/create"];
+			NSDictionary* args = @{
+				@"text": self.textView.text
+			};
+			[client postWithParams:args completion:^(UUHttpResponse* response) {
+				RFDispatchMainAsync (^{
+					[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
+					[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+				});
+			}];
+		}
+		else {
+		}
 	}
 }
 

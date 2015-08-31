@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextView* textView;
 @property (strong, nonatomic) IBOutlet UILabel* remainingField;
+@property (strong, nonatomic) IBOutlet UILabel* blognameField;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* bottomConstraint;
 
 @property (assign, nonatomic) BOOL isReply;

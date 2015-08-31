@@ -65,8 +65,11 @@
 		else {
 			NSString* username = [response.parsedResponse objectForKey:@"username"];
 			NSString* gravatar_url = [response.parsedResponse objectForKey:@"gravatar_url"];
+			NSNumber* has_site = [response.parsedResponse objectForKey:@"has_site"];
+			
 			[[NSUserDefaults standardUserDefaults] setObject:username forKey:@"AccountUsername"];
 			[[NSUserDefaults standardUserDefaults] setObject:gravatar_url forKey:@"AccountGravatarURL"];
+			[[NSUserDefaults standardUserDefaults] setBool:[has_site boolValue] forKey:@"HasSnippetsBlog"];
 		
 			RFDispatchMainAsync (^{
 				[Answers logLoginWithMethod:@"Token" success:@YES customAttributes:nil];

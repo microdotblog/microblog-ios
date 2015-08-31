@@ -66,8 +66,10 @@
 
 - (void) saveAccountWithEndpointURL:(NSString *)xmlrpcEndpointURL blogID:(NSString *)blogID
 {
-	[[NSUserDefaults standardUserDefaults] setObject:self.usernameField forKey:@"ExternalBlogUsername"];
-	[SSKeychain setPassword:self.passwordField.text forService:@"ExternalBlog" account:self.usernameField.text];
+	[[NSUserDefaults standardUserDefaults] setObject:self.usernameField.text forKey:@"ExternalBlogUsername"];
+	[[NSUserDefaults standardUserDefaults] setObject:xmlrpcEndpointURL forKey:@"ExternalBlogEndpoint"];
+	[[NSUserDefaults standardUserDefaults] setObject:blogID forKey:@"ExternalBlogID"];
+	[SSKeychain setPassword:self.passwordField.text forService:@"ExternalBlog" account:@"default"];
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
