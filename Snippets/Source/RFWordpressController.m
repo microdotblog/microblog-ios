@@ -9,7 +9,11 @@
 #import "RFWordpressController.h"
 
 #import "RFXMLRPCRequest.h"
+#import "RFPostController.h"
+#import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
+#import "UUAlert.h"
+#import "SSKeychain.h"
 
 @implementation RFWordpressController
 
@@ -50,6 +54,20 @@
 	[self.view endEditing:NO];
 }
 
+- (NSString *) normalizeURL:(NSString *)url
+{
+	NSString* s = url;
+	if (![s containsString:@"http"]) {
+		s = [@"http://" stringByAppendingString:s];
+	}
+	
+	return s;
+}
+
+- (void) saveAccountWithEndpointURL:(NSString *)xmlrpcEndpointURL blogID:(NSString *)blogID
+{
+}
+
 #pragma mark -
 
 - (IBAction) close:(id)sender
@@ -59,11 +77,23 @@
 
 - (void) finish:(id)sender
 {
-	RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:@"http://www.manton.org/"];
+	[self.view endEditing:NO];
+	[self.progressSpinner startAnimating];
+	
+	RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:[self normalizeURL:self.websiteField.text]];
 	[request discoverEndpointWithCompletion:^(NSString* xmlrpcEndpointURL, NSString* blogID) {
-		NSLog (@"endpoint: %@", xmlrpcEndpointURL);
+		RFDispatchMainAsync (^{
+			[self.progressSpinner stopAnimating];
+			if (xmlrpcEndpointURL && blogID) {
+				[self saveAccountWithEndpointURL:xmlrpcEndpointURL blogID:blogID];
+				RFPostController* post_controller = [[RFPostController alloc] init];
+				[self.navigationController pushViewController:post_controller animated:YES];
+			}
+			else {
+				[UIAlertView uuShowOneButtonAlert:@"Error Discovering Settings" message:@"Could not find the XML-RPC endpoint for your weblog. Please see help.snippets.today for troubleshooting tips." button:@"OK" completionHandler:NULL];
+			}
+		});
 	}];
-//	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end
