@@ -10,6 +10,27 @@
 
 #import "RFXMLRSDParser.h"
 
+@implementation RFBoolean
+
+- (instancetype) initWithBool:(BOOL)value
+{
+	self = [super init];
+	if (self) {
+		self.boolValue = value;
+	}
+	
+	return self;
+}
+
+- (NSString *) description
+{
+	return [NSString stringWithFormat:@"%d", self.boolValue];
+}
+
+@end
+
+#pragma mark -
+
 @implementation RFXMLRPCRequest
 
 - (instancetype) initWithURL:(NSString *)url
@@ -30,9 +51,35 @@
 	return [UUHttpSession executeRequest:request completionHandler:handler];
 }
 
-- (UUHttpRequest *) sendMethod:(NSString *)method completion:(void (^)(UUHttpResponse* response))handler
+- (UUHttpRequest *) sendMethod:(NSString *)method params:(NSArray *)params completion:(void (^)(UUHttpResponse* response))handler
 {
-	return nil;
+	NSMutableString* s = [[NSMutableString alloc] init];
+	[s appendString:@"<?xml version=\"1.0\"?>"];
+	[s appendFormat:@"<methodCall><methodName>%@</methodName>", method];
+	[s appendString:@"<params>"];
+
+	for (id param in params) {
+		[s appendString:@"<param>"];
+		
+		if ([param isKindOfClass:[RFBoolean class]]) {
+			[s appendFormat:@"<boolean>%@</boolean>", param];
+		}
+		else if ([param isKindOfClass:[NSNumber class]]) {
+			[s appendFormat:@"<int>%@</int>", param];
+		}
+		else if ([param isKindOfClass:[NSString class]]) {
+			[s appendFormat:@"<string>%@</string>", param];
+		}
+		
+		[s appendString:@"</param>"];
+	}
+
+	[s appendString:@"</params>"];
+	[s appendString:@"</methodCall>"];
+
+	NSData* d = [s dataUsingEncoding:NSUTF8StringEncoding];
+	UUHttpRequest* request = [UUHttpRequest postRequest:self.url queryArguments:nil body:d contentType:@"text/xml"];
+	return [UUHttpSession executeRequest:request completionHandler:handler];
 }
 
 - (void) processRSD:(NSArray *)dictionaryEndpoints withCompletion:(void (^)(NSString* xmlrpcEndpointURL, NSString* blogID))handler

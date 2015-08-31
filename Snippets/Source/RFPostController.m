@@ -87,7 +87,7 @@
 
 - (void) setupBlogName
 {
-	if ([self hasSnippetsBlog]) {
+	if ([self hasSnippetsBlog] || self.isReply) {
 		self.blognameField.hidden = YES;
 	}
 	else {
@@ -167,6 +167,25 @@
 			}];
 		}
 		else {
+			NSString* xmlrpc_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogEndpoint"];
+			NSString* blog_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogID"];
+			NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogUsername"];
+			NSString* password = [SSKeychain passwordForService:@"ExternalBlog" account:@"default"];
+			
+			NSString* post_text = self.textView.text;
+			NSString* app_key = @"";
+			NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
+			RFBoolean* publish = [[RFBoolean alloc] initWithBool:YES];
+
+			NSArray* params = @[ app_key, blog_id, username, password, post_text, publish ];
+			
+			RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpc_endpoint];
+			[request sendMethod:@"blogger.newPost" params:params completion:^(UUHttpResponse* response) {
+				RFDispatchMainAsync (^{
+					[Answers logCustomEventWithName:@"Sent External" customAttributes:nil];
+					[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+				});
+			}];
 		}
 	}
 }
