@@ -30,6 +30,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BpA-v5-XLl">
+                    <rect key="frame" x="0.0" y="82" width="320" height="43"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="iFy-18-uwk"/>
+                    </constraints>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you don't have a hosted Snippets.today microblog, you can publish to an existing WordPress or Movable Type weblog." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cly-g5-kFI">
                     <rect key="frame" x="8" y="8" width="304" height="73"/>
                     <animations/>
@@ -57,7 +65,10 @@
                         <constraint firstAttribute="height" constant="30" id="SMD-eV-iE8"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                    <textInputTraits key="textInputTraits" keyboardType="URL"/>
+                    <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="next"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="sfr-c7-cf5"/>
+                    </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gzj-9l-IxU">
                     <rect key="frame" x="8" y="193" width="304" height="30"/>
@@ -66,7 +77,10 @@
                         <constraint firstAttribute="height" constant="30" id="mgg-em-mTD"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                    <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="YS1-Rz-eeQ"/>
+                    </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="whL-Vr-TSM">
                     <rect key="frame" x="8" y="231" width="304" height="30"/>
@@ -75,7 +89,10 @@
                         <constraint firstAttribute="height" constant="30" id="lig-sw-eBn"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="fh4-L2-nOD"/>
+                    </connections>
                 </textField>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="evH-yf-ybV">
                     <rect key="frame" x="292" y="94" width="20" height="20"/>
@@ -94,16 +111,19 @@
                 <constraint firstAttribute="trailing" secondItem="Cly-g5-kFI" secondAttribute="trailing" constant="8" id="EJe-7q-Lqq"/>
                 <constraint firstItem="whL-Vr-TSM" firstAttribute="top" secondItem="gzj-9l-IxU" secondAttribute="bottom" constant="8" id="GZm-J4-Lpw"/>
                 <constraint firstItem="evH-yf-ybV" firstAttribute="leading" secondItem="TzH-OI-c2x" secondAttribute="trailing" constant="7" id="HGi-NJ-UbI"/>
+                <constraint firstItem="BpA-v5-XLl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KT4-5f-72f"/>
                 <constraint firstItem="WFW-mC-TeU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="TDz-OR-BVD"/>
                 <constraint firstAttribute="trailing" secondItem="evH-yf-ybV" secondAttribute="trailing" constant="8" id="TEv-Q2-1ja"/>
                 <constraint firstItem="gzj-9l-IxU" firstAttribute="top" secondItem="WFW-mC-TeU" secondAttribute="bottom" constant="8" id="UAq-Ki-qTy"/>
                 <constraint firstItem="TzH-OI-c2x" firstAttribute="top" secondItem="Cly-g5-kFI" secondAttribute="bottom" constant="8" id="VDG-I7-jVw"/>
+                <constraint firstAttribute="trailing" secondItem="BpA-v5-XLl" secondAttribute="trailing" id="VMq-7t-dMZ"/>
                 <constraint firstItem="gzj-9l-IxU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Wd3-gx-PId"/>
                 <constraint firstItem="TzH-OI-c2x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Xg9-Mk-gt3"/>
                 <constraint firstItem="WFW-mC-TeU" firstAttribute="top" secondItem="TzH-OI-c2x" secondAttribute="bottom" constant="10" id="Zil-Cg-y7M"/>
                 <constraint firstAttribute="trailing" secondItem="whL-Vr-TSM" secondAttribute="trailing" constant="8" id="cOd-g0-eQs"/>
                 <constraint firstItem="Cly-g5-kFI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="hcS-rW-0Uf"/>
                 <constraint firstItem="whL-Vr-TSM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="v3Q-D4-cCc"/>
+                <constraint firstItem="BpA-v5-XLl" firstAttribute="top" secondItem="Cly-g5-kFI" secondAttribute="bottom" constant="1" id="wXI-ew-7et"/>
                 <constraint firstItem="Cly-g5-kFI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="wbd-UX-H6F"/>
                 <constraint firstAttribute="trailing" secondItem="WFW-mC-TeU" secondAttribute="trailing" constant="8" id="zXw-wX-cYP"/>
             </constraints>

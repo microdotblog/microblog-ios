@@ -66,6 +66,29 @@
 
 - (void) saveAccountWithEndpointURL:(NSString *)xmlrpcEndpointURL blogID:(NSString *)blogID
 {
+	[[NSUserDefaults standardUserDefaults] setObject:self.usernameField forKey:@"ExternalBlogUsername"];
+	[SSKeychain setPassword:self.passwordField.text forService:@"ExternalBlog" account:self.usernameField.text];
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+	if (textField == self.websiteField) {
+		RFDispatchMainAsync (^{
+			[self.usernameField becomeFirstResponder];
+		});
+	}
+	else if (textField == self.usernameField) {
+		RFDispatchMainAsync (^{
+			[self.passwordField becomeFirstResponder];
+		});
+	}
+	else if (textField == self.passwordField) {
+		RFDispatchMainAsync (^{
+			[self finish:nil];
+		});
+	}
+	
+	return YES;
 }
 
 #pragma mark -
@@ -90,7 +113,11 @@
 				[self.navigationController pushViewController:post_controller animated:YES];
 			}
 			else {
-				[UIAlertView uuShowOneButtonAlert:@"Error Discovering Settings" message:@"Could not find the XML-RPC endpoint for your weblog. Please see help.snippets.today for troubleshooting tips." button:@"OK" completionHandler:NULL];
+				[UIAlertView uuShowTwoButtonAlert:@"Error Discovering Settings" message:@"Could not find the XML-RPC endpoint for your weblog. Please see help.snippets.today for troubleshooting tips." buttonOne:@"Visit Help" buttonTwo:@"OK" completionHandler:^(NSInteger buttonIndex) {
+					if (buttonIndex == 0) {
+						[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://help.snippets.today/"]];
+					}
+				}];
 			}
 		});
 	}];

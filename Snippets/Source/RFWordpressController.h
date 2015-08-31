@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RFWordpressController : UIViewController <UIScrollViewDelegate>
+@interface RFWordpressController : UIViewController <UIScrollViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView* scrollView;
 @property (strong, nonatomic) IBOutlet UIView* containerView;
