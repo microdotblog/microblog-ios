@@ -57,7 +57,7 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 
 - (void) setupFormats
 {
-	self.formatValues = @[ @"Standard", @"Aside", @"Link", @"Quote", @"Status" ];
+	self.formatValues = @[ @"Standard", @"Status", @"Aside", @"Link", @"Quote" ];
 	self.selectedFormat = @"";
 
 	[self.formatsTableView registerNib:[UINib nibWithNibName:@"SettingChoiceCell" bundle:nil] forCellReuseIdentifier:kFormatCellIdentifier];

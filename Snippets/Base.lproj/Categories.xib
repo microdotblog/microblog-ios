@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8173.3" systemVersion="15A263e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8173.3" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
@@ -31,15 +31,15 @@
                         <constraint firstAttribute="height" constant="56" id="lxe-rw-P7s"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nCN-Vg-gbP">
-                    <rect key="frame" x="0.0" y="136" width="320" height="136"/>
+                    <rect key="frame" x="0.0" y="136" width="320" height="155"/>
                     <animations/>
                     <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="136" id="fPb-0e-LwQ"/>
+                        <constraint firstAttribute="height" constant="155" id="fPb-0e-LwQ"/>
                     </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="ZhN-PX-QpP"/>
@@ -47,7 +47,7 @@
                     </connections>
                 </tableView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rXq-4o-LIB">
-                    <rect key="frame" x="0.0" y="322" width="320" height="246"/>
+                    <rect key="frame" x="0.0" y="341" width="320" height="227"/>
                     <animations/>
                     <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -56,7 +56,7 @@
                     </connections>
                 </tableView>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="K6R-1f-sHV">
-                    <rect key="frame" x="292" y="287" width="20" height="20"/>
+                    <rect key="frame" x="292" y="306" width="20" height="20"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="MWj-GV-ACc"/>
@@ -64,7 +64,7 @@
                     </constraints>
                 </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="335-9I-AHi" customClass="RFThinLineView">
-                    <rect key="frame" x="0.0" y="272" width="320" height="1"/>
+                    <rect key="frame" x="0.0" y="291" width="320" height="1"/>
                     <animations/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -72,13 +72,13 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zG-7r-DVZ">
-                    <rect key="frame" x="10" y="280" width="256" height="34"/>
+                    <rect key="frame" x="10" y="299" width="256" height="34"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="zhg-tu-Yf5"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
