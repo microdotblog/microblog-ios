@@ -42,7 +42,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 {
 	self.title = @"Settings";
 	
-	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"nav_back" target:self action:@selector(back:)];
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 }
 
 - (void) setupServers

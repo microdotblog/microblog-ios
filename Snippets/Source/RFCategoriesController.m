@@ -51,7 +51,7 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 {
 	self.title = @"Blog Categories";
 	
-	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"nav_back" target:self action:@selector(back:)];
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
 }
 
