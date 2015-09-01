@@ -10,6 +10,7 @@
 
 #import "RFXMLRPCRequest.h"
 #import "RFPostController.h"
+#import "RFCategoriesController.h"
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
 #import "UUAlert.h"
@@ -70,6 +71,13 @@
 	[[NSUserDefaults standardUserDefaults] setObject:xmlrpcEndpointURL forKey:@"ExternalBlogEndpoint"];
 	[[NSUserDefaults standardUserDefaults] setObject:blogID forKey:@"ExternalBlogID"];
 	[SSKeychain setPassword:self.passwordField.text forService:@"ExternalBlog" account:@"default"];
+	
+	if ([xmlrpcEndpointURL containsString:@"xmlrpc.php"]) {
+		[[NSUserDefaults standardUserDefaults] setObject:@"WordPress" forKey:@"ExternalBlogApp"];
+	}
+	else {
+		[[NSUserDefaults standardUserDefaults] setObject:@"Other" forKey:@"ExternalBlogApp"];
+	}
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -111,8 +119,14 @@
 			[self.progressSpinner stopAnimating];
 			if (xmlrpcEndpointURL && blogID) {
 				[self saveAccountWithEndpointURL:xmlrpcEndpointURL blogID:blogID];
-				RFPostController* post_controller = [[RFPostController alloc] init];
-				[self.navigationController pushViewController:post_controller animated:YES];
+				if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogApp"] isEqualToString:@"WordPress"]) {
+					RFCategoriesController* categories_controller = [[RFCategoriesController alloc] init];
+					[self.navigationController pushViewController:categories_controller animated:YES];
+				}
+				else {
+					RFPostController* post_controller = [[RFPostController alloc] init];
+					[self.navigationController pushViewController:post_controller animated:YES];
+				}
 			}
 			else {
 				[UIAlertView uuShowTwoButtonAlert:@"Error Discovering Settings" message:@"Could not find the XML-RPC endpoint for your weblog. Please see help.snippets.today for troubleshooting tips." buttonOne:@"Visit Help" buttonTwo:@"OK" completionHandler:^(NSInteger buttonIndex) {

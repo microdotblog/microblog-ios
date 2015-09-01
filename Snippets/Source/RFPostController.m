@@ -135,6 +135,7 @@
 
 - (BOOL) hasSnippetsBlog
 {
+//	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"HasSnippetsBlog"];
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"HasSnippetsBlog"];
 }
 
