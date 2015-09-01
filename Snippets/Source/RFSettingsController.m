@@ -76,8 +76,8 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	BOOL use_snippets_blog = (indexPath.row == 0);
-	[[NSUserDefaults standardUserDefaults] setBool:use_snippets_blog forKey:@"HasSnippetsBlog"];
+	BOOL prefer_external_blog = (indexPath.row == 1);
+	[[NSUserDefaults standardUserDefaults] setBool:prefer_external_blog forKey:@"ExternalBlogIsPreferred"];
 }
 
 @end

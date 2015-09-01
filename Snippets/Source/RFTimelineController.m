@@ -145,6 +145,16 @@
 	return blog_username.length > 0;
 }
 
+- (BOOL) prefersExternalBlog
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"ExternalBlogIsPreferred"];
+}
+
+- (BOOL) needsExternalBlogSetup
+{
+	return (![self hasSnippetsBlog] && ![self hasExternalBlog]) || ([self prefersExternalBlog] && ![self hasExternalBlog]);
+}
+
 #pragma mark -
 
 - (void) swipeRight:(UIGestureRecognizer *)gesture
@@ -166,14 +176,14 @@
 		return;
 	}
 
-	if ([self hasSnippetsBlog] || [self hasExternalBlog]) {
-		RFPostController* post_controller = [[RFPostController alloc] init];
-		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
+	if ([self needsExternalBlogSetup]) {
+		RFWordpressController* wordpress_controller = [[RFWordpressController alloc] init];
+		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:wordpress_controller];
 		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 	}
 	else {
-		RFWordpressController* wordpress_controller = [[RFWordpressController alloc] init];
-		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:wordpress_controller];
+		RFPostController* post_controller = [[RFPostController alloc] init];
+		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
 		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 	}
 }

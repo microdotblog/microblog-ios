@@ -136,8 +136,12 @@
 
 - (BOOL) hasSnippetsBlog
 {
-//	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"HasSnippetsBlog"];
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"HasSnippetsBlog"];
+}
+
+- (BOOL) prefersExternalBlog
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"ExternalBlogIsPreferred"];
 }
 
 - (IBAction) sendPost:(id)sender
@@ -158,7 +162,7 @@
 		}];
 	}
 	else {
-		if ([self hasSnippetsBlog]) {
+		if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
 			RFClient* client = [[RFClient alloc] initWithPath:@"/pages/create"];
 			NSDictionary* args = @{
 				@"text": self.textView.text
