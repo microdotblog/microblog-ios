@@ -85,12 +85,17 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 	RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpc_endpoint];
 	[request sendMethod:@"wp.getTerms" params:params completion:^(UUHttpResponse* response) {
 		RFXMLRPCParser* xmlrpc = [RFXMLRPCParser parsedResponseFromData:response.rawResponse];
+
 		NSMutableArray* new_categories = [NSMutableArray array];
+		NSMutableArray* new_ids = [NSMutableArray array];
 		for (NSDictionary* cat_info in xmlrpc.responseParams.firstObject) {
 			[new_categories addObject:cat_info[@"name"]];
+			[new_ids addObject:cat_info[@"term_id"]];
 		}
+
 		RFDispatchMainAsync (^{
 			self.categoryValues = new_categories;
+			self.categoryIDs = new_ids;
 			[self.categoriesTableView reloadData];
 			[self.progressSpinner stopAnimating];
 		});
@@ -149,7 +154,7 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 		self.selectedFormat = [self.formatValues objectAtIndex:indexPath.row];
 	}
 	else if (tableView == self.categoriesTableView) {
-		self.selectedCategory = [self.categoryValues objectAtIndex:indexPath.row];
+		self.selectedCategory = [self.categoryIDs objectAtIndex:indexPath.row];
 	}
 }
 

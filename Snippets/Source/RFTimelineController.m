@@ -160,7 +160,7 @@
 
 - (IBAction) promptNewPost:(id)sender
 {
-	if (YES) {
+	if (NO) {
 		RFCategoriesController* categories_controller = [[RFCategoriesController alloc] init];
 		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:categories_controller];
 		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];

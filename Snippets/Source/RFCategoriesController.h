@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) NSArray* formatValues; // NSString
 @property (strong, nonatomic) NSArray* categoryValues; // NSString
+@property (strong, nonatomic) NSArray* categoryIDs; // NSNumber
 @property (strong, nonatomic) NSString* selectedFormat;
 @property (strong, nonatomic) NSString* selectedCategory;
 

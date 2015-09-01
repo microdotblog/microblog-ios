@@ -57,6 +57,7 @@
 	}
 	else if ([elementName isEqualToString:@"int"]) {
 		self.currentValue = [NSMutableString string];
+		self.isProcessingString = YES;
 	}
 }
 
@@ -74,6 +75,9 @@
 {
 	if ([elementName isEqualToString:@"param"]) {
 		[self.responseParams addObject:self.currentValue];
+	}
+	else if ([elementName isEqualToString:@"fault"]) {
+		self.responseFault = self.currentValue;
 	}
 	else if ([elementName isEqualToString:@"array"]) {
 		self.currentValue = [self.responseStack pop];
@@ -98,6 +102,7 @@
 	else if ([elementName isEqualToString:@"int"]) {
 		NSString* s = [self.currentValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		self.currentValue = [NSNumber numberWithInteger:[s integerValue]];
+		self.isProcessingString = NO;
 	}
 	else if ([elementName isEqualToString:@"string"]) {
 		NSString* s = [self.currentValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];

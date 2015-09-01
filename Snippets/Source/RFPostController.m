@@ -15,6 +15,7 @@
 #import "UIBarButtonItem+Extras.h"
 #import "NSString+Extras.h"
 #import "UILabel+MarkupExtensions.h"
+#import "UUAlert.h"
 #import "SSKeychain.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -141,6 +142,8 @@
 
 - (IBAction) sendPost:(id)sender
 {
+	self.navigationItem.rightBarButtonItem.enabled = NO;
+
 	if (self.isReply) {
 		RFClient* client = [[RFClient alloc] initWithPath:@"/posts/reply"];
 		NSDictionary* args = @{
@@ -187,6 +190,7 @@
 			if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogApp"] isEqualToString:@"WordPress"]) {
 				NSMutableDictionary* content = [NSMutableDictionary dictionary];
 				
+				content[@"post_status"] = @"publish";
 				content[@"post_content"] = post_text;
 				if (post_format.length > 0) {
 					content[@"post_format"] = post_format;
@@ -208,11 +212,17 @@
 			RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpc_endpoint];
 			[request sendMethod:method_name params:params completion:^(UUHttpResponse* response) {
 				RFXMLRPCParser* xmlrpc = [RFXMLRPCParser parsedResponseFromData:response.rawResponse];
-				NSLog (@"response params: %@", xmlrpc.responseParams);
-				RFDispatchMainAsync (^{
-					[Answers logCustomEventWithName:@"Sent External" customAttributes:nil];
-					[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
-				});
+				RFDispatchMainAsync ((^{
+					if (xmlrpc.responseFault) {
+						NSString* s = [NSString stringWithFormat:@"%@ (error: %@)", xmlrpc.responseFault[@"faultString"], xmlrpc.responseFault[@"faultCode"]];
+						[UIAlertView uuShowOneButtonAlert:@"Error Sending Post" message:s button:@"OK" completionHandler:NULL];
+						self.navigationItem.rightBarButtonItem.enabled = YES;
+					}
+					else {
+						[Answers logCustomEventWithName:@"Sent External" customAttributes:nil];
+						[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+					}
+				}));
 			}];
 		}
 	}
