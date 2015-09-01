@@ -12,6 +12,8 @@
 #import "RFConstants.h"
 #import "UUImageView.h"
 #import "SSKeychain.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation RFMenuController
 
@@ -75,6 +77,8 @@
 
 	[SSKeychain deletePasswordForService:@"Snippets" account:@"default"];
 	[SSKeychain deletePasswordForService:@"ExternalBlog" account:@"default"];
+
+	[Answers logCustomEventWithName:@"Sign Out" customAttributes:nil];
 
 	[[NSNotificationCenter defaultCenter] postNotificationName:kShowSigninNotification object:self];
 }

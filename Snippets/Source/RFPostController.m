@@ -178,10 +178,35 @@
 			NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
 			RFBoolean* publish = [[RFBoolean alloc] initWithBool:YES];
 
-			NSArray* params = @[ app_key, blog_id, username, password, post_text, publish ];
+			NSString* post_format = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogFormat"];
+			NSString* post_category = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogCategory"];
+
+			NSArray* params;
+			NSString* method_name;
+
+			if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogApp"] isEqualToString:@"WordPress"]) {
+				NSMutableDictionary* content = [NSMutableDictionary dictionary];
+				
+				content[@"post_content"] = post_text;
+				if (post_format.length > 0) {
+					content[@"post_format"] = post_format;
+				}
+				if (post_category.length > 0) {
+					content[@"terms"] = @{
+						@"category": @[ post_category ]
+					};
+				}
+
+				params = @[ blog_id, username, password, content ];
+				method_name = @"wp.newPost";
+			}
+			else {
+				params = @[ app_key, blog_id, username, password, post_text, publish ];
+				method_name = @"blogger.newPost";
+			}
 			
 			RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpc_endpoint];
-			[request sendMethod:@"blogger.newPost" params:params completion:^(UUHttpResponse* response) {
+			[request sendMethod:method_name params:params completion:^(UUHttpResponse* response) {
 				RFDispatchMainAsync (^{
 					[Answers logCustomEventWithName:@"Sent External" customAttributes:nil];
 					[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];

@@ -51,6 +51,42 @@
 	return [UUHttpSession executeRequest:request completionHandler:handler];
 }
 
+- (void) appendParam:(id)param toString:(NSMutableString *)requestString
+{
+	if ([param isKindOfClass:[RFBoolean class]]) {
+		[requestString appendFormat:@"<boolean>%@</boolean>", param];
+	}
+	else if ([param isKindOfClass:[NSNumber class]]) {
+		[requestString appendFormat:@"<int>%@</int>", param];
+	}
+	else if ([param isKindOfClass:[NSString class]]) {
+		[requestString appendFormat:@"<string>%@</string>", param];
+	}
+	else if ([param isKindOfClass:[NSDictionary class]]) {
+		[requestString appendString:@"<struct>"];
+		NSArray* keys = [param allKeys];
+		for (NSString* k in keys) {
+			id val = [param objectForKey:k];
+			[requestString appendString:@"<member>"];
+			[requestString appendFormat:@"<name>%@</name>", k];
+			[requestString appendString:@"<value>"];
+			[self appendParam:val toString:requestString];
+			[requestString appendString:@"</value>"];
+			[requestString appendString:@"</member>"];
+		}
+		[requestString appendString:@"</struct>"];
+	}
+	else if ([param isKindOfClass:[NSArray class]]) {
+		[requestString appendString:@"<array><data>"];
+		for (id val in param) {
+			[requestString appendString:@"<value>"];
+			[self appendParam:val toString:requestString];
+			[requestString appendString:@"</value>"];
+		}
+		[requestString appendString:@"</data></array>"];
+	}
+}
+
 - (UUHttpRequest *) sendMethod:(NSString *)method params:(NSArray *)params completion:(void (^)(UUHttpResponse* response))handler
 {
 	NSMutableString* s = [[NSMutableString alloc] init];
@@ -60,17 +96,7 @@
 
 	for (id param in params) {
 		[s appendString:@"<param>"];
-		
-		if ([param isKindOfClass:[RFBoolean class]]) {
-			[s appendFormat:@"<boolean>%@</boolean>", param];
-		}
-		else if ([param isKindOfClass:[NSNumber class]]) {
-			[s appendFormat:@"<int>%@</int>", param];
-		}
-		else if ([param isKindOfClass:[NSString class]]) {
-			[s appendFormat:@"<string>%@</string>", param];
-		}
-		
+		[self appendParam:param toString:s];
 		[s appendString:@"</param>"];
 	}
 
