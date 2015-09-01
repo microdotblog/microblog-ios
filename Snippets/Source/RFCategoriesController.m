@@ -14,6 +14,7 @@
 #import "RFConstants.h"
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
+#import "SSKeychain.h"
 
 static NSString* const kFormatCellIdentifier = @"FormatCell";
 static NSString* const kCategoryCellIdentifier = @"CategoryCell";
@@ -69,6 +70,23 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 	[self.categoriesTableView registerNib:[UINib nibWithNibName:@"SettingChoiceCell" bundle:nil] forCellReuseIdentifier:kCategoryCellIdentifier];
 	
 	[self.progressSpinner startAnimating];
+
+	NSString* xmlrpc_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogEndpoint"];
+	NSString* blog_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogID"];
+	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogUsername"];
+	NSString* password = [SSKeychain passwordForService:@"ExternalBlog" account:@"default"];
+	
+	NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
+	NSString* taxonomy = @"category";
+	
+	NSArray* params = @[ blog_id, username, password, taxonomy ];
+	
+	RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpc_endpoint];
+	[request sendMethod:@"wp.getTerms" params:params completion:^(UUHttpResponse* response) {
+		RFDispatchMainAsync (^{
+			[self.progressSpinner stopAnimating];
+		});
+	}];
 }
 
 - (IBAction) back:(id)sender
@@ -100,13 +118,13 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 		cell = [tableView dequeueReusableCellWithIdentifier:kFormatCellIdentifier forIndexPath:indexPath];
 		
 		cell.nameField.text = [self.formatValues objectAtIndex:indexPath.row];
-		cell.checkmarkField.hidden = YES;
+		cell.checkmarkField.hidden = (indexPath.row > 0);
 	}
 	else if (tableView == self.categoriesTableView) {
 		cell = [tableView dequeueReusableCellWithIdentifier:kCategoryCellIdentifier forIndexPath:indexPath];
 		
 		cell.nameField.text = [self.categoryValues objectAtIndex:indexPath.row];
-		cell.checkmarkField.hidden = YES;
+		cell.checkmarkField.hidden = (indexPath.row > 0);
 	}
 	
 	return cell;
