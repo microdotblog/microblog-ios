@@ -124,25 +124,16 @@
 	handler (best_endpoint_url, blog_id);
 }
 
-- (RFXMLRSDParser *) parsedResponseFromData:(NSData *)data
-{
-	NSXMLParser* parser = [[NSXMLParser alloc] initWithData:data];
-	RFXMLRSDParser* rsd = [[RFXMLRSDParser alloc] init];
-	parser.delegate = rsd;
-	[parser parse];
-	return rsd;
-}
-
 - (void) discoverEndpointWithCompletion:(void (^)(NSString* xmlrpcEndpointURL, NSString* blogID))handler
 {
 	[self getPath:@"/xmlrpc.php?rsd" completion:^(UUHttpResponse* response) {
-		RFXMLRSDParser* rsd = [self parsedResponseFromData:response.rawResponse];
+		RFXMLRSDParser* rsd = [RFXMLRSDParser parsedResponseFromData:response.rawResponse];
 		if ([rsd.foundEndpoints count] > 0) {
 			[self processRSD:rsd.foundEndpoints withCompletion:handler];
 		}
 		else {
 			[self getPath:@"/rsd.xml" completion:^(UUHttpResponse* response) {
-				RFXMLRSDParser* rsd = [self parsedResponseFromData:response.rawResponse];
+				RFXMLRSDParser* rsd = [RFXMLRSDParser parsedResponseFromData:response.rawResponse];
 				[self processRSD:rsd.foundEndpoints withCompletion:handler];
 			}];
 		}

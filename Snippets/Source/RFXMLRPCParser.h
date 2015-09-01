@@ -8,10 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RFXMLRPCParser : NSObject
+@class RFXMLElementStack;
 
-@property (strong, nonatomic) NSData* responseData;
+@interface RFXMLRPCParser : NSObject <NSXMLParserDelegate>
 
-- (instancetype) initWithResponseData:(NSData *)data;
+@property (strong, nonatomic) RFXMLElementStack* responseStack;
+@property (strong, nonatomic) NSMutableArray* responseParams;
+@property (strong, nonatomic) NSMutableString* currentMemberName;
+@property (strong, nonatomic) NSString* finishedMemberName;
+@property (strong, nonatomic) id currentValue;
+@property (assign, nonatomic) BOOL isProcessingString;
+
++ (RFXMLRPCParser *) parsedResponseFromData:(NSData *)data;
 
 @end

@@ -9,6 +9,7 @@
 #import "RFCategoriesController.h"
 
 #import "RFXMLRPCRequest.h"
+#import "RFXMLRPCParser.h"
 #import "RFPostController.h"
 #import "RFSettingChoiceCell.h"
 #import "RFConstants.h"
@@ -56,8 +57,8 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 
 - (void) setupFormats
 {
-	self.formatValues = @[ @"None", @"Standard", @"Aside", @"Link", @"Quote", @"Status" ];
-	self.selectedFormat = @"None";
+	self.formatValues = @[ @"Standard", @"Aside", @"Link", @"Quote", @"Status" ];
+	self.selectedFormat = @"";
 
 	[self.formatsTableView registerNib:[UINib nibWithNibName:@"SettingChoiceCell" bundle:nil] forCellReuseIdentifier:kFormatCellIdentifier];
 }
@@ -83,7 +84,14 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 	
 	RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpc_endpoint];
 	[request sendMethod:@"wp.getTerms" params:params completion:^(UUHttpResponse* response) {
+		RFXMLRPCParser* xmlrpc = [RFXMLRPCParser parsedResponseFromData:response.rawResponse];
+		NSMutableArray* new_categories = [NSMutableArray array];
+		for (NSDictionary* cat_info in xmlrpc.responseParams.firstObject) {
+			[new_categories addObject:cat_info[@"name"]];
+		}
 		RFDispatchMainAsync (^{
+			self.categoryValues = new_categories;
+			[self.categoriesTableView reloadData];
 			[self.progressSpinner stopAnimating];
 		});
 	}];
@@ -96,6 +104,11 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 
 - (IBAction) finish:(id)sender
 {
+	[[NSUserDefaults standardUserDefaults] setObject:self.selectedFormat forKey:@"ExternalBlogFormat"];
+	[[NSUserDefaults standardUserDefaults] setObject:self.selectedCategory forKey:@"ExternalBlogCategory"];
+	
+	RFPostController* post_controller = [[RFPostController alloc] init];
+	[self.navigationController pushViewController:post_controller animated:YES];
 }
 
 #pragma mark -

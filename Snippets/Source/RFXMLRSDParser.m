@@ -20,6 +20,15 @@
 	return self;
 }
 
++ (RFXMLRSDParser *) parsedResponseFromData:(NSData *)data
+{
+	NSXMLParser* parser = [[NSXMLParser alloc] initWithData:data];
+	RFXMLRSDParser* rsd = [[RFXMLRSDParser alloc] init];
+	parser.delegate = rsd;
+	[parser parse];
+	return rsd;
+}
+
 - (void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
 	if ([elementName isEqualToString:@"api"]) {

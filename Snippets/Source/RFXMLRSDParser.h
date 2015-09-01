@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) NSMutableArray* foundEndpoints; // NSDictionary with XML attributes
 
++ (RFXMLRSDParser *) parsedResponseFromData:(NSData *)data;
+
 @end

@@ -160,10 +160,12 @@
 
 - (IBAction) promptNewPost:(id)sender
 {
-//	RFCategoriesController* categories_controller = [[RFCategoriesController alloc] init];
-//	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:categories_controller];
-//	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
-//	return;
+	if (YES) {
+		RFCategoriesController* categories_controller = [[RFCategoriesController alloc] init];
+		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:categories_controller];
+		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+		return;
+	}
 
 	if ([self hasSnippetsBlog] || [self hasExternalBlog]) {
 		RFPostController* post_controller = [[RFPostController alloc] init];

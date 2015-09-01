@@ -207,6 +207,8 @@
 			
 			RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpc_endpoint];
 			[request sendMethod:method_name params:params completion:^(UUHttpResponse* response) {
+				RFXMLRPCParser* xmlrpc = [RFXMLRPCParser parsedResponseFromData:response.rawResponse];
+				NSLog (@"response params: %@", xmlrpc.responseParams);
 				RFDispatchMainAsync (^{
 					[Answers logCustomEventWithName:@"Sent External" customAttributes:nil];
 					[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
