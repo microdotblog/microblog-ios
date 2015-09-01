@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8173.3" systemVersion="15A263e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8173.3" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
@@ -7,6 +7,7 @@
     <customFonts key="customFonts">
         <mutableArray key="Avenir.ttc">
             <string>Avenir-Medium</string>
+            <string>Avenir-Book</string>
             <string>Avenir-Book</string>
             <string>Avenir-Book</string>
             <string>Avenir-Book</string>
@@ -158,6 +159,38 @@
                     <color key="textColor" white="0.052822353599999997" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tM4-jm-6Ab" customClass="RFThinLineView">
+                    <rect key="frame" x="0.0" y="480" width="320" height="1"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.8316969313" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="bGB-6S-vYb"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSH-re-ZTc">
+                    <rect key="frame" x="0.0" y="480" width="320" height="44"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="qdh-VT-LaR"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="showSettings:" destination="-1" eventType="touchUpInside" id="Bum-pj-GH7"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wW-WR-XZH">
+                    <rect key="frame" x="14" y="491" width="78" height="24"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="78" id="RID-Ha-v2X"/>
+                        <constraint firstAttribute="height" constant="24" id="li7-vv-DFe"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                    <color key="textColor" white="0.052822353599999997" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.89717060810810811" alpha="1" colorSpace="calibratedWhite"/>
@@ -165,15 +198,23 @@
                 <constraint firstItem="sym-oT-SMk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="0qy-UY-wqZ"/>
                 <constraint firstItem="B4S-QT-5lv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="5I7-Ly-ekO"/>
                 <constraint firstAttribute="trailing" secondItem="A4s-dV-BQU" secondAttribute="trailing" constant="60" id="7bf-bD-BiK"/>
+                <constraint firstItem="9wW-WR-XZH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="8cK-oz-wBE"/>
                 <constraint firstAttribute="trailing" secondItem="cml-0g-CCo" secondAttribute="trailing" id="AyW-FG-67C"/>
+                <constraint firstItem="9wW-WR-XZH" firstAttribute="top" secondItem="tM4-jm-6Ab" secondAttribute="bottom" constant="10" id="DJD-pI-YnN"/>
+                <constraint firstItem="cml-0g-CCo" firstAttribute="top" secondItem="ZSH-re-ZTc" secondAttribute="bottom" id="FFf-cv-ale"/>
+                <constraint firstItem="tM4-jm-6Ab" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OoW-6r-ZcH"/>
+                <constraint firstAttribute="trailing" secondItem="tM4-jm-6Ab" secondAttribute="trailing" id="QhU-Pw-Vom"/>
                 <constraint firstAttribute="trailing" secondItem="sKu-aF-vwl" secondAttribute="trailing" id="Qjm-xa-Yha"/>
                 <constraint firstItem="cml-0g-CCo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VBc-Vy-RY5"/>
+                <constraint firstAttribute="trailing" secondItem="ZSH-re-ZTc" secondAttribute="trailing" id="fGG-Lp-JR6"/>
                 <constraint firstAttribute="bottom" secondItem="cml-0g-CCo" secondAttribute="bottom" id="kfF-lc-CMe"/>
                 <constraint firstAttribute="bottom" secondItem="sym-oT-SMk" secondAttribute="bottom" constant="9" id="lf1-tB-7D8"/>
                 <constraint firstAttribute="trailing" secondItem="B4S-QT-5lv" secondAttribute="trailing" id="mLg-qL-Fox"/>
                 <constraint firstItem="sKu-aF-vwl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="n5w-92-JoO"/>
+                <constraint firstItem="ZSH-re-ZTc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oo1-1N-JzC"/>
                 <constraint firstItem="A4s-dV-BQU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="95" id="pmy-ua-PBe"/>
                 <constraint firstItem="sym-oT-SMk" firstAttribute="top" secondItem="B4S-QT-5lv" secondAttribute="bottom" constant="10" id="qFC-Qx-tD7"/>
+                <constraint firstItem="cml-0g-CCo" firstAttribute="top" secondItem="9wW-WR-XZH" secondAttribute="bottom" constant="9" id="rpF-0B-L7c"/>
                 <constraint firstItem="sKu-aF-vwl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yMg-eH-XDE"/>
                 <constraint firstItem="A4s-dV-BQU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="80" id="z6M-iL-IEF"/>
             </constraints>

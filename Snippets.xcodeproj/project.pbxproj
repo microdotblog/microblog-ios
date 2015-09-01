@@ -26,6 +26,8 @@
 		4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663251B8F51710034FC5C /* NSString+MarkupExtensions.m */; };
 		4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */; };
 		4B46632F1B8F51710034FC5C /* UILabel+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */; };
+		4B5078D11B965C79002A4F80 /* RFSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5078D01B965C79002A4F80 /* RFSettingsController.m */; };
+		4B5078D41B965E4F002A4F80 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5078D21B965E4F002A4F80 /* Settings.xib */; };
 		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
 		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
 		4BA163D91B8F8B9B007B2EC4 /* new_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA163D71B8F8B9B007B2EC4 /* new_button@2x.png */; };
@@ -119,6 +121,9 @@
 		4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+StyleUtilities.m"; path = "Shared/MarkupLabel/UIFont+StyleUtilities.m"; sourceTree = SOURCE_ROOT; };
 		4B4663281B8F51710034FC5C /* UILabel+MarkupExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+MarkupExtensions.h"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.h"; sourceTree = SOURCE_ROOT; };
 		4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+MarkupExtensions.m"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.m"; sourceTree = SOURCE_ROOT; };
+		4B5078CF1B965C79002A4F80 /* RFSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFSettingsController.h; path = Source/RFSettingsController.h; sourceTree = "<group>"; };
+		4B5078D01B965C79002A4F80 /* RFSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFSettingsController.m; path = Source/RFSettingsController.m; sourceTree = "<group>"; };
+		4B5078D31B965E4F002A4F80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Settings.xib; sourceTree = "<group>"; };
 		4B5F75501B8CABC50074D88E /* RFOptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFOptionsController.h; path = Source/RFOptionsController.h; sourceTree = "<group>"; };
 		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
 		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
@@ -280,6 +285,8 @@
 				4BA2C9A21B210A9A0038C0E5 /* RFTimelineController.m */,
 				4B5F75501B8CABC50074D88E /* RFOptionsController.h */,
 				4B5F75511B8CABC50074D88E /* RFOptionsController.m */,
+				4B5078CF1B965C79002A4F80 /* RFSettingsController.h */,
+				4B5078D01B965C79002A4F80 /* RFSettingsController.m */,
 				4BF803561B87DB7B00D6670C /* RFWebController.h */,
 				4BF803571B87DB7B00D6670C /* RFWebController.m */,
 				4BA910801B83D20C00D58F83 /* RFPostController.h */,
@@ -341,6 +348,7 @@
 				4BA910831B83D22900D58F83 /* Post.xib */,
 				4B0D55561B93B3F00076AD9F /* Wordpress.xib */,
 				4B0D556D1B9552F40076AD9F /* Categories.xib */,
+				4B5078D21B965E4F002A4F80 /* Settings.xib */,
 				4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */,
 				4BA2C9831B2109D10038C0E5 /* Images.xcassets */,
 				4BA910861B83E51000D58F83 /* timeline_icon@2x.png */,
@@ -503,6 +511,7 @@
 				4BA910941B84072000D58F83 /* back_button@2x.png in Resources */,
 				4BA910951B84072000D58F83 /* back_button@3x.png in Resources */,
 				4BA163D91B8F8B9B007B2EC4 /* new_button@2x.png in Resources */,
+				4B5078D41B965E4F002A4F80 /* Settings.xib in Resources */,
 				4BA910911B83E78A00D58F83 /* timeline_icon@3x.png in Resources */,
 				4BA910871B83E51000D58F83 /* timeline_icon@2x.png in Resources */,
 				4BA9108E1B83E77C00D58F83 /* favorites_icon@3x.png in Resources */,
@@ -571,6 +580,7 @@
 				4BF803581B87DB7B00D6670C /* RFWebController.m in Sources */,
 				4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */,
 				4B0D55521B93827D0076AD9F /* RFXMLRPCRequest.m in Sources */,
+				4B5078D11B965C79002A4F80 /* RFSettingsController.m in Sources */,
 				4BF803471B87AA2C00D6670C /* UUDate.m in Sources */,
 				4BA9107F1B83CFFD00D58F83 /* RFSignInController.m in Sources */,
 				4B46632C1B8F51710034FC5C /* CSimpleMarkupParser.m in Sources */,
@@ -635,6 +645,14 @@
 				4B0D55711B95586F0076AD9F /* Base */,
 			);
 			name = SettingChoiceCell.xib;
+			sourceTree = "<group>";
+		};
+		4B5078D21B965E4F002A4F80 /* Settings.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B5078D31B965E4F002A4F80 /* Base */,
+			);
+			name = Settings.xib;
 			sourceTree = "<group>";
 		};
 		4B5F75531B8CABF30074D88E /* Options.xib */ = {

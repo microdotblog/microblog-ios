@@ -9,6 +9,7 @@
 #import "RFMenuController.h"
 
 #import "RFTimelineController.h"
+#import "RFSettingsController.h"
 #import "RFConstants.h"
 #import "UUImageView.h"
 #import "SSKeychain.h"
@@ -66,6 +67,12 @@
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/favorites" title:@"Favorites"];
 	[self.navigationController pushViewController:timeline_controller animated:YES];
+}
+
+- (IBAction) showSettings:(id)sender
+{
+	RFSettingsController* settings_controller = [[RFSettingsController alloc] init];
+	[self.navigationController pushViewController:settings_controller animated:YES];
 }
 
 - (IBAction) signOut:(id)sender
