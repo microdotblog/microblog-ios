@@ -31,6 +31,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 
 	[self setupNavigation];
 	[self setupServers];
+	[self setupGestures];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -60,6 +61,20 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	self.serverNames = @[ @"Snippets.today hosted microblog", @"WordPress or Movable Type weblog" ];
 
 	[self.serversTableView registerNib:[UINib nibWithNibName:@"SettingChoiceCell" bundle:nil] forCellReuseIdentifier:kServerCellIdentifier];
+}
+
+- (void) setupGestures
+{
+	UISwipeGestureRecognizer* swipe_right_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
+	swipe_right_gesture.direction = UISwipeGestureRecognizerDirectionRight;
+	[self.view addGestureRecognizer:swipe_right_gesture];
+}
+
+#pragma mark -
+
+- (void) swipeRight:(UIGestureRecognizer *)gesture
+{
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction) back:(id)sender
