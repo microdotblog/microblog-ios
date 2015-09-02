@@ -80,6 +80,10 @@
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountUsername"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountGravatarURL"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogUsername"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogApp"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogEndpoint"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogID"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogIsPreferred"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"HasSnippetsBlog"];
 
 	[SSKeychain deletePasswordForService:@"Snippets" account:@"default"];
