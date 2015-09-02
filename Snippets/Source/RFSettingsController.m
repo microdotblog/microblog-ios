@@ -33,9 +33,19 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	[self setupServers];
 }
 
-- (void) viewDidAppear:(BOOL)animated
+- (void) viewWillAppear:(BOOL)animated
 {
-	[super viewDidAppear:animated];
+	[super viewWillAppear:animated];
+
+	NSIndexPath* index_path;
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ExternalBlogIsPreferred"]) {
+		index_path = [NSIndexPath indexPathForRow:1 inSection:0];
+	}
+	else {
+		index_path = [NSIndexPath indexPathForRow:0 inSection:0];
+	}
+
+	[self.serversTableView selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (void) setupNavigation
