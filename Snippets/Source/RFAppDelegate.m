@@ -176,6 +176,7 @@
 
 - (void) showSigninNotification:(NSNotification *)notification
 {
+	self.signInController = nil;
 	[self setupSignin];
 }
 

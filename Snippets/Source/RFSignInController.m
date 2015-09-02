@@ -36,6 +36,9 @@
 - (void) updateToken:(NSString *)appToken
 {
 	self.tokenField.text = appToken;
+	if (appToken.length > 0) {
+		[self.view endEditing:NO];
+	}
 }
 
 - (IBAction) finish:(id)sender
