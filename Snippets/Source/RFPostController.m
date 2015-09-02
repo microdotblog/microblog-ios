@@ -88,7 +88,7 @@
 
 - (void) setupBlogName
 {
-	if ([self hasSnippetsBlog] || self.isReply) {
+	if (([self hasSnippetsBlog] && ![self prefersExternalBlog]) || self.isReply) {
 		self.blognameField.hidden = YES;
 	}
 	else {
