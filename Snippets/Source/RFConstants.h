@@ -20,4 +20,6 @@
 #define kPostWasDeletedNotification @"RFPostWasDeletedNotification"
 #define kPostNotificationPostIDKey @"post_id"
 
+static NSString* const kShortcutActionNewPost = @"com.riverfold.snippets.shortcut.post";
+
 #define APPSTORE 1

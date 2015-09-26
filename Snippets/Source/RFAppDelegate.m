@@ -28,6 +28,7 @@
 	[self setupWindow];
 	[self setupAppearance];
 	[self setupNotifications];
+	[self setupShortcuts];
 	
 	return YES;
 }
@@ -68,9 +69,9 @@
 {
 }
 
-- (void) application:(UIApplication *)inApplication didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)inDeviceToken
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-	const unsigned *bytes = [(NSData *)inDeviceToken bytes]; // borrowed from mattt's Orbiter
+	const unsigned *bytes = [(NSData *)deviceToken bytes]; // borrowed from mattt's Orbiter
 	NSString* token_s = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x", ntohl(bytes[0]), ntohl(bytes[1]), ntohl(bytes[2]), ntohl(bytes[3]), ntohl(bytes[4]), ntohl(bytes[5]), ntohl(bytes[6]), ntohl(bytes[7])];
 
 #if APPSTORE
@@ -90,11 +91,22 @@
 	}];
 }
 
-- (void) application:(UIApplication *)inApplication didReceiveRemoteNotification:(NSDictionary *)inUserInfo
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-	if (inApplication.applicationState == UIApplicationStateActive) {
-		NSString* message = [[inUserInfo valueForKey:@"aps"] valueForKey:@"alert"];
+	if (application.applicationState == UIApplicationStateActive) {
+		NSString* message = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
 		[UIAlertView uuShowOneButtonAlert:@"" message:message button:@"OK" completionHandler:NULL];
+	}
+}
+
+- (void) application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))handler
+{
+	if ([self hasValidToken] && [shortcutItem.type isEqualToString:kShortcutActionNewPost]) {
+		[self.timelineController promptNewPost:nil];
+		handler (YES);
+	}
+	else {
+		handler (NO);
 	}
 }
 
@@ -110,12 +122,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
 	[self setupTimeline];
-	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
-	if (token == nil) {
-		[self setupSignin];
+	if ([self hasValidToken]) {
+		[self setupPushNotifications];
 	}
 	else {
-		[self setupPushNotifications];
+		[self setupSignin];
 	}
 }
 
@@ -172,6 +183,13 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReplyPostNotification:) name:kShowReplyPostNotification object:nil];
 }
 
+- (void) setupShortcuts
+{
+	UIApplicationShortcutIcon* post_icon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"new_button"];
+	UIApplicationShortcutItem* post_item = [[UIApplicationShortcutItem alloc] initWithType:kShortcutActionNewPost localizedTitle:@"New Post" localizedSubtitle:@"Post to your microblog" icon:post_icon userInfo:nil];
+	[[UIApplication sharedApplication] setShortcutItems:@[ post_item ]];
+}
+
 #pragma mark -
 
 - (void) showSigninNotification:(NSNotification *)notification
@@ -218,6 +236,12 @@
 - (void) showSigninWithToken:(NSString *)appToken
 {
 	[self setupSigninWithToken:appToken];
+}
+
+- (BOOL) hasValidToken
+{
+	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
+	return (token != nil);
 }
 
 @end

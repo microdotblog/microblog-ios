@@ -23,4 +23,6 @@
 - (RFOptionsPopoverType) popoverTypeOfPostID:(NSString *)postID;
 - (NSString *) usernameOfPostID:(NSString *)postID;
 
+- (IBAction) promptNewPost:(id)sender;
+
 @end
