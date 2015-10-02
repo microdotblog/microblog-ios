@@ -58,6 +58,13 @@
 	[self refreshTimeline];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+	[self setupPreventHorizontalScrolling];
+}
+
 - (void) setupNavigation
 {
 	self.title = self.timelineTitle;
@@ -86,6 +93,11 @@
 	UISwipeGestureRecognizer* swipe_right_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
 	swipe_right_gesture.direction = UISwipeGestureRecognizerDirectionRight;
 	[self.view addGestureRecognizer:swipe_right_gesture];
+}
+
+- (void) setupPreventHorizontalScrolling
+{
+	[self.webView.scrollView setContentSize:CGSizeMake (self.webView.frame.size.width, self.webView.scrollView.contentSize.height)];
 }
 
 #pragma mark -
@@ -295,6 +307,7 @@
 
 - (void) webViewDidFinishLoad:(UIWebView *)webView
 {
+	[self setupPreventHorizontalScrolling];
 }
 
 - (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
