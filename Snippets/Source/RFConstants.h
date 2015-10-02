@@ -18,6 +18,7 @@
 #define kPostWasFavoritedNotification @"RFPostWasFavoritedNotification"
 #define kPostWasUnfavoritedNotification @"RFPostWasUnfavoritedNotification"
 #define kPostWasDeletedNotification @"RFPostWasDeletedNotification"
+#define kPostWasUnselectedNotification @"RFPostWasUnselectedNotification"
 #define kPostNotificationPostIDKey @"post_id"
 
 static NSString* const kShortcutActionNewPost = @"com.riverfold.snippets.shortcut.post";

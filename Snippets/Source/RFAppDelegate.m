@@ -181,6 +181,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSigninNotification:) name:kShowSigninNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConversationNotification:) name:kShowConversationNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReplyPostNotification:) name:kShowReplyPostNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasUnselectedNotification:) name:kPostWasUnselectedNotification object:nil];
 }
 
 - (void) setupShortcuts
@@ -213,10 +214,20 @@
 	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 }
 
+- (void) postWasUnselectedNotification:(NSNotification *)notification
+{
+	NSString* post_id = [notification.userInfo objectForKey:kPostNotificationPostIDKey];
+	RFTimelineController* timeline_controller = (RFTimelineController *) self.navigationController.topViewController;
+	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
+		[timeline_controller setSelected:NO withPostID:post_id];
+	}
+}
+
 - (void) showOptionsMenuWithPostID:(NSString *)postID
 {
 	RFTimelineController* timeline_controller = (RFTimelineController *) self.navigationController.topViewController;
 	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
+		[timeline_controller setSelected:YES withPostID:postID];
 		CGRect r = [timeline_controller rectOfPostID:postID];
 		RFOptionsPopoverType popover_type = [timeline_controller popoverTypeOfPostID:postID];
 		NSString* username = [timeline_controller usernameOfPostID:postID];

@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSString* timelineTitle;
 
 - (instancetype) initWithEndpoint:(NSString *)endpoint title:(NSString *)title;
+
+- (void) setSelected:(BOOL)isSelected withPostID:(NSString *)postID;
 - (CGRect) rectOfPostID:(NSString *)postID;
 - (RFOptionsPopoverType) popoverTypeOfPostID:(NSString *)postID;
 - (NSString *) usernameOfPostID:(NSString *)postID;

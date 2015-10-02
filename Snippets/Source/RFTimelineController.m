@@ -90,6 +90,18 @@
 
 #pragma mark -
 
+- (void) setSelected:(BOOL)isSelected withPostID:(NSString *)postID
+{
+	NSString* js;
+	if (isSelected) {
+		js = [NSString stringWithFormat:@"$('#post_%@').addClass('is_selected');", postID];
+	}
+	else {
+		js = [NSString stringWithFormat:@"$('#post_%@').removeClass('is_selected');", postID];
+	}
+	[self.webView stringByEvaluatingJavaScriptFromString:js];
+}
+
 - (CGRect) rectOfPostID:(NSString *)postID
 {
 	NSString* left_js = [NSString stringWithFormat:@"$('#post_%@').position().left;", postID];

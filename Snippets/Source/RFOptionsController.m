@@ -52,15 +52,31 @@
 	self.popoverPresentationController.sourceRect = rect;
 }
 
+- (void) sendUnselectedNotification
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:kPostWasUnselectedNotification object:self userInfo:@{
+		kShowReplyPostIDKey: self.postID,
+		kShowReplyPostUsernameKey: self.username
+	}];
+}
+
 - (UIModalPresentationStyle) adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {
 	return UIModalPresentationNone;
+}
+
+- (BOOL) popoverPresentationControllerShouldDismissPopover:(UIPopoverPresentationController *)controller
+{
+	[self sendUnselectedNotification];
+	return YES;
 }
 
 #pragma mark -
 
 - (IBAction) reply:(id)sender
 {
+	[self sendUnselectedNotification];
+	
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
 		[[NSNotificationCenter defaultCenter] postNotificationName:kShowReplyPostNotification object:self userInfo:@{
 			kShowReplyPostIDKey: self.postID,
@@ -71,6 +87,8 @@
 
 - (IBAction) favorite:(id)sender
 {
+	[self sendUnselectedNotification];
+
 	RFClient* client = [[RFClient alloc] initWithPath:@"/posts/favorite"];
 	NSDictionary* args = @{ @"id": self.postID };
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
@@ -83,6 +101,8 @@
 
 - (IBAction) unfavorite:(id)sender
 {
+	[self sendUnselectedNotification];
+
 	RFClient* client = [[RFClient alloc] initWithPath:@"/posts/unfavorite"];
 	NSDictionary* args = @{ @"id": self.postID };
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
@@ -95,6 +115,8 @@
 
 - (IBAction) conversation:(id)sender
 {
+	[self sendUnselectedNotification];
+
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
 		[[NSNotificationCenter defaultCenter] postNotificationName:kShowConversationNotification object:self userInfo:@{ kShowConversationPostIDKey: self.postID }];
 	}];
