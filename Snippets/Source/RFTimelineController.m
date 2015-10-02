@@ -116,20 +116,22 @@
 
 - (CGRect) rectOfPostID:(NSString *)postID
 {
-	NSString* left_js = [NSString stringWithFormat:@"$('#post_%@').position().left;", postID];
+//	NSString* left_js = [NSString stringWithFormat:@"$('#post_%@').position().left;", postID];
+//	NSString* width_js = [NSString stringWithFormat:@"$('#post_%@').width();", postID];
 	NSString* top_js = [NSString stringWithFormat:@"$('#post_%@').position().top;", postID];
-	NSString* width_js = [NSString stringWithFormat:@"$('#post_%@').width();", postID];
 	NSString* height_js = [NSString stringWithFormat:@"$('#post_%@').height();", postID];
 	
-	NSString* left_s = [self.webView stringByEvaluatingJavaScriptFromString:left_js];
 	NSString* top_s = [self.webView stringByEvaluatingJavaScriptFromString:top_js];
-	NSString* width_s = [self.webView stringByEvaluatingJavaScriptFromString:width_js];
 	NSString* height_s = [self.webView stringByEvaluatingJavaScriptFromString:height_js];
 	
 	CGFloat top_f = [top_s floatValue];
 	top_f -= self.webView.scrollView.contentOffset.y;
 	
-	return CGRectMake ([left_s floatValue], top_f, [width_s floatValue], [height_s floatValue]);
+	// adjust to full cell width
+	CGFloat left_f = 0.0;
+	CGFloat width_f = self.view.bounds.size.width;
+	
+	return CGRectMake (left_f, top_f, width_f, [height_s floatValue]);
 }
 
 - (RFOptionsPopoverType) popoverTypeOfPostID:(NSString *)postID
