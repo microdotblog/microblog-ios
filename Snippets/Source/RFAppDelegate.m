@@ -11,6 +11,7 @@
 #import "RFSignInController.h"
 #import "RFMenuController.h"
 #import "RFTimelineController.h"
+#import "RFUserController.h"
 #import "RFPostController.h"
 #import "RFOptionsController.h"
 #import "RFClient.h"
@@ -35,15 +36,18 @@
 
 - (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-	NSString* post_id = [url.path stringByReplacingOccurrencesOfString:@"/" withString:@""];
+	NSString* param = [url.path stringByReplacingOccurrencesOfString:@"/" withString:@""];
 	if ([url.host isEqualToString:@"open"]) {
-		[self showOptionsMenuWithPostID:post_id];
+		[self showOptionsMenuWithPostID:param];
+	}
+	else if ([url.host isEqualToString:@"user"]) {
+		[self showProfileWithUsername:param];
 	}
 	else if ([url.host isEqualToString:@"conversation"]) {
-		[self showConversationWithPostID:post_id];
+		[self showConversationWithPostID:param];
 	}
 	else if ([url.host isEqualToString:@"signin"]) {
-		[self showSigninWithToken:post_id];
+		[self showSigninWithToken:param];
 	}
 	
 	return YES;
@@ -242,6 +246,13 @@
 	NSString* path = [NSString stringWithFormat:@"/iphone/conversation/%@", postID];
 	RFTimelineController* conversation_controller = [[RFTimelineController alloc] initWithEndpoint:path title:@"Conversation"];
 	[self.navigationController pushViewController:conversation_controller animated:YES];
+}
+
+- (void) showProfileWithUsername:(NSString *)username
+{
+	NSString* path = [NSString stringWithFormat:@"/iphone/posts/%@", username];
+	RFUserController* user_controller = [[RFUserController alloc] initWithEndpoint:path title:username];
+	[self.navigationController pushViewController:user_controller animated:YES];
 }
 
 - (void) showSigninWithToken:(NSString *)appToken
