@@ -243,6 +243,9 @@
 	else if ([self.endpoint containsString:@"/iphone/conversation"]) {
 		url = [NSString stringWithFormat:@"http://snippets.today%@", self.endpoint];
 	}
+	else if ([self.endpoint containsString:@"/iphone/posts/"]) {
+		url = [NSString stringWithFormat:@"http://snippets.today%@", self.endpoint];
+	}
 	else {
 		int width = [UIScreen mainScreen].bounds.size.width;
 		url = [NSString stringWithFormat:@"http://snippets.today/iphone/signin?token=%@&width=%d&minutes=%ld", token, width, timezone_offset];
