@@ -19,6 +19,8 @@
 
 - (void) setupNavigation
 {
+	[super setupNavigation];
+
 	self.title = self.timelineTitle;
 	
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Unfollow" style:UIBarButtonItemStylePlain target:self action:@selector(unfollow:)];
