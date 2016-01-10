@@ -10,4 +10,8 @@
 
 @interface RFUserController : RFTimelineController
 
+@property (strong, nonatomic) NSString* username;
+
+- (instancetype) initWithEndpoint:(NSString *)endpoint username:(NSString *)username;
+
 @end

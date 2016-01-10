@@ -262,7 +262,7 @@
 - (void) showProfileWithUsername:(NSString *)username
 {
 	NSString* path = [NSString stringWithFormat:@"/iphone/posts/%@", username];
-	RFUserController* user_controller = [[RFUserController alloc] initWithEndpoint:path title:username];
+	RFUserController* user_controller = [[RFUserController alloc] initWithEndpoint:path username:username];
 	[self.navigationController pushViewController:user_controller animated:YES];
 }
 
