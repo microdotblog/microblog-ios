@@ -157,10 +157,21 @@
 {
 	self.menuController = [[RFMenuController alloc] init];
 	self.timelineController = [[RFTimelineController alloc] init];
+	
+//	if (self.window.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
+
+//	self.splitViewController = [[UISplitViewController alloc] init];
+//	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineController];
+//
+//	self.splitViewController.viewControllers = @[ self.menuController, self.navigationController ];
+//
+//	[self.window makeKeyAndVisible];
+//	[self.window setRootViewController:self.splitViewController];
+
 	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.menuController];
 	[self.navigationController pushViewController:self.timelineController animated:NO];
 
-    [self.window makeKeyAndVisible];
+	[self.window makeKeyAndVisible];
 	[self.window setRootViewController:self.navigationController];
 }
 
