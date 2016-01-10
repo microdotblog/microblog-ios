@@ -274,7 +274,9 @@
 - (BOOL) hasValidToken
 {
 	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
-	return (token != nil);
+	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountUsername"];
+
+	return ((token.length > 0) && (username.length > 0));
 }
 
 @end
