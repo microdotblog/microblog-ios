@@ -183,6 +183,13 @@
 
 #pragma mark -
 
+- (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+	[super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+	
+	[self performSelector:@selector(refreshTimeline) withObject:nil afterDelay:0.5];
+}
+
 - (void) swipeRight:(UIGestureRecognizer *)gesture
 {
 	[self.navigationController popViewControllerAnimated:YES];
@@ -232,22 +239,22 @@
 {
 	NSDate* now = [NSDate date];
 	long timezone_offset = 0 - [[NSTimeZone systemTimeZone] secondsFromGMTForDate:now] / 60;
+	int width = [UIApplication sharedApplication].keyWindow.bounds.size.width;
 
 	NSString* url;
 	if ([self.endpoint isEqualToString:@"/iphone/mentions"]) {
-		url = @"http://snippets.today/iphone/mentions";
+		url = [NSString stringWithFormat:@"http://snippets.today/iphone/mentions?width=%d", width];
 	}
 	else if ([self.endpoint isEqualToString:@"/iphone/favorites"]) {
-		url = @"http://snippets.today/iphone/favorites";
+		url = [NSString stringWithFormat:@"http://snippets.today/iphone/favorites?width=%d", width];
 	}
 	else if ([self.endpoint containsString:@"/iphone/conversation"]) {
-		url = [NSString stringWithFormat:@"http://snippets.today%@", self.endpoint];
+		url = [NSString stringWithFormat:@"http://snippets.today%@?width=%d", self.endpoint, width];
 	}
 	else if ([self.endpoint containsString:@"/iphone/posts/"]) {
-		url = [NSString stringWithFormat:@"http://snippets.today%@", self.endpoint];
+		url = [NSString stringWithFormat:@"http://snippets.today%@?width=%d", self.endpoint, width];
 	}
 	else {
-		int width = [UIScreen mainScreen].bounds.size.width;
 		url = [NSString stringWithFormat:@"http://snippets.today/iphone/signin?token=%@&width=%d&minutes=%ld", token, width, timezone_offset];
 	}
 	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
@@ -294,6 +301,8 @@
 		[self presentViewController:nav_controller animated:YES completion:NULL];
 	}
 }
+
+#pragma mark -
 
 - (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
