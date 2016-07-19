@@ -202,12 +202,12 @@
 
 - (IBAction) promptNewPost:(id)sender
 {
-	if (NO) {
-		RFCategoriesController* categories_controller = [[RFCategoriesController alloc] init];
-		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:categories_controller];
-		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
-		return;
-	}
+//	if (NO) {
+//		RFCategoriesController* categories_controller = [[RFCategoriesController alloc] init];
+//		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:categories_controller];
+//		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+//		return;
+//	}
 
 	if ([self needsExternalBlogSetup]) {
 		RFWordpressController* wordpress_controller = [[RFWordpressController alloc] init];

@@ -468,7 +468,7 @@
 		4BA2C96B1B2109D10038C0E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Riverfold Software";
 				TargetAttributes = {
 					4BA2C9721B2109D10038C0E5 = {
@@ -741,6 +741,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -811,6 +812,7 @@
 				);
 				INFOPLIST_FILE = Snippets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.riverfold.snippets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d6f0f897-a426-49d9-a926-f8e31bd391cc";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -828,6 +830,7 @@
 				);
 				INFOPLIST_FILE = Snippets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.riverfold.snippets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d6f0f897-a426-49d9-a926-f8e31bd391cc";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -848,6 +851,7 @@
 				);
 				INFOPLIST_FILE = SnippetsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.riverfold.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snippets.app/Snippets";
 			};
@@ -863,6 +867,7 @@
 				);
 				INFOPLIST_FILE = SnippetsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.riverfold.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snippets.app/Snippets";
 			};
