@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RFSignInController : UIViewController
+@interface RFSignInController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField* tokenField;
 @property (strong, nonatomic) IBOutlet UILabel* instructionsField;

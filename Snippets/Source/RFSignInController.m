@@ -41,6 +41,12 @@
 	}
 }
 
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+	[self finish:nil];
+	return YES;
+}
+
 - (IBAction) finish:(id)sender
 {
 	if ([self.tokenField.text containsString:@"@"]) {
