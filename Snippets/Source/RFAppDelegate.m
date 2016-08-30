@@ -20,12 +20,14 @@
 #import "UUAlert.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <ZendeskSDK/ZendeskSDK.h>
 
 @implementation RFAppDelegate
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	[self setupCrashlytics];
+	[self setupZendesk];
 	[self setupWindow];
 	[self setupAppearance];
 	[self setupNotifications];
@@ -119,6 +121,11 @@
 - (void) setupCrashlytics
 {
 	[Fabric with:@[ CrashlyticsKit ]];
+}
+
+- (void) setupZendesk
+{
+	[[ZDKConfig instance] initializeWithAppId:@"c0c5dfb3d79c110b5b666b36eff6b1be3256d21dfa28d3fc" zendeskUrl:@"https://riverfold.zendesk.com" clientId:@"mobile_sdk_client_d8c02ac543c464948a22"];
 }
 
 - (void) setupWindow

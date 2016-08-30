@@ -15,6 +15,7 @@
 #import "SSKeychain.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <ZendeskSDK/ZendeskSDK.h>
 
 @implementation RFMenuController
 
@@ -67,6 +68,16 @@
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/favorites" title:@"Favorites"];
 	[self.navigationController pushViewController:timeline_controller animated:YES];
+}
+
+- (IBAction) showHelp:(id)sender
+{
+	ZDKAnonymousIdentity* identity = [[ZDKAnonymousIdentity alloc] init];
+	identity.name = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountFullName"];
+	identity.email = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountEmail"];
+	[ZDKConfig instance].userIdentity = identity;
+
+	[ZDKRequests presentRequestCreationWithViewController:self.navigationController];
 }
 
 - (IBAction) showSettings:(id)sender
