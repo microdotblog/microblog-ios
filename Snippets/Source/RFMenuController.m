@@ -56,19 +56,19 @@
 - (IBAction) showTimeline:(id)sender
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] init];
-	[self notifyPushDetail:timeline_controller];
+	[self notifyResetDetail:timeline_controller];
 }
 
 - (IBAction) showMentions:(id)sender
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/mentions" title:@"Mentions"];
-	[self notifyPushDetail:timeline_controller];
+	[self notifyResetDetail:timeline_controller];
 }
 
 - (IBAction) showFavorites:(id)sender
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/favorites" title:@"Favorites"];
-	[self notifyPushDetail:timeline_controller];
+	[self notifyResetDetail:timeline_controller];
 }
 
 - (IBAction) showHelp:(id)sender
@@ -84,7 +84,7 @@
 - (IBAction) showSettings:(id)sender
 {
 	RFSettingsController* settings_controller = [[RFSettingsController alloc] init];
-	[self notifyPushDetail:settings_controller];
+	[self notifyResetDetail:settings_controller];
 }
 
 - (IBAction) signOut:(id)sender
@@ -106,9 +106,9 @@
 	[[NSNotificationCenter defaultCenter] postNotificationName:kShowSigninNotification object:self];
 }
 
-- (void) notifyPushDetail:(UIViewController *)controller
+- (void) notifyResetDetail:(UIViewController *)controller
 {
-	[[NSNotificationCenter defaultCenter] postNotificationName:kPushDetailNotification object:self userInfo:@{ kPushDetailControllerKey: controller }];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kResetDetailNotification object:self userInfo:@{ kResetDetailControllerKey: controller }];
 }
 
 @end

@@ -207,7 +207,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConversationNotification:) name:kShowConversationNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReplyPostNotification:) name:kShowReplyPostNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasUnselectedNotification:) name:kPostWasUnselectedNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushDetailNotification:) name:kPushDetailNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetDetailNotification:) name:kResetDetailNotification object:nil];
 }
 
 - (void) setupShortcuts
@@ -237,7 +237,7 @@
 	NSString* username = [notification.userInfo objectForKey:kShowReplyPostUsernameKey];
 	RFPostController* post_controller = [[RFPostController alloc] initWithReplyTo:post_id replyUsername:username];
 	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
-	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+	[[self activeNavigationController] presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 - (void) postWasUnselectedNotification:(NSNotification *)notification
@@ -249,9 +249,9 @@
 	}
 }
 
-- (void) pushDetailNotification:(NSNotification *)notification
+- (void) resetDetailNotification:(NSNotification *)notification
 {
-	UIViewController* controller = [notification.userInfo objectForKey:kPushDetailControllerKey];
+	UIViewController* controller = [notification.userInfo objectForKey:kResetDetailControllerKey];
 	if ([self.splitViewController isCollapsed]) {
 		[self.menuNavController pushViewController:controller animated:YES];
 	}
@@ -261,9 +261,19 @@
 	}
 }
 
+- (UINavigationController *) activeNavigationController
+{
+	if ([self.splitViewController isCollapsed]) {
+		return self.menuNavController;
+	}
+	else {
+		return self.navigationController;
+	}
+}
+
 - (void) showOptionsMenuWithPostID:(NSString *)postID
 {
-	RFTimelineController* timeline_controller = (RFTimelineController *) self.navigationController.topViewController;
+	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
 	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
 		[timeline_controller setSelected:YES withPostID:postID];
 		CGRect r = [timeline_controller rectOfPostID:postID];
@@ -271,7 +281,7 @@
 		NSString* username = [timeline_controller usernameOfPostID:postID];
 		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:postID username:username popoverType:popover_type];
 		[options_controller attachToView:timeline_controller.webView atRect:r];
-		[self.navigationController presentViewController:options_controller animated:YES completion:NULL];
+		[[self activeNavigationController] presentViewController:options_controller animated:YES completion:NULL];
 	}
 }
 
@@ -279,14 +289,14 @@
 {
 	NSString* path = [NSString stringWithFormat:@"/iphone/conversation/%@", postID];
 	RFTimelineController* conversation_controller = [[RFTimelineController alloc] initWithEndpoint:path title:@"Conversation"];
-	[self.navigationController pushViewController:conversation_controller animated:YES];
+	[[self activeNavigationController] pushViewController:conversation_controller animated:YES];
 }
 
 - (void) showProfileWithUsername:(NSString *)username
 {
 	NSString* path = [NSString stringWithFormat:@"/iphone/posts/%@", username];
 	RFUserController* user_controller = [[RFUserController alloc] initWithEndpoint:path username:username];
-	[self.navigationController pushViewController:user_controller animated:YES];
+	[[self activeNavigationController] pushViewController:user_controller animated:YES];
 }
 
 - (void) showSigninWithToken:(NSString *)appToken

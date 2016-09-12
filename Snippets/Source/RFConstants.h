@@ -21,8 +21,8 @@
 #define kPostWasUnselectedNotification @"RFPostWasUnselectedNotification"
 #define kPostNotificationPostIDKey @"post_id"
 
-static NSString* const kPushDetailNotification = @"RFPushDetail";
-static NSString* const kPushDetailControllerKey = @"controller";
+static NSString* const kResetDetailNotification = @"RFResetDetail";
+static NSString* const kResetDetailControllerKey = @"controller";
 
 static NSString* const kShortcutActionNewPost = @"com.riverfold.snippets.shortcut.post";
 

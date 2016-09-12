@@ -31,6 +31,13 @@
 	[self setupFollowing:YES];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+	[self setupFollowing:YES];
+}
+
 - (void) setupNavigation
 {
 	[super setupNavigation];
