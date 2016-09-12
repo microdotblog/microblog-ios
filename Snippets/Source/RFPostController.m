@@ -82,8 +82,8 @@
 
 - (void) setupNotifications
 {
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void) setupBlogName
@@ -114,19 +114,23 @@
 	}
 }
 
-- (void) keyboardWasShown:(NSNotification*)notification
+- (void) keyboardWillShowNotification:(NSNotification*)notification
 {
     NSDictionary* info = [notification userInfo];
-    CGSize kb_size = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGSize kb_size = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
 
-	self.bottomConstraint.constant = kb_size.height;
-	[self.view layoutIfNeeded];
+	[UIView animateWithDuration:0.3 animations:^{
+		self.bottomConstraint.constant = kb_size.height;
+		[self.view layoutIfNeeded];
+	}];
 }
  
-- (void) keyboardWillBeHidden:(NSNotification*)aNotification
+- (void) keyboardWillHideNotification:(NSNotification*)aNotification
 {
-	self.bottomConstraint.constant = 0;
-	[self.view layoutIfNeeded];
+	[UIView animateWithDuration:0.3 animations:^{
+		self.bottomConstraint.constant = 0;
+		[self.view layoutIfNeeded];
+	}];
 }
 
 - (void) textViewDidChange:(UITextView *)textView
