@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8173.3" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Avenir.ttc">
+        <array key="Avenir.ttc">
             <string>Avenir-Book</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFSettingsController">
@@ -22,19 +23,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When writing a new post (not a reply), publish to:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pab-LB-1n2">
-                    <rect key="frame" x="10" y="72" width="300" height="56"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="56" id="LKE-lD-9EU"/>
-                    </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T30-Wk-89C">
-                    <rect key="frame" x="0.0" y="136" width="320" height="90"/>
-                    <animations/>
-                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="90" id="kkd-so-whw"/>
                     </constraints>
@@ -43,29 +37,16 @@
                         <outlet property="delegate" destination="-1" id="VUS-7n-HEt"/>
                     </connections>
                 </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvr-BG-Pav" customClass="RFThinLineView">
-                    <rect key="frame" x="0.0" y="226" width="320" height="1"/>
-                    <animations/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="UYD-MM-u6r"/>
-                    </constraints>
-                </view>
             </subviews>
-            <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="rvr-BG-Pav" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7bZ-1z-6Ju"/>
-                <constraint firstItem="T30-Wk-89C" firstAttribute="top" secondItem="pab-LB-1n2" secondAttribute="bottom" constant="8" id="DVA-dU-eYD"/>
-                <constraint firstAttribute="trailing" secondItem="T30-Wk-89C" secondAttribute="trailing" id="LVX-Tt-YHy"/>
-                <constraint firstItem="pab-LB-1n2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Srg-Rl-10n"/>
-                <constraint firstItem="rvr-BG-Pav" firstAttribute="top" secondItem="T30-Wk-89C" secondAttribute="bottom" id="TQ6-K4-mRE"/>
-                <constraint firstAttribute="trailing" secondItem="pab-LB-1n2" secondAttribute="trailing" constant="10" id="YSh-iV-8xf"/>
-                <constraint firstAttribute="trailing" secondItem="rvr-BG-Pav" secondAttribute="trailing" id="aHf-Na-yeD"/>
-                <constraint firstItem="pab-LB-1n2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="72" id="h3k-v8-h6K"/>
-                <constraint firstItem="T30-Wk-89C" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zYT-mP-cq4"/>
+                <constraint firstItem="T30-Wk-89C" firstAttribute="top" secondItem="pab-LB-1n2" secondAttribute="bottom" constant="12" id="DVA-dU-eYD"/>
+                <constraint firstAttribute="trailing" secondItem="T30-Wk-89C" secondAttribute="trailing" constant="12" id="LVX-Tt-YHy"/>
+                <constraint firstItem="pab-LB-1n2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Srg-Rl-10n"/>
+                <constraint firstAttribute="trailing" secondItem="pab-LB-1n2" secondAttribute="trailing" constant="14" id="YSh-iV-8xf"/>
+                <constraint firstItem="pab-LB-1n2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="h3k-v8-h6K"/>
+                <constraint firstItem="T30-Wk-89C" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="zYT-mP-cq4"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
 </document>

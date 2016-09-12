@@ -14,7 +14,7 @@
 {
 	[super setSelected:selected animated:animated];
 	
-	self.checkmarkField.hidden = !selected;
+	self.checkmarkView.hidden = !selected;
 }
 
 @end

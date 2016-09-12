@@ -11,6 +11,6 @@
 @interface RFSettingChoiceCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel* nameField;
-@property (strong, nonatomic) IBOutlet UILabel* checkmarkField;
+@property (strong, nonatomic) IBOutlet UIImageView* checkmarkView;
 
 @end

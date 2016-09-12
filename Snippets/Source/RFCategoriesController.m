@@ -136,13 +136,13 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 		cell = [tableView dequeueReusableCellWithIdentifier:kFormatCellIdentifier forIndexPath:indexPath];
 		
 		cell.nameField.text = [self.formatValues objectAtIndex:indexPath.row];
-		cell.checkmarkField.hidden = (indexPath.row > 0);
+		cell.checkmarkView.hidden = (indexPath.row > 0);
 	}
 	else if (tableView == self.categoriesTableView) {
 		cell = [tableView dequeueReusableCellWithIdentifier:kCategoryCellIdentifier forIndexPath:indexPath];
 		
 		cell.nameField.text = [self.categoryValues objectAtIndex:indexPath.row];
-		cell.checkmarkField.hidden = (indexPath.row > 0);
+		cell.checkmarkView.hidden = (indexPath.row > 0);
 	}
 	
 	return cell;

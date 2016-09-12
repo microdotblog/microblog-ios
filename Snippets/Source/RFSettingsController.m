@@ -20,6 +20,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 {
 	self = [super initWithNibName:@"Settings" bundle:nil];
 	if (self) {
+		self.edgesForExtendedLayout = UIRectEdgeNone;
 	}
 	
 	return self;
@@ -71,6 +72,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	self.serverNames = @[ @"Snippets.today hosted microblog", @"WordPress or Movable Type weblog" ];
 
 	[self.serversTableView registerNib:[UINib nibWithNibName:@"SettingChoiceCell" bundle:nil] forCellReuseIdentifier:kServerCellIdentifier];
+	self.serversTableView.layer.cornerRadius = 5.0;
 }
 
 - (void) setupGestures
@@ -104,7 +106,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	RFSettingChoiceCell* cell = [tableView dequeueReusableCellWithIdentifier:kServerCellIdentifier forIndexPath:indexPath];
 		
 	cell.nameField.text = [self.serverNames objectAtIndex:indexPath.row];
-	cell.checkmarkField.hidden = (indexPath.row > 0);
+	cell.checkmarkView.hidden = (indexPath.row > 0);
 
 	return cell;
 }

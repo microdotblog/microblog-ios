@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8173.3" systemVersion="15A263e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Avenir.ttc">
+        <array key="Avenir.ttc">
             <string>Avenir-Book</string>
-            <string>Avenir-Medium</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -18,12 +18,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mKb-4X-YNU" id="zzA-yF-gLF">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <frame key="frameInset" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGg-Gd-kCK">
-                        <rect key="frame" x="14" y="11" width="252" height="21"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="8EW-q3-dfg"/>
                         </constraints>
@@ -31,34 +29,30 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✓" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRg-B3-Ws8">
-                        <rect key="frame" x="270" y="11" width="36" height="21"/>
-                        <animations/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="5eK-lB-Isc">
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="ZxU-fO-SfV"/>
-                            <constraint firstAttribute="width" constant="36" id="jhF-j2-9IC"/>
+                            <constraint firstAttribute="height" constant="20" id="kLh-Dt-p82"/>
+                            <constraint firstAttribute="width" constant="20" id="mMw-Qh-04A"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </imageView>
                 </subviews>
-                <animations/>
                 <constraints>
-                    <constraint firstItem="JRg-B3-Ws8" firstAttribute="leading" secondItem="WGg-Gd-kCK" secondAttribute="trailing" constant="4" id="3vK-kC-GG8"/>
                     <constraint firstItem="WGg-Gd-kCK" firstAttribute="leading" secondItem="zzA-yF-gLF" secondAttribute="leadingMargin" constant="6" id="4PD-D6-MgH"/>
-                    <constraint firstItem="JRg-B3-Ws8" firstAttribute="top" secondItem="zzA-yF-gLF" secondAttribute="topMargin" constant="3" id="O3C-my-MKM"/>
                     <constraint firstItem="WGg-Gd-kCK" firstAttribute="top" secondItem="zzA-yF-gLF" secondAttribute="topMargin" constant="3" id="PmE-ur-kv7"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="JRg-B3-Ws8" secondAttribute="trailing" constant="6" id="xUA-6X-Mac"/>
+                    <constraint firstItem="5eK-lB-Isc" firstAttribute="leading" secondItem="WGg-Gd-kCK" secondAttribute="trailing" constant="8" id="bnl-OC-FJH"/>
+                    <constraint firstItem="5eK-lB-Isc" firstAttribute="top" secondItem="zzA-yF-gLF" secondAttribute="topMargin" constant="3" id="kOL-R9-x5y"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="5eK-lB-Isc" secondAttribute="trailing" constant="4" id="xQH-HM-RfW"/>
                 </constraints>
             </tableViewCellContentView>
-            <animations/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
-                <outlet property="checkmarkField" destination="JRg-B3-Ws8" id="vEY-jP-IVl"/>
+                <outlet property="checkmarkView" destination="5eK-lB-Isc" id="Hbg-Fa-rHB"/>
                 <outlet property="nameField" destination="WGg-Gd-kCK" id="6NE-99-xpQ"/>
             </connections>
             <point key="canvasLocation" x="456" y="200"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="checkmark_icon.png" width="20" height="20"/>
+    </resources>
 </document>

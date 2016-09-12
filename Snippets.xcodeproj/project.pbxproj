@@ -35,8 +35,6 @@
 		4B643FD11D75117B00D9715A /* ZendeskProviderSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B643FD01D75117B00D9715A /* ZendeskProviderSDK.framework */; };
 		4B643FD41D75119400D9715A /* ZendeskSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4B643FD21D75119400D9715A /* ZendeskSDK.bundle */; };
 		4B643FD51D75119400D9715A /* ZendeskSDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4B643FD31D75119400D9715A /* ZendeskSDKStrings.bundle */; };
-		4BA163D91B8F8B9B007B2EC4 /* new_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA163D71B8F8B9B007B2EC4 /* new_button@2x.png */; };
-		4BA163DA1B8F8B9B007B2EC4 /* new_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA163D81B8F8B9B007B2EC4 /* new_button@3x.png */; };
 		4BA2C9841B2109D10038C0E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C9831B2109D10038C0E5 /* Images.xcassets */; };
 		4BA2C9871B2109D10038C0E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */; };
 		4BA2C9A01B210A620038C0E5 /* Timeline.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C99E1B210A620038C0E5 /* Timeline.xib */; };
@@ -49,17 +47,7 @@
 		4BA9107F1B83CFFD00D58F83 /* RFSignInController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA9107E1B83CFFD00D58F83 /* RFSignInController.m */; };
 		4BA910821B83D20C00D58F83 /* RFPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910811B83D20C00D58F83 /* RFPostController.m */; };
 		4BA910851B83D22900D58F83 /* Post.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910831B83D22900D58F83 /* Post.xib */; };
-		4BA910871B83E51000D58F83 /* timeline_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910861B83E51000D58F83 /* timeline_icon@2x.png */; };
-		4BA9108A1B83E67100D58F83 /* favorites_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910881B83E67100D58F83 /* favorites_icon@2x.png */; };
-		4BA9108B1B83E67100D58F83 /* replies_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910891B83E67100D58F83 /* replies_icon@2x.png */; };
-		4BA9108E1B83E77C00D58F83 /* favorites_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9108C1B83E77C00D58F83 /* favorites_icon@3x.png */; };
-		4BA9108F1B83E77C00D58F83 /* replies_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9108D1B83E77C00D58F83 /* replies_icon@3x.png */; };
-		4BA910911B83E78A00D58F83 /* timeline_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910901B83E78A00D58F83 /* timeline_icon@3x.png */; };
-		4BA910941B84072000D58F83 /* back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910921B84072000D58F83 /* back_button@2x.png */; };
-		4BA910951B84072000D58F83 /* back_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910931B84072000D58F83 /* back_button@3x.png */; };
 		4BA910981B84077000D58F83 /* UIBarButtonItem+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */; };
-		4BA9109B1B840DCE00D58F83 /* close_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910991B840DCE00D58F83 /* close_button@2x.png */; };
-		4BA9109C1B840DCE00D58F83 /* close_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9109A1B840DCE00D58F83 /* close_button@3x.png */; };
 		4BA910A11B84A54A00D58F83 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA9109F1B84A54A00D58F83 /* Fabric.framework */; };
 		4BA910A21B84A54A00D58F83 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA910A01B84A54A00D58F83 /* Crashlytics.framework */; };
 		4BF803441B87AA2C00D6670C /* UUActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8032F1B87AA2C00D6670C /* UUActionSheet.m */; };
@@ -128,8 +116,6 @@
 		4B643FD01D75117B00D9715A /* ZendeskProviderSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZendeskProviderSDK.framework; path = Shared/Zendesk/ZendeskProviderSDK.framework; sourceTree = SOURCE_ROOT; };
 		4B643FD21D75119400D9715A /* ZendeskSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ZendeskSDK.bundle; path = Shared/Zendesk/ZendeskSDK.bundle; sourceTree = SOURCE_ROOT; };
 		4B643FD31D75119400D9715A /* ZendeskSDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ZendeskSDKStrings.bundle; path = Shared/Zendesk/ZendeskSDKStrings.bundle; sourceTree = SOURCE_ROOT; };
-		4BA163D71B8F8B9B007B2EC4 /* new_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "new_button@2x.png"; path = "Resources/new_button@2x.png"; sourceTree = "<group>"; };
-		4BA163D81B8F8B9B007B2EC4 /* new_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "new_button@3x.png"; path = "Resources/new_button@3x.png"; sourceTree = "<group>"; };
 		4BA2C9731B2109D10038C0E5 /* Snippets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snippets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA2C9771B2109D10038C0E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BA2C9831B2109D10038C0E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -149,18 +135,8 @@
 		4BA910801B83D20C00D58F83 /* RFPostController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFPostController.h; path = Source/RFPostController.h; sourceTree = "<group>"; };
 		4BA910811B83D20C00D58F83 /* RFPostController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFPostController.m; path = Source/RFPostController.m; sourceTree = "<group>"; };
 		4BA910841B83D22900D58F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Post.xib; sourceTree = "<group>"; };
-		4BA910861B83E51000D58F83 /* timeline_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "timeline_icon@2x.png"; path = "Resources/timeline_icon@2x.png"; sourceTree = "<group>"; };
-		4BA910881B83E67100D58F83 /* favorites_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "favorites_icon@2x.png"; path = "Resources/favorites_icon@2x.png"; sourceTree = "<group>"; };
-		4BA910891B83E67100D58F83 /* replies_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "replies_icon@2x.png"; path = "Resources/replies_icon@2x.png"; sourceTree = "<group>"; };
-		4BA9108C1B83E77C00D58F83 /* favorites_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "favorites_icon@3x.png"; path = "Resources/favorites_icon@3x.png"; sourceTree = "<group>"; };
-		4BA9108D1B83E77C00D58F83 /* replies_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "replies_icon@3x.png"; path = "Resources/replies_icon@3x.png"; sourceTree = "<group>"; };
-		4BA910901B83E78A00D58F83 /* timeline_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "timeline_icon@3x.png"; path = "Resources/timeline_icon@3x.png"; sourceTree = "<group>"; };
-		4BA910921B84072000D58F83 /* back_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back_button@2x.png"; path = "Resources/back_button@2x.png"; sourceTree = "<group>"; };
-		4BA910931B84072000D58F83 /* back_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back_button@3x.png"; path = "Resources/back_button@3x.png"; sourceTree = "<group>"; };
 		4BA910961B84077000D58F83 /* UIBarButtonItem+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+Extras.h"; path = "Source/UIBarButtonItem+Extras.h"; sourceTree = "<group>"; };
 		4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+Extras.m"; path = "Source/UIBarButtonItem+Extras.m"; sourceTree = "<group>"; };
-		4BA910991B840DCE00D58F83 /* close_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close_button@2x.png"; path = "Resources/close_button@2x.png"; sourceTree = "<group>"; };
-		4BA9109A1B840DCE00D58F83 /* close_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close_button@3x.png"; path = "Resources/close_button@3x.png"; sourceTree = "<group>"; };
 		4BA9109F1B84A54A00D58F83 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		4BA910A01B84A54A00D58F83 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		4BF8032E1B87AA2C00D6670C /* UUActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUActionSheet.h; path = Shared/UUToolbox/UUActionSheet.h; sourceTree = SOURCE_ROOT; };
@@ -328,18 +304,6 @@
 				4B643FD21D75119400D9715A /* ZendeskSDK.bundle */,
 				4B643FD31D75119400D9715A /* ZendeskSDKStrings.bundle */,
 				4BA2C9831B2109D10038C0E5 /* Images.xcassets */,
-				4BA910861B83E51000D58F83 /* timeline_icon@2x.png */,
-				4BA910901B83E78A00D58F83 /* timeline_icon@3x.png */,
-				4BA910891B83E67100D58F83 /* replies_icon@2x.png */,
-				4BA9108D1B83E77C00D58F83 /* replies_icon@3x.png */,
-				4BA910881B83E67100D58F83 /* favorites_icon@2x.png */,
-				4BA9108C1B83E77C00D58F83 /* favorites_icon@3x.png */,
-				4BA910921B84072000D58F83 /* back_button@2x.png */,
-				4BA910931B84072000D58F83 /* back_button@3x.png */,
-				4BA910991B840DCE00D58F83 /* close_button@2x.png */,
-				4BA9109A1B840DCE00D58F83 /* close_button@3x.png */,
-				4BA163D71B8F8B9B007B2EC4 /* new_button@2x.png */,
-				4BA163D81B8F8B9B007B2EC4 /* new_button@3x.png */,
 			);
 			name = Resources;
 			path = Snippets;
@@ -463,29 +427,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B643FD51D75119400D9715A /* ZendeskSDKStrings.bundle in Resources */,
-				4BA9109B1B840DCE00D58F83 /* close_button@2x.png in Resources */,
 				4BA2C9871B2109D10038C0E5 /* LaunchScreen.xib in Resources */,
-				4BA9109C1B840DCE00D58F83 /* close_button@3x.png in Resources */,
 				4B643FD41D75119400D9715A /* ZendeskSDK.bundle in Resources */,
-				4BA910941B84072000D58F83 /* back_button@2x.png in Resources */,
-				4BA910951B84072000D58F83 /* back_button@3x.png in Resources */,
-				4BA163D91B8F8B9B007B2EC4 /* new_button@2x.png in Resources */,
 				4B5078D41B965E4F002A4F80 /* Settings.xib in Resources */,
-				4BA910911B83E78A00D58F83 /* timeline_icon@3x.png in Resources */,
-				4BA910871B83E51000D58F83 /* timeline_icon@2x.png in Resources */,
-				4BA9108E1B83E77C00D58F83 /* favorites_icon@3x.png in Resources */,
 				4B0D556F1B9552F40076AD9F /* Categories.xib in Resources */,
 				4BA910851B83D22900D58F83 /* Post.xib in Resources */,
-				4BA9108B1B83E67100D58F83 /* replies_icon@2x.png in Resources */,
 				4BA2C9A01B210A620038C0E5 /* Timeline.xib in Resources */,
-				4BA163DA1B8F8B9B007B2EC4 /* new_button@3x.png in Resources */,
 				4BA9107C1B83CFD200D58F83 /* SignIn.xib in Resources */,
-				4BA9108A1B83E67100D58F83 /* favorites_icon@2x.png in Resources */,
 				4BA910791B83CE7600D58F83 /* Menu.xib in Resources */,
 				4B5F75551B8CABF30074D88E /* Options.xib in Resources */,
 				4BA2C9841B2109D10038C0E5 /* Images.xcassets in Resources */,
 				4B0D55581B93B3F00076AD9F /* Wordpress.xib in Resources */,
-				4BA9108F1B83E77C00D58F83 /* replies_icon@3x.png in Resources */,
 				4BF803551B87DB4F00D6670C /* Web.xib in Resources */,
 				4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */,
 			);
