@@ -10,12 +10,12 @@
 
 #import "RFTimelineController.h"
 #import "RFSettingsController.h"
+#import "RFHelpController.h"
 #import "RFConstants.h"
 #import "UUImageView.h"
 #import "SSKeychain.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import <ZendeskSDK/ZendeskSDK.h>
 
 @implementation RFMenuController
 
@@ -73,12 +73,8 @@
 
 - (IBAction) showHelp:(id)sender
 {
-	ZDKAnonymousIdentity* identity = [[ZDKAnonymousIdentity alloc] init];
-	identity.name = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountFullName"];
-	identity.email = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountEmail"];
-	[ZDKConfig instance].userIdentity = identity;
-
-	[ZDKRequests presentRequestCreationWithViewController:self.navigationController];
+	RFHelpController* help_controller = [[RFHelpController alloc] init];
+	[self notifyResetDetail:help_controller];
 }
 
 - (IBAction) showSettings:(id)sender

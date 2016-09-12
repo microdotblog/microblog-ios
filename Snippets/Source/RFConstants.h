@@ -6,6 +6,8 @@
 //  Copyright © 2015 Riverfold Software. All rights reserved.
 //
 
+static NSString* const kLoadTimelineNotification = @"RFLoadTimeline";
+
 #define kShowConversationNotification @"RFShowConversationNotification"
 #define kShowConversationPostIDKey @"post_id"
 

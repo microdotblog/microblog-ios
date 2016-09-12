@@ -9,7 +9,6 @@
 #import "RFTimelineController.h"
 
 #import "RFPostController.h"
-#import "RFWebController.h"
 #import "RFWordpressController.h"
 #import "RFCategoriesController.h"
 #import "RFConstants.h"
@@ -79,7 +78,7 @@
 
 - (void) setupNotifications
 {
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTimelineNotification:) name:@"RFLoadTimelineNotification" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTimelineNotification:) name:kLoadTimelineNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasFavoritedNotification:) name:kPostWasFavoritedNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasUnfavoritedNotification:) name:kPostWasUnfavoritedNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasDeletedNotification:) name:kPostWasDeletedNotification object:nil];
@@ -294,16 +293,8 @@
 
 - (void) showURL:(NSURL *)url
 {
-	Class safari_class = NSClassFromString (@"SFSafariViewController");
-	if (safari_class != nil) {
-		id safari_controller = [[safari_class alloc] initWithURL:url];
-		[self presentViewController:safari_controller animated:YES completion:NULL];
-	}
-	else {
-		RFWebController* web_controller = [[RFWebController alloc] initWithURL:url];
-		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:web_controller];
-		[self presentViewController:nav_controller animated:YES completion:NULL];
-	}
+	SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:url];
+	[self presentViewController:safari_controller animated:YES completion:NULL];
 }
 
 #pragma mark -

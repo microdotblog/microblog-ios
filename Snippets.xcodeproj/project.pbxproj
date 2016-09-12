@@ -18,6 +18,8 @@
 		4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */; };
 		4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
 		4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */; };
+		4B1BD2811D87548C00B3C93D /* RFHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BD2801D87548C00B3C93D /* RFHelpController.m */; };
+		4B1BD2841D8754DC00B3C93D /* Help.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1BD2821D8754DC00B3C93D /* Help.xib */; };
 		4B1D74FC1B95ECF4004A0ACD /* RFXMLElementStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D74FB1B95ECF4004A0ACD /* RFXMLElementStack.m */; };
 		4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DEDD51BF8D14B00F3152B /* RFUserController.m */; };
 		4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */; };
@@ -31,10 +33,6 @@
 		4B5078D41B965E4F002A4F80 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5078D21B965E4F002A4F80 /* Settings.xib */; };
 		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
 		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
-		4B643FCF1D75117300D9715A /* ZendeskSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B643FCE1D75117300D9715A /* ZendeskSDK.framework */; };
-		4B643FD11D75117B00D9715A /* ZendeskProviderSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B643FD01D75117B00D9715A /* ZendeskProviderSDK.framework */; };
-		4B643FD41D75119400D9715A /* ZendeskSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4B643FD21D75119400D9715A /* ZendeskSDK.bundle */; };
-		4B643FD51D75119400D9715A /* ZendeskSDKStrings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4B643FD31D75119400D9715A /* ZendeskSDKStrings.bundle */; };
 		4BA2C9841B2109D10038C0E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C9831B2109D10038C0E5 /* Images.xcassets */; };
 		4BA2C9871B2109D10038C0E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */; };
 		4BA2C9A01B210A620038C0E5 /* Timeline.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C99E1B210A620038C0E5 /* Timeline.xib */; };
@@ -62,8 +60,6 @@
 		4BF8034D1B87AA2C00D6670C /* UUImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803411B87AA2C00D6670C /* UUImageView.m */; };
 		4BF8034E1B87AA2C00D6670C /* UUString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803431B87AA2C00D6670C /* UUString.m */; };
 		4BF803511B87AACF00D6670C /* RFClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803501B87AACF00D6670C /* RFClient.m */; };
-		4BF803551B87DB4F00D6670C /* Web.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF803531B87DB4F00D6670C /* Web.xib */; };
-		4BF803581B87DB7B00D6670C /* RFWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803571B87DB7B00D6670C /* RFWebController.m */; };
 		4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8035A1B8898D900D6670C /* RFThinLineView.m */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +83,9 @@
 		4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Shared/SSKeychain/SSKeychain.m; sourceTree = SOURCE_ROOT; };
 		4B1BAF001B852BC9008097F7 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychainQuery.h; path = Shared/SSKeychain/SSKeychainQuery.h; sourceTree = SOURCE_ROOT; };
 		4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychainQuery.m; path = Shared/SSKeychain/SSKeychainQuery.m; sourceTree = SOURCE_ROOT; };
+		4B1BD27F1D87548C00B3C93D /* RFHelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFHelpController.h; path = Source/RFHelpController.h; sourceTree = "<group>"; };
+		4B1BD2801D87548C00B3C93D /* RFHelpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFHelpController.m; path = Source/RFHelpController.m; sourceTree = "<group>"; };
+		4B1BD2831D8754DC00B3C93D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Help.xib; sourceTree = "<group>"; };
 		4B1D74FA1B95ECF4004A0ACD /* RFXMLElementStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFXMLElementStack.h; path = Source/RFXMLElementStack.h; sourceTree = "<group>"; };
 		4B1D74FB1B95ECF4004A0ACD /* RFXMLElementStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFXMLElementStack.m; path = Source/RFXMLElementStack.m; sourceTree = "<group>"; };
 		4B2DEDD41BF8D14B00F3152B /* RFUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFUserController.h; path = Source/RFUserController.h; sourceTree = "<group>"; };
@@ -112,10 +111,6 @@
 		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
 		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
 		4B5F75561B8CBA1F0074D88E /* RFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFConstants.h; path = Source/RFConstants.h; sourceTree = "<group>"; };
-		4B643FCE1D75117300D9715A /* ZendeskSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZendeskSDK.framework; path = Shared/Zendesk/ZendeskSDK.framework; sourceTree = SOURCE_ROOT; };
-		4B643FD01D75117B00D9715A /* ZendeskProviderSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZendeskProviderSDK.framework; path = Shared/Zendesk/ZendeskProviderSDK.framework; sourceTree = SOURCE_ROOT; };
-		4B643FD21D75119400D9715A /* ZendeskSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ZendeskSDK.bundle; path = Shared/Zendesk/ZendeskSDK.bundle; sourceTree = SOURCE_ROOT; };
-		4B643FD31D75119400D9715A /* ZendeskSDKStrings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ZendeskSDKStrings.bundle; path = Shared/Zendesk/ZendeskSDKStrings.bundle; sourceTree = SOURCE_ROOT; };
 		4BA2C9731B2109D10038C0E5 /* Snippets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snippets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA2C9771B2109D10038C0E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BA2C9831B2109D10038C0E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -164,9 +159,6 @@
 		4BF8034F1B87AACF00D6670C /* RFClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFClient.h; path = Source/RFClient.h; sourceTree = "<group>"; };
 		4BF803501B87AACF00D6670C /* RFClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFClient.m; path = Source/RFClient.m; sourceTree = "<group>"; };
 		4BF803521B87ADF900D6670C /* RFMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFMacros.h; path = Source/RFMacros.h; sourceTree = "<group>"; };
-		4BF803541B87DB4F00D6670C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Web.xib; sourceTree = "<group>"; };
-		4BF803561B87DB7B00D6670C /* RFWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFWebController.h; path = Source/RFWebController.h; sourceTree = "<group>"; };
-		4BF803571B87DB7B00D6670C /* RFWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFWebController.m; path = Source/RFWebController.m; sourceTree = "<group>"; };
 		4BF803591B8898D900D6670C /* RFThinLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFThinLineView.h; path = Source/RFThinLineView.h; sourceTree = "<group>"; };
 		4BF8035A1B8898D900D6670C /* RFThinLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFThinLineView.m; path = Source/RFThinLineView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,8 +168,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B643FCF1D75117300D9715A /* ZendeskSDK.framework in Frameworks */,
-				4B643FD11D75117B00D9715A /* ZendeskProviderSDK.framework in Frameworks */,
 				4BA910A21B84A54A00D58F83 /* Crashlytics.framework in Frameworks */,
 				4BA910A11B84A54A00D58F83 /* Fabric.framework in Frameworks */,
 			);
@@ -251,12 +241,12 @@
 				4BA2C9A21B210A9A0038C0E5 /* RFTimelineController.m */,
 				4B2DEDD41BF8D14B00F3152B /* RFUserController.h */,
 				4B2DEDD51BF8D14B00F3152B /* RFUserController.m */,
+				4B1BD27F1D87548C00B3C93D /* RFHelpController.h */,
+				4B1BD2801D87548C00B3C93D /* RFHelpController.m */,
 				4B5F75501B8CABC50074D88E /* RFOptionsController.h */,
 				4B5F75511B8CABC50074D88E /* RFOptionsController.m */,
 				4B5078CF1B965C79002A4F80 /* RFSettingsController.h */,
 				4B5078D01B965C79002A4F80 /* RFSettingsController.m */,
-				4BF803561B87DB7B00D6670C /* RFWebController.h */,
-				4BF803571B87DB7B00D6670C /* RFWebController.m */,
 				4BA910801B83D20C00D58F83 /* RFPostController.h */,
 				4BA910811B83D20C00D58F83 /* RFPostController.m */,
 				4B0D55531B93B3590076AD9F /* RFWordpressController.h */,
@@ -294,15 +284,13 @@
 				4BA910771B83CE7600D58F83 /* Menu.xib */,
 				4BA2C99E1B210A620038C0E5 /* Timeline.xib */,
 				4B5F75531B8CABF30074D88E /* Options.xib */,
-				4BF803531B87DB4F00D6670C /* Web.xib */,
 				4BA9107A1B83CFD200D58F83 /* SignIn.xib */,
 				4BA910831B83D22900D58F83 /* Post.xib */,
+				4B1BD2821D8754DC00B3C93D /* Help.xib */,
 				4B0D55561B93B3F00076AD9F /* Wordpress.xib */,
 				4B0D556D1B9552F40076AD9F /* Categories.xib */,
 				4B5078D21B965E4F002A4F80 /* Settings.xib */,
 				4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */,
-				4B643FD21D75119400D9715A /* ZendeskSDK.bundle */,
-				4B643FD31D75119400D9715A /* ZendeskSDKStrings.bundle */,
 				4BA2C9831B2109D10038C0E5 /* Images.xcassets */,
 			);
 			name = Resources;
@@ -323,8 +311,6 @@
 		4BA9109E1B84A53A00D58F83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4B643FD01D75117B00D9715A /* ZendeskProviderSDK.framework */,
-				4B643FCE1D75117300D9715A /* ZendeskSDK.framework */,
 				4BA9109F1B84A54A00D58F83 /* Fabric.framework */,
 				4BA910A01B84A54A00D58F83 /* Crashlytics.framework */,
 			);
@@ -426,9 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B643FD51D75119400D9715A /* ZendeskSDKStrings.bundle in Resources */,
 				4BA2C9871B2109D10038C0E5 /* LaunchScreen.xib in Resources */,
-				4B643FD41D75119400D9715A /* ZendeskSDK.bundle in Resources */,
 				4B5078D41B965E4F002A4F80 /* Settings.xib in Resources */,
 				4B0D556F1B9552F40076AD9F /* Categories.xib in Resources */,
 				4BA910851B83D22900D58F83 /* Post.xib in Resources */,
@@ -438,7 +422,7 @@
 				4B5F75551B8CABF30074D88E /* Options.xib in Resources */,
 				4BA2C9841B2109D10038C0E5 /* Images.xcassets in Resources */,
 				4B0D55581B93B3F00076AD9F /* Wordpress.xib in Resources */,
-				4BF803551B87DB4F00D6670C /* Web.xib in Resources */,
+				4B1BD2841D8754DC00B3C93D /* Help.xib in Resources */,
 				4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,9 +466,9 @@
 				4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */,
 				4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */,
 				4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */,
-				4BF803581B87DB7B00D6670C /* RFWebController.m in Sources */,
 				4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */,
 				4B0D55521B93827D0076AD9F /* RFXMLRPCRequest.m in Sources */,
+				4B1BD2811D87548C00B3C93D /* RFHelpController.m in Sources */,
 				4B5078D11B965C79002A4F80 /* RFSettingsController.m in Sources */,
 				4BF803471B87AA2C00D6670C /* UUDate.m in Sources */,
 				4BA9107F1B83CFFD00D58F83 /* RFSignInController.m in Sources */,
@@ -534,6 +518,14 @@
 				4B0D55711B95586F0076AD9F /* Base */,
 			);
 			name = SettingChoiceCell.xib;
+			sourceTree = "<group>";
+		};
+		4B1BD2821D8754DC00B3C93D /* Help.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B1BD2831D8754DC00B3C93D /* Base */,
+			);
+			name = Help.xib;
 			sourceTree = "<group>";
 		};
 		4B5078D21B965E4F002A4F80 /* Settings.xib */ = {
@@ -590,14 +582,6 @@
 				4BA910841B83D22900D58F83 /* Base */,
 			);
 			name = Post.xib;
-			sourceTree = "<group>";
-		};
-		4BF803531B87DB4F00D6670C /* Web.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4BF803541B87DB4F00D6670C /* Base */,
-			);
-			name = Web.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -697,6 +681,7 @@
 					"$(PROJECT_DIR)/Shared/Zendesk",
 				);
 				INFOPLIST_FILE = Snippets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.riverfold.snippets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -717,6 +702,7 @@
 					"$(PROJECT_DIR)/Shared/Zendesk",
 				);
 				INFOPLIST_FILE = Snippets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.riverfold.snippets;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -10,6 +10,7 @@
 
 #import "RFClient.h"
 #import "RFMacros.h"
+#import "RFConstants.h"
 #import "UUAlert.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -86,7 +87,7 @@
 		
 			RFDispatchMainAsync (^{
 				[Answers logLoginWithMethod:@"Token" success:@YES customAttributes:nil];
-				[[NSNotificationCenter defaultCenter] postNotificationName:@"RFLoadTimelineNotification" object:self userInfo:@{
+				[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self userInfo:@{
 					@"token": self.tokenField.text
 				}];
 				[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];

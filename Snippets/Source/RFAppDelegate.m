@@ -20,14 +20,12 @@
 #import "UUAlert.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import <ZendeskSDK/ZendeskSDK.h>
 
 @implementation RFAppDelegate
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	[self setupCrashlytics];
-	[self setupZendesk];
 	[self setupWindow];
 	[self setupAppearance];
 	[self setupNotifications];
@@ -123,11 +121,6 @@
 	[Fabric with:@[ CrashlyticsKit ]];
 }
 
-- (void) setupZendesk
-{
-	[[ZDKConfig instance] initializeWithAppId:@"c0c5dfb3d79c110b5b666b36eff6b1be3256d21dfa28d3fc" zendeskUrl:@"https://riverfold.zendesk.com" clientId:@"mobile_sdk_client_d8c02ac543c464948a22"];
-}
-
 - (void) setupWindow
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -164,9 +157,8 @@
 {
 	self.menuController = [[RFMenuController alloc] init];
 	self.timelineController = [[RFTimelineController alloc] init];
+	[self.timelineController loadViewIfNeeded];
 	
-//	if (self.window.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
-
 	self.splitViewController = [[UISplitViewController alloc] init];
 	self.splitViewController.delegate = self;
 
@@ -177,12 +169,6 @@
 
 	[self.window makeKeyAndVisible];
 	[self.window setRootViewController:self.splitViewController];
-
-//	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.menuController];
-//	[self.navigationController pushViewController:self.timelineController animated:NO];
-//
-//	[self.window makeKeyAndVisible];
-//	[self.window setRootViewController:self.navigationController];
 }
 
 - (void) setupSignin

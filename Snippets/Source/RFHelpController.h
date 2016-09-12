@@ -1,5 +1,5 @@
 //
-//  RFWebController.h
+//  RFHelpController.h
 //  Snippets
 //
 //  Created by Manton Reece on 8/21/15.
@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RFWebController : UIViewController
+@interface RFHelpController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIWebView* webView;
 
 @property (strong, nonatomic) NSURL* url;
-
-- (instancetype) initWithURL:(NSURL *)url;
 
 @end
