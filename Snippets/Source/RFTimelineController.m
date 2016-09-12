@@ -62,6 +62,7 @@
 {
 	[super viewDidAppear:animated];
 	
+	[self setupNavigation];
 	[self setupPreventHorizontalScrolling];
 }
 
@@ -69,7 +70,10 @@
 {
 	self.title = self.timelineTitle;
 	
-	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
+	UIViewController* root_controller = [self.navigationController.viewControllers firstObject];
+	if (self.navigationController.topViewController != root_controller) {
+		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
+	}
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"new_button" target:self action:@selector(promptNewPost:)];
 }
 
