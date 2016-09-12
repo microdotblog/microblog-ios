@@ -49,11 +49,21 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	[self.serversTableView selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+	[self setupNavigation];
+}
+
 - (void) setupNavigation
 {
 	self.title = @"Settings";
 	
-	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
+	UIViewController* root_controller = [self.navigationController.viewControllers firstObject];
+	if (self.navigationController.topViewController != root_controller) {
+		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
+	}
 }
 
 - (void) setupServers
