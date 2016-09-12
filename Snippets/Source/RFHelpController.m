@@ -16,7 +16,7 @@
 {
 	self = [super initWithNibName:@"Help" bundle:nil];
 	if (self) {
-		self.url = [NSURL URLWithString:@"http://help.snippets.today/"];
+		self.url = [NSURL URLWithString:@"http://help.snippets.today/about"];
 	}
 	
 	return self;
@@ -49,12 +49,20 @@
 
 - (void) setupBrowser
 {
+	self.webView.delegate = self;
 	[self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
 }
 
 - (void) back:(id)sender
 {
 	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) webViewDidFinishLoad:(UIWebView *)webView
+{
+	NSString* js = @"$('#snippets_link').remove()";
+	[self.webView stringByEvaluatingJavaScriptFromString:js];
+
 }
 
 @end
