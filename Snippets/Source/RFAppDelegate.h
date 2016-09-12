@@ -12,11 +12,12 @@
 @class RFMenuController;
 @class RFTimelineController;
 
-@interface RFAppDelegate : UIResponder <UIApplicationDelegate>
+@interface RFAppDelegate : UIResponder <UIApplicationDelegate, UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow* window;
 @property (strong, nonatomic) UISplitViewController* splitViewController;
 @property (strong, nonatomic) UINavigationController* navigationController;
+@property (strong, nonatomic) UINavigationController* menuNavController;
 @property (strong, nonatomic) RFSignInController* signInController;
 @property (strong, nonatomic) RFMenuController* menuController;
 @property (strong, nonatomic) RFTimelineController* timelineController;

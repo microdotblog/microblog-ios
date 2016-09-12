@@ -23,6 +23,7 @@
 {
 	self = [super initWithNibName:@"Menu" bundle:nil];
 	if (self) {
+		self.edgesForExtendedLayout = UIRectEdgeNone;
 	}
 	
 	return self;
@@ -55,19 +56,19 @@
 - (IBAction) showTimeline:(id)sender
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] init];
-	[self.navigationController pushViewController:timeline_controller animated:YES];
+	[self notifyPushDetail:timeline_controller];
 }
 
 - (IBAction) showMentions:(id)sender
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/mentions" title:@"Mentions"];
-	[self.navigationController pushViewController:timeline_controller animated:YES];
+	[self notifyPushDetail:timeline_controller];
 }
 
 - (IBAction) showFavorites:(id)sender
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/favorites" title:@"Favorites"];
-	[self.navigationController pushViewController:timeline_controller animated:YES];
+	[self notifyPushDetail:timeline_controller];
 }
 
 - (IBAction) showHelp:(id)sender
@@ -83,7 +84,7 @@
 - (IBAction) showSettings:(id)sender
 {
 	RFSettingsController* settings_controller = [[RFSettingsController alloc] init];
-	[self.navigationController pushViewController:settings_controller animated:YES];
+	[self notifyPushDetail:settings_controller];
 }
 
 - (IBAction) signOut:(id)sender
@@ -103,6 +104,11 @@
 	[Answers logCustomEventWithName:@"Sign Out" customAttributes:nil];
 
 	[[NSNotificationCenter defaultCenter] postNotificationName:kShowSigninNotification object:self];
+}
+
+- (void) notifyPushDetail:(UIViewController *)controller
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:kPushDetailNotification object:self userInfo:@{ kPushDetailControllerKey: controller }];
 }
 
 @end

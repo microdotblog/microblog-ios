@@ -35,8 +35,8 @@
                     </subviews>
                     <color key="backgroundColor" red="0.81779628992080688" green="0.81779628992080688" blue="0.81779628992080688" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="lne-rP-Pd0" firstAttribute="top" secondItem="sKu-aF-vwl" secondAttribute="top" constant="73" id="IVC-MF-eoo"/>
-                        <constraint firstAttribute="height" constant="142" id="ltL-VD-D2C"/>
+                        <constraint firstItem="lne-rP-Pd0" firstAttribute="top" secondItem="sKu-aF-vwl" secondAttribute="top" constant="11" id="IVC-MF-eoo"/>
+                        <constraint firstAttribute="height" constant="81" id="ltL-VD-D2C"/>
                         <constraint firstItem="lne-rP-Pd0" firstAttribute="leading" secondItem="sKu-aF-vwl" secondAttribute="leading" constant="12" id="xws-o6-uH0"/>
                     </constraints>
                 </view>
@@ -243,7 +243,7 @@
                 <constraint firstItem="Bph-yI-JDn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aoe-YJ-OHe"/>
                 <constraint firstItem="zpR-ef-4dr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bXg-Nb-XlT"/>
                 <constraint firstItem="Bph-yI-JDn" firstAttribute="top" secondItem="6ar-f3-m0t" secondAttribute="bottom" id="bot-A6-vHy"/>
-                <constraint firstItem="v4I-5E-llr" firstAttribute="top" secondItem="A4s-dV-BQU" secondAttribute="bottom" constant="24" id="epm-Ya-LeE"/>
+                <constraint firstItem="v4I-5E-llr" firstAttribute="top" secondItem="A4s-dV-BQU" secondAttribute="bottom" constant="25" id="epm-Ya-LeE"/>
                 <constraint firstAttribute="trailing" secondItem="tYz-RX-OS1" secondAttribute="trailing" id="epy-5b-v0R"/>
                 <constraint firstItem="IF4-kS-Fgq" firstAttribute="top" secondItem="v4I-5E-llr" secondAttribute="bottom" id="f8F-UZ-e2h"/>
                 <constraint firstItem="r41-w0-7lH" firstAttribute="top" secondItem="IF4-kS-Fgq" secondAttribute="bottom" constant="11" id="fIy-Y3-ekk"/>
@@ -255,10 +255,10 @@
                 <constraint firstItem="sym-oT-SMk" firstAttribute="top" secondItem="B4S-QT-5lv" secondAttribute="bottom" constant="10" id="igx-le-XRI"/>
                 <constraint firstItem="ZSH-re-ZTc" firstAttribute="top" secondItem="tYz-RX-OS1" secondAttribute="bottom" id="ipp-Pd-aaN"/>
                 <constraint firstItem="9wW-WR-XZH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="j9U-jt-4KW"/>
-                <constraint firstItem="QOo-KS-5Fp" firstAttribute="top" secondItem="A4s-dV-BQU" secondAttribute="bottom" constant="25" id="lHi-mO-v6z"/>
+                <constraint firstItem="QOo-KS-5Fp" firstAttribute="top" secondItem="A4s-dV-BQU" secondAttribute="bottom" constant="26" id="lHi-mO-v6z"/>
                 <constraint firstItem="sKu-aF-vwl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="n5w-92-JoO"/>
                 <constraint firstAttribute="trailing" secondItem="6ar-f3-m0t" secondAttribute="trailing" id="o4J-CT-02g"/>
-                <constraint firstItem="A4s-dV-BQU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="95" id="pmy-ua-PBe"/>
+                <constraint firstItem="A4s-dV-BQU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="33" id="pmy-ua-PBe"/>
                 <constraint firstItem="EkV-QU-esD" firstAttribute="top" secondItem="YOe-L8-xaI" secondAttribute="bottom" constant="9" id="pqc-ly-fxM"/>
                 <constraint firstAttribute="trailing" secondItem="fbg-ms-cvD" secondAttribute="trailing" id="rei-V8-pfC"/>
                 <constraint firstAttribute="bottom" secondItem="cml-0g-CCo" secondAttribute="bottom" id="sHj-3n-vk8"/>
@@ -270,6 +270,7 @@
                 <constraint firstItem="A4s-dV-BQU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="80" id="z6M-iL-IEF"/>
                 <constraint firstItem="fbg-ms-cvD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zl4-3v-pj5"/>
             </constraints>
+            <point key="canvasLocation" x="15" y="30"/>
         </view>
     </objects>
 </document>

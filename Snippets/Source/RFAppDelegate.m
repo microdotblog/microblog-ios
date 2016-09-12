@@ -167,19 +167,22 @@
 	
 //	if (self.window.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
 
-//	self.splitViewController = [[UISplitViewController alloc] init];
-//	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineController];
-//
-//	self.splitViewController.viewControllers = @[ self.menuController, self.navigationController ];
-//
-//	[self.window makeKeyAndVisible];
-//	[self.window setRootViewController:self.splitViewController];
+	self.splitViewController = [[UISplitViewController alloc] init];
+	self.splitViewController.delegate = self;
 
-	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.menuController];
-	[self.navigationController pushViewController:self.timelineController animated:NO];
+	self.menuNavController = [[UINavigationController alloc] initWithRootViewController:self.menuController];
+	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineController];
+
+	self.splitViewController.viewControllers = @[ self.menuNavController, self.navigationController ];
 
 	[self.window makeKeyAndVisible];
-	[self.window setRootViewController:self.navigationController];
+	[self.window setRootViewController:self.splitViewController];
+
+//	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.menuController];
+//	[self.navigationController pushViewController:self.timelineController animated:NO];
+//
+//	[self.window makeKeyAndVisible];
+//	[self.window setRootViewController:self.navigationController];
 }
 
 - (void) setupSignin
@@ -204,6 +207,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConversationNotification:) name:kShowConversationNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReplyPostNotification:) name:kShowReplyPostNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasUnselectedNotification:) name:kPostWasUnselectedNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushDetailNotification:) name:kPushDetailNotification object:nil];
 }
 
 - (void) setupShortcuts
@@ -242,6 +246,18 @@
 	RFTimelineController* timeline_controller = (RFTimelineController *) self.navigationController.topViewController;
 	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
 		[timeline_controller setSelected:NO withPostID:post_id];
+	}
+}
+
+- (void) pushDetailNotification:(NSNotification *)notification
+{
+	UIViewController* controller = [notification.userInfo objectForKey:kPushDetailControllerKey];
+	if ([self.splitViewController isCollapsed]) {
+		[self.menuNavController pushViewController:controller animated:YES];
+	}
+	else {
+		self.navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+		self.splitViewController.viewControllers = @[ self.menuNavController, self.navigationController ];
 	}
 }
 
@@ -284,6 +300,40 @@
 	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountUsername"];
 
 	return ((token.length > 0) && (username.length > 0));
+}
+
+#pragma mark -
+
+- (BOOL) splitViewController:(UISplitViewController *)splitViewController showViewController:(UIViewController *)vc sender:(id)sender
+{
+	return NO;
+}
+
+- (BOOL) splitViewController:(UISplitViewController *)splitViewController showDetailViewController:(UIViewController *)vc sender:(id)sender
+{
+	return NO;
+}
+
+- (UIViewController *) primaryViewControllerForCollapsingSplitViewController:(UISplitViewController *)splitViewController
+{
+	return self.menuNavController;
+}
+
+- (UIViewController *) primaryViewControllerForExpandingSplitViewController:(UISplitViewController *)splitViewController
+{
+	return self.menuNavController;
+}
+
+- (BOOL) splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController
+{
+	[self.menuNavController popToRootViewControllerAnimated:YES];
+	return YES;
+}
+
+- (UIViewController *) splitViewController:(UISplitViewController *)splitViewController separateSecondaryViewControllerFromPrimaryViewController:(UIViewController *)primaryViewController
+{
+	[self.menuNavController popToRootViewControllerAnimated:YES];
+	return self.navigationController;
 }
 
 @end
