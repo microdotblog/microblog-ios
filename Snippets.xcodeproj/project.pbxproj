@@ -39,6 +39,7 @@
 		4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9A21B210A9A0038C0E5 /* RFTimelineController.m */; };
 		4BA2C9A61B210C0E0038C0E5 /* RFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9A51B210C0E0038C0E5 /* RFAppDelegate.m */; };
 		4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9A71B210C1C0038C0E5 /* main.m */; };
+		4BA3A1661D8877170097D02E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA3A1651D8877170097D02E /* CloudKit.framework */; };
 		4BA910761B83CDC400D58F83 /* RFMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910751B83CDC400D58F83 /* RFMenuController.m */; };
 		4BA910791B83CE7600D58F83 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910771B83CE7600D58F83 /* Menu.xib */; };
 		4BA9107C1B83CFD200D58F83 /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9107A1B83CFD200D58F83 /* SignIn.xib */; };
@@ -121,6 +122,8 @@
 		4BA2C9A41B210C0E0038C0E5 /* RFAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFAppDelegate.h; path = Source/RFAppDelegate.h; sourceTree = "<group>"; };
 		4BA2C9A51B210C0E0038C0E5 /* RFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFAppDelegate.m; path = Source/RFAppDelegate.m; sourceTree = "<group>"; };
 		4BA2C9A71B210C1C0038C0E5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Source/main.m; sourceTree = "<group>"; };
+		4BA3A1641D8876D70097D02E /* Snippets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Snippets.entitlements; path = Snippets/Snippets.entitlements; sourceTree = "<group>"; };
+		4BA3A1651D8877170097D02E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4BA910741B83CDC400D58F83 /* RFMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFMenuController.h; path = Source/RFMenuController.h; sourceTree = "<group>"; };
 		4BA910751B83CDC400D58F83 /* RFMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFMenuController.m; path = Source/RFMenuController.m; sourceTree = "<group>"; };
 		4BA910781B83CE7600D58F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Menu.xib; sourceTree = "<group>"; };
@@ -168,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BA3A1661D8877170097D02E /* CloudKit.framework in Frameworks */,
 				4BA910A21B84A54A00D58F83 /* Crashlytics.framework in Frameworks */,
 				4BA910A11B84A54A00D58F83 /* Fabric.framework in Frameworks */,
 			);
@@ -209,6 +213,7 @@
 		4BA2C96A1B2109D10038C0E5 = {
 			isa = PBXGroup;
 			children = (
+				4BA3A1641D8876D70097D02E /* Snippets.entitlements */,
 				4BA2C9751B2109D10038C0E5 /* Source */,
 				4BA2C99D1B2109E10038C0E5 /* Shared */,
 				4BA2C99C1B2109DC0038C0E5 /* Resources */,
@@ -311,6 +316,7 @@
 		4BA9109E1B84A53A00D58F83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4BA3A1651D8877170097D02E /* CloudKit.framework */,
 				4BA9109F1B84A54A00D58F83 /* Fabric.framework */,
 				4BA910A01B84A54A00D58F83 /* Crashlytics.framework */,
 			);
@@ -382,7 +388,13 @@
 						DevelopmentTeam = S4E235RUB9;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -672,6 +684,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = S4E235RUB9;
 				ENABLE_BITCODE = NO;
@@ -693,6 +706,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = S4E235RUB9;
 				ENABLE_BITCODE = NO;
