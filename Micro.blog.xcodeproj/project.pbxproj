@@ -112,7 +112,7 @@
 		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
 		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
 		4B5F75561B8CBA1F0074D88E /* RFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFConstants.h; path = Source/RFConstants.h; sourceTree = "<group>"; };
-		4BA2C9731B2109D10038C0E5 /* Snippets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snippets.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BA2C9731B2109D10038C0E5 /* Micro.blog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Micro.blog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA2C9771B2109D10038C0E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BA2C9831B2109D10038C0E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4BA2C9861B2109D10038C0E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 		4BA2C9741B2109D10038C0E5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4BA2C9731B2109D10038C0E5 /* Snippets.app */,
+				4BA2C9731B2109D10038C0E5 /* Micro.blog.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -356,9 +356,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4BA2C9721B2109D10038C0E5 /* Snippets */ = {
+		4BA2C9721B2109D10038C0E5 /* Micro.blog */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4BA2C9961B2109D10038C0E5 /* Build configuration list for PBXNativeTarget "Snippets" */;
+			buildConfigurationList = 4BA2C9961B2109D10038C0E5 /* Build configuration list for PBXNativeTarget "Micro.blog" */;
 			buildPhases = (
 				4BA2C96F1B2109D10038C0E5 /* Sources */,
 				4BA2C9701B2109D10038C0E5 /* Frameworks */,
@@ -369,9 +369,9 @@
 			);
 			dependencies = (
 			);
-			name = Snippets;
+			name = Micro.blog;
 			productName = Snippets;
-			productReference = 4BA2C9731B2109D10038C0E5 /* Snippets.app */;
+			productReference = 4BA2C9731B2109D10038C0E5 /* Micro.blog.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -401,7 +401,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4BA2C96E1B2109D10038C0E5 /* Build configuration list for PBXProject "Snippets" */;
+			buildConfigurationList = 4BA2C96E1B2109D10038C0E5 /* Build configuration list for PBXProject "Micro.blog" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -414,7 +414,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4BA2C9721B2109D10038C0E5 /* Snippets */,
+				4BA2C9721B2109D10038C0E5 /* Micro.blog */,
 			);
 		};
 /* End PBXProject section */
@@ -727,7 +727,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4BA2C96E1B2109D10038C0E5 /* Build configuration list for PBXProject "Snippets" */ = {
+		4BA2C96E1B2109D10038C0E5 /* Build configuration list for PBXProject "Micro.blog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4BA2C9941B2109D10038C0E5 /* Debug */,
@@ -736,7 +736,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4BA2C9961B2109D10038C0E5 /* Build configuration list for PBXNativeTarget "Snippets" */ = {
+		4BA2C9961B2109D10038C0E5 /* Build configuration list for PBXNativeTarget "Micro.blog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4BA2C9971B2109D10038C0E5 /* Debug */,
