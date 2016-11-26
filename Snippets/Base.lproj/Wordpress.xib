@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8173.3" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Avenir.ttc">
+        <array key="Avenir.ttc">
             <string>Avenir-Book</string>
-            <string>Avenir-Book</string>
-            <string>Avenir-Book</string>
-            <string>Avenir-Book</string>
-            <string>Avenir-Book</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFWordpressController">
@@ -32,35 +31,31 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BpA-v5-XLl">
                     <rect key="frame" x="0.0" y="82" width="320" height="43"/>
-                    <animations/>
-                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="iFy-18-uwk"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you don't have a hosted Snippets.today microblog, you can publish to an existing WordPress or Movable Type weblog." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cly-g5-kFI">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you don't have a hosted Micro.blog microblog, you can publish to an existing WordPress or Movable Type weblog." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cly-g5-kFI">
                     <rect key="frame" x="10" y="8" width="300" height="73"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="73" id="Zb1-gD-DtF"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the username and password for your weblog:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFW-mC-TeU">
                     <rect key="frame" x="10" y="129" width="300" height="56"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="spP-rq-cox"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="web site URL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TzH-OI-c2x">
                     <rect key="frame" x="8" y="89" width="277" height="30"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="SMD-eV-iE8"/>
                     </constraints>
@@ -72,7 +67,6 @@
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gzj-9l-IxU">
                     <rect key="frame" x="8" y="193" width="304" height="30"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="mgg-em-mTD"/>
                     </constraints>
@@ -84,7 +78,6 @@
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="whL-Vr-TSM">
                     <rect key="frame" x="8" y="231" width="304" height="30"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="lig-sw-eBn"/>
                     </constraints>
@@ -96,15 +89,13 @@
                 </textField>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="evH-yf-ybV">
                     <rect key="frame" x="292" y="94" width="20" height="20"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="PJR-Fl-X9p"/>
                         <constraint firstAttribute="height" constant="20" id="cah-Ng-OKl"/>
                     </constraints>
                 </activityIndicatorView>
             </subviews>
-            <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="evH-yf-ybV" firstAttribute="top" secondItem="Cly-g5-kFI" secondAttribute="bottom" constant="13" id="0eH-TZ-83k"/>
                 <constraint firstAttribute="trailing" secondItem="gzj-9l-IxU" secondAttribute="trailing" constant="8" id="2nd-bd-XTj"/>
@@ -127,7 +118,6 @@
                 <constraint firstItem="Cly-g5-kFI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="wbd-UX-H6F"/>
                 <constraint firstAttribute="trailing" secondItem="WFW-mC-TeU" secondAttribute="trailing" constant="10" id="zXw-wX-cYP"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="92" y="178"/>
         </view>
         <view contentMode="scaleToFill" id="e8J-F5-w0R">
@@ -136,18 +126,15 @@
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghs-Vb-cYZ">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <animations/>
                 </scrollView>
             </subviews>
-            <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="ghs-Vb-cYZ" firstAttribute="top" secondItem="e8J-F5-w0R" secondAttribute="top" id="1aZ-nF-L6s"/>
                 <constraint firstItem="ghs-Vb-cYZ" firstAttribute="leading" secondItem="e8J-F5-w0R" secondAttribute="leading" id="7fp-nY-VHt"/>
                 <constraint firstAttribute="bottom" secondItem="ghs-Vb-cYZ" secondAttribute="bottom" id="Xir-1p-KWq"/>
                 <constraint firstAttribute="trailing" secondItem="ghs-Vb-cYZ" secondAttribute="trailing" id="mSF-gZ-PYF"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="469" y="178"/>
         </view>
     </objects>

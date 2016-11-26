@@ -1,15 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Avenir.ttc">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
             <string>Avenir-Medium</string>
-            <string>Avenir-Book</string>
-            <string>Avenir-Book</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFSignInController">
@@ -26,19 +28,19 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phR-tm-5p6">
                     <rect key="frame" x="0.0" y="137" width="320" height="43"/>
-                    <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="uvn-eJ-SiF"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a Snippets.today app token or your email address:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6V4-1T-7uy">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a Micro.blog app token or your email address:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6V4-1T-7uy">
                     <rect key="frame" x="31" y="80" width="258" height="46"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="258" id="29l-OC-V93"/>
                         <constraint firstAttribute="height" constant="46" id="ho6-Eh-HvJ"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can find these in your account page on the web. Or enter your email address to receive a sign-in link." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-Up-MMg">
@@ -48,17 +50,17 @@
                         <constraint firstAttribute="height" constant="68" id="MDh-X5-oty"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app requires a Snippets.today account. Snippets.today is a timeline and publishing service for microblogs." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-IB-pTa">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app requires a Micro.blog account. Micro.blog is a timeline and publishing service for microblogs." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-IB-pTa">
                     <rect key="frame" x="31" y="271" width="258" height="73"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="73" id="axv-AS-sex"/>
                         <constraint firstAttribute="width" constant="258" id="eZ4-DO-hI1"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address or app token" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZD-8e-rD1">
@@ -75,13 +77,13 @@
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTE-zP-eNE" customClass="RFThinLineView">
                     <rect key="frame" x="0.0" y="265" width="320" height="1"/>
-                    <color key="backgroundColor" white="0.89740005630630637" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.89740008115768433" green="0.89740008115768433" blue="0.89740008115768433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="qNy-No-J2u"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fTE-zP-eNE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0ns-hk-nfY"/>
                 <constraint firstItem="6V4-1T-7uy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1ju-3m-hYa"/>
@@ -98,7 +100,6 @@
                 <constraint firstItem="nqK-IB-pTa" firstAttribute="top" secondItem="fTE-zP-eNE" secondAttribute="bottom" constant="5" id="d22-25-rOc"/>
                 <constraint firstItem="phR-tm-5p6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jiE-R0-bK0"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
 </document>

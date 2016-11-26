@@ -1,15 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8173.3" systemVersion="15A263e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Avenir.ttc">
+        <array key="Avenir.ttc">
             <string>Avenir-Book</string>
             <string>Avenir-Light</string>
-            <string>Avenir-Light</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFPostController">
@@ -31,8 +33,7 @@
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7T-Eg-dhD">
                             <rect key="frame" x="5" y="5" width="310" height="537"/>
-                            <animations/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="twitter"/>
                             <connections>
@@ -41,28 +42,25 @@
                         </textView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="280" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjg-el-aBq">
                             <rect key="frame" x="238" y="544" width="77" height="24"/>
-                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="NOL-2t-4nm"/>
                                 <constraint firstAttribute="width" constant="77" id="aNR-jT-LWU"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username.snippets.today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boh-G1-f3J">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username.micro.blog" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boh-G1-f3J">
                             <rect key="frame" x="5" y="544" width="225" height="24"/>
-                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="252-7H-VXL"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <animations/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="F7T-Eg-dhD" firstAttribute="top" secondItem="VbH-di-quh" secondAttribute="top" constant="5" id="BvK-VL-hdz"/>
                         <constraint firstAttribute="bottom" secondItem="qjg-el-aBq" secondAttribute="bottom" id="JZb-jo-aDJ"/>
@@ -76,15 +74,13 @@
                     </constraints>
                 </view>
             </subviews>
-            <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="VbH-di-quh" secondAttribute="trailing" id="EtI-8F-n08"/>
                 <constraint firstAttribute="bottom" secondItem="VbH-di-quh" secondAttribute="bottom" id="Ga7-Zr-cJ3"/>
                 <constraint firstItem="VbH-di-quh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="K6B-pq-R5p"/>
                 <constraint firstItem="VbH-di-quh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZLo-BP-189"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
 </document>
