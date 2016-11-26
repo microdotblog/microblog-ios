@@ -33,7 +33,7 @@
 {
 	[super viewDidLoad];
 	
-	self.title = @"micro.blog";
+	self.title = @"Micro.blog";
 }
 
 - (void) viewWillAppear:(BOOL)animated
