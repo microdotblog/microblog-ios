@@ -21,10 +21,13 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>com.riverfold.snippets.url</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>microblog</string>
 				<string>snippets-today</string>
 			</array>
 		</dict>
