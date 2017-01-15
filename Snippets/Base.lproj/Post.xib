@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -41,17 +41,17 @@
                             </connections>
                         </textView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="280" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjg-el-aBq">
-                            <rect key="frame" x="238" y="544" width="77" height="24"/>
+                            <rect key="frame" x="244" y="544" width="71" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="NOL-2t-4nm"/>
-                                <constraint firstAttribute="width" constant="77" id="aNR-jT-LWU"/>
+                                <constraint firstAttribute="width" constant="71" id="aNR-jT-LWU"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username.micro.blog" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boh-G1-f3J">
-                            <rect key="frame" x="5" y="544" width="225" height="24"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username.micro.blog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boh-G1-f3J">
+                            <rect key="frame" x="61" y="544" width="181" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="252-7H-VXL"/>
                             </constraints>
@@ -59,16 +59,26 @@
                             <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vZ-FK-rFO">
+                            <rect key="frame" x="1" y="542" width="26" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="1yr-af-iIe"/>
+                                <constraint firstAttribute="width" constant="26" id="ESl-tf-NhZ"/>
+                            </constraints>
+                            <state key="normal" image="camera_icon"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="F7T-Eg-dhD" firstAttribute="top" secondItem="VbH-di-quh" secondAttribute="top" constant="5" id="BvK-VL-hdz"/>
                         <constraint firstAttribute="bottom" secondItem="qjg-el-aBq" secondAttribute="bottom" id="JZb-jo-aDJ"/>
                         <constraint firstAttribute="trailing" secondItem="qjg-el-aBq" secondAttribute="trailing" constant="5" id="Jbf-ad-8hz"/>
-                        <constraint firstItem="boh-G1-f3J" firstAttribute="leading" secondItem="VbH-di-quh" secondAttribute="leading" constant="5" id="RSb-gG-keR"/>
                         <constraint firstItem="qjg-el-aBq" firstAttribute="top" secondItem="F7T-Eg-dhD" secondAttribute="bottom" constant="2" id="SYo-JA-hsn"/>
-                        <constraint firstItem="qjg-el-aBq" firstAttribute="leading" secondItem="boh-G1-f3J" secondAttribute="trailing" constant="8" id="W4t-CS-7hN"/>
+                        <constraint firstItem="qjg-el-aBq" firstAttribute="leading" secondItem="boh-G1-f3J" secondAttribute="trailing" constant="2" id="W4t-CS-7hN"/>
                         <constraint firstItem="F7T-Eg-dhD" firstAttribute="leading" secondItem="VbH-di-quh" secondAttribute="leading" constant="5" id="bXJ-D8-NX2"/>
+                        <constraint firstItem="boh-G1-f3J" firstAttribute="leading" secondItem="7vZ-FK-rFO" secondAttribute="trailing" constant="34" id="i4l-8C-Hr4"/>
+                        <constraint firstItem="7vZ-FK-rFO" firstAttribute="leading" secondItem="VbH-di-quh" secondAttribute="leading" constant="1" id="icD-Rq-Fyn"/>
+                        <constraint firstAttribute="bottom" secondItem="7vZ-FK-rFO" secondAttribute="bottom" constant="1" id="vuv-o9-sEk"/>
                         <constraint firstAttribute="trailing" secondItem="F7T-Eg-dhD" secondAttribute="trailing" constant="5" id="wis-jH-YNI"/>
                         <constraint firstItem="boh-G1-f3J" firstAttribute="top" secondItem="F7T-Eg-dhD" secondAttribute="bottom" constant="2" id="wry-nA-2tZ"/>
                     </constraints>
@@ -83,4 +93,7 @@
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="camera_icon" width="16" height="16"/>
+    </resources>
 </document>
