@@ -10,6 +10,7 @@
 
 #import "RFPostController.h"
 #import "RFWordpressController.h"
+#import "RFExternalController.h"
 #import "RFCategoriesController.h"
 #import "RFConstants.h"
 #import "UIBarButtonItem+Extras.h"
@@ -213,7 +214,8 @@
 //	}
 
 	if ([self needsExternalBlogSetup]) {
-		RFWordpressController* wordpress_controller = [[RFWordpressController alloc] init];
+//		RFWordpressController* wordpress_controller = [[RFWordpressController alloc] init];
+		RFExternalController* wordpress_controller = [[RFExternalController alloc] init];
 		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:wordpress_controller];
 		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 	}

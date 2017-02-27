@@ -18,10 +18,11 @@
 
 @implementation RFWordpressController
 
-- (instancetype) init
+- (instancetype) initWithWebsite:(NSString *)websiteURL
 {
 	self = [super initWithNibName:@"Wordpress" bundle:nil];
 	if (self) {
+		self.websiteURL = websiteURL;
 	}
 	
 	return self;
@@ -32,7 +33,7 @@
 	[super viewDidLoad];
 
 	[self setupNavigation];
-	[self setupScrollView];
+	[self setupScrollView];	
 }
 
 - (void) setupNavigation
@@ -82,12 +83,7 @@
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
-	if (textField == self.websiteField) {
-		RFDispatchMainAsync (^{
-			[self.usernameField becomeFirstResponder];
-		});
-	}
-	else if (textField == self.usernameField) {
+	if (textField == self.usernameField) {
 		RFDispatchMainAsync (^{
 			[self.passwordField becomeFirstResponder];
 		});
@@ -113,7 +109,7 @@
 	[self.view endEditing:NO];
 	[self.progressSpinner startAnimating];
 	
-	RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:[self normalizeURL:self.websiteField.text]];
+	RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:[self normalizeURL:self.websiteURL]];
 	[request discoverEndpointWithCompletion:^(NSString* xmlrpcEndpointURL, NSString* blogID) {
 		RFDispatchMainAsync (^{
 			[self.progressSpinner stopAnimating];
