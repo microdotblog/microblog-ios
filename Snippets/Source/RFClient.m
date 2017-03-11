@@ -108,6 +108,8 @@ static NSString* const kServerSchemeAndHostname = @"http://localhost:3000";
 	return [UUHttpSession executeRequest:request completionHandler:handler];
 }
 
+#pragma mark -
+
 - (UUHttpRequest *) putWithObject:(id)object completion:(void (^)(UUHttpResponse* response))handler
 {
 	NSData* d;
@@ -123,6 +125,48 @@ static NSString* const kServerSchemeAndHostname = @"http://localhost:3000";
 
 	return [UUHttpSession executeRequest:request completionHandler:handler];
 }
+
+- (UUHttpRequest *) uploadImageData:(NSData *)imageData named:(NSString *)imageName httpMethod:(NSString *)method queryArguments:(NSDictionary *)args completion:(void (^)(UUHttpResponse* response))handler
+{
+	NSString* boundary = [[NSProcessInfo processInfo] globallyUniqueString];
+	NSMutableData* d = [NSMutableData data];
+
+	for (NSString* k in [args allKeys]) {
+		NSString* val = [args objectForKey:k];
+		[d appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+		[d appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", k] dataUsingEncoding:NSUTF8StringEncoding]];
+		[d appendData:[[NSString stringWithFormat:@"%@\r\n", val] dataUsingEncoding:NSUTF8StringEncoding]];
+	}
+
+	if (imageData) {
+		[d appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+		[d appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", imageName] dataUsingEncoding:NSUTF8StringEncoding]];
+		[d appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+		[d appendData:imageData];
+		[d appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+	}
+
+	[d appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	
+	UUHttpRequest* request;
+	
+	if ([[method uppercaseString] isEqualToString:@"PUT"]) {
+		request = [UUHttpRequest putRequest:self.url queryArguments:nil body:d contentType:@"application/json"];
+	}
+	else {
+		request = [UUHttpRequest postRequest:self.url queryArguments:nil body:d contentType:@"application/json"];
+	}
+	[self setupRequest:request];
+	
+	NSString* content_type = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+	NSMutableDictionary* headers = [request.headerFields mutableCopy];
+	[headers setObject:content_type forKey:@"Content-Type"];
+	request.headerFields = headers;
+
+	return [UUHttpSession executeRequest:request completionHandler:handler];
+}
+
+#pragma mark -
 
 - (UUHttpRequest *) deleteWithObject:(id)object completion:(void (^)(UUHttpResponse* response))handler
 {

@@ -70,5 +70,11 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The location may be used when posting photos.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>For taking new photos and posting them.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>For choosing photos to upload.</string>
 </dict>
 </plist>

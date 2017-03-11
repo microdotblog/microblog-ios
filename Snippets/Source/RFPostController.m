@@ -243,6 +243,53 @@
 
 - (IBAction) showPhotos:(id)sender
 {
+	ImagePickerController* picker_controller = [[ImagePickerController alloc] init];
+	picker_controller.delegate = self;
+	picker_controller.imageLimit = 1;
+	[self presentViewController:picker_controller animated:YES completion:NULL];
+}
+
+- (void) uploadPhoto:(UIImage *)image
+{
+	NSData* d = UIImageJPEGRepresentation (image, 0.6);
+	if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
+		RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];
+		NSDictionary* args = @{
+		};
+		[client uploadImageData:d named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
+			NSDictionary* headers = response.httpResponse.allHeaderFields;
+			NSString* image_url = headers[@"Location"];
+			NSString* s = self.textView.text;
+			s = [s stringByAppendingFormat:@"<img src=\"%@\" />", image_url];
+
+			RFDispatchMainAsync (^{
+				self.textView.text = s;
+				[Answers logCustomEventWithName:@"Uploaded Photo" customAttributes:nil];
+			});
+		}];
+	}
+	else {
+		// ...
+	}
+}
+
+#pragma mark -
+
+- (void) wrapperDidPress:(ImagePickerController * _Nonnull)imagePicker images:(NSArray<UIImage *> * _Nonnull)images
+{
+	UIImage* img = [images firstObject];
+	[self uploadPhoto:img];
+	[self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void) doneButtonDidPress:(ImagePickerController * _Nonnull)imagePicker images:(NSArray<UIImage *> * _Nonnull)images
+{
+	[self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void) cancelButtonDidPress:(ImagePickerController * _Nonnull)imagePicker
+{
+	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end
