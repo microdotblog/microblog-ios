@@ -17,4 +17,9 @@
 	return [f numberFromString:self];
 }
 
+- (NSString *) rf_urlEncoded
+{
+	return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+}
+
 @end

@@ -167,9 +167,9 @@
 	}
 	else {
 		if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
-			RFClient* client = [[RFClient alloc] initWithPath:@"/pages/create"];
+			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
 			NSDictionary* args = @{
-				@"text": self.textView.text
+				@"content": self.textView.text
 			};
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
 				RFDispatchMainAsync (^{
@@ -239,6 +239,10 @@
 - (IBAction) close:(id)sender
 {
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (IBAction) showPhotos:(id)sender
+{
 }
 
 @end

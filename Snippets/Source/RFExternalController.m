@@ -15,6 +15,8 @@
 #import "UUAlert.h"
 #import "SSKeychain.h"
 #import "UUHttpSession.h"
+#import "NSString+Extras.h"
+#import <SafariServices/SafariServices.h>
 
 @implementation RFExternalController
 
@@ -75,6 +77,31 @@
 		else {
 			RFXMLLinkParser* micropub_parser = [RFXMLLinkParser parsedResponseFromData:response.rawResponse withRelValue:@"micropub"];
 			if ([micropub_parser.foundURLs count] > 0) {
+				RFXMLLinkParser* auth_parser = [RFXMLLinkParser parsedResponseFromData:response.rawResponse withRelValue:@"authorization_endpoint"];
+				RFXMLLinkParser* token_parser = [RFXMLLinkParser parsedResponseFromData:response.rawResponse withRelValue:@"token_endpoint"];
+				if (([auth_parser.foundURLs count] > 0) && ([token_parser.foundURLs count] > 0)) {
+					NSString* auth_endpoint = [auth_parser.foundURLs firstObject];
+					NSString* token_endpoint = [token_parser.foundURLs firstObject];
+
+					NSMutableString* auth_with_params = [auth_endpoint mutableCopy];
+					if (![auth_with_params containsString:@"?"]) {
+						[auth_with_params appendString:@"?"];
+					}
+					[auth_with_params appendFormat:@"me=%@", [full_url rf_urlEncoded]];
+					[auth_with_params appendFormat:@"&redirect_uri=%@", [@"snippets-today://micropub" rf_urlEncoded]];
+					[auth_with_params appendFormat:@"&client_id=%@", [@"https://micro.blog/" rf_urlEncoded]];
+//					[auth_with_params appendFormat:@"&state=%@", "12345"];
+					[auth_with_params appendString:@"&scope=create"];
+					[auth_with_params appendString:@"&response_type=code"];
+
+					SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:auth_with_params]];
+					[self presentViewController:safari_controller animated:YES completion:NULL];
+					
+				// load authorization_endpoint in SafariViewController
+				// redirect back to app with auth code
+				// hit tokens service with auth code, get access token
+				// post content to Micropub endpoint with access token
+				}
 			}
 		}
 	}];

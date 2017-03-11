@@ -12,6 +12,7 @@
 #import "RFWordpressController.h"
 #import "RFExternalController.h"
 #import "RFCategoriesController.h"
+#import "RFClient.h"
 #import "RFConstants.h"
 #import "UIBarButtonItem+Extras.h"
 #import "SSKeychain.h"
@@ -246,23 +247,23 @@
 	long timezone_offset = 0 - [[NSTimeZone systemTimeZone] secondsFromGMTForDate:now] / 60;
 	int width = [UIApplication sharedApplication].keyWindow.bounds.size.width;
 
-	NSString* url;
+	RFClient* client;
 	if ([self.endpoint isEqualToString:@"/iphone/mentions"]) {
-		url = [NSString stringWithFormat:@"http://snippets.today/iphone/mentions?width=%d", width];
+		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
 	}
 	else if ([self.endpoint isEqualToString:@"/iphone/favorites"]) {
-		url = [NSString stringWithFormat:@"http://snippets.today/iphone/favorites?width=%d", width];
+		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
 	}
 	else if ([self.endpoint containsString:@"/iphone/conversation"]) {
-		url = [NSString stringWithFormat:@"http://snippets.today%@?width=%d", self.endpoint, width];
+		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
 	}
 	else if ([self.endpoint containsString:@"/iphone/posts/"]) {
-		url = [NSString stringWithFormat:@"http://snippets.today%@?width=%d", self.endpoint, width];
+		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
 	}
 	else {
-		url = [NSString stringWithFormat:@"http://snippets.today/iphone/signin?token=%@&width=%d&minutes=%ld", token, width, timezone_offset];
+		client = [[RFClient alloc] initWithFormat:@"/iphone/signin?token=%@&width=%d&minutes=%ld", token, width, timezone_offset];
 	}
-	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:client.url]]];
 }
 
 - (void) loadTimelineNotification:(NSNotification *)notification

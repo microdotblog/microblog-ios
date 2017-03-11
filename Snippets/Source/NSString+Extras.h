@@ -11,5 +11,6 @@
 @interface NSString (Extras)
 
 - (NSNumber *) rf_numberValue;
+- (NSString *) rf_urlEncoded;
 
 @end
