@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
+#import <PhotosUI/PhotosUI.h>
 
-@interface RFPhotosController : UIViewController
+@interface RFPhotosController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
+
+@property (strong, nonatomic) PHFetchResult* photosResult;
 
 @end

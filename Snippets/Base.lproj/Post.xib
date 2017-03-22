@@ -44,7 +44,7 @@
                             <rect key="frame" x="0.0" y="538" width="320" height="29"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username.micro.blog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boh-G1-f3J">
-                                    <rect key="frame" x="63" y="5" width="181" height="24"/>
+                                    <rect key="frame" x="63" y="4" width="181" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="9up-YL-alF"/>
                                     </constraints>
@@ -53,7 +53,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vZ-FK-rFO">
-                                    <rect key="frame" x="3" y="3" width="26" height="25"/>
+                                    <rect key="frame" x="2" y="3" width="26" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="26" id="oMW-jt-Qsf"/>
                                         <constraint firstAttribute="height" constant="25" id="yfr-3Y-lLm"/>
@@ -64,7 +64,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="280" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjg-el-aBq">
-                                    <rect key="frame" x="246" y="5" width="71" height="24"/>
+                                    <rect key="frame" x="245" y="4" width="71" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="JBm-LG-Dg9"/>
                                         <constraint firstAttribute="width" constant="71" id="fdP-Wb-Bgy"/>
@@ -76,14 +76,14 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="boh-G1-f3J" firstAttribute="leading" secondItem="7vZ-FK-rFO" secondAttribute="trailing" constant="34" id="AhL-Aw-Hi3"/>
-                                <constraint firstAttribute="bottom" secondItem="qjg-el-aBq" secondAttribute="bottom" id="Ifl-cU-8hH"/>
-                                <constraint firstAttribute="trailing" secondItem="qjg-el-aBq" secondAttribute="trailing" constant="3" id="bPO-DW-9ek"/>
+                                <constraint firstItem="boh-G1-f3J" firstAttribute="leading" secondItem="7vZ-FK-rFO" secondAttribute="trailing" constant="35" id="AhL-Aw-Hi3"/>
+                                <constraint firstAttribute="bottom" secondItem="qjg-el-aBq" secondAttribute="bottom" constant="1" id="Ifl-cU-8hH"/>
+                                <constraint firstAttribute="trailing" secondItem="qjg-el-aBq" secondAttribute="trailing" constant="4" id="bPO-DW-9ek"/>
                                 <constraint firstAttribute="bottom" secondItem="7vZ-FK-rFO" secondAttribute="bottom" constant="1" id="bcQ-MM-Z5o"/>
-                                <constraint firstItem="qjg-el-aBq" firstAttribute="leading" secondItem="boh-G1-f3J" secondAttribute="trailing" constant="2" id="gVz-T6-YAZ"/>
-                                <constraint firstItem="7vZ-FK-rFO" firstAttribute="leading" secondItem="I8I-kA-x0u" secondAttribute="leading" constant="3" id="tP2-jP-ApP"/>
+                                <constraint firstItem="qjg-el-aBq" firstAttribute="leading" secondItem="boh-G1-f3J" secondAttribute="trailing" constant="1" id="gVz-T6-YAZ"/>
+                                <constraint firstItem="7vZ-FK-rFO" firstAttribute="leading" secondItem="I8I-kA-x0u" secondAttribute="leading" constant="2" id="tP2-jP-ApP"/>
                                 <constraint firstAttribute="height" constant="29" id="tW9-Sy-xTw"/>
-                                <constraint firstAttribute="bottom" secondItem="boh-G1-f3J" secondAttribute="bottom" id="uO6-Yc-WSn"/>
+                                <constraint firstAttribute="bottom" secondItem="boh-G1-f3J" secondAttribute="bottom" constant="1" id="uO6-Yc-WSn"/>
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="va1-Ew-xJV">

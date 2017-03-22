@@ -53,7 +53,7 @@
 	if ([self.tokenField.text containsString:@"@"]) {
 		[self sendSigninEmail];
 	}
-	else {
+	else if (self.tokenField.text.length > 0) {
 		[self verifyAppToken];
 	}
 }
@@ -112,7 +112,7 @@
 			}
 			else {
 				self.tokenField.text = @"";
-				self.instructionsField.text = @"Email sent! Check your email on this device. Look for the special link that starts with snippets-today://.";
+				self.instructionsField.text = @"Email sent! Check your email on this device. Look for the special link that starts with microblog://.";
 			}
 		}));
 	}];

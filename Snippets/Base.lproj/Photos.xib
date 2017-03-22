@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFPhotosController">
             <connections>
+                <outlet property="collectionView" destination="5ch-YY-uXp" id="XfD-Kv-5T4"/>
                 <outlet property="view" destination="iN0-l3-epB" id="BZR-S9-Qbz"/>
             </connections>
         </placeholder>
@@ -24,12 +25,16 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="162" id="0GC-0B-bb2"/>
                     </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iUS-BP-E2N">
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iUS-BP-E2N">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="wNJ-6k-yi6"/>
+                        <outlet property="delegate" destination="-1" id="F8N-aT-kHc"/>
+                    </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="leU-W1-6cN">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>

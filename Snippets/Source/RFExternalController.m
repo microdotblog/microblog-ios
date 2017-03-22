@@ -88,7 +88,7 @@
 						[auth_with_params appendString:@"?"];
 					}
 					[auth_with_params appendFormat:@"me=%@", [full_url rf_urlEncoded]];
-					[auth_with_params appendFormat:@"&redirect_uri=%@", [@"snippets-today://micropub" rf_urlEncoded]];
+					[auth_with_params appendFormat:@"&redirect_uri=%@", [@"microblog://micropub" rf_urlEncoded]];
 					[auth_with_params appendFormat:@"&client_id=%@", [@"https://micro.blog/" rf_urlEncoded]];
 //					[auth_with_params appendFormat:@"&state=%@", "12345"];
 					[auth_with_params appendString:@"&scope=create"];

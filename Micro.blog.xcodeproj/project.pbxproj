@@ -16,6 +16,8 @@
 		4B0D556F1B9552F40076AD9F /* Categories.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D556D1B9552F40076AD9F /* Categories.xib */; };
 		4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */; };
 		4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */; };
+		4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E41F1E82F5B50032F54B /* Photos.framework */; };
+		4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E4201E82F5B50032F54B /* PhotosUI.framework */; };
 		4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
 		4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */; };
 		4B1BD2811D87548C00B3C93D /* RFHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BD2801D87548C00B3C93D /* RFHelpController.m */; };
@@ -66,9 +68,9 @@
 		4B8714D21E64D05700C69589 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714B41E64D05700C69589 /* utf8.c */; };
 		4B8714D31E64D05700C69589 /* win32tc.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714B71E64D05700C69589 /* win32tc.c */; };
 		4B94052D1E2933DE00B01E79 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B94052C1E2933DE00B01E79 /* Images.xcassets */; };
-		4B96800D1E7476F100C9E459 /* ImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B96800C1E7476F100C9E459 /* ImagePicker.framework */; };
-		4B96800E1E74770A00C9E459 /* ImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B96800C1E7476F100C9E459 /* ImagePicker.framework */; };
-		4B96800F1E74770A00C9E459 /* ImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B96800C1E7476F100C9E459 /* ImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4B9A7BA71E82F107002A49E5 /* RFPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A7BA61E82F107002A49E5 /* RFPhotoCell.m */; };
+		4B9A7BAA1E82F149002A49E5 /* RFPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A7BA91E82F149002A49E5 /* RFPhoto.m */; };
+		4B9A7BAD1E82F1C1002A49E5 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B9A7BAB1E82F1C1002A49E5 /* PhotoCell.xib */; };
 		4BA2C9871B2109D10038C0E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */; };
 		4BA2C9A01B210A620038C0E5 /* Timeline.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C99E1B210A620038C0E5 /* Timeline.xib */; };
 		4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9A21B210A9A0038C0E5 /* RFTimelineController.m */; };
@@ -106,7 +108,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4B96800F1E74770A00C9E459 /* ImagePicker.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,6 +130,8 @@
 		4B0D55711B95586F0076AD9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingChoiceCell.xib; sourceTree = "<group>"; };
 		4B0D55731B9559EC0076AD9F /* RFSettingChoiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFSettingChoiceCell.h; path = Source/RFSettingChoiceCell.h; sourceTree = "<group>"; };
 		4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFSettingChoiceCell.m; path = Source/RFSettingChoiceCell.m; sourceTree = "<group>"; };
+		4B14E41F1E82F5B50032F54B /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		4B14E4201E82F5B50032F54B /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		4B1BAEFE1B852BC9008097F7 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = Shared/SSKeychain/SSKeychain.h; sourceTree = SOURCE_ROOT; };
 		4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Shared/SSKeychain/SSKeychain.m; sourceTree = SOURCE_ROOT; };
 		4B1BAF001B852BC9008097F7 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychainQuery.h; path = Shared/SSKeychain/SSKeychainQuery.h; sourceTree = SOURCE_ROOT; };
@@ -224,7 +227,11 @@
 		4B8714B71E64D05700C69589 /* win32tc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = win32tc.c; sourceTree = "<group>"; };
 		4B8714B81E64D05700C69589 /* win32tc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = win32tc.h; sourceTree = "<group>"; };
 		4B94052C1E2933DE00B01E79 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4B96800C1E7476F100C9E459 /* ImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImagePicker.framework; path = Carthage/Build/iOS/ImagePicker.framework; sourceTree = SOURCE_ROOT; };
+		4B9A7BA51E82F107002A49E5 /* RFPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFPhotoCell.h; path = Source/RFPhotoCell.h; sourceTree = "<group>"; };
+		4B9A7BA61E82F107002A49E5 /* RFPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFPhotoCell.m; path = Source/RFPhotoCell.m; sourceTree = "<group>"; };
+		4B9A7BA81E82F149002A49E5 /* RFPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFPhoto.h; path = Source/RFPhoto.h; sourceTree = "<group>"; };
+		4B9A7BA91E82F149002A49E5 /* RFPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFPhoto.m; path = Source/RFPhoto.m; sourceTree = "<group>"; };
+		4B9A7BAC1E82F1C1002A49E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PhotoCell.xib; sourceTree = "<group>"; };
 		4BA2C9731B2109D10038C0E5 /* Micro.blog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Micro.blog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA2C9771B2109D10038C0E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BA2C9861B2109D10038C0E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -283,10 +290,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */,
+				4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */,
 				4BA3A1661D8877170097D02E /* CloudKit.framework in Frameworks */,
 				4BA910A21B84A54A00D58F83 /* Crashlytics.framework in Frameworks */,
-				4B96800E1E74770A00C9E459 /* ImagePicker.framework in Frameworks */,
-				4B96800D1E7476F100C9E459 /* ImagePicker.framework in Frameworks */,
 				4BA910A11B84A54A00D58F83 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +471,10 @@
 				4BA910811B83D20C00D58F83 /* RFPostController.m */,
 				4B3BD0DD1E82B5F800F4B4E0 /* RFPhotosController.h */,
 				4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */,
+				4B9A7BA51E82F107002A49E5 /* RFPhotoCell.h */,
+				4B9A7BA61E82F107002A49E5 /* RFPhotoCell.m */,
+				4B9A7BA81E82F149002A49E5 /* RFPhoto.h */,
+				4B9A7BA91E82F149002A49E5 /* RFPhoto.m */,
 				4B8714751E64C0DD00C69589 /* RFExternalController.h */,
 				4B8714761E64C0DD00C69589 /* RFExternalController.m */,
 				4B0D55531B93B3590076AD9F /* RFWordpressController.h */,
@@ -506,6 +517,7 @@
 				4BA9107A1B83CFD200D58F83 /* SignIn.xib */,
 				4BA910831B83D22900D58F83 /* Post.xib */,
 				4B3BD0E01E82B61700F4B4E0 /* Photos.xib */,
+				4B9A7BAB1E82F1C1002A49E5 /* PhotoCell.xib */,
 				4B1BD2821D8754DC00B3C93D /* Help.xib */,
 				4B8714721E64C07800C69589 /* External.xib */,
 				4B0D55561B93B3F00076AD9F /* Wordpress.xib */,
@@ -533,7 +545,8 @@
 		4BA9109E1B84A53A00D58F83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4B96800C1E7476F100C9E459 /* ImagePicker.framework */,
+				4B14E41F1E82F5B50032F54B /* Photos.framework */,
+				4B14E4201E82F5B50032F54B /* PhotosUI.framework */,
 				4BA3A1651D8877170097D02E /* CloudKit.framework */,
 				4BA9109F1B84A54A00D58F83 /* Fabric.framework */,
 				4BA910A01B84A54A00D58F83 /* Crashlytics.framework */,
@@ -652,6 +665,7 @@
 				4BA910791B83CE7600D58F83 /* Menu.xib in Resources */,
 				4B5F75551B8CABF30074D88E /* Options.xib in Resources */,
 				4B0D55581B93B3F00076AD9F /* Wordpress.xib in Resources */,
+				4B9A7BAD1E82F1C1002A49E5 /* PhotoCell.xib in Resources */,
 				4B94052D1E2933DE00B01E79 /* Images.xcassets in Resources */,
 				4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */,
 				4B1BD2841D8754DC00B3C93D /* Help.xib in Resources */,
@@ -689,6 +703,7 @@
 				4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */,
 				4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */,
 				4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */,
+				4B9A7BAA1E82F149002A49E5 /* RFPhoto.m in Sources */,
 				4B0D55691B93C0390076AD9F /* RFXMLRSDParser.m in Sources */,
 				4B8714C41E64D05700C69589 /* entities.c in Sources */,
 				4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */,
@@ -753,6 +768,7 @@
 				4B8714C51E64D05700C69589 /* fileio.c in Sources */,
 				4B3BD0DF1E82B5F800F4B4E0 /* RFPhotosController.m in Sources */,
 				4B8714C21E64D05700C69589 /* clean.c in Sources */,
+				4B9A7BA71E82F107002A49E5 /* RFPhotoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,6 +837,14 @@
 				4B8714731E64C07800C69589 /* Base */,
 			);
 			name = External.xib;
+			sourceTree = "<group>";
+		};
+		4B9A7BAB1E82F1C1002A49E5 /* PhotoCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B9A7BAC1E82F1C1002A49E5 /* Base */,
+			);
+			name = PhotoCell.xib;
 			sourceTree = "<group>";
 		};
 		4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */ = {

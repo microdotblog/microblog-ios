@@ -34,11 +34,12 @@
 	[super viewDidLoad];
 	
 	self.title = @"Micro.blog";
+	self.usernameField.text = @"";
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void) viewDidAppear:(BOOL)animated
 {
-	[super viewWillAppear:animated];
+	[super viewDidAppear:animated];
 	
 	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountUsername"];
 	NSString* gravatar_url = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountGravatarURL"];
