@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFPhotosController">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="BZR-S9-Qbz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5ch-YY-uXp">
+                    <rect key="frame" x="0.0" y="505" width="375" height="162"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="162" id="0GC-0B-bb2"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iUS-BP-E2N">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="leU-W1-6cN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="closePhotos:" destination="-1" eventType="touchUpInside" id="maM-GD-VzQ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="5ch-YY-uXp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1ih-qd-xor"/>
+                <constraint firstAttribute="trailing" secondItem="5ch-YY-uXp" secondAttribute="trailing" id="D1v-3I-I5Q"/>
+                <constraint firstItem="5ch-YY-uXp" firstAttribute="top" secondItem="leU-W1-6cN" secondAttribute="bottom" id="FwC-vF-Ph5"/>
+                <constraint firstAttribute="bottom" secondItem="5ch-YY-uXp" secondAttribute="bottom" id="P7a-jb-Zi7"/>
+                <constraint firstAttribute="trailing" secondItem="leU-W1-6cN" secondAttribute="trailing" id="cMk-VX-rSX"/>
+                <constraint firstItem="leU-W1-6cN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nw7-63-8lj"/>
+                <constraint firstItem="leU-W1-6cN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ztM-In-0eK"/>
+            </constraints>
+            <point key="canvasLocation" x="53.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

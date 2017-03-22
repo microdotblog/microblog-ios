@@ -8,6 +8,7 @@
 
 #import "RFPostController.h"
 
+#import "RFPhotosController.h"
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "RFXMLRPCParser.h"
@@ -88,13 +89,18 @@
 
 - (void) setupBlogName
 {
-	if (([self hasSnippetsBlog] && ![self prefersExternalBlog]) || self.isReply) {
+	if (self.isReply) {
 		self.blognameField.hidden = YES;
 	}
 	else {
-		NSString* endpoint_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogEndpoint"];
-		NSURL* endpoint_url = [NSURL URLWithString:endpoint_s];
-		self.blognameField.text = endpoint_url.host;
+		if ([self hasSnippetsBlog]) {
+			self.blognameField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountDefaultSite"];
+		}
+		else {
+			NSString* endpoint_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogEndpoint"];
+			NSURL* endpoint_url = [NSURL URLWithString:endpoint_s];
+			self.blognameField.text = endpoint_url.host;
+		}
 	}
 }
 
@@ -243,10 +249,8 @@
 
 - (IBAction) showPhotos:(id)sender
 {
-	ImagePickerController* picker_controller = [[ImagePickerController alloc] init];
-	picker_controller.delegate = self;
-	picker_controller.imageLimit = 1;
-	[self presentViewController:picker_controller animated:YES completion:NULL];
+	RFPhotosController* photos_controller = [[RFPhotosController alloc] init];
+	[self presentViewController:photos_controller animated:YES completion:NULL];
 }
 
 - (void) uploadPhoto:(UIImage *)image
@@ -271,25 +275,6 @@
 	else {
 		// ...
 	}
-}
-
-#pragma mark -
-
-- (void) wrapperDidPress:(ImagePickerController * _Nonnull)imagePicker images:(NSArray<UIImage *> * _Nonnull)images
-{
-	UIImage* img = [images firstObject];
-	[self uploadPhoto:img];
-	[self dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (void) doneButtonDidPress:(ImagePickerController * _Nonnull)imagePicker images:(NSArray<UIImage *> * _Nonnull)images
-{
-	[self dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (void) cancelButtonDidPress:(ImagePickerController * _Nonnull)imagePicker
-{
-	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

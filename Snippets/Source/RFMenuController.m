@@ -87,6 +87,7 @@
 {
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountUsername"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountGravatarURL"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountDefaultSite"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogUsername"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogApp"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogEndpoint"];

@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ImagePicker/ImagePicker-Swift.h>
 
-@interface RFPostController : UIViewController <UITextViewDelegate, ImagePickerDelegate>
+@interface RFPostController : UIViewController <UITextViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextView* textView;
 @property (strong, nonatomic) IBOutlet UILabel* remainingField;
