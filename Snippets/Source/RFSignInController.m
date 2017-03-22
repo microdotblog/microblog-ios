@@ -12,6 +12,7 @@
 #import "RFMacros.h"
 #import "RFConstants.h"
 #import "UUAlert.h"
+#import "UILabel+MarkupExtensions.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -102,7 +103,8 @@
 {
 	RFClient* client = [[RFClient alloc] initWithPath:@"/account/signin"];
 	NSDictionary* args = @{
-		@"email": self.tokenField.text
+		@"email": self.tokenField.text,
+		@"is_mobile": @"1"
 	};
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
 		RFDispatchMainAsync ((^{
@@ -112,7 +114,7 @@
 			}
 			else {
 				self.tokenField.text = @"";
-				self.instructionsField.text = @"Email sent! Check your email on this device. Look for the special link that starts with microblog://.";
+				self.instructionsField.text = @"Email sent! Check your email on this device and tap the \"Open in Micro.blog on iOS\" button.";
 			}
 		}));
 	}];
