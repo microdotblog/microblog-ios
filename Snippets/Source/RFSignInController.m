@@ -122,7 +122,7 @@
 		RFDispatchMainAsync ((^{
 			NSString* error = [response.parsedResponse objectForKey:@"error"];
 			if (error) {
-				self.instructionsField.text = [NSString stringWithFormat:@"Error: %@", error];
+				[self showMessage:[NSString stringWithFormat:@"Error signing in: %@", error]];
 			}
 			else {
 				self.tokenField.text = @"";
