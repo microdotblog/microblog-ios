@@ -59,6 +59,18 @@
 	}
 }
 
+- (void) showMessage:(NSString *)message
+{
+	self.messageField.text = message;
+	if (self.messageContainer.alpha == 0.0) {
+		[UIView animateWithDuration:0.3 animations:^{
+			self.messageTopConstraint.constant = 64;
+			self.messageContainer.alpha = 1.0;
+			[self.view layoutIfNeeded];
+		}];
+	}
+}
+
 - (void) verifyAppToken
 {
 	RFClient* client = [[RFClient alloc] initWithPath:@"/iphone/verify"];
@@ -68,10 +80,10 @@
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
 		NSString* error = [response.parsedResponse objectForKey:@"error"];
 		if (error) {
-			RFDispatchMainAsync (^{
+			RFDispatchMainAsync ((^{
 				[Answers logLoginWithMethod:@"Token" success:@NO customAttributes:nil];
-				[UIAlertView uuShowOneButtonAlert:@"Error Signing In" message:error button:@"OK" completionHandler:NULL];
-			});
+				[self showMessage:[NSString stringWithFormat:@"Error signing in: %@", error]];
+			}));
 		}
 		else {
 			NSString* full_name = [response.parsedResponse objectForKey:@"full_name"];
@@ -114,7 +126,7 @@
 			}
 			else {
 				self.tokenField.text = @"";
-				self.instructionsField.text = @"Email sent! Check your email on this device and tap the \"Open in Micro.blog on iOS\" button.";
+				[self showMessage:@"Email sent! Check your email on this device and tap the \"Open in Micro.blog on iOS\" button."];
 			}
 		}));
 	}];

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,6 +17,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFSignInController">
             <connections>
                 <outlet property="instructionsField" destination="OqG-Up-MMg" id="dTL-xC-cs7"/>
+                <outlet property="messageContainer" destination="9Zr-YD-fRb" id="FNw-oA-Kn7"/>
+                <outlet property="messageField" destination="5m8-7r-f4A" id="Hg6-wk-1dj"/>
+                <outlet property="messageTopConstraint" destination="otr-jQ-b1x" id="hrC-hO-07h"/>
                 <outlet property="tokenField" destination="1ZD-8e-rD1" id="feo-wl-dem"/>
                 <outlet property="view" destination="iN0-l3-epB" id="1ij-Vc-zNB"/>
             </connections>
@@ -27,14 +30,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phR-tm-5p6">
-                    <rect key="frame" x="0.0" y="137" width="320" height="43"/>
+                    <rect key="frame" x="0.0" y="147" width="320" height="43"/>
                     <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="uvn-eJ-SiF"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a Micro.blog app token or your email address:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6V4-1T-7uy">
-                    <rect key="frame" x="31" y="80" width="258" height="46"/>
+                    <rect key="frame" x="31" y="90" width="258" height="46"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="258" id="29l-OC-V93"/>
                         <constraint firstAttribute="height" constant="46" id="ho6-Eh-HvJ"/>
@@ -44,7 +47,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can find these in your account page on the web. Or enter your email address to receive a sign-in link." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-Up-MMg">
-                    <rect key="frame" x="31" y="189" width="258" height="68"/>
+                    <rect key="frame" x="31" y="199" width="258" height="68"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="258" id="A9a-QO-YsC"/>
                         <constraint firstAttribute="height" constant="68" id="MDh-X5-oty"/>
@@ -54,7 +57,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app requires a Micro.blog account. Micro.blog is a timeline and publishing service for microblogs." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-IB-pTa">
-                    <rect key="frame" x="31" y="271" width="258" height="73"/>
+                    <rect key="frame" x="31" y="281" width="258" height="73"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="73" id="axv-AS-sex"/>
                         <constraint firstAttribute="width" constant="258" id="eZ4-DO-hI1"/>
@@ -64,7 +67,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address or app token" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZD-8e-rD1">
-                    <rect key="frame" x="31" y="144" width="258" height="30"/>
+                    <rect key="frame" x="31" y="154" width="258" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="258" id="QQV-j5-m22"/>
                         <constraint firstAttribute="height" constant="30" id="TSi-ho-JFa"/>
@@ -76,10 +79,29 @@
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTE-zP-eNE" customClass="RFThinLineView">
-                    <rect key="frame" x="0.0" y="265" width="320" height="1"/>
+                    <rect key="frame" x="0.0" y="275" width="320" height="1"/>
                     <color key="backgroundColor" red="0.89740008115768433" green="0.89740008115768433" blue="0.89740008115768433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="qNy-No-J2u"/>
+                    </constraints>
+                </view>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Zr-YD-fRb">
+                    <rect key="frame" x="0.0" y="15" width="320" height="65"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error: message here." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5m8-7r-f4A">
+                            <rect key="frame" x="17" y="7" width="286" height="54"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.97244364023208618" green="0.97260981798171997" blue="0.97243314981460571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="5m8-7r-f4A" firstAttribute="leading" secondItem="9Zr-YD-fRb" secondAttribute="leading" constant="17" id="8SJ-h1-OiW"/>
+                        <constraint firstItem="5m8-7r-f4A" firstAttribute="top" secondItem="9Zr-YD-fRb" secondAttribute="top" constant="7" id="96q-dz-6qt"/>
+                        <constraint firstAttribute="bottom" secondItem="5m8-7r-f4A" secondAttribute="bottom" constant="4" id="Qq2-6r-8Mv"/>
+                        <constraint firstAttribute="height" constant="65" id="eGg-XX-6IC"/>
+                        <constraint firstAttribute="trailing" secondItem="5m8-7r-f4A" secondAttribute="trailing" constant="17" id="zRx-vD-TmF"/>
                     </constraints>
                 </view>
             </subviews>
@@ -89,16 +111,19 @@
                 <constraint firstItem="6V4-1T-7uy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1ju-3m-hYa"/>
                 <constraint firstItem="phR-tm-5p6" firstAttribute="top" secondItem="6V4-1T-7uy" secondAttribute="bottom" constant="11" id="536-z7-3AH"/>
                 <constraint firstItem="1ZD-8e-rD1" firstAttribute="top" secondItem="6V4-1T-7uy" secondAttribute="bottom" constant="18" id="86w-60-8ft"/>
-                <constraint firstItem="6V4-1T-7uy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="Emd-Er-dGI"/>
+                <constraint firstItem="6V4-1T-7uy" firstAttribute="top" secondItem="9Zr-YD-fRb" secondAttribute="bottom" constant="10" id="H8U-KG-9I8"/>
                 <constraint firstItem="OqG-Up-MMg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HrN-A0-6eP"/>
+                <constraint firstItem="9Zr-YD-fRb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RbU-8X-0Lq"/>
                 <constraint firstItem="OqG-Up-MMg" firstAttribute="top" secondItem="1ZD-8e-rD1" secondAttribute="bottom" constant="15" id="RpX-7o-QO0"/>
                 <constraint firstAttribute="trailing" secondItem="phR-tm-5p6" secondAttribute="trailing" id="T5c-Fn-DxE"/>
                 <constraint firstItem="fTE-zP-eNE" firstAttribute="top" secondItem="OqG-Up-MMg" secondAttribute="bottom" constant="8" id="TvT-c0-MOs"/>
+                <constraint firstAttribute="trailing" secondItem="9Zr-YD-fRb" secondAttribute="trailing" id="Y8p-ll-uVb"/>
                 <constraint firstAttribute="trailing" secondItem="fTE-zP-eNE" secondAttribute="trailing" id="YJO-OH-ADp"/>
                 <constraint firstItem="1ZD-8e-rD1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yjm-KY-fJH"/>
                 <constraint firstItem="nqK-IB-pTa" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="akN-xv-pvl"/>
                 <constraint firstItem="nqK-IB-pTa" firstAttribute="top" secondItem="fTE-zP-eNE" secondAttribute="bottom" constant="5" id="d22-25-rOc"/>
                 <constraint firstItem="phR-tm-5p6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jiE-R0-bK0"/>
+                <constraint firstItem="9Zr-YD-fRb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="otr-jQ-b1x"/>
             </constraints>
         </view>
     </objects>
