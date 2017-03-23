@@ -37,9 +37,12 @@
 
 - (void) updateToken:(NSString *)appToken
 {
-	self.tokenField.text = appToken;
 	if (appToken.length > 0) {
-		[self.view endEditing:NO];
+		RFDispatchSeconds (0.5, ^{
+			self.tokenField.text = appToken;
+			[self.view endEditing:NO];
+			[self verifyAppToken];
+		});
 	}
 }
 

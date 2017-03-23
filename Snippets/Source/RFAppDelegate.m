@@ -183,7 +183,7 @@
 		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:self.signInController];
 		[self.menuController.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 	}
-	
+
 	[self.signInController updateToken:appToken];
 }
 
