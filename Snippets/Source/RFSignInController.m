@@ -54,6 +54,8 @@
 
 - (IBAction) finish:(id)sender
 {
+	[self.networkSpinner startAnimating];
+	
 	if ([self.tokenField.text containsString:@"@"]) {
 		[self sendSigninEmail];
 	}
@@ -72,6 +74,8 @@
 			[self.view layoutIfNeeded];
 		}];
 	}
+
+	[self.networkSpinner stopAnimating];
 }
 
 - (void) verifyAppToken

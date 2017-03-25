@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel* messageField;
 @property (strong, nonatomic) IBOutlet UIView* messageContainer;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* messageTopConstraint;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView* networkSpinner;
 
 - (void) updateToken:(NSString *)appToken;
 

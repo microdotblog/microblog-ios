@@ -20,6 +20,7 @@
                 <outlet property="messageContainer" destination="9Zr-YD-fRb" id="FNw-oA-Kn7"/>
                 <outlet property="messageField" destination="5m8-7r-f4A" id="Hg6-wk-1dj"/>
                 <outlet property="messageTopConstraint" destination="otr-jQ-b1x" id="hrC-hO-07h"/>
+                <outlet property="networkSpinner" destination="og7-T2-Oy9" id="vfd-sF-uhv"/>
                 <outlet property="tokenField" destination="1ZD-8e-rD1" id="feo-wl-dem"/>
                 <outlet property="view" destination="iN0-l3-epB" id="1ij-Vc-zNB"/>
             </connections>
@@ -31,8 +32,19 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phR-tm-5p6">
                     <rect key="frame" x="0.0" y="147" width="320" height="43"/>
+                    <subviews>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="og7-T2-Oy9">
+                            <rect key="frame" x="293" y="12" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="RF2-FY-199"/>
+                                <constraint firstAttribute="height" constant="20" id="WrH-Ts-dls"/>
+                            </constraints>
+                        </activityIndicatorView>
+                    </subviews>
                     <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="og7-T2-Oy9" secondAttribute="trailing" constant="7" id="YEs-TK-CuZ"/>
+                        <constraint firstItem="og7-T2-Oy9" firstAttribute="top" secondItem="phR-tm-5p6" secondAttribute="top" constant="12" id="YTU-9y-a3Y"/>
                         <constraint firstAttribute="height" constant="43" id="uvn-eJ-SiF"/>
                     </constraints>
                 </view>
