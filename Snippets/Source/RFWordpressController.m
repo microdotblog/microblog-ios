@@ -71,6 +71,7 @@
 	[[NSUserDefaults standardUserDefaults] setObject:self.usernameField.text forKey:@"ExternalBlogUsername"];
 	[[NSUserDefaults standardUserDefaults] setObject:xmlrpcEndpointURL forKey:@"ExternalBlogEndpoint"];
 	[[NSUserDefaults standardUserDefaults] setObject:blogID forKey:@"ExternalBlogID"];
+	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ExternalBlogIsPreferred"];
 	[SSKeychain setPassword:self.passwordField.text forService:@"ExternalBlog" account:@"default"];
 	
 	if ([xmlrpcEndpointURL containsString:@"xmlrpc.php"]) {
