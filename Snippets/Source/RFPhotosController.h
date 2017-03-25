@@ -13,6 +13,7 @@
 @interface RFPhotosController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
+@property (strong, nonatomic) IBOutlet UIButton* overlayButton;
 
 @property (strong, nonatomic) PHFetchResult* photosResult;
 

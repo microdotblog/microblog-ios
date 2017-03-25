@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFPhotosController">
             <connections>
                 <outlet property="collectionView" destination="5ch-YY-uXp" id="XfD-Kv-5T4"/>
+                <outlet property="overlayButton" destination="leU-W1-6cN" id="wvl-I8-nCI"/>
                 <outlet property="view" destination="iN0-l3-epB" id="BZR-S9-Qbz"/>
             </connections>
         </placeholder>
@@ -38,7 +39,7 @@
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="leU-W1-6cN">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
-                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <action selector="closePhotos:" destination="-1" eventType="touchUpInside" id="maM-GD-VzQ"/>
                     </connections>
