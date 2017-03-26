@@ -5,12 +5,14 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFFiltersController">
             <connections>
                 <outlet property="collectionView" destination="xb4-Uy-xke" id="Zau-gN-k7r"/>
+                <outlet property="croppingScrollView" destination="CBq-4M-B2F" id="QFo-Sy-2WW"/>
                 <outlet property="view" destination="iN0-l3-epB" id="1JO-2S-BTt"/>
             </connections>
         </placeholder>
@@ -19,9 +21,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBq-4M-B2F" customClass="FAScrollView" customModule="Microblog" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="104" width="375" height="375"/>
+                </scrollView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xb4-Uy-xke">
                     <rect key="frame" x="0.0" y="504" width="375" height="163"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.83999999999999997" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="163" id="xvz-oe-ziU"/>
                     </constraints>
@@ -38,7 +43,11 @@
                 </collectionView>
             </subviews>
             <constraints>
+                <constraint firstItem="xb4-Uy-xke" firstAttribute="top" secondItem="CBq-4M-B2F" secondAttribute="bottom" constant="25" id="8PR-qq-nkz"/>
                 <constraint firstAttribute="bottom" secondItem="xb4-Uy-xke" secondAttribute="bottom" id="9wV-If-YB6"/>
+                <constraint firstItem="CBq-4M-B2F" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Vmw-bo-f44"/>
+                <constraint firstItem="CBq-4M-B2F" firstAttribute="height" secondItem="xb4-Uy-xke" secondAttribute="width" id="WUN-sF-DzB"/>
+                <constraint firstAttribute="trailing" secondItem="CBq-4M-B2F" secondAttribute="trailing" id="abx-za-zKV"/>
                 <constraint firstItem="xb4-Uy-xke" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dbG-A3-5ix"/>
                 <constraint firstAttribute="trailing" secondItem="xb4-Uy-xke" secondAttribute="trailing" id="tPp-ai-k2r"/>
             </constraints>

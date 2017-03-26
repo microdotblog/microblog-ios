@@ -9,6 +9,7 @@
 #import "RFPostController.h"
 
 #import "RFPhotosController.h"
+#import "RFPhoto.h"
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "RFXMLRPCParser.h"
@@ -83,6 +84,7 @@
 
 - (void) setupNotifications
 {
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attachPhotoNotification:) name:kAttachPhotoNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
 }
@@ -118,6 +120,13 @@
 	else {
 		self.remainingField.text = [NSString stringWithFormat:@"%ld/%ld", (long)num_chars, (long)max_chars];
 	}
+}
+
+- (void) attachPhotoNotification:(NSNotification *)notification
+{
+	UIImage* img = [notification.userInfo objectForKey:kAttachPhotoKey];
+	
+	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void) keyboardWillShowNotification:(NSNotification*)notification

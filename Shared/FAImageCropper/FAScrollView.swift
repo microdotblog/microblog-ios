@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FAScrollView: UIScrollView{
+@objc class FAScrollView: UIScrollView{
 
     // MARK: Class properties
     
@@ -55,7 +55,7 @@ class FAScrollView: UIScrollView{
     
     private func viewConfigurations(){
         
-        clipsToBounds = false;
+        clipsToBounds = true
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
         alwaysBounceHorizontal = true
@@ -103,6 +103,58 @@ class FAScrollView: UIScrollView{
         return max(widthScale, heightScale)
     }
 
+    public func captureVisibleRect() -> UIImage{
+        
+        let scrollContainerAsImage:UIImage = snapShotOfScrollContainer()
+        let visibleFrame:CGRect = visibleRectOf(imageView: self.imageView)
+
+        let imageView:UIImageView = UIImageView(image: scrollContainerAsImage)
+        imageView.frame.origin = visibleFrame.origin
+        
+        let containerView:UIView = UIView(frame: self.frame)
+        containerView.addSubview(imageView)
+        
+        UIGraphicsBeginImageContextWithOptions(visibleFrame.size, false, 0.0)
+        containerView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let visibleImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return visibleImage!
+
+    }
+
+    private func visibleRectOf(imageView:UIImageView) -> CGRect{
+
+        var visibleImageFrame:CGRect = CGRect(origin: .zero, size: self.frame.size)
+
+        let imageViewFrame:CGRect = imageView.frame
+
+        if imageViewFrame.origin.x > 0 {
+            visibleImageFrame.origin.x = -imageViewFrame.origin.x
+        }
+        
+        if imageViewFrame.origin.y > 0 {
+            visibleImageFrame.origin.y = -imageViewFrame.origin.y
+        }
+        
+        if imageViewFrame.size.width < self.frame.size.width {
+            visibleImageFrame.size.width = imageViewFrame.size.width
+        }
+
+        if imageViewFrame.size.height < self.frame.size.height {
+            visibleImageFrame.size.height = imageViewFrame.size.height
+        }
+        
+        return visibleImageFrame
+    }
+
+    private func snapShotOfScrollContainer() -> UIImage{
+        
+        UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0.0)
+        self.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
 }
 
 
@@ -118,7 +170,7 @@ extension FAScrollView:UIScrollViewDelegate{
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        gridView.isHidden = false
+//        gridView.isHidden = false
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -134,7 +186,7 @@ extension FAScrollView:UIScrollViewDelegate{
         
         switch scrollView.pinchGestureRecognizer!.state {
         case .changed:
-            gridView.isHidden = false
+//            gridView.isHidden = false
             break
         case .ended:
             gridView.isHidden = true

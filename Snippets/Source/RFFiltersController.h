@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Microblog-Swift.h"
 
 @class RFPhoto;
 
 @interface RFFiltersController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIScrollView* croppingScrollView;
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
 
 @property (strong, nonatomic) RFPhoto* photo;

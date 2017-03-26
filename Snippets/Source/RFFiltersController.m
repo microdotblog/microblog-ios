@@ -35,6 +35,7 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	[self setupNavigation];
 	[self setupFilters];
 	[self setupCollectionView];
+	[self setupScrollView];
 }
 
 - (void) setupNavigation
@@ -66,6 +67,15 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	[self.collectionView registerNib:[UINib nibWithNibName:@"FilterCell" bundle:nil] forCellWithReuseIdentifier:kFilterCellIdentifier];
 }
 
+- (void) setupScrollView
+{
+	PHImageManager* manager = [PHImageManager defaultManager];
+	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (800, 800) contentMode:PHImageContentModeAspectFill options:0 resultHandler:^(UIImage* result, NSDictionary* info) {
+		[self.croppingScrollView performSelector:@selector(setImageToDisplay:) withObject:result];
+		[self.croppingScrollView performSelector:@selector(zoom) withObject:nil];
+	}];
+}
+
 #pragma mark -
 
 - (void) close:(id)sender
@@ -75,7 +85,8 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 
 - (void) attachPhoto:(id)sender
 {
-	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+	UIImage* img = [self.croppingScrollView performSelector:@selector(captureVisibleRect) withObject:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kAttachPhotoNotification object:self userInfo:@{ kAttachPhotoKey: img }];
 }
 
 #pragma mark -

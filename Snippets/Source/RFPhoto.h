@@ -10,6 +10,9 @@
 #import <Photos/Photos.h>
 #import <PhotosUI/PhotosUI.h>
 
+static NSString* const kAttachPhotoNotification = @"RFAttachPhotoNotification";
+static NSString* const kAttachPhotoKey = @"photo";
+
 @interface RFPhoto : NSObject
 
 @property (strong) PHAsset* asset;

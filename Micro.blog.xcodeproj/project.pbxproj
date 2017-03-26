@@ -97,6 +97,7 @@
 		4BF1240D1E883D6C00B56138 /* FAImageCropperVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF124051E883D6C00B56138 /* FAImageCropperVC.swift */; };
 		4BF1240E1E883D6C00B56138 /* FAImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF124061E883D6C00B56138 /* FAImageLoader.swift */; };
 		4BF1240F1E883D6C00B56138 /* FAScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF124071E883D6C00B56138 /* FAScrollView.swift */; };
+		4BF124121E884A1100B56138 /* FAGridView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF124111E884A1100B56138 /* FAGridView.xib */; };
 		4BF803441B87AA2C00D6670C /* UUActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8032F1B87AA2C00D6670C /* UUActionSheet.m */; };
 		4BF803451B87AA2C00D6670C /* UUAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803311B87AA2C00D6670C /* UUAlert.m */; };
 		4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803331B87AA2C00D6670C /* UUDataCache.m */; };
@@ -281,6 +282,7 @@
 		4BF124051E883D6C00B56138 /* FAImageCropperVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAImageCropperVC.swift; sourceTree = "<group>"; };
 		4BF124061E883D6C00B56138 /* FAImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAImageLoader.swift; sourceTree = "<group>"; };
 		4BF124071E883D6C00B56138 /* FAScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAScrollView.swift; sourceTree = "<group>"; };
+		4BF124111E884A1100B56138 /* FAGridView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FAGridView.xib; sourceTree = "<group>"; };
 		4BF8032E1B87AA2C00D6670C /* UUActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUActionSheet.h; path = Shared/UUToolbox/UUActionSheet.h; sourceTree = SOURCE_ROOT; };
 		4BF8032F1B87AA2C00D6670C /* UUActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUActionSheet.m; path = Shared/UUToolbox/UUActionSheet.m; sourceTree = SOURCE_ROOT; };
 		4BF803301B87AA2C00D6670C /* UUAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUAlert.h; path = Shared/UUToolbox/UUAlert.h; sourceTree = SOURCE_ROOT; };
@@ -598,6 +600,7 @@
 				4BF124051E883D6C00B56138 /* FAImageCropperVC.swift */,
 				4BF124061E883D6C00B56138 /* FAImageLoader.swift */,
 				4BF124071E883D6C00B56138 /* FAScrollView.swift */,
+				4BF124111E884A1100B56138 /* FAGridView.xib */,
 			);
 			name = FAImageCropper;
 			path = ../Shared/FAImageCropper;
@@ -722,6 +725,7 @@
 				4B1BD2841D8754DC00B3C93D /* Help.xib in Resources */,
 				4B8714741E64C07800C69589 /* External.xib in Resources */,
 				4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */,
+				4BF124121E884A1100B56138 /* FAGridView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1053,6 +1057,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = S4E235RUB9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1065,6 +1070,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.riverfold.snippets;
+				PRODUCT_MODULE_NAME = Microblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1078,6 +1084,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = S4E235RUB9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1090,6 +1097,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.riverfold.snippets;
+				PRODUCT_MODULE_NAME = Microblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
