@@ -42,6 +42,7 @@
                 <constraint firstItem="xb4-Uy-xke" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dbG-A3-5ix"/>
                 <constraint firstAttribute="trailing" secondItem="xb4-Uy-xke" secondAttribute="trailing" id="tPp-ai-k2r"/>
             </constraints>
+            <nil key="simulatedTopBarMetrics"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>

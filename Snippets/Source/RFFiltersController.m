@@ -11,6 +11,7 @@
 #import "RFFilterCell.h"
 #import "RFFilter.h"
 #import "RFPhoto.h"
+#import "UIBarButtonItem+Extras.h"
 
 static NSString* const kFilterCellIdentifier = @"FilterCell";
 
@@ -20,6 +21,7 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 {
 	self = [super initWithNibName:@"Filters" bundle:nil];
 	if (self) {
+		self.edgesForExtendedLayout = UIRectEdgeNone;
 		self.photo = photo;
 	}
 	
@@ -30,8 +32,16 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 {
 	[super viewDidLoad];
 	
+	[self setupNavigation];
 	[self setupFilters];
 	[self setupCollectionView];
+}
+
+- (void) setupNavigation
+{
+	self.title = @"Filters";
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Attach" style:UIBarButtonItemStylePlain target:self action:@selector(attachPhoto:)];
 }
 
 - (void) setupFilters
@@ -54,6 +64,18 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 - (void) setupCollectionView
 {
 	[self.collectionView registerNib:[UINib nibWithNibName:@"FilterCell" bundle:nil] forCellWithReuseIdentifier:kFilterCellIdentifier];
+}
+
+#pragma mark -
+
+- (void) close:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void) attachPhoto:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark -

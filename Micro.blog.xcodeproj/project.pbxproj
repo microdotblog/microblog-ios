@@ -92,6 +92,11 @@
 		4BF123FA1E88301500B56138 /* RFFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123F91E88301500B56138 /* RFFilter.m */; };
 		4BF123FD1E88302B00B56138 /* RFFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123FC1E88302B00B56138 /* RFFilterCell.m */; };
 		4BF123FF1E88343600B56138 /* Filters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123FE1E88343600B56138 /* Filters.plist */; };
+		4BF1240A1E883D6C00B56138 /* FADetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF124021E883D6C00B56138 /* FADetailVC.swift */; };
+		4BF1240C1E883D6C00B56138 /* FAImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF124041E883D6C00B56138 /* FAImageCell.swift */; };
+		4BF1240D1E883D6C00B56138 /* FAImageCropperVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF124051E883D6C00B56138 /* FAImageCropperVC.swift */; };
+		4BF1240E1E883D6C00B56138 /* FAImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF124061E883D6C00B56138 /* FAImageLoader.swift */; };
+		4BF1240F1E883D6C00B56138 /* FAScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF124071E883D6C00B56138 /* FAScrollView.swift */; };
 		4BF803441B87AA2C00D6670C /* UUActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8032F1B87AA2C00D6670C /* UUActionSheet.m */; };
 		4BF803451B87AA2C00D6670C /* UUAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803311B87AA2C00D6670C /* UUAlert.m */; };
 		4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803331B87AA2C00D6670C /* UUDataCache.m */; };
@@ -271,6 +276,11 @@
 		4BF123FB1E88302B00B56138 /* RFFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFilterCell.h; path = Source/RFFilterCell.h; sourceTree = "<group>"; };
 		4BF123FC1E88302B00B56138 /* RFFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFFilterCell.m; path = Source/RFFilterCell.m; sourceTree = "<group>"; };
 		4BF123FE1E88343600B56138 /* Filters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Filters.plist; path = Resources/Filters.plist; sourceTree = "<group>"; };
+		4BF124021E883D6C00B56138 /* FADetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FADetailVC.swift; sourceTree = "<group>"; };
+		4BF124041E883D6C00B56138 /* FAImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAImageCell.swift; sourceTree = "<group>"; };
+		4BF124051E883D6C00B56138 /* FAImageCropperVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAImageCropperVC.swift; sourceTree = "<group>"; };
+		4BF124061E883D6C00B56138 /* FAImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAImageLoader.swift; sourceTree = "<group>"; };
+		4BF124071E883D6C00B56138 /* FAScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAScrollView.swift; sourceTree = "<group>"; };
 		4BF8032E1B87AA2C00D6670C /* UUActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUActionSheet.h; path = Shared/UUToolbox/UUActionSheet.h; sourceTree = SOURCE_ROOT; };
 		4BF8032F1B87AA2C00D6670C /* UUActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUActionSheet.m; path = Shared/UUToolbox/UUActionSheet.m; sourceTree = SOURCE_ROOT; };
 		4BF803301B87AA2C00D6670C /* UUAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUAlert.h; path = Shared/UUToolbox/UUAlert.h; sourceTree = SOURCE_ROOT; };
@@ -557,6 +567,7 @@
 		4BA2C99D1B2109E10038C0E5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4BF124001E883D6C00B56138 /* FAImageCropper */,
 				4B87147D1E64D05700C69589 /* CTidy */,
 				4B46631D1B8F51670034FC5C /* MarkupLabel */,
 				4BF8032D1B87AA2600D6670C /* UUToolbox */,
@@ -577,6 +588,19 @@
 			);
 			name = Frameworks;
 			path = Snippets;
+			sourceTree = "<group>";
+		};
+		4BF124001E883D6C00B56138 /* FAImageCropper */ = {
+			isa = PBXGroup;
+			children = (
+				4BF124021E883D6C00B56138 /* FADetailVC.swift */,
+				4BF124041E883D6C00B56138 /* FAImageCell.swift */,
+				4BF124051E883D6C00B56138 /* FAImageCropperVC.swift */,
+				4BF124061E883D6C00B56138 /* FAImageLoader.swift */,
+				4BF124071E883D6C00B56138 /* FAScrollView.swift */,
+			);
+			name = FAImageCropper;
+			path = ../Shared/FAImageCropper;
 			sourceTree = "<group>";
 		};
 		4BF8032D1B87AA2600D6670C /* UUToolbox */ = {
@@ -726,19 +750,24 @@
 			files = (
 				4B8714CF1E64D05700C69589 /* tags.c in Sources */,
 				4B8714B91E64D05700C69589 /* CTidy.m in Sources */,
+				4BF1240C1E883D6C00B56138 /* FAImageCell.swift in Sources */,
 				4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */,
 				4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */,
 				4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */,
+				4BF1240F1E883D6C00B56138 /* FAScrollView.swift in Sources */,
 				4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */,
 				4B9A7BAA1E82F149002A49E5 /* RFPhoto.m in Sources */,
 				4B0D55691B93C0390076AD9F /* RFXMLRSDParser.m in Sources */,
 				4B8714C41E64D05700C69589 /* entities.c in Sources */,
+				4BF1240A1E883D6C00B56138 /* FADetailVC.swift in Sources */,
 				4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */,
 				4B8714C61E64D05700C69589 /* iconvtc.c in Sources */,
 				4B46632B1B8F51710034FC5C /* CMarkupTransformer.m in Sources */,
 				4B8714D01E64D05700C69589 /* tidylib.c in Sources */,
+				4BF1240E1E883D6C00B56138 /* FAImageLoader.swift in Sources */,
 				4B8714BC1E64D05700C69589 /* attrask.c in Sources */,
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
+				4BF1240D1E883D6C00B56138 /* FAImageCropperVC.swift in Sources */,
 				4BF8034D1B87AA2C00D6670C /* UUImageView.m in Sources */,
 				4B0D554F1B9381550076AD9F /* RFXMLRPCParser.m in Sources */,
 				4B87147A1E64C56A00C69589 /* RFXMLLinkParser.m in Sources */,
@@ -1037,6 +1066,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.riverfold.snippets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1061,6 +1091,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.riverfold.snippets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

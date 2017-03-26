@@ -11,6 +11,7 @@
 #import "RFPhotoCell.h"
 #import "RFPhoto.h"
 #import "RFFiltersController.h"
+#import "RFMacros.h"
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
@@ -36,13 +37,29 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupPhotos
 {
-	self.photosResult = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:nil];
+	PHFetchOptions* options = [[PHFetchOptions alloc] init];
+	options.sortDescriptors = @[ [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO] ];
+
+	PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+	if (status == PHAuthorizationStatusAuthorized) {
+		self.photosResult = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:options];
+	}
+	else if (status == PHAuthorizationStatusNotDetermined) {
+		[PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+			if (status == PHAuthorizationStatusAuthorized) {
+				RFDispatchMain (^{
+					self.photosResult = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:options];
+					[self.collectionView reloadData];
+				});
+			}
+		}];
+	}
+	
 }
 
 - (void) setupCollectionView
 {
 	[self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCell" bundle:nil] forCellWithReuseIdentifier:kPhotoCellIdentifier];
-	[self.collectionView reloadData];
 }
 
 - (IBAction) closePhotos:(id)sender
@@ -78,9 +95,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	PHAsset* asset = [self.photosResult objectAtIndex:indexPath.item];
 	RFPhoto* photo = [[RFPhoto alloc] initWithAsset:asset];
+	
 	RFFiltersController* filters_controller = [[RFFiltersController alloc] initWithPhoto:photo];
-//	[self.navigationController pushViewController:filters_controller animated:YES];
-	[self presentViewController:filters_controller animated:YES completion:NULL];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:filters_controller];
+	[self presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
