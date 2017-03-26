@@ -86,6 +86,12 @@
 		4BA910981B84077000D58F83 /* UIBarButtonItem+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */; };
 		4BA910A11B84A54A00D58F83 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA9109F1B84A54A00D58F83 /* Fabric.framework */; };
 		4BA910A21B84A54A00D58F83 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA910A01B84A54A00D58F83 /* Crashlytics.framework */; };
+		4BF123F11E882F3000B56138 /* RFFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123F01E882F3000B56138 /* RFFiltersController.m */; };
+		4BF123F41E882F4500B56138 /* Filters.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123F21E882F4500B56138 /* Filters.xib */; };
+		4BF123F71E882F5400B56138 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123F51E882F5400B56138 /* FilterCell.xib */; };
+		4BF123FA1E88301500B56138 /* RFFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123F91E88301500B56138 /* RFFilter.m */; };
+		4BF123FD1E88302B00B56138 /* RFFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123FC1E88302B00B56138 /* RFFilterCell.m */; };
+		4BF123FF1E88343600B56138 /* Filters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123FE1E88343600B56138 /* Filters.plist */; };
 		4BF803441B87AA2C00D6670C /* UUActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8032F1B87AA2C00D6670C /* UUActionSheet.m */; };
 		4BF803451B87AA2C00D6670C /* UUAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803311B87AA2C00D6670C /* UUAlert.m */; };
 		4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803331B87AA2C00D6670C /* UUDataCache.m */; };
@@ -256,6 +262,15 @@
 		4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+Extras.m"; path = "Source/UIBarButtonItem+Extras.m"; sourceTree = "<group>"; };
 		4BA9109F1B84A54A00D58F83 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		4BA910A01B84A54A00D58F83 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		4BF123EF1E882F3000B56138 /* RFFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFiltersController.h; path = Source/RFFiltersController.h; sourceTree = "<group>"; };
+		4BF123F01E882F3000B56138 /* RFFiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFFiltersController.m; path = Source/RFFiltersController.m; sourceTree = "<group>"; };
+		4BF123F31E882F4500B56138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Filters.xib; sourceTree = "<group>"; };
+		4BF123F61E882F5400B56138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FilterCell.xib; sourceTree = "<group>"; };
+		4BF123F81E88301500B56138 /* RFFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFilter.h; path = Source/RFFilter.h; sourceTree = "<group>"; };
+		4BF123F91E88301500B56138 /* RFFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFFilter.m; path = Source/RFFilter.m; sourceTree = "<group>"; };
+		4BF123FB1E88302B00B56138 /* RFFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFilterCell.h; path = Source/RFFilterCell.h; sourceTree = "<group>"; };
+		4BF123FC1E88302B00B56138 /* RFFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFFilterCell.m; path = Source/RFFilterCell.m; sourceTree = "<group>"; };
+		4BF123FE1E88343600B56138 /* Filters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Filters.plist; path = Resources/Filters.plist; sourceTree = "<group>"; };
 		4BF8032E1B87AA2C00D6670C /* UUActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUActionSheet.h; path = Shared/UUToolbox/UUActionSheet.h; sourceTree = SOURCE_ROOT; };
 		4BF8032F1B87AA2C00D6670C /* UUActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUActionSheet.m; path = Shared/UUToolbox/UUActionSheet.m; sourceTree = SOURCE_ROOT; };
 		4BF803301B87AA2C00D6670C /* UUAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUAlert.h; path = Shared/UUToolbox/UUAlert.h; sourceTree = SOURCE_ROOT; };
@@ -475,6 +490,12 @@
 				4B9A7BA61E82F107002A49E5 /* RFPhotoCell.m */,
 				4B9A7BA81E82F149002A49E5 /* RFPhoto.h */,
 				4B9A7BA91E82F149002A49E5 /* RFPhoto.m */,
+				4BF123EF1E882F3000B56138 /* RFFiltersController.h */,
+				4BF123F01E882F3000B56138 /* RFFiltersController.m */,
+				4BF123F81E88301500B56138 /* RFFilter.h */,
+				4BF123F91E88301500B56138 /* RFFilter.m */,
+				4BF123FB1E88302B00B56138 /* RFFilterCell.h */,
+				4BF123FC1E88302B00B56138 /* RFFilterCell.m */,
 				4B8714751E64C0DD00C69589 /* RFExternalController.h */,
 				4B8714761E64C0DD00C69589 /* RFExternalController.m */,
 				4B0D55531B93B3590076AD9F /* RFWordpressController.h */,
@@ -510,6 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				4BA2C9771B2109D10038C0E5 /* Info.plist */,
+				4BF123FE1E88343600B56138 /* Filters.plist */,
 				4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */,
 				4BA910771B83CE7600D58F83 /* Menu.xib */,
 				4BA2C99E1B210A620038C0E5 /* Timeline.xib */,
@@ -518,6 +540,8 @@
 				4BA910831B83D22900D58F83 /* Post.xib */,
 				4B3BD0E01E82B61700F4B4E0 /* Photos.xib */,
 				4B9A7BAB1E82F1C1002A49E5 /* PhotoCell.xib */,
+				4BF123F21E882F4500B56138 /* Filters.xib */,
+				4BF123F51E882F5400B56138 /* FilterCell.xib */,
 				4B1BD2821D8754DC00B3C93D /* Help.xib */,
 				4B8714721E64C07800C69589 /* External.xib */,
 				4B0D55561B93B3F00076AD9F /* Wordpress.xib */,
@@ -656,11 +680,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BF123FF1E88343600B56138 /* Filters.plist in Resources */,
 				4BA2C9871B2109D10038C0E5 /* LaunchScreen.xib in Resources */,
 				4B5078D41B965E4F002A4F80 /* Settings.xib in Resources */,
 				4B0D556F1B9552F40076AD9F /* Categories.xib in Resources */,
 				4BA910851B83D22900D58F83 /* Post.xib in Resources */,
+				4BF123F71E882F5400B56138 /* FilterCell.xib in Resources */,
 				4BA2C9A01B210A620038C0E5 /* Timeline.xib in Resources */,
+				4BF123F41E882F4500B56138 /* Filters.xib in Resources */,
 				4BA9107C1B83CFD200D58F83 /* SignIn.xib in Resources */,
 				4BA910791B83CE7600D58F83 /* Menu.xib in Resources */,
 				4B5F75551B8CABF30074D88E /* Options.xib in Resources */,
@@ -742,15 +769,18 @@
 				4B1D74FC1B95ECF4004A0ACD /* RFXMLElementStack.m in Sources */,
 				4BF8034E1B87AA2C00D6670C /* UUString.m in Sources */,
 				4BF8034A1B87AA2C00D6670C /* UUHttpResponseHandler.m in Sources */,
+				4BF123FD1E88302B00B56138 /* RFFilterCell.m in Sources */,
 				4BA910981B84077000D58F83 /* UIBarButtonItem+Extras.m in Sources */,
 				4B8714D11E64D05700C69589 /* tmbstr.c in Sources */,
 				4BF8034C1B87AA2C00D6670C /* UUImage.m in Sources */,
 				4BF803481B87AA2C00D6670C /* UUDictionary.m in Sources */,
 				4B46632F1B8F51710034FC5C /* UILabel+MarkupExtensions.m in Sources */,
 				4B8714BE1E64D05700C69589 /* attrget.c in Sources */,
+				4BF123FA1E88301500B56138 /* RFFilter.m in Sources */,
 				4B8714771E64C0DD00C69589 /* RFExternalController.m in Sources */,
 				4B8714C91E64D05700C69589 /* localize.c in Sources */,
 				4B8714CA1E64D05700C69589 /* mappedio.c in Sources */,
+				4BF123F11E882F3000B56138 /* RFFiltersController.m in Sources */,
 				4B8714BA1E64D05700C69589 /* access.c in Sources */,
 				4B8714CB1E64D05700C69589 /* parser.c in Sources */,
 				4B8714CD1E64D05700C69589 /* streamio.c in Sources */,
@@ -885,6 +915,22 @@
 				4BA910841B83D22900D58F83 /* Base */,
 			);
 			name = Post.xib;
+			sourceTree = "<group>";
+		};
+		4BF123F21E882F4500B56138 /* Filters.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BF123F31E882F4500B56138 /* Base */,
+			);
+			name = Filters.xib;
+			sourceTree = "<group>";
+		};
+		4BF123F51E882F5400B56138 /* FilterCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BF123F61E882F5400B56138 /* Base */,
+			);
+			name = FilterCell.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

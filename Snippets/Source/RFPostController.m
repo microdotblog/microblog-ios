@@ -251,6 +251,7 @@
 {
 	RFPhotosController* photos_controller = [[RFPhotosController alloc] init];
 	[self presentViewController:photos_controller animated:YES completion:NULL];
+//	[self.navigationController pushViewController:photos_controller animated:YES];
 }
 
 - (void) uploadPhoto:(UIImage *)image

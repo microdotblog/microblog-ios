@@ -10,6 +10,7 @@
 
 #import "RFPhotoCell.h"
 #import "RFPhoto.h"
+#import "RFFiltersController.h"
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
@@ -47,6 +48,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (IBAction) closePhotos:(id)sender
 {
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+//	[self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark -
@@ -70,6 +72,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[cell setupWithPhoto:photo];
 	
 	return cell;
+}
+
+- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	PHAsset* asset = [self.photosResult objectAtIndex:indexPath.item];
+	RFPhoto* photo = [[RFPhoto alloc] initWithAsset:asset];
+	RFFiltersController* filters_controller = [[RFFiltersController alloc] initWithPhoto:photo];
+//	[self.navigationController pushViewController:filters_controller animated:YES];
+	[self presentViewController:filters_controller animated:YES completion:NULL];
 }
 
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath

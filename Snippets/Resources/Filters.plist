@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Normal</string>
+		<key>ciFilter</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Mono</string>
+		<key>ciFilter</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Tonal</string>
+		<key>ciFilter</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Noir</string>
+		<key>ciFilter</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Fade</string>
+		<key>ciFilter</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Chrome</string>
+		<key>ciFilter</key>
+		<string></string>
+	</dict>
+</array>
+</plist>
