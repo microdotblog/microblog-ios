@@ -38,10 +38,18 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	[self setupScrollView];
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+	[self.navigationController.navigationBar setShadowImage:nil];
+}
+
 - (void) setupNavigation
 {
 	self.title = @"Filters";
-	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Attach" style:UIBarButtonItemStylePlain target:self action:@selector(attachPhoto:)];
 }
 
@@ -78,9 +86,9 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 
 #pragma mark -
 
-- (void) close:(id)sender
+- (void) back:(id)sender
 {
-	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) attachPhoto:(id)sender
@@ -112,7 +120,7 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	return CGSizeMake (150, 150);
+	return CGSizeMake (112, 150);
 }
 
 - (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section

@@ -22,14 +22,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBq-4M-B2F" customClass="FAScrollView" customModule="Microblog" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="104" width="375" height="375"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                 </scrollView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xb4-Uy-xke">
-                    <rect key="frame" x="0.0" y="504" width="375" height="163"/>
+                    <rect key="frame" x="0.0" y="375" width="375" height="292"/>
                     <color key="backgroundColor" white="0.83999999999999997" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="163" id="xvz-oe-ziU"/>
-                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UKn-pj-y9d">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -43,13 +40,14 @@
                 </collectionView>
             </subviews>
             <constraints>
-                <constraint firstItem="xb4-Uy-xke" firstAttribute="top" secondItem="CBq-4M-B2F" secondAttribute="bottom" constant="25" id="8PR-qq-nkz"/>
                 <constraint firstAttribute="bottom" secondItem="xb4-Uy-xke" secondAttribute="bottom" id="9wV-If-YB6"/>
                 <constraint firstItem="CBq-4M-B2F" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Vmw-bo-f44"/>
                 <constraint firstItem="CBq-4M-B2F" firstAttribute="height" secondItem="xb4-Uy-xke" secondAttribute="width" id="WUN-sF-DzB"/>
                 <constraint firstAttribute="trailing" secondItem="CBq-4M-B2F" secondAttribute="trailing" id="abx-za-zKV"/>
                 <constraint firstItem="xb4-Uy-xke" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dbG-A3-5ix"/>
+                <constraint firstItem="CBq-4M-B2F" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lxQ-uO-QkH"/>
                 <constraint firstAttribute="trailing" secondItem="xb4-Uy-xke" secondAttribute="trailing" id="tPp-ai-k2r"/>
+                <constraint firstItem="xb4-Uy-xke" firstAttribute="top" secondItem="CBq-4M-B2F" secondAttribute="bottom" id="w9B-tV-hrd"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>

@@ -259,8 +259,13 @@
 - (IBAction) showPhotos:(id)sender
 {
 	RFPhotosController* photos_controller = [[RFPhotosController alloc] init];
-	[self presentViewController:photos_controller animated:YES completion:NULL];
-//	[self.navigationController pushViewController:photos_controller animated:YES];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:photos_controller];
+	
+	nav_controller.view.opaque = NO;
+	nav_controller.view.backgroundColor = [UIColor clearColor];
+	nav_controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+	
+	[self presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 - (void) uploadPhoto:(UIImage *)image

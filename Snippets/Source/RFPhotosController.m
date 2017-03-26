@@ -12,6 +12,7 @@
 #import "RFPhoto.h"
 #import "RFFiltersController.h"
 #import "RFMacros.h"
+#import "UIBarButtonItem+Extras.h"
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
@@ -21,6 +22,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	self = [super initWithNibName:@"Photos" bundle:nil];
 	if (self) {
+		self.edgesForExtendedLayout = UIRectEdgeNone;
 		self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
 	}
 	
@@ -31,8 +33,24 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[super viewDidLoad];
 	
+	[self setupNavigation];
 	[self setupPhotos];
 	[self setupCollectionView];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	UIImage* blank_img = [[UIImage alloc] init];
+	[self.navigationController.navigationBar setBackgroundImage:blank_img forBarMetrics:UIBarMetricsDefault];
+	[self.navigationController.navigationBar setShadowImage:blank_img];
+}
+
+- (void) setupNavigation
+{
+	self.title = @"";
+//	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(closePhotos:)];
 }
 
 - (void) setupPhotos
@@ -65,7 +83,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (IBAction) closePhotos:(id)sender
 {
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
-//	[self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark -
@@ -97,13 +114,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	RFPhoto* photo = [[RFPhoto alloc] initWithAsset:asset];
 	
 	RFFiltersController* filters_controller = [[RFFiltersController alloc] initWithPhoto:photo];
-	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:filters_controller];
-	[self presentViewController:nav_controller animated:YES completion:NULL];
+	[self.navigationController pushViewController:filters_controller animated:YES];
 }
 
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	return CGSizeMake (150, 150);
+	CGFloat w = ([UIScreen mainScreen].bounds.size.width / 4.0) - 5;
+	if (w > 100) {
+		w = 100;
+	}
+	return CGSizeMake (w, w);
 }
 
 - (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section

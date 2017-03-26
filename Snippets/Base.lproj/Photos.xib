@@ -21,12 +21,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5ch-YY-uXp">
-                    <rect key="frame" x="0.0" y="505" width="375" height="162"/>
+                    <rect key="frame" x="0.0" y="467" width="375" height="200"/>
                     <color key="backgroundColor" white="0.83729467147435888" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="162" id="0GC-0B-bb2"/>
+                        <constraint firstAttribute="height" constant="200" id="Jj6-h8-ZOl"/>
                     </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iUS-BP-E2N">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iUS-BP-E2N">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -38,7 +38,7 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="leU-W1-6cN">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <action selector="closePhotos:" destination="-1" eventType="touchUpInside" id="maM-GD-VzQ"/>
@@ -47,13 +47,13 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="5ch-YY-uXp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1ih-qd-xor"/>
-                <constraint firstAttribute="trailing" secondItem="5ch-YY-uXp" secondAttribute="trailing" id="D1v-3I-I5Q"/>
-                <constraint firstItem="5ch-YY-uXp" firstAttribute="top" secondItem="leU-W1-6cN" secondAttribute="bottom" id="FwC-vF-Ph5"/>
-                <constraint firstAttribute="bottom" secondItem="5ch-YY-uXp" secondAttribute="bottom" id="P7a-jb-Zi7"/>
-                <constraint firstAttribute="trailing" secondItem="leU-W1-6cN" secondAttribute="trailing" id="cMk-VX-rSX"/>
-                <constraint firstItem="leU-W1-6cN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nw7-63-8lj"/>
-                <constraint firstItem="leU-W1-6cN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ztM-In-0eK"/>
+                <constraint firstItem="5ch-YY-uXp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0t5-u8-fkY"/>
+                <constraint firstItem="leU-W1-6cN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3sP-vA-zk2"/>
+                <constraint firstItem="leU-W1-6cN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Efo-qG-s9b"/>
+                <constraint firstItem="5ch-YY-uXp" firstAttribute="top" secondItem="leU-W1-6cN" secondAttribute="bottom" id="G9U-px-0pt"/>
+                <constraint firstAttribute="trailing" secondItem="leU-W1-6cN" secondAttribute="trailing" id="RQv-40-uty"/>
+                <constraint firstAttribute="trailing" secondItem="5ch-YY-uXp" secondAttribute="trailing" id="kXA-bz-Enr"/>
+                <constraint firstAttribute="bottom" secondItem="5ch-YY-uXp" secondAttribute="bottom" id="yv5-UH-Y06"/>
             </constraints>
             <point key="canvasLocation" x="53.5" y="53.5"/>
         </view>
