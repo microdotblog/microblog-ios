@@ -50,7 +50,7 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 {
 	self.title = @"Filters";
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Attach" style:UIBarButtonItemStylePlain target:self action:@selector(attachPhoto:)];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Photo" style:UIBarButtonItemStylePlain target:self action:@selector(attachPhoto:)];
 }
 
 - (void) setupFilters
