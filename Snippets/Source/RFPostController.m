@@ -10,6 +10,7 @@
 
 #import "RFPhotosController.h"
 #import "RFPhoto.h"
+#import "RFPhotoCell.h"
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "RFXMLRPCParser.h"
@@ -22,12 +23,15 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
+static NSString* const kPhotoCellIdentifier = @"PhotoCell";
+
 @implementation RFPostController
 
 - (instancetype) init
 {
 	self = [super initWithNibName:@"Post" bundle:nil];
 	if (self) {
+		self.attachedPhotos = @[];
 	}
 	
 	return self;
@@ -40,6 +44,7 @@
 		self.isReply = YES;
 		self.replyPostID = postID;
 		self.replyUsername = username;
+		self.attachedPhotos = @[];
 	}
 	
 	return self;
@@ -53,6 +58,7 @@
 	[self setupText];
 	[self setupNotifications];
 	[self setupBlogName];
+	[self setupCollectionView];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -106,6 +112,11 @@
 	}
 }
 
+- (void) setupCollectionView
+{
+	[self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCell" bundle:nil] forCellWithReuseIdentifier:kPhotoCellIdentifier];
+}
+
 - (void) updateRemainingChars
 {
 	NSInteger max_chars = 280;
@@ -125,6 +136,11 @@
 - (void) attachPhotoNotification:(NSNotification *)notification
 {
 	UIImage* img = [notification.userInfo objectForKey:kAttachPhotoKey];
+	RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:img];
+	NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
+	[new_photos addObject:photo];
+	self.attachedPhotos = new_photos;
+	[self.collectionView reloadData];
 	
 	[self dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -162,6 +178,8 @@
 {
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"ExternalBlogIsPreferred"];
 }
+
+#pragma mark -
 
 - (IBAction) sendPost:(id)sender
 {
@@ -290,6 +308,50 @@
 	else {
 		// ...
 	}
+}
+
+#pragma mark -
+
+- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+	return self.attachedPhotos.count;
+}
+
+- (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	RFPhotoCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
+
+	RFPhoto* photo = [self.attachedPhotos objectAtIndex:indexPath.item];
+	[cell setupWithPhoto:photo];
+	
+	return cell;
+}
+
+- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	RFPhoto* photo = [self.attachedPhotos objectAtIndex:indexPath.item];
+	// ...
+}
+
+- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	CGFloat w = 50;
+	return CGSizeMake (w, w);
+}
+
+- (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+	return UIEdgeInsetsMake (5, 5, 5, 5);
+}
+
+- (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+	return 5;
+}
+
+- (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+	return 0;
 }
 
 @end

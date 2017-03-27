@@ -14,10 +14,12 @@
 @property (strong, nonatomic) IBOutlet UILabel* remainingField;
 @property (strong, nonatomic) IBOutlet UILabel* blognameField;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* bottomConstraint;
+@property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
 
 @property (assign, nonatomic) BOOL isReply;
 @property (strong, nonatomic) NSString* replyPostID;
 @property (strong, nonatomic) NSString* replyUsername;
+@property (strong, nonatomic) NSArray* attachedPhotos; // RFPhoto
 
 - (instancetype) initWithReplyTo:(NSString *)postID replyUsername:(NSString *)username;
 

@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="blognameField" destination="boh-G1-f3J" id="uvn-XS-LQm"/>
                 <outlet property="bottomConstraint" destination="Tev-Ab-erq" id="mjY-DW-B4C"/>
+                <outlet property="collectionView" destination="va1-Ew-xJV" id="RU0-9q-moq"/>
                 <outlet property="remainingField" destination="qjg-el-aBq" id="rJl-gi-J1w"/>
                 <outlet property="textView" destination="F7T-Eg-dhD" id="bSs-O6-eB1"/>
                 <outlet property="view" destination="iN0-l3-epB" id="yA8-wJ-I5e"/>
@@ -87,25 +88,29 @@
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="va1-Ew-xJV">
-                            <rect key="frame" x="5" y="485" width="310" height="53"/>
+                            <rect key="frame" x="0.0" y="485" width="320" height="53"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="53" id="1h0-9I-T6F"/>
                             </constraints>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MrL-Vy-PJ4">
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MrL-Vy-PJ4">
                                 <size key="itemSize" width="50" height="50"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="E2t-0k-oUX"/>
+                                <outlet property="delegate" destination="-1" id="qz4-es-CSS"/>
+                            </connections>
                         </collectionView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="va1-Ew-xJV" firstAttribute="leading" secondItem="VbH-di-quh" secondAttribute="leading" constant="5" id="7UL-I2-m2C"/>
+                        <constraint firstItem="va1-Ew-xJV" firstAttribute="leading" secondItem="VbH-di-quh" secondAttribute="leading" id="7UL-I2-m2C"/>
                         <constraint firstItem="F7T-Eg-dhD" firstAttribute="top" secondItem="VbH-di-quh" secondAttribute="top" constant="5" id="BvK-VL-hdz"/>
                         <constraint firstItem="va1-Ew-xJV" firstAttribute="top" secondItem="F7T-Eg-dhD" secondAttribute="bottom" constant="5" id="ChG-jo-1If"/>
-                        <constraint firstAttribute="trailing" secondItem="va1-Ew-xJV" secondAttribute="trailing" constant="5" id="GuN-8x-dCq"/>
+                        <constraint firstAttribute="trailing" secondItem="va1-Ew-xJV" secondAttribute="trailing" id="GuN-8x-dCq"/>
                         <constraint firstItem="I8I-kA-x0u" firstAttribute="top" secondItem="va1-Ew-xJV" secondAttribute="bottom" id="MbG-5U-CSD"/>
                         <constraint firstAttribute="bottom" secondItem="I8I-kA-x0u" secondAttribute="bottom" constant="1" id="Tev-Ab-erq"/>
                         <constraint firstItem="F7T-Eg-dhD" firstAttribute="leading" secondItem="VbH-di-quh" secondAttribute="leading" constant="5" id="bXJ-D8-NX2"/>
