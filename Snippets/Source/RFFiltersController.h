@@ -7,17 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Microblog-Swift.h"
 
 @class RFPhoto;
 
-@interface RFFiltersController : UIViewController
+@interface RFFiltersController : UIViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView* croppingScrollView;
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
 
 @property (strong, nonatomic) RFPhoto* photo;
 @property (strong, nonatomic) NSArray* filters; // RFFilter
+@property (strong, nonatomic) UIImageView* imageView;
+@property (strong, nonatomic) UIImage* fullImage;
 
 - (id) initWithPhoto:(RFPhoto *)photo;
 

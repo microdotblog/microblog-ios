@@ -12,6 +12,7 @@
 #import "RFFilter.h"
 #import "RFPhoto.h"
 #import "UIBarButtonItem+Extras.h"
+#import "UUImage.h"
 
 static NSString* const kFilterCellIdentifier = @"FilterCell";
 
@@ -35,7 +36,6 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	[self setupNavigation];
 	[self setupFilters];
 	[self setupCollectionView];
-	[self setupScrollView];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -44,6 +44,13 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	
 	[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 	[self.navigationController.navigationBar setShadowImage:nil];
+}
+
+- (void) viewDidLayoutSubviews
+{
+	[super viewDidLayoutSubviews];
+	
+	[self setupScrollView];
 }
 
 - (void) setupNavigation
@@ -61,13 +68,11 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	for (NSDictionary* info in filters) {
 		RFFilter* f = [[RFFilter alloc] init];
 		f.name = info[@"name"];
-		// ...
+		f.ciFilter = info[@"ciFilter"];
 		[new_filters addObject:f];
 	}
 	
 	self.filters = new_filters;
-	
-//	self.filters = @[ @"Normal", @"Mono", @"Tonal", @"Noir", @"Fade", @"Chrome", @"Process", @"Transfer", @"Instant" ];
 }
 
 - (void) setupCollectionView
@@ -78,10 +83,47 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 - (void) setupScrollView
 {
 	PHImageManager* manager = [PHImageManager defaultManager];
-	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (800, 800) contentMode:PHImageContentModeAspectFill options:0 resultHandler:^(UIImage* result, NSDictionary* info) {
-		[self.croppingScrollView performSelector:@selector(setImageToDisplay:) withObject:result];
-		[self.croppingScrollView performSelector:@selector(zoom) withObject:nil];
+	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1200, 1200) contentMode:PHImageContentModeAspectFill options:0 resultHandler:^(UIImage* result, NSDictionary* info) {
+		UIImage* img = [result uuRemoveOrientation];
+		self.fullImage = img;
+
+		CGRect r = CGRectZero;
+		r.size = img.size;
+
+		self.imageView = [[UIImageView alloc] initWithFrame:r];
+		self.imageView.image = img;
+		
+		CGFloat w_scale = self.croppingScrollView.bounds.size.width / r.size.width;
+		CGFloat h_scale = self.croppingScrollView.bounds.size.height / r.size.height;
+		
+		self.croppingScrollView.delegate = self;
+		[self.croppingScrollView addSubview:self.imageView];
+		self.croppingScrollView.contentSize = r.size;
+		if (w_scale > h_scale) {
+			self.croppingScrollView.minimumZoomScale = w_scale;
+		}
+		else {
+			self.croppingScrollView.minimumZoomScale = h_scale;
+		}
+		self.croppingScrollView.maximumZoomScale = 2.0;
+		self.croppingScrollView.zoomScale = self.croppingScrollView.minimumZoomScale;
 	}];
+}
+
+- (CGRect) cropAreaRect
+{
+	CGRect r = self.croppingScrollView.bounds;
+	r.origin = CGPointZero;
+	return r;
+}
+
+- (UIView *) viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+	return self.imageView;
+}
+
+- (void) scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
+{
 }
 
 #pragma mark -
@@ -93,8 +135,36 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 
 - (void) attachPhoto:(id)sender
 {
-	UIImage* img = [self.croppingScrollView performSelector:@selector(captureVisibleRect) withObject:nil];
-	[[NSNotificationCenter defaultCenter] postNotificationName:kAttachPhotoNotification object:self userInfo:@{ kAttachPhotoKey: img }];
+	CGRect ui_crop_r = [self cropAreaRect];
+	UIImage* img = self.fullImage;
+	
+	CGPoint content_offset = self.croppingScrollView.contentOffset;
+	CGSize scaled_size = self.croppingScrollView.contentSize;
+	CGSize img_size = [img size];
+	
+	CGFloat scaled_ratio = scaled_size.width / img_size.width;
+
+	ui_crop_r.origin.x += content_offset.x;
+	ui_crop_r.origin.y += content_offset.y;
+	
+	CGRect image_crop_r;
+	image_crop_r.origin.x = ui_crop_r.origin.x / scaled_ratio * img.scale;
+	image_crop_r.origin.y = ui_crop_r.origin.y / scaled_ratio * img.scale;
+	image_crop_r.size.width = ui_crop_r.size.width / scaled_ratio * img.scale;
+	image_crop_r.size.height = ui_crop_r.size.height / scaled_ratio * img.scale;
+	
+	CGImageRef cg_image = img.CGImage;
+	if (cg_image == nil) {
+		CIContext* context = [CIContext contextWithOptions:nil];
+		cg_image = [context createCGImage:img.CIImage fromRect:img.CIImage.extent];
+	}
+	CGImageRef new_img = CGImageCreateWithImageInRect (cg_image, image_crop_r);
+	UIImage* cropped_img = [[UIImage alloc] initWithCGImage:new_img];
+    CGImageRelease(new_img);
+
+	if (cropped_img) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:kAttachPhotoNotification object:self userInfo:@{ kAttachPhotoKey: cropped_img }];
+	}
 }
 
 #pragma mark -
@@ -116,6 +186,16 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+	RFFilter* filter = [self.filters objectAtIndex:indexPath.item];
+	PHImageManager* manager = [PHImageManager defaultManager];
+	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1200, 1200) contentMode:PHImageContentModeAspectFill options:0 resultHandler:^(UIImage* result, NSDictionary* info) {
+		UIImage* img = [result uuRemoveOrientation];
+		if (filter.ciFilter.length > 0) {
+			img = [filter filterImage:img];
+		}
+		self.imageView.image = img;
+		self.fullImage = img;
+	}];
 }
 
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath

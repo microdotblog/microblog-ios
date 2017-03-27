@@ -17,8 +17,17 @@
 {
 	self.photo = photo;
 	self.filter = filter;
-	
-	self.nameField.text = filter.name;
+
+	PHImageManager* manager = [PHImageManager defaultManager];
+	[manager requestImageForAsset:photo.asset targetSize:CGSizeMake (200, 200) contentMode:PHImageContentModeAspectFill options:0 resultHandler:^(UIImage* result, NSDictionary* info) {
+		self.nameField.text = filter.name;
+		if (filter.ciFilter.length > 0) {
+			self.previewImageView.image = [filter filterImage:result];
+		}
+		else {
+			self.previewImageView.image = result;
+		}
+	}];
 }
 
 @end

@@ -6,12 +6,13 @@
 //  Copyright © 2017 Riverfold Software. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface RFFilter : NSObject
 
 @property (strong) NSString* name;
-// CIFilter?
-// cachedPreview
+@property (strong) NSString* ciFilter;
+
+- (UIImage *) filterImage:(UIImage *)image;
 
 @end

@@ -12,31 +12,49 @@
 		<key>name</key>
 		<string>Mono</string>
 		<key>ciFilter</key>
-		<string></string>
+		<string>CIPhotoEffectMono</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Tonal</string>
 		<key>ciFilter</key>
-		<string></string>
+		<string>CIPhotoEffectTonal</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Noir</string>
 		<key>ciFilter</key>
-		<string></string>
+		<string>CIPhotoEffectNoir</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Fade</string>
 		<key>ciFilter</key>
-		<string></string>
+		<string>CIPhotoEffectFade</string>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Chrome</string>
 		<key>ciFilter</key>
-		<string></string>
+		<string>CIPhotoEffectChrome</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Process</string>
+		<key>ciFilter</key>
+		<string>CIPhotoEffectProcess</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Transfer</string>
+		<key>ciFilter</key>
+		<string>CIPhotoEffectTransfer</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Instant</string>
+		<key>ciFilter</key>
+		<string>CIPhotoEffectInstant</string>
 	</dict>
 </array>
 </plist>

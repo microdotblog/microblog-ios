@@ -23,7 +23,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mono" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLr-bc-U44">
-                        <rect key="frame" x="7" y="122" width="99" height="21"/>
+                        <rect key="frame" x="6" y="122" width="100" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Z2E-iC-Z0w"/>
                         </constraints>
@@ -31,8 +31,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JpX-mn-Hgo">
-                        <rect key="frame" x="7" y="16" width="99" height="100"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JpX-mn-Hgo">
+                        <rect key="frame" x="6" y="16" width="100" height="100"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
                 </subviews>
@@ -40,12 +40,12 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="nLr-bc-U44" firstAttribute="top" secondItem="JpX-mn-Hgo" secondAttribute="bottom" constant="6" id="5xE-pc-R0q"/>
-                <constraint firstItem="nLr-bc-U44" firstAttribute="leading" secondItem="Jht-Mb-phB" secondAttribute="leading" constant="7" id="A7b-bh-qMb"/>
+                <constraint firstItem="nLr-bc-U44" firstAttribute="leading" secondItem="Jht-Mb-phB" secondAttribute="leading" constant="6" id="A7b-bh-qMb"/>
                 <constraint firstAttribute="bottom" secondItem="nLr-bc-U44" secondAttribute="bottom" constant="7" id="MhX-A9-6y5"/>
                 <constraint firstAttribute="trailing" secondItem="nLr-bc-U44" secondAttribute="trailing" constant="6" id="dBE-lf-M2R"/>
                 <constraint firstItem="JpX-mn-Hgo" firstAttribute="top" secondItem="Jht-Mb-phB" secondAttribute="top" constant="16" id="dGL-bU-bEv"/>
                 <constraint firstAttribute="trailing" secondItem="JpX-mn-Hgo" secondAttribute="trailing" constant="6" id="lMu-OX-DRX"/>
-                <constraint firstItem="JpX-mn-Hgo" firstAttribute="leading" secondItem="Jht-Mb-phB" secondAttribute="leading" constant="7" id="uBd-FQ-awP"/>
+                <constraint firstItem="JpX-mn-Hgo" firstAttribute="leading" secondItem="Jht-Mb-phB" secondAttribute="leading" constant="6" id="uBd-FQ-awP"/>
             </constraints>
             <size key="customSize" width="44" height="90"/>
             <connections>

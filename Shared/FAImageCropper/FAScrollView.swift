@@ -15,13 +15,13 @@ import UIKit
     var imageView:UIImageView = UIImageView()
     var imageToDisplay:UIImage? = nil{
         didSet{
-            zoomScale = 1.0
             minimumZoomScale = 1.0
             imageView.image = imageToDisplay
             imageView.frame.size = sizeForImageToDisplay()
             imageView.center = center
             contentSize = imageView.frame.size
             contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+			zoomScale = zoomScaleWithNoWhiteSpaces()
             updateLayout()
         }
     }
