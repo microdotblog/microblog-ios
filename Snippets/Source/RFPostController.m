@@ -183,13 +183,49 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) sendPost:(id)sender
 {
+	if (self.attachedPhotos.count > 0) {
+		RFPhoto* photo = [self.attachedPhotos firstObject];
+		CGSize sz = photo.thumbnailImage.size;
+		[self uploadPhoto:photo completion:^{
+			NSString* s = self.textView.text;
+			if (s.length > 0) {
+				s = [s stringByAppendingString:@"\n\n"];
+			}
+			s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" />", photo.publishedURL, floor(sz.width), floor(sz.height)];
+			[self uploadText:s];
+		}];
+	}
+	else {
+		[self uploadText:self.textView.text];
+	}
+}
+
+- (IBAction) close:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (IBAction) showPhotos:(id)sender
+{
+	RFPhotosController* photos_controller = [[RFPhotosController alloc] init];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:photos_controller];
+	
+	nav_controller.view.opaque = NO;
+	nav_controller.view.backgroundColor = [UIColor clearColor];
+	nav_controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+	
+	[self presentViewController:nav_controller animated:YES completion:NULL];
+}
+
+- (void) uploadText:(NSString *)text
+{
 	self.navigationItem.rightBarButtonItem.enabled = NO;
 
 	if (self.isReply) {
 		RFClient* client = [[RFClient alloc] initWithPath:@"/posts/reply"];
 		NSDictionary* args = @{
 			@"id": self.replyPostID,
-			@"text": self.textView.text
+			@"text": text
 		};
 		[client postWithParams:args completion:^(UUHttpResponse* response) {
 			RFDispatchMainAsync (^{
@@ -202,7 +238,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
 			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
 			NSDictionary* args = @{
-				@"content": self.textView.text
+				@"content": text
 			};
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
 				RFDispatchMainAsync (^{
@@ -217,7 +253,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogUsername"];
 			NSString* password = [SSKeychain passwordForService:@"ExternalBlog" account:@"default"];
 			
-			NSString* post_text = self.textView.text;
+			NSString* post_text = text;
 			NSString* app_key = @"";
 			NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
 			RFBoolean* publish = [[RFBoolean alloc] initWithBool:YES];
@@ -269,39 +305,21 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 }
 
-- (IBAction) close:(id)sender
+- (void) uploadPhoto:(RFPhoto *)photo completion:(void (^)())handler
 {
-	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (IBAction) showPhotos:(id)sender
-{
-	RFPhotosController* photos_controller = [[RFPhotosController alloc] init];
-	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:photos_controller];
-	
-	nav_controller.view.opaque = NO;
-	nav_controller.view.backgroundColor = [UIColor clearColor];
-	nav_controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-	
-	[self presentViewController:nav_controller animated:YES completion:NULL];
-}
-
-- (void) uploadPhoto:(UIImage *)image
-{
-	NSData* d = UIImageJPEGRepresentation (image, 0.6);
-	if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
+	UIImage* img = photo.thumbnailImage;
+	NSData* d = UIImageJPEGRepresentation (img, 0.6);
+	if (d && [self hasSnippetsBlog] && ![self prefersExternalBlog]) {
 		RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];
 		NSDictionary* args = @{
 		};
 		[client uploadImageData:d named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
 			NSDictionary* headers = response.httpResponse.allHeaderFields;
 			NSString* image_url = headers[@"Location"];
-			NSString* s = self.textView.text;
-			s = [s stringByAppendingFormat:@"<img src=\"%@\" />", image_url];
-
+			photo.publishedURL = image_url;
 			RFDispatchMainAsync (^{
-				self.textView.text = s;
 				[Answers logCustomEventWithName:@"Uploaded Photo" customAttributes:nil];
+				handler();
 			});
 		}];
 	}
@@ -329,8 +347,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	RFPhoto* photo = [self.attachedPhotos objectAtIndex:indexPath.item];
-	// ...
+	NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
+	[new_photos removeObjectAtIndex:indexPath.item];
+	self.attachedPhotos = new_photos;
+	[self.collectionView deleteItemsAtIndexPaths:@[ indexPath ]];
 }
 
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath

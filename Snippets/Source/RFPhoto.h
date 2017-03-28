@@ -17,6 +17,7 @@ static NSString* const kAttachPhotoKey = @"photo";
 
 @property (strong) PHAsset* asset;
 @property (strong) UIImage* thumbnailImage;
+@property (strong) NSString* publishedURL;
 
 - (id) initWithAsset:(PHAsset *)asset;
 - (id) initWithThumbnail:(UIImage *)image;
