@@ -19,6 +19,7 @@
                 <outlet property="blognameField" destination="boh-G1-f3J" id="uvn-XS-LQm"/>
                 <outlet property="bottomConstraint" destination="Tev-Ab-erq" id="mjY-DW-B4C"/>
                 <outlet property="collectionView" destination="va1-Ew-xJV" id="RU0-9q-moq"/>
+                <outlet property="networkSpinner" destination="cIP-sn-flb" id="cxi-PB-pWl"/>
                 <outlet property="photoButton" destination="7vZ-FK-rFO" id="bbx-vS-8JK"/>
                 <outlet property="remainingField" destination="qjg-el-aBq" id="rJl-gi-J1w"/>
                 <outlet property="textView" destination="F7T-Eg-dhD" id="bSs-O6-eB1"/>
@@ -54,6 +55,13 @@
                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cIP-sn-flb">
+                                    <rect key="frame" x="5" y="5" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="GIk-OJ-uWr"/>
+                                        <constraint firstAttribute="width" constant="20" id="JLK-Kt-WY4"/>
+                                    </constraints>
+                                </activityIndicatorView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vZ-FK-rFO">
                                     <rect key="frame" x="2" y="3" width="26" height="25"/>
                                     <constraints>
@@ -78,11 +86,13 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="cIP-sn-flb" secondAttribute="bottom" constant="4" id="5xW-YZ-X2f"/>
                                 <constraint firstItem="boh-G1-f3J" firstAttribute="leading" secondItem="7vZ-FK-rFO" secondAttribute="trailing" constant="35" id="AhL-Aw-Hi3"/>
                                 <constraint firstAttribute="bottom" secondItem="qjg-el-aBq" secondAttribute="bottom" constant="1" id="Ifl-cU-8hH"/>
                                 <constraint firstAttribute="trailing" secondItem="qjg-el-aBq" secondAttribute="trailing" constant="4" id="bPO-DW-9ek"/>
                                 <constraint firstAttribute="bottom" secondItem="7vZ-FK-rFO" secondAttribute="bottom" constant="1" id="bcQ-MM-Z5o"/>
                                 <constraint firstItem="qjg-el-aBq" firstAttribute="leading" secondItem="boh-G1-f3J" secondAttribute="trailing" constant="1" id="gVz-T6-YAZ"/>
+                                <constraint firstItem="cIP-sn-flb" firstAttribute="leading" secondItem="I8I-kA-x0u" secondAttribute="leading" constant="5" id="oCi-PU-oAh"/>
                                 <constraint firstItem="7vZ-FK-rFO" firstAttribute="leading" secondItem="I8I-kA-x0u" secondAttribute="leading" constant="2" id="tP2-jP-ApP"/>
                                 <constraint firstAttribute="height" constant="29" id="tW9-Sy-xTw"/>
                                 <constraint firstAttribute="bottom" secondItem="boh-G1-f3J" secondAttribute="bottom" constant="1" id="uO6-Yc-WSn"/>

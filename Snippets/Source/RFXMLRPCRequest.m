@@ -51,6 +51,19 @@
 	return [UUHttpSession executeRequest:request completionHandler:handler];
 }
 
+- (NSString *) escapeParam:(NSString *)value
+{
+	NSString* s = value;
+	
+	s = [s stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
+	s = [s stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"];
+	s = [s stringByReplacingOccurrencesOfString:@"'" withString:@"&#x27;"];
+	s = [s stringByReplacingOccurrencesOfString:@">" withString:@"&gt;"];
+	s = [s stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"];
+	
+	return s;
+}
+
 - (void) appendParam:(id)param toString:(NSMutableString *)requestString
 {
 	if ([param isKindOfClass:[RFBoolean class]]) {
@@ -60,7 +73,7 @@
 		[requestString appendFormat:@"<int>%@</int>", param];
 	}
 	else if ([param isKindOfClass:[NSString class]]) {
-		[requestString appendFormat:@"<string>%@</string>", param];
+		[requestString appendFormat:@"<string>%@</string>", [self escapeParam:param]];
 	}
 	else if ([param isKindOfClass:[NSDictionary class]]) {
 		[requestString appendString:@"<struct>"];
@@ -84,6 +97,10 @@
 			[requestString appendString:@"</value>"];
 		}
 		[requestString appendString:@"</data></array>"];
+	}
+	else if ([param isKindOfClass:[NSData class]]) {
+		NSData* d = param;
+		[requestString appendFormat:@"<base64>%@</base64>", [d base64EncodedStringWithOptions:0]];
 	}
 }
 

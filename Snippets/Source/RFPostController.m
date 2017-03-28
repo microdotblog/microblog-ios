@@ -19,6 +19,7 @@
 #import "NSString+Extras.h"
 #import "UILabel+MarkupExtensions.h"
 #import "UUAlert.h"
+#import "UUString.h"
 #import "SSKeychain.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -58,14 +59,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self setupText];
 	[self setupNotifications];
 	[self setupBlogName];
+	[self setupPhotosButton];
 	[self setupCollectionView];
-	
-	if (self.isReply) {
-		self.photoButton.hidden = YES;
-	}
-	else if (![self hasSnippetsBlog] || [self prefersExternalBlog]) {
-		self.photoButton.hidden = YES;
-	}
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -108,7 +103,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		self.blognameField.hidden = YES;
 	}
 	else {
-		if ([self hasSnippetsBlog]) {
+		if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
 			self.blognameField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountDefaultSite"];
 		}
 		else {
@@ -117,6 +112,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			self.blognameField.text = endpoint_url.host;
 		}
 	}
+}
+
+- (void) setupPhotosButton
+{
+	if (self.isReply) {
+		self.photoButton.hidden = YES;
+	}
+//	else if (![self hasSnippetsBlog] || [self prefersExternalBlog]) {
+//		self.photoButton.hidden = YES;
+//	}
 }
 
 - (void) setupCollectionView
@@ -190,6 +195,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) sendPost:(id)sender
 {
+	self.navigationItem.rightBarButtonItem.enabled = NO;
+	[self.networkSpinner startAnimating];
+	self.photoButton.hidden = YES;
+
 	if (self.attachedPhotos.count > 0) {
 		RFPhoto* photo = [self.attachedPhotos firstObject];
 		CGSize sz = photo.thumbnailImage.size;
@@ -226,8 +235,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) uploadText:(NSString *)text
 {
-	self.navigationItem.rightBarButtonItem.enabled = NO;
-
 	if (self.isReply) {
 		RFClient* client = [[RFClient alloc] initWithPath:@"/posts/reply"];
 		NSDictionary* args = @{
@@ -301,6 +308,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 						NSString* s = [NSString stringWithFormat:@"%@ (error: %@)", xmlrpc.responseFault[@"faultString"], xmlrpc.responseFault[@"faultCode"]];
 						[UIAlertView uuShowOneButtonAlert:@"Error Sending Post" message:s button:@"OK" completionHandler:NULL];
 						self.navigationItem.rightBarButtonItem.enabled = YES;
+						[self.networkSpinner stopAnimating];
+						self.photoButton.hidden = NO;
 					}
 					else {
 						[Answers logCustomEventWithName:@"Sent External" customAttributes:nil];
@@ -316,22 +325,57 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	UIImage* img = photo.thumbnailImage;
 	NSData* d = UIImageJPEGRepresentation (img, 0.6);
-	if (d && [self hasSnippetsBlog] && ![self prefersExternalBlog]) {
-		RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];
-		NSDictionary* args = @{
-		};
-		[client uploadImageData:d named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
-			NSDictionary* headers = response.httpResponse.allHeaderFields;
-			NSString* image_url = headers[@"Location"];
-			photo.publishedURL = image_url;
-			RFDispatchMainAsync (^{
-				[Answers logCustomEventWithName:@"Uploaded Photo" customAttributes:nil];
-				handler();
-			});
-		}];
-	}
-	else {
-		// ...
+	if (d) {
+		if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
+			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];
+			NSDictionary* args = @{
+			};
+			[client uploadImageData:d named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
+				NSDictionary* headers = response.httpResponse.allHeaderFields;
+				NSString* image_url = headers[@"Location"];
+				photo.publishedURL = image_url;
+				RFDispatchMainAsync (^{
+					[Answers logCustomEventWithName:@"Uploaded Photo" customAttributes:nil];
+					handler();
+				});
+			}];
+		}
+		else {
+			NSString* xmlrpc_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogEndpoint"];
+			NSString* blog_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogID"];
+			NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogUsername"];
+			NSString* password = [SSKeychain passwordForService:@"ExternalBlog" account:@"default"];
+			
+			NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
+			NSString* filename = [[[[NSString uuGenerateUUIDString] lowercaseString] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByAppendingPathExtension:@"jpg"];
+			NSArray* params = @[ blog_id, username, password, @{
+				@"name": filename,
+				@"type": @"image/jpeg",
+				@"bits": d
+			}];
+			NSString* method_name = @"metaWeblog.newMediaObject";
+
+			RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpc_endpoint];
+			[request sendMethod:method_name params:params completion:^(UUHttpResponse* response) {
+				RFXMLRPCParser* xmlrpc = [RFXMLRPCParser parsedResponseFromData:response.rawResponse];
+				RFDispatchMainAsync ((^{
+					if (xmlrpc.responseFault) {
+						NSString* s = [NSString stringWithFormat:@"%@ (error: %@)", xmlrpc.responseFault[@"faultString"], xmlrpc.responseFault[@"faultCode"]];
+						[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:s button:@"OK" completionHandler:NULL];
+						self.navigationItem.rightBarButtonItem.enabled = YES;
+						[self.networkSpinner stopAnimating];
+						self.photoButton.hidden = NO;
+					}
+					else {
+						NSString* image_url = [[xmlrpc.responseParams firstObject] objectForKey:@"link"];
+						photo.publishedURL = image_url;
+
+						[Answers logCustomEventWithName:@"Uploaded External" customAttributes:nil];
+						handler();
+					}
+				}));
+			}];
+		}
 	}
 }
 

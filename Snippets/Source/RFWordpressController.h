@@ -10,8 +10,6 @@
 
 @interface RFWordpressController : UIViewController <UIScrollViewDelegate, UITextFieldDelegate>
 
-@property (strong, nonatomic) IBOutlet UIScrollView* scrollView;
-@property (strong, nonatomic) IBOutlet UIView* containerView;
 @property (strong, nonatomic) IBOutlet UITextField* usernameField;
 @property (strong, nonatomic) IBOutlet UITextField* passwordField;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* progressSpinner;

@@ -33,7 +33,6 @@
 	[super viewDidLoad];
 
 	[self setupNavigation];
-	[self setupScrollView];	
 }
 
 - (void) setupNavigation
@@ -42,18 +41,6 @@
 	
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
-}
-
-- (void) setupScrollView
-{
-	self.scrollView.contentSize = self.containerView.bounds.size;
-	[self.scrollView addSubview:self.containerView];
-	self.scrollView.delegate = self;
-}
-
-- (void) scrollViewDidScroll:(UIScrollView *)scrollView
-{
-	[self.view endEditing:NO];
 }
 
 - (NSString *) normalizeURL:(NSString *)url
