@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITextView* textView;
 @property (strong, nonatomic) IBOutlet UILabel* remainingField;
 @property (strong, nonatomic) IBOutlet UILabel* blognameField;
+@property (strong, nonatomic) IBOutlet UIButton* photoButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* bottomConstraint;
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
 

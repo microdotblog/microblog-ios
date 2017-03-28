@@ -59,6 +59,13 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self setupNotifications];
 	[self setupBlogName];
 	[self setupCollectionView];
+	
+	if (self.isReply) {
+		self.photoButton.hidden = YES;
+	}
+	else if (![self hasSnippetsBlog] || [self prefersExternalBlog]) {
+		self.photoButton.hidden = YES;
+	}
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -191,7 +198,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			if (s.length > 0) {
 				s = [s stringByAppendingString:@"\n\n"];
 			}
-			s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" />", photo.publishedURL, floor(sz.width), floor(sz.height)];
+			s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" style=\"height: auto\" />", photo.publishedURL, 600.0, 600.0];
 			[self uploadText:s];
 		}];
 	}

@@ -19,6 +19,7 @@
                 <outlet property="blognameField" destination="boh-G1-f3J" id="uvn-XS-LQm"/>
                 <outlet property="bottomConstraint" destination="Tev-Ab-erq" id="mjY-DW-B4C"/>
                 <outlet property="collectionView" destination="va1-Ew-xJV" id="RU0-9q-moq"/>
+                <outlet property="photoButton" destination="7vZ-FK-rFO" id="bbx-vS-8JK"/>
                 <outlet property="remainingField" destination="qjg-el-aBq" id="rJl-gi-J1w"/>
                 <outlet property="textView" destination="F7T-Eg-dhD" id="bSs-O6-eB1"/>
                 <outlet property="view" destination="iN0-l3-epB" id="yA8-wJ-I5e"/>
