@@ -16,6 +16,8 @@
 		4B0D556F1B9552F40076AD9F /* Categories.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D556D1B9552F40076AD9F /* Categories.xib */; };
 		4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */; };
 		4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */; };
+		4B1114F91E8C1A5C0043AB6B /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1114F81E8C1A5C0043AB6B /* ShareViewController.m */; };
+		4B1114FC1E8C1A5C0043AB6B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1114FA1E8C1A5C0043AB6B /* MainInterface.storyboard */; };
 		4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E41F1E82F5B50032F54B /* Photos.framework */; };
 		4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E4201E82F5B50032F54B /* PhotosUI.framework */; };
 		4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
@@ -24,6 +26,7 @@
 		4B1BD2841D8754DC00B3C93D /* Help.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1BD2821D8754DC00B3C93D /* Help.xib */; };
 		4B1D74FC1B95ECF4004A0ACD /* RFXMLElementStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D74FB1B95ECF4004A0ACD /* RFXMLElementStack.m */; };
 		4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DEDD51BF8D14B00F3152B /* RFUserController.m */; };
+		4B2EE3091E8C1F9F009DDA85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B94052C1E2933DE00B01E79 /* Images.xcassets */; };
 		4B3BD0DF1E82B5F800F4B4E0 /* RFPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */; };
 		4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B3BD0E01E82B61700F4B4E0 /* Photos.xib */; };
 		4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */; };
@@ -136,6 +139,11 @@
 		4B0D55711B95586F0076AD9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingChoiceCell.xib; sourceTree = "<group>"; };
 		4B0D55731B9559EC0076AD9F /* RFSettingChoiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFSettingChoiceCell.h; path = Source/RFSettingChoiceCell.h; sourceTree = "<group>"; };
 		4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFSettingChoiceCell.m; path = Source/RFSettingChoiceCell.m; sourceTree = "<group>"; };
+		4B1114F51E8C1A5C0043AB6B /* Photo Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Photo Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B1114F71E8C1A5C0043AB6B /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		4B1114F81E8C1A5C0043AB6B /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		4B1114FB1E8C1A5C0043AB6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		4B1114FD1E8C1A5C0043AB6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B14E41F1E82F5B50032F54B /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		4B14E4201E82F5B50032F54B /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		4B1BAEFE1B852BC9008097F7 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = Shared/SSKeychain/SSKeychain.h; sourceTree = SOURCE_ROOT; };
@@ -301,6 +309,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4B1114F21E8C1A5C0043AB6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4BA2C9701B2109D10038C0E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,6 +331,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B1114F61E8C1A5C0043AB6B /* Photo Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4B1114F71E8C1A5C0043AB6B /* ShareViewController.h */,
+				4B1114F81E8C1A5C0043AB6B /* ShareViewController.m */,
+				4B1114FA1E8C1A5C0043AB6B /* MainInterface.storyboard */,
+				4B1114FD1E8C1A5C0043AB6B /* Info.plist */,
+			);
+			path = "Photo Extension";
+			sourceTree = "<group>";
+		};
 		4B1BAEFD1B852BC0008097F7 /* SSKeychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +473,7 @@
 				4BA2C9751B2109D10038C0E5 /* Source */,
 				4BA2C99D1B2109E10038C0E5 /* Shared */,
 				4BA2C99C1B2109DC0038C0E5 /* Resources */,
+				4B1114F61E8C1A5C0043AB6B /* Photo Extension */,
 				4BA9109E1B84A53A00D58F83 /* Frameworks */,
 				4BA2C9741B2109D10038C0E5 /* Products */,
 			);
@@ -456,6 +483,7 @@
 			isa = PBXGroup;
 			children = (
 				4BA2C9731B2109D10038C0E5 /* Micro.blog.app */,
+				4B1114F51E8C1A5C0043AB6B /* Photo Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -611,6 +639,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4B1114F41E8C1A5C0043AB6B /* Photo Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4B1115011E8C1A5C0043AB6B /* Build configuration list for PBXNativeTarget "Photo Extension" */;
+			buildPhases = (
+				4B1114F11E8C1A5C0043AB6B /* Sources */,
+				4B1114F21E8C1A5C0043AB6B /* Frameworks */,
+				4B1114F31E8C1A5C0043AB6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Photo Extension";
+			productName = "Photo Extension";
+			productReference = 4B1114F51E8C1A5C0043AB6B /* Photo Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		4BA2C9721B2109D10038C0E5 /* Micro.blog */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4BA2C9961B2109D10038C0E5 /* Build configuration list for PBXNativeTarget "Micro.blog" */;
@@ -639,6 +684,11 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Riverfold Software";
 				TargetAttributes = {
+					4B1114F41E8C1A5C0043AB6B = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = S4E235RUB9;
+						ProvisioningStyle = Automatic;
+					};
 					4BA2C9721B2109D10038C0E5 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = S4E235RUB9;
@@ -671,11 +721,21 @@
 			projectRoot = "";
 			targets = (
 				4BA2C9721B2109D10038C0E5 /* Micro.blog */,
+				4B1114F41E8C1A5C0043AB6B /* Photo Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4B1114F31E8C1A5C0043AB6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B2EE3091E8C1F9F009DDA85 /* Images.xcassets in Resources */,
+				4B1114FC1E8C1A5C0043AB6B /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4BA2C9711B2109D10038C0E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -720,6 +780,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4B1114F11E8C1A5C0043AB6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B1114F91E8C1A5C0043AB6B /* ShareViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4BA2C96F1B2109D10038C0E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -829,6 +897,14 @@
 			name = SettingChoiceCell.xib;
 			sourceTree = "<group>";
 		};
+		4B1114FA1E8C1A5C0043AB6B /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B1114FB1E8C1A5C0043AB6B /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		4B1BD2821D8754DC00B3C93D /* Help.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -936,6 +1012,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4B1115021E8C1A5C0043AB6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = S4E235RUB9;
+				INFOPLIST_FILE = "Photo Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.riverfold.snippets.PhotoExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		4B1115031E8C1A5C0043AB6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S4E235RUB9;
+				INFOPLIST_FILE = "Photo Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.riverfold.snippets.PhotoExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		4BA2C9941B2109D10038C0E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1020,7 +1132,6 @@
 		4BA2C9971B2109D10038C0E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1047,7 +1158,6 @@
 		4BA2C9981B2109D10038C0E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1074,6 +1184,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4B1115011E8C1A5C0043AB6B /* Build configuration list for PBXNativeTarget "Photo Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B1115021E8C1A5C0043AB6B /* Debug */,
+				4B1115031E8C1A5C0043AB6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4BA2C96E1B2109D10038C0E5 /* Build configuration list for PBXProject "Micro.blog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
