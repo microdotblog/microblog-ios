@@ -89,11 +89,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-	if (self.photosResult.count < 50) {
+	if (self.photosResult.count < 100) {
 		return self.photosResult.count;
 		}
 	else {
-		return 50;
+		return 100;
 	}
 }
 

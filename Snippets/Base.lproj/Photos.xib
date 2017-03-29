@@ -21,10 +21,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5ch-YY-uXp">
-                    <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="367" width="375" height="300"/>
                     <color key="backgroundColor" white="0.83729467147435888" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="200" id="Jj6-h8-ZOl"/>
+                        <constraint firstAttribute="height" constant="300" id="Jj6-h8-ZOl"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iUS-BP-E2N">
                         <size key="itemSize" width="50" height="50"/>
@@ -38,7 +38,7 @@
                     </connections>
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="leU-W1-6cN">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="367"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <action selector="closePhotos:" destination="-1" eventType="touchUpInside" id="maM-GD-VzQ"/>
