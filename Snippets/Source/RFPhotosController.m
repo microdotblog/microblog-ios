@@ -33,7 +33,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[super viewDidLoad];
 	
-	[self setupNavigation];
 	[self setupPhotos];
 	[self setupCollectionView];
 }
@@ -42,15 +41,17 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[super viewWillAppear:animated];
 	
-	UIImage* blank_img = [[UIImage alloc] init];
-	[self.navigationController.navigationBar setBackgroundImage:blank_img forBarMetrics:UIBarMetricsDefault];
-	[self.navigationController.navigationBar setShadowImage:blank_img];
+	[self setupNavigation];
 }
 
 - (void) setupNavigation
 {
 	self.title = @"";
-//	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(closePhotos:)];
+	self.navigationItem.leftBarButtonItem = nil;
+	
+	UIImage* blank_img = [[UIImage alloc] init];
+	[self.navigationController.navigationBar setBackgroundImage:blank_img forBarMetrics:UIBarMetricsDefault];
+	[self.navigationController.navigationBar setShadowImage:blank_img];
 }
 
 - (void) setupPhotos
@@ -82,6 +83,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) closePhotos:(id)sender
 {
+	[self setupNavigation];
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -139,6 +141,30 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
 	return 0;
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	if ((scrollView.contentOffset.y > 0) && !self.isFullScreenPhotos) {
+		self.isFullScreenPhotos = YES;
+		CGFloat new_height = self.view.bounds.size.height;
+		[UIView animateWithDuration:0.3 animations:^{
+			self.photosHeightConstraint.constant = new_height;
+			[self.view layoutIfNeeded];
+		}];
+
+		[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+		[self.navigationController.navigationBar setShadowImage:nil];
+		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(closePhotos:)];
+		self.title = @"Photos";
+	}
+	else if ((scrollView.contentOffset.y < 0) && self.isFullScreenPhotos) {
+		self.isFullScreenPhotos = NO;
+		[UIView animateWithDuration:0.3 animations:^{
+			self.photosHeightConstraint.constant = 300;
+			[self.view layoutIfNeeded];
+		}];
+	}
 }
 
 @end

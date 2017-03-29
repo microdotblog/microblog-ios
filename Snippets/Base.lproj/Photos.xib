@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="collectionView" destination="5ch-YY-uXp" id="XfD-Kv-5T4"/>
                 <outlet property="overlayButton" destination="leU-W1-6cN" id="wvl-I8-nCI"/>
+                <outlet property="photosHeightConstraint" destination="Jj6-h8-ZOl" id="UaX-tZ-aOP"/>
                 <outlet property="view" destination="iN0-l3-epB" id="BZR-S9-Qbz"/>
             </connections>
         </placeholder>
@@ -20,7 +21,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5ch-YY-uXp">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5ch-YY-uXp">
                     <rect key="frame" x="0.0" y="367" width="375" height="300"/>
                     <color key="backgroundColor" white="0.83729467147435888" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
