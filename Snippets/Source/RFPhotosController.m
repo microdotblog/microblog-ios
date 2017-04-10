@@ -87,6 +87,30 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
+- (void) expandPhotos
+{
+	self.isFullScreenPhotos = YES;
+	CGFloat new_height = self.view.bounds.size.height;
+	[UIView animateWithDuration:0.3 animations:^{
+		self.photosHeightConstraint.constant = new_height;
+		[self.view layoutIfNeeded];
+	}];
+
+	[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+	[self.navigationController.navigationBar setShadowImage:nil];
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(closePhotos:)];
+	self.title = @"Photos";
+}
+
+- (void) collapsePhotos
+{
+	self.isFullScreenPhotos = NO;
+	[UIView animateWithDuration:0.3 animations:^{
+		self.photosHeightConstraint.constant = 300;
+		[self.view layoutIfNeeded];
+	}];
+}
+
 #pragma mark -
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -146,24 +170,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
 	if ((scrollView.contentOffset.y > 0) && !self.isFullScreenPhotos) {
-		self.isFullScreenPhotos = YES;
-		CGFloat new_height = self.view.bounds.size.height;
-		[UIView animateWithDuration:0.3 animations:^{
-			self.photosHeightConstraint.constant = new_height;
-			[self.view layoutIfNeeded];
-		}];
-
-		[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-		[self.navigationController.navigationBar setShadowImage:nil];
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(closePhotos:)];
-		self.title = @"Photos";
+		[self expandPhotos];
 	}
 	else if ((scrollView.contentOffset.y < 0) && self.isFullScreenPhotos) {
-		self.isFullScreenPhotos = NO;
-		[UIView animateWithDuration:0.3 animations:^{
-			self.photosHeightConstraint.constant = 300;
-			[self.view layoutIfNeeded];
-		}];
+		[self collapsePhotos];
 	}
 }
 
