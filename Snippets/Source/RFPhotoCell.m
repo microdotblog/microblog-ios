@@ -22,7 +22,9 @@
 	}
 	else {
 		PHImageManager* manager = [PHImageManager defaultManager];
-		[manager requestImageForAsset:photo.asset targetSize:CGSizeMake (150, 150) contentMode:PHImageContentModeAspectFill options:0 resultHandler:^(UIImage* result, NSDictionary* info) {
+		PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
+		options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
+		[manager requestImageForAsset:photo.asset targetSize:CGSizeMake (150, 150) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 			self.thumbnailView.image = result;
 		}];
 	}

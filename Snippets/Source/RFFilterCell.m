@@ -19,7 +19,9 @@
 	self.filter = filter;
 
 	PHImageManager* manager = [PHImageManager defaultManager];
-	[manager requestImageForAsset:photo.asset targetSize:CGSizeMake (200, 200) contentMode:PHImageContentModeAspectFill options:0 resultHandler:^(UIImage* result, NSDictionary* info) {
+	PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
+	options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
+	[manager requestImageForAsset:photo.asset targetSize:CGSizeMake (200, 200) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 		self.nameField.text = filter.name;
 		if (filter.ciFilter.length > 0) {
 			self.previewImageView.image = [filter filterImage:result];

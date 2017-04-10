@@ -83,7 +83,9 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 - (void) setupScrollView
 {
 	PHImageManager* manager = [PHImageManager defaultManager];
-	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1200, 1200) contentMode:PHImageContentModeAspectFill options:0 resultHandler:^(UIImage* result, NSDictionary* info) {
+	PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
+	options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1200, 1200) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 		UIImage* img = [result uuRemoveOrientation];
 		self.fullImage = img;
 
@@ -188,7 +190,9 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 {
 	RFFilter* filter = [self.filters objectAtIndex:indexPath.item];
 	PHImageManager* manager = [PHImageManager defaultManager];
-	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1200, 1200) contentMode:PHImageContentModeAspectFill options:0 resultHandler:^(UIImage* result, NSDictionary* info) {
+	PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
+	options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1200, 1200) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 		UIImage* img = [result uuRemoveOrientation];
 		if (filter.ciFilter.length > 0) {
 			img = [filter filterImage:img];
