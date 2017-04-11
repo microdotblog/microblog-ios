@@ -55,6 +55,7 @@
 	[self setupNotifications];
 	[self setupRefresh];
 	[self setupGestures];
+	[self setupScrollRate];
 	
 	[self refreshTimeline];
 }
@@ -98,6 +99,11 @@
 	UISwipeGestureRecognizer* swipe_right_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
 	swipe_right_gesture.direction = UISwipeGestureRecognizerDirectionRight;
 	[self.view addGestureRecognizer:swipe_right_gesture];
+}
+
+- (void) setupScrollRate
+{
+	self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
 }
 
 - (void) setupPreventHorizontalScrolling
