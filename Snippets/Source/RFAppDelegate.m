@@ -169,6 +169,8 @@
 
 	[self.window makeKeyAndVisible];
 	[self.window setRootViewController:self.splitViewController];
+
+	[self.menuNavController pushViewController:self.timelineController animated:NO];
 }
 
 - (void) setupSignin
