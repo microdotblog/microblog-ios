@@ -46,10 +46,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupNavigation
 {
-	self.title = @"";
-	self.navigationItem.leftBarButtonItem = nil;
-	
 	UIImage* blank_img = [[UIImage alloc] init];
+
+	self.title = @"";
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:blank_img style:UIBarButtonItemStylePlain target:self action:@selector(closePhotos:)];
+	
 	[self.navigationController.navigationBar setBackgroundImage:blank_img forBarMetrics:UIBarMetricsDefault];
 	[self.navigationController.navigationBar setShadowImage:blank_img];
 }
