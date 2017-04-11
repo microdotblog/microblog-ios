@@ -82,6 +82,10 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 
 - (void) setupScrollView
 {
+	if (self.imageView) {
+		return;
+	}
+	
 	PHImageManager* manager = [PHImageManager defaultManager];
 	PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
 	options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
