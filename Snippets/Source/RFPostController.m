@@ -12,6 +12,7 @@
 #import "RFPhoto.h"
 #import "RFPhotoCell.h"
 #import "RFClient.h"
+#import "RFMicropub.h"
 #import "RFMacros.h"
 #import "RFXMLRPCParser.h"
 #import "RFXMLRPCRequest.h"
@@ -106,6 +107,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
 			self.blognameField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountDefaultSite"];
 		}
+		else if ([self hasMicropubBlog]) {
+			NSString* endpoint_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubMe"];
+			NSURL* endpoint_url = [NSURL URLWithString:endpoint_s];
+			self.blognameField.text = endpoint_url.host;
+		}
 		else {
 			NSString* endpoint_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogEndpoint"];
 			NSURL* endpoint_url = [NSURL URLWithString:endpoint_s];
@@ -119,9 +125,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	if (self.isReply) {
 		self.photoButton.hidden = YES;
 	}
-//	else if (![self hasSnippetsBlog] || [self prefersExternalBlog]) {
-//		self.photoButton.hidden = YES;
-//	}
 }
 
 - (void) setupCollectionView
@@ -186,6 +189,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"HasSnippetsBlog"];
 }
 
+- (BOOL) hasMicropubBlog
+{
+	return ([[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubMe"] != nil);
+}
+
 - (BOOL) prefersExternalBlog
 {
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"ExternalBlogIsPreferred"];
@@ -231,6 +239,27 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	nav_controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
 	
 	[self presentViewController:nav_controller animated:YES completion:NULL];
+	[self checkMediaEndpoint];
+}
+
+- (void) checkMediaEndpoint
+{
+	if ([self hasMicropubBlog]) {
+		NSString* media_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubMediaEndpoint"];
+		if (media_endpoint.length == 0) {
+			NSString* micropub_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubPostingEndpoint"];
+			RFMicropub* client = [[RFMicropub alloc] initWithURL:micropub_endpoint];
+			NSDictionary* args = @{
+				@"q": @"config"
+			};
+			[client getWithQueryArguments:args completion:^(UUHttpResponse* response) {
+				NSString* new_endpoint = [response.parsedResponse objectForKey:@"media-endpoint"];
+				if (new_endpoint) {
+					[[NSUserDefaults standardUserDefaults] setObject:new_endpoint forKey:@"ExternalMicropubMediaEndpoint"];
+				}
+			}];
+		}
+	}
 }
 
 - (void) uploadText:(NSString *)text
@@ -257,6 +286,31 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
 				RFDispatchMainAsync (^{
 					[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
+					[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+				});
+			}];
+		}
+		else if ([self hasMicropubBlog]) {
+			NSString* micropub_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubPostingEndpoint"];
+			RFMicropub* client = [[RFMicropub alloc] initWithURL:micropub_endpoint];
+			NSDictionary* args;
+			if ([self.attachedPhotos count] > 0) {
+				RFPhoto* photo = [self.attachedPhotos firstObject];
+				args = @{
+					@"h": @"entry",
+					@"content": text,
+					@"photo": photo.publishedURL
+				};
+			}
+			else {
+				args = @{
+					@"h": @"entry",
+					@"content": text
+				};
+			}
+			[client postWithParams:args completion:^(UUHttpResponse* response) {
+				RFDispatchMainAsync (^{
+					[Answers logCustomEventWithName:@"Sent Micropub" customAttributes:nil];
 					[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 				});
 			}];
@@ -336,6 +390,21 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				photo.publishedURL = image_url;
 				RFDispatchMainAsync (^{
 					[Answers logCustomEventWithName:@"Uploaded Photo" customAttributes:nil];
+					handler();
+				});
+			}];
+		}
+		else if ([self hasMicropubBlog]) {
+			NSString* micropub_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubMediaEndpoint"];
+			RFMicropub* client = [[RFMicropub alloc] initWithURL:micropub_endpoint];
+			NSDictionary* args = @{
+			};
+			[client uploadImageData:d named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
+				NSDictionary* headers = response.httpResponse.allHeaderFields;
+				NSString* image_url = headers[@"Location"];
+				photo.publishedURL = image_url;
+				RFDispatchMainAsync (^{
+					[Answers logCustomEventWithName:@"Uploaded Micropub" customAttributes:nil];
 					handler();
 				});
 			}];

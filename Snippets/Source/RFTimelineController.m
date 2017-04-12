@@ -179,7 +179,8 @@
 - (BOOL) hasExternalBlog
 {
 	NSString* blog_username = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogUsername"];
-	return blog_username.length > 0;
+	NSString* micropub_me = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubMe"];
+	return (blog_username.length > 0) || (micropub_me.length > 0);
 }
 
 - (BOOL) prefersExternalBlog

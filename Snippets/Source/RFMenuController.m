@@ -89,15 +89,24 @@
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountUsername"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountGravatarURL"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountDefaultSite"];
+
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"HasSnippetsBlog"];
+
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogUsername"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogApp"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogEndpoint"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogID"];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogIsPreferred"];
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"HasSnippetsBlog"];
+
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubMe"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubTokenEndpoint"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubPostingEndpoint"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubMediaEndpoint"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubState"];
 
 	[SSKeychain deletePasswordForService:@"Snippets" account:@"default"];
 	[SSKeychain deletePasswordForService:@"ExternalBlog" account:@"default"];
+	[SSKeychain deletePasswordForService:@"MicropubBlog" account:@"default"];
 
 	[Answers logCustomEventWithName:@"Sign Out" customAttributes:nil];
 

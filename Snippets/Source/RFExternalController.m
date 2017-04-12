@@ -83,7 +83,8 @@
 				if (([auth_parser.foundURLs count] > 0) && ([token_parser.foundURLs count] > 0)) {
 					NSString* auth_endpoint = [auth_parser.foundURLs firstObject];
 					NSString* token_endpoint = [token_parser.foundURLs firstObject];
-
+					NSString* micropub_endpoint = [micropub_parser.foundURLs firstObject];
+					
 					NSString* micropub_state = [[[NSString uuGenerateUUIDString] lowercaseString] stringByReplacingOccurrencesOfString:@"-" withString:@""];
 
 					NSMutableString* auth_with_params = [auth_endpoint mutableCopy];
@@ -99,6 +100,7 @@
 
 					[[NSUserDefaults standardUserDefaults] setObject:micropub_state forKey:@"ExternalMicropubState"];
 					[[NSUserDefaults standardUserDefaults] setObject:token_endpoint forKey:@"ExternalMicropubTokenEndpoint"];
+					[[NSUserDefaults standardUserDefaults] setObject:micropub_endpoint forKey:@"ExternalMicropubPostingEndpoint"];
 
 					SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:auth_with_params]];
 					[self presentViewController:safari_controller animated:YES completion:NULL];
