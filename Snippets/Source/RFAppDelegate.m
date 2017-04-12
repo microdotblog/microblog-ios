@@ -15,9 +15,13 @@
 #import "RFPostController.h"
 #import "RFOptionsController.h"
 #import "RFClient.h"
+#import "RFMicropub.h"
 #import "RFConstants.h"
+#import "RFMacros.h"
 #import "SSKeychain.h"
 #import "UUAlert.h"
+#import "UUString.h"
+#import "NSString+Extras.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -48,6 +52,9 @@
 	}
 	else if ([url.host isEqualToString:@"signin"]) {
 		[self showSigninWithToken:param];
+	}
+	else if ([url.host isEqualToString:@"micropub"]) {
+		[self showMicropubWithURL:[url absoluteString]];
 	}
 	
 	return YES;
@@ -290,6 +297,47 @@
 - (void) showSigninWithToken:(NSString *)appToken
 {
 	[self setupSigninWithToken:appToken];
+}
+
+- (void) showMicropubWithURL:(NSString *)url
+{
+	NSString* code = [url uuFindQueryStringArg:@"code"];
+	NSString* state = [url uuFindQueryStringArg:@"state"];
+	NSString* me = [url uuFindQueryStringArg:@"me"];
+	
+	NSString* saved_state = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubState"];
+	NSString* saved_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubTokenEndpoint"];
+	
+	if (![state isEqualToString:saved_state]) {
+		[UIAlertView uuShowOneButtonAlert:@"Micropub Error" message:@"Authorization state did not match." button:@"OK" completionHandler:NULL];
+	}
+	else {
+		NSDictionary* info = @{
+			@"grant_type": @"authorization_code",
+			@"me": me,
+			@"code": code,
+			@"redirect_uri": @"http://dev.micro.blog/micropub/redirect",
+			@"client_id": @"https://micro.blog/"
+		};
+		
+		RFMicropub* mp = [[RFMicropub alloc] initWithURL:saved_endpoint];
+		[mp postWithParams:info completion:^(UUHttpResponse* response) {
+			NSString* access_token = [response.parsedResponse objectForKey:@"access_token"];
+			if (access_token == nil) {
+				NSString* msg = [response.parsedResponse objectForKey:@"error_description"];
+				[UIAlertView uuShowOneButtonAlert:@"Micropub Error" message:msg button:@"OK" completionHandler:NULL];
+			}
+			else {
+				[[NSUserDefaults standardUserDefaults] setObject:me forKey:@"ExternalMicropubMe"];
+				[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ExternalBlogIsPreferred"];
+				[SSKeychain setPassword:access_token forService:@"ExternalMicropub" account:@"default"];
+			}
+			
+			RFDispatchMain (^{
+				[self.timelineController dismissViewControllerAnimated:YES completion:NULL];
+			});
+		}];
+	}
 }
 
 - (BOOL) hasValidToken

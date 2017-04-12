@@ -38,6 +38,7 @@
 		4B46632F1B8F51710034FC5C /* UILabel+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */; };
 		4B5078D11B965C79002A4F80 /* RFSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5078D01B965C79002A4F80 /* RFSettingsController.m */; };
 		4B5078D41B965E4F002A4F80 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5078D21B965E4F002A4F80 /* Settings.xib */; };
+		4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D21EB1E9DF44000AC101E /* RFMicropub.m */; };
 		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
 		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
 		4B8714741E64C07800C69589 /* External.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8714721E64C07800C69589 /* External.xib */; };
@@ -177,6 +178,8 @@
 		4B5078CF1B965C79002A4F80 /* RFSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFSettingsController.h; path = Source/RFSettingsController.h; sourceTree = "<group>"; };
 		4B5078D01B965C79002A4F80 /* RFSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = RFSettingsController.m; path = Source/RFSettingsController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4B5078D31B965E4F002A4F80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Settings.xib; sourceTree = "<group>"; };
+		4B5D21EA1E9DF44000AC101E /* RFMicropub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFMicropub.h; path = Source/RFMicropub.h; sourceTree = "<group>"; };
+		4B5D21EB1E9DF44000AC101E /* RFMicropub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFMicropub.m; path = Source/RFMicropub.m; sourceTree = "<group>"; };
 		4B5F75501B8CABC50074D88E /* RFOptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFOptionsController.h; path = Source/RFOptionsController.h; sourceTree = "<group>"; };
 		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
 		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
@@ -534,6 +537,8 @@
 				4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */,
 				4BF8034F1B87AACF00D6670C /* RFClient.h */,
 				4BF803501B87AACF00D6670C /* RFClient.m */,
+				4B5D21EA1E9DF44000AC101E /* RFMicropub.h */,
+				4B5D21EB1E9DF44000AC101E /* RFMicropub.m */,
 				4B8714781E64C56A00C69589 /* RFXMLLinkParser.h */,
 				4B8714791E64C56A00C69589 /* RFXMLLinkParser.m */,
 				4B0D55501B93827D0076AD9F /* RFXMLRPCRequest.h */,
@@ -860,6 +865,7 @@
 				4BF803441B87AA2C00D6670C /* UUActionSheet.m in Sources */,
 				4BF8034B1B87AA2C00D6670C /* UUHttpSession.m in Sources */,
 				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
+				4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */,
 				4B8714D31E64D05700C69589 /* win32tc.c in Sources */,
 				4B8714C01E64D05700C69589 /* buffio.c in Sources */,
 				4BF803451B87AA2C00D6670C /* UUAlert.m in Sources */,

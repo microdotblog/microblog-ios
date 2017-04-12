@@ -19,7 +19,7 @@
 
 - (NSString *) rf_urlEncoded
 {
-	return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+	return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
 }
 
 @end

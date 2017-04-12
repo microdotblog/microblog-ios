@@ -15,6 +15,7 @@
 #import "UUAlert.h"
 #import "SSKeychain.h"
 #import "UUHttpSession.h"
+#import "UUString.h"
 #import "NSString+Extras.h"
 #import <SafariServices/SafariServices.h>
 
@@ -83,24 +84,24 @@
 					NSString* auth_endpoint = [auth_parser.foundURLs firstObject];
 					NSString* token_endpoint = [token_parser.foundURLs firstObject];
 
+					NSString* micropub_state = [[[NSString uuGenerateUUIDString] lowercaseString] stringByReplacingOccurrencesOfString:@"-" withString:@""];
+
 					NSMutableString* auth_with_params = [auth_endpoint mutableCopy];
 					if (![auth_with_params containsString:@"?"]) {
 						[auth_with_params appendString:@"?"];
 					}
 					[auth_with_params appendFormat:@"me=%@", [full_url rf_urlEncoded]];
-					[auth_with_params appendFormat:@"&redirect_uri=%@", [@"microblog://micropub" rf_urlEncoded]];
+					[auth_with_params appendFormat:@"&redirect_uri=%@", [@"http://dev.micro.blog/micropub/redirect" rf_urlEncoded]];
 					[auth_with_params appendFormat:@"&client_id=%@", [@"https://micro.blog/" rf_urlEncoded]];
-//					[auth_with_params appendFormat:@"&state=%@", "12345"];
+					[auth_with_params appendFormat:@"&state=%@", micropub_state];
 					[auth_with_params appendString:@"&scope=create"];
 					[auth_with_params appendString:@"&response_type=code"];
 
+					[[NSUserDefaults standardUserDefaults] setObject:micropub_state forKey:@"ExternalMicropubState"];
+					[[NSUserDefaults standardUserDefaults] setObject:token_endpoint forKey:@"ExternalMicropubTokenEndpoint"];
+
 					SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:auth_with_params]];
 					[self presentViewController:safari_controller animated:YES completion:NULL];
-					
-				// load authorization_endpoint in SafariViewController
-				// redirect back to app with auth code
-				// hit tokens service with auth code, get access token
-				// post content to Micropub endpoint with access token
 				}
 			}
 		}
