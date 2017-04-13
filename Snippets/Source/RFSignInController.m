@@ -54,13 +54,15 @@
 
 - (IBAction) finish:(id)sender
 {
-	[self.networkSpinner startAnimating];
-	
-	if ([self.tokenField.text containsString:@"@"]) {
-		[self sendSigninEmail];
-	}
-	else if (self.tokenField.text.length > 0) {
-		[self verifyAppToken];
+	if (self.tokenField.text.length > 0) {
+		[self.networkSpinner startAnimating];
+		
+		if ([self.tokenField.text containsString:@"@"]) {
+			[self sendSigninEmail];
+		}
+		else {
+			[self verifyAppToken];
+		}
 	}
 }
 

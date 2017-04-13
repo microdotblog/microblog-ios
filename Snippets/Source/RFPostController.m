@@ -158,7 +158,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	self.attachedPhotos = new_photos;
 	[self.collectionView reloadData];
 	
-	[self close:nil];
+	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void) keyboardWillShowNotification:(NSNotification*)notification
@@ -213,10 +213,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		CGSize sz = photo.thumbnailImage.size;
 		[self uploadPhoto:photo completion:^{
 			NSString* s = self.textView.text;
-			if (s.length > 0) {
-				s = [s stringByAppendingString:@"\n\n"];
+			
+			if (![self prefersExternalBlog] || ![self hasMicropubBlog]) {
+				if (s.length > 0) {
+					s = [s stringByAppendingString:@"\n\n"];
+				}
+				s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" style=\"height: auto\" />", photo.publishedURL, 600.0, 600.0];
 			}
-			s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" style=\"height: auto\" />", photo.publishedURL, 600.0, 600.0];
+			
 			[self uploadText:s];
 		}];
 	}
