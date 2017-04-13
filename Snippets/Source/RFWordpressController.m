@@ -121,7 +121,8 @@
 
 - (IBAction) fillOnePassword:(id)sender
 {
-	[[OnePasswordExtension sharedExtension] findLoginForURLString:@"" forViewController:self sender:sender completion:^(NSDictionary* login_info, NSError* error) {
+	NSString* find_website = self.websiteURL;
+	[[OnePasswordExtension sharedExtension] findLoginForURLString:find_website forViewController:self sender:sender completion:^(NSDictionary* login_info, NSError* error) {
 		if (error == nil) {
 			if (self.usernameField.text.length == 0) {
 				self.usernameField.text = [login_info objectForKey:AppExtensionUsernameKey];
