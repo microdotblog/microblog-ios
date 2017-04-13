@@ -334,7 +334,9 @@
 			}
 			
 			RFDispatchMain (^{
-				[self.timelineController dismissViewControllerAnimated:YES completion:NULL];
+				[[self activeNavigationController] dismissViewControllerAnimated:YES completion:^{
+					[[NSNotificationCenter defaultCenter] postNotificationName:kOpenPostingNotification object:self];
+				}];
 			});
 		}];
 	}

@@ -7,6 +7,8 @@
 //
 
 static NSString* const kLoadTimelineNotification = @"RFLoadTimeline";
+static NSString* const kOpenPostingNotification = @"RFOpenPosting";
+static NSString* const kClosePostingNotification = @"RFClosePosting";
 
 #define kShowConversationNotification @"RFShowConversationNotification"
 #define kShowConversationPostIDKey @"post_id"

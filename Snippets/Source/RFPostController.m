@@ -14,6 +14,7 @@
 #import "RFClient.h"
 #import "RFMicropub.h"
 #import "RFMacros.h"
+#import "RFConstants.h"
 #import "RFXMLRPCParser.h"
 #import "RFXMLRPCRequest.h"
 #import "UIBarButtonItem+Extras.h"
@@ -157,7 +158,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	self.attachedPhotos = new_photos;
 	[self.collectionView reloadData];
 	
-	[self dismissViewControllerAnimated:YES completion:NULL];
+	[self close:nil];
 }
 
 - (void) keyboardWillShowNotification:(NSNotification*)notification
@@ -226,7 +227,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) close:(id)sender
 {
-	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+//	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kClosePostingNotification object:self];
 }
 
 - (IBAction) showPhotos:(id)sender
@@ -273,7 +275,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[client postWithParams:args completion:^(UUHttpResponse* response) {
 			RFDispatchMainAsync (^{
 				[Answers logCustomEventWithName:@"Sent Reply" customAttributes:nil];
-				[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+				[self close:nil];
 			});
 		}];
 	}
@@ -286,7 +288,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
 				RFDispatchMainAsync (^{
 					[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
-					[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+					[self close:nil];
 				});
 			}];
 		}
@@ -311,7 +313,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
 				RFDispatchMainAsync (^{
 					[Answers logCustomEventWithName:@"Sent Micropub" customAttributes:nil];
-					[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+					[self close:nil];
 				});
 			}];
 		}
@@ -367,7 +369,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					}
 					else {
 						[Answers logCustomEventWithName:@"Sent External" customAttributes:nil];
-						[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+						[self close:nil];
 					}
 				}));
 			}];

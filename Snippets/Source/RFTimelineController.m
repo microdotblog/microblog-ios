@@ -82,6 +82,8 @@
 - (void) setupNotifications
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTimelineNotification:) name:kLoadTimelineNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPostingNotification:) name:kOpenPostingNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePostingNotification:) name:kClosePostingNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasFavoritedNotification:) name:kPostWasFavoritedNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasUnfavoritedNotification:) name:kPostWasUnfavoritedNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasDeletedNotification:) name:kPostWasDeletedNotification object:nil];
@@ -278,6 +280,16 @@
 	NSString* token = [notification.userInfo objectForKey:@"token"];
 	[SSKeychain setPassword:token forService:@"Snippets" account:@"default"];
 	[self loadTimelineForToken:token];
+}
+
+- (void) openPostingNotification:(NSNotification *)notification
+{
+	[self promptNewPost:nil];
+}
+
+- (void) closePostingNotification:(NSNotification *)notification
+{
+	[self.navigationController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void) postWasFavoritedNotification:(NSNotification *)notification
