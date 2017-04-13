@@ -9,12 +9,14 @@
 #import "RFWordpressController.h"
 
 #import "RFXMLRPCRequest.h"
+#import "RFXMLRPCParser.h"
 #import "RFPostController.h"
 #import "RFCategoriesController.h"
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
 #import "UUAlert.h"
 #import "SSKeychain.h"
+#import "OnePasswordExtension.h"
 
 @implementation RFWordpressController
 
@@ -33,6 +35,7 @@
 	[super viewDidLoad];
 
 	[self setupNavigation];
+	[self setupOnePassword];
 }
 
 - (void) setupNavigation
@@ -41,6 +44,13 @@
 	
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
+}
+
+- (void) setupOnePassword
+{
+	if ([[OnePasswordExtension sharedExtension] isAppExtensionAvailable]) {
+		self.onePasswordButton.hidden = NO;
+	}
 }
 
 - (NSString *) normalizeURL:(NSString *)url
@@ -69,6 +79,28 @@
 	}
 }
 
+- (void) verifyUsername:(NSString *)username password:(NSString *)password forEndpoint:(NSString *)xmlrpcEndpoint withCompletion:(void (^)())handler
+{
+	NSString* method_name = @"blogger.getUserInfo";
+	NSString* app_key = @"";
+	NSArray* params = @[ app_key, username, password ];
+	
+	RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpcEndpoint];
+	[request sendMethod:method_name params:params completion:^(UUHttpResponse* response) {
+		RFXMLRPCParser* xmlrpc = [RFXMLRPCParser parsedResponseFromData:response.rawResponse];
+		RFDispatchMainAsync ((^{
+			if (xmlrpc.responseFault) {
+				NSString* s = [NSString stringWithFormat:@"%@ (error: %@)", xmlrpc.responseFault[@"faultString"], xmlrpc.responseFault[@"faultCode"]];
+				[UIAlertView uuShowOneButtonAlert:@"Error Signing In" message:s button:@"OK" completionHandler:NULL];
+				[self.progressSpinner stopAnimating];
+			}
+			else {
+				handler();
+			}
+		}));
+	}];
+}
+
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
 	if (textField == self.usernameField) {
@@ -87,6 +119,18 @@
 
 #pragma mark -
 
+- (IBAction) fillOnePassword:(id)sender
+{
+	[[OnePasswordExtension sharedExtension] findLoginForURLString:@"" forViewController:self sender:sender completion:^(NSDictionary* login_info, NSError* error) {
+		if (error == nil) {
+			if (self.usernameField.text.length == 0) {
+				self.usernameField.text = [login_info objectForKey:AppExtensionUsernameKey];
+			}
+			self.passwordField.text = [login_info objectForKey:AppExtensionPasswordKey];
+		}
+	}];
+}
+
 - (IBAction) close:(id)sender
 {
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
@@ -102,15 +146,17 @@
 		RFDispatchMainAsync (^{
 			[self.progressSpinner stopAnimating];
 			if (xmlrpcEndpointURL && blogID) {
-				[self saveAccountWithEndpointURL:xmlrpcEndpointURL blogID:blogID];
-				if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogApp"] isEqualToString:@"WordPress"]) {
-					RFCategoriesController* categories_controller = [[RFCategoriesController alloc] init];
-					[self.navigationController pushViewController:categories_controller animated:YES];
-				}
-				else {
-					RFPostController* post_controller = [[RFPostController alloc] init];
-					[self.navigationController pushViewController:post_controller animated:YES];
-				}
+				[self verifyUsername:self.usernameField.text password:self.passwordField.text forEndpoint:xmlrpcEndpointURL withCompletion:^{
+					[self saveAccountWithEndpointURL:xmlrpcEndpointURL blogID:blogID];
+					if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogApp"] isEqualToString:@"WordPress"]) {
+						RFCategoriesController* categories_controller = [[RFCategoriesController alloc] init];
+						[self.navigationController pushViewController:categories_controller animated:YES];
+					}
+					else {
+						RFPostController* post_controller = [[RFPostController alloc] init];
+						[self.navigationController pushViewController:post_controller animated:YES];
+					}
+				}];
 			}
 			else {
 				[UIAlertView uuShowTwoButtonAlert:@"Error Discovering Settings" message:@"Could not find the XML-RPC endpoint for your weblog. Please see help.micro.blog for troubleshooting tips." buttonOne:@"Visit Help" buttonTwo:@"OK" completionHandler:^(NSInteger buttonIndex) {

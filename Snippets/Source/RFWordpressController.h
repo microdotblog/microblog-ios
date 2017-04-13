@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UITextField* usernameField;
 @property (strong, nonatomic) IBOutlet UITextField* passwordField;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* progressSpinner;
+@property (strong, nonatomic) IBOutlet UIButton* onePasswordButton;
 
 @property (strong, nonatomic) NSString* websiteURL;
 

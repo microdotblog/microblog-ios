@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -15,6 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFWordpressController">
             <connections>
+                <outlet property="onePasswordButton" destination="VKd-Ox-0oP" id="dZG-uh-6hR"/>
                 <outlet property="passwordField" destination="whL-Vr-TSM" id="gqu-vA-em4"/>
                 <outlet property="progressSpinner" destination="ciA-Ed-e5a" id="HMU-ka-JbP"/>
                 <outlet property="usernameField" destination="gzj-9l-IxU" id="ZZI-dM-7I4"/>
@@ -48,7 +49,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="whL-Vr-TSM">
-                    <rect key="frame" x="8" y="172" width="304" height="30"/>
+                    <rect key="frame" x="8" y="172" width="273" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="lig-sw-eBn"/>
                     </constraints>
@@ -67,17 +68,30 @@
                         <constraint firstAttribute="height" constant="20" id="yvI-J1-yci"/>
                     </constraints>
                 </activityIndicatorView>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKd-Ox-0oP">
+                    <rect key="frame" x="289" y="176" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="EkS-yq-sAk"/>
+                        <constraint firstAttribute="height" constant="22" id="uPX-ta-U26"/>
+                    </constraints>
+                    <state key="normal" image="onepassword-button"/>
+                    <connections>
+                        <action selector="fillOnePassword:" destination="-1" eventType="touchUpInside" id="8hN-aY-Seg"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="gzj-9l-IxU" secondAttribute="trailing" constant="8" id="2nd-bd-XTj"/>
                 <constraint firstAttribute="trailing" secondItem="WFW-mC-TeU" secondAttribute="trailing" constant="10" id="4N0-Fc-prz"/>
+                <constraint firstItem="VKd-Ox-0oP" firstAttribute="leading" secondItem="whL-Vr-TSM" secondAttribute="trailing" constant="8" id="5aX-WK-y1p"/>
                 <constraint firstAttribute="trailing" secondItem="ciA-Ed-e5a" secondAttribute="trailing" constant="10" id="6Hr-O6-t92"/>
                 <constraint firstItem="whL-Vr-TSM" firstAttribute="top" secondItem="gzj-9l-IxU" secondAttribute="bottom" constant="8" id="GZm-J4-Lpw"/>
+                <constraint firstAttribute="trailing" secondItem="VKd-Ox-0oP" secondAttribute="trailing" constant="9" id="NEO-4j-ohf"/>
                 <constraint firstItem="WFW-mC-TeU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="TDz-OR-BVD"/>
                 <constraint firstItem="gzj-9l-IxU" firstAttribute="top" secondItem="WFW-mC-TeU" secondAttribute="bottom" constant="8" id="UAq-Ki-qTy"/>
                 <constraint firstItem="gzj-9l-IxU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Wd3-gx-PId"/>
-                <constraint firstAttribute="trailing" secondItem="whL-Vr-TSM" secondAttribute="trailing" constant="8" id="cOd-g0-eQs"/>
+                <constraint firstItem="ciA-Ed-e5a" firstAttribute="top" secondItem="VKd-Ox-0oP" secondAttribute="bottom" constant="12" id="hXl-HY-CSQ"/>
                 <constraint firstItem="WFW-mC-TeU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="ixh-hs-rLE"/>
                 <constraint firstItem="ciA-Ed-e5a" firstAttribute="top" secondItem="whL-Vr-TSM" secondAttribute="bottom" constant="8" id="j1H-ZT-c5H"/>
                 <constraint firstItem="whL-Vr-TSM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="v3Q-D4-cCc"/>
@@ -87,4 +101,7 @@
             <point key="canvasLocation" x="92" y="178"/>
         </view>
     </objects>
+    <resources>
+        <image name="onepassword-button" width="27" height="27"/>
+    </resources>
 </document>
