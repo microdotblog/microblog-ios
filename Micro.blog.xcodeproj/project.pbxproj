@@ -18,6 +18,8 @@
 		4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */; };
 		4B1114F91E8C1A5C0043AB6B /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1114F81E8C1A5C0043AB6B /* ShareViewController.m */; };
 		4B1114FC1E8C1A5C0043AB6B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1114FA1E8C1A5C0043AB6B /* MainInterface.storyboard */; };
+		4B12BAEA1E9FBFBC000E559F /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */; };
+		4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */; };
 		4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E41F1E82F5B50032F54B /* Photos.framework */; };
 		4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E4201E82F5B50032F54B /* PhotosUI.framework */; };
 		4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
@@ -145,6 +147,9 @@
 		4B1114F81E8C1A5C0043AB6B /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		4B1114FB1E8C1A5C0043AB6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		4B1114FD1E8C1A5C0043AB6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = Shared/1Password/1Password.xcassets; sourceTree = SOURCE_ROOT; };
+		4B12BAEC1E9FBFDD000E559F /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnePasswordExtension.h; path = Shared/1Password/OnePasswordExtension.h; sourceTree = SOURCE_ROOT; };
+		4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OnePasswordExtension.m; path = Shared/1Password/OnePasswordExtension.m; sourceTree = SOURCE_ROOT; };
 		4B14E41F1E82F5B50032F54B /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		4B14E4201E82F5B50032F54B /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		4B1BAEFE1B852BC9008097F7 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = Shared/SSKeychain/SSKeychain.h; sourceTree = SOURCE_ROOT; };
@@ -343,6 +348,15 @@
 				4B1114FD1E8C1A5C0043AB6B /* Info.plist */,
 			);
 			path = "Photo Extension";
+			sourceTree = "<group>";
+		};
+		4B12BAEB1E9FBFC5000E559F /* 1Password */ = {
+			isa = PBXGroup;
+			children = (
+				4B12BAEC1E9FBFDD000E559F /* OnePasswordExtension.h */,
+				4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */,
+			);
+			name = 1Password;
 			sourceTree = "<group>";
 		};
 		4B1BAEFD1B852BC0008097F7 /* SSKeychain */ = {
@@ -582,6 +596,7 @@
 				4B5078D21B965E4F002A4F80 /* Settings.xib */,
 				4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */,
 				4B94052C1E2933DE00B01E79 /* Images.xcassets */,
+				4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */,
 			);
 			name = Resources;
 			path = Snippets;
@@ -590,6 +605,7 @@
 		4BA2C99D1B2109E10038C0E5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4B12BAEB1E9FBFC5000E559F /* 1Password */,
 				4B87147D1E64D05700C69589 /* CTidy */,
 				4B46631D1B8F51670034FC5C /* MarkupLabel */,
 				4BF8032D1B87AA2600D6670C /* UUToolbox */,
@@ -762,6 +778,7 @@
 				4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */,
 				4B1BD2841D8754DC00B3C93D /* Help.xib in Resources */,
 				4B8714741E64C07800C69589 /* External.xib in Resources */,
+				4B12BAEA1E9FBFBC000E559F /* 1Password.xcassets in Resources */,
 				4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -825,6 +842,7 @@
 				4B8714C31E64D05700C69589 /* config.c in Sources */,
 				4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */,
 				4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */,
+				4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */,
 				4B8714C71E64D05700C69589 /* istack.c in Sources */,
 				4B8714BB1E64D05700C69589 /* alloc.c in Sources */,
 				4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */,
