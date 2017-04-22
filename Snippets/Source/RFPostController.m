@@ -443,10 +443,18 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					}
 					else {
 						NSString* image_url = [[xmlrpc.responseParams firstObject] objectForKey:@"link"];
-						photo.publishedURL = image_url;
+						if (image_url == nil) {
+							[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
+							self.navigationItem.rightBarButtonItem.enabled = YES;
+							[self.networkSpinner stopAnimating];
+							self.photoButton.hidden = NO;
+						}
+						else {
+							photo.publishedURL = image_url;
 
-						[Answers logCustomEventWithName:@"Uploaded External" customAttributes:nil];
-						handler();
+							[Answers logCustomEventWithName:@"Uploaded External" customAttributes:nil];
+							handler();
+						}
 					}
 				}));
 			}];
