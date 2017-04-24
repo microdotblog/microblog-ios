@@ -72,8 +72,7 @@
 	[UUHttpSession executeRequest:request completionHandler:^(UUHttpResponse* response) {
 		RFXMLLinkParser* rsd_parser = [RFXMLLinkParser parsedResponseFromData:response.rawResponse withRelValue:@"EditURI"];
 		if ([rsd_parser.foundURLs count] > 0) {
-            dispatch_async(dispatch_get_main_queue(), ^
-            {
+            RFDispatchMainAsync (^{
                 RFWordpressController* wordpress_controller = [[RFWordpressController alloc] initWithWebsite:full_url];
                 [self.navigationController pushViewController:wordpress_controller animated:YES];
             });
@@ -105,8 +104,10 @@
 					[[NSUserDefaults standardUserDefaults] setObject:token_endpoint forKey:@"ExternalMicropubTokenEndpoint"];
 					[[NSUserDefaults standardUserDefaults] setObject:micropub_endpoint forKey:@"ExternalMicropubPostingEndpoint"];
 
-					SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:auth_with_params]];
-					[self presentViewController:safari_controller animated:YES completion:NULL];
+					RFDispatchMainAsync (^{
+						SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:auth_with_params]];
+						[self presentViewController:safari_controller animated:YES completion:NULL];
+					});
 				}
 			}
 		}
