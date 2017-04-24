@@ -89,7 +89,7 @@
 {
 	[self sendUnselectedNotification];
 
-	RFClient* client = [[RFClient alloc] initWithPath:@"/posts/favorite"];
+	RFClient* client = [[RFClient alloc] initWithPath:@"/posts/favorites"];
 	NSDictionary* args = @{ @"id": self.postID };
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
 		RFDispatchMainAsync (^{
@@ -103,9 +103,8 @@
 {
 	[self sendUnselectedNotification];
 
-	RFClient* client = [[RFClient alloc] initWithPath:@"/posts/unfavorite"];
-	NSDictionary* args = @{ @"id": self.postID };
-	[client postWithParams:args completion:^(UUHttpResponse* response) {
+	RFClient* client = [[RFClient alloc] initWithFormat:@"/posts/favorites/%@", self.postID];
+	[client deleteWithObject:nil completion:^(UUHttpResponse* response) {
 		RFDispatchMainAsync (^{
 			[[NSNotificationCenter defaultCenter] postNotificationName:kPostWasUnfavoritedNotification object:self userInfo:@{ kPostNotificationPostIDKey: self.postID}];
 			[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
