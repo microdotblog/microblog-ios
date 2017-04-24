@@ -72,8 +72,11 @@
 	[UUHttpSession executeRequest:request completionHandler:^(UUHttpResponse* response) {
 		RFXMLLinkParser* rsd_parser = [RFXMLLinkParser parsedResponseFromData:response.rawResponse withRelValue:@"EditURI"];
 		if ([rsd_parser.foundURLs count] > 0) {
-			RFWordpressController* wordpress_controller = [[RFWordpressController alloc] initWithWebsite:full_url];
-			[self.navigationController pushViewController:wordpress_controller animated:YES];
+            dispatch_async(dispatch_get_main_queue(), ^
+            {
+                RFWordpressController* wordpress_controller = [[RFWordpressController alloc] initWithWebsite:full_url];
+                [self.navigationController pushViewController:wordpress_controller animated:YES];
+            });
 		}
 		else {
 			RFXMLLinkParser* micropub_parser = [RFXMLLinkParser parsedResponseFromData:response.rawResponse withRelValue:@"micropub"];
