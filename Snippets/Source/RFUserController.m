@@ -28,14 +28,15 @@
 	[super viewDidLoad];
 	
 	[self setupNavigation];
-	[self setupFollowing:YES];
+	self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
 	
-	[self setupFollowing:YES];
+	self.navigationItem.rightBarButtonItem = nil;
+	[self checkFollowing];
 }
 
 - (void) setupNavigation
@@ -43,6 +44,20 @@
 	[super setupNavigation];
 
 	self.title = self.timelineTitle;
+}
+
+- (void) checkFollowing
+{
+	RFClient* client = [[RFClient alloc] initWithPath:@"/users/is_following"];
+	NSDictionary* args = @{
+		@"username": self.username
+	};
+	[client getWithQueryArguments:args completion:^(UUHttpResponse* response) {
+		BOOL is_following = [[response.parsedResponse objectForKey:@"is_following"] boolValue];
+		RFDispatchMain (^{
+			[self setupFollowing:is_following];
+		});
+	}];
 }
 
 - (void) setupFollowing:(BOOL)isFollowing
