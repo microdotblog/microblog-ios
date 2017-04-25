@@ -82,7 +82,7 @@
 
 - (void) verifyAppToken
 {
-	RFClient* client = [[RFClient alloc] initWithPath:@"/iphone/verify"];
+	RFClient* client = [[RFClient alloc] initWithPath:@"/iphone/verify"]; // TODO: change to /account/verify
 	NSDictionary* args = @{
 		@"token": self.tokenField.text
 	};

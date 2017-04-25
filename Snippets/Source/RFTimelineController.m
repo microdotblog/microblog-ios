@@ -24,7 +24,7 @@
 {
 	self = [super initWithNibName:@"Timeline" bundle:nil];
 	if (self) {
-		self.endpoint = @"/iphone/timeline";
+		self.endpoint = @"/hybrid/timeline";
 		self.timelineTitle = @"Timeline";
 	}
 	
@@ -257,20 +257,23 @@
 	int width = [UIScreen mainScreen].bounds.size.width;
     
 	RFClient* client;
-	if ([self.endpoint isEqualToString:@"/iphone/mentions"]) {
+	if ([self.endpoint isEqualToString:@"/hybrid/mentions"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
 	}
-	else if ([self.endpoint isEqualToString:@"/iphone/favorites"]) {
+	else if ([self.endpoint isEqualToString:@"/hybrid/favorites"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
 	}
-	else if ([self.endpoint containsString:@"/iphone/conversation"]) {
+	else if ([self.endpoint isEqualToString:@"/hybrid/discover"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
 	}
-	else if ([self.endpoint containsString:@"/iphone/posts/"]) {
+	else if ([self.endpoint containsString:@"/hybrid/conversation"]) {
+		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
+	}
+	else if ([self.endpoint containsString:@"/hybrid/posts/"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
 	}
 	else {
-		client = [[RFClient alloc] initWithFormat:@"/iphone/signin?token=%@&width=%d&minutes=%ld", token, width, timezone_offset];
+		client = [[RFClient alloc] initWithFormat:@"/hybrid/signin?token=%@&width=%d&minutes=%ld", token, width, timezone_offset];
 	}
 	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:client.url]]];
 }

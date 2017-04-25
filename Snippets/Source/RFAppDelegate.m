@@ -282,14 +282,14 @@
 
 - (void) showConversationWithPostID:(NSString *)postID
 {
-	NSString* path = [NSString stringWithFormat:@"/iphone/conversation/%@", postID];
+	NSString* path = [NSString stringWithFormat:@"/hybrid/conversation/%@", postID];
 	RFTimelineController* conversation_controller = [[RFTimelineController alloc] initWithEndpoint:path title:@"Conversation"];
 	[[self activeNavigationController] pushViewController:conversation_controller animated:YES];
 }
 
 - (void) showProfileWithUsername:(NSString *)username
 {
-	NSString* path = [NSString stringWithFormat:@"/iphone/posts/%@", username];
+	NSString* path = [NSString stringWithFormat:@"/hybrid/posts/%@", username];
 	RFUserController* user_controller = [[RFUserController alloc] initWithEndpoint:path username:username];
 	[[self activeNavigationController] pushViewController:user_controller animated:YES];
 }

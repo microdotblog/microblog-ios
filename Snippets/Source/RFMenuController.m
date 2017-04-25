@@ -60,15 +60,21 @@
 	[self notifyResetDetail:timeline_controller];
 }
 
+- (IBAction) showDiscover:(id)sender
+{
+	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/discover" title:@"Discover"];
+	[self notifyResetDetail:timeline_controller];
+}
+
 - (IBAction) showMentions:(id)sender
 {
-	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/mentions" title:@"Mentions"];
+	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/mentions" title:@"Mentions"];
 	[self notifyResetDetail:timeline_controller];
 }
 
 - (IBAction) showFavorites:(id)sender
 {
-	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/iphone/favorites" title:@"Favorites"];
+	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/favorites" title:@"Favorites"];
 	[self notifyResetDetail:timeline_controller];
 }
 
