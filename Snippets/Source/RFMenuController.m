@@ -35,6 +35,10 @@
 	
 	self.title = @"Micro.blog";
 	self.usernameField.text = @"";
+
+	self.discoverField.hidden = YES;
+	self.discoverButton.hidden = YES;
+	self.discoverLine.hidden = YES;
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -51,6 +55,12 @@
 	}
 	else {
 		self.usernameField.text = @"";
+	}
+
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"IsFullAccess"]) {
+		self.discoverField.hidden = NO;
+		self.discoverButton.hidden = NO;
+		self.discoverLine.hidden = NO;
 	}
 }
 

@@ -82,7 +82,7 @@
 
 - (void) verifyAppToken
 {
-	RFClient* client = [[RFClient alloc] initWithPath:@"/iphone/verify"]; // TODO: change to /account/verify
+	RFClient* client = [[RFClient alloc] initWithPath:@"/account/verify"];
 	NSDictionary* args = @{
 		@"token": self.tokenField.text
 	};
@@ -100,6 +100,7 @@
 			NSString* email = [response.parsedResponse objectForKey:@"email"];
 			NSString* gravatar_url = [response.parsedResponse objectForKey:@"gravatar_url"];
 			NSNumber* has_site = [response.parsedResponse objectForKey:@"has_site"];
+			NSNumber* is_fullaccess = [response.parsedResponse objectForKey:@"is_fullaccess"];
 			NSNumber* default_site = [response.parsedResponse objectForKey:@"default_site"];
 			
 			[[NSUserDefaults standardUserDefaults] setObject:full_name forKey:@"AccountFullName"];
@@ -108,6 +109,7 @@
 			[[NSUserDefaults standardUserDefaults] setObject:email forKey:@"AccountEmail"];
 			[[NSUserDefaults standardUserDefaults] setObject:gravatar_url forKey:@"AccountGravatarURL"];
 			[[NSUserDefaults standardUserDefaults] setBool:[has_site boolValue] forKey:@"HasSnippetsBlog"];
+			[[NSUserDefaults standardUserDefaults] setBool:[is_fullaccess boolValue] forKey:@"IsFullAccess"];
 		
 			RFDispatchMainAsync (^{
 				[Answers logLoginWithMethod:@"Token" success:@YES customAttributes:nil];

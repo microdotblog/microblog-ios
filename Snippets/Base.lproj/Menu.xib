@@ -17,6 +17,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFMenuController">
             <connections>
+                <outlet property="discoverButton" destination="d4o-xs-Ush" id="kQc-iC-ekg"/>
+                <outlet property="discoverField" destination="B96-Lt-v68" id="Jho-2q-Vfx"/>
+                <outlet property="discoverLine" destination="61T-Br-Mwy" id="Gsr-ts-bXo"/>
                 <outlet property="profileImageView" destination="lne-rP-Pd0" id="haM-sZ-0kf"/>
                 <outlet property="usernameField" destination="A4s-dV-BQU" id="ccA-hB-cJH"/>
                 <outlet property="view" destination="iN0-l3-epB" id="TxN-9C-G01"/>

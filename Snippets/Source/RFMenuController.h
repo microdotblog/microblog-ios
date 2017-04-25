@@ -12,5 +12,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel* usernameField;
 @property (strong, nonatomic) IBOutlet UIImageView* profileImageView;
+@property (strong, nonatomic) IBOutlet UILabel* discoverField;
+@property (strong, nonatomic) IBOutlet UIButton* discoverButton;
+@property (strong, nonatomic) IBOutlet UIView* discoverLine;
 
 @end
