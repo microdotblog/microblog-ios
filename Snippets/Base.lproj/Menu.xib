@@ -259,6 +259,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B96-Lt-v68">
                     <rect key="frame" x="14" y="221" width="88" height="24"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="88" id="cWA-5h-KJX"/>
                         <constraint firstAttribute="height" constant="24" id="cXX-0K-n1j"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
@@ -330,12 +331,11 @@
                 <constraint firstItem="llw-bA-pNb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="14" id="wPj-fQ-hFK"/>
                 <constraint firstItem="YOe-L8-xaI" firstAttribute="top" secondItem="QOo-KS-5Fp" secondAttribute="bottom" constant="11" id="x1d-lP-pIq"/>
                 <constraint firstItem="sKu-aF-vwl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yMg-eH-XDE"/>
-                <constraint firstAttribute="trailing" secondItem="B96-Lt-v68" secondAttribute="trailing" constant="273" id="yUa-zD-sFS"/>
                 <constraint firstAttribute="trailing" secondItem="IF4-kS-Fgq" secondAttribute="trailing" id="yZy-K6-VlA"/>
                 <constraint firstItem="A4s-dV-BQU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="80" id="z6M-iL-IEF"/>
                 <constraint firstItem="fbg-ms-cvD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zl4-3v-pj5"/>
             </constraints>
-            <point key="canvasLocation" x="15" y="30"/>
+            <point key="canvasLocation" x="14.5" y="29.5"/>
         </view>
     </objects>
 </document>
