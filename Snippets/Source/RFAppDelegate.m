@@ -322,21 +322,30 @@
 		
 		RFMicropub* mp = [[RFMicropub alloc] initWithURL:saved_endpoint];
 		[mp postWithParams:info completion:^(UUHttpResponse* response) {
-			NSString* access_token = [response.parsedResponse objectForKey:@"access_token"];
-			if (access_token == nil) {
-				NSString* msg = [response.parsedResponse objectForKey:@"error_description"];
-				[UIAlertView uuShowOneButtonAlert:@"Micropub Error" message:msg button:@"OK" completionHandler:NULL];
-			}
-			else {
-				[[NSUserDefaults standardUserDefaults] setObject:me forKey:@"ExternalMicropubMe"];
-				[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ExternalBlogIsPreferred"];
-				[SSKeychain setPassword:access_token forService:@"ExternalMicropub" account:@"default"];
-			}
-			
 			RFDispatchMain (^{
-				[[self activeNavigationController] dismissViewControllerAnimated:YES completion:^{
-					[[NSNotificationCenter defaultCenter] postNotificationName:kOpenPostingNotification object:self];
-				}];
+				if ([response.parsedResponse isKindOfClass:[NSString class]]) {
+					NSString* msg = response.parsedResponse;
+					if (msg.length > 200) {
+						msg = @"";
+					}
+					[UIAlertView uuShowOneButtonAlert:@"Micropub Error" message:msg button:@"OK" completionHandler:NULL];
+				}
+				else {
+					NSString* access_token = [response.parsedResponse objectForKey:@"access_token"];
+					if (access_token == nil) {
+						NSString* msg = [response.parsedResponse objectForKey:@"error_description"];
+						[UIAlertView uuShowOneButtonAlert:@"Micropub Error" message:msg button:@"OK" completionHandler:NULL];
+					}
+					else {
+						[[NSUserDefaults standardUserDefaults] setObject:me forKey:@"ExternalMicropubMe"];
+						[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ExternalBlogIsPreferred"];
+						[SSKeychain setPassword:access_token forService:@"ExternalMicropub" account:@"default"];
+					}
+					
+					[[self activeNavigationController] dismissViewControllerAnimated:YES completion:^{
+						[[NSNotificationCenter defaultCenter] postNotificationName:kOpenPostingNotification object:self];
+					}];
+				}
 			});
 		}];
 	}
