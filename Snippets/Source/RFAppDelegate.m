@@ -317,7 +317,8 @@
 			@"me": me,
 			@"code": code,
 			@"redirect_uri": @"http://dev.micro.blog/micropub/redirect",
-			@"client_id": @"https://micro.blog/"
+			@"client_id": @"https://micro.blog/",
+			@"state": state
 		};
 		
 		RFMicropub* mp = [[RFMicropub alloc] initWithURL:saved_endpoint];
