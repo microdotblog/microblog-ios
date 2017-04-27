@@ -393,10 +393,18 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			[client uploadImageData:d named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
 				NSDictionary* headers = response.httpResponse.allHeaderFields;
 				NSString* image_url = headers[@"Location"];
-				photo.publishedURL = image_url;
 				RFDispatchMainAsync (^{
-					[Answers logCustomEventWithName:@"Uploaded Photo" customAttributes:nil];
-					handler();
+					if (image_url == nil) {
+						[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
+						self.navigationItem.rightBarButtonItem.enabled = YES;
+						[self.networkSpinner stopAnimating];
+						self.photoButton.hidden = NO;
+					}
+					else {
+						photo.publishedURL = image_url;
+						[Answers logCustomEventWithName:@"Uploaded Photo" customAttributes:nil];
+						handler();
+					}
 				});
 			}];
 		}
@@ -408,10 +416,18 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			[client uploadImageData:d named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
 				NSDictionary* headers = response.httpResponse.allHeaderFields;
 				NSString* image_url = headers[@"Location"];
-				photo.publishedURL = image_url;
 				RFDispatchMainAsync (^{
-					[Answers logCustomEventWithName:@"Uploaded Micropub" customAttributes:nil];
-					handler();
+					if (image_url == nil) {
+						[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
+						self.navigationItem.rightBarButtonItem.enabled = YES;
+						[self.networkSpinner stopAnimating];
+						self.photoButton.hidden = NO;
+					}
+					else {
+						photo.publishedURL = image_url;
+						[Answers logCustomEventWithName:@"Uploaded Micropub" customAttributes:nil];
+						handler();
+					}
 				});
 			}];
 		}
