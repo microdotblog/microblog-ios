@@ -245,7 +245,7 @@
 - (void) postWasUnselectedNotification:(NSNotification *)notification
 {
 	NSString* post_id = [notification.userInfo objectForKey:kPostNotificationPostIDKey];
-	RFTimelineController* timeline_controller = (RFTimelineController *) self.navigationController.topViewController;
+	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
 	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
 		[timeline_controller setSelected:NO withPostID:post_id];
 	}
