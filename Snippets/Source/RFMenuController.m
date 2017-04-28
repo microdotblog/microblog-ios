@@ -10,6 +10,7 @@
 
 #import "RFTimelineController.h"
 #import "RFSettingsController.h"
+#import "RFDiscoverController.h"
 #import "RFHelpController.h"
 #import "RFConstants.h"
 #import "UUImageView.h"
@@ -72,7 +73,7 @@
 
 - (IBAction) showDiscover:(id)sender
 {
-	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/discover" title:@"Discover"];
+	RFDiscoverController* timeline_controller = [[RFDiscoverController alloc] initWithEndpoint:@"/hybrid/discover" title:@"Discover"];
 	[self notifyResetDetail:timeline_controller];
 }
 
