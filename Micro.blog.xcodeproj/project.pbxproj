@@ -27,6 +27,7 @@
 		4B1BD2811D87548C00B3C93D /* RFHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BD2801D87548C00B3C93D /* RFHelpController.m */; };
 		4B1BD2841D8754DC00B3C93D /* Help.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1BD2821D8754DC00B3C93D /* Help.xib */; };
 		4B1D74FC1B95ECF4004A0ACD /* RFXMLElementStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D74FB1B95ECF4004A0ACD /* RFXMLElementStack.m */; };
+		4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */; };
 		4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DEDD51BF8D14B00F3152B /* RFUserController.m */; };
 		4B2EE3091E8C1F9F009DDA85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B94052C1E2933DE00B01E79 /* Images.xcassets */; };
 		4B3BD0DF1E82B5F800F4B4E0 /* RFPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */; };
@@ -161,6 +162,8 @@
 		4B1BD2831D8754DC00B3C93D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Help.xib; sourceTree = "<group>"; };
 		4B1D74FA1B95ECF4004A0ACD /* RFXMLElementStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFXMLElementStack.h; path = Source/RFXMLElementStack.h; sourceTree = "<group>"; };
 		4B1D74FB1B95ECF4004A0ACD /* RFXMLElementStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFXMLElementStack.m; path = Source/RFXMLElementStack.m; sourceTree = "<group>"; };
+		4B27AA881EB3D85B00CC3F3A /* RFMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFMenuButton.h; path = Source/RFMenuButton.h; sourceTree = "<group>"; };
+		4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFMenuButton.m; path = Source/RFMenuButton.m; sourceTree = "<group>"; };
 		4B2DEDD41BF8D14B00F3152B /* RFUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFUserController.h; path = Source/RFUserController.h; sourceTree = "<group>"; };
 		4B2DEDD51BF8D14B00F3152B /* RFUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFUserController.m; path = Source/RFUserController.m; sourceTree = "<group>"; };
 		4B3BD0DD1E82B5F800F4B4E0 /* RFPhotosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFPhotosController.h; path = Source/RFPhotosController.h; sourceTree = "<group>"; };
@@ -567,6 +570,8 @@
 				4BF8035A1B8898D900D6670C /* RFThinLineView.m */,
 				4BA910961B84077000D58F83 /* UIBarButtonItem+Extras.h */,
 				4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */,
+				4B27AA881EB3D85B00CC3F3A /* RFMenuButton.h */,
+				4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */,
 				4B46631A1B8EA5C20034FC5C /* NSString+Extras.h */,
 				4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */,
 			);
@@ -846,6 +851,7 @@
 				4B8714C71E64D05700C69589 /* istack.c in Sources */,
 				4B8714BB1E64D05700C69589 /* alloc.c in Sources */,
 				4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */,
+				4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */,
 				4B0D55521B93827D0076AD9F /* RFXMLRPCRequest.m in Sources */,
 				4B1BD2811D87548C00B3C93D /* RFHelpController.m in Sources */,
 				4B8714BF1E64D05700C69589 /* attrs.c in Sources */,
