@@ -154,6 +154,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	UIImage* img = [notification.userInfo objectForKey:kAttachPhotoKey];
 	RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:img];
 	NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
+	if (YES) {
+		// only 1 for now
+		[new_photos removeAllObjects];
+	}
 	[new_photos addObject:photo];
 	self.attachedPhotos = new_photos;
 	[self.collectionView reloadData];
