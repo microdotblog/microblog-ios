@@ -91,7 +91,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mentions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r41-w0-7lH">
-                    <rect key="frame" x="14" y="138" width="88" height="21"/>
+                    <rect key="frame" x="14" y="137" width="88" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="ADD-Pn-pbn"/>
                         <constraint firstAttribute="width" constant="88" id="xIO-ST-lwa"/>
@@ -108,7 +108,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IF4-kS-Fgq" customClass="RFThinLineView">
-                    <rect key="frame" x="0.0" y="126" width="375" height="1"/>
+                    <rect key="frame" x="0.0" y="125" width="375" height="1"/>
                     <color key="backgroundColor" red="0.83169692754745483" green="0.83169692754745483" blue="0.83169692754745483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="6H3-Gf-CO8"/>
@@ -308,7 +308,7 @@
                 <constraint firstItem="B96-Lt-v68" firstAttribute="top" secondItem="Bph-yI-JDn" secondAttribute="bottom" constant="10" id="bqd-Xd-PyH"/>
                 <constraint firstItem="61T-Br-Mwy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cK6-LD-5t9"/>
                 <constraint firstAttribute="trailing" secondItem="tYz-RX-OS1" secondAttribute="trailing" id="epy-5b-v0R"/>
-                <constraint firstItem="IF4-kS-Fgq" firstAttribute="top" secondItem="v4I-5E-llr" secondAttribute="bottom" constant="1" id="f8F-UZ-e2h"/>
+                <constraint firstItem="IF4-kS-Fgq" firstAttribute="top" secondItem="v4I-5E-llr" secondAttribute="bottom" id="f8F-UZ-e2h"/>
                 <constraint firstItem="r41-w0-7lH" firstAttribute="top" secondItem="IF4-kS-Fgq" secondAttribute="bottom" constant="11" id="fIy-Y3-ekk"/>
                 <constraint firstAttribute="trailing" secondItem="cml-0g-CCo" secondAttribute="trailing" id="fPf-5g-5Q9"/>
                 <constraint firstItem="6ar-f3-m0t" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="foG-kQ-awm"/>
