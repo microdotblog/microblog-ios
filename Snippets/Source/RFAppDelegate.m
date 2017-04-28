@@ -200,6 +200,7 @@
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSigninNotification:) name:kShowSigninNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConversationNotification:) name:kShowConversationNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUserProfileNotification:) name:kShowUserProfileNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReplyPostNotification:) name:kShowReplyPostNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasUnselectedNotification:) name:kPostWasUnselectedNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetDetailNotification:) name:kResetDetailNotification object:nil];
@@ -224,6 +225,12 @@
 {
 	NSString* post_id = [notification.userInfo objectForKey:kShowConversationPostIDKey];
 	[self showConversationWithPostID:post_id];
+}
+
+- (void) showUserProfileNotification:(NSNotification *)notification
+{
+	NSString* username = [notification.userInfo objectForKey:kShowUserProfileUsernameKey];
+	[self showProfileWithUsername:username];
 }
 
 - (void) showReplyPostNotification:(NSNotification *)notification

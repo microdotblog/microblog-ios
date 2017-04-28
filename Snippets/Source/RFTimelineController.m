@@ -318,8 +318,22 @@
 
 - (void) showURL:(NSURL *)url
 {
-	SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:url];
-	[self presentViewController:safari_controller animated:YES completion:NULL];
+	BOOL found_microblog_url = NO;
+	
+	NSString* hostname = [url host];
+	NSString* path = [url path];
+	if ([hostname isEqualToString:@"micro.blog"]) {
+		NSString* username = [path stringByReplacingOccurrencesOfString:@"/" withString:@""];
+		if (username.length > 0) {
+			found_microblog_url = YES;
+			[[NSNotificationCenter defaultCenter] postNotificationName:kShowUserProfileNotification object:self userInfo:@{ kShowUserProfileUsernameKey: username }];
+		}
+	}
+	
+	if (!found_microblog_url) {
+		SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:url];
+		[self presentViewController:safari_controller animated:YES completion:NULL];
+	}
 }
 
 #pragma mark -
