@@ -16,14 +16,20 @@
 {
 	[super viewDidLoad];
 
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search:)];
+	[self setupSearchButton];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-		
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search:)];
+
+	[self setupSearchButton];
+}
+
+- (void) setupSearchButton
+{
+	self.navigationItem.rightBarButtonItem = nil;
+//	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search:)];
 }
 
 - (void) search:(id)sender
