@@ -8,6 +8,8 @@
 
 #import "RFDiscoverController.h"
 
+#import "RFMacros.h"
+
 @implementation RFDiscoverController
 
 - (void) viewDidLoad
@@ -26,8 +28,14 @@
 
 - (void) search:(id)sender
 {
-	NSString* js = @"$('.discover_search').show()";
-	[self.webView stringByEvaluatingJavaScriptFromString:js];
+	NSString* fadein_js = @"$('.discover_search').show();";
+//	NSString* focus_js = @"$('#search_input').focus();";
+
+	[self.webView stringByEvaluatingJavaScriptFromString:fadein_js];
+	
+//	RFDispatchSeconds (1.0, ^{
+//		[self.webView stringByEvaluatingJavaScriptFromString:focus_js];
+//	});
 }
 
 @end
