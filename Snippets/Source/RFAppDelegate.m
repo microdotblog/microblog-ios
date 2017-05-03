@@ -324,6 +324,12 @@
 	NSString* code = [url uuFindQueryStringArg:@"code"];
 	NSString* state = [url uuFindQueryStringArg:@"state"];
 	NSString* me = [url uuFindQueryStringArg:@"me"];
+
+	if (!code || !state || !me) {
+		NSString* msg = [NSString stringWithFormat:@"Authorization \"code\", \"state\", or \"me\" parameters were missing."];
+		[UIAlertView uuShowOneButtonAlert:@"Micropub Error" message:msg button:@"OK" completionHandler:NULL];
+		return;
+	}
 	
 	NSString* saved_state = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubState"];
 	NSString* saved_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubTokenEndpoint"];
