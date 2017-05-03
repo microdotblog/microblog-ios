@@ -151,7 +151,12 @@
 		else {
 			[self getPath:@"/rsd.xml" completion:^(UUHttpResponse* response) {
 				RFXMLRSDParser* rsd = [RFXMLRSDParser parsedResponseFromData:response.rawResponse];
-				[self processRSD:rsd.foundEndpoints withCompletion:handler];
+				if ([rsd.foundEndpoints count] > 0) {
+					[self processRSD:rsd.foundEndpoints withCompletion:handler];
+				}
+				else {
+					handler (nil, nil);
+				}
 			}];
 		}
 	}];
