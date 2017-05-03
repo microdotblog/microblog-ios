@@ -89,7 +89,8 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	PHImageManager* manager = [PHImageManager defaultManager];
 	PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
 	options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1200, 1200) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage* result, NSDictionary* info) {
+	options.resizeMode = PHImageRequestOptionsResizeModeExact;
+	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1800, 1800) contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 		UIImage* img = [result uuRemoveOrientation];
 		self.fullImage = img;
 
@@ -196,7 +197,8 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	PHImageManager* manager = [PHImageManager defaultManager];
 	PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
 	options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1200, 1200) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage* result, NSDictionary* info) {
+	options.resizeMode = PHImageRequestOptionsResizeModeExact;
+	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1800, 1800) contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 		UIImage* img = [result uuRemoveOrientation];
 		if (filter.ciFilter.length > 0) {
 			img = [filter filterImage:img];
