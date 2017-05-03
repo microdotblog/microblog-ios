@@ -35,6 +35,12 @@
 	[self setupNotifications];
 	[self setupShortcuts];
 	
+	if (launchOptions) {
+		NSDictionary* push_info = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+		if (push_info) {
+		}
+	}
+	
 	return YES;
 }
 
@@ -102,11 +108,24 @@
 	}];
 }
 
-- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler
 {
+	NSString* post_id = [userInfo[@"post_id"] stringValue];
 	if (application.applicationState == UIApplicationStateActive) {
 		NSString* message = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
-		[UIAlertView uuShowOneButtonAlert:@"" message:message button:@"OK" completionHandler:NULL];
+		if (post_id.length > 0) {
+			[UIAlertView uuShowTwoButtonAlert:@"" message:message buttonOne:@"Cancel" buttonTwo:@"View" completionHandler:^(NSInteger buttonIndex) {
+				if (buttonIndex == 1) {
+					[self showConversationWithPostID:post_id];
+				}
+			}];
+		}
+		else {
+			[UIAlertView uuShowOneButtonAlert:@"" message:message button:@"OK" completionHandler:NULL];
+		}
+	}
+	else if (post_id.length > 0) {
+		[self showConversationWithPostID:post_id];
 	}
 }
 
