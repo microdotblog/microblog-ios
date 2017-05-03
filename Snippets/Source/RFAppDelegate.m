@@ -342,7 +342,7 @@
 			@"grant_type": @"authorization_code",
 			@"me": me,
 			@"code": code,
-			@"redirect_uri": @"http://dev.micro.blog/micropub/redirect",
+			@"redirect_uri": @"https://micro.blog/micropub/redirect",
 			@"client_id": @"https://micro.blog/",
 			@"state": state
 		};

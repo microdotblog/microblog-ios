@@ -94,7 +94,7 @@
 						[auth_with_params appendString:@"?"];
 					}
 					[auth_with_params appendFormat:@"me=%@", [full_url rf_urlEncoded]];
-					[auth_with_params appendFormat:@"&redirect_uri=%@", [@"http://dev.micro.blog/micropub/redirect" rf_urlEncoded]];
+					[auth_with_params appendFormat:@"&redirect_uri=%@", [@"https://micro.blog/micropub/redirect" rf_urlEncoded]];
 					[auth_with_params appendFormat:@"&client_id=%@", [@"https://micro.blog/" rf_urlEncoded]];
 					[auth_with_params appendFormat:@"&state=%@", micropub_state];
 					[auth_with_params appendString:@"&scope=create"];
