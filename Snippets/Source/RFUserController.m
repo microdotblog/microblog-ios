@@ -53,10 +53,12 @@
 		@"username": self.username
 	};
 	[client getWithQueryArguments:args completion:^(UUHttpResponse* response) {
-		BOOL is_following = [[response.parsedResponse objectForKey:@"is_following"] boolValue];
-		RFDispatchMain (^{
-			[self setupFollowing:is_following];
-		});
+		if (response.parsedResponse) {
+			BOOL is_following = [[response.parsedResponse objectForKey:@"is_following"] boolValue];
+			RFDispatchMain (^{
+				[self setupFollowing:is_following];
+			});
+		}
 	}];
 }
 
