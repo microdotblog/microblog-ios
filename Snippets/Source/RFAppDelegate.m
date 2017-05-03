@@ -35,12 +35,6 @@
 	[self setupNotifications];
 	[self setupShortcuts];
 	
-	if (launchOptions) {
-		NSDictionary* push_info = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-		if (push_info) {
-		}
-	}
-	
 	return YES;
 }
 
