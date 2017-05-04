@@ -126,7 +126,7 @@
 - (void) application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))handler
 {
 	if ([self hasValidToken] && [shortcutItem.type isEqualToString:kShortcutActionNewPost]) {
-		[self.timelineController promptNewPost:nil];
+		[[NSNotificationCenter defaultCenter] postNotificationName:kOpenPostingNotification object:self];
 		handler (YES);
 	}
 	else {
