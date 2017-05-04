@@ -53,7 +53,7 @@
 		@"username": self.username
 	};
 	[client getWithQueryArguments:args completion:^(UUHttpResponse* response) {
-		if (response.parsedResponse) {
+		if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]]) {
 			BOOL is_following = [[response.parsedResponse objectForKey:@"is_following"] boolValue];
 			RFDispatchMain (^{
 				[self setupFollowing:is_following];
