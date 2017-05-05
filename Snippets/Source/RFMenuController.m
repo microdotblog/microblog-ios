@@ -12,6 +12,8 @@
 #import "RFSettingsController.h"
 #import "RFDiscoverController.h"
 #import "RFHelpController.h"
+#import "RFClient.h"
+#import "RFMacros.h"
 #import "RFConstants.h"
 #import "UUImageView.h"
 #import "SSKeychain.h"
@@ -42,16 +44,51 @@
 {
 	[super viewDidAppear:animated];
 	
+	[self setupProfileInfo];
+	[self checkUserDetails];
+}
+
+- (void) setupProfileInfo
+{
+	NSString* full_name = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountFullName"];
 	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountUsername"];
 	NSString* gravatar_url = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountGravatarURL"];
 
-	if (username) {
-		self.usernameField.text = username;
+	if (full_name && username) {
+		self.fullNameField.text = full_name;
+		self.usernameField.text = [NSString stringWithFormat:@"@%@", username];
 		self.profileImageView.layer.cornerRadius = self.profileImageView.bounds.size.width / 2.0;
 		[self.profileImageView uuLoadImageFromURL:[NSURL URLWithString:gravatar_url] defaultImage:nil loadCompleteHandler:NULL];
 	}
 	else {
+		self.fullNameField.text = @"";
 		self.usernameField.text = @"";
+	}
+}
+
+- (void) checkUserDetails
+{
+	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
+	if (token) {
+		RFClient* client = [[RFClient alloc] initWithPath:@"/account/verify"];
+		NSDictionary* params = @{
+			@"token": token
+		};
+		[client postWithParams:params completion:^(UUHttpResponse* response) {
+			if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]]) {
+				NSString* full_name = [response.parsedResponse objectForKey:@"full_name"];
+				NSString* username = [response.parsedResponse objectForKey:@"username"];
+				NSString* gravatar_url = [response.parsedResponse objectForKey:@"gravatar_url"];
+
+				[[NSUserDefaults standardUserDefaults] setObject:full_name forKey:@"AccountFullName"];
+				[[NSUserDefaults standardUserDefaults] setObject:username forKey:@"AccountUsername"];
+				[[NSUserDefaults standardUserDefaults] setObject:gravatar_url forKey:@"AccountGravatarURL"];
+
+				RFDispatchMain (^{
+					[self setupProfileInfo];
+				});
+			}
+		}];
 	}
 }
 

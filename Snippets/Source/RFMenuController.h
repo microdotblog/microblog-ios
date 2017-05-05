@@ -10,6 +10,7 @@
 
 @interface RFMenuController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UILabel* fullNameField;
 @property (strong, nonatomic) IBOutlet UILabel* usernameField;
 @property (strong, nonatomic) IBOutlet UIImageView* profileImageView;
 @property (strong, nonatomic) IBOutlet UILabel* discoverField;
