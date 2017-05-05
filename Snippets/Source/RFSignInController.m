@@ -69,6 +69,13 @@
 - (void) showMessage:(NSString *)message
 {
 	self.messageField.text = message;
+	if ([message containsString:@"Error"]) {
+		self.messageContainer.backgroundColor = [UIColor colorWithWhite:0.972 alpha:1.0];
+	}
+	else {
+		self.messageContainer.backgroundColor = [UIColor colorWithRed:0.875 green:0.941 blue:0.847 alpha:1.0];
+	}
+	
 	if (self.messageContainer.alpha == 0.0) {
 		[UIView animateWithDuration:0.3 animations:^{
 			self.messageTopConstraint.constant = 64;
