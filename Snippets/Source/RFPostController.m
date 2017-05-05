@@ -76,6 +76,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) viewDidAppear:(BOOL)animated
 {
+	[super viewDidAppear:animated];
+	
 	[self.textView becomeFirstResponder];
 }
 
@@ -104,6 +106,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) setupNotifications
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attachPhotoNotification:) name:kAttachPhotoNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(photosDidCloseNotification:) name:kPhotosDidCloseNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
 }
@@ -160,6 +163,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) attachPhotoNotification:(NSNotification *)notification
 {
+	[self setupNavigation];
+
 	UIImage* img = [notification.userInfo objectForKey:kAttachPhotoKey];
 	RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:img];
 	NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
@@ -172,6 +177,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.collectionView reloadData];
 	
 	[self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void) photosDidCloseNotification:(NSNotification *)notification
+{
+	[self setupNavigation];
 }
 
 - (void) keyboardWillShowNotification:(NSNotification*)notification
@@ -249,6 +259,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) showPhotos:(id)sender
 {
+	self.navigationItem.rightBarButtonItem = nil;
+
 	RFPhotosController* photos_controller = [[RFPhotosController alloc] init];
 	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:photos_controller];
 	

@@ -10,7 +10,9 @@
 #import <Photos/Photos.h>
 #import <PhotosUI/PhotosUI.h>
 
-@interface RFPhotosController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+static NSString* const kPhotosDidCloseNotification = @"RFPhotosDidCloseNotification";
+
+@interface RFPhotosController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
 @property (strong, nonatomic) IBOutlet UIButton* overlayButton;

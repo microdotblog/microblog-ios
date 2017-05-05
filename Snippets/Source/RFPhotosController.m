@@ -50,6 +50,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	self.title = @"";
 	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:blank_img style:UIBarButtonItemStylePlain target:self action:@selector(closePhotos:)];
+	if (self.isFullScreenPhotos) {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Library..." style:UIBarButtonItemStylePlain target:self action:@selector(chooseFromLibrary:)];
+	}
+	else {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:blank_img style:UIBarButtonItemStylePlain target:self action:@selector(closePhotos:)];
+	}
 	
 	[self.navigationController.navigationBar setBackgroundImage:blank_img forBarMetrics:UIBarMetricsDefault];
 	[self.navigationController.navigationBar setShadowImage:blank_img];
@@ -73,8 +79,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				});
 			}
 		}];
-	}
-	
+	}	
 }
 
 - (void) setupCollectionView
@@ -85,7 +90,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (IBAction) closePhotos:(id)sender
 {
 	[self setupNavigation];
-	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kPhotosDidCloseNotification object:self];
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+	}];
 }
 
 - (void) expandPhotos
@@ -100,16 +107,47 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 	[self.navigationController.navigationBar setShadowImage:nil];
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(closePhotos:)];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Library..." style:UIBarButtonItemStylePlain target:self action:@selector(chooseFromLibrary:)];
 	self.title = @"Photos";
 }
 
 - (void) collapsePhotos
 {
+	self.navigationItem.rightBarButtonItem = nil;
 	self.isFullScreenPhotos = NO;
 	[UIView animateWithDuration:0.3 animations:^{
 		self.photosHeightConstraint.constant = 300;
 		[self.view layoutIfNeeded];
 	}];
+}
+
+- (void) chooseFromLibrary:(id)sender
+{
+	UIImagePickerController* picker_controller = [[UIImagePickerController alloc] init];
+	picker_controller.delegate = self;
+	picker_controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+	[self presentViewController:picker_controller animated:YES completion:NULL];
+}
+
+#pragma mark -
+
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+	NSURL* reference_url = [info objectForKey:UIImagePickerControllerReferenceURL];
+	PHAsset* asset = [[PHAsset fetchAssetsWithALAssetURLs:@[ reference_url ] options:nil] lastObject];
+	[self dismissViewControllerAnimated:YES completion:^{
+		if (asset) {
+			RFPhoto* photo = [[RFPhoto alloc] initWithAsset:asset];
+			
+			RFFiltersController* filters_controller = [[RFFiltersController alloc] initWithPhoto:photo];
+			[self.navigationController pushViewController:filters_controller animated:YES];
+		}
+	}];
+}
+
+- (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark -
