@@ -35,6 +35,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	self = [super initWithNibName:@"Post" bundle:nil];
 	if (self) {
 		self.attachedPhotos = @[];
+		self.edgesForExtendedLayout = UIRectEdgeTop;
 	}
 	
 	return self;
@@ -63,6 +64,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self setupBlogName];
 	[self setupPhotosButton];
 	[self setupCollectionView];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+
+	self.progressHeaderHeightConstraint.constant = 0.0;
+	self.progressHeaderView.alpha = 0.0;
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -209,7 +218,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (IBAction) sendPost:(id)sender
 {
 	self.navigationItem.rightBarButtonItem.enabled = NO;
-	[self.networkSpinner startAnimating];
 	self.photoButton.hidden = YES;
 
 	if (self.attachedPhotos.count > 0) {
@@ -274,6 +282,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) uploadText:(NSString *)text
 {
+	[self showProgressHeader:@"Now publishing to your microblog."];
+	
 	if (self.isReply) {
 		RFClient* client = [[RFClient alloc] initWithPath:@"/posts/reply"];
 		NSDictionary* args = @{
@@ -372,7 +382,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 						NSString* s = [NSString stringWithFormat:@"%@ (error: %@)", xmlrpc.responseFault[@"faultString"], xmlrpc.responseFault[@"faultCode"]];
 						[UIAlertView uuShowOneButtonAlert:@"Error Sending Post" message:s button:@"OK" completionHandler:NULL];
 						self.navigationItem.rightBarButtonItem.enabled = YES;
-						[self.networkSpinner stopAnimating];
+						[self hideProgressHeader];
 						self.photoButton.hidden = NO;
 					}
 					else {
@@ -387,6 +397,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) uploadPhoto:(RFPhoto *)photo completion:(void (^)())handler
 {
+	[self showProgressHeader:@"Uploading photo..."];
+	
 	UIImage* img = photo.thumbnailImage;
 	NSData* d = UIImageJPEGRepresentation (img, 0.6);
 	if (d) {
@@ -401,7 +413,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					if (image_url == nil) {
 						[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
 						self.navigationItem.rightBarButtonItem.enabled = YES;
-						[self.networkSpinner stopAnimating];
+						[self hideProgressHeader];
 						self.photoButton.hidden = NO;
 					}
 					else {
@@ -424,7 +436,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					if (image_url == nil) {
 						[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
 						self.navigationItem.rightBarButtonItem.enabled = YES;
-						[self.networkSpinner stopAnimating];
+						[self hideProgressHeader];
 						self.photoButton.hidden = NO;
 					}
 					else {
@@ -458,7 +470,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 						NSString* s = [NSString stringWithFormat:@"%@ (error: %@)", xmlrpc.responseFault[@"faultString"], xmlrpc.responseFault[@"faultCode"]];
 						[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:s button:@"OK" completionHandler:NULL];
 						self.navigationItem.rightBarButtonItem.enabled = YES;
-						[self.networkSpinner stopAnimating];
+						[self hideProgressHeader];
 						self.photoButton.hidden = NO;
 					}
 					else {
@@ -466,7 +478,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 						if (image_url == nil) {
 							[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
 							self.navigationItem.rightBarButtonItem.enabled = YES;
-							[self.networkSpinner stopAnimating];
+							[self hideProgressHeader];
 							self.photoButton.hidden = NO;
 						}
 						else {
@@ -480,6 +492,32 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			}];
 		}
 	}
+}
+
+- (void) showProgressHeader:(NSString *)statusText;
+{
+	self.progressHeaderField.text = statusText;
+	[self.networkSpinner startAnimating];
+	if (self.progressHeaderHeightConstraint.constant == 0.0) {
+		[UIView animateWithDuration:0.3 animations:^{
+			self.progressHeaderHeightConstraint.constant = 40.0;
+			self.progressHeaderTopConstraint.constant = 62.0;
+			self.progressHeaderView.alpha = 1.0;
+			[self.view layoutIfNeeded];
+		}];
+	}
+}
+
+- (void) hideProgressHeader
+{
+	[UIView animateWithDuration:0.3 animations:^{
+		self.progressHeaderHeightConstraint.constant = 0.0;
+		self.progressHeaderTopConstraint.constant = 0.0;
+		self.progressHeaderView.alpha = 0.0;
+	} completion:^(BOOL finished) {
+		[self.networkSpinner stopAnimating];
+		[self.view layoutIfNeeded];
+	}];
 }
 
 #pragma mark -

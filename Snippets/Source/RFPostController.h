@@ -17,6 +17,10 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* networkSpinner;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* bottomConstraint;
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
+@property (strong, nonatomic) IBOutlet UIView* progressHeaderView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* progressHeaderHeightConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* progressHeaderTopConstraint;
+@property (strong, nonatomic) IBOutlet UILabel* progressHeaderField;
 
 @property (assign, nonatomic) BOOL isReply;
 @property (strong, nonatomic) NSString* replyPostID;
