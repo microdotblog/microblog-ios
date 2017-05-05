@@ -93,6 +93,16 @@
 	}
 }
 
+#pragma mark -
+
+- (IBAction) showUserProfile:(id)sender
+{
+	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountUsername"];
+	if (username) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:kShowUserProfileNotification object:self userInfo:@{ kShowUserProfileUsernameKey: username }];
+	}
+}
+
 - (IBAction) showTimeline:(id)sender
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] init];
