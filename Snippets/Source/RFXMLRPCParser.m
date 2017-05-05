@@ -59,6 +59,10 @@
 		self.currentValue = [NSMutableString string];
 		self.isProcessingString = YES;
 	}
+    else if ([elementName isEqualToString:@"boolean"]) {
+		self.currentValue = [NSMutableString string];
+		self.isProcessingString = YES;
+    }
 }
 
 - (void) parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
@@ -100,6 +104,11 @@
 		self.currentMemberName = nil;
 	}
 	else if ([elementName isEqualToString:@"int"]) {
+		NSString* s = [self.currentValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		self.currentValue = [NSNumber numberWithInteger:[s integerValue]];
+		self.isProcessingString = NO;
+	}
+	else if ([elementName isEqualToString:@"boolean"]) {
 		NSString* s = [self.currentValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		self.currentValue = [NSNumber numberWithInteger:[s integerValue]];
 		self.isProcessingString = NO;
