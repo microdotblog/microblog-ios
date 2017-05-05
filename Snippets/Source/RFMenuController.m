@@ -37,6 +37,7 @@
 	[super viewDidLoad];
 	
 	self.title = @"Micro.blog";
+	self.fullNameField.text = @"";
 	self.usernameField.text = @"";
 }
 
