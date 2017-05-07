@@ -55,8 +55,14 @@
 	[client getWithQueryArguments:args completion:^(UUHttpResponse* response) {
 		if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]]) {
 			BOOL is_following = [[response.parsedResponse objectForKey:@"is_following"] boolValue];
+			BOOL is_you = [[response.parsedResponse objectForKey:@"is_you"] boolValue];
 			RFDispatchMain (^{
-				[self setupFollowing:is_following];
+				if (is_you) {
+					self.navigationItem.rightBarButtonItem = nil;
+				}
+				else {
+					[self setupFollowing:is_following];
+				}
 			});
 		}
 	}];
