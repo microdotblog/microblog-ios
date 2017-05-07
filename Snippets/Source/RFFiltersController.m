@@ -90,6 +90,7 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
 	options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
 	options.resizeMode = PHImageRequestOptionsResizeModeExact;
+	options.networkAccessAllowed = YES;
 	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1800, 1800) contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 		UIImage* img = [result uuRemoveOrientation];
 		self.fullImage = img;
@@ -198,6 +199,7 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
 	options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
 	options.resizeMode = PHImageRequestOptionsResizeModeExact;
+	options.networkAccessAllowed = YES;
 	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1800, 1800) contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 		UIImage* img = [result uuRemoveOrientation];
 		if (filter.ciFilter.length > 0) {
