@@ -294,9 +294,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) uploadText:(NSString *)text
 {
-	[self showProgressHeader:@"Now publishing to your microblog."];
-	
 	if (self.isReply) {
+		[self showProgressHeader:@"Now sending your reply..."];
 		RFClient* client = [[RFClient alloc] initWithPath:@"/posts/reply"];
 		NSDictionary* args = @{
 			@"id": self.replyPostID,
@@ -310,6 +309,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		}];
 	}
 	else {
+		[self showProgressHeader:@"Now publishing to your microblog..."];
 		if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
 			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
 			NSDictionary* args = @{
