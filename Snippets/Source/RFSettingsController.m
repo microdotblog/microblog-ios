@@ -90,7 +90,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogUsername"];
 	NSString* password = [SSKeychain passwordForService:@"ExternalBlog" account:@"default"];
 
-	if (xmlrpc_endpoint.length == 0) {
+	if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogApp"] isEqualToString:@"WordPress"]) {
 		self.categoriesIntroField.hidden = YES;
 		self.categoriesTableView.hidden = YES;
 		return;
