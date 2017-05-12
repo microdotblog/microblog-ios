@@ -10,6 +10,36 @@
 	</dict>
 	<dict>
 		<key>name</key>
+		<string>Fade</string>
+		<key>ciFilter</key>
+		<string>CIPhotoEffectFade</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Instant</string>
+		<key>ciFilter</key>
+		<string>CIPhotoEffectInstant</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Chrome</string>
+		<key>ciFilter</key>
+		<string>CIPhotoEffectChrome</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Transfer</string>
+		<key>ciFilter</key>
+		<string>CIPhotoEffectTransfer</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Process</string>
+		<key>ciFilter</key>
+		<string>CIPhotoEffectProcess</string>
+	</dict>
+	<dict>
+		<key>name</key>
 		<string>Mono</string>
 		<key>ciFilter</key>
 		<string>CIPhotoEffectMono</string>
@@ -25,36 +55,6 @@
 		<string>Noir</string>
 		<key>ciFilter</key>
 		<string>CIPhotoEffectNoir</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Fade</string>
-		<key>ciFilter</key>
-		<string>CIPhotoEffectFade</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Chrome</string>
-		<key>ciFilter</key>
-		<string>CIPhotoEffectChrome</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Process</string>
-		<key>ciFilter</key>
-		<string>CIPhotoEffectProcess</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Transfer</string>
-		<key>ciFilter</key>
-		<string>CIPhotoEffectTransfer</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Instant</string>
-		<key>ciFilter</key>
-		<string>CIPhotoEffectInstant</string>
 	</dict>
 </array>
 </plist>
