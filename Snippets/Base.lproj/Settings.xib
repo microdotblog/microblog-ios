@@ -55,7 +55,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SFL-G3-6LV">
-                    <rect key="frame" x="12" y="183" width="351" height="470"/>
+                    <rect key="frame" x="12" y="187" width="351" height="466"/>
                     <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Sag-3b-y67"/>
@@ -72,7 +72,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="SFL-G3-6LV" firstAttribute="top" secondItem="HU1-KD-ny1" secondAttribute="bottom" constant="8" id="51g-My-jYP"/>
+                <constraint firstItem="SFL-G3-6LV" firstAttribute="top" secondItem="HU1-KD-ny1" secondAttribute="bottom" constant="12" id="51g-My-jYP"/>
                 <constraint firstItem="T30-Wk-89C" firstAttribute="top" secondItem="pab-LB-1n2" secondAttribute="bottom" constant="12" id="DVA-dU-eYD"/>
                 <constraint firstAttribute="trailing" secondItem="T30-Wk-89C" secondAttribute="trailing" constant="12" id="LVX-Tt-YHy"/>
                 <constraint firstItem="HU1-KD-ny1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Nyy-Um-wjF"/>
