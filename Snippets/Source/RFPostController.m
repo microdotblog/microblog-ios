@@ -287,6 +287,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				if (new_endpoint) {
 					[[NSUserDefaults standardUserDefaults] setObject:new_endpoint forKey:@"ExternalMicropubMediaEndpoint"];
 				}
+				else {
+					RFDispatchMain (^{
+						[UIAlertView uuShowOneButtonAlert:@"Error Checking Server" message:@"Micropub media-endpoint was not found." button:@"OK" completionHandler:NULL];
+					});
+				}
 			}];
 		}
 	}
