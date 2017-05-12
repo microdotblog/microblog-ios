@@ -73,9 +73,9 @@ static NSString* const kServerSchemeAndHostname = @"https://micro.blog";
 	for (int i = 0; i < [all_keys count]; i++) {
 		NSString* key = [all_keys objectAtIndex:i];
 		NSString* val = params[key];
-		NSString* val_encoded = [val stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]];
-		
-		val_encoded = [val_encoded stringByReplacingOccurrencesOfString:@";" withString:@"%3B"];
+		NSString* val_encoded = [val stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
+
+//		val_encoded = [val_encoded stringByReplacingOccurrencesOfString:@";" withString:@"%3B"];
 		
 		[body_s appendFormat:@"%@=%@", key, val_encoded];
 		if (i != ([all_keys count] - 1)) {
