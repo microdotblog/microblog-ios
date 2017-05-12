@@ -11,7 +11,10 @@
 @interface RFSettingsController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView* serversTableView;
+@property (strong, nonatomic) IBOutlet UILabel* categoriesIntroField;
+@property (strong, nonatomic) IBOutlet UITableView* categoriesTableView;
 
 @property (strong, nonatomic) NSArray* serverNames; // NSString
+@property (strong, nonatomic) NSArray* categoryNames; // NSString
 
 @end

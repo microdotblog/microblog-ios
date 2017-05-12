@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFSettingsController">
             <connections>
+                <outlet property="categoriesTableView" destination="SFL-G3-6LV" id="pWG-Hq-IRc"/>
                 <outlet property="serversTableView" destination="T30-Wk-89C" id="tKt-jr-5GW"/>
                 <outlet property="view" destination="iN0-l3-epB" id="hIw-Ic-YgV"/>
             </connections>
@@ -41,16 +43,43 @@
                         <outlet property="delegate" destination="-1" id="VUS-7n-HEt"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use category:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HU1-KD-ny1">
+                    <rect key="frame" x="15" y="154" width="346" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="VED-PC-VZw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SFL-G3-6LV">
+                    <rect key="frame" x="12" y="183" width="351" height="270"/>
+                    <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="270" id="8Ib-Qw-HJd"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Sag-3b-y67"/>
+                        <outlet property="delegate" destination="-1" id="GGz-zC-Buk"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="SFL-G3-6LV" firstAttribute="top" secondItem="HU1-KD-ny1" secondAttribute="bottom" constant="8" id="51g-My-jYP"/>
                 <constraint firstItem="T30-Wk-89C" firstAttribute="top" secondItem="pab-LB-1n2" secondAttribute="bottom" constant="12" id="DVA-dU-eYD"/>
+                <constraint firstAttribute="trailing" secondItem="HU1-KD-ny1" secondAttribute="trailing" constant="14" id="GI3-xF-geN"/>
                 <constraint firstAttribute="trailing" secondItem="T30-Wk-89C" secondAttribute="trailing" constant="12" id="LVX-Tt-YHy"/>
+                <constraint firstItem="HU1-KD-ny1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Nyy-Um-wjF"/>
                 <constraint firstItem="pab-LB-1n2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Srg-Rl-10n"/>
                 <constraint firstAttribute="trailing" secondItem="pab-LB-1n2" secondAttribute="trailing" constant="14" id="YSh-iV-8xf"/>
+                <constraint firstItem="HU1-KD-ny1" firstAttribute="top" secondItem="T30-Wk-89C" secondAttribute="bottom" constant="16.5" id="cVR-mK-8Ya"/>
+                <constraint firstAttribute="trailing" secondItem="SFL-G3-6LV" secondAttribute="trailing" constant="12" id="ct4-65-QVC"/>
                 <constraint firstItem="pab-LB-1n2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="h3k-v8-h6K"/>
+                <constraint firstItem="SFL-G3-6LV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="hQq-6f-Ah9"/>
                 <constraint firstItem="T30-Wk-89C" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="zYT-mP-cq4"/>
             </constraints>
+            <point key="canvasLocation" x="33.5" y="145.5"/>
         </view>
     </objects>
 </document>

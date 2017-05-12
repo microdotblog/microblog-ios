@@ -32,6 +32,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 
 	[self setupNavigation];
 	[self setupServers];
+	[self setupCategories];
 	[self setupGestures];
 }
 
@@ -75,6 +76,14 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	self.serversTableView.layer.cornerRadius = 5.0;
 }
 
+- (void) setupCategories
+{
+	self.categoryNames = @[ @"Asdf", @"Asdfsdf" ];
+
+	[self.categoriesTableView registerNib:[UINib nibWithNibName:@"SettingChoiceCell" bundle:nil] forCellReuseIdentifier:kServerCellIdentifier];
+	self.categoriesTableView.layer.cornerRadius = 5.0;
+}
+
 - (void) setupGestures
 {
 	UISwipeGestureRecognizer* swipe_right_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
@@ -98,23 +107,41 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return self.serverNames.count;
+	if (tableView == self.serversTableView) {
+		return self.serverNames.count;
+	}
+	else if (tableView == self.categoriesTableView) {
+		return self.categoryNames.count;
+	}
+	else {
+		return 0;
+	}
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	RFSettingChoiceCell* cell = [tableView dequeueReusableCellWithIdentifier:kServerCellIdentifier forIndexPath:indexPath];
-		
-	cell.nameField.text = [self.serverNames objectAtIndex:indexPath.row];
-	cell.checkmarkView.hidden = (indexPath.row > 0);
-
+	
+	if (tableView == self.serversTableView) {
+		cell.nameField.text = [self.serverNames objectAtIndex:indexPath.row];
+		cell.checkmarkView.hidden = (indexPath.row > 0);
+	}
+	else if (tableView == self.categoriesTableView) {
+		cell.nameField.text = [self.categoryNames objectAtIndex:indexPath.row];
+		cell.checkmarkView.hidden = (indexPath.row > 0);
+	}
+	
 	return cell;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	BOOL prefer_external_blog = (indexPath.row == 1);
-	[[NSUserDefaults standardUserDefaults] setBool:prefer_external_blog forKey:@"ExternalBlogIsPreferred"];
+	if (tableView == self.serversTableView) {
+		BOOL prefer_external_blog = (indexPath.row == 1);
+		[[NSUserDefaults standardUserDefaults] setBool:prefer_external_blog forKey:@"ExternalBlogIsPreferred"];
+	}
+	else if (tableView == self.categoriesTableView) {
+	}
 }
 
 @end
