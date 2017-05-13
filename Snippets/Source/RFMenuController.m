@@ -11,12 +11,16 @@
 #import "RFTimelineController.h"
 #import "RFSettingsController.h"
 #import "RFDiscoverController.h"
+#import "RFExternalController.h"
+#import "RFPostController.h"
 #import "RFHelpController.h"
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "RFConstants.h"
+#import "RFSettings.h"
 #import "UUImageView.h"
 #import "SSKeychain.h"
+#import "UIBarButtonItem+Extras.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -36,9 +40,7 @@
 {
 	[super viewDidLoad];
 	
-	self.title = @"Micro.blog";
-	self.fullNameField.text = @"";
-	self.usernameField.text = @"";
+	[self setupNavigation];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -47,6 +49,15 @@
 	
 	[self setupProfileInfo];
 	[self checkUserDetails];
+}
+
+- (void) setupNavigation
+{
+	self.title = @"Micro.blog";
+	self.fullNameField.text = @"";
+	self.usernameField.text = @"";
+
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"new_button" target:self action:@selector(promptNewPost:)];
 }
 
 - (void) setupProfileInfo
@@ -94,6 +105,20 @@
 }
 
 #pragma mark -
+
+- (IBAction) promptNewPost:(id)sender
+{
+	if ([RFSettings needsExternalBlogSetup]) {
+		RFExternalController* wordpress_controller = [[RFExternalController alloc] init];
+		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:wordpress_controller];
+		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+	}
+	else {
+		RFPostController* post_controller = [[RFPostController alloc] init];
+		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
+		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+	}
+}
 
 - (IBAction) showUserProfile:(id)sender
 {

@@ -217,6 +217,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReplyPostNotification:) name:kShowReplyPostNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasUnselectedNotification:) name:kPostWasUnselectedNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetDetailNotification:) name:kResetDetailNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePostingNotification:) name:kClosePostingNotification object:nil];
 }
 
 - (void) setupShortcuts
@@ -274,6 +275,11 @@
 		self.navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
 		self.splitViewController.viewControllers = @[ self.menuNavController, self.navigationController ];
 	}
+}
+
+- (void) closePostingNotification:(NSNotification *)notification
+{
+	[[self activeNavigationController] dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (UINavigationController *) activeNavigationController

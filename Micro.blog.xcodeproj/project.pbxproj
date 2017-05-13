@@ -33,6 +33,7 @@
 		4B2EE3091E8C1F9F009DDA85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B94052C1E2933DE00B01E79 /* Images.xcassets */; };
 		4B3BD0DF1E82B5F800F4B4E0 /* RFPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */; };
 		4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B3BD0E01E82B61700F4B4E0 /* Photos.xib */; };
+		4B43700C1EC7AF3300B46D56 /* RFSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43700B1EC7AF3300B46D56 /* RFSettings.m */; };
 		4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */; };
 		4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631F1B8F51710034FC5C /* CColorConverter.m */; };
 		4B46632B1B8F51710034FC5C /* CMarkupTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663211B8F51710034FC5C /* CMarkupTransformer.m */; };
@@ -172,6 +173,8 @@
 		4B3BD0DD1E82B5F800F4B4E0 /* RFPhotosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFPhotosController.h; path = Source/RFPhotosController.h; sourceTree = "<group>"; };
 		4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFPhotosController.m; path = Source/RFPhotosController.m; sourceTree = "<group>"; };
 		4B3BD0E11E82B61700F4B4E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Photos.xib; sourceTree = "<group>"; };
+		4B43700A1EC7AF3300B46D56 /* RFSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFSettings.h; path = Source/RFSettings.h; sourceTree = "<group>"; };
+		4B43700B1EC7AF3300B46D56 /* RFSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFSettings.m; path = Source/RFSettings.m; sourceTree = "<group>"; };
 		4B46631A1B8EA5C20034FC5C /* NSString+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Extras.h"; path = "Source/NSString+Extras.h"; sourceTree = "<group>"; };
 		4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Extras.m"; path = "Source/NSString+Extras.m"; sourceTree = "<group>"; };
 		4B46631E1B8F51710034FC5C /* CColorConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CColorConverter.h; path = Shared/MarkupLabel/CColorConverter.h; sourceTree = SOURCE_ROOT; };
@@ -535,6 +538,8 @@
 				4B5F75511B8CABC50074D88E /* RFOptionsController.m */,
 				4B5078CF1B965C79002A4F80 /* RFSettingsController.h */,
 				4B5078D01B965C79002A4F80 /* RFSettingsController.m */,
+				4B43700A1EC7AF3300B46D56 /* RFSettings.h */,
+				4B43700B1EC7AF3300B46D56 /* RFSettings.m */,
 				4BA910801B83D20C00D58F83 /* RFPostController.h */,
 				4BA910811B83D20C00D58F83 /* RFPostController.m */,
 				4B3BD0DD1E82B5F800F4B4E0 /* RFPhotosController.h */,
@@ -840,6 +845,7 @@
 				4B8714D01E64D05700C69589 /* tidylib.c in Sources */,
 				4B8714BC1E64D05700C69589 /* attrask.c in Sources */,
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
+				4B43700C1EC7AF3300B46D56 /* RFSettings.m in Sources */,
 				4BF8034D1B87AA2C00D6670C /* UUImageView.m in Sources */,
 				4B0D554F1B9381550076AD9F /* RFXMLRPCParser.m in Sources */,
 				4B87147A1E64C56A00C69589 /* RFXMLLinkParser.m in Sources */,

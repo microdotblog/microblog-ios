@@ -14,6 +14,7 @@
 #import "RFCategoriesController.h"
 #import "RFClient.h"
 #import "RFConstants.h"
+#import "RFSettings.h"
 #import "UIBarButtonItem+Extras.h"
 #import "SSKeychain.h"
 #import <SafariServices/SafariServices.h>
@@ -83,7 +84,6 @@
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadTimelineNotification:) name:kLoadTimelineNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openPostingNotification:) name:kOpenPostingNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePostingNotification:) name:kClosePostingNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasFavoritedNotification:) name:kPostWasFavoritedNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasUnfavoritedNotification:) name:kPostWasUnfavoritedNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasDeletedNotification:) name:kPostWasDeletedNotification object:nil];
@@ -173,28 +173,6 @@
 	return [username_s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-- (BOOL) hasSnippetsBlog
-{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"HasSnippetsBlog"];
-}
-
-- (BOOL) hasExternalBlog
-{
-	NSString* blog_username = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogUsername"];
-	NSString* micropub_me = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubMe"];
-	return (blog_username.length > 0) || (micropub_me.length > 0);
-}
-
-- (BOOL) prefersExternalBlog
-{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"ExternalBlogIsPreferred"];
-}
-
-- (BOOL) needsExternalBlogSetup
-{
-	return (![self hasSnippetsBlog] && ![self hasExternalBlog]) || ([self prefersExternalBlog] && ![self hasExternalBlog]);
-}
-
 #pragma mark -
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
@@ -216,15 +194,7 @@
 
 - (IBAction) promptNewPost:(id)sender
 {
-//	if (NO) {
-//		RFCategoriesController* categories_controller = [[RFCategoriesController alloc] init];
-//		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:categories_controller];
-//		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
-//		return;
-//	}
-
-	if ([self needsExternalBlogSetup]) {
-//		RFWordpressController* wordpress_controller = [[RFWordpressController alloc] init];
+	if ([RFSettings needsExternalBlogSetup]) {
 		RFExternalController* wordpress_controller = [[RFExternalController alloc] init];
 		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:wordpress_controller];
 		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
@@ -288,11 +258,6 @@
 - (void) openPostingNotification:(NSNotification *)notification
 {
 	[self promptNewPost:nil];
-}
-
-- (void) closePostingNotification:(NSNotification *)notification
-{
-	[self.navigationController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void) postWasFavoritedNotification:(NSNotification *)notification
