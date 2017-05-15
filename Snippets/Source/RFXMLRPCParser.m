@@ -59,6 +59,10 @@
 		self.currentValue = [NSMutableString string];
 		self.isProcessingString = YES;
 	}
+	else if ([elementName isEqualToString:@"i4"]) {
+		self.currentValue = [NSMutableString string];
+		self.isProcessingString = YES;
+	}
     else if ([elementName isEqualToString:@"boolean"]) {
 		self.currentValue = [NSMutableString string];
 		self.isProcessingString = YES;
