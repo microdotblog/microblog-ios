@@ -11,7 +11,9 @@
 @interface RFFilter : NSObject
 
 @property (strong) NSString* name;
-@property (strong) NSString* ciFilter;
+@property (strong) CIFilter* ciFilter;
+
++ (RFFilter*) filterFromDictionary:(NSDictionary*)filterDictionary;
 
 - (UIImage *) filterImage:(UIImage *)image;
 

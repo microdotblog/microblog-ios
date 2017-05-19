@@ -114,6 +114,46 @@
 		4BF8034E1B87AA2C00D6670C /* UUString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803431B87AA2C00D6670C /* UUString.m */; };
 		4BF803511B87AACF00D6670C /* RFClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803501B87AACF00D6670C /* RFClient.m */; };
 		4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8035A1B8898D900D6670C /* RFThinLineView.m */; };
+		C5CED6F51ECF792E0068F537 /* YUCIBilateralFilter.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */; };
+		C5CED6F61ECF792E0068F537 /* YUCIBilateralFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */; };
+		C5CED6F71ECF792E0068F537 /* YUCIBlobsGenerator.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6BB1ECF792E0068F537 /* YUCIBlobsGenerator.cikernel */; };
+		C5CED6F81ECF792E0068F537 /* YUCIBlobsGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6BD1ECF792E0068F537 /* YUCIBlobsGenerator.m */; };
+		C5CED6F91ECF792E0068F537 /* YUCICLAHE.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6BE1ECF792E0068F537 /* YUCICLAHE.cikernel */; };
+		C5CED6FA1ECF792E0068F537 /* YUCICLAHE.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6C01ECF792E0068F537 /* YUCICLAHE.m */; };
+		C5CED6FB1ECF792E0068F537 /* YUCIColorLookup.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6C11ECF792E0068F537 /* YUCIColorLookup.cikernel */; };
+		C5CED6FC1ECF792E0068F537 /* YUCIColorLookup.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6C31ECF792E0068F537 /* YUCIColorLookup.m */; };
+		C5CED6FD1ECF792E0068F537 /* YUCIColorLookupTableDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6C41ECF792E0068F537 /* YUCIColorLookupTableDefault.png */; };
+		C5CED6FE1ECF792E0068F537 /* YUCICrossZoomTransition.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6C51ECF792E0068F537 /* YUCICrossZoomTransition.cikernel */; };
+		C5CED6FF1ECF792E0068F537 /* YUCICrossZoomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6C71ECF792E0068F537 /* YUCICrossZoomTransition.m */; };
+		C5CED7001ECF792E0068F537 /* YUCIFilterConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6C91ECF792E0068F537 /* YUCIFilterConstructor.m */; };
+		C5CED7011ECF792E0068F537 /* YUCIFilterPreviewGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6CB1ECF792E0068F537 /* YUCIFilterPreviewGenerator.m */; };
+		C5CED7021ECF792E0068F537 /* YUCIFilterUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6CD1ECF792E0068F537 /* YUCIFilterUtilities.m */; };
+		C5CED7031ECF792E0068F537 /* YUCIFlashTransition.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6CE1ECF792E0068F537 /* YUCIFlashTransition.cikernel */; };
+		C5CED7041ECF792E0068F537 /* YUCIFlashTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6D01ECF792E0068F537 /* YUCIFlashTransition.m */; };
+		C5CED7051ECF792E0068F537 /* YUCIFXAA.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6D11ECF792E0068F537 /* YUCIFXAA.cikernel */; };
+		C5CED7061ECF792E0068F537 /* YUCIFXAA.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6D31ECF792E0068F537 /* YUCIFXAA.m */; };
+		C5CED7071ECF792E0068F537 /* YUCIGreenBlueChannelOverlayBlend.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6D41ECF792E0068F537 /* YUCIGreenBlueChannelOverlayBlend.cikernel */; };
+		C5CED7081ECF792E0068F537 /* YUCIHighPass.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6D51ECF792E0068F537 /* YUCIHighPass.cikernel */; };
+		C5CED7091ECF792E0068F537 /* YUCIHighPass.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6D71ECF792E0068F537 /* YUCIHighPass.m */; };
+		C5CED70A1ECF792E0068F537 /* YUCIHighPassSkinSmoothing.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6D91ECF792E0068F537 /* YUCIHighPassSkinSmoothing.m */; };
+		C5CED70B1ECF792E0068F537 /* YUCIHighPassSkinSmoothingMaskBoost.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6DA1ECF792E0068F537 /* YUCIHighPassSkinSmoothingMaskBoost.cikernel */; };
+		C5CED70C1ECF792E0068F537 /* YUCIHistogramEqualization.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6DC1ECF792E0068F537 /* YUCIHistogramEqualization.m */; };
+		C5CED70D1ECF792E0068F537 /* YUCIHSLToRGB.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6DD1ECF792E0068F537 /* YUCIHSLToRGB.cikernel */; };
+		C5CED70E1ECF792E0068F537 /* YUCIReflectedTile.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6DE1ECF792E0068F537 /* YUCIReflectedTile.cikernel */; };
+		C5CED70F1ECF792E0068F537 /* YUCIReflectedTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6E01ECF792E0068F537 /* YUCIReflectedTile.m */; };
+		C5CED7101ECF792E0068F537 /* YUCIReflectedTileROICalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6E21ECF792E0068F537 /* YUCIReflectedTileROICalculator.m */; };
+		C5CED7111ECF792E0068F537 /* YUCIRGBToHSL.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6E31ECF792E0068F537 /* YUCIRGBToHSL.cikernel */; };
+		C5CED7121ECF792E0068F537 /* YUCIRGBToneCurve.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6E41ECF792E0068F537 /* YUCIRGBToneCurve.cikernel */; };
+		C5CED7131ECF792E0068F537 /* YUCIRGBToneCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6E61ECF792E0068F537 /* YUCIRGBToneCurve.m */; };
+		C5CED7141ECF792E0068F537 /* YUCISkyGenerator.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6E71ECF792E0068F537 /* YUCISkyGenerator.cikernel */; };
+		C5CED7151ECF792E0068F537 /* YUCISkyGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6E91ECF792E0068F537 /* YUCISkyGenerator.m */; };
+		C5CED7161ECF792E0068F537 /* YUCIStarfieldGenerator.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6EA1ECF792E0068F537 /* YUCIStarfieldGenerator.cikernel */; };
+		C5CED7171ECF792E0068F537 /* YUCIStarfieldGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6EC1ECF792E0068F537 /* YUCIStarfieldGenerator.m */; };
+		C5CED7181ECF792E0068F537 /* YUCISurfaceBlur.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6ED1ECF792E0068F537 /* YUCISurfaceBlur.cikernel */; };
+		C5CED7191ECF792E0068F537 /* YUCISurfaceBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6EF1ECF792E0068F537 /* YUCISurfaceBlur.m */; };
+		C5CED71A1ECF792E0068F537 /* YUCITriangularPixellate.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6F01ECF792E0068F537 /* YUCITriangularPixellate.cikernel */; };
+		C5CED71B1ECF792E0068F537 /* YUCITriangularPixellate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6F21ECF792E0068F537 /* YUCITriangularPixellate.m */; };
+		C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6F41ECF792E0068F537 /* YUCIUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -323,6 +363,67 @@
 		4BF803521B87ADF900D6670C /* RFMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFMacros.h; path = Source/RFMacros.h; sourceTree = "<group>"; };
 		4BF803591B8898D900D6670C /* RFThinLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFThinLineView.h; path = Source/RFThinLineView.h; sourceTree = "<group>"; };
 		4BF8035A1B8898D900D6670C /* RFThinLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFThinLineView.m; path = Source/RFThinLineView.m; sourceTree = "<group>"; };
+		C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIBilateralFilter.cikernel; sourceTree = "<group>"; };
+		C5CED6B91ECF792E0068F537 /* YUCIBilateralFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIBilateralFilter.h; sourceTree = "<group>"; };
+		C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIBilateralFilter.m; sourceTree = "<group>"; };
+		C5CED6BB1ECF792E0068F537 /* YUCIBlobsGenerator.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIBlobsGenerator.cikernel; sourceTree = "<group>"; };
+		C5CED6BC1ECF792E0068F537 /* YUCIBlobsGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIBlobsGenerator.h; sourceTree = "<group>"; };
+		C5CED6BD1ECF792E0068F537 /* YUCIBlobsGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIBlobsGenerator.m; sourceTree = "<group>"; };
+		C5CED6BE1ECF792E0068F537 /* YUCICLAHE.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCICLAHE.cikernel; sourceTree = "<group>"; };
+		C5CED6BF1ECF792E0068F537 /* YUCICLAHE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCICLAHE.h; sourceTree = "<group>"; };
+		C5CED6C01ECF792E0068F537 /* YUCICLAHE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCICLAHE.m; sourceTree = "<group>"; };
+		C5CED6C11ECF792E0068F537 /* YUCIColorLookup.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIColorLookup.cikernel; sourceTree = "<group>"; };
+		C5CED6C21ECF792E0068F537 /* YUCIColorLookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIColorLookup.h; sourceTree = "<group>"; };
+		C5CED6C31ECF792E0068F537 /* YUCIColorLookup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIColorLookup.m; sourceTree = "<group>"; };
+		C5CED6C41ECF792E0068F537 /* YUCIColorLookupTableDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YUCIColorLookupTableDefault.png; sourceTree = "<group>"; };
+		C5CED6C51ECF792E0068F537 /* YUCICrossZoomTransition.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCICrossZoomTransition.cikernel; sourceTree = "<group>"; };
+		C5CED6C61ECF792E0068F537 /* YUCICrossZoomTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCICrossZoomTransition.h; sourceTree = "<group>"; };
+		C5CED6C71ECF792E0068F537 /* YUCICrossZoomTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCICrossZoomTransition.m; sourceTree = "<group>"; };
+		C5CED6C81ECF792E0068F537 /* YUCIFilterConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIFilterConstructor.h; sourceTree = "<group>"; };
+		C5CED6C91ECF792E0068F537 /* YUCIFilterConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIFilterConstructor.m; sourceTree = "<group>"; };
+		C5CED6CA1ECF792E0068F537 /* YUCIFilterPreviewGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIFilterPreviewGenerator.h; sourceTree = "<group>"; };
+		C5CED6CB1ECF792E0068F537 /* YUCIFilterPreviewGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIFilterPreviewGenerator.m; sourceTree = "<group>"; };
+		C5CED6CC1ECF792E0068F537 /* YUCIFilterUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIFilterUtilities.h; sourceTree = "<group>"; };
+		C5CED6CD1ECF792E0068F537 /* YUCIFilterUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIFilterUtilities.m; sourceTree = "<group>"; };
+		C5CED6CE1ECF792E0068F537 /* YUCIFlashTransition.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIFlashTransition.cikernel; sourceTree = "<group>"; };
+		C5CED6CF1ECF792E0068F537 /* YUCIFlashTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIFlashTransition.h; sourceTree = "<group>"; };
+		C5CED6D01ECF792E0068F537 /* YUCIFlashTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIFlashTransition.m; sourceTree = "<group>"; };
+		C5CED6D11ECF792E0068F537 /* YUCIFXAA.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIFXAA.cikernel; sourceTree = "<group>"; };
+		C5CED6D21ECF792E0068F537 /* YUCIFXAA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIFXAA.h; sourceTree = "<group>"; };
+		C5CED6D31ECF792E0068F537 /* YUCIFXAA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIFXAA.m; sourceTree = "<group>"; };
+		C5CED6D41ECF792E0068F537 /* YUCIGreenBlueChannelOverlayBlend.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIGreenBlueChannelOverlayBlend.cikernel; sourceTree = "<group>"; };
+		C5CED6D51ECF792E0068F537 /* YUCIHighPass.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIHighPass.cikernel; sourceTree = "<group>"; };
+		C5CED6D61ECF792E0068F537 /* YUCIHighPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIHighPass.h; sourceTree = "<group>"; };
+		C5CED6D71ECF792E0068F537 /* YUCIHighPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIHighPass.m; sourceTree = "<group>"; };
+		C5CED6D81ECF792E0068F537 /* YUCIHighPassSkinSmoothing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIHighPassSkinSmoothing.h; sourceTree = "<group>"; };
+		C5CED6D91ECF792E0068F537 /* YUCIHighPassSkinSmoothing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIHighPassSkinSmoothing.m; sourceTree = "<group>"; };
+		C5CED6DA1ECF792E0068F537 /* YUCIHighPassSkinSmoothingMaskBoost.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIHighPassSkinSmoothingMaskBoost.cikernel; sourceTree = "<group>"; };
+		C5CED6DB1ECF792E0068F537 /* YUCIHistogramEqualization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIHistogramEqualization.h; sourceTree = "<group>"; };
+		C5CED6DC1ECF792E0068F537 /* YUCIHistogramEqualization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIHistogramEqualization.m; sourceTree = "<group>"; };
+		C5CED6DD1ECF792E0068F537 /* YUCIHSLToRGB.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIHSLToRGB.cikernel; sourceTree = "<group>"; };
+		C5CED6DE1ECF792E0068F537 /* YUCIReflectedTile.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIReflectedTile.cikernel; sourceTree = "<group>"; };
+		C5CED6DF1ECF792E0068F537 /* YUCIReflectedTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIReflectedTile.h; sourceTree = "<group>"; };
+		C5CED6E01ECF792E0068F537 /* YUCIReflectedTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIReflectedTile.m; sourceTree = "<group>"; };
+		C5CED6E11ECF792E0068F537 /* YUCIReflectedTileROICalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIReflectedTileROICalculator.h; sourceTree = "<group>"; };
+		C5CED6E21ECF792E0068F537 /* YUCIReflectedTileROICalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIReflectedTileROICalculator.m; sourceTree = "<group>"; };
+		C5CED6E31ECF792E0068F537 /* YUCIRGBToHSL.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIRGBToHSL.cikernel; sourceTree = "<group>"; };
+		C5CED6E41ECF792E0068F537 /* YUCIRGBToneCurve.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIRGBToneCurve.cikernel; sourceTree = "<group>"; };
+		C5CED6E51ECF792E0068F537 /* YUCIRGBToneCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIRGBToneCurve.h; sourceTree = "<group>"; };
+		C5CED6E61ECF792E0068F537 /* YUCIRGBToneCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIRGBToneCurve.m; sourceTree = "<group>"; };
+		C5CED6E71ECF792E0068F537 /* YUCISkyGenerator.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCISkyGenerator.cikernel; sourceTree = "<group>"; };
+		C5CED6E81ECF792E0068F537 /* YUCISkyGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCISkyGenerator.h; sourceTree = "<group>"; };
+		C5CED6E91ECF792E0068F537 /* YUCISkyGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCISkyGenerator.m; sourceTree = "<group>"; };
+		C5CED6EA1ECF792E0068F537 /* YUCIStarfieldGenerator.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIStarfieldGenerator.cikernel; sourceTree = "<group>"; };
+		C5CED6EB1ECF792E0068F537 /* YUCIStarfieldGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIStarfieldGenerator.h; sourceTree = "<group>"; };
+		C5CED6EC1ECF792E0068F537 /* YUCIStarfieldGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIStarfieldGenerator.m; sourceTree = "<group>"; };
+		C5CED6ED1ECF792E0068F537 /* YUCISurfaceBlur.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCISurfaceBlur.cikernel; sourceTree = "<group>"; };
+		C5CED6EE1ECF792E0068F537 /* YUCISurfaceBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCISurfaceBlur.h; sourceTree = "<group>"; };
+		C5CED6EF1ECF792E0068F537 /* YUCISurfaceBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCISurfaceBlur.m; sourceTree = "<group>"; };
+		C5CED6F01ECF792E0068F537 /* YUCITriangularPixellate.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCITriangularPixellate.cikernel; sourceTree = "<group>"; };
+		C5CED6F11ECF792E0068F537 /* YUCITriangularPixellate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCITriangularPixellate.h; sourceTree = "<group>"; };
+		C5CED6F21ECF792E0068F537 /* YUCITriangularPixellate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCITriangularPixellate.m; sourceTree = "<group>"; };
+		C5CED6F31ECF792E0068F537 /* YUCIUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIUtilities.h; sourceTree = "<group>"; };
+		C5CED6F41ECF792E0068F537 /* YUCIUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIUtilities.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -620,6 +721,7 @@
 		4BA2C99D1B2109E10038C0E5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C5CED6B71ECF792E0068F537 /* VividFilters */,
 				4B12BAEB1E9FBFC5000E559F /* 1Password */,
 				4B87147D1E64D05700C69589 /* CTidy */,
 				4B46631D1B8F51670034FC5C /* MarkupLabel */,
@@ -670,6 +772,74 @@
 				4BF803431B87AA2C00D6670C /* UUString.m */,
 			);
 			name = UUToolbox;
+			sourceTree = "<group>";
+		};
+		C5CED6B71ECF792E0068F537 /* VividFilters */ = {
+			isa = PBXGroup;
+			children = (
+				C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */,
+				C5CED6B91ECF792E0068F537 /* YUCIBilateralFilter.h */,
+				C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */,
+				C5CED6BB1ECF792E0068F537 /* YUCIBlobsGenerator.cikernel */,
+				C5CED6BC1ECF792E0068F537 /* YUCIBlobsGenerator.h */,
+				C5CED6BD1ECF792E0068F537 /* YUCIBlobsGenerator.m */,
+				C5CED6BE1ECF792E0068F537 /* YUCICLAHE.cikernel */,
+				C5CED6BF1ECF792E0068F537 /* YUCICLAHE.h */,
+				C5CED6C01ECF792E0068F537 /* YUCICLAHE.m */,
+				C5CED6C11ECF792E0068F537 /* YUCIColorLookup.cikernel */,
+				C5CED6C21ECF792E0068F537 /* YUCIColorLookup.h */,
+				C5CED6C31ECF792E0068F537 /* YUCIColorLookup.m */,
+				C5CED6C41ECF792E0068F537 /* YUCIColorLookupTableDefault.png */,
+				C5CED6C51ECF792E0068F537 /* YUCICrossZoomTransition.cikernel */,
+				C5CED6C61ECF792E0068F537 /* YUCICrossZoomTransition.h */,
+				C5CED6C71ECF792E0068F537 /* YUCICrossZoomTransition.m */,
+				C5CED6C81ECF792E0068F537 /* YUCIFilterConstructor.h */,
+				C5CED6C91ECF792E0068F537 /* YUCIFilterConstructor.m */,
+				C5CED6CA1ECF792E0068F537 /* YUCIFilterPreviewGenerator.h */,
+				C5CED6CB1ECF792E0068F537 /* YUCIFilterPreviewGenerator.m */,
+				C5CED6CC1ECF792E0068F537 /* YUCIFilterUtilities.h */,
+				C5CED6CD1ECF792E0068F537 /* YUCIFilterUtilities.m */,
+				C5CED6CE1ECF792E0068F537 /* YUCIFlashTransition.cikernel */,
+				C5CED6CF1ECF792E0068F537 /* YUCIFlashTransition.h */,
+				C5CED6D01ECF792E0068F537 /* YUCIFlashTransition.m */,
+				C5CED6D11ECF792E0068F537 /* YUCIFXAA.cikernel */,
+				C5CED6D21ECF792E0068F537 /* YUCIFXAA.h */,
+				C5CED6D31ECF792E0068F537 /* YUCIFXAA.m */,
+				C5CED6D41ECF792E0068F537 /* YUCIGreenBlueChannelOverlayBlend.cikernel */,
+				C5CED6D51ECF792E0068F537 /* YUCIHighPass.cikernel */,
+				C5CED6D61ECF792E0068F537 /* YUCIHighPass.h */,
+				C5CED6D71ECF792E0068F537 /* YUCIHighPass.m */,
+				C5CED6D81ECF792E0068F537 /* YUCIHighPassSkinSmoothing.h */,
+				C5CED6D91ECF792E0068F537 /* YUCIHighPassSkinSmoothing.m */,
+				C5CED6DA1ECF792E0068F537 /* YUCIHighPassSkinSmoothingMaskBoost.cikernel */,
+				C5CED6DB1ECF792E0068F537 /* YUCIHistogramEqualization.h */,
+				C5CED6DC1ECF792E0068F537 /* YUCIHistogramEqualization.m */,
+				C5CED6DD1ECF792E0068F537 /* YUCIHSLToRGB.cikernel */,
+				C5CED6DE1ECF792E0068F537 /* YUCIReflectedTile.cikernel */,
+				C5CED6DF1ECF792E0068F537 /* YUCIReflectedTile.h */,
+				C5CED6E01ECF792E0068F537 /* YUCIReflectedTile.m */,
+				C5CED6E11ECF792E0068F537 /* YUCIReflectedTileROICalculator.h */,
+				C5CED6E21ECF792E0068F537 /* YUCIReflectedTileROICalculator.m */,
+				C5CED6E31ECF792E0068F537 /* YUCIRGBToHSL.cikernel */,
+				C5CED6E41ECF792E0068F537 /* YUCIRGBToneCurve.cikernel */,
+				C5CED6E51ECF792E0068F537 /* YUCIRGBToneCurve.h */,
+				C5CED6E61ECF792E0068F537 /* YUCIRGBToneCurve.m */,
+				C5CED6E71ECF792E0068F537 /* YUCISkyGenerator.cikernel */,
+				C5CED6E81ECF792E0068F537 /* YUCISkyGenerator.h */,
+				C5CED6E91ECF792E0068F537 /* YUCISkyGenerator.m */,
+				C5CED6EA1ECF792E0068F537 /* YUCIStarfieldGenerator.cikernel */,
+				C5CED6EB1ECF792E0068F537 /* YUCIStarfieldGenerator.h */,
+				C5CED6EC1ECF792E0068F537 /* YUCIStarfieldGenerator.m */,
+				C5CED6ED1ECF792E0068F537 /* YUCISurfaceBlur.cikernel */,
+				C5CED6EE1ECF792E0068F537 /* YUCISurfaceBlur.h */,
+				C5CED6EF1ECF792E0068F537 /* YUCISurfaceBlur.m */,
+				C5CED6F01ECF792E0068F537 /* YUCITriangularPixellate.cikernel */,
+				C5CED6F11ECF792E0068F537 /* YUCITriangularPixellate.h */,
+				C5CED6F21ECF792E0068F537 /* YUCITriangularPixellate.m */,
+				C5CED6F31ECF792E0068F537 /* YUCIUtilities.h */,
+				C5CED6F41ECF792E0068F537 /* YUCIUtilities.m */,
+			);
+			path = VividFilters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -776,6 +946,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5CED7031ECF792E0068F537 /* YUCIFlashTransition.cikernel in Resources */,
+				C5CED6FB1ECF792E0068F537 /* YUCIColorLookup.cikernel in Resources */,
+				C5CED7181ECF792E0068F537 /* YUCISurfaceBlur.cikernel in Resources */,
 				4BF123FF1E88343600B56138 /* Filters.plist in Resources */,
 				4BA2C9871B2109D10038C0E5 /* LaunchScreen.xib in Resources */,
 				4B5078D41B965E4F002A4F80 /* Settings.xib in Resources */,
@@ -783,18 +956,34 @@
 				4BA910851B83D22900D58F83 /* Post.xib in Resources */,
 				4BF123F71E882F5400B56138 /* FilterCell.xib in Resources */,
 				4BA2C9A01B210A620038C0E5 /* Timeline.xib in Resources */,
+				C5CED7111ECF792E0068F537 /* YUCIRGBToHSL.cikernel in Resources */,
 				4BF123F41E882F4500B56138 /* Filters.xib in Resources */,
 				4BA9107C1B83CFD200D58F83 /* SignIn.xib in Resources */,
+				C5CED70E1ECF792E0068F537 /* YUCIReflectedTile.cikernel in Resources */,
+				C5CED6F71ECF792E0068F537 /* YUCIBlobsGenerator.cikernel in Resources */,
 				4BA910791B83CE7600D58F83 /* Menu.xib in Resources */,
+				C5CED70B1ECF792E0068F537 /* YUCIHighPassSkinSmoothingMaskBoost.cikernel in Resources */,
 				4B5F75551B8CABF30074D88E /* Options.xib in Resources */,
+				C5CED6F91ECF792E0068F537 /* YUCICLAHE.cikernel in Resources */,
+				C5CED7141ECF792E0068F537 /* YUCISkyGenerator.cikernel in Resources */,
+				C5CED7081ECF792E0068F537 /* YUCIHighPass.cikernel in Resources */,
 				4B0D55581B93B3F00076AD9F /* Wordpress.xib in Resources */,
 				4B9A7BAD1E82F1C1002A49E5 /* PhotoCell.xib in Resources */,
 				4B94052D1E2933DE00B01E79 /* Images.xcassets in Resources */,
 				4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */,
+				C5CED6FD1ECF792E0068F537 /* YUCIColorLookupTableDefault.png in Resources */,
+				C5CED71A1ECF792E0068F537 /* YUCITriangularPixellate.cikernel in Resources */,
+				C5CED6FE1ECF792E0068F537 /* YUCICrossZoomTransition.cikernel in Resources */,
 				4B1BD2841D8754DC00B3C93D /* Help.xib in Resources */,
 				4B8714741E64C07800C69589 /* External.xib in Resources */,
+				C5CED7051ECF792E0068F537 /* YUCIFXAA.cikernel in Resources */,
+				C5CED7161ECF792E0068F537 /* YUCIStarfieldGenerator.cikernel in Resources */,
 				4B12BAEA1E9FBFBC000E559F /* 1Password.xcassets in Resources */,
 				4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */,
+				C5CED7121ECF792E0068F537 /* YUCIRGBToneCurve.cikernel in Resources */,
+				C5CED70D1ECF792E0068F537 /* YUCIHSLToRGB.cikernel in Resources */,
+				C5CED6F51ECF792E0068F537 /* YUCIBilateralFilter.cikernel in Resources */,
+				C5CED7071ECF792E0068F537 /* YUCIGreenBlueChannelOverlayBlend.cikernel in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,12 +1020,14 @@
 			files = (
 				4B8714CF1E64D05700C69589 /* tags.c in Sources */,
 				4B8714B91E64D05700C69589 /* CTidy.m in Sources */,
+				C5CED7191ECF792E0068F537 /* YUCISurfaceBlur.m in Sources */,
 				4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */,
 				4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */,
 				4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */,
 				4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */,
 				4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */,
 				4B9A7BAA1E82F149002A49E5 /* RFPhoto.m in Sources */,
+				C5CED70A1ECF792E0068F537 /* YUCIHighPassSkinSmoothing.m in Sources */,
 				4B0D55691B93C0390076AD9F /* RFXMLRSDParser.m in Sources */,
 				4B8714C41E64D05700C69589 /* entities.c in Sources */,
 				4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */,
@@ -844,10 +1035,13 @@
 				4B46632B1B8F51710034FC5C /* CMarkupTransformer.m in Sources */,
 				4B8714D01E64D05700C69589 /* tidylib.c in Sources */,
 				4B8714BC1E64D05700C69589 /* attrask.c in Sources */,
+				C5CED7061ECF792E0068F537 /* YUCIFXAA.m in Sources */,
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
 				4B43700C1EC7AF3300B46D56 /* RFSettings.m in Sources */,
+				C5CED7151ECF792E0068F537 /* YUCISkyGenerator.m in Sources */,
 				4BF8034D1B87AA2C00D6670C /* UUImageView.m in Sources */,
 				4B0D554F1B9381550076AD9F /* RFXMLRPCParser.m in Sources */,
+				C5CED71B1ECF792E0068F537 /* YUCITriangularPixellate.m in Sources */,
 				4B87147A1E64C56A00C69589 /* RFXMLLinkParser.m in Sources */,
 				4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */,
 				4B0D556C1B9552310076AD9F /* RFCategoriesController.m in Sources */,
@@ -857,8 +1051,10 @@
 				4B8714CE1E64D05700C69589 /* tagask.c in Sources */,
 				4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */,
 				4B8714C31E64D05700C69589 /* config.c in Sources */,
+				C5CED7001ECF792E0068F537 /* YUCIFilterConstructor.m in Sources */,
 				4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */,
 				4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */,
+				C5CED7041ECF792E0068F537 /* YUCIFlashTransition.m in Sources */,
 				4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */,
 				4B8714C71E64D05700C69589 /* istack.c in Sources */,
 				4B8714BB1E64D05700C69589 /* alloc.c in Sources */,
@@ -874,12 +1070,17 @@
 				4BA9107F1B83CFFD00D58F83 /* RFSignInController.m in Sources */,
 				4B46632C1B8F51710034FC5C /* CSimpleMarkupParser.m in Sources */,
 				4BA910761B83CDC400D58F83 /* RFMenuController.m in Sources */,
+				C5CED6FF1ECF792E0068F537 /* YUCICrossZoomTransition.m in Sources */,
 				4BF803491B87AA2C00D6670C /* UUHttpClient.m in Sources */,
+				C5CED6F81ECF792E0068F537 /* YUCIBlobsGenerator.m in Sources */,
 				4B1D74FC1B95ECF4004A0ACD /* RFXMLElementStack.m in Sources */,
 				4BF8034E1B87AA2C00D6670C /* UUString.m in Sources */,
 				4BF8034A1B87AA2C00D6670C /* UUHttpResponseHandler.m in Sources */,
 				4BF123FD1E88302B00B56138 /* RFFilterCell.m in Sources */,
+				C5CED6FC1ECF792E0068F537 /* YUCIColorLookup.m in Sources */,
 				4BA910981B84077000D58F83 /* UIBarButtonItem+Extras.m in Sources */,
+				C5CED70F1ECF792E0068F537 /* YUCIReflectedTile.m in Sources */,
+				C5CED7011ECF792E0068F537 /* YUCIFilterPreviewGenerator.m in Sources */,
 				4B8714D11E64D05700C69589 /* tmbstr.c in Sources */,
 				4BF8034C1B87AA2C00D6670C /* UUImage.m in Sources */,
 				4BF803481B87AA2C00D6670C /* UUDictionary.m in Sources */,
@@ -888,10 +1089,13 @@
 				4BF123FA1E88301500B56138 /* RFFilter.m in Sources */,
 				4B8714771E64C0DD00C69589 /* RFExternalController.m in Sources */,
 				4B8714C91E64D05700C69589 /* localize.c in Sources */,
+				C5CED70C1ECF792E0068F537 /* YUCIHistogramEqualization.m in Sources */,
+				C5CED6FA1ECF792E0068F537 /* YUCICLAHE.m in Sources */,
 				4B8714CA1E64D05700C69589 /* mappedio.c in Sources */,
 				4BF123F11E882F3000B56138 /* RFFiltersController.m in Sources */,
 				4B8714BA1E64D05700C69589 /* access.c in Sources */,
 				4B8714CB1E64D05700C69589 /* parser.c in Sources */,
+				C5CED6F61ECF792E0068F537 /* YUCIBilateralFilter.m in Sources */,
 				4B8714CD1E64D05700C69589 /* streamio.c in Sources */,
 				4BA2C9A61B210C0E0038C0E5 /* RFAppDelegate.m in Sources */,
 				4BA910821B83D20C00D58F83 /* RFPostController.m in Sources */,
@@ -900,13 +1104,19 @@
 				4B8714C81E64D05700C69589 /* lexer.c in Sources */,
 				4BF803441B87AA2C00D6670C /* UUActionSheet.m in Sources */,
 				4BF8034B1B87AA2C00D6670C /* UUHttpSession.m in Sources */,
+				C5CED7171ECF792E0068F537 /* YUCIStarfieldGenerator.m in Sources */,
 				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
+				C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */,
 				4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */,
 				4B8714D31E64D05700C69589 /* win32tc.c in Sources */,
+				C5CED7091ECF792E0068F537 /* YUCIHighPass.m in Sources */,
 				4B8714C01E64D05700C69589 /* buffio.c in Sources */,
 				4BF803451B87AA2C00D6670C /* UUAlert.m in Sources */,
 				4B8714C51E64D05700C69589 /* fileio.c in Sources */,
+				C5CED7021ECF792E0068F537 /* YUCIFilterUtilities.m in Sources */,
 				4B3BD0DF1E82B5F800F4B4E0 /* RFPhotosController.m in Sources */,
+				C5CED7101ECF792E0068F537 /* YUCIReflectedTileROICalculator.m in Sources */,
+				C5CED7131ECF792E0068F537 /* YUCIRGBToneCurve.m in Sources */,
 				4B8714C21E64D05700C69589 /* clean.c in Sources */,
 				4B9A7BA71E82F107002A49E5 /* RFPhotoCell.m in Sources */,
 			);
