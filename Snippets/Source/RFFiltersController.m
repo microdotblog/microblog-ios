@@ -66,9 +66,7 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	
 	NSArray* filters = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Filters" ofType:@"plist"]];
 	for (NSDictionary* info in filters) {
-		RFFilter* f = [[RFFilter alloc] init];
-		f.name = info[@"name"];
-		f.ciFilter = info[@"ciFilter"];
+        RFFilter* f = [RFFilter filterFromDictionary:info];
 		[new_filters addObject:f];
 	}
 	
@@ -202,7 +200,7 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	options.networkAccessAllowed = YES;
 	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1800, 1800) contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 		UIImage* img = [result uuRemoveOrientation];
-		if (filter.ciFilter.length > 0) {
+		if (filter.ciFilter) {
 			img = [filter filterImage:img];
 		}
 		self.imageView.image = img;

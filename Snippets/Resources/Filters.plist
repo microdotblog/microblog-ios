@@ -10,6 +10,94 @@
 	</dict>
 	<dict>
 		<key>name</key>
+		<string>NEW FILTER1</string>
+		<key>ciFilter</key>
+		<string>YUCIColorLookup</string>
+		<key>imagemap</key>
+		<string>lookup_soft_elegance_1</string>
+		<key>intensity</key>
+		<real>0.65</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>NEW FILTER2</string>
+		<key>ciFilter</key>
+		<string>YUCIHistogramEqualization</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>NEW FILTER3</string>
+		<key>ciFilter</key>
+		<string>YUCIColorLookup</string>
+		<key>imagemap</key>
+		<string>lookup_amatorka</string>
+		<key>intensity</key>
+		<real>0.65</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>NEW FILTER4</string>
+		<key>ciFilter</key>
+		<string>YUCIColorLookup</string>
+		<key>imagemap</key>
+		<string>lookup_soft_elegance_1</string>
+		<key>intensity</key>
+		<real>0.65</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>NEW FILTER5</string>
+		<key>ciFilter</key>
+		<string>YUCIColorLookup</string>
+		<key>imagemap</key>
+		<string>lookup_soft_elegance_2</string>
+		<key>intensity</key>
+		<real>0.65</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>NEW FILTER6</string>
+		<key>ciFilter</key>
+		<string>YUCIColorLookup</string>
+		<key>imagemap</key>
+		<string>lookup_jon_two</string>
+		<key>intensity</key>
+		<real>0.65</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>NEW FILTER7</string>
+		<key>ciFilter</key>
+		<string>YUCIColorLookup</string>
+		<key>imagemap</key>
+		<string>lookup_miss_etikate</string>
+		<key>intensity</key>
+		<real>0.65</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>NEW FILTER8</string>
+		<key>ciFilter</key>
+		<string>YUCIColorLookup</string>
+		<key>imagemap</key>
+		<string>lookup_jon_one</string>
+		<key>intensity</key>
+		<real>0.65</real>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>NEW FILTER 9</string>
+		<key>ciFilter</key>
+		<string>YUCISurfaceBlur</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>SKIN SMOOTH</string>
+		<key>ciFilter</key>
+		<string>YUCIHighPassSkinSmoothing</string>
+	</dict>
+	<dict>
+		<key>name</key>
 		<string>Fade</string>
 		<key>ciFilter</key>
 		<string>CIPhotoEffectFade</string>
