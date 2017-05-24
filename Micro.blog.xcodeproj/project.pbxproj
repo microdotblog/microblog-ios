@@ -41,6 +41,9 @@
 		4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663251B8F51710034FC5C /* NSString+MarkupExtensions.m */; };
 		4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */; };
 		4B46632F1B8F51710034FC5C /* UILabel+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */; };
+		4B4D9B551ED520F800315BBA /* RFFeaturedPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D9B541ED520F800315BBA /* RFFeaturedPhoto.m */; };
+		4B4D9B581ED5213E00315BBA /* FeaturedPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B4D9B561ED5213E00315BBA /* FeaturedPhotoCell.xib */; };
+		4B4D9B5B1ED521BB00315BBA /* RFFeaturedPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D9B5A1ED521BB00315BBA /* RFFeaturedPhotoCell.m */; };
 		4B5078D11B965C79002A4F80 /* RFSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5078D01B965C79002A4F80 /* RFSettingsController.m */; };
 		4B5078D41B965E4F002A4F80 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5078D21B965E4F002A4F80 /* Settings.xib */; };
 		4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D21EB1E9DF44000AC101E /* RFMicropub.m */; };
@@ -229,6 +232,11 @@
 		4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+StyleUtilities.m"; path = "Shared/MarkupLabel/UIFont+StyleUtilities.m"; sourceTree = SOURCE_ROOT; };
 		4B4663281B8F51710034FC5C /* UILabel+MarkupExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+MarkupExtensions.h"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.h"; sourceTree = SOURCE_ROOT; };
 		4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+MarkupExtensions.m"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.m"; sourceTree = SOURCE_ROOT; };
+		4B4D9B531ED520F800315BBA /* RFFeaturedPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFeaturedPhoto.h; path = Source/RFFeaturedPhoto.h; sourceTree = "<group>"; };
+		4B4D9B541ED520F800315BBA /* RFFeaturedPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFFeaturedPhoto.m; path = Source/RFFeaturedPhoto.m; sourceTree = "<group>"; };
+		4B4D9B571ED5213E00315BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeaturedPhotoCell.xib; sourceTree = "<group>"; };
+		4B4D9B591ED521BB00315BBA /* RFFeaturedPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFeaturedPhotoCell.h; path = Source/RFFeaturedPhotoCell.h; sourceTree = "<group>"; };
+		4B4D9B5A1ED521BB00315BBA /* RFFeaturedPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFFeaturedPhotoCell.m; path = Source/RFFeaturedPhotoCell.m; sourceTree = "<group>"; };
 		4B5078CF1B965C79002A4F80 /* RFSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFSettingsController.h; path = Source/RFSettingsController.h; sourceTree = "<group>"; };
 		4B5078D01B965C79002A4F80 /* RFSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = RFSettingsController.m; path = Source/RFSettingsController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4B5078D31B965E4F002A4F80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Settings.xib; sourceTree = "<group>"; };
@@ -631,6 +639,10 @@
 				4BA2C9A21B210A9A0038C0E5 /* RFTimelineController.m */,
 				4B27AA8B1EB3F18D00CC3F3A /* RFDiscoverController.h */,
 				4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */,
+				4B4D9B531ED520F800315BBA /* RFFeaturedPhoto.h */,
+				4B4D9B541ED520F800315BBA /* RFFeaturedPhoto.m */,
+				4B4D9B591ED521BB00315BBA /* RFFeaturedPhotoCell.h */,
+				4B4D9B5A1ED521BB00315BBA /* RFFeaturedPhotoCell.m */,
 				4B2DEDD41BF8D14B00F3152B /* RFUserController.h */,
 				4B2DEDD51BF8D14B00F3152B /* RFUserController.m */,
 				4B1BD27F1D87548C00B3C93D /* RFHelpController.h */,
@@ -703,6 +715,7 @@
 				4BA910831B83D22900D58F83 /* Post.xib */,
 				4B3BD0E01E82B61700F4B4E0 /* Photos.xib */,
 				4B9A7BAB1E82F1C1002A49E5 /* PhotoCell.xib */,
+				4B4D9B561ED5213E00315BBA /* FeaturedPhotoCell.xib */,
 				4BF123F21E882F4500B56138 /* Filters.xib */,
 				4BF123F51E882F5400B56138 /* FilterCell.xib */,
 				4B1BD2821D8754DC00B3C93D /* Help.xib */,
@@ -980,6 +993,7 @@
 				C5CED7161ECF792E0068F537 /* YUCIStarfieldGenerator.cikernel in Resources */,
 				4B12BAEA1E9FBFBC000E559F /* 1Password.xcassets in Resources */,
 				4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */,
+				4B4D9B581ED5213E00315BBA /* FeaturedPhotoCell.xib in Resources */,
 				C5CED7121ECF792E0068F537 /* YUCIRGBToneCurve.cikernel in Resources */,
 				C5CED70D1ECF792E0068F537 /* YUCIHSLToRGB.cikernel in Resources */,
 				C5CED6F51ECF792E0068F537 /* YUCIBilateralFilter.cikernel in Resources */,
@@ -1031,6 +1045,7 @@
 				4B0D55691B93C0390076AD9F /* RFXMLRSDParser.m in Sources */,
 				4B8714C41E64D05700C69589 /* entities.c in Sources */,
 				4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */,
+				4B4D9B5B1ED521BB00315BBA /* RFFeaturedPhotoCell.m in Sources */,
 				4B8714C61E64D05700C69589 /* iconvtc.c in Sources */,
 				4B46632B1B8F51710034FC5C /* CMarkupTransformer.m in Sources */,
 				4B8714D01E64D05700C69589 /* tidylib.c in Sources */,
@@ -1110,6 +1125,7 @@
 				4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */,
 				4B8714D31E64D05700C69589 /* win32tc.c in Sources */,
 				C5CED7091ECF792E0068F537 /* YUCIHighPass.m in Sources */,
+				4B4D9B551ED520F800315BBA /* RFFeaturedPhoto.m in Sources */,
 				4B8714C01E64D05700C69589 /* buffio.c in Sources */,
 				4BF803451B87AA2C00D6670C /* UUAlert.m in Sources */,
 				4B8714C51E64D05700C69589 /* fileio.c in Sources */,
@@ -1171,6 +1187,14 @@
 				4B3BD0E11E82B61700F4B4E0 /* Base */,
 			);
 			name = Photos.xib;
+			sourceTree = "<group>";
+		};
+		4B4D9B561ED5213E00315BBA /* FeaturedPhotoCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B4D9B571ED5213E00315BBA /* Base */,
+			);
+			name = FeaturedPhotoCell.xib;
 			sourceTree = "<group>";
 		};
 		4B5078D21B965E4F002A4F80 /* Settings.xib */ = {

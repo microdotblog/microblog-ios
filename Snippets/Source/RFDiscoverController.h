@@ -8,6 +8,9 @@
 
 #import "RFTimelineController.h"
 
-@interface RFDiscoverController : RFTimelineController
+@interface RFDiscoverController : RFTimelineController <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (strong, nonatomic) UICollectionView* photosCollectionView;
+@property (strong, nonatomic) NSArray* featuredPhotos; // RFFeaturedPhoto
 
 @end
