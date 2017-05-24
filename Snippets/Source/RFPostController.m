@@ -283,11 +283,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				@"q": @"config"
 			};
 			[client getWithQueryArguments:args completion:^(UUHttpResponse* response) {
-				NSString* new_endpoint = [response.parsedResponse objectForKey:@"media-endpoint"];
-				if (new_endpoint) {
-					[[NSUserDefaults standardUserDefaults] setObject:new_endpoint forKey:@"ExternalMicropubMediaEndpoint"];
+				BOOL found = NO;
+				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]]) {
+					NSString* new_endpoint = [response.parsedResponse objectForKey:@"media-endpoint"];
+					if (new_endpoint) {
+						[[NSUserDefaults standardUserDefaults] setObject:new_endpoint forKey:@"ExternalMicropubMediaEndpoint"];
+						found = YES;
+					}
 				}
-				else {
+				
+				if (!found) {
 					RFDispatchMain (^{
 						[UIAlertView uuShowOneButtonAlert:@"Error Checking Server" message:@"Micropub media-endpoint was not found." button:@"OK" completionHandler:NULL];
 					});
