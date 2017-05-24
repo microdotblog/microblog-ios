@@ -36,6 +36,7 @@ NSString * const kUUContentTypeTextPlain        = @"text/plain";
 NSString * const kUUContentTypeBinary           = @"application/octet-stream";
 NSString * const kUUContentTypeImagePng         = @"image/png";
 NSString * const kUUContentTypeImageJpeg        = @"image/jpeg";
+NSString * const kUUContentTypeFormEncoded      = @"application/x-www-form-urlencoded";
 
 NSString * const kUUContentLengthHeader  = @"Content-Length";
 NSString * const kUUContentTypeHeader    = @"Content-Type";
@@ -131,6 +132,40 @@ NSString * const kUUHttpMethodHead       = @"HEAD";
 - (id) parseResponse:(NSData*)rxBuffer response:(NSHTTPURLResponse*)response forRequest:(NSURLRequest*)request
 {
     return [UIImage imageWithData:rxBuffer];
+}
+
+@end
+
+#pragma mark - Form-encoded Handler
+
+@implementation UUFormResponseHandler
+
+- (NSArray*) supportedMimeTypes
+{
+    return @[kUUContentTypeFormEncoded];
+}
+
+- (id) parseResponse:(NSData*)rxBuffer response:(NSHTTPURLResponse*)response forRequest:(NSURLRequest*)request
+{
+	NSMutableDictionary* info = [NSMutableDictionary dictionary];
+
+    NSStringEncoding responseEncoding = NSUTF8StringEncoding;
+    
+    if ([response textEncodingName])
+    {
+        CFStringEncoding cfEncoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef) [response textEncodingName]);
+        responseEncoding = CFStringConvertEncodingToNSStringEncoding(cfEncoding);
+    }
+    
+	NSString* query_string = [[NSString alloc] initWithData:rxBuffer encoding:responseEncoding];
+	for (NSString* query_param in [query_string componentsSeparatedByString:@"&"]) {
+		NSArray* pieces = [query_param componentsSeparatedByString:@"="];
+		NSString* k = [pieces firstObject];
+		NSString* v = [pieces lastObject];
+		info[k] = [v stringByRemovingPercentEncoding];
+	}
+	
+	return info;
 }
 
 @end

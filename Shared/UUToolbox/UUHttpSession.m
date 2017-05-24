@@ -219,6 +219,7 @@ const NSTimeInterval kUUDefaultHttpRequestTimeout = 60.0f;
     [self registerResponseHandler:[UUTextResponseHandler new]];
     [self registerResponseHandler:[UUBinaryResponseHandler new]];
     [self registerResponseHandler:[UUImageResponseHandler new]];
+    [self registerResponseHandler:[UUFormResponseHandler new]];
 }
 
 - (void) registerResponseHandler:(NSObject<UUHttpResponseHandler>*)handler

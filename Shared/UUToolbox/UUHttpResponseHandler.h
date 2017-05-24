@@ -73,6 +73,8 @@ extern NSString * const kUUHttpMethodHead;
 @interface UUImageResponseHandler : NSObject<UUHttpResponseHandler>
 @end
 
+@interface UUFormResponseHandler : NSObject<UUHttpResponseHandler>
+@end
 
 
 
