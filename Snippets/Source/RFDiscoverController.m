@@ -13,6 +13,7 @@
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "RFConstants.h"
+#import "NSString+Extras.h"
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
@@ -35,31 +36,41 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupSegmentView
 {
-	UISegmentedControl* segment_control = [[UISegmentedControl alloc] initWithItems:@[ @"Users", @"Photos" ]];
-	segment_control.tintColor = [UIColor grayColor];
-	[segment_control setSelectedSegmentIndex:0];
+	self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[ @"Users", @"Photos" ]];
+	self.segmentedControl.tintColor = [UIColor grayColor];
+	[self.segmentedControl setSelectedSegmentIndex:0];
 
-	[segment_control addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
+	[self.segmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
 	
-	self.navigationItem.titleView = segment_control;
+	self.navigationItem.titleView = self.segmentedControl;
 }
 
 - (void) setupSearchButton
 {
-	self.navigationItem.rightBarButtonItem = nil;
-//	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search:)];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleSearch:)];
 }
 
-- (void) search:(id)sender
+- (void) toggleSearch:(id)sender
 {
-	NSString* fadein_js = @"$('.discover_search').show();";
-//	NSString* focus_js = @"$('#search_input').focus();";
+	if (!self.searchBar) {
+		[self showSearch];
+	}
+	else {
+		[self hideSearch];
+		
+		self.endpoint = @"/hybrid/discover";
+		[self refreshTimeline];
+	}
+}
 
-	[self.webView stringByEvaluatingJavaScriptFromString:fadein_js];
+- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+	[self.segmentedControl setSelectedSegmentIndex:0];
+	[self hidePhotos];
 	
-//	RFDispatchSeconds (1.0, ^{
-//		[self.webView stringByEvaluatingJavaScriptFromString:focus_js];
-//	});
+	self.endpoint = [NSString stringWithFormat:@"/hybrid/discover/search?q=%@", [searchBar.text rf_urlEncoded]];
+	[self refreshTimeline];
+	[self hideSearch];
 }
 
 - (void) segmentChanged:(UISegmentedControl *)sender
@@ -70,6 +81,47 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	else if (sender.selectedSegmentIndex == 1) {
 		[self showPhotos];
 	}
+}
+
+- (void) showSearch
+{
+	CGRect r = self.view.bounds;
+	r.origin.y = 62;
+	r.size.height = 44;
+	self.searchBar = [[UISearchBar alloc] initWithFrame:r];
+	self.searchBar.alpha = 0.0;
+	self.searchBar.delegate = self;
+
+	self.backdropView = [[UIView alloc] initWithFrame:self.view.bounds];
+	self.backdropView.backgroundColor = [UIColor blackColor];
+	self.backdropView.alpha = 0.0;
+	
+	UITapGestureRecognizer* tap_gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleSearch:)];
+	[self.backdropView addGestureRecognizer:tap_gesture];
+
+	[self.view addSubview:self.backdropView];
+	[self.view addSubview:self.searchBar];
+
+	[UIView animateWithDuration:0.3 animations:^{
+		self.searchBar.alpha = 1.0;
+		self.backdropView.alpha = 0.1;
+		
+	} completion:^(BOOL finished) {
+		[self.searchBar becomeFirstResponder];
+	}];
+}
+
+- (void) hideSearch
+{
+	[UIView animateWithDuration:0.3 animations:^{
+		self.searchBar.alpha = 0.0;
+		self.backdropView.alpha = 0.0;
+	} completion:^(BOOL finished) {
+		[self.searchBar removeFromSuperview];
+		[self.backdropView removeFromSuperview];
+		self.searchBar = nil;
+		self.backdropView = nil;
+	}];
 }
 
 - (void) showPhotos
@@ -155,7 +207,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-	return UIEdgeInsetsMake (5, 5, 5, 5);
+	return UIEdgeInsetsMake (8, 5, 5, 5);
 }
 
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section

@@ -242,6 +242,9 @@
 	else if ([self.endpoint containsString:@"/hybrid/posts/"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
 	}
+	else if ([self.endpoint containsString:@"/hybrid/discover/search"]) {
+		client = [[RFClient alloc] initWithFormat:@"%@&width=%d", self.endpoint, width];
+	}
 	else {
 		client = [[RFClient alloc] initWithFormat:@"/hybrid/signin?token=%@&width=%d&minutes=%ld", token, width, timezone_offset];
 	}

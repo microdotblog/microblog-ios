@@ -28,5 +28,6 @@
 - (NSString *) usernameOfPostID:(NSString *)postID;
 
 - (IBAction) promptNewPost:(id)sender;
+- (void) refreshTimeline;
 
 @end
