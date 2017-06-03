@@ -80,6 +80,11 @@
 
 - (void) follow:(id)sender
 {
+    UIActivityIndicatorView* activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [activityView startAnimating];
+    activityView.frame = CGRectMake(0, 0, 60, 40);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityView];
+    
 	RFClient* client = [[RFClient alloc] initWithPath:@"/users/follow"];
 	NSDictionary* args = @{
 		@"username": self.username
@@ -93,6 +98,11 @@
 
 - (void) unfollow:(id)sender
 {
+    UIActivityIndicatorView* activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityView];
+    [activityView startAnimating];
+    activityView.frame = CGRectMake(0, 0, 60, 40);
+
 	RFClient* client = [[RFClient alloc] initWithPath:@"/users/unfollow"];
 	NSDictionary* args = @{
 		@"username": self.username
