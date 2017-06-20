@@ -56,8 +56,13 @@
 	self.title = @"Micro.blog";
 	self.fullNameField.text = @"";
 	self.usernameField.text = @"";
-
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"new_button" target:self action:@selector(promptNewPost:)];
+	
+	if ([UIScreen mainScreen].traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
+		self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"new_button" target:self action:@selector(promptNewPost:)];
+	}
+	else {
+		self.navigationItem.rightBarButtonItem = nil;
+	}
 }
 
 - (void) setupProfileInfo
