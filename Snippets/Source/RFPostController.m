@@ -187,10 +187,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) keyboardWillShowNotification:(NSNotification*)notification
 {
     NSDictionary* info = [notification userInfo];
-    CGSize kb_size = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
-
+    CGRect kb_r = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+	CGFloat kb_bottom = self.view.bounds.size.height - kb_r.origin.y;
 	[UIView animateWithDuration:0.3 animations:^{
-		self.bottomConstraint.constant = kb_size.height;
+		self.bottomConstraint.constant = kb_bottom;
 		[self.view layoutIfNeeded];
 	}];
 }
