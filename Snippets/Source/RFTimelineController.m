@@ -224,8 +224,9 @@
 {
 	NSDate* now = [NSDate date];
 	long timezone_offset = 0 - [[NSTimeZone systemTimeZone] secondsFromGMTForDate:now] / 60;
-	int width = [UIScreen mainScreen].bounds.size.width;
-    
+//	int width = [UIScreen mainScreen].bounds.size.width;
+	int width = self.view.bounds.size.width;
+	
 	RFClient* client;
 	if ([self.endpoint isEqualToString:@"/hybrid/mentions"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
