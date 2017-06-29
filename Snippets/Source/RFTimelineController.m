@@ -57,8 +57,6 @@
 	[self setupRefresh];
 	[self setupGestures];
 	[self setupScrollRate];
-	
-	[self refreshTimeline];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -67,6 +65,8 @@
 	
 	[self setupNavigation];
 	[self setupPreventHorizontalScrolling];
+
+	[self refreshTimeline];
 }
 
 - (void) setupNavigation
