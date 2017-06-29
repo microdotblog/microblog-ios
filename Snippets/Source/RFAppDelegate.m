@@ -181,6 +181,7 @@
 	
 	self.splitViewController = [[UISplitViewController alloc] init];
 	self.splitViewController.delegate = self;
+    self.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
 
 	self.menuNavController = [[UINavigationController alloc] initWithRootViewController:self.menuController];
 	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineController];
@@ -190,7 +191,9 @@
 	[self.window makeKeyAndVisible];
 	[self.window setRootViewController:self.splitViewController];
 
-	[self.menuNavController pushViewController:self.timelineController animated:NO];
+	if (RFIsPhone()) {
+		[self.menuNavController pushViewController:self.timelineController animated:NO];
+	}
 }
 
 - (void) setupSignin

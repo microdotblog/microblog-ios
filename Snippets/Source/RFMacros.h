@@ -10,3 +10,5 @@
 #define RFDispatchMain(the_block) dispatch_sync(dispatch_get_main_queue(), the_block)
 #define RFDispatchMainAsync(the_block) dispatch_async(dispatch_get_main_queue(), the_block)
 #define RFDispatchSeconds(seconds, the_block) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, seconds * NSEC_PER_SEC), dispatch_get_main_queue(), the_block)
+
+#define RFIsPhone() (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
