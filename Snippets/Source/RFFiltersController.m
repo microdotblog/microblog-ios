@@ -46,6 +46,13 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	[self.navigationController.navigationBar setShadowImage:nil];
 }
 
+- (void) viewWillLayoutSubviews
+{
+	[super viewWillLayoutSubviews];
+
+	[self setupPhotoBounds];
+}
+
 - (void) viewDidLayoutSubviews
 {
 	[super viewDidLayoutSubviews];
@@ -76,6 +83,19 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 - (void) setupCollectionView
 {
 	[self.collectionView registerNib:[UINib nibWithNibName:@"FilterCell" bundle:nil] forCellWithReuseIdentifier:kFilterCellIdentifier];
+}
+
+- (void) setupPhotoBounds
+{
+	if ([UIScreen mainScreen].bounds.size.width == 320) { // iPhone SE
+		self.collectionHeightConstraint.constant = 184;
+	}
+	else if ([UIScreen mainScreen].bounds.size.width == 375) { // iPhone 6/7
+		self.collectionHeightConstraint.constant = 228;
+	}
+	else if ([UIScreen mainScreen].bounds.size.width == 414) { // iPhone Plus
+		self.collectionHeightConstraint.constant = 258;
+	}
 }
 
 - (void) setupScrollView

@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView* croppingScrollView;
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* collectionHeightConstraint;
 
 @property (strong, nonatomic) RFPhoto* photo;
 @property (strong, nonatomic) NSArray* filters; // RFFilter

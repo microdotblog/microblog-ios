@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFFiltersController">
             <connections>
+                <outlet property="collectionHeightConstraint" destination="pDq-d2-q8e" id="KJK-Wh-HFg"/>
                 <outlet property="collectionView" destination="xb4-Uy-xke" id="Zau-gN-k7r"/>
                 <outlet property="croppingScrollView" destination="CBq-4M-B2F" id="QFo-Sy-2WW"/>
                 <outlet property="view" destination="iN0-l3-epB" id="1JO-2S-BTt"/>
