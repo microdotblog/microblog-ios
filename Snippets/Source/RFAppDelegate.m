@@ -244,7 +244,13 @@
 - (void) showConversationNotification:(NSNotification *)notification
 {
 	NSString* post_id = [notification.userInfo objectForKey:kShowConversationPostIDKey];
-	[self showConversationWithPostID:post_id];
+	if (post_id) {
+		[self showConversationWithPostID:post_id];
+	}
+	else {
+		// load conversation from point here?
+		// ...
+	}
 }
 
 - (void) showUserProfileNotification:(NSNotification *)notification

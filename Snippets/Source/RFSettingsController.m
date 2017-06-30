@@ -24,7 +24,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 {
 	self = [super initWithNibName:@"Settings" bundle:nil];
 	if (self) {
-		self.edgesForExtendedLayout = UIRectEdgeNone;
+//		self.edgesForExtendedLayout = UIRectEdgeNone;
 	}
 	
 	return self;

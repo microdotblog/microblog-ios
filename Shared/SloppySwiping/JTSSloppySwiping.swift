@@ -120,21 +120,24 @@ public final class SloppySwiping: NSObject {
             }
             
         case .changed:
-            if (!isAnimatingANonInteractiveTransition
-                && isInteractivelyPopping) {
+            if (!isAnimatingANonInteractiveTransition && isInteractivelyPopping) {
                 let view = navigationController.view
                 let t = recognizer.translation(in: view)
                 interactivePopAnimator.translation = t
             }
             
         case .ended, .cancelled:
-            if (!isAnimatingANonInteractiveTransition
-                && isInteractivelyPopping) {
+            if (!isAnimatingANonInteractiveTransition && isInteractivelyPopping) {
                 isAnimatingANonInteractiveTransition = true
                 let animator = interactivePopAnimator
                 let view = navigationController.view
                 let t = recognizer.translation(in: view)
                 let v = recognizer.velocity(in: view)
+
+				if (t.x < -150) && (t.y < 50) && (t.y > -50) {
+					NotificationCenter.default.post(name: NSNotification.Name(kShowConversationNotification), object: self)
+				}
+
                 if animator.shouldCancelForGestureEndingWithTranslation(t, velocity: v) {
                     animator.cancelWithTranslation(t, velocity: v) {
                         self.isInteractivelyPopping = false
@@ -147,7 +150,7 @@ public final class SloppySwiping: NSObject {
                     }
                 }
             }
-            
+			
         default: break
             
         }

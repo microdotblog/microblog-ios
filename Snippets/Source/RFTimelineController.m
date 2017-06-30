@@ -55,8 +55,15 @@
 	[self setupNavigation];
 	[self setupNotifications];
 	[self setupRefresh];
-	[self setupGestures];
+//	[self setupGestures];
 	[self setupScrollRate];
+}
+
+- (void) viewDidLayoutSubviews
+{
+	[super viewDidLayoutSubviews];
+	
+	[self refreshTimeline];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -65,8 +72,6 @@
 	
 	[self setupNavigation];
 	[self setupPreventHorizontalScrolling];
-
-	[self refreshTimeline];
 }
 
 - (void) setupNavigation
@@ -99,8 +104,8 @@
 - (void) setupGestures
 {
 	UISwipeGestureRecognizer* swipe_right_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
-	swipe_right_gesture.direction = UISwipeGestureRecognizerDirectionRight;
-//	[self.view addGestureRecognizer:swipe_right_gesture];
+	swipe_right_gesture.direction = UISwipeGestureRecognizerDirectionLeft;
+	[self.view addGestureRecognizer:swipe_right_gesture];
 }
 
 - (void) setupScrollRate
