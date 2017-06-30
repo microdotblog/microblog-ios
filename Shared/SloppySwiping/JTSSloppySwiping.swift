@@ -378,9 +378,11 @@ fileprivate final class InteractivePopAnimator: NSObject, UIViewControllerAnimat
 		if toView.isKind(of: RFMenuView.self) {
 			if toView.frame.size.width > toView.frame.size.height {
 				toView.frame.origin.y = 32
+				toView.frame.size.height -= 32
 			}
 			else {
 				toView.frame.origin.y = 44 + 20
+				toView.frame.size.height -= (44 + 22)
 			}
 		}
         toView.transform = CGAffineTransform(translationX: -maxOffset, y: 0)
