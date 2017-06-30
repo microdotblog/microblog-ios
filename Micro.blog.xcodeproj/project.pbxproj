@@ -22,6 +22,7 @@
 		4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */; };
 		4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E41F1E82F5B50032F54B /* Photos.framework */; };
 		4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E4201E82F5B50032F54B /* PhotosUI.framework */; };
+		4B1712D81F05BF0D00267045 /* JTSSloppySwiping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1712D71F05BF0D00267045 /* JTSSloppySwiping.swift */; };
 		4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
 		4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */; };
 		4B1BD2811D87548C00B3C93D /* RFHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BD2801D87548C00B3C93D /* RFHelpController.m */; };
@@ -198,6 +199,8 @@
 		4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OnePasswordExtension.m; path = Shared/1Password/OnePasswordExtension.m; sourceTree = SOURCE_ROOT; };
 		4B14E41F1E82F5B50032F54B /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		4B14E4201E82F5B50032F54B /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		4B1712D61F05BF0C00267045 /* Micro.blog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Micro.blog-Bridging-Header.h"; sourceTree = "<group>"; };
+		4B1712D71F05BF0D00267045 /* JTSSloppySwiping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JTSSloppySwiping.swift; path = Shared/SloppySwiping/JTSSloppySwiping.swift; sourceTree = SOURCE_ROOT; };
 		4B1BAEFE1B852BC9008097F7 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = Shared/SSKeychain/SSKeychain.h; sourceTree = SOURCE_ROOT; };
 		4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Shared/SSKeychain/SSKeychain.m; sourceTree = SOURCE_ROOT; };
 		4B1BAF001B852BC9008097F7 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychainQuery.h; path = Shared/SSKeychain/SSKeychainQuery.h; sourceTree = SOURCE_ROOT; };
@@ -477,6 +480,15 @@
 			name = 1Password;
 			sourceTree = "<group>";
 		};
+		4B1712D51F05BEF100267045 /* SloppySwiping */ = {
+			isa = PBXGroup;
+			children = (
+				4B1712D71F05BF0D00267045 /* JTSSloppySwiping.swift */,
+				4B1712D61F05BF0C00267045 /* Micro.blog-Bridging-Header.h */,
+			);
+			name = SloppySwiping;
+			sourceTree = "<group>";
+		};
 		4B1BAEFD1B852BC0008097F7 /* SSKeychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,6 +746,7 @@
 		4BA2C99D1B2109E10038C0E5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4B1712D51F05BEF100267045 /* SloppySwiping */,
 				C5CED6B71ECF792E0068F537 /* VividFilters */,
 				4B12BAEB1E9FBFC5000E559F /* 1Password */,
 				4B87147D1E64D05700C69589 /* CTidy */,
@@ -911,6 +924,7 @@
 					4BA2C9721B2109D10038C0E5 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 3F9MDJ6K4E;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -1066,6 +1080,7 @@
 				4B8714CE1E64D05700C69589 /* tagask.c in Sources */,
 				4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */,
 				4B8714C31E64D05700C69589 /* config.c in Sources */,
+				4B1712D81F05BF0D00267045 /* JTSSloppySwiping.swift in Sources */,
 				C5CED7001ECF792E0068F537 /* YUCIFilterConstructor.m in Sources */,
 				4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */,
 				4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */,
@@ -1408,7 +1423,9 @@
 		4BA2C9971B2109D10038C0E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -1426,6 +1443,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Snippets/Micro.blog-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1434,7 +1453,9 @@
 		4BA2C9981B2109D10038C0E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -1452,6 +1473,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Snippets/Micro.blog-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

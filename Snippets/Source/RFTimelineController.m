@@ -100,7 +100,7 @@
 {
 	UISwipeGestureRecognizer* swipe_right_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
 	swipe_right_gesture.direction = UISwipeGestureRecognizerDirectionRight;
-	[self.view addGestureRecognizer:swipe_right_gesture];
+//	[self.view addGestureRecognizer:swipe_right_gesture];
 }
 
 - (void) setupScrollRate

@@ -37,7 +37,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	[self setupNavigation];
 	[self setupServers];
 	[self setupCategories];
-	[self setupGestures];
+//	[self setupGestures];
 }
 
 - (void) viewWillAppear:(BOOL)animated
