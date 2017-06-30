@@ -23,6 +23,7 @@
 		4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E41F1E82F5B50032F54B /* Photos.framework */; };
 		4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E4201E82F5B50032F54B /* PhotosUI.framework */; };
 		4B1712D81F05BF0D00267045 /* JTSSloppySwiping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1712D71F05BF0D00267045 /* JTSSloppySwiping.swift */; };
+		4B1712DB1F069FB200267045 /* RFMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1712DA1F069FB200267045 /* RFMenuView.m */; };
 		4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
 		4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */; };
 		4B1BD2811D87548C00B3C93D /* RFHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BD2801D87548C00B3C93D /* RFHelpController.m */; };
@@ -201,6 +202,8 @@
 		4B14E4201E82F5B50032F54B /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		4B1712D61F05BF0C00267045 /* Micro.blog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Micro.blog-Bridging-Header.h"; sourceTree = "<group>"; };
 		4B1712D71F05BF0D00267045 /* JTSSloppySwiping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JTSSloppySwiping.swift; path = Shared/SloppySwiping/JTSSloppySwiping.swift; sourceTree = SOURCE_ROOT; };
+		4B1712D91F069FB200267045 /* RFMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFMenuView.h; path = Source/RFMenuView.h; sourceTree = "<group>"; };
+		4B1712DA1F069FB200267045 /* RFMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFMenuView.m; path = Source/RFMenuView.m; sourceTree = "<group>"; };
 		4B1BAEFE1B852BC9008097F7 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = Shared/SSKeychain/SSKeychain.h; sourceTree = SOURCE_ROOT; };
 		4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSKeychain.m; path = Shared/SSKeychain/SSKeychain.m; sourceTree = SOURCE_ROOT; };
 		4B1BAF001B852BC9008097F7 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychainQuery.h; path = Shared/SSKeychain/SSKeychainQuery.h; sourceTree = SOURCE_ROOT; };
@@ -709,6 +712,8 @@
 				4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */,
 				4B46631A1B8EA5C20034FC5C /* NSString+Extras.h */,
 				4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */,
+				4B1712D91F069FB200267045 /* RFMenuView.h */,
+				4B1712DA1F069FB200267045 /* RFMenuView.m */,
 			);
 			name = Source;
 			path = Snippets;
@@ -1064,6 +1069,7 @@
 				4B46632B1B8F51710034FC5C /* CMarkupTransformer.m in Sources */,
 				4B8714D01E64D05700C69589 /* tidylib.c in Sources */,
 				4B8714BC1E64D05700C69589 /* attrask.c in Sources */,
+				4B1712DB1F069FB200267045 /* RFMenuView.m in Sources */,
 				C5CED7061ECF792E0068F537 /* YUCIFXAA.m in Sources */,
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
 				4B43700C1EC7AF3300B46D56 /* RFSettings.m in Sources */,

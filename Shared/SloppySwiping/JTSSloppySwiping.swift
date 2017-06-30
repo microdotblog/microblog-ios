@@ -373,9 +373,16 @@ fileprivate final class InteractivePopAnimator: NSObject, UIViewControllerAnimat
         fromView.frame = frontContainerView.bounds
         frontContainerView.addSubview(fromView)
         frontContainerView.transform = CGAffineTransform.identity
-        
+		
         toView.frame = containerBounds
-//		toView.frame.origin.y = 200 // test
+		if toView.isKind(of: RFMenuView.self) {
+			if toView.frame.size.width > toView.frame.size.height {
+				toView.frame.origin.y = 32
+			}
+			else {
+				toView.frame.origin.y = 44 + 20
+			}
+		}
         toView.transform = CGAffineTransform(translationX: -maxOffset, y: 0)
         
         backOverlayView.frame = containerBounds
