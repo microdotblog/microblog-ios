@@ -16,7 +16,7 @@
 	<string>$(TeamIdentifierPrefix)$(CFBundleIdentifier)</string>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)com.riverfold.snippets</string>
+		<string>$(AppIdentifierPrefix)blog.micro.ios</string>
 	</array>
 </dict>
 </plist>
