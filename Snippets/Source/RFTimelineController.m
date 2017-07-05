@@ -16,6 +16,7 @@
 #import "RFConstants.h"
 #import "RFSettings.h"
 #import "UIBarButtonItem+Extras.h"
+#import "UIFont+Extras.h"
 #import "SSKeychain.h"
 #import <SafariServices/SafariServices.h>
 
@@ -92,6 +93,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasFavoritedNotification:) name:kPostWasFavoritedNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasUnfavoritedNotification:) name:kPostWasUnfavoritedNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasDeletedNotification:) name:kPostWasDeletedNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangePreferredContentSize:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
 
 - (void) setupRefresh
@@ -229,30 +231,30 @@
 {
 	NSDate* now = [NSDate date];
 	long timezone_offset = 0 - [[NSTimeZone systemTimeZone] secondsFromGMTForDate:now] / 60;
-//	int width = [UIScreen mainScreen].bounds.size.width;
 	int width = self.view.bounds.size.width;
+	CGFloat fontsize = [UIFont rf_preferredTimelineFontSize];
 	
 	RFClient* client;
 	if ([self.endpoint isEqualToString:@"/hybrid/mentions"]) {
-		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
+		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
 	else if ([self.endpoint isEqualToString:@"/hybrid/favorites"]) {
-		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
+		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
 	else if ([self.endpoint isEqualToString:@"/hybrid/discover"]) {
-		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
+		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
 	else if ([self.endpoint containsString:@"/hybrid/conversation"]) {
-		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
+		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
 	else if ([self.endpoint containsString:@"/hybrid/posts/"]) {
-		client = [[RFClient alloc] initWithFormat:@"%@?width=%d", self.endpoint, width];
+		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
 	else if ([self.endpoint containsString:@"/hybrid/discover/search"]) {
-		client = [[RFClient alloc] initWithFormat:@"%@&width=%d", self.endpoint, width];
+		client = [[RFClient alloc] initWithFormat:@"%@&width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
 	else {
-		client = [[RFClient alloc] initWithFormat:@"/hybrid/signin?token=%@&width=%d&minutes=%ld", token, width, timezone_offset];
+		client = [[RFClient alloc] initWithFormat:@"/hybrid/signin?token=%@&width=%d&fontsize=%f&minutes=%ld", token, width, fontsize, timezone_offset];
 	}
 	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:client.url]]];
 }
@@ -289,6 +291,13 @@
 	NSString* js = [NSString stringWithFormat:@"$('#post_%@').hide(300);", post_id];
 	[self.webView stringByEvaluatingJavaScriptFromString:js];
 }
+
+- (void) didChangePreferredContentSize:(NSNotification *)notification
+{
+	[self refreshTimeline];
+}
+
+#pragma mark -
 
 - (void) showURL:(NSURL *)url
 {

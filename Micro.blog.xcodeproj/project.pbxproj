@@ -16,6 +16,7 @@
 		4B0D556F1B9552F40076AD9F /* Categories.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D556D1B9552F40076AD9F /* Categories.xib */; };
 		4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */; };
 		4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */; };
+		4B10602C1F0D39FB0045AB1A /* UIFont+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */; };
 		4B1114F91E8C1A5C0043AB6B /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1114F81E8C1A5C0043AB6B /* ShareViewController.m */; };
 		4B1114FC1E8C1A5C0043AB6B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1114FA1E8C1A5C0043AB6B /* MainInterface.storyboard */; };
 		4B12BAEA1E9FBFBC000E559F /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */; };
@@ -190,6 +191,8 @@
 		4B0D55711B95586F0076AD9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingChoiceCell.xib; sourceTree = "<group>"; };
 		4B0D55731B9559EC0076AD9F /* RFSettingChoiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFSettingChoiceCell.h; path = Source/RFSettingChoiceCell.h; sourceTree = "<group>"; };
 		4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFSettingChoiceCell.m; path = Source/RFSettingChoiceCell.m; sourceTree = "<group>"; };
+		4B10602A1F0D39FB0045AB1A /* UIFont+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Extras.h"; path = "Source/UIFont+Extras.h"; sourceTree = "<group>"; };
+		4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Extras.m"; path = "Source/UIFont+Extras.m"; sourceTree = "<group>"; };
 		4B1114F51E8C1A5C0043AB6B /* Photo Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Photo Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1114F71E8C1A5C0043AB6B /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		4B1114F81E8C1A5C0043AB6B /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
@@ -712,6 +715,8 @@
 				4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */,
 				4B46631A1B8EA5C20034FC5C /* NSString+Extras.h */,
 				4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */,
+				4B10602A1F0D39FB0045AB1A /* UIFont+Extras.h */,
+				4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */,
 				4B1712D91F069FB200267045 /* RFMenuView.h */,
 				4B1712DA1F069FB200267045 /* RFMenuView.m */,
 			);
@@ -1074,6 +1079,7 @@
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
 				4B43700C1EC7AF3300B46D56 /* RFSettings.m in Sources */,
 				C5CED7151ECF792E0068F537 /* YUCISkyGenerator.m in Sources */,
+				4B10602C1F0D39FB0045AB1A /* UIFont+Extras.m in Sources */,
 				4BF8034D1B87AA2C00D6670C /* UUImageView.m in Sources */,
 				4B0D554F1B9381550076AD9F /* RFXMLRPCParser.m in Sources */,
 				C5CED71B1ECF792E0068F537 /* YUCITriangularPixellate.m in Sources */,
