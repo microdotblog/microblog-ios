@@ -340,9 +340,9 @@
 
 - (void) showMicropubWithURL:(NSString *)url
 {
-	NSString* code = [url uuFindQueryStringArg:@"code"];
-	NSString* state = [url uuFindQueryStringArg:@"state"];
-	NSString* me = [url uuFindQueryStringArg:@"me"];
+	NSString* code = [[url uuFindQueryStringArg:@"code"] uuUrlDecoded];
+	NSString* state = [[url uuFindQueryStringArg:@"state"] uuUrlDecoded];
+	NSString* me = [[url uuFindQueryStringArg:@"me"] uuUrlDecoded];
 
 	if (!code || !state || !me) {
 		NSString* msg = [NSString stringWithFormat:@"Authorization \"code\", \"state\", or \"me\" parameters were missing."];
