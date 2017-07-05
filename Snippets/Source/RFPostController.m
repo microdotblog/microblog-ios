@@ -20,6 +20,7 @@
 #import "UIBarButtonItem+Extras.h"
 #import "NSString+Extras.h"
 #import "UILabel+MarkupExtensions.h"
+#import "UIFont+Extras.h"
 #import "UUAlert.h"
 #import "UUString.h"
 #import "SSKeychain.h"
@@ -94,12 +95,23 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
 }
 
+- (void) setupFont
+{
+	CGFloat scale = 1.1;
+	CGFloat fontsize = [UIFont rf_preferredTimelineFontSize] * scale;
+	self.textView.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
+}
+
 - (void) setupText
 {
+	[self setupFont];
+
+	NSString* s = @"";
 	if (self.replyUsername) {
-		self.textView.text = [NSString stringWithFormat:@"@%@ ", self.replyUsername];
+		s = [NSString stringWithFormat:@"@%@ ", self.replyUsername];
 	}
-	
+	self.textView.text = s;
+
 	[self updateRemainingChars];
 }
 
@@ -109,6 +121,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(photosDidCloseNotification:) name:kPhotosDidCloseNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangePreferredContentSize:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
 
 - (void) setupBlogName
@@ -201,6 +214,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		self.bottomConstraint.constant = 0;
 		[self.view layoutIfNeeded];
 	}];
+}
+
+- (void) didChangePreferredContentSize:(NSNotification *)notification
+{
+	[self setupFont];
 }
 
 - (void) textViewDidChange:(UITextView *)textView
