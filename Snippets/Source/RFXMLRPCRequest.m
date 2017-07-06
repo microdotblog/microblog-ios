@@ -141,23 +141,15 @@
 	handler (best_endpoint_url, blog_id);
 }
 
-- (void) discoverEndpointWithCompletion:(void (^)(NSString* xmlrpcEndpointURL, NSString* blogID))handler
+- (void) discoverEndpointCompletion:(void (^)(NSString* xmlrpcEndpointURL, NSString* blogID))handler
 {
-	[self getPath:@"/xmlrpc.php?rsd" completion:^(UUHttpResponse* response) {
+	[self getPath:@"" completion:^(UUHttpResponse* response) {
 		RFXMLRSDParser* rsd = [RFXMLRSDParser parsedResponseFromData:response.rawResponse];
 		if ([rsd.foundEndpoints count] > 0) {
 			[self processRSD:rsd.foundEndpoints withCompletion:handler];
 		}
 		else {
-			[self getPath:@"/rsd.xml" completion:^(UUHttpResponse* response) {
-				RFXMLRSDParser* rsd = [RFXMLRSDParser parsedResponseFromData:response.rawResponse];
-				if ([rsd.foundEndpoints count] > 0) {
-					[self processRSD:rsd.foundEndpoints withCompletion:handler];
-				}
-				else {
-					handler (nil, nil);
-				}
-			}];
+			handler (nil, nil);
 		}
 	}];
 }

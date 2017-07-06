@@ -16,7 +16,8 @@
 @property (strong, nonatomic) IBOutlet UIButton* onePasswordButton;
 
 @property (strong, nonatomic) NSString* websiteURL;
+@property (strong, nonatomic) NSString* rsdURL;
 
-- (instancetype) initWithWebsite:(NSString *)websiteURL;
+- (instancetype) initWithWebsite:(NSString *)websiteURL rsdURL:(NSString *)rsdURL;
 
 @end

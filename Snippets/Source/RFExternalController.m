@@ -72,8 +72,9 @@
 	[UUHttpSession executeRequest:request completionHandler:^(UUHttpResponse* response) {
 		RFXMLLinkParser* rsd_parser = [RFXMLLinkParser parsedResponseFromData:response.rawResponse withRelValue:@"EditURI"];
 		if ([rsd_parser.foundURLs count] > 0) {
+			NSString* rsd_url = [rsd_parser.foundURLs firstObject];
             RFDispatchMainAsync (^{
-                RFWordpressController* wordpress_controller = [[RFWordpressController alloc] initWithWebsite:full_url];
+                RFWordpressController* wordpress_controller = [[RFWordpressController alloc] initWithWebsite:full_url rsdURL:rsd_url];
                 [self.navigationController pushViewController:wordpress_controller animated:YES];
             });
 		}

@@ -20,11 +20,12 @@
 
 @implementation RFWordpressController
 
-- (instancetype) initWithWebsite:(NSString *)websiteURL
+- (instancetype) initWithWebsite:(NSString *)websiteURL rsdURL:(NSString *)rsdURL
 {
 	self = [super initWithNibName:@"Wordpress" bundle:nil];
 	if (self) {
 		self.websiteURL = websiteURL;
+		self.rsdURL = rsdURL;
 	}
 	
 	return self;
