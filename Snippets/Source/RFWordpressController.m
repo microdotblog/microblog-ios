@@ -143,7 +143,7 @@
 	[self.view endEditing:NO];
 	[self.progressSpinner startAnimating];
 	
-	RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:[self normalizeURL:self.websiteURL]];
+	RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:self.rsdURL];
 	[request discoverEndpointWithCompletion:^(NSString* xmlrpcEndpointURL, NSString* blogID) {
 		RFDispatchMainAsync (^{
 			[self.progressSpinner stopAnimating];

@@ -141,7 +141,7 @@
 	handler (best_endpoint_url, blog_id);
 }
 
-- (void) discoverEndpointCompletion:(void (^)(NSString* xmlrpcEndpointURL, NSString* blogID))handler
+- (void) discoverEndpointWithCompletion:(void (^)(NSString* xmlrpcEndpointURL, NSString* blogID))handler
 {
 	[self getPath:@"" completion:^(UUHttpResponse* response) {
 		RFXMLRSDParser* rsd = [RFXMLRSDParser parsedResponseFromData:response.rawResponse];
