@@ -109,6 +109,23 @@
 	}
 }
 
+- (NSArray *) keyCommands
+{
+	NSMutableArray* commands = [NSMutableArray array];
+	
+	UIKeyCommand* newpost_key = [UIKeyCommand keyCommandWithInput:@"N" modifierFlags:UIKeyModifierCommand action:@selector(promptNewPost:) discoverabilityTitle:@"New Post"];
+	UIKeyCommand* timeline_key = [UIKeyCommand keyCommandWithInput:@"1" modifierFlags:UIKeyModifierCommand action:@selector(showTimeline:) discoverabilityTitle:@"Show Timeline"];
+	UIKeyCommand* mentions_key = [UIKeyCommand keyCommandWithInput:@"2" modifierFlags:UIKeyModifierCommand action:@selector(showMentions:) discoverabilityTitle:@"Show Mentions"];
+	UIKeyCommand* favorites_key = [UIKeyCommand keyCommandWithInput:@"3" modifierFlags:UIKeyModifierCommand action:@selector(showFavorites:) discoverabilityTitle:@"Show Favorites"];
+	
+	[commands addObject:newpost_key];
+	[commands addObject:timeline_key];
+	[commands addObject:mentions_key];
+	[commands addObject:favorites_key];
+	
+	return commands;
+}
+
 #pragma mark -
 
 - (IBAction) promptNewPost:(id)sender
