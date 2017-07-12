@@ -158,6 +158,24 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCell" bundle:nil] forCellWithReuseIdentifier:kPhotoCellIdentifier];
 }
 
+- (BOOL) canBecomeFirstResponder
+{
+	return YES;
+}
+
+- (NSArray *) keyCommands
+{
+	NSMutableArray* commands = [NSMutableArray array];
+	
+	UIKeyCommand* close_key = [UIKeyCommand keyCommandWithInput:@"W" modifierFlags:UIKeyModifierCommand action:@selector(close:) discoverabilityTitle:@"Close"];
+	
+	[commands addObject:close_key];
+	
+	return commands;
+}
+
+#pragma mark -
+
 - (void) updateRemainingChars
 {
 	NSInteger max_chars = 280;
@@ -271,7 +289,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) close:(id)sender
 {
-//	[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 	[[NSNotificationCenter defaultCenter] postNotificationName:kClosePostingNotification object:self];
 }
 
