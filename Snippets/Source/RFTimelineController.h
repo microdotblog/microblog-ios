@@ -17,6 +17,7 @@
 @property (strong, nonatomic) UIRefreshControl* refreshControl;
 @property (strong, nonatomic) NSString* endpoint;
 @property (strong, nonatomic) NSString* timelineTitle;
+@property (strong, nonatomic) UIViewController* menuController;
 
 - (instancetype) initWithEndpoint:(NSString *)endpoint title:(NSString *)title;
 

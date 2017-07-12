@@ -18,6 +18,7 @@
 #import "UIBarButtonItem+Extras.h"
 #import "UIFont+Extras.h"
 #import "SSKeychain.h"
+#import "RFMacros.h"
 #import <SafariServices/SafariServices.h>
 
 @implementation RFTimelineController
@@ -118,6 +119,16 @@
 - (void) setupPreventHorizontalScrolling
 {
 	[self.webView.scrollView setContentSize:CGSizeMake (self.webView.frame.size.width, self.webView.scrollView.contentSize.height)];
+}
+
+- (UIResponder *) nextResponder
+{
+	if (self.menuController && !RFIsPhone()) {
+		return self.menuController;
+	}
+	else {
+		return [super nextResponder];
+	}
 }
 
 #pragma mark -

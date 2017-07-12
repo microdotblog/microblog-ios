@@ -158,6 +158,7 @@
 - (IBAction) showTimeline:(id)sender
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] init];
+	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
 }
 
@@ -170,12 +171,14 @@
 - (IBAction) showMentions:(id)sender
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/mentions" title:@"Mentions"];
+	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
 }
 
 - (IBAction) showFavorites:(id)sender
 {
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/favorites" title:@"Favorites"];
+	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
 }
 

@@ -178,6 +178,7 @@
 {
 	self.menuController = [[RFMenuController alloc] init];
 	self.timelineController = [[RFTimelineController alloc] init];
+	self.timelineController.menuController = self.menuController;
 	[self.timelineController loadViewIfNeeded];
 	
 	self.splitViewController = [[UISplitViewController alloc] init];
@@ -323,6 +324,7 @@
 {
 	NSString* path = [NSString stringWithFormat:@"/hybrid/conversation/%@", postID];
 	RFTimelineController* conversation_controller = [[RFTimelineController alloc] initWithEndpoint:path title:@"Conversation"];
+	conversation_controller.menuController = self.menuController;
 	[[self activeNavigationController] pushViewController:conversation_controller animated:YES];
 }
 
