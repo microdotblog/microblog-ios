@@ -234,6 +234,13 @@
 {
 	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
 	if (token) {
+
+        [[NSURLCache sharedURLCache] removeAllCachedResponses];
+        for(NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
+        {
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+        }
+        
 		[self loadTimelineForToken:token];
 	}
 }
