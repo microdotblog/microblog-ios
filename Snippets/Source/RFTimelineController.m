@@ -227,20 +227,13 @@
 - (void) handleRefresh:(UIRefreshControl *)refresh
 {
 	[self refreshTimeline];
-	[refresh endRefreshing];
+	//[refresh endRefreshing];
 }
 
 - (void) refreshTimeline
 {
 	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
 	if (token) {
-
-        [[NSURLCache sharedURLCache] removeAllCachedResponses];
-        for(NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
-        {
-            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
-        }
-        
 		[self loadTimelineForToken:token];
 	}
 }
@@ -352,16 +345,20 @@
 
 - (void) webViewDidStartLoad:(UIWebView *)webView
 {
+    NSLog(@"Starting");
 }
 
 - (void) webViewDidFinishLoad:(UIWebView *)webView
 {
 	[self setupPreventHorizontalScrolling];
+    
+    [self.refreshControl endRefreshing];
 }
 
 - (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
 	NSLog (@"Web view error: %@", error);
+    [self.refreshControl endRefreshing];
 }
 
 @end
