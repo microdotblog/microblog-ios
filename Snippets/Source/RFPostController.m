@@ -268,18 +268,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	if (self.attachedPhotos.count > 0) {
 		RFPhoto* photo = [self.attachedPhotos firstObject];
-		CGSize sz = photo.thumbnailImage.size;
 		[self uploadPhoto:photo completion:^{
-			NSString* s = self.textView.text;
-			
-			if (![self prefersExternalBlog] || ![self hasMicropubBlog]) {
-				if (s.length > 0) {
-					s = [s stringByAppendingString:@"\n\n"];
-				}
-				s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" style=\"height: auto\" />", photo.publishedURL, 600.0, 600.0];
-			}
-			
-			[self uploadText:s];
+			[self uploadText:self.textView.text];
 		}];
 	}
 	else {
@@ -357,9 +347,20 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[self showProgressHeader:@"Now publishing to your microblog..."];
 		if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
 			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
-			NSDictionary* args = @{
-				@"content": text
-			};
+			NSDictionary* args;
+			if ([self.attachedPhotos count] > 0) {
+				RFPhoto* photo = [self.attachedPhotos firstObject];
+				args = @{
+					@"content": text,
+					@"photo": photo.publishedURL
+				};
+			}
+			else {
+				args = @{
+					@"content": text
+				};
+			}
+
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
 				RFDispatchMainAsync (^{
 					[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
@@ -385,6 +386,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					@"content": text
 				};
 			}
+			
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
 				RFDispatchMainAsync (^{
 					[Answers logCustomEventWithName:@"Sent Micropub" customAttributes:nil];
