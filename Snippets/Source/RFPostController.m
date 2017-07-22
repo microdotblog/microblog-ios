@@ -263,7 +263,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) sendPost:(id)sender
 {
-	self.navigationItem.rightBarButtonItem.enabled = NO;
 	self.photoButton.hidden = YES;
 
 	if (self.attachedPhotos.count > 0) {
@@ -363,8 +362,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
 				RFDispatchMainAsync (^{
-					[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
-					[self close:nil];
+					if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
+						[self hideProgressHeader];
+						NSString* msg = response.parsedResponse[@"error_description"];
+						[UIAlertView uuShowOneButtonAlert:@"Error Sending Post" message:msg button:@"OK" completionHandler:NULL];
+					}
+					else {
+						[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
+						[self close:nil];
+					}
 				});
 			}];
 		}
@@ -440,7 +446,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					if (xmlrpc.responseFault) {
 						NSString* s = [NSString stringWithFormat:@"%@ (error: %@)", xmlrpc.responseFault[@"faultString"], xmlrpc.responseFault[@"faultCode"]];
 						[UIAlertView uuShowOneButtonAlert:@"Error Sending Post" message:s button:@"OK" completionHandler:NULL];
-						self.navigationItem.rightBarButtonItem.enabled = YES;
 						[self hideProgressHeader];
 						self.photoButton.hidden = NO;
 					}
@@ -471,7 +476,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				RFDispatchMainAsync (^{
 					if (image_url == nil) {
 						[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
-						self.navigationItem.rightBarButtonItem.enabled = YES;
 						[self hideProgressHeader];
 						self.photoButton.hidden = NO;
 					}
@@ -494,7 +498,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				RFDispatchMainAsync (^{
 					if (image_url == nil) {
 						[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
-						self.navigationItem.rightBarButtonItem.enabled = YES;
 						[self hideProgressHeader];
 						self.photoButton.hidden = NO;
 					}
@@ -528,7 +531,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					if (xmlrpc.responseFault) {
 						NSString* s = [NSString stringWithFormat:@"%@ (error: %@)", xmlrpc.responseFault[@"faultString"], xmlrpc.responseFault[@"faultCode"]];
 						[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:s button:@"OK" completionHandler:NULL];
-						self.navigationItem.rightBarButtonItem.enabled = YES;
 						[self hideProgressHeader];
 						self.photoButton.hidden = NO;
 					}
@@ -536,7 +538,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 						NSString* image_url = [[xmlrpc.responseParams firstObject] objectForKey:@"link"];
 						if (image_url == nil) {
 							[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
-							self.navigationItem.rightBarButtonItem.enabled = YES;
 							[self hideProgressHeader];
 							self.photoButton.hidden = NO;
 						}
@@ -555,6 +556,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) showProgressHeader:(NSString *)statusText;
 {
+	self.navigationItem.rightBarButtonItem.enabled = NO;
+
 	self.progressHeaderField.text = statusText;
 	[self.networkSpinner startAnimating];
 	if (self.progressHeaderHeightConstraint.constant == 0.0) {
@@ -569,9 +572,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) hideProgressHeader
 {
+	self.navigationItem.rightBarButtonItem.enabled = YES;
+
 	[UIView animateWithDuration:0.3 animations:^{
 		self.progressHeaderHeightConstraint.constant = 0.0;
-		self.progressHeaderTopConstraint.constant = 0.0;
+		self.progressHeaderTopConstraint.constant = 62.0;
 		self.progressHeaderView.alpha = 0.0;
 	} completion:^(BOOL finished) {
 		[self.networkSpinner stopAnimating];
