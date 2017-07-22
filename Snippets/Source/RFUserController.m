@@ -81,6 +81,11 @@
     [self.blogAddressLabel addGestureRecognizer:tapGesture];
     self.blogAddressLabel.userInteractionEnabled = YES;
     
+    self.fullNameLabel.text = self.username;
+    self.blogTitleLabel.text = @"";
+    self.bioLabel.text = @"";
+    self.blogAddressLabel.text = @"";
+    
     [self fetchUserInfo];
 }
 
