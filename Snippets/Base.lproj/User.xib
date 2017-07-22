@@ -58,7 +58,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is my bio. It's pretty great, right?" lineBreakMode="tailTruncation" numberOfLines="99" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PN5-iQ-and">
-                            <rect key="frame" x="8" y="105" width="359" height="20.5"/>
+                            <rect key="frame" x="16" y="105" width="343" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -76,8 +76,8 @@
                         <constraint firstItem="C6w-1D-xVv" firstAttribute="leading" secondItem="rpF-ZJ-SH2" secondAttribute="trailing" constant="8" id="0wH-Eg-w2p"/>
                         <constraint firstAttribute="bottom" secondItem="PN5-iQ-and" secondAttribute="bottom" constant="16" id="44p-9x-KUp"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="112" id="50o-NR-tvd"/>
-                        <constraint firstItem="PN5-iQ-and" firstAttribute="leading" secondItem="zMe-wL-fBq" secondAttribute="leading" constant="8" id="7Rd-sN-cZq"/>
-                        <constraint firstAttribute="trailing" secondItem="PN5-iQ-and" secondAttribute="trailing" constant="8" id="AYv-Sb-c94"/>
+                        <constraint firstItem="PN5-iQ-and" firstAttribute="leading" secondItem="zMe-wL-fBq" secondAttribute="leading" constant="16" id="7Rd-sN-cZq"/>
+                        <constraint firstAttribute="trailing" secondItem="PN5-iQ-and" secondAttribute="trailing" constant="16" id="AYv-Sb-c94"/>
                         <constraint firstItem="PN5-iQ-and" firstAttribute="top" secondItem="7va-2J-ahS" secondAttribute="bottom" constant="8" id="GeW-er-FUv"/>
                         <constraint firstItem="rpF-ZJ-SH2" firstAttribute="leading" secondItem="zMe-wL-fBq" secondAttribute="leading" constant="8" id="LIN-uu-62y"/>
                         <constraint firstAttribute="trailing" secondItem="C6w-1D-xVv" secondAttribute="trailing" constant="8" id="Mgu-1y-7RC"/>
