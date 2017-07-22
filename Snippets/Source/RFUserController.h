@@ -14,4 +14,14 @@
 
 - (instancetype) initWithEndpoint:(NSString *)endpoint username:(NSString *)username;
 
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint* headerHeightConstraint;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint* verticalOffsetConstraint;
+
+@property (nonatomic, strong) IBOutlet UILabel* blogTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel* fullNameLabel;
+@property (nonatomic, strong) IBOutlet UILabel* blogAddressLabel;
+@property (nonatomic, strong) IBOutlet UILabel* bioLabel;
+@property (nonatomic, strong) IBOutlet UIImageView* avatar;
+
+
 @end

@@ -120,6 +120,7 @@
 		4BF8034E1B87AA2C00D6670C /* UUString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803431B87AA2C00D6670C /* UUString.m */; };
 		4BF803511B87AACF00D6670C /* RFClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803501B87AACF00D6670C /* RFClient.m */; };
 		4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8035A1B8898D900D6670C /* RFThinLineView.m */; };
+		C5666B631F23C95F00AE13DC /* User.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5666B611F23C95F00AE13DC /* User.xib */; };
 		C5CED6F51ECF792E0068F537 /* YUCIBilateralFilter.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */; };
 		C5CED6F61ECF792E0068F537 /* YUCIBilateralFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */; };
 		C5CED6F71ECF792E0068F537 /* YUCIBlobsGenerator.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6BB1ECF792E0068F537 /* YUCIBlobsGenerator.cikernel */; };
@@ -380,6 +381,7 @@
 		4BF803521B87ADF900D6670C /* RFMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFMacros.h; path = Source/RFMacros.h; sourceTree = "<group>"; };
 		4BF803591B8898D900D6670C /* RFThinLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFThinLineView.h; path = Source/RFThinLineView.h; sourceTree = "<group>"; };
 		4BF8035A1B8898D900D6670C /* RFThinLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFThinLineView.m; path = Source/RFThinLineView.m; sourceTree = "<group>"; };
+		C5666B621F23C95F00AE13DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/User.xib; sourceTree = "<group>"; };
 		C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIBilateralFilter.cikernel; sourceTree = "<group>"; };
 		C5CED6B91ECF792E0068F537 /* YUCIBilateralFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIBilateralFilter.h; sourceTree = "<group>"; };
 		C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIBilateralFilter.m; sourceTree = "<group>"; };
@@ -732,6 +734,7 @@
 				4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */,
 				4BA910771B83CE7600D58F83 /* Menu.xib */,
 				4BA2C99E1B210A620038C0E5 /* Timeline.xib */,
+				C5666B611F23C95F00AE13DC /* User.xib */,
 				4B5F75531B8CABF30074D88E /* Options.xib */,
 				4BA9107A1B83CFD200D58F83 /* SignIn.xib */,
 				4BA910831B83D22900D58F83 /* Post.xib */,
@@ -999,6 +1002,7 @@
 				C5CED70E1ECF792E0068F537 /* YUCIReflectedTile.cikernel in Resources */,
 				C5CED6F71ECF792E0068F537 /* YUCIBlobsGenerator.cikernel in Resources */,
 				4BA910791B83CE7600D58F83 /* Menu.xib in Resources */,
+				C5666B631F23C95F00AE13DC /* User.xib in Resources */,
 				C5CED70B1ECF792E0068F537 /* YUCIHighPassSkinSmoothingMaskBoost.cikernel in Resources */,
 				4B5F75551B8CABF30074D88E /* Options.xib in Resources */,
 				C5CED6F91ECF792E0068F537 /* YUCICLAHE.cikernel in Resources */,
@@ -1310,6 +1314,14 @@
 				4BF123F61E882F5400B56138 /* Base */,
 			);
 			name = FilterCell.xib;
+			sourceTree = "<group>";
+		};
+		C5666B611F23C95F00AE13DC /* User.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5666B621F23C95F00AE13DC /* Base */,
+			);
+			name = User.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

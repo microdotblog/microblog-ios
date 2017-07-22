@@ -20,6 +20,7 @@
 @property (strong, nonatomic) UIViewController* menuController;
 
 - (instancetype) initWithEndpoint:(NSString *)endpoint title:(NSString *)title;
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil endPoint:(NSString*)endpoint title:(NSString*)title;
 
 - (void) setupNavigation;
 

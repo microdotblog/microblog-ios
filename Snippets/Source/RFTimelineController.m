@@ -34,6 +34,17 @@
 	return self;
 }
 
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil endPoint:(NSString*)endpoint title:(NSString*)title
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nil];
+    if (self) {
+        self.endpoint = endpoint;
+        self.timelineTitle = title;
+    }
+    
+    return self;
+}
+
 - (instancetype) initWithEndpoint:(NSString *)endpoint title:(NSString *)title
 {
 	self = [self init];

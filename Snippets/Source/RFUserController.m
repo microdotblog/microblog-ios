@@ -10,15 +10,60 @@
 
 #import "RFClient.h"
 #import "RFMacros.h"
+#import "UUDataCache.h"
+
+@interface RFUserCache : NSObject
+
+    + (NSDictionary*) user:(NSString*)user;
+    + (void) setCache:(NSDictionary*)userInfo forUser:(NSString*)user;
+
+    + (UIImage*) avatar:(NSURL*)url;
+    + (void) cacheAvatar:(UIImage*)image forURL:(NSURL*)url;
+
+@end
+
+@implementation RFUserCache
+
++ (UIImage*) avatar:(NSURL*)url
+{
+    NSData* cachedData = [UUDataCache uuDataForURL:url];
+    UIImage* image = [UIImage imageWithData:cachedData];
+    return image;
+}
+
++ (void) cacheAvatar:(UIImage*)image forURL:(NSURL*)url
+{
+    NSData* data = UIImagePNGRepresentation(image);
+    [UUDataCache uuCacheData:data forURL:url];
+}
+
++ (NSDictionary*) user:(NSString*)user
+{
+    NSDictionary* dictionary = [[NSUserDefaults standardUserDefaults] objectForKey:user];
+    return dictionary;
+}
+
++ (void) setCache:(NSDictionary*)userInfo forUser:(NSString*)user
+{
+    [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:user];
+}
+
+@end
+
+
+@interface RFUserController()<UIScrollViewDelegate>
+    @property (nonatomic, strong) NSString* pathToBlog;
+@end
 
 @implementation RFUserController
 
 - (instancetype) initWithEndpoint:(NSString *)endpoint username:(NSString *)username
 {
-	self = [super initWithEndpoint:endpoint title:username];
-	if (self) {
-		self.username = username;
-	}
+    self = [super initWithNibName:@"User" endPoint:endpoint title:username];
+    if (self)
+    {
+        self.username = username;
+    }
 	
 	return self;
 }
@@ -29,6 +74,14 @@
 	
 	[self setupNavigation];
 	self.navigationItem.rightBarButtonItem = nil;
+    self.webView.scrollView.delegate = self;
+    self.webView.scrollView.contentOffset = CGPointMake(0, 0);
+    
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBlogAddressTapped:)];
+    [self.blogAddressLabel addGestureRecognizer:tapGesture];
+    self.blogAddressLabel.userInteractionEnabled = YES;
+    
+    [self fetchUserInfo];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -112,6 +165,95 @@
 			[self setupFollowing:NO];
 		});
 	}];
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - User Info
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void) fetchUserInfo
+{
+    NSDictionary* cachedUserInfo = [RFUserCache user:self.username];
+    if (cachedUserInfo)
+    {
+        [self updateAppearanceFromDictionary:cachedUserInfo];
+    }
+    
+    RFClient* client = [[RFClient alloc] initWithPath:[NSString stringWithFormat:@"/posts/%@", self.username]];
+    [client getWithQueryArguments:nil completion:^(UUHttpResponse *response)
+    {
+		if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]])
+        {
+            NSDictionary* userInfo = response.parsedResponse;
+            if (userInfo)
+            {
+                dispatch_async(dispatch_get_main_queue(), ^
+                {
+                    [self updateAppearanceFromDictionary:userInfo];
+                });
+            }
+        }
+    }];
+}
+
+- (void) updateAppearanceFromDictionary:(NSDictionary*)userInfo
+{
+    NSDictionary* microBlogInfo = [userInfo objectForKey:@"_microblog"];
+    NSDictionary* authorInfo = [userInfo objectForKey:@"author"];
+    self.fullNameLabel.text = [authorInfo objectForKey:@"name"];
+    self.blogTitleLabel.text = [userInfo objectForKey:@"title"];
+    self.bioLabel.text = [microBlogInfo objectForKey:@"bio"];
+    self.blogAddressLabel.text = [userInfo objectForKey:@"home_page_url"];
+    
+    self.pathToBlog = [userInfo objectForKey:@"home_page_url"];
+    
+    NSString* avatarURL = [authorInfo objectForKey:@"avatar"];
+    UIImage* image = [RFUserCache avatar:[NSURL URLWithString:avatarURL]];
+    if (image)
+    {
+        self.avatar.image = image;
+    }
+    
+    [UUHttpSession get:avatarURL queryArguments:nil completionHandler:^(UUHttpResponse *response)
+    {
+        if (response && !response.httpError)
+        {
+            NSData* imageData = response.rawResponse;
+            UIImage* image = [UIImage imageWithData:imageData];
+            [RFUserCache cacheAvatar:image forURL:[NSURL URLWithString:avatarURL]];
+
+            dispatch_async(dispatch_get_main_queue(), ^
+            {
+                self.avatar.image = image;
+            });
+        }
+    }];
+    
+    [RFUserCache setCache:userInfo forUser:self.username];
+}
+
+- (void) handleBlogAddressTapped:(id)sender
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.pathToBlog] options:@{} completionHandler:^(BOOL success)
+    {
+    }];
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - UIScrollViewDelegate
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSInteger offset = scrollView.contentOffset.y;
+    
+    //offset = 200 - offset;
+    //if (offset < 0)
+    //    offset = 0;
+    
+    self.verticalOffsetConstraint.constant = -offset;
+    //self.headerHeightConstraint.constant = offset;
+    [self.view setNeedsLayout];
 }
 
 @end
