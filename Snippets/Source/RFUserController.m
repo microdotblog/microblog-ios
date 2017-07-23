@@ -11,6 +11,7 @@
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "UUDataCache.h"
+#import <SafariServices/SafariServices.h>
 
 @interface RFUserCache : NSObject
 
@@ -239,9 +240,8 @@
 
 - (void) handleBlogAddressTapped:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.pathToBlog] options:@{} completionHandler:^(BOOL success)
-    {
-    }];
+	SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:self.pathToBlog]];
+	[self presentViewController:safari_controller animated:YES completion:NULL];
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
