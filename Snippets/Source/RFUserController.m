@@ -103,7 +103,7 @@
 {
 	[super setupNavigation];
 
-	self.title = self.timelineTitle;
+	self.title = [NSString stringWithFormat:@"@%@", self.username];
 }
 
 - (void) checkFollowing
