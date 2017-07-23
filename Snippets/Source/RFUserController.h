@@ -17,7 +17,6 @@
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint* headerHeightConstraint;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint* verticalOffsetConstraint;
 
-@property (nonatomic, strong) IBOutlet UILabel* blogTitleLabel;
 @property (nonatomic, strong) IBOutlet UILabel* fullNameLabel;
 @property (nonatomic, strong) IBOutlet UILabel* blogAddressLabel;
 @property (nonatomic, strong) IBOutlet UILabel* bioLabel;

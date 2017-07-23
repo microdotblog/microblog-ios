@@ -82,10 +82,11 @@
     self.blogAddressLabel.userInteractionEnabled = YES;
     
     self.fullNameLabel.text = self.username;
-    self.blogTitleLabel.text = @"";
     self.bioLabel.text = @"";
     self.blogAddressLabel.text = @"";
-    
+
+	self.avatar.layer.cornerRadius = self.avatar.bounds.size.width / 2.0;
+	
     [self fetchUserInfo];
 }
 
@@ -206,11 +207,10 @@
     NSDictionary* microBlogInfo = [userInfo objectForKey:@"_microblog"];
     NSDictionary* authorInfo = [userInfo objectForKey:@"author"];
     self.fullNameLabel.text = [authorInfo objectForKey:@"name"];
-    self.blogTitleLabel.text = [userInfo objectForKey:@"title"];
     self.bioLabel.text = [microBlogInfo objectForKey:@"bio"];
-    self.blogAddressLabel.text = [userInfo objectForKey:@"home_page_url"];
+    self.blogAddressLabel.text = [authorInfo objectForKey:@"url"];
     
-    self.pathToBlog = [userInfo objectForKey:@"home_page_url"];
+    self.pathToBlog = [authorInfo objectForKey:@"url"];
     
     NSString* avatarURL = [authorInfo objectForKey:@"avatar"];
     UIImage* image = [RFUserCache avatar:[NSURL URLWithString:avatarURL]];
