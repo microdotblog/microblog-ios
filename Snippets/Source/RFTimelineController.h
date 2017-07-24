@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString* endpoint;
 @property (strong, nonatomic) NSString* timelineTitle;
 @property (strong, nonatomic) UIViewController* menuController;
+@property (assign, nonatomic) CGFloat lastRefreshWidth;
 
 - (instancetype) initWithEndpoint:(NSString *)endpoint title:(NSString *)title;
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil endPoint:(NSString*)endpoint title:(NSString*)title;

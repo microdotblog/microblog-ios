@@ -76,7 +76,10 @@
 {
 	[super viewDidLayoutSubviews];
 	
-	[self refreshTimeline];
+	if (self.view.bounds.size.width != self.lastRefreshWidth) {
+		self.lastRefreshWidth = self.view.bounds.size.width;
+		[self refreshTimeline];
+	}
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -356,7 +359,6 @@
 
 - (void) webViewDidStartLoad:(UIWebView *)webView
 {
-    NSLog(@"Starting");
 }
 
 - (void) webViewDidFinishLoad:(UIWebView *)webView
