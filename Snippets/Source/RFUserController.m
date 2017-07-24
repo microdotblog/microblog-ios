@@ -99,6 +99,13 @@
 	[self checkFollowing];
 }
 
+- (void) viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    self.moreButton.hidden = ![self hasMoreBioToShow];
+}
+
 - (void) setupNavigation
 {
 	[super setupNavigation];
@@ -174,6 +181,29 @@
 	}];
 }
 
+- (IBAction) onShowMore:(id)sender
+{
+    NSInteger constraint = 250.0;
+    if (self.maxHeaderHeightConstraint.constant <= 250.0)
+    {
+        NSInteger height = [self fullSizeOfBio];
+        constraint = height + 25.0;
+        
+        [self.moreButton setTitle:@"Less" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.view setNeedsLayout];
+        [self.moreButton setTitle:@"More" forState:UIControlStateNormal];
+    }
+    
+    [UIView animateWithDuration:0.25 animations:^
+    {
+        self.maxHeaderHeightConstraint.constant = constraint;
+        [self.view layoutIfNeeded];
+    }];
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - User Info
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -236,12 +266,34 @@
     }];
     
     [RFUserCache setCache:userInfo forUser:self.username];
+    
+    self.moreButton.hidden = ![self hasMoreBioToShow];
 }
 
 - (void) handleBlogAddressTapped:(id)sender
 {
 	SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:self.pathToBlog]];
 	[self presentViewController:safari_controller animated:YES completion:NULL];
+}
+
+- (NSInteger) fullSizeOfBio
+{
+    UIFont* font = self.bioLabel.font;
+    NSString* bio = self.bioLabel.text;
+    NSInteger bioWidth = self.bioLabel.bounds.size.width;
+    CGSize size = CGSizeMake(bioWidth, CGFLOAT_MAX);
+    
+    NSDictionary* attributes = @{ NSFontAttributeName : font };
+    NSInteger bioHeight = [bio boundingRectWithSize:size options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:attributes context:nil].size.height;
+    NSInteger userViewInfoHeight = self.userInfoView.bounds.size.height;
+    
+    NSInteger height = userViewInfoHeight + 16.0 + bioHeight + 21.0;
+    return height;
+}
+
+- (BOOL) hasMoreBioToShow
+{
+    return ([self fullSizeOfBio] > 250.0);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

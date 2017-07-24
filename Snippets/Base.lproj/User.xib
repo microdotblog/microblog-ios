@@ -15,6 +15,9 @@
                 <outlet property="bioLabel" destination="PN5-iQ-and" id="98C-6C-Vjv"/>
                 <outlet property="blogAddressLabel" destination="7va-2J-ahS" id="SUS-eI-4hj"/>
                 <outlet property="fullNameLabel" destination="cYb-nT-P5S" id="TOG-T5-43y"/>
+                <outlet property="maxHeaderHeightConstraint" destination="5Id-8T-LTY" id="OjX-EP-cKs"/>
+                <outlet property="moreButton" destination="qID-0k-fNf" id="fix-j4-N1v"/>
+                <outlet property="userInfoView" destination="pzu-rG-D5f" id="xqX-0d-563"/>
                 <outlet property="verticalOffsetConstraint" destination="l6R-6t-dfX" id="buM-Fv-o9p"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kEc-my-gll"/>
                 <outlet property="webView" destination="lnY-ie-t8x" id="3ba-da-ybZ"/>
@@ -93,6 +96,13 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qID-0k-fNf">
+                            <rect key="frame" x="335" y="117" width="36" height="30"/>
+                            <state key="normal" title="more"/>
+                            <connections>
+                                <action selector="onShowMore:" destination="-1" eventType="touchUpInside" id="e7L-Aa-mEU"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -104,7 +114,9 @@
                         <constraint firstItem="PN5-iQ-and" firstAttribute="leading" secondItem="zMe-wL-fBq" secondAttribute="leading" constant="16" id="7Rd-sN-cZq"/>
                         <constraint firstAttribute="trailing" secondItem="PN5-iQ-and" secondAttribute="trailing" constant="16" id="AYv-Sb-c94"/>
                         <constraint firstAttribute="trailing" secondItem="pzu-rG-D5f" secondAttribute="trailing" id="CvE-hA-9Sr"/>
+                        <constraint firstAttribute="bottom" secondItem="qID-0k-fNf" secondAttribute="bottom" id="PRL-1d-27A"/>
                         <constraint firstItem="pzu-rG-D5f" firstAttribute="leading" secondItem="zMe-wL-fBq" secondAttribute="leading" id="Z1H-2y-eYB"/>
+                        <constraint firstAttribute="trailing" secondItem="qID-0k-fNf" secondAttribute="trailing" constant="4" id="two-7c-WVI"/>
                     </constraints>
                 </view>
             </subviews>
