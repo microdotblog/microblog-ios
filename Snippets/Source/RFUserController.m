@@ -189,12 +189,12 @@
         NSInteger height = [self fullSizeOfBio];
         constraint = height + 25.0;
         
-        [self.moreButton setTitle:@"Less" forState:UIControlStateNormal];
+        [self.moreButton setTitle:@"less" forState:UIControlStateNormal];
     }
     else
     {
         [self.view setNeedsLayout];
-        [self.moreButton setTitle:@"More" forState:UIControlStateNormal];
+        [self.moreButton setTitle:@"more" forState:UIControlStateNormal];
     }
     
     [UIView animateWithDuration:0.25 animations:^
