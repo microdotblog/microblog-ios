@@ -19,6 +19,7 @@
 #import "RFConstants.h"
 #import "RFSettings.h"
 #import "UUImageView.h"
+#import "UUAlert.h"
 #import "SSKeychain.h"
 #import "UIBarButtonItem+Extras.h"
 #import <Fabric/Fabric.h>
@@ -196,31 +197,36 @@
 
 - (IBAction) signOut:(id)sender
 {
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountUsername"];
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountGravatarURL"];
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountDefaultSite"];
+	[UIAlertView uuShowTwoButtonAlert:@"Sign out of Micro.blog?" message:@"Signing out will reset your settings and let you sign in with a new account or different microblog." buttonOne:@"Cancel" buttonTwo:@"Sign Out" completionHandler:^(NSInteger buttonIndex) {
+		NSLog (@"button %d", buttonIndex);
+		if (buttonIndex == 1) {
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountUsername"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountGravatarURL"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountDefaultSite"];
 
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"HasSnippetsBlog"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"HasSnippetsBlog"];
 
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogUsername"];
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogApp"];
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogEndpoint"];
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogID"];
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogIsPreferred"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogUsername"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogApp"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogEndpoint"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogID"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogIsPreferred"];
 
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubMe"];
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubTokenEndpoint"];
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubPostingEndpoint"];
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubMediaEndpoint"];
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubState"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubMe"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubTokenEndpoint"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubPostingEndpoint"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubMediaEndpoint"];
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubState"];
 
-	[SSKeychain deletePasswordForService:@"Snippets" account:@"default"];
-	[SSKeychain deletePasswordForService:@"ExternalBlog" account:@"default"];
-	[SSKeychain deletePasswordForService:@"MicropubBlog" account:@"default"];
+			[SSKeychain deletePasswordForService:@"Snippets" account:@"default"];
+			[SSKeychain deletePasswordForService:@"ExternalBlog" account:@"default"];
+			[SSKeychain deletePasswordForService:@"MicropubBlog" account:@"default"];
 
-	[Answers logCustomEventWithName:@"Sign Out" customAttributes:nil];
+			[Answers logCustomEventWithName:@"Sign Out" customAttributes:nil];
 
-	[[NSNotificationCenter defaultCenter] postNotificationName:kShowSigninNotification object:self];
+			[[NSNotificationCenter defaultCenter] postNotificationName:kShowSigninNotification object:self];
+		}
+	}];
 }
 
 - (void) notifyResetDetail:(UIViewController *)controller
