@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFUserController">
             <connections>
@@ -107,9 +112,17 @@
                                 <action selector="onShowMore:" destination="-1" eventType="touchUpInside" id="e7L-Aa-mEU"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyZ-JH-oYd" customClass="RFBottomLineView">
+                            <rect key="frame" x="0.0" y="125" width="375" height="1"/>
+                            <color key="backgroundColor" white="0.94791165865384619" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="ekq-cH-cKj"/>
+                            </constraints>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.9758821138968834" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="HyZ-JH-oYd" secondAttribute="trailing" id="0mk-ei-k33"/>
                         <constraint firstItem="pzu-rG-D5f" firstAttribute="top" secondItem="zMe-wL-fBq" secondAttribute="top" id="1cl-85-vod"/>
                         <constraint firstItem="PN5-iQ-and" firstAttribute="top" secondItem="pzu-rG-D5f" secondAttribute="bottom" constant="4" id="3l6-Xd-nu7"/>
                         <constraint firstAttribute="bottom" secondItem="PN5-iQ-and" secondAttribute="bottom" constant="12" id="44p-9x-KUp"/>
@@ -120,7 +133,9 @@
                         <constraint firstAttribute="trailing" secondItem="pzu-rG-D5f" secondAttribute="trailing" id="CvE-hA-9Sr"/>
                         <constraint firstAttribute="bottom" secondItem="qID-0k-fNf" secondAttribute="bottom" id="PRL-1d-27A"/>
                         <constraint firstItem="pzu-rG-D5f" firstAttribute="leading" secondItem="zMe-wL-fBq" secondAttribute="leading" id="Z1H-2y-eYB"/>
+                        <constraint firstAttribute="bottom" secondItem="HyZ-JH-oYd" secondAttribute="bottom" id="d1H-W9-Rl3"/>
                         <constraint firstAttribute="trailing" secondItem="qID-0k-fNf" secondAttribute="trailing" constant="6" id="two-7c-WVI"/>
+                        <constraint firstItem="HyZ-JH-oYd" firstAttribute="leading" secondItem="zMe-wL-fBq" secondAttribute="leading" id="yA6-IZ-O08"/>
                     </constraints>
                 </view>
             </subviews>
