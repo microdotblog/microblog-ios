@@ -267,8 +267,18 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	if (self.attachedPhotos.count > 0) {
 		RFPhoto* photo = [self.attachedPhotos firstObject];
+		CGSize sz = photo.thumbnailImage.size;
 		[self uploadPhoto:photo completion:^{
-			[self uploadText:self.textView.text];
+			NSString* s = self.textView.text;
+			
+			if ([self prefersExternalBlog]) {
+				if (s.length > 0) {
+					s = [s stringByAppendingString:@"\n\n"];
+				}
+				s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" style=\"height: auto\" />", photo.publishedURL, 600.0, 600.0];
+			}
+			
+			[self uploadText:s];
 		}];
 	}
 	else {
