@@ -10,7 +10,7 @@
 
 #import "RFOptionsController.h"
 
-@interface RFTimelineController : UIViewController <UIWebViewDelegate>
+@interface RFTimelineController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWebView* webView;
 

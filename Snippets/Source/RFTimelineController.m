@@ -68,8 +68,7 @@
 	[self setupNavigation];
 	[self setupNotifications];
 	[self setupRefresh];
-//	[self setupGestures];
-	[self setupScrollRate];
+	[self setupScrollView];
 }
 
 - (void) viewDidLayoutSubviews
@@ -114,20 +113,14 @@
 - (void) setupRefresh
 {
 	self.refreshControl = [[UIRefreshControl alloc] init];
-	[self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+//	[self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
 	[self.webView.scrollView addSubview:self.refreshControl];
 }
 
-- (void) setupGestures
-{
-	UISwipeGestureRecognizer* swipe_right_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
-	swipe_right_gesture.direction = UISwipeGestureRecognizerDirectionLeft;
-	[self.view addGestureRecognizer:swipe_right_gesture];
-}
-
-- (void) setupScrollRate
+- (void) setupScrollView
 {
 	self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+	self.webView.scrollView.delegate = self;
 }
 
 - (void) setupPreventHorizontalScrolling
@@ -221,11 +214,6 @@
 	[self performSelector:@selector(refreshTimeline) withObject:nil afterDelay:0.5];
 }
 
-- (void) swipeRight:(UIGestureRecognizer *)gesture
-{
-	[self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void) back:(id)sender
 {
 	[self.navigationController popViewControllerAnimated:YES];
@@ -248,7 +236,6 @@
 - (void) handleRefresh:(UIRefreshControl *)refresh
 {
 	[self refreshTimeline];
-	//[refresh endRefreshing];
 }
 
 - (void) refreshTimeline
@@ -379,6 +366,17 @@
 {
 	NSLog (@"Web view error: %@", error);
     [self.refreshControl endRefreshing];
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	CGFloat offset = scrollView.contentOffset.y;
+	if ((offset < -130) && !scrollView.isDecelerating) {
+		if (!self.refreshControl.isRefreshing) {
+			[self.refreshControl beginRefreshing];
+			[self handleRefresh:self.refreshControl];
+		}
+	}
 }
 
 @end

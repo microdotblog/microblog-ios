@@ -75,9 +75,9 @@
 	
 	[self setupNavigation];
 	self.navigationItem.rightBarButtonItem = nil;
-    self.webView.scrollView.delegate = self;
-    self.webView.scrollView.contentOffset = CGPointMake(0, 0);
-    
+//    self.webView.scrollView.delegate = self;
+//    self.webView.scrollView.contentOffset = CGPointMake(0, 0);
+	
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBlogAddressTapped:)];
     [self.blogAddressLabel addGestureRecognizer:tapGesture];
     self.blogAddressLabel.userInteractionEnabled = YES;
@@ -300,11 +300,11 @@
 #pragma mark - UIScrollViewDelegate
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (void) scrollViewDidScroll:(UIScrollView *)scrollView
-{
+//- (void) scrollViewDidScroll:(UIScrollView *)scrollView
+//{
 //	NSInteger offset = scrollView.contentOffset.y;	
 //	self.verticalOffsetConstraint.constant = -offset;
 //	[self.view setNeedsLayout];
-}
+//}
 
 @end
