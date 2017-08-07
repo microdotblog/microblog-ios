@@ -132,4 +132,11 @@
 	}];
 }
 
+- (IBAction) share:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kSharePostNotification object:self userInfo:@{ kSharePostIDKey: self.postID }];
+	}];
+}
+
 @end

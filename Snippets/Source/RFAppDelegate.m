@@ -220,6 +220,7 @@
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSigninNotification:) name:kShowSigninNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConversationNotification:) name:kShowConversationNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sharePostNotification:) name:kSharePostNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUserProfileNotification:) name:kShowUserProfileNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReplyPostNotification:) name:kShowReplyPostNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasUnselectedNotification:) name:kPostWasUnselectedNotification object:nil];
@@ -252,6 +253,12 @@
 		// load conversation from point here?
 		// ...
 	}
+}
+
+- (void) sharePostNotification:(NSNotification *)notification
+{
+	NSString* post_id = [notification.userInfo objectForKey:kSharePostIDKey];
+	[self showShareSheetWithPostID:post_id];
 }
 
 - (void) showUserProfileNotification:(NSNotification *)notification
@@ -317,6 +324,18 @@
 		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:postID username:username popoverType:popover_type];
 		[options_controller attachToView:timeline_controller.webView atRect:r];
 		[[self activeNavigationController] presentViewController:options_controller animated:YES completion:NULL];
+	}
+}
+
+- (void) showShareSheetWithPostID:(NSString *)postID
+{
+	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
+	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
+		[timeline_controller setSelected:NO withPostID:postID];
+		NSString* link = [timeline_controller linkOfPostID:postID];
+		NSURL* url = [NSURL URLWithString:link];
+		UIActivityViewController* activity_controller = [[UIActivityViewController alloc] initWithActivityItems:@[ url ] applicationActivities:nil];
+		[[self activeNavigationController] presentViewController:activity_controller animated:YES completion:NULL];
 	}
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,11 +24,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="Yfk-8I-dMD">
-            <rect key="frame" x="0.0" y="0.0" width="289" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="338" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9k-Ww-gwm">
-                    <rect key="frame" x="97" y="0.0" width="55" height="44"/>
+                    <rect key="frame" x="81" y="0.0" width="55" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                     <state key="normal" title="Favorite">
@@ -39,7 +39,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIA-Ni-yxe">
-                    <rect key="frame" x="178" y="0.0" width="91" height="44"/>
+                    <rect key="frame" x="156" y="0.0" width="91" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                     <state key="normal" title="Conversation">
@@ -50,7 +50,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1K5-G8-wMd">
-                    <rect key="frame" x="32" y="0.0" width="39" height="44"/>
+                    <rect key="frame" x="23" y="0.0" width="39" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                     <state key="normal" title="Reply">
@@ -60,17 +60,28 @@
                         <action selector="reply:" destination="-1" eventType="touchUpInside" id="Udf-Wp-PWj"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ydr-nd-Bu4">
+                    <rect key="frame" x="263" y="0.0" width="55" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                    <state key="normal" title="Share...">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="share:" destination="-1" eventType="touchUpInside" id="s3s-18-0jw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.32574957609176636" green="0.32574957609176636" blue="0.32574957609176636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="455.5" y="207"/>
+            <point key="canvasLocation" x="480" y="207"/>
         </view>
         <view contentMode="scaleToFill" id="eOy-dA-XqP">
-            <rect key="frame" x="0.0" y="0.0" width="299" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="348" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbM-os-q09">
-                    <rect key="frame" x="97" y="0.0" width="69" height="44"/>
+                    <rect key="frame" x="79" y="0.0" width="69" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                     <state key="normal" title="Unfavorite">
@@ -81,7 +92,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fi-dX-M1O">
-                    <rect key="frame" x="186" y="0.0" width="91" height="44"/>
+                    <rect key="frame" x="164" y="0.0" width="91" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                     <state key="normal" title="Conversation">
@@ -92,7 +103,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toS-vD-cMm">
-                    <rect key="frame" x="32" y="0.0" width="39" height="44"/>
+                    <rect key="frame" x="23" y="0.0" width="39" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                     <state key="normal" title="Reply">
@@ -102,17 +113,28 @@
                         <action selector="reply:" destination="-1" eventType="touchUpInside" id="6VG-xH-PxX"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMT-Yf-DyS">
+                    <rect key="frame" x="270" y="0.0" width="57" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                    <state key="normal" title="Share...">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="share:" destination="-1" eventType="touchUpInside" id="wkC-Lb-0Im"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.32574957609176636" green="0.32574957609176636" blue="0.32574957609176636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="460.5" y="303"/>
+            <point key="canvasLocation" x="485" y="303"/>
         </view>
         <view contentMode="scaleToFill" id="7eE-jX-OpT">
-            <rect key="frame" x="0.0" y="0.0" width="183" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="221" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wb0-g8-P3R">
-                    <rect key="frame" x="97" y="0.0" width="55" height="44"/>
+                    <rect key="frame" x="76" y="0.0" width="55" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                     <state key="normal" title="Delete">
@@ -123,7 +145,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucC-IH-NCh">
-                    <rect key="frame" x="32" y="0.0" width="39" height="44"/>
+                    <rect key="frame" x="21" y="0.0" width="39" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                     <state key="normal" title="Reply">
@@ -133,10 +155,21 @@
                         <action selector="reply:" destination="-1" eventType="touchUpInside" id="zrf-Pu-OJb"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v53-q8-W5k">
+                    <rect key="frame" x="146" y="0.0" width="55" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                    <state key="normal" title="Share...">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="share:" destination="-1" eventType="touchUpInside" id="lon-1f-nMG"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.32574957609176636" green="0.32574957609176636" blue="0.32574957609176636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="402.5" y="398"/>
+            <point key="canvasLocation" x="421.5" y="398"/>
         </view>
     </objects>
 </document>

@@ -29,6 +29,7 @@
 - (CGRect) rectOfPostID:(NSString *)postID;
 - (RFOptionsPopoverType) popoverTypeOfPostID:(NSString *)postID;
 - (NSString *) usernameOfPostID:(NSString *)postID;
+- (NSString *) linkOfPostID:(NSString *)postID;
 
 - (IBAction) promptNewPost:(id)sender;
 - (void) refreshTimeline;

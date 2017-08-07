@@ -28,6 +28,9 @@ static NSString* const kClosePostingNotification = @"RFClosePosting";
 #define kPostWasUnselectedNotification @"RFPostWasUnselectedNotification"
 #define kPostNotificationPostIDKey @"post_id"
 
+#define kSharePostNotification @"RFSharePostNotification"
+#define kSharePostIDKey @"post_id"
+
 static NSString* const kResetDetailNotification = @"RFResetDetail";
 static NSString* const kResetDetailControllerKey = @"controller";
 
