@@ -302,15 +302,9 @@
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSInteger offset = scrollView.contentOffset.y;
-	
-    //offset = 200 - offset;
-    //if (offset < 0)
-    //    offset = 0;
-    
-    self.verticalOffsetConstraint.constant = -offset;
-    //self.headerHeightConstraint.constant = offset;
-    [self.view setNeedsLayout];
+//	NSInteger offset = scrollView.contentOffset.y;	
+//	self.verticalOffsetConstraint.constant = -offset;
+//	[self.view setNeedsLayout];
 }
 
 @end
