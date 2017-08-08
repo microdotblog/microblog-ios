@@ -115,6 +115,7 @@
 	self.refreshControl = [[UIRefreshControl alloc] init];
 //	[self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
 	[self.webView.scrollView addSubview:self.refreshControl];
+	self.webView.scrollView.showsHorizontalScrollIndicator = NO;
 }
 
 - (void) setupScrollView
