@@ -59,13 +59,13 @@
                                     <rect key="frame" x="74" y="17" width="301" height="60"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jonathan Hays" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cYb-nT-P5S">
-                                            <rect key="frame" x="12" y="7" width="281" height="22"/>
+                                            <rect key="frame" x="12" y="8" width="281" height="22"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="http://www.luggle.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7va-2J-ahS">
-                                            <rect key="frame" x="12" y="30" width="281" height="22"/>
+                                            <rect key="frame" x="12" y="31" width="281" height="22"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -76,10 +76,10 @@
                                         <constraint firstAttribute="trailing" secondItem="7va-2J-ahS" secondAttribute="trailing" constant="8" id="5fx-Nn-6hf"/>
                                         <constraint firstItem="cYb-nT-P5S" firstAttribute="leading" secondItem="2sz-iQ-XqG" secondAttribute="leading" constant="12" id="Azq-Kh-Sn5"/>
                                         <constraint firstItem="7va-2J-ahS" firstAttribute="leading" secondItem="2sz-iQ-XqG" secondAttribute="leading" constant="12" id="H3X-Oh-sMK"/>
-                                        <constraint firstAttribute="bottom" secondItem="7va-2J-ahS" secondAttribute="bottom" constant="8" id="pA4-ov-T4q"/>
+                                        <constraint firstAttribute="bottom" secondItem="7va-2J-ahS" secondAttribute="bottom" constant="7" id="pA4-ov-T4q"/>
                                         <constraint firstItem="7va-2J-ahS" firstAttribute="top" secondItem="cYb-nT-P5S" secondAttribute="bottom" constant="1" id="qr2-VR-qsI"/>
                                         <constraint firstAttribute="trailing" secondItem="cYb-nT-P5S" secondAttribute="trailing" constant="8" id="ulb-OY-r5b"/>
-                                        <constraint firstItem="cYb-nT-P5S" firstAttribute="top" secondItem="2sz-iQ-XqG" secondAttribute="top" constant="7" id="zbu-pl-gNd"/>
+                                        <constraint firstItem="cYb-nT-P5S" firstAttribute="top" secondItem="2sz-iQ-XqG" secondAttribute="top" constant="8" id="zbu-pl-gNd"/>
                                     </constraints>
                                 </view>
                             </subviews>

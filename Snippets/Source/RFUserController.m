@@ -10,6 +10,7 @@
 
 #import "RFClient.h"
 #import "RFMacros.h"
+#import "UIFont+Extras.h"
 #import "UUDataCache.h"
 #import <SafariServices/SafariServices.h>
 
@@ -74,9 +75,9 @@
 	[super viewDidLoad];
 	
 	[self setupNavigation];
+	[self setupFont];
+	
 	self.navigationItem.rightBarButtonItem = nil;
-//    self.webView.scrollView.delegate = self;
-//    self.webView.scrollView.contentOffset = CGPointMake(0, 0);
 	
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBlogAddressTapped:)];
     [self.blogAddressLabel addGestureRecognizer:tapGesture];
@@ -111,6 +112,15 @@
 	[super setupNavigation];
 
 	self.title = [NSString stringWithFormat:@"@%@", self.username];
+}
+
+- (void) setupFont
+{
+	CGFloat fontsize = [UIFont rf_preferredTimelineFontSize];
+	self.fullNameLabel.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
+	self.blogAddressLabel.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
+	self.bioLabel.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
+	self.moreButton.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
 }
 
 - (void) checkFollowing
