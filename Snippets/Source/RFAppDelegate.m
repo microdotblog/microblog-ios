@@ -332,9 +332,12 @@
 	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
 	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
 		[timeline_controller setSelected:NO withPostID:postID];
+		CGRect r = [timeline_controller rectOfPostID:postID];
 		NSString* link = [timeline_controller linkOfPostID:postID];
 		NSURL* url = [NSURL URLWithString:link];
 		UIActivityViewController* activity_controller = [[UIActivityViewController alloc] initWithActivityItems:@[ url ] applicationActivities:nil];
+		activity_controller.popoverPresentationController.sourceView = timeline_controller.view;
+		activity_controller.popoverPresentationController.sourceRect = r;
 		[[self activeNavigationController] presentViewController:activity_controller animated:YES completion:NULL];
 	}
 }
