@@ -71,6 +71,10 @@
 
 - (void) applicationWillEnterForeground:(UIApplication *)application
 {
+//	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
+//	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
+//		[timeline_controller refreshTimelineShowingSpinner:YES];
+//	}
 }
 
 - (void) applicationDidBecomeActive:(UIApplication *)application

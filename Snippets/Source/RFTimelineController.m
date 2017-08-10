@@ -113,7 +113,6 @@
 - (void) setupRefresh
 {
 	self.refreshControl = [[UIRefreshControl alloc] init];
-//	[self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
 	[self.webView.scrollView addSubview:self.refreshControl];
 	self.webView.scrollView.showsHorizontalScrollIndicator = NO;
 }
@@ -234,13 +233,17 @@
 	}
 }
 
-- (void) handleRefresh:(UIRefreshControl *)refresh
-{
-	[self refreshTimeline];
-}
-
 - (void) refreshTimeline
 {
+	[self refreshTimelineShowingSpinner:NO];
+}
+
+- (void) refreshTimelineShowingSpinner:(BOOL)showSpinner
+{
+	if (showSpinner) {
+		[self.refreshControl beginRefreshing];
+	}
+	
 	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
 	if (token) {
 		[self loadTimelineForToken:token];
@@ -374,8 +377,7 @@
 	CGFloat offset = scrollView.contentOffset.y;
 	if ((offset < -130) && !scrollView.isDecelerating) {
 		if (!self.refreshControl.isRefreshing) {
-			[self.refreshControl beginRefreshing];
-			[self handleRefresh:self.refreshControl];
+			[self refreshTimelineShowingSpinner:YES];
 		}
 	}
 }

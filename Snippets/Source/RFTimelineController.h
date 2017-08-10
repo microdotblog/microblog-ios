@@ -33,5 +33,6 @@
 
 - (IBAction) promptNewPost:(id)sender;
 - (void) refreshTimeline;
+- (void) refreshTimelineShowingSpinner:(BOOL)showSpinner;
 
 @end
