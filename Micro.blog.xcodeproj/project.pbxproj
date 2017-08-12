@@ -49,6 +49,14 @@
 		4B4D9B5B1ED521BB00315BBA /* RFFeaturedPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D9B5A1ED521BB00315BBA /* RFFeaturedPhotoCell.m */; };
 		4B5078D11B965C79002A4F80 /* RFSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5078D01B965C79002A4F80 /* RFSettingsController.m */; };
 		4B5078D41B965E4F002A4F80 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5078D21B965E4F002A4F80 /* Settings.xib */; };
+		4B5920AC1F3F637E00B190C0 /* Array+appending.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5920A31F3F637E00B190C0 /* Array+appending.swift */; };
+		4B5920AD1F3F637E00B190C0 /* Marklight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5920A51F3F637E00B190C0 /* Marklight.swift */; };
+		4B5920AE1F3F637E00B190C0 /* MarklightStyleApplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5920A61F3F637E00B190C0 /* MarklightStyleApplier.swift */; };
+		4B5920AF1F3F637E00B190C0 /* MarklightTextProcessingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5920A71F3F637E00B190C0 /* MarklightTextProcessingResult.swift */; };
+		4B5920B01F3F637E00B190C0 /* MarklightTextProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5920A81F3F637E00B190C0 /* MarklightTextProcessor.swift */; };
+		4B5920B11F3F637E00B190C0 /* MarklightTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5920A91F3F637E00B190C0 /* MarklightTextStorage.swift */; };
+		4B5920B21F3F637E00B190C0 /* NSString+paragraphRangeAt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5920AA1F3F637E00B190C0 /* NSString+paragraphRangeAt.swift */; };
+		4B5920B31F3F637E00B190C0 /* UniversalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5920AB1F3F637E00B190C0 /* UniversalTypes.swift */; };
 		4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D21EB1E9DF44000AC101E /* RFMicropub.m */; };
 		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
 		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
@@ -250,6 +258,15 @@
 		4B5078CF1B965C79002A4F80 /* RFSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFSettingsController.h; path = Source/RFSettingsController.h; sourceTree = "<group>"; };
 		4B5078D01B965C79002A4F80 /* RFSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = RFSettingsController.m; path = Source/RFSettingsController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4B5078D31B965E4F002A4F80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Settings.xib; sourceTree = "<group>"; };
+		4B5920A31F3F637E00B190C0 /* Array+appending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+appending.swift"; path = "Shared/Marklight/Marklight/Array+appending.swift"; sourceTree = SOURCE_ROOT; };
+		4B5920A41F3F637E00B190C0 /* Marklight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Marklight.h; path = Shared/Marklight/Marklight/Marklight.h; sourceTree = SOURCE_ROOT; };
+		4B5920A51F3F637E00B190C0 /* Marklight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Marklight.swift; path = Shared/Marklight/Marklight/Marklight.swift; sourceTree = SOURCE_ROOT; };
+		4B5920A61F3F637E00B190C0 /* MarklightStyleApplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarklightStyleApplier.swift; path = Shared/Marklight/Marklight/MarklightStyleApplier.swift; sourceTree = SOURCE_ROOT; };
+		4B5920A71F3F637E00B190C0 /* MarklightTextProcessingResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarklightTextProcessingResult.swift; path = Shared/Marklight/Marklight/MarklightTextProcessingResult.swift; sourceTree = SOURCE_ROOT; };
+		4B5920A81F3F637E00B190C0 /* MarklightTextProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarklightTextProcessor.swift; path = Shared/Marklight/Marklight/MarklightTextProcessor.swift; sourceTree = SOURCE_ROOT; };
+		4B5920A91F3F637E00B190C0 /* MarklightTextStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarklightTextStorage.swift; path = Shared/Marklight/Marklight/MarklightTextStorage.swift; sourceTree = SOURCE_ROOT; };
+		4B5920AA1F3F637E00B190C0 /* NSString+paragraphRangeAt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSString+paragraphRangeAt.swift"; path = "Shared/Marklight/Marklight/NSString+paragraphRangeAt.swift"; sourceTree = SOURCE_ROOT; };
+		4B5920AB1F3F637E00B190C0 /* UniversalTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalTypes.swift; path = Shared/Marklight/Marklight/UniversalTypes.swift; sourceTree = SOURCE_ROOT; };
 		4B5D21EA1E9DF44000AC101E /* RFMicropub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFMicropub.h; path = Source/RFMicropub.h; sourceTree = "<group>"; };
 		4B5D21EB1E9DF44000AC101E /* RFMicropub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFMicropub.m; path = Source/RFMicropub.m; sourceTree = "<group>"; };
 		4B5F75501B8CABC50074D88E /* RFOptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFOptionsController.h; path = Source/RFOptionsController.h; sourceTree = "<group>"; };
@@ -527,6 +544,22 @@
 			name = MarkupLabel;
 			sourceTree = "<group>";
 		};
+		4B5920A21F3F630200B190C0 /* Marklight */ = {
+			isa = PBXGroup;
+			children = (
+				4B5920A31F3F637E00B190C0 /* Array+appending.swift */,
+				4B5920A41F3F637E00B190C0 /* Marklight.h */,
+				4B5920A51F3F637E00B190C0 /* Marklight.swift */,
+				4B5920A61F3F637E00B190C0 /* MarklightStyleApplier.swift */,
+				4B5920A71F3F637E00B190C0 /* MarklightTextProcessingResult.swift */,
+				4B5920A81F3F637E00B190C0 /* MarklightTextProcessor.swift */,
+				4B5920A91F3F637E00B190C0 /* MarklightTextStorage.swift */,
+				4B5920AA1F3F637E00B190C0 /* NSString+paragraphRangeAt.swift */,
+				4B5920AB1F3F637E00B190C0 /* UniversalTypes.swift */,
+			);
+			name = Marklight;
+			sourceTree = "<group>";
+		};
 		4B87147D1E64D05700C69589 /* CTidy */ = {
 			isa = PBXGroup;
 			children = (
@@ -759,6 +792,7 @@
 		4BA2C99D1B2109E10038C0E5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4B5920A21F3F630200B190C0 /* Marklight */,
 				4B1712D51F05BEF100267045 /* SloppySwiping */,
 				C5CED6B71ECF792E0068F537 /* VividFilters */,
 				4B12BAEB1E9FBFC5000E559F /* 1Password */,
@@ -1063,6 +1097,7 @@
 				4B8714CF1E64D05700C69589 /* tags.c in Sources */,
 				4B8714B91E64D05700C69589 /* CTidy.m in Sources */,
 				C5CED7191ECF792E0068F537 /* YUCISurfaceBlur.m in Sources */,
+				4B5920B31F3F637E00B190C0 /* UniversalTypes.swift in Sources */,
 				4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */,
 				4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */,
 				4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */,
@@ -1078,6 +1113,7 @@
 				4B46632B1B8F51710034FC5C /* CMarkupTransformer.m in Sources */,
 				4B8714D01E64D05700C69589 /* tidylib.c in Sources */,
 				4B8714BC1E64D05700C69589 /* attrask.c in Sources */,
+				4B5920B11F3F637E00B190C0 /* MarklightTextStorage.swift in Sources */,
 				4B1712DB1F069FB200267045 /* RFMenuView.m in Sources */,
 				C5CED7061ECF792E0068F537 /* YUCIFXAA.m in Sources */,
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
@@ -1101,6 +1137,7 @@
 				4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */,
 				4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */,
 				C5CED7041ECF792E0068F537 /* YUCIFlashTransition.m in Sources */,
+				4B5920B21F3F637E00B190C0 /* NSString+paragraphRangeAt.swift in Sources */,
 				4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */,
 				4B8714C71E64D05700C69589 /* istack.c in Sources */,
 				4B8714BB1E64D05700C69589 /* alloc.c in Sources */,
@@ -1122,6 +1159,7 @@
 				4B1D74FC1B95ECF4004A0ACD /* RFXMLElementStack.m in Sources */,
 				4BF8034E1B87AA2C00D6670C /* UUString.m in Sources */,
 				4BF8034A1B87AA2C00D6670C /* UUHttpResponseHandler.m in Sources */,
+				4B5920AF1F3F637E00B190C0 /* MarklightTextProcessingResult.swift in Sources */,
 				4BF123FD1E88302B00B56138 /* RFFilterCell.m in Sources */,
 				C5CED6FC1ECF792E0068F537 /* YUCIColorLookup.m in Sources */,
 				4BA910981B84077000D58F83 /* UIBarButtonItem+Extras.m in Sources */,
@@ -1143,16 +1181,19 @@
 				4B8714CB1E64D05700C69589 /* parser.c in Sources */,
 				C5CED6F61ECF792E0068F537 /* YUCIBilateralFilter.m in Sources */,
 				4B8714CD1E64D05700C69589 /* streamio.c in Sources */,
+				4B5920B01F3F637E00B190C0 /* MarklightTextProcessor.swift in Sources */,
 				4BA2C9A61B210C0E0038C0E5 /* RFAppDelegate.m in Sources */,
 				4BA910821B83D20C00D58F83 /* RFPostController.m in Sources */,
 				4BF803511B87AACF00D6670C /* RFClient.m in Sources */,
 				4B0D55551B93B3590076AD9F /* RFWordpressController.m in Sources */,
 				4B8714C81E64D05700C69589 /* lexer.c in Sources */,
+				4B5920AE1F3F637E00B190C0 /* MarklightStyleApplier.swift in Sources */,
 				4BF803441B87AA2C00D6670C /* UUActionSheet.m in Sources */,
 				4BF8034B1B87AA2C00D6670C /* UUHttpSession.m in Sources */,
 				C5CED7171ECF792E0068F537 /* YUCIStarfieldGenerator.m in Sources */,
 				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
 				C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */,
+				4B5920AD1F3F637E00B190C0 /* Marklight.swift in Sources */,
 				4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */,
 				4B8714D31E64D05700C69589 /* win32tc.c in Sources */,
 				C5CED7091ECF792E0068F537 /* YUCIHighPass.m in Sources */,
@@ -1165,6 +1206,7 @@
 				C5CED7101ECF792E0068F537 /* YUCIReflectedTileROICalculator.m in Sources */,
 				C5CED7131ECF792E0068F537 /* YUCIRGBToneCurve.m in Sources */,
 				4B8714C21E64D05700C69589 /* clean.c in Sources */,
+				4B5920AC1F3F637E00B190C0 /* Array+appending.swift in Sources */,
 				4B9A7BA71E82F107002A49E5 /* RFPhotoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

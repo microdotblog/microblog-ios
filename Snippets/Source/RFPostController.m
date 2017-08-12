@@ -24,6 +24,7 @@
 #import "UUAlert.h"
 #import "UUString.h"
 #import "SSKeychain.h"
+#import "Microblog-Swift.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -113,6 +114,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	self.textView.text = s;
 
 	[self updateRemainingChars];
+	
+	self.textStorage = [[MarklightTextStorage alloc] init];
+	[self.textStorage addLayoutManager:self.textView.layoutManager];
 }
 
 - (void) setupNotifications
