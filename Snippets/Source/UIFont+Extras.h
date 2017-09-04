@@ -11,5 +11,7 @@
 @interface UIFont (Extras)
 
 + (CGFloat) rf_preferredTimelineFontSize;
++ (CGFloat) rf_preferredPostingFontSize;
+
 
 @end

@@ -99,9 +99,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupFont
 {
-	CGFloat scale = 1.1;
-	CGFloat fontsize = [UIFont rf_preferredTimelineFontSize] * scale;
-	self.textView.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
+	self.textView.font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
 }
 
 - (void) setupText
