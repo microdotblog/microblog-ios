@@ -205,10 +205,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	UIImage* img = [notification.userInfo objectForKey:kAttachPhotoKey];
 	RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:img];
 	NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
-	if (YES) {
-		// only 1 for now
-		[new_photos removeAllObjects];
-	}
 	[new_photos addObject:photo];
 	self.attachedPhotos = new_photos;
 	[self.collectionView reloadData];
@@ -272,20 +268,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	self.photoButton.hidden = YES;
 
 	if (self.attachedPhotos.count > 0) {
-		RFPhoto* photo = [self.attachedPhotos firstObject];
-		CGSize sz = photo.thumbnailImage.size;
-		[self uploadPhoto:photo completion:^{
-			NSString* s = self.textView.text;
-			
-			if ([self prefersExternalBlog]) {
-				if (s.length > 0) {
-					s = [s stringByAppendingString:@"\n\n"];
-				}
-				s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" style=\"height: auto\" />", photo.publishedURL, 600.0, 600.0];
-			}
-			
-			[self uploadText:s];
-		}];
+		self.queuedPhotos = [self.attachedPhotos copy];
+		[self uploadNextPhoto];
 	}
 	else {
 		[self uploadText:self.textView.text];
@@ -364,10 +348,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
 			NSDictionary* args;
 			if ([self.attachedPhotos count] > 0) {
-				RFPhoto* photo = [self.attachedPhotos firstObject];
+				NSMutableArray* photo_urls = [NSMutableArray array];
+				for (RFPhoto* photo in self.attachedPhotos) {
+					[photo_urls addObject:photo.publishedURL];
+				}
+				
 				args = @{
 					@"content": text,
-					@"photo": photo.publishedURL
+					@"photo[]": photo_urls
 				};
 			}
 			else {
@@ -395,11 +383,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			RFMicropub* client = [[RFMicropub alloc] initWithURL:micropub_endpoint];
 			NSDictionary* args;
 			if ([self.attachedPhotos count] > 0) {
-				RFPhoto* photo = [self.attachedPhotos firstObject];
+				NSMutableArray* photo_urls = [NSMutableArray array];
+				for (RFPhoto* photo in self.attachedPhotos) {
+					[photo_urls addObject:photo.publishedURL];
+				}
+
 				args = @{
 					@"h": @"entry",
 					@"content": text,
-					@"photo": photo.publishedURL
+					@"photo[]": photo_urls
 				};
 			}
 			else {
@@ -475,9 +467,43 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 }
 
+- (void) uploadNextPhoto
+{
+	RFPhoto* photo = [self.queuedPhotos firstObject];
+	if (photo) {
+		NSMutableArray* new_photos = [self.queuedPhotos mutableCopy];
+		[new_photos removeObjectAtIndex:0];
+		self.queuedPhotos = new_photos;
+		
+		[self uploadPhoto:photo completion:^{
+			[self uploadNextPhoto];
+		}];
+	}
+	else {
+		NSString* s = self.textView.text;
+		
+		if ([self prefersExternalBlog]) {
+			if (s.length > 0) {
+				s = [s stringByAppendingString:@"\n\n"];
+			}
+			
+			for (RFPhoto* photo in self.attachedPhotos) {
+				s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" />", photo.publishedURL, 600.0, 600.0];
+			}
+		}
+
+		[self uploadText:s];
+	}
+}
+
 - (void) uploadPhoto:(RFPhoto *)photo completion:(void (^)())handler
 {
-	[self showProgressHeader:@"Uploading photo..."];
+	if (self.attachedPhotos.count > 0) {
+		[self showProgressHeader:@"Uploading photos..."];
+	}
+	else {
+		[self showProgressHeader:@"Uploading photo..."];
+	}
 	
 	UIImage* img = photo.thumbnailImage;
 	NSData* d = UIImageJPEGRepresentation (img, 0.6);

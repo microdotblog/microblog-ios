@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSString* replyPostID;
 @property (strong, nonatomic) NSString* replyUsername;
 @property (strong, nonatomic) NSArray* attachedPhotos; // RFPhoto
+@property (strong, nonatomic) NSArray* queuedPhotos; // RFPhoto
 @property (strong, nonatomic) id textStorage;
 
 - (instancetype) initWithReplyTo:(NSString *)postID replyUsername:(NSString *)username;
