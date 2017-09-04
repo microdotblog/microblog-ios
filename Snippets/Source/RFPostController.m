@@ -17,6 +17,7 @@
 #import "RFConstants.h"
 #import "RFXMLRPCParser.h"
 #import "RFXMLRPCRequest.h"
+#import "RFHighlightingTextStorage.h"
 #import "UIBarButtonItem+Extras.h"
 #import "NSString+Extras.h"
 #import "UILabel+MarkupExtensions.h"
@@ -107,16 +108,19 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[self setupFont];
 
+	self.textStorage = [[RFHighlightingTextStorage alloc] init];
+
 	NSString* s = @"";
 	if (self.replyUsername) {
 		s = [NSString stringWithFormat:@"@%@ ", self.replyUsername];
 	}
-	self.textView.text = s;
+	NSAttributedString* attr_s = [[NSAttributedString alloc] initWithString:s];
+	self.textView.attributedText = attr_s;
+
+	[self.textStorage appendAttributedString:attr_s];
+	[self.textStorage addLayoutManager:self.textView.layoutManager];
 
 	[self updateRemainingChars];
-	
-	self.textStorage = [[MarklightTextStorage alloc] init];
-	[self.textStorage addLayoutManager:self.textView.layoutManager];
 }
 
 - (void) setupNotifications
