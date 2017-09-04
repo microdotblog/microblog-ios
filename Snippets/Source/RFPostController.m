@@ -182,10 +182,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 #pragma mark -
 
+- (NSString *) currentText
+{
+//	return self.textView.text
+	return [self.textStorage string];
+}
+
 - (void) updateRemainingChars
 {
 	NSInteger max_chars = 280;
-	NSInteger num_chars = self.textView.text.length;
+	NSInteger num_chars = [self currentText].length;
 	NSInteger num_remaining = max_chars - num_chars;
 	if (num_chars <= 140) {
 		[self.remainingField setMarkup:[NSString stringWithFormat:@"<font color=\"#428BCA\">%ld</font>/%ld", (long)num_chars, (long)max_chars]];
@@ -272,7 +278,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[self uploadNextPhoto];
 	}
 	else {
-		[self uploadText:self.textView.text];
+		[self uploadText:[self currentText]];
 	}
 }
 
@@ -480,7 +486,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		}];
 	}
 	else {
-		NSString* s = self.textView.text;
+		NSString* s = [self currentText];
 		
 		if ([self prefersExternalBlog]) {
 			if (s.length > 0) {
