@@ -59,6 +59,7 @@
 		if ((i + 1) < self.string.length) {
 			next_c = [self.string characterAtIndex:i + 1];
 		}
+
 		if ((c == '*') && (next_c == '*')) {
 			if (!is_bold) {
 				is_bold = YES;
@@ -83,6 +84,7 @@
 	UIFont* italic_font = [UIFont fontWithName:@"Avenir-Oblique" size:[UIFont rf_preferredPostingFontSize]];
 	NSRange current_r = NSMakeRange (0, 0);
 	BOOL is_italic = NO;
+	
 	for (NSInteger i = 0; i < self.string.length; i++) {
 		unichar c = [self.string characterAtIndex:i];
 		if (c == '_') {
@@ -104,6 +106,67 @@
 	}
 }
 
+- (void) processLinks
+{
+	UIColor* title_c = [UIColor colorWithRed:0.2 green:0.478 blue:0.718 alpha:1.0];
+	UIColor* url_c = [UIColor colorWithWhite:0.502 alpha:1.0];
+	
+	NSRange current_r = NSMakeRange (0, 0);
+	BOOL is_title = NO;
+	BOOL is_url = NO;
+	BOOL is_inbetween = NO;
+	
+	for (NSInteger i = 0; i < self.string.length; i++) {
+		unichar c = [self.string characterAtIndex:i];
+		unichar next_c = '\0';
+		if ((i + 1) < self.string.length) {
+			next_c = [self.string characterAtIndex:i + 1];
+		}
+
+		if (c == '[') {
+			if (!is_title) {
+				is_title = YES;
+				current_r.location = i;
+			}
+		}
+		else if (c == ']') {
+			if (is_title) {
+				is_title = NO;
+				current_r.length = i - current_r.location + 1;
+				[self addAttribute:NSForegroundColorAttributeName value:title_c range:current_r];
+				
+				if (next_c == '(') {
+					is_inbetween = YES;
+				}
+			}
+		}
+		else if (c == '(') {
+			if (is_inbetween && !is_url) {
+				is_url = YES;
+				current_r.location = i;
+			}
+			
+			is_inbetween = NO;
+		}
+		else if (c == ')') {
+			if (is_url) {
+				is_url = NO;
+				current_r.length = i - current_r.location + 1;
+				[self addAttribute:NSForegroundColorAttributeName value:url_c range:current_r];
+			}
+		}
+	}
+	
+	if (is_title) {
+		current_r.length = self.string.length - current_r.location;
+		[self addAttribute:NSForegroundColorAttributeName value:title_c range:current_r];
+	}
+	else if (is_url) {
+		current_r.length = self.string.length - current_r.location;
+		[self addAttribute:NSForegroundColorAttributeName value:url_c range:current_r];
+	}
+}
+
 - (void) processEditing
 {
 	// clear fonts and color
@@ -114,6 +177,7 @@
 
 	[self processBold];
 	[self processItalic];
+	[self processLinks];
 
 #if 0
 	// Regular expression matching all iWords -- first character i, followed by an uppercase alphabetic character, followed by at least one other character. Matches words like iPod, iPhone, etc.
