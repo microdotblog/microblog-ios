@@ -282,8 +282,12 @@
 
 - (void) handleBlogAddressTapped:(id)sender
 {
-	SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:self.pathToBlog]];
-	[self presentViewController:safari_controller animated:YES completion:NULL];
+	@try {
+		SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:self.pathToBlog]];
+		[self presentViewController:safari_controller animated:YES completion:NULL];
+	}
+	@catch (NSException* e) {
+	}
 }
 
 - (NSInteger) fullSizeOfBio
