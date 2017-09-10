@@ -201,6 +201,49 @@
 	}
 }
 
+- (void) processHeaders
+{
+	UIFont* header_font = [UIFont fontWithName:@"Avenir-Heavy" size:[UIFont rf_preferredPostingFontSize]];
+	UIColor* header_c = [UIColor blueColor];
+	NSRange current_r = NSMakeRange (0, 0);
+	BOOL is_header = NO;
+	
+	for (NSInteger i = 0; i < self.string.length; i++) {
+		unichar c = [self.string characterAtIndex:i];
+		unichar next_c = '\0';
+		if ((i + 1) < self.string.length) {
+			next_c = [self.string characterAtIndex:i + 1];
+		}
+
+		if ((c == '\n') && (next_c == '#')) {
+			if (!is_header) {
+				is_header = YES;
+				current_r.location = i + 1;
+			}
+		}
+		else if ((i == 0) && (c == '#')) {
+			if (!is_header) {
+				is_header = YES;
+				current_r.location = i;
+			}
+		}
+		else if (c == '\n') {
+			if (is_header) {
+				is_header = NO;
+				current_r.length = i - current_r.location;
+				[self addAttribute:NSFontAttributeName value:header_font range:current_r];
+				[self addAttribute:NSForegroundColorAttributeName value:header_c range:current_r];
+			}
+		}
+	}
+	
+	if (is_header) {
+		current_r.length = self.string.length - current_r.location;
+		[self addAttribute:NSFontAttributeName value:header_font range:current_r];
+		[self addAttribute:NSForegroundColorAttributeName value:header_c range:current_r];
+	}
+}
+
 - (void) processEditing
 {
 	// clear fonts and color
@@ -214,6 +257,7 @@
 	[self processItalic];
 	[self processBlockquote];
 	[self processLinks];
+	[self processHeaders];
 
 	// call super after, as it finalizes the attributes and calls the delegate methods
 	[super processEditing];
