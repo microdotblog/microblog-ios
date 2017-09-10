@@ -106,6 +106,40 @@
 	}
 }
 
+- (void) processBlockquote
+{
+	UIColor* blockquote_c = [UIColor colorWithRed:0.0 green:0.598 blue:0.004 alpha:1.0];
+	NSRange current_r = NSMakeRange (0, 0);
+	BOOL is_blockquote = NO;
+	
+	for (NSInteger i = 0; i < self.string.length; i++) {
+		unichar c = [self.string characterAtIndex:i];
+		unichar next_c = '\0';
+		if ((i + 1) < self.string.length) {
+			next_c = [self.string characterAtIndex:i + 1];
+		}
+
+		if (c == '>') {
+			if (!is_blockquote) {
+				is_blockquote = YES;
+				current_r.location = i;
+			}
+		}
+		else if ((c == '\n') && (next_c == '\n')) {
+			if (is_blockquote) {
+				is_blockquote = NO;
+				current_r.length = i - current_r.location;
+				[self addAttribute:NSForegroundColorAttributeName value:blockquote_c range:current_r];
+			}
+		}
+	}
+	
+	if (is_blockquote) {
+		current_r.length = self.string.length - current_r.location;
+		[self addAttribute:NSForegroundColorAttributeName value:blockquote_c range:current_r];
+	}
+}
+
 - (void) processLinks
 {
 	UIColor* title_c = [UIColor colorWithRed:0.2 green:0.478 blue:0.718 alpha:1.0];
@@ -170,28 +204,18 @@
 - (void) processEditing
 {
 	// clear fonts and color
-	NSRange paragraph_r = [self.string paragraphRangeForRange:self.editedRange];
+	NSRange paragraph_r = NSMakeRange (0, self.string.length);
 	UIFont* normal_font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
 	[self addAttribute:NSFontAttributeName value:normal_font range:paragraph_r];
 	[self removeAttribute:NSForegroundColorAttributeName range:paragraph_r];
 
+	// update style ranges
 	[self processBold];
 	[self processItalic];
+	[self processBlockquote];
 	[self processLinks];
 
-#if 0
-	// Regular expression matching all iWords -- first character i, followed by an uppercase alphabetic character, followed by at least one other character. Matches words like iPod, iPhone, etc.
-	static NSRegularExpression *iExpression;
-	iExpression = iExpression ?: [NSRegularExpression regularExpressionWithPattern:@"i[\\p{Alphabetic}&&\\p{Uppercase}][\\p{Alphabetic}]+" options:0 error:NULL];
-
-	// Find all iWords in range
-	[iExpression enumerateMatchesInString:self.string options:0 range:paragaphRange usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-		// Add red highlight color
-		[self addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:result.range];
-	}];
-#endif
-
-	// Call super *after* changing the attrbutes, as it finalizes the attributes and calls the delegate methods.
+	// call super after, as it finalizes the attributes and calls the delegate methods
 	[super processEditing];
 }
 
