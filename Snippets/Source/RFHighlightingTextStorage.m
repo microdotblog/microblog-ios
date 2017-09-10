@@ -201,6 +201,41 @@
 	}
 }
 
+- (void) processUsernames
+{
+	UIColor* username_c = [UIColor colorWithWhite:0.502 alpha:1.0];
+	
+	NSRange current_r = NSMakeRange (0, 0);
+	BOOL is_username = NO;
+	
+	for (NSInteger i = 0; i < self.string.length; i++) {
+		unichar c = [self.string characterAtIndex:i];
+		unichar next_c = '\0';
+		if ((i + 1) < self.string.length) {
+			next_c = [self.string characterAtIndex:i + 1];
+		}
+
+		if ((c == '@') && isalpha (next_c)) {
+			if (!is_username) {
+				is_username = YES;
+				current_r.location = i;
+			}
+		}
+		else if (!isalnum (c)) {
+			if (is_username) {
+				is_username = NO;
+				current_r.length = i - current_r.location;
+				[self addAttribute:NSForegroundColorAttributeName value:username_c range:current_r];
+			}
+		}
+	}
+	
+	if (is_username) {
+		current_r.length = self.string.length - current_r.location;
+		[self addAttribute:NSForegroundColorAttributeName value:username_c range:current_r];
+	}
+}
+
 - (void) processHeaders
 {
 	UIFont* header_font = [UIFont fontWithName:@"Avenir-Heavy" size:[UIFont rf_preferredPostingFontSize]];
@@ -257,6 +292,7 @@
 	[self processItalic];
 	[self processBlockquote];
 	[self processLinks];
+	[self processUsernames];
 	[self processHeaders];
 
 	// call super after, as it finalizes the attributes and calls the delegate methods
