@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIView* editingBar;
 @property (strong, nonatomic) IBOutlet UIButton* markdownBoldButton;
 @property (strong, nonatomic) IBOutlet UIButton* markdownItalicsButton;
+@property (strong, nonatomic) IBOutlet UIButton* markdownLinkButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* photoButtonLeftConstraint;
 
 @property (assign, nonatomic) BOOL isReply;

@@ -159,6 +159,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.photoButton setBackgroundImage:img forState:UIControlStateNormal];
 	[self.markdownBoldButton setBackgroundImage:img forState:UIControlStateNormal];
 	[self.markdownItalicsButton setBackgroundImage:img forState:UIControlStateNormal];
+	[self.markdownLinkButton setBackgroundImage:img forState:UIControlStateNormal];
 
 	if (self.isReply) {
 		self.photoButtonLeftConstraint.constant = -34;
@@ -293,16 +294,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[[NSNotificationCenter defaultCenter] postNotificationName:kClosePostingNotification object:self];
 }
 
-- (IBAction) boldPressed:(id)sender
-{
-	[self replaceSelectionBySurrounding:@"**"];
-}
-
-- (IBAction) italicsPressed:(id)sender
-{
-	[self replaceSelectionBySurrounding:@"_"];
-}
-
 - (IBAction) showPhotos:(id)sender
 {
 	self.navigationItem.rightBarButtonItem = nil;
@@ -318,15 +309,43 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self checkMediaEndpoint];
 }
 
-- (void) replaceSelectionBySurrounding:(NSString *)markup
+- (IBAction) boldPressed:(id)sender
+{
+	[self replaceSelectionBySurrounding:@[ @"**", @"**" ]];
+}
+
+- (IBAction) italicsPressed:(id)sender
+{
+	[self replaceSelectionBySurrounding:@[ @"_", @"_" ]];
+}
+
+- (IBAction) linkPressed:(id)sender
+{
+	NSRange r;
+	UITextRange* text_r = self.textView.selectedTextRange;
+	if ([text_r isEmpty]) {
+		[self.textView insertText:@"[]()"];
+		r = self.textView.selectedRange;
+		r.location = r.location - 3;
+		self.textView.selectedRange = r;
+	}
+	else {
+		[self replaceSelectionBySurrounding:@[ @"[", @"]()" ]];
+		r = self.textView.selectedRange;
+		r.location = r.location - 1;
+		self.textView.selectedRange = r;
+	}
+}
+
+- (void) replaceSelectionBySurrounding:(NSArray *)markup
 {
 	UITextRange* r = self.textView.selectedTextRange;
 	if ([r isEmpty]) {
-		[self.textView insertText:markup];
+		[self.textView insertText:[markup firstObject]];
 	}
 	else {
 		NSString* s = [self.textView textInRange:r];
-		NSString* new_s = [NSString stringWithFormat:@"%@%@%@", markup, s, markup];
+		NSString* new_s = [NSString stringWithFormat:@"%@%@%@", [markup firstObject], s, [markup lastObject]];
 		[self.textView replaceRange:r withText:new_s];
 	}
 }
