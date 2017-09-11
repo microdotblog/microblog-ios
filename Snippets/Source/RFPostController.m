@@ -161,10 +161,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.markdownItalicsButton setBackgroundImage:img forState:UIControlStateNormal];
 
 	if (self.isReply) {
-		// TODO: collapse so photo button is offscreen
-		// ...
-		
-		self.photoButton.hidden = YES;
+		self.photoButtonLeftConstraint.constant = -34;
 	}
 }
 
