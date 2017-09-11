@@ -288,6 +288,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[UIView animateWithDuration:0.3 animations:^{
 		[self updateTitleHeader];
 		[self.view layoutIfNeeded];
+	} completion:^(BOOL finished) {
+		if ([[self.textStorage string] length] <= 280) {
+			self.titleField.text = @"";
+			[self updateRemainingChars];
+		}
 	}];
 }
 
@@ -440,12 +445,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				}
 				
 				args = @{
+					@"name": self.titleField.text,
 					@"content": text,
 					@"photo[]": photo_urls
 				};
 			}
 			else {
 				args = @{
+					@"name": self.titleField.text,
 					@"content": text
 				};
 			}
@@ -476,6 +483,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 				args = @{
 					@"h": @"entry",
+					@"name": self.titleField.text,
 					@"content": text,
 					@"photo[]": photo_urls
 				};
@@ -483,6 +491,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			else {
 				args = @{
 					@"h": @"entry",
+					@"name": self.titleField.text,
 					@"content": text
 				};
 			}
@@ -515,6 +524,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				NSMutableDictionary* content = [NSMutableDictionary dictionary];
 				
 				content[@"post_status"] = @"publish";
+				content[@"post_title"] = self.titleField.text;
 				content[@"post_content"] = post_text;
 				if (post_format.length > 0) {
 					content[@"post_format"] = post_format;
