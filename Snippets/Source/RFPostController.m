@@ -68,6 +68,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self setupBlogName];
 	[self setupEditingButtons];
 	[self setupCollectionView];
+	
+	[self updateTitleHeader];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -171,6 +173,18 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCell" bundle:nil] forCellWithReuseIdentifier:kPhotoCellIdentifier];
 }
 
+- (void) updateTitleHeader
+{
+	if (!self.isReply && ([[self.textStorage string] length] > 280)) {
+		self.titleHeaderHeightConstraint.constant = 44;
+	}
+	else {
+		self.titleHeaderHeightConstraint.constant = 0;
+	}
+}
+
+#pragma mark -
+
 - (BOOL) canBecomeFirstResponder
 {
 	return YES;
@@ -197,6 +211,13 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) updateRemainingChars
 {
+	if (!self.isReply && self.titleField.text.length > 0) {
+		self.remainingField.hidden = YES;
+	}
+	else {
+		self.remainingField.hidden = NO;
+	}
+
 	NSInteger max_chars = 280;
 	NSInteger num_chars = [self currentText].length;
 	NSInteger num_remaining = max_chars - num_chars;
@@ -254,9 +275,19 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self setupFont];
 }
 
+- (IBAction) textFieldDidChange:(id)sender
+{
+	[self updateRemainingChars];
+}
+
 - (void) textViewDidChange:(UITextView *)textView
 {
 	[self updateRemainingChars];
+	
+	[UIView animateWithDuration:0.3 animations:^{
+		[self updateTitleHeader];
+		[self.view layoutIfNeeded];
+	}];
 }
 
 - (BOOL) hasSnippetsBlog
