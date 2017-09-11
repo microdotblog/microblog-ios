@@ -21,6 +21,9 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* progressHeaderHeightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* progressHeaderTopConstraint;
 @property (strong, nonatomic) IBOutlet UILabel* progressHeaderField;
+@property (strong, nonatomic) IBOutlet UIView* editingBar;
+@property (strong, nonatomic) IBOutlet UIButton* markdownBoldButton;
+@property (strong, nonatomic) IBOutlet UIButton* markdownItalicsButton;
 
 @property (assign, nonatomic) BOOL isReply;
 @property (strong, nonatomic) NSString* replyPostID;

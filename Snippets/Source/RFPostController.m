@@ -24,6 +24,7 @@
 #import "UIFont+Extras.h"
 #import "UUAlert.h"
 #import "UUString.h"
+#import "UUImage.h"
 #import "SSKeychain.h"
 #import "Microblog-Swift.h"
 #import <Fabric/Fabric.h>
@@ -65,7 +66,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self setupText];
 	[self setupNotifications];
 	[self setupBlogName];
-	[self setupPhotosButton];
+	[self setupEditingButtons];
 	[self setupCollectionView];
 }
 
@@ -152,9 +153,17 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 }
 
-- (void) setupPhotosButton
+- (void) setupEditingButtons
 {
+	UIImage* img = [UIImage uuSolidColorImage:self.editingBar.backgroundColor];
+	[self.photoButton setBackgroundImage:img forState:UIControlStateNormal];
+	[self.markdownBoldButton setBackgroundImage:img forState:UIControlStateNormal];
+	[self.markdownItalicsButton setBackgroundImage:img forState:UIControlStateNormal];
+
 	if (self.isReply) {
+		// TODO: collapse so photo button is offscreen
+		// ...
+		
 		self.photoButton.hidden = YES;
 	}
 }
@@ -287,6 +296,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[[NSNotificationCenter defaultCenter] postNotificationName:kClosePostingNotification object:self];
 }
 
+- (IBAction) boldPressed:(id)sender
+{
+	[self replaceSelectionBySurrounding:@"**"];
+}
+
+- (IBAction) italicsPressed:(id)sender
+{
+	[self replaceSelectionBySurrounding:@"_"];
+}
+
 - (IBAction) showPhotos:(id)sender
 {
 	self.navigationItem.rightBarButtonItem = nil;
@@ -300,6 +319,19 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	
 	[self presentViewController:nav_controller animated:YES completion:NULL];
 	[self checkMediaEndpoint];
+}
+
+- (void) replaceSelectionBySurrounding:(NSString *)markup
+{
+	UITextRange* r = self.textView.selectedTextRange;
+	if ([r isEmpty]) {
+		[self.textView insertText:markup];
+	}
+	else {
+		NSString* s = [self.textView textInRange:r];
+		NSString* new_s = [NSString stringWithFormat:@"%@%@%@", markup, s, markup];
+		[self.textView replaceRange:r withText:new_s];
+	}
 }
 
 - (void) checkMediaEndpoint
