@@ -93,7 +93,7 @@
                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
-                                        <action selector="textFieldDidChange:" destination="-1" eventType="editingDidEnd" id="Kiu-wn-DXg"/>
+                                        <outlet property="delegate" destination="-1" id="kCa-Hw-xE9"/>
                                     </connections>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lT8-aw-Eq7" customClass="RFBottomLineView">

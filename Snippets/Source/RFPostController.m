@@ -275,9 +275,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self setupFont];
 }
 
-- (IBAction) textFieldDidChange:(id)sender
+- (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-	[self updateRemainingChars];
+	[self performSelector:@selector(updateRemainingChars) withObject:nil afterDelay:0.1];
+	return YES;
 }
 
 - (void) textViewDidChange:(UITextView *)textView
