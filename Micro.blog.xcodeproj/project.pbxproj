@@ -121,6 +121,7 @@
 		4BF8034E1B87AA2C00D6670C /* UUString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803431B87AA2C00D6670C /* UUString.m */; };
 		4BF803511B87AACF00D6670C /* RFClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803501B87AACF00D6670C /* RFClient.m */; };
 		4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8035A1B8898D900D6670C /* RFThinLineView.m */; };
+		4BF870651F679070005C9849 /* RFBrowserActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF870641F679070005C9849 /* RFBrowserActivity.m */; };
 		C5666B631F23C95F00AE13DC /* User.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5666B611F23C95F00AE13DC /* User.xib */; };
 		C5CED6F51ECF792E0068F537 /* YUCIBilateralFilter.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */; };
 		C5CED6F61ECF792E0068F537 /* YUCIBilateralFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */; };
@@ -384,6 +385,8 @@
 		4BF803521B87ADF900D6670C /* RFMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFMacros.h; path = Source/RFMacros.h; sourceTree = "<group>"; };
 		4BF803591B8898D900D6670C /* RFThinLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFThinLineView.h; path = Source/RFThinLineView.h; sourceTree = "<group>"; };
 		4BF8035A1B8898D900D6670C /* RFThinLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFThinLineView.m; path = Source/RFThinLineView.m; sourceTree = "<group>"; };
+		4BF870631F679070005C9849 /* RFBrowserActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFBrowserActivity.h; path = Source/RFBrowserActivity.h; sourceTree = "<group>"; };
+		4BF870641F679070005C9849 /* RFBrowserActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFBrowserActivity.m; path = Source/RFBrowserActivity.m; sourceTree = "<group>"; };
 		C5666B621F23C95F00AE13DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/User.xib; sourceTree = "<group>"; };
 		C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIBilateralFilter.cikernel; sourceTree = "<group>"; };
 		C5CED6B91ECF792E0068F537 /* YUCIBilateralFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIBilateralFilter.h; sourceTree = "<group>"; };
@@ -660,6 +663,8 @@
 				4BA910751B83CDC400D58F83 /* RFMenuController.m */,
 				4BA2C9A11B210A9A0038C0E5 /* RFTimelineController.h */,
 				4BA2C9A21B210A9A0038C0E5 /* RFTimelineController.m */,
+				4BF870631F679070005C9849 /* RFBrowserActivity.h */,
+				4BF870641F679070005C9849 /* RFBrowserActivity.m */,
 				4B27AA8B1EB3F18D00CC3F3A /* RFDiscoverController.h */,
 				4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */,
 				4B4D9B531ED520F800315BBA /* RFFeaturedPhoto.h */,
@@ -1080,6 +1085,7 @@
 				4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */,
 				4B4D9B5B1ED521BB00315BBA /* RFFeaturedPhotoCell.m in Sources */,
 				4B8714C61E64D05700C69589 /* iconvtc.c in Sources */,
+				4BF870651F679070005C9849 /* RFBrowserActivity.m in Sources */,
 				4B46632B1B8F51710034FC5C /* CMarkupTransformer.m in Sources */,
 				4B8714D01E64D05700C69589 /* tidylib.c in Sources */,
 				4B8714BC1E64D05700C69589 /* attrask.c in Sources */,

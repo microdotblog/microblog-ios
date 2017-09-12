@@ -16,6 +16,7 @@
 #import "RFOptionsController.h"
 #import "RFClient.h"
 #import "RFMicropub.h"
+#import "RFBrowserActivity.h"
 #import "RFConstants.h"
 #import "RFMacros.h"
 #import "SSKeychain.h"
@@ -24,6 +25,7 @@
 #import "NSString+Extras.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <SafariServices/SafariServices.h>
 #import "Microblog-Swift.h"
 
 @implementation RFAppDelegate
@@ -230,6 +232,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postWasUnselectedNotification:) name:kPostWasUnselectedNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetDetailNotification:) name:kResetDetailNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePostingNotification:) name:kClosePostingNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openURLNotification:) name:kOpenURLNotification object:nil];
 }
 
 - (void) setupShortcuts
@@ -307,6 +310,13 @@
 	[[self activeNavigationController] dismissViewControllerAnimated:YES completion:NULL];
 }
 
+- (void) openURLNotification:(NSNotification *)notification
+{
+	NSURL* url = [notification.userInfo objectForKey:kOpenURLKey];
+	SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:url];
+	[[self activeNavigationController] presentViewController:safari_controller animated:YES completion:NULL];
+}
+
 - (UINavigationController *) activeNavigationController
 {
 	if ([self.splitViewController isCollapsed]) {
@@ -339,7 +349,8 @@
 		CGRect r = [timeline_controller rectOfPostID:postID];
 		NSString* link = [timeline_controller linkOfPostID:postID];
 		NSURL* url = [NSURL URLWithString:link];
-		UIActivityViewController* activity_controller = [[UIActivityViewController alloc] initWithActivityItems:@[ url ] applicationActivities:nil];
+		UIActivity* browser_activity = [[RFBrowserActivity alloc] init];
+		UIActivityViewController* activity_controller = [[UIActivityViewController alloc] initWithActivityItems:@[ url ] applicationActivities:@[ browser_activity ]];
 		activity_controller.popoverPresentationController.sourceView = timeline_controller.view;
 		activity_controller.popoverPresentationController.sourceRect = r;
 		[[self activeNavigationController] presentViewController:activity_controller animated:YES completion:NULL];
