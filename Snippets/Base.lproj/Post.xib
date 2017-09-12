@@ -25,6 +25,7 @@
                 <outlet property="markdownItalicsButton" destination="1Gl-6r-27N" id="JcZ-oe-ROS"/>
                 <outlet property="markdownLinkButton" destination="6of-5U-PI0" id="OrL-yS-8dQ"/>
                 <outlet property="networkSpinner" destination="cIP-sn-flb" id="cxi-PB-pWl"/>
+                <outlet property="photoBarHeightConstraint" destination="1h0-9I-T6F" id="pnJ-t0-o8O"/>
                 <outlet property="photoButton" destination="7vZ-FK-rFO" id="bbx-vS-8JK"/>
                 <outlet property="photoButtonLeftConstraint" destination="tP2-jP-ApP" id="tfc-Ij-7Uv"/>
                 <outlet property="progressHeaderField" destination="vuZ-E2-gY3" id="Np2-MF-VZB"/>

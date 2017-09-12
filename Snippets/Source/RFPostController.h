@@ -28,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIButton* markdownItalicsButton;
 @property (strong, nonatomic) IBOutlet UIButton* markdownLinkButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* photoButtonLeftConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* photoBarHeightConstraint;
 
 @property (assign, nonatomic) BOOL isReply;
 @property (strong, nonatomic) NSString* replyPostID;

@@ -171,6 +171,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) setupCollectionView
 {
 	[self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCell" bundle:nil] forCellWithReuseIdentifier:kPhotoCellIdentifier];
+	self.photoBarHeightConstraint.constant = 0;
 }
 
 - (void) updateTitleHeader
@@ -243,7 +244,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	self.attachedPhotos = new_photos;
 	[self.collectionView reloadData];
 	
-	[self dismissViewControllerAnimated:YES completion:NULL];
+	[self dismissViewControllerAnimated:YES completion:^{
+		[UIView animateWithDuration:0.3 animations:^{
+			self.photoBarHeightConstraint.constant = 60;
+			[self.view layoutIfNeeded];
+		} completion:^(BOOL finished) {
+			[self.collectionView reloadData];
+		}];
+	}];
 }
 
 - (void) photosDidCloseNotification:(NSNotification *)notification
@@ -745,6 +753,13 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[new_photos removeObjectAtIndex:indexPath.item];
 	self.attachedPhotos = new_photos;
 	[self.collectionView deleteItemsAtIndexPaths:@[ indexPath ]];
+
+	if (self.attachedPhotos.count == 0) {
+		[UIView animateWithDuration:0.3 animations:^{
+			self.photoBarHeightConstraint.constant = 0;
+			[self.view layoutIfNeeded];
+		}];
+	}
 }
 
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
