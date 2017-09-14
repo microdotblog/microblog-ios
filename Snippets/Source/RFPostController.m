@@ -489,12 +489,22 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					[photo_urls addObject:photo.publishedURL];
 				}
 
-				args = @{
-					@"h": @"entry",
-					@"name": self.titleField.text,
-					@"content": text,
-					@"photo[]": photo_urls
-				};
+				if (photo_urls.count == 1) {
+					args = @{
+						@"h": @"entry",
+						@"name": self.titleField.text,
+						@"content": text,
+						@"photo": [photo_urls firstObject]
+					};
+				}
+				else {
+					args = @{
+						@"h": @"entry",
+						@"name": self.titleField.text,
+						@"content": text,
+						@"photo[]": photo_urls
+					};
+				}
 			}
 			else {
 				args = @{

@@ -72,12 +72,22 @@ static NSString* const kServerSchemeAndHostname = @"https://micro.blog";
 	NSArray* all_keys = [params allKeys];
 	for (int i = 0; i < [all_keys count]; i++) {
 		NSString* key = [all_keys objectAtIndex:i];
-		NSString* val = params[key];
-		NSString* val_encoded = [val stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
-
-//		val_encoded = [val_encoded stringByReplacingOccurrencesOfString:@";" withString:@"%3B"];
 		
-		[body_s appendFormat:@"%@=%@", key, val_encoded];
+		if ([params[key] isKindOfClass:[NSString class]]) {
+			NSString* val = params[key];
+			NSString* val_encoded = [val stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]];
+			[body_s appendFormat:@"%@=%@", key, val_encoded];
+		}
+		else if ([params[key] isKindOfClass:[NSArray class]]) {
+			for (NSString* val in params[key]) {
+				NSString* val_encoded = [val stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]];
+				[body_s appendFormat:@"%@=%@", key, val_encoded];
+				if ([params[key] lastObject] != val) {
+					[body_s appendString:@"&"];
+				}
+			}
+		}
+
 		if (i != ([all_keys count] - 1)) {
 			[body_s appendString:@"&"];
 		}
