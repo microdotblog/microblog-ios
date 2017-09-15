@@ -89,9 +89,9 @@
                             <rect key="frame" x="0.0" y="102" width="320" height="44"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uf1-p8-p6f">
-                                    <rect key="frame" x="8" y="5" width="304" height="39"/>
+                                    <rect key="frame" x="10" y="5" width="300" height="39"/>
                                     <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="kCa-Hw-xE9"/>
@@ -112,8 +112,8 @@
                                 <constraint firstItem="uf1-p8-p6f" firstAttribute="top" secondItem="KVQ-Eh-uyS" secondAttribute="top" constant="5" id="NIe-Nc-eaf"/>
                                 <constraint firstAttribute="bottom" secondItem="lT8-aw-Eq7" secondAttribute="bottom" id="OKj-GK-k36"/>
                                 <constraint firstAttribute="trailing" secondItem="lT8-aw-Eq7" secondAttribute="trailing" id="R9T-nw-gV1"/>
-                                <constraint firstItem="uf1-p8-p6f" firstAttribute="leading" secondItem="KVQ-Eh-uyS" secondAttribute="leading" constant="8" id="gxF-96-Zjd"/>
-                                <constraint firstAttribute="trailing" secondItem="uf1-p8-p6f" secondAttribute="trailing" constant="8" id="qOY-aZ-9Cn"/>
+                                <constraint firstItem="uf1-p8-p6f" firstAttribute="leading" secondItem="KVQ-Eh-uyS" secondAttribute="leading" constant="10" id="gxF-96-Zjd"/>
+                                <constraint firstAttribute="trailing" secondItem="uf1-p8-p6f" secondAttribute="trailing" constant="10" id="qOY-aZ-9Cn"/>
                                 <constraint firstAttribute="height" constant="44" id="vez-Nm-nh8"/>
                             </constraints>
                         </view>
