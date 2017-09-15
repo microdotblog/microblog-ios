@@ -545,7 +545,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				content[@"post_title"] = self.titleField.text;
 				content[@"post_content"] = post_text;
 				if (post_format.length > 0) {
-					content[@"post_format"] = post_format;
+					if (self.titleField.text.length > 0) {
+						content[@"post_format"] = @"Standard";
+					}
+					else {
+						content[@"post_format"] = post_format;
+					}
 				}
 				if (post_category.length > 0) {
 					content[@"terms"] = @{
