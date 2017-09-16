@@ -68,6 +68,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self setupBlogName];
 	[self setupEditingButtons];
 	[self setupCollectionView];
+	[self setupGestures];
 	
 	[self updateTitleHeader];
 }
@@ -174,6 +175,17 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	self.photoBarHeightConstraint.constant = 0;
 }
 
+- (void) setupGestures
+{
+	UISwipeGestureRecognizer* left_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft:)];
+	left_gesture.direction = UISwipeGestureRecognizerDirectionLeft;
+	[self.textView addGestureRecognizer:left_gesture];
+
+	UISwipeGestureRecognizer* right_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
+	right_gesture.direction = UISwipeGestureRecognizerDirectionRight;
+	[self.textView addGestureRecognizer:right_gesture];
+}
+
 - (void) updateTitleHeader
 {
 	if (!self.isReply && ([[self.textStorage string] length] > 280)) {
@@ -185,6 +197,25 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 }
 
 #pragma mark -
+
+- (void) swipeLeft:(UISwipeGestureRecognizer *)gesture
+{
+	NSRange r = self.textView.selectedRange;
+	if (r.location > 0) {
+		r.location = r.location - 1;
+		self.textView.selectedRange = r;
+	}
+}
+
+- (void) swipeRight:(UISwipeGestureRecognizer *)gesture
+{
+	NSRange r = self.textView.selectedRange;
+	NSUInteger len = [[self.textStorage string] length];
+	if (r.location < len) {
+		r.location = r.location + 1;
+		self.textView.selectedRange = r;
+	}
+}
 
 - (BOOL) canBecomeFirstResponder
 {
