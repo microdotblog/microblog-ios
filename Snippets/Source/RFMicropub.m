@@ -8,6 +8,7 @@
 
 #import "RFMicropub.h"
 
+#import "NSString+Extras.h"
 #import "SSKeychain.h"
 
 @implementation RFMicropub
@@ -60,12 +61,12 @@
 		
 		if ([params[key] isKindOfClass:[NSString class]]) {
 			NSString* val = params[key];
-			NSString* val_encoded = [val stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]];
+			NSString* val_encoded = [val rf_urlEncoded];
 			[body_s appendFormat:@"%@=%@", key, val_encoded];
 		}
 		else if ([params[key] isKindOfClass:[NSArray class]]) {
 			for (NSString* val in params[key]) {
-				NSString* val_encoded = [val stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLUserAllowedCharacterSet]];
+				NSString* val_encoded = [val rf_urlEncoded];
 				[body_s appendFormat:@"%@=%@", key, val_encoded];
 				if ([params[key] lastObject] != val) {
 					[body_s appendString:@"&"];
