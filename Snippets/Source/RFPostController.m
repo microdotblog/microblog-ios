@@ -807,17 +807,27 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[session loadObjectsOfClass:[UIImage class] completion:^(NSArray* objects) {
 		NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
-
+		BOOL too_many_photos = NO;
+		
 		for (UIImage* img in objects) {
-			UIImage* new_img = [img uuScaleToWidth:1200];
-			RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
-			[new_photos addObject:photo];
+			if (new_photos.count < 10) {
+				UIImage* new_img = [img uuScaleToWidth:1200];
+				RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
+				[new_photos addObject:photo];
+			}
+			else {
+				too_many_photos = YES;
+			}
 		}
 
 		self.attachedPhotos = new_photos;
 		[self.collectionView reloadData];
 	
 		[self showPhotosBar];
+		
+		if (too_many_photos) {
+			[UIAlertView uuShowOneButtonAlert:@"Only 10 Photos Added" message:@"The first 10 photos were added to your post." button:@"OK" completionHandler:NULL];
+		}
 	}];
 }
 
