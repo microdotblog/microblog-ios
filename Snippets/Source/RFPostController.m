@@ -64,6 +64,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	
 	[self setupNavigation];
 	[self setupText];
+	[self setupDragAndDrop];
 	[self setupNotifications];
 	[self setupBlogName];
 	[self setupEditingButtons];
@@ -123,6 +124,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.textStorage addLayoutManager:self.textView.layoutManager];
 
 	[self updateRemainingChars];
+}
+
+- (void) setupDragAndDrop
+{
+	if (NSClassFromString (@"UIDropInteraction") != nil) {
+		UIDropInteraction* drop_interaction = [[UIDropInteraction alloc] initWithDelegate:self];
+		[self.view addInteraction:drop_interaction];
+	}
 }
 
 - (void) setupNotifications
@@ -276,12 +285,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.collectionView reloadData];
 	
 	[self dismissViewControllerAnimated:YES completion:^{
-		[UIView animateWithDuration:0.3 animations:^{
-			self.photoBarHeightConstraint.constant = 60;
-			[self.view layoutIfNeeded];
-		} completion:^(BOOL finished) {
-			[self.collectionView reloadData];
-		}];
+		[self showPhotosBar];
 	}];
 }
 
@@ -773,6 +777,47 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	} completion:^(BOOL finished) {
 		[self.networkSpinner stopAnimating];
 		[self.view layoutIfNeeded];
+	}];
+}
+
+- (void) showPhotosBar
+{
+	[UIView animateWithDuration:0.3 animations:^{
+		self.photoBarHeightConstraint.constant = 60;
+		[self.view layoutIfNeeded];
+	} completion:^(BOOL finished) {
+		[self.collectionView reloadData];
+	}];
+}
+
+#pragma mark -
+
+- (BOOL) dropInteraction:(UIDropInteraction *)interaction canHandleSession:(id<UIDropSession>)session
+{
+	return [session canLoadObjectsOfClass:[UIImage class]];
+}
+
+- (UIDropProposal *) dropInteraction:(UIDropInteraction *)interaction sessionDidUpdate:(id<UIDropSession>)session
+{
+	UIDropProposal* proposal = [[UIDropProposal alloc] initWithDropOperation:UIDropOperationCopy];
+	return proposal;
+}
+
+- (void) dropInteraction:(UIDropInteraction *)interaction performDrop:(id<UIDropSession>)session
+{
+	[session loadObjectsOfClass:[UIImage class] completion:^(NSArray* objects) {
+		NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
+
+		for (UIImage* img in objects) {
+			UIImage* new_img = [img uuScaleToWidth:1200];
+			RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
+			[new_photos addObject:photo];
+		}
+
+		self.attachedPhotos = new_photos;
+		[self.collectionView reloadData];
+	
+		[self showPhotosBar];
 	}];
 }
 

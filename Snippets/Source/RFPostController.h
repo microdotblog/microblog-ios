@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RFPostController : UIViewController <UITextViewDelegate, UITextFieldDelegate, NSLayoutManagerDelegate>
+@interface RFPostController : UIViewController <UITextViewDelegate, UIDropInteractionDelegate, UITextFieldDelegate, NSLayoutManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextView* textView;
 @property (strong, nonatomic) IBOutlet UILabel* remainingField;
