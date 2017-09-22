@@ -636,7 +636,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	else {
 		NSString* s = [self currentText];
 		
-		if ([self prefersExternalBlog]) {
+		if ([self prefersExternalBlog] && ![self hasMicropubBlog]) {
 			if (s.length > 0) {
 				s = [s stringByAppendingString:@"\n\n"];
 			}
