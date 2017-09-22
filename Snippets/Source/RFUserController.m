@@ -207,7 +207,7 @@
         [self.moreButton setTitle:@"more" forState:UIControlStateNormal];
     }
     
-    [UIView animateWithDuration:0.25 animations:^
+    [UIView animateWithDuration:0.3 animations:^
     {
         self.maxHeaderHeightConstraint.constant = constraint;
         [self.view layoutIfNeeded];
