@@ -51,6 +51,10 @@
 	if (self) {
 		self.endpoint = endpoint;
 		self.timelineTitle = title;
+		
+		if ([self.endpoint containsString:@"/conversation/"]) {
+			self.isConversation = YES;
+		}
 	}
 	
 	return self;
@@ -97,7 +101,13 @@
 	if (self.navigationController.topViewController != root_controller) {
 		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 	}
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"new_button" target:self action:@selector(promptNewPost:)];
+	
+	if (self.isConversation) {
+		self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"reply_button" target:self action:@selector(promptNewReply:)];
+	}
+	else {
+		self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"new_button" target:self action:@selector(promptNewPost:)];
+	}
 }
 
 - (void) setupNotifications
@@ -191,6 +201,13 @@
 	}
 }
 
+- (NSString *) firstPostID
+{
+	NSString* first_js = [NSString stringWithFormat:@"$('.post').first().attr('id').replace('post_', '')"];
+	NSString* first_s = [self.webView stringByEvaluatingJavaScriptFromString:first_js];
+	return [first_s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 - (NSString *) usernameOfPostID:(NSString *)postID
 {
 	NSString* username_js = [NSString stringWithFormat:@"$('#post_%@').find('.post_username').text();", postID];
@@ -231,6 +248,16 @@
 		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
 		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 	}
+}
+
+- (IBAction) promptNewReply:(id)sender
+{
+	NSString* post_id = [self firstPostID];
+	NSString* post_username = [self usernameOfPostID:post_id];
+	
+	RFPostController* post_controller = [[RFPostController alloc] initWithReplyTo:post_id replyUsername:post_username];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
+	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 - (void) refreshTimeline

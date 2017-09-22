@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -34,7 +34,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnY-ie-t8x">
-                    <rect key="frame" x="0.0" y="124" width="375" height="543"/>
+                    <rect key="frame" x="0.0" y="188" width="375" height="479"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <dataDetectorType key="dataDetectorTypes"/>
                     <connections>
@@ -102,9 +102,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qID-0k-fNf">
-                            <rect key="frame" x="331" y="102" width="38" height="24"/>
+                            <rect key="frame" x="329" y="102" width="40" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="hk2-Pb-vPX"/>
+                                <constraint firstAttribute="width" constant="40" id="rF0-gt-cWi"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                             <state key="normal" title="more"/>
@@ -141,7 +142,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="lnY-ie-t8x" firstAttribute="top" secondItem="zMe-wL-fBq" secondAttribute="bottom" constant="-64" id="5eE-Kd-GQ9"/>
+                <constraint firstItem="lnY-ie-t8x" firstAttribute="top" secondItem="zMe-wL-fBq" secondAttribute="bottom" id="5eE-Kd-GQ9"/>
                 <constraint firstItem="lnY-ie-t8x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FHc-Wh-YnB"/>
                 <constraint firstItem="zMe-wL-fBq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="62" id="l6R-6t-dfX"/>
                 <constraint firstAttribute="trailing" secondItem="zMe-wL-fBq" secondAttribute="trailing" id="qYK-yj-wxk"/>
