@@ -48,6 +48,14 @@
 	[self edited:NSTextStorageEditedAttributes range:range changeInLength:0];
 }
 
+- (void) safe_addAttribute:(NSAttributedStringKey)name value:(id)value range:(NSRange)range;
+{
+	NSString* s = self.string;
+	if ((range.location + range.length) <= s.length) {
+		[self addAttribute:name value:value range:range];
+	}
+}
+
 - (void) processBold
 {
 	UIFont* bold_font = [UIFont fontWithName:@"Avenir-Heavy" size:[UIFont rf_preferredPostingFontSize]];
@@ -68,14 +76,14 @@
 			else {
 				is_bold = NO;
 				current_r.length = i - current_r.location + 2;
-				[self addAttribute:NSFontAttributeName value:bold_font range:current_r];
+				[self safe_addAttribute:NSFontAttributeName value:bold_font range:current_r];
 			}
 		}
 	}
 	
 	if (is_bold) {
 		current_r.length = self.string.length - current_r.location;
-		[self addAttribute:NSFontAttributeName value:bold_font range:current_r];
+		[self safe_addAttribute:NSFontAttributeName value:bold_font range:current_r];
 	}
 }
 
@@ -95,14 +103,14 @@
 			else {
 				is_italic = NO;
 				current_r.length = i - current_r.location + 1;
-				[self addAttribute:NSFontAttributeName value:italic_font range:current_r];
+				[self safe_addAttribute:NSFontAttributeName value:italic_font range:current_r];
 			}
 		}
 	}
 	
 	if (is_italic) {
 		current_r.length = self.string.length - current_r.location;
-		[self addAttribute:NSFontAttributeName value:italic_font range:current_r];
+		[self safe_addAttribute:NSFontAttributeName value:italic_font range:current_r];
 	}
 }
 
@@ -129,14 +137,14 @@
 			if (is_blockquote) {
 				is_blockquote = NO;
 				current_r.length = i - current_r.location;
-				[self addAttribute:NSForegroundColorAttributeName value:blockquote_c range:current_r];
+				[self safe_addAttribute:NSForegroundColorAttributeName value:blockquote_c range:current_r];
 			}
 		}
 	}
 	
 	if (is_blockquote) {
 		current_r.length = self.string.length - current_r.location;
-		[self addAttribute:NSForegroundColorAttributeName value:blockquote_c range:current_r];
+		[self safe_addAttribute:NSForegroundColorAttributeName value:blockquote_c range:current_r];
 	}
 }
 
@@ -167,7 +175,7 @@
 			if (is_title) {
 				is_title = NO;
 				current_r.length = i - current_r.location + 1;
-				[self addAttribute:NSForegroundColorAttributeName value:title_c range:current_r];
+				[self safe_addAttribute:NSForegroundColorAttributeName value:title_c range:current_r];
 				
 				if (next_c == '(') {
 					is_inbetween = YES;
@@ -186,18 +194,18 @@
 			if (is_url) {
 				is_url = NO;
 				current_r.length = i - current_r.location + 1;
-				[self addAttribute:NSForegroundColorAttributeName value:url_c range:current_r];
+				[self safe_addAttribute:NSForegroundColorAttributeName value:url_c range:current_r];
 			}
 		}
 	}
 	
 	if (is_title) {
 		current_r.length = self.string.length - current_r.location;
-		[self addAttribute:NSForegroundColorAttributeName value:title_c range:current_r];
+		[self safe_addAttribute:NSForegroundColorAttributeName value:title_c range:current_r];
 	}
 	else if (is_url) {
 		current_r.length = self.string.length - current_r.location;
-		[self addAttribute:NSForegroundColorAttributeName value:url_c range:current_r];
+		[self safe_addAttribute:NSForegroundColorAttributeName value:url_c range:current_r];
 	}
 }
 
@@ -225,14 +233,14 @@
 			if (is_username) {
 				is_username = NO;
 				current_r.length = i - current_r.location;
-				[self addAttribute:NSForegroundColorAttributeName value:username_c range:current_r];
+				[self safe_addAttribute:NSForegroundColorAttributeName value:username_c range:current_r];
 			}
 		}
 	}
 	
 	if (is_username) {
 		current_r.length = self.string.length - current_r.location;
-		[self addAttribute:NSForegroundColorAttributeName value:username_c range:current_r];
+		[self safe_addAttribute:NSForegroundColorAttributeName value:username_c range:current_r];
 	}
 }
 
@@ -266,16 +274,16 @@
 			if (is_header) {
 				is_header = NO;
 				current_r.length = i - current_r.location;
-				[self addAttribute:NSFontAttributeName value:header_font range:current_r];
-				[self addAttribute:NSForegroundColorAttributeName value:header_c range:current_r];
+				[self safe_addAttribute:NSFontAttributeName value:header_font range:current_r];
+				[self safe_addAttribute:NSForegroundColorAttributeName value:header_c range:current_r];
 			}
 		}
 	}
 	
 	if (is_header) {
 		current_r.length = self.string.length - current_r.location;
-		[self addAttribute:NSFontAttributeName value:header_font range:current_r];
-		[self addAttribute:NSForegroundColorAttributeName value:header_c range:current_r];
+		[self safe_addAttribute:NSFontAttributeName value:header_font range:current_r];
+		[self safe_addAttribute:NSForegroundColorAttributeName value:header_c range:current_r];
 	}
 }
 
@@ -284,7 +292,7 @@
 	// clear fonts and color
 	NSRange paragraph_r = NSMakeRange (0, self.string.length);
 	UIFont* normal_font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
-	[self addAttribute:NSFontAttributeName value:normal_font range:paragraph_r];
+	[self safe_addAttribute:NSFontAttributeName value:normal_font range:paragraph_r];
 	[self removeAttribute:NSForegroundColorAttributeName range:paragraph_r];
 
 	// update style ranges
