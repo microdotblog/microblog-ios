@@ -18,9 +18,8 @@
 - (id) init
 {
 	self = [super init];
-	
 	if (self) {
-		_imp = [NSMutableAttributedString new];
+		_imp = [[NSMutableAttributedString alloc] init];
 	}
 	
 	return self;
@@ -53,6 +52,14 @@
 	NSString* s = self.string;
 	if ((range.location + range.length) <= s.length) {
 		[self addAttribute:name value:value range:range];
+	}
+}
+
+- (void) safe_removeAttribute:(NSAttributedStringKey)name range:(NSRange)range;
+{
+	NSString* s = self.string;
+	if ((range.location + range.length) <= s.length) {
+		[self removeAttribute:name range:range];
 	}
 }
 
@@ -293,7 +300,7 @@
 	NSRange paragraph_r = NSMakeRange (0, self.string.length);
 	UIFont* normal_font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
 	[self safe_addAttribute:NSFontAttributeName value:normal_font range:paragraph_r];
-	[self removeAttribute:NSForegroundColorAttributeName range:paragraph_r];
+	[self safe_removeAttribute:NSForegroundColorAttributeName range:paragraph_r];
 
 	// update style ranges
 	[self processBold];
