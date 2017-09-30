@@ -713,6 +713,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			
 			NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
 			NSString* filename = [[[[NSString uuGenerateUUIDString] lowercaseString] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByAppendingPathExtension:@"jpg"];
+			
+			if (!blog_id || !username || !password) {
+				[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Your blog settings were not saved correctly. Try signing out and trying again." button:@"OK" completionHandler:NULL];
+				[self hideProgressHeader];
+				self.photoButton.hidden = NO;
+				return;
+			}
+			
 			NSArray* params = @[ blog_id, username, password, @{
 				@"name": filename,
 				@"type": @"image/jpeg",
