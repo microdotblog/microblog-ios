@@ -32,19 +32,36 @@
 
 - (NSDictionary *) attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range
 {
-	return [_imp attributesAtIndex:location effectiveRange:range];
+	NSLog (@"attrs at index %d", location);
+	if (location < _imp.length) {
+		return [_imp attributesAtIndex:location effectiveRange:range];
+	}
+	else {
+		// hack to prevent being repeatedly called
+		range->location = 0;
+		range->length = NSUIntegerMax;
+		return nil;
+	}
 }
 
 - (void) replaceCharactersInRange:(NSRange)range withString:(NSString *)str
 {
+	[self beginEditing];
+
 	[_imp replaceCharactersInRange:range withString:str];
-	[self edited:NSTextStorageEditedCharacters range:range changeInLength:(NSInteger)str.length - (NSInteger)range.length];
+	[self edited:NSTextStorageEditedCharacters | NSTextStorageEditedAttributes range:range changeInLength:(NSInteger)str.length - (NSInteger)range.length];
+	
+	[self endEditing];
 }
 
 - (void) setAttributes:(NSDictionary *)attrs range:(NSRange)range
 {
+	[self beginEditing];
+
 	[_imp setAttributes:attrs range:range];
 	[self edited:NSTextStorageEditedAttributes range:range changeInLength:0];
+	
+	[self endEditing];
 }
 
 - (void) safe_addAttribute:(NSAttributedStringKey)name value:(id)value range:(NSRange)range;
@@ -296,7 +313,7 @@
 
 - (void) processEditing
 {
-	// clear fonts and color
+	// clear fonts and color**
 	NSRange paragraph_r = NSMakeRange (0, self.string.length);
 	UIFont* normal_font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
 	[self safe_removeAttribute:NSForegroundColorAttributeName range:paragraph_r];
