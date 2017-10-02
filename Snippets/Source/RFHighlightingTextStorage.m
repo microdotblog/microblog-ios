@@ -32,7 +32,6 @@
 
 - (NSDictionary *) attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range
 {
-	NSLog (@"attrs at index %d", location);
 	if (location < _imp.length) {
 		return [_imp attributesAtIndex:location effectiveRange:range];
 	}
@@ -151,10 +150,16 @@
 			next_c = [self.string characterAtIndex:i + 1];
 		}
 
-		if (c == '>') {
+		if ((i == 0) && (c == '>')) {
 			if (!is_blockquote) {
 				is_blockquote = YES;
 				current_r.location = i;
+			}
+		}
+		else if ((c == '\n') && (next_c == '>')) {
+			if (!is_blockquote) {
+				is_blockquote = YES;
+				current_r.location = i + 1;
 			}
 		}
 		else if ((c == '\n') && (next_c == '\n')) {
