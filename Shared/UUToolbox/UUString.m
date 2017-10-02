@@ -309,7 +309,9 @@
                 {
                     if ([argName isEqualToString:subParts[0]])
                     {
-                        return subParts[1];
+						NSString* val = subParts[1];
+						NSArray* fragments = [val componentsSeparatedByString:@"#"];
+                        return [fragments firstObject];
                     }
                 }
             }
