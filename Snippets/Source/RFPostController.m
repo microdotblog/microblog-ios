@@ -551,8 +551,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
 				RFDispatchMainAsync (^{
-					[Answers logCustomEventWithName:@"Sent Micropub" customAttributes:nil];
-					[self close:nil];
+					if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
+						[self hideProgressHeader];
+						NSString* msg = response.parsedResponse[@"error_description"];
+						[UIAlertView uuShowOneButtonAlert:@"Error Sending Post" message:msg button:@"OK" completionHandler:NULL];
+					}
+					else {
+						[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
+						[self close:nil];
+					}
 				});
 			}];
 		}
