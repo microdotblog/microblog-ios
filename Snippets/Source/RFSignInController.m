@@ -79,7 +79,7 @@
 	
 	if (self.messageContainer.alpha == 0.0) {
 		[UIView animateWithDuration:0.3 animations:^{
-			self.messageTopConstraint.constant = 64;
+			self.messageTopConstraint.constant = 44 + RFStatusBarHeight();
 			self.messageContainer.alpha = 1.0;
 			[self.view layoutIfNeeded];
 		}];

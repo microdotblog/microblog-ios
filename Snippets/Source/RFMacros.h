@@ -12,3 +12,6 @@
 #define RFDispatchSeconds(seconds, the_block) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, seconds * NSEC_PER_SEC), dispatch_get_main_queue(), the_block)
 
 #define RFIsPhone() (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+
+#define RFStatusBarHeight() (MIN([[UIApplication sharedApplication] statusBarFrame].size.width, [[UIApplication sharedApplication] statusBarFrame].size.height))
+
