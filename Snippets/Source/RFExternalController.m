@@ -37,6 +37,13 @@
 	[self setupNavigation];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+	[self.progressSpinner stopAnimating];
+}
+
 - (void) setupNavigation
 {
 	self.title = @"External Blog";
