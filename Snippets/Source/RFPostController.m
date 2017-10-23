@@ -919,11 +919,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupAppExtensionElements
 {
-	if (self.appExtensionContext)
-	{
-		[UUAlertViewController setActiveViewController:self];
-	}
+	if (!self.appExtensionContext)
+		return;
 	
+	// Handle alert views...
+	[UUAlertViewController setActiveViewController:self];
+	
+	NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
+
 	for (NSExtensionItem *item in self.appExtensionContext.inputItems)
 	{
 		for (NSItemProvider *itemProvider in item.attachments)
@@ -934,20 +937,18 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				 {
 					 if(image)
 					 {
+						 RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:image];
+						 [new_photos addObject:photo];
+						 
 						 dispatch_async(dispatch_get_main_queue(), ^
 										{
-											//[self.navigationController setNavigationBarHidden:NO];
-											
-											RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:image];
-											NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
-											[new_photos addObject:photo];
 											self.attachedPhotos = new_photos;
 											[self.collectionView reloadData];
-											[self showPhotosBar];
 										});
 					 }
 				 }];
-				break;
+				
+				[self showPhotosBar];
 			}
 		}
 	}
@@ -962,14 +963,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 	
 	return NO;
-}
-
-- (void) postFromExtension:(UIImage*)image withText:(NSString*)text
-{
-    self.textStorage = (RFHighlightingTextStorage*)[[NSAttributedString alloc] initWithString:text];    
-    self.queuedPhotos = [NSMutableArray arrayWithObject:image];
-    
-    [self uploadNextPhoto];
 }
 
 @end
