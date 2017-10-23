@@ -18,6 +18,6 @@
 
 @property (strong, nonnull) RFPhoto* photo;
 
-- (void) setupWithPhoto:(RFPhoto *)photo;
+- (void) setupWithPhoto:(RFPhoto *_Nonnull)photo;
 
 @end

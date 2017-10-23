@@ -120,7 +120,7 @@
 	self.fullNameLabel.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
 	self.blogAddressLabel.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
 	self.bioLabel.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
-	self.moreButton.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
+	self.moreButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
 }
 
 - (void) checkFollowing

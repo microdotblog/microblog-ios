@@ -678,7 +678,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 }
 
-- (void) uploadPhoto:(RFPhoto *)photo completion:(void (^)())handler
+- (void) uploadPhoto:(RFPhoto *)photo completion:(void (^)(void))handler
 {
 	if (self.attachedPhotos.count > 0) {
 		[self showProgressHeader:@"Uploading photos..."];

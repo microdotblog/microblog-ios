@@ -198,7 +198,6 @@
 - (IBAction) signOut:(id)sender
 {
 	[UUAlertViewController uuShowTwoButtonAlert:@"Sign out of Micro.blog?" message:@"Signing out will reset your settings and let you sign in with a new account or different microblog." buttonOne:@"Cancel" buttonTwo:@"Sign Out" completionHandler:^(NSInteger buttonIndex) {
-		NSLog (@"button %d", buttonIndex);
 		if (buttonIndex == 1) {
 			[RFSettings clearAllSettings];
 
