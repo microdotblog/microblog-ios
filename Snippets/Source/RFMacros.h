@@ -13,6 +13,6 @@
 
 #define RFIsPhone() (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 
-#define RFStatusBarHeight() 44
+#define RFStatusBarHeight() 20
 //(MIN([[UIApplication sharedApplication] statusBarFrame].size.width, [[UIApplication sharedApplication] statusBarFrame].size.height))
 
