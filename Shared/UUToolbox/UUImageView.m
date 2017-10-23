@@ -8,7 +8,7 @@
 //  Contact: @cheesemaker or jon@threejacks.com
 
 #import "UUImageView.h"
-#import "UUHttpClient.h"
+#import "UUHttpSession.h"
 #import "UUDataCache.h"
 
 #if __has_feature(objc_arc)
@@ -232,11 +232,10 @@ NSObject<UUImageCache>* theImageCache = nil;
 			
 			if (!alreadyRequested)
 			{
-				UUHttpClientRequest* httpRequest = UU_AUTORELEASE([[UUHttpClientRequest alloc] initWithUrl:url.absoluteString]);
-				httpRequest.httpMethod = UUHttpMethodGet;
-				httpRequest.processMimeTypes = NO;
-				
-				[UUHttpClient executeRequest:httpRequest completionHandler:^(UUHttpClientResponse *response)
+				UUHttpRequest* request = [UUHttpRequest getRequest:url.absoluteString queryArguments:nil];
+				request.httpMethod = UUHttpMethodGet;
+				request.processMimeTypes = NO;
+				[UUHttpSession executeRequest:request completionHandler:^(UUHttpResponse *response)
 				{
 					NSData* data = response.rawResponse;
 					if (data)

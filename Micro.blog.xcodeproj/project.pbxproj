@@ -81,7 +81,6 @@
 		4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803331B87AA2C00D6670C /* UUDataCache.m */; };
 		4BF803471B87AA2C00D6670C /* UUDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803351B87AA2C00D6670C /* UUDate.m */; };
 		4BF803481B87AA2C00D6670C /* UUDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803371B87AA2C00D6670C /* UUDictionary.m */; };
-		4BF803491B87AA2C00D6670C /* UUHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803391B87AA2C00D6670C /* UUHttpClient.m */; };
 		4BF8034A1B87AA2C00D6670C /* UUHttpResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8033B1B87AA2C00D6670C /* UUHttpResponseHandler.m */; };
 		4BF8034B1B87AA2C00D6670C /* UUHttpSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8033D1B87AA2C00D6670C /* UUHttpSession.m */; };
 		4BF8034C1B87AA2C00D6670C /* UUImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8033F1B87AA2C00D6670C /* UUImage.m */; };
@@ -116,7 +115,6 @@
 		C507F32B1F8827BC0013D2B7 /* UUDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803331B87AA2C00D6670C /* UUDataCache.m */; };
 		C507F32C1F8827BC0013D2B7 /* UUDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803351B87AA2C00D6670C /* UUDate.m */; };
 		C507F32D1F8827BC0013D2B7 /* UUDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803371B87AA2C00D6670C /* UUDictionary.m */; };
-		C507F32E1F8827BC0013D2B7 /* UUHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803391B87AA2C00D6670C /* UUHttpClient.m */; };
 		C507F32F1F8827BC0013D2B7 /* UUHttpResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8033B1B87AA2C00D6670C /* UUHttpResponseHandler.m */; };
 		C507F3301F8827BC0013D2B7 /* UUHttpSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8033D1B87AA2C00D6670C /* UUHttpSession.m */; };
 		C507F3311F8827BC0013D2B7 /* UUImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8033F1B87AA2C00D6670C /* UUImage.m */; };
@@ -399,8 +397,6 @@
 		4BF803351B87AA2C00D6670C /* UUDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUDate.m; path = Shared/UUToolbox/UUDate.m; sourceTree = SOURCE_ROOT; };
 		4BF803361B87AA2C00D6670C /* UUDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUDictionary.h; path = Shared/UUToolbox/UUDictionary.h; sourceTree = SOURCE_ROOT; };
 		4BF803371B87AA2C00D6670C /* UUDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUDictionary.m; path = Shared/UUToolbox/UUDictionary.m; sourceTree = SOURCE_ROOT; };
-		4BF803381B87AA2C00D6670C /* UUHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUHttpClient.h; path = Shared/UUToolbox/UUHttpClient.h; sourceTree = SOURCE_ROOT; };
-		4BF803391B87AA2C00D6670C /* UUHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUHttpClient.m; path = Shared/UUToolbox/UUHttpClient.m; sourceTree = SOURCE_ROOT; };
 		4BF8033A1B87AA2C00D6670C /* UUHttpResponseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUHttpResponseHandler.h; path = Shared/UUToolbox/UUHttpResponseHandler.h; sourceTree = SOURCE_ROOT; };
 		4BF8033B1B87AA2C00D6670C /* UUHttpResponseHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUHttpResponseHandler.m; path = Shared/UUToolbox/UUHttpResponseHandler.m; sourceTree = SOURCE_ROOT; };
 		4BF8033C1B87AA2C00D6670C /* UUHttpSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUHttpSession.h; path = Shared/UUToolbox/UUHttpSession.h; sourceTree = SOURCE_ROOT; };
@@ -807,8 +803,6 @@
 				4BF803351B87AA2C00D6670C /* UUDate.m */,
 				4BF803361B87AA2C00D6670C /* UUDictionary.h */,
 				4BF803371B87AA2C00D6670C /* UUDictionary.m */,
-				4BF803381B87AA2C00D6670C /* UUHttpClient.h */,
-				4BF803391B87AA2C00D6670C /* UUHttpClient.m */,
 				4BF8033A1B87AA2C00D6670C /* UUHttpResponseHandler.h */,
 				4BF8033B1B87AA2C00D6670C /* UUHttpResponseHandler.m */,
 				4BF8033C1B87AA2C00D6670C /* UUHttpSession.h */,
@@ -1267,7 +1261,6 @@
 				4B46632C1B8F51710034FC5C /* CSimpleMarkupParser.m in Sources */,
 				4BA910761B83CDC400D58F83 /* RFMenuController.m in Sources */,
 				C5CED6FF1ECF792E0068F537 /* YUCICrossZoomTransition.m in Sources */,
-				4BF803491B87AA2C00D6670C /* UUHttpClient.m in Sources */,
 				C5CED6F81ECF792E0068F537 /* YUCIBlobsGenerator.m in Sources */,
 				4B1D74FC1B95ECF4004A0ACD /* RFXMLElementStack.m in Sources */,
 				4BF8034E1B87AA2C00D6670C /* UUString.m in Sources */,
@@ -1351,7 +1344,6 @@
 				C507F31C1F88278F0013D2B7 /* RFPhoto.m in Sources */,
 				C507F3211F8827A90013D2B7 /* RFXMLRPCParser.m in Sources */,
 				C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */,
-				C507F32E1F8827BC0013D2B7 /* UUHttpClient.m in Sources */,
 				C507F3171F8827780013D2B7 /* RFPostController.m in Sources */,
 				C507F3331F8827C20013D2B7 /* SSKeychain.m in Sources */,
 			);
@@ -1794,7 +1786,7 @@
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1824,7 +1816,7 @@
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
