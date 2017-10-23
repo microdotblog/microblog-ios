@@ -39,16 +39,20 @@
 	[[NSUserDefaults standardUserDefaults] setObject:object forKey:key];
 	NSUserDefaults* sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kSharedGroupDefaults];
 	[sharedDefaults setObject:object forKey:key];
+	
+	[sharedDefaults synchronize];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (NSString*) loadUserDefault:(NSString*)name
 {
 	NSUserDefaults* sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kSharedGroupDefaults];
-	NSString* value = [[NSUserDefaults standardUserDefaults] objectForKey:name];
-	
-	if (value)
+	NSString* value = [sharedDefaults objectForKey:name];
+	if (!value)
 	{
+		value = [[NSUserDefaults standardUserDefaults] objectForKey:name];
 		[sharedDefaults setObject:value forKey:name];
+		[sharedDefaults synchronize];
 	}
 	
 	return value;
@@ -57,11 +61,13 @@
 + (BOOL) loadUserDefaultBool:(NSString*)name
 {
 	NSUserDefaults* sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kSharedGroupDefaults];
-	NSNumber* value = [[NSUserDefaults standardUserDefaults] objectForKey:name];
+	NSNumber* value = [sharedDefaults objectForKey:name];
 	
-	if (value)
+	if (!value)
 	{
+		value = [[NSUserDefaults standardUserDefaults] objectForKey:name];
 		[sharedDefaults setObject:value forKey:name];
+		[sharedDefaults synchronize];
 	}
 	
 	return value.boolValue;
@@ -72,6 +78,9 @@
 	NSUserDefaults* sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kSharedGroupDefaults];
 	[sharedDefaults removeObjectForKey:key];
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+	
+	[sharedDefaults synchronize];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -265,7 +274,7 @@
 
 + (void) setExternalBlogPassword:(NSString *)value
 {
-	[SSKeychain setPassword:value forService:@"ExternalMicropub" account:@"default"];
+	[SSKeychain setPassword:value forService:@"ExternalBlog" account:@"default"];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
