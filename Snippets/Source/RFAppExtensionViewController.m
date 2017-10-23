@@ -33,18 +33,11 @@
 	}
 	else
 	{
-		[UUAlertViewController uuShowTwoButtonAlert:nil message:@"You need to setup your Micro.blog account first. Would you like to do that now?" buttonOne:@"Cancel" buttonTwo:@"Setup" completionHandler:^(NSInteger buttonIndex)
+		[UUAlertViewController uuShowOneButtonAlert:nil message:@"You need to configure your settings first. Please launch Micro.blog and login to your account." button:@"OK" completionHandler:^(NSInteger buttonIndex)
 		{
-			if (buttonIndex > 0)
+			[self.extensionContext completeRequestReturningItems:nil completionHandler:^(BOOL expired)
 			{
-				[self.extensionContext openURL:[NSURL URLWithString:@"microblog"] completionHandler:^(BOOL success)
-				{
-				}];
-			}
-			else
-			{
-				[self.extensionContext completeRequestReturningItems:nil completionHandler:nil];
-			}
+			}];
 		}];
 	}
 }
