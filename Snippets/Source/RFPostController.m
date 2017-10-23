@@ -158,7 +158,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupDragAndDrop
 {
-	if (NSClassFromString (@"UIDropInteraction") != nil) {
+	if (@available(iOS 11, *)) {
 		UIDropInteraction* drop_interaction = [[UIDropInteraction alloc] initWithDelegate:self];
 		[self.view addInteraction:drop_interaction];
 	}
@@ -828,18 +828,22 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 #pragma mark -
 
-- (BOOL) dropInteraction:(UIDropInteraction *)interaction canHandleSession:(id<UIDropSession>)session
+- (BOOL) dropInteraction:(UIDropInteraction *)interaction canHandleSession:(id<UIDropSession>)session NS_AVAILABLE_IOS(11.0)
 {
 	return [session canLoadObjectsOfClass:[UIImage class]];
 }
 
-- (UIDropProposal *) dropInteraction:(UIDropInteraction *)interaction sessionDidUpdate:(id<UIDropSession>)session
+- (UIDropProposal *) dropInteraction:(UIDropInteraction *)interaction sessionDidUpdate:(id<UIDropSession>)session NS_AVAILABLE_IOS(11.0)
 {
-	UIDropProposal* proposal = [[UIDropProposal alloc] initWithDropOperation:UIDropOperationCopy];
-	return proposal;
+	if (@available(iOS 11.0, *)) {
+		UIDropProposal* proposal = [[UIDropProposal alloc] initWithDropOperation:UIDropOperationCopy];
+		return proposal;
+	} else {
+		return nil;
+	}
 }
 
-- (void) dropInteraction:(UIDropInteraction *)interaction performDrop:(id<UIDropSession>)session
+- (void) dropInteraction:(UIDropInteraction *)interaction performDrop:(id<UIDropSession>)session NS_AVAILABLE_IOS(11.0)
 {
 	[session loadObjectsOfClass:[UIImage class] completion:^(NSArray* objects) {
 		NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
