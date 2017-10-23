@@ -927,6 +927,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupAppExtensionElements
 {
+	if (self.appExtensionContext)
+	{
+		[UUAlertViewController setActiveViewController:self];
+	}
+	
 	for (NSExtensionItem *item in self.appExtensionContext.inputItems)
 	{
 		for (NSItemProvider *itemProvider in item.attachments)
