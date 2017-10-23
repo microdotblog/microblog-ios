@@ -11,7 +11,7 @@
 
 @interface RFPostController : UIViewController <UITextViewDelegate, UIDropInteractionDelegate, UITextFieldDelegate, NSLayoutManagerDelegate>
 
-@property (strong, nonatomic) IBOutlet UITextView* composeTextView;
+@property (strong, nonatomic) IBOutlet UITextView* textView;
 @property (strong, nonatomic) IBOutlet UILabel* remainingField;
 @property (strong, nonatomic) IBOutlet UILabel* blognameField;
 @property (strong, nonatomic) IBOutlet UIButton* photoButton;

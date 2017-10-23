@@ -39,18 +39,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 @implementation RFPostController
 
-
-//Used
-- (instancetype) initWithCoder:(NSCoder *)aDecoder
-{
-    return [self init];
-}
-
-- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    return [self init];
-}
-
 - (instancetype) init
 {
 	self = [super initWithNibName:@"Post" bundle:nil];
@@ -114,7 +102,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[super viewDidAppear:animated];
 	
-	[self.composeTextView becomeFirstResponder];
+	[self.textView becomeFirstResponder];
 }
 
 - (void) setupNavigation
@@ -134,7 +122,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupFont
 {
-	self.composeTextView.font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
+	self.textView.font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
 }
 
 - (void) setupText
@@ -148,10 +136,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		s = [NSString stringWithFormat:@"@%@ ", self.replyUsername];
 	}
 	NSAttributedString* attr_s = [[NSAttributedString alloc] initWithString:s];
-	self.composeTextView.attributedText = attr_s;
+	self.textView.attributedText = attr_s;
 
 	[self.textStorage appendAttributedString:attr_s];
-	[self.textStorage addLayoutManager:self.composeTextView.layoutManager];
+	[self.textStorage addLayoutManager:self.textView.layoutManager];
 
 	[self updateRemainingChars];
 }
@@ -218,11 +206,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	UISwipeGestureRecognizer* left_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft:)];
 	left_gesture.direction = UISwipeGestureRecognizerDirectionLeft;
-	[self.composeTextView addGestureRecognizer:left_gesture];
+	[self.textView addGestureRecognizer:left_gesture];
 
 	UISwipeGestureRecognizer* right_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
 	right_gesture.direction = UISwipeGestureRecognizerDirectionRight;
-	[self.composeTextView addGestureRecognizer:right_gesture];
+	[self.textView addGestureRecognizer:right_gesture];
 }
 
 - (void) updateTitleHeader
@@ -239,20 +227,20 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) swipeLeft:(UISwipeGestureRecognizer *)gesture
 {
-	NSRange r = self.composeTextView.selectedRange;
+	NSRange r = self.textView.selectedRange;
 	if (r.location > 0) {
 		r.location = r.location - 1;
-		self.composeTextView.selectedRange = r;
+		self.textView.selectedRange = r;
 	}
 }
 
 - (void) swipeRight:(UISwipeGestureRecognizer *)gesture
 {
-	NSRange r = self.composeTextView.selectedRange;
+	NSRange r = self.textView.selectedRange;
 	NSUInteger len = [[self.textStorage string] length];
 	if (r.location < len) {
 		r.location = r.location + 1;
-		self.composeTextView.selectedRange = r;
+		self.textView.selectedRange = r;
 	}
 }
 
@@ -423,31 +411,31 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (IBAction) linkPressed:(id)sender
 {
 	NSRange r;
-	UITextRange* text_r = self.composeTextView.selectedTextRange;
+	UITextRange* text_r = self.textView.selectedTextRange;
 	if ([text_r isEmpty]) {
-		[self.composeTextView insertText:@"[]()"];
-		r = self.composeTextView.selectedRange;
+		[self.textView insertText:@"[]()"];
+		r = self.textView.selectedRange;
 		r.location = r.location - 3;
-		self.composeTextView.selectedRange = r;
+		self.textView.selectedRange = r;
 	}
 	else {
 		[self replaceSelectionBySurrounding:@[ @"[", @"]()" ]];
-		r = self.composeTextView.selectedRange;
+		r = self.textView.selectedRange;
 		r.location = r.location - 1;
-		self.composeTextView.selectedRange = r;
+		self.textView.selectedRange = r;
 	}
 }
 
 - (void) replaceSelectionBySurrounding:(NSArray *)markup
 {
-	UITextRange* r = self.composeTextView.selectedTextRange;
+	UITextRange* r = self.textView.selectedTextRange;
 	if ([r isEmpty]) {
-		[self.composeTextView insertText:[markup firstObject]];
+		[self.textView insertText:[markup firstObject]];
 	}
 	else {
-		NSString* s = [self.composeTextView textInRange:r];
+		NSString* s = [self.textView textInRange:r];
 		NSString* new_s = [NSString stringWithFormat:@"%@%@%@", [markup firstObject], s, [markup lastObject]];
-		[self.composeTextView replaceRange:r withText:new_s];
+		[self.textView replaceRange:r withText:new_s];
 	}
 }
 

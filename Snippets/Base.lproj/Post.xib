@@ -4,7 +4,8 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -19,7 +20,6 @@
                 <outlet property="blognameField" destination="boh-G1-f3J" id="uvn-XS-LQm"/>
                 <outlet property="bottomConstraint" destination="Tev-Ab-erq" id="mjY-DW-B4C"/>
                 <outlet property="collectionView" destination="va1-Ew-xJV" id="RU0-9q-moq"/>
-                <outlet property="composeTextView" destination="F7T-Eg-dhD" id="he1-1k-hnF"/>
                 <outlet property="editingBar" destination="I8I-kA-x0u" id="CC7-dK-qFG"/>
                 <outlet property="markdownBoldButton" destination="6s7-RJ-qLM" id="VNp-wb-yFZ"/>
                 <outlet property="markdownItalicsButton" destination="1Gl-6r-27N" id="JcZ-oe-ROS"/>
@@ -33,6 +33,7 @@
                 <outlet property="progressHeaderTopConstraint" destination="Iwd-b0-Yid" id="hrc-sl-chm"/>
                 <outlet property="progressHeaderView" destination="ihB-7W-Vup" id="hUH-fO-az8"/>
                 <outlet property="remainingField" destination="qjg-el-aBq" id="rJl-gi-J1w"/>
+                <outlet property="textView" destination="F7T-Eg-dhD" id="bSs-O6-eB1"/>
                 <outlet property="titleField" destination="uf1-p8-p6f" id="u9d-hi-V7l"/>
                 <outlet property="titleHeaderHeightConstraint" destination="vez-Nm-nh8" id="sqI-a8-cDF"/>
                 <outlet property="view" destination="iN0-l3-epB" id="yA8-wJ-I5e"/>
