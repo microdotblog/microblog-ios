@@ -17,8 +17,6 @@
 		4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */; };
 		4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */; };
 		4B10602C1F0D39FB0045AB1A /* UIFont+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */; };
-		4B1114F91E8C1A5C0043AB6B /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1114F81E8C1A5C0043AB6B /* ShareViewController.m */; };
-		4B1114FC1E8C1A5C0043AB6B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1114FA1E8C1A5C0043AB6B /* MainInterface.storyboard */; };
 		4B12BAEA1E9FBFBC000E559F /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */; };
 		4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */; };
 		4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E41F1E82F5B50032F54B /* Photos.framework */; };
@@ -33,7 +31,6 @@
 		4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */; };
 		4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */; };
 		4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DEDD51BF8D14B00F3152B /* RFUserController.m */; };
-		4B2EE3091E8C1F9F009DDA85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B94052C1E2933DE00B01E79 /* Images.xcassets */; };
 		4B3BD0DF1E82B5F800F4B4E0 /* RFPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */; };
 		4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B3BD0E01E82B61700F4B4E0 /* Photos.xib */; };
 		4B43700C1EC7AF3300B46D56 /* RFSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43700B1EC7AF3300B46D56 /* RFSettings.m */; };
@@ -91,7 +88,6 @@
 		4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9A21B210A9A0038C0E5 /* RFTimelineController.m */; };
 		4BA2C9A61B210C0E0038C0E5 /* RFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9A51B210C0E0038C0E5 /* RFAppDelegate.m */; };
 		4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9A71B210C1C0038C0E5 /* main.m */; };
-		4BA3A1661D8877170097D02E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA3A1651D8877170097D02E /* CloudKit.framework */; };
 		4BA910761B83CDC400D58F83 /* RFMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910751B83CDC400D58F83 /* RFMenuController.m */; };
 		4BA910791B83CE7600D58F83 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910771B83CE7600D58F83 /* Menu.xib */; };
 		4BA9107C1B83CFD200D58F83 /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9107A1B83CFD200D58F83 /* SignIn.xib */; };
@@ -122,7 +118,100 @@
 		4BF803511B87AACF00D6670C /* RFClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803501B87AACF00D6670C /* RFClient.m */; };
 		4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8035A1B8898D900D6670C /* RFThinLineView.m */; };
 		4BF870651F679070005C9849 /* RFBrowserActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF870641F679070005C9849 /* RFBrowserActivity.m */; };
+		C507F30C1F8827420013D2B7 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507F30B1F8827420013D2B7 /* ShareViewController.m */; };
+		C507F30F1F8827420013D2B7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C507F30D1F8827420013D2B7 /* MainInterface.storyboard */; };
+		C507F3131F8827420013D2B7 /* Micro.blog Sharing.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C507F3081F8827420013D2B7 /* Micro.blog Sharing.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C507F3171F8827780013D2B7 /* RFPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910811B83D20C00D58F83 /* RFPostController.m */; };
+		C507F3181F8827820013D2B7 /* RFSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43700B1EC7AF3300B46D56 /* RFSettings.m */; };
+		C507F3191F8827850013D2B7 /* RFHighlightingTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA71021F5DF9CE00B56A04 /* RFHighlightingTextStorage.m */; };
+		C507F31A1F8827880013D2B7 /* RFPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */; };
+		C507F31B1F88278C0013D2B7 /* RFPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A7BA61E82F107002A49E5 /* RFPhotoCell.m */; };
+		C507F31C1F88278F0013D2B7 /* RFPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A7BA91E82F149002A49E5 /* RFPhoto.m */; };
+		C507F31D1F8827950013D2B7 /* RFClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803501B87AACF00D6670C /* RFClient.m */; };
+		C507F31E1F8827970013D2B7 /* RFMicropub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D21EB1E9DF44000AC101E /* RFMicropub.m */; };
+		C507F31F1F88279B0013D2B7 /* RFXMLLinkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714791E64C56A00C69589 /* RFXMLLinkParser.m */; };
+		C507F3201F88279E0013D2B7 /* RFXMLRPCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D55511B93827D0076AD9F /* RFXMLRPCRequest.m */; };
+		C507F3211F8827A90013D2B7 /* RFXMLRPCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D554E1B9381550076AD9F /* RFXMLRPCParser.m */; };
+		C507F3221F8827A90013D2B7 /* RFXMLRSDParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D55681B93C0390076AD9F /* RFXMLRSDParser.m */; };
+		C507F3231F8827A90013D2B7 /* RFXMLElementStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D74FB1B95ECF4004A0ACD /* RFXMLElementStack.m */; };
+		C507F3241F8827A90013D2B7 /* RFThinLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8035A1B8898D900D6670C /* RFThinLineView.m */; };
+		C507F3251F8827A90013D2B7 /* UIBarButtonItem+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */; };
+		C507F3261F8827A90013D2B7 /* RFMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */; };
+		C507F3271F8827A90013D2B7 /* NSString+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */; };
+		C507F3281F8827A90013D2B7 /* UIFont+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */; };
+		C507F3291F8827A90013D2B7 /* RFMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1712DA1F069FB200267045 /* RFMenuView.m */; };
+		C507F32A1F8827AE0013D2B7 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */; };
+		C507F32B1F8827BC0013D2B7 /* UUDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803331B87AA2C00D6670C /* UUDataCache.m */; };
+		C507F32C1F8827BC0013D2B7 /* UUDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803351B87AA2C00D6670C /* UUDate.m */; };
+		C507F32D1F8827BC0013D2B7 /* UUDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803371B87AA2C00D6670C /* UUDictionary.m */; };
+		C507F32E1F8827BC0013D2B7 /* UUHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803391B87AA2C00D6670C /* UUHttpClient.m */; };
+		C507F32F1F8827BC0013D2B7 /* UUHttpResponseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8033B1B87AA2C00D6670C /* UUHttpResponseHandler.m */; };
+		C507F3301F8827BC0013D2B7 /* UUHttpSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8033D1B87AA2C00D6670C /* UUHttpSession.m */; };
+		C507F3311F8827BC0013D2B7 /* UUImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8033F1B87AA2C00D6670C /* UUImage.m */; };
+		C507F3321F8827BC0013D2B7 /* UUString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803431B87AA2C00D6670C /* UUString.m */; };
+		C507F3331F8827C20013D2B7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
+		C507F3341F8827C20013D2B7 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */; };
+		C507F3351F8828090013D2B7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA9109F1B84A54A00D58F83 /* Fabric.framework */; };
+		C507F3361F88280C0013D2B7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA910A01B84A54A00D58F83 /* Crashlytics.framework */; };
+		C507F3371F88281C0013D2B7 /* RFFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123F01E882F3000B56138 /* RFFiltersController.m */; };
+		C507F3381F88282D0013D2B7 /* RFFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123F91E88301500B56138 /* RFFilter.m */; };
+		C507F3391F8828310013D2B7 /* RFFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123FC1E88302B00B56138 /* RFFilterCell.m */; };
+		C507F33A1F8828390013D2B7 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714811E64D05700C69589 /* CTidy.m */; };
+		C507F33B1F8828640013D2B7 /* access.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714891E64D05700C69589 /* access.c */; };
+		C507F33C1F8828640013D2B7 /* alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B87148B1E64D05700C69589 /* alloc.c */; };
+		C507F33D1F8828640013D2B7 /* attrask.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B87148C1E64D05700C69589 /* attrask.c */; };
+		C507F33E1F8828640013D2B7 /* attrdict.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B87148D1E64D05700C69589 /* attrdict.c */; };
+		C507F33F1F8828640013D2B7 /* attrget.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B87148F1E64D05700C69589 /* attrget.c */; };
+		C507F3401F8828640013D2B7 /* attrs.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714901E64D05700C69589 /* attrs.c */; };
+		C507F3411F8828640013D2B7 /* buffio.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714921E64D05700C69589 /* buffio.c */; };
+		C507F3421F8828640013D2B7 /* charsets.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714931E64D05700C69589 /* charsets.c */; };
+		C507F3431F8828640013D2B7 /* clean.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714951E64D05700C69589 /* clean.c */; };
+		C507F3441F8828640013D2B7 /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714971E64D05700C69589 /* config.c */; };
+		C507F3451F8828640013D2B7 /* entities.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714991E64D05700C69589 /* entities.c */; };
+		C507F3461F8828640013D2B7 /* fileio.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B87149B1E64D05700C69589 /* fileio.c */; };
+		C507F3471F8828640013D2B7 /* iconvtc.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B87149E1E64D05700C69589 /* iconvtc.c */; };
+		C507F3481F8828640013D2B7 /* istack.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714A01E64D05700C69589 /* istack.c */; };
+		C507F3491F8828640013D2B7 /* lexer.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714A11E64D05700C69589 /* lexer.c */; };
+		C507F34A1F8828640013D2B7 /* localize.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714A31E64D05700C69589 /* localize.c */; };
+		C507F34B1F8828640013D2B7 /* mappedio.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714A41E64D05700C69589 /* mappedio.c */; };
+		C507F34C1F8828640013D2B7 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714A71E64D05700C69589 /* parser.c */; };
+		C507F34D1F8828640013D2B7 /* pprint.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714A91E64D05700C69589 /* pprint.c */; };
+		C507F34E1F8828640013D2B7 /* streamio.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714AB1E64D05700C69589 /* streamio.c */; };
+		C507F34F1F8828640013D2B7 /* tagask.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714AD1E64D05700C69589 /* tagask.c */; };
+		C507F3501F8828640013D2B7 /* tags.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714AE1E64D05700C69589 /* tags.c */; };
+		C507F3511F8828640013D2B7 /* tidylib.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714B11E64D05700C69589 /* tidylib.c */; };
+		C507F3521F8828640013D2B7 /* tmbstr.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714B21E64D05700C69589 /* tmbstr.c */; };
+		C507F3531F8828640013D2B7 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714B41E64D05700C69589 /* utf8.c */; };
+		C507F3541F8828640013D2B7 /* win32tc.c in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714B71E64D05700C69589 /* win32tc.c */; };
+		C507F3551F8831460013D2B7 /* Post.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910831B83D22900D58F83 /* Post.xib */; };
+		C507F3561F8831490013D2B7 /* Photos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B3BD0E01E82B61700F4B4E0 /* Photos.xib */; };
+		C507F3571F88314B0013D2B7 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B9A7BAB1E82F1C1002A49E5 /* PhotoCell.xib */; };
+		C507F3581F8831530013D2B7 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910771B83CE7600D58F83 /* Menu.xib */; };
+		C507F3591F8831530013D2B7 /* Timeline.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA2C99E1B210A620038C0E5 /* Timeline.xib */; };
+		C507F35A1F8831530013D2B7 /* User.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5666B611F23C95F00AE13DC /* User.xib */; };
+		C507F35B1F8831530013D2B7 /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
+		C507F35C1F8831530013D2B7 /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9107A1B83CFD200D58F83 /* SignIn.xib */; };
+		C507F35D1F8831530013D2B7 /* FeaturedPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B4D9B561ED5213E00315BBA /* FeaturedPhotoCell.xib */; };
+		C507F35E1F8831530013D2B7 /* Filters.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123F21E882F4500B56138 /* Filters.xib */; };
+		C507F35F1F8831530013D2B7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123F51E882F5400B56138 /* FilterCell.xib */; };
+		C507F3601F8831530013D2B7 /* Help.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1BD2821D8754DC00B3C93D /* Help.xib */; };
+		C507F3611F8831530013D2B7 /* External.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8714721E64C07800C69589 /* External.xib */; };
+		C507F3621F8831530013D2B7 /* Wordpress.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D55561B93B3F00076AD9F /* Wordpress.xib */; };
+		C507F3631F8831530013D2B7 /* Categories.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D556D1B9552F40076AD9F /* Categories.xib */; };
+		C507F3641F8831530013D2B7 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5078D21B965E4F002A4F80 /* Settings.xib */; };
+		C507F3651F8831530013D2B7 /* SettingChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */; };
+		C513F6E61F993D2D007319F0 /* RFAppExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C513F6E51F993D2D007319F0 /* RFAppExtensionViewController.m */; };
+		C513F6E71F993F21007319F0 /* RFAppExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C513F6E51F993D2D007319F0 /* RFAppExtensionViewController.m */; };
+		C513F6E81F994197007319F0 /* UUAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803311B87AA2C00D6670C /* UUAlert.m */; };
+		C55044A21F8EBB7800C1D5F2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B94052C1E2933DE00B01E79 /* Images.xcassets */; };
+		C55044A31F8EBB7B00C1D5F2 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */; };
 		C5666B631F23C95F00AE13DC /* User.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5666B611F23C95F00AE13DC /* User.xib */; };
+		C5A66B0C1F88325E0063F325 /* CColorConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631F1B8F51710034FC5C /* CColorConverter.m */; };
+		C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663211B8F51710034FC5C /* CMarkupTransformer.m */; };
+		C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663231B8F51710034FC5C /* CSimpleMarkupParser.m */; };
+		C5A66B0F1F88325E0063F325 /* NSString+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663251B8F51710034FC5C /* NSString+MarkupExtensions.m */; };
+		C5A66B101F88325E0063F325 /* UIFont+StyleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */; };
+		C5A66B111F88325E0063F325 /* UILabel+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */; };
 		C5CED6F51ECF792E0068F537 /* YUCIBilateralFilter.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */; };
 		C5CED6F61ECF792E0068F537 /* YUCIBilateralFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */; };
 		C5CED6F71ECF792E0068F537 /* YUCIBlobsGenerator.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6BB1ECF792E0068F537 /* YUCIBlobsGenerator.cikernel */; };
@@ -165,6 +254,16 @@
 		C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6F41ECF792E0068F537 /* YUCIUtilities.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C507F3111F8827420013D2B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BA2C96B1B2109D10038C0E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C507F3071F8827420013D2B7;
+			remoteInfo = "Micro.blog Sharing";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		4B9680101E74770A00C9E459 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -174,6 +273,17 @@
 			files = (
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C58FB69E1F87F5D70039823A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C507F3131F8827420013D2B7 /* Micro.blog Sharing.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -196,11 +306,6 @@
 		4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFSettingChoiceCell.m; path = Source/RFSettingChoiceCell.m; sourceTree = "<group>"; };
 		4B10602A1F0D39FB0045AB1A /* UIFont+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Extras.h"; path = "Source/UIFont+Extras.h"; sourceTree = "<group>"; };
 		4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Extras.m"; path = "Source/UIFont+Extras.m"; sourceTree = "<group>"; };
-		4B1114F51E8C1A5C0043AB6B /* Photo Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Photo Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B1114F71E8C1A5C0043AB6B /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
-		4B1114F81E8C1A5C0043AB6B /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
-		4B1114FB1E8C1A5C0043AB6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		4B1114FD1E8C1A5C0043AB6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = Shared/1Password/1Password.xcassets; sourceTree = SOURCE_ROOT; };
 		4B12BAEC1E9FBFDD000E559F /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnePasswordExtension.h; path = Shared/1Password/OnePasswordExtension.h; sourceTree = SOURCE_ROOT; };
 		4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OnePasswordExtension.m; path = Shared/1Password/OnePasswordExtension.m; sourceTree = SOURCE_ROOT; };
@@ -333,7 +438,6 @@
 		4BA2C9A51B210C0E0038C0E5 /* RFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFAppDelegate.m; path = Source/RFAppDelegate.m; sourceTree = "<group>"; };
 		4BA2C9A71B210C1C0038C0E5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Source/main.m; sourceTree = "<group>"; };
 		4BA3A1641D8876D70097D02E /* Snippets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Snippets.entitlements; path = Snippets/Snippets.entitlements; sourceTree = "<group>"; };
-		4BA3A1651D8877170097D02E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4BA910741B83CDC400D58F83 /* RFMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFMenuController.h; path = Source/RFMenuController.h; sourceTree = "<group>"; };
 		4BA910751B83CDC400D58F83 /* RFMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = RFMenuController.m; path = Source/RFMenuController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4BA910781B83CE7600D58F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Menu.xib; sourceTree = "<group>"; };
@@ -387,7 +491,15 @@
 		4BF8035A1B8898D900D6670C /* RFThinLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFThinLineView.m; path = Source/RFThinLineView.m; sourceTree = "<group>"; };
 		4BF870631F679070005C9849 /* RFBrowserActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFBrowserActivity.h; path = Source/RFBrowserActivity.h; sourceTree = "<group>"; };
 		4BF870641F679070005C9849 /* RFBrowserActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFBrowserActivity.m; path = Source/RFBrowserActivity.m; sourceTree = "<group>"; };
+		C507F3081F8827420013D2B7 /* Micro.blog Sharing.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Micro.blog Sharing.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C507F30A1F8827420013D2B7 /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		C507F30B1F8827420013D2B7 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		C507F30E1F8827420013D2B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C507F3101F8827420013D2B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C513F6E41F993D2D007319F0 /* RFAppExtensionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFAppExtensionViewController.h; path = Source/RFAppExtensionViewController.h; sourceTree = "<group>"; };
+		C513F6E51F993D2D007319F0 /* RFAppExtensionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAppExtensionViewController.m; path = Source/RFAppExtensionViewController.m; sourceTree = "<group>"; };
 		C5666B621F23C95F00AE13DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/User.xib; sourceTree = "<group>"; };
+		C5A4AC011F9A507400415646 /* Micro.blog Sharing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Micro.blog Sharing.entitlements"; sourceTree = "<group>"; };
 		C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIBilateralFilter.cikernel; sourceTree = "<group>"; };
 		C5CED6B91ECF792E0068F537 /* YUCIBilateralFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIBilateralFilter.h; sourceTree = "<group>"; };
 		C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIBilateralFilter.m; sourceTree = "<group>"; };
@@ -452,39 +564,29 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4B1114F21E8C1A5C0043AB6B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4BA2C9701B2109D10038C0E5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */,
 				4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */,
-				4BA3A1661D8877170097D02E /* CloudKit.framework in Frameworks */,
 				4BA910A21B84A54A00D58F83 /* Crashlytics.framework in Frameworks */,
 				4BA910A11B84A54A00D58F83 /* Fabric.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C507F3051F8827420013D2B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C507F3361F88280C0013D2B7 /* Crashlytics.framework in Frameworks */,
+				C507F3351F8828090013D2B7 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4B1114F61E8C1A5C0043AB6B /* Photo Extension */ = {
-			isa = PBXGroup;
-			children = (
-				4B1114F71E8C1A5C0043AB6B /* ShareViewController.h */,
-				4B1114F81E8C1A5C0043AB6B /* ShareViewController.m */,
-				4B1114FA1E8C1A5C0043AB6B /* MainInterface.storyboard */,
-				4B1114FD1E8C1A5C0043AB6B /* Info.plist */,
-			);
-			path = "Photo Extension";
-			sourceTree = "<group>";
-		};
 		4B12BAEB1E9FBFC5000E559F /* 1Password */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,7 +736,7 @@
 				4BA2C9751B2109D10038C0E5 /* Source */,
 				4BA2C99D1B2109E10038C0E5 /* Shared */,
 				4BA2C99C1B2109DC0038C0E5 /* Resources */,
-				4B1114F61E8C1A5C0043AB6B /* Photo Extension */,
+				C507F3091F8827420013D2B7 /* Micro.blog Sharing */,
 				4BA9109E1B84A53A00D58F83 /* Frameworks */,
 				4BA2C9741B2109D10038C0E5 /* Products */,
 			);
@@ -644,7 +746,7 @@
 			isa = PBXGroup;
 			children = (
 				4BA2C9731B2109D10038C0E5 /* Micro.blog.app */,
-				4B1114F51E8C1A5C0043AB6B /* Photo Extension.appex */,
+				C507F3081F8827420013D2B7 /* Micro.blog Sharing.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -683,6 +785,8 @@
 				4B43700B1EC7AF3300B46D56 /* RFSettings.m */,
 				4BA910801B83D20C00D58F83 /* RFPostController.h */,
 				4BA910811B83D20C00D58F83 /* RFPostController.m */,
+				C513F6E41F993D2D007319F0 /* RFAppExtensionViewController.h */,
+				C513F6E51F993D2D007319F0 /* RFAppExtensionViewController.m */,
 				4BBA71011F5DF9CE00B56A04 /* RFHighlightingTextStorage.h */,
 				4BBA71021F5DF9CE00B56A04 /* RFHighlightingTextStorage.m */,
 				4B3BD0DD1E82B5F800F4B4E0 /* RFPhotosController.h */,
@@ -786,7 +890,6 @@
 			children = (
 				4B14E41F1E82F5B50032F54B /* Photos.framework */,
 				4B14E4201E82F5B50032F54B /* PhotosUI.framework */,
-				4BA3A1651D8877170097D02E /* CloudKit.framework */,
 				4BA9109F1B84A54A00D58F83 /* Fabric.framework */,
 				4BA910A01B84A54A00D58F83 /* Crashlytics.framework */,
 			);
@@ -821,6 +924,18 @@
 				4BF803431B87AA2C00D6670C /* UUString.m */,
 			);
 			name = UUToolbox;
+			sourceTree = "<group>";
+		};
+		C507F3091F8827420013D2B7 /* Micro.blog Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				C5A4AC011F9A507400415646 /* Micro.blog Sharing.entitlements */,
+				C507F30A1F8827420013D2B7 /* ShareViewController.h */,
+				C507F30B1F8827420013D2B7 /* ShareViewController.m */,
+				C507F30D1F8827420013D2B7 /* MainInterface.storyboard */,
+				C507F3101F8827420013D2B7 /* Info.plist */,
+			);
+			path = "Micro.blog Sharing";
 			sourceTree = "<group>";
 		};
 		C5CED6B71ECF792E0068F537 /* VividFilters */ = {
@@ -894,23 +1009,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4B1114F41E8C1A5C0043AB6B /* Photo Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4B1115011E8C1A5C0043AB6B /* Build configuration list for PBXNativeTarget "Photo Extension" */;
-			buildPhases = (
-				4B1114F11E8C1A5C0043AB6B /* Sources */,
-				4B1114F21E8C1A5C0043AB6B /* Frameworks */,
-				4B1114F31E8C1A5C0043AB6B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Photo Extension";
-			productName = "Photo Extension";
-			productReference = 4B1114F51E8C1A5C0043AB6B /* Photo Extension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		4BA2C9721B2109D10038C0E5 /* Micro.blog */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4BA2C9961B2109D10038C0E5 /* Build configuration list for PBXNativeTarget "Micro.blog" */;
@@ -920,15 +1018,34 @@
 				4BA2C9711B2109D10038C0E5 /* Resources */,
 				4BA9109D1B84A51B00D58F83 /* ShellScript */,
 				4B9680101E74770A00C9E459 /* Embed Frameworks */,
+				C58FB69E1F87F5D70039823A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C507F3121F8827420013D2B7 /* PBXTargetDependency */,
 			);
 			name = Micro.blog;
 			productName = Snippets;
 			productReference = 4BA2C9731B2109D10038C0E5 /* Micro.blog.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C507F3071F8827420013D2B7 /* Micro.blog Sharing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C507F3141F8827420013D2B7 /* Build configuration list for PBXNativeTarget "Micro.blog Sharing" */;
+			buildPhases = (
+				C507F3041F8827420013D2B7 /* Sources */,
+				C507F3051F8827420013D2B7 /* Frameworks */,
+				C507F3061F8827420013D2B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Micro.blog Sharing";
+			productName = "Micro.blog Sharing";
+			productReference = C507F3081F8827420013D2B7 /* Micro.blog Sharing.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -939,17 +1056,15 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Riverfold Software";
 				TargetAttributes = {
-					4B1114F41E8C1A5C0043AB6B = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = S4E235RUB9;
-						ProvisioningStyle = Automatic;
-					};
 					4BA2C9721B2109D10038C0E5 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 3F9MDJ6K4E;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -957,6 +1072,19 @@
 								enabled = 1;
 							};
 							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
+					};
+					C507F3071F8827420013D2B7 = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = 3F9MDJ6K4E;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
 								enabled = 1;
 							};
 						};
@@ -977,21 +1105,12 @@
 			projectRoot = "";
 			targets = (
 				4BA2C9721B2109D10038C0E5 /* Micro.blog */,
-				4B1114F41E8C1A5C0043AB6B /* Photo Extension */,
+				C507F3071F8827420013D2B7 /* Micro.blog Sharing */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4B1114F31E8C1A5C0043AB6B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4B2EE3091E8C1F9F009DDA85 /* Images.xcassets in Resources */,
-				4B1114FC1E8C1A5C0043AB6B /* MainInterface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4BA2C9711B2109D10038C0E5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1039,6 +1158,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C507F3061F8827420013D2B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C507F35C1F8831530013D2B7 /* SignIn.xib in Resources */,
+				C507F35B1F8831530013D2B7 /* Options.xib in Resources */,
+				C507F3601F8831530013D2B7 /* Help.xib in Resources */,
+				C507F35D1F8831530013D2B7 /* FeaturedPhotoCell.xib in Resources */,
+				C507F3611F8831530013D2B7 /* External.xib in Resources */,
+				C507F3641F8831530013D2B7 /* Settings.xib in Resources */,
+				C507F3631F8831530013D2B7 /* Categories.xib in Resources */,
+				C507F35E1F8831530013D2B7 /* Filters.xib in Resources */,
+				C507F3621F8831530013D2B7 /* Wordpress.xib in Resources */,
+				C507F3571F88314B0013D2B7 /* PhotoCell.xib in Resources */,
+				C55044A31F8EBB7B00C1D5F2 /* 1Password.xcassets in Resources */,
+				C507F3581F8831530013D2B7 /* Menu.xib in Resources */,
+				C507F30F1F8827420013D2B7 /* MainInterface.storyboard in Resources */,
+				C507F3551F8831460013D2B7 /* Post.xib in Resources */,
+				C507F35A1F8831530013D2B7 /* User.xib in Resources */,
+				C507F35F1F8831530013D2B7 /* FilterCell.xib in Resources */,
+				C55044A21F8EBB7800C1D5F2 /* Images.xcassets in Resources */,
+				C507F3651F8831530013D2B7 /* SettingChoiceCell.xib in Resources */,
+				C507F3591F8831530013D2B7 /* Timeline.xib in Resources */,
+				C507F3561F8831490013D2B7 /* Photos.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1058,14 +1204,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4B1114F11E8C1A5C0043AB6B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4B1114F91E8C1A5C0043AB6B /* ShareViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4BA2C96F1B2109D10038C0E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1165,6 +1303,7 @@
 				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
 				C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */,
 				4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */,
+				C513F6E61F993D2D007319F0 /* RFAppExtensionViewController.m in Sources */,
 				4B8714D31E64D05700C69589 /* win32tc.c in Sources */,
 				C5CED7091ECF792E0068F537 /* YUCIHighPass.m in Sources */,
 				4B4D9B551ED520F800315BBA /* RFFeaturedPhoto.m in Sources */,
@@ -1181,7 +1320,91 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C507F3041F8827420013D2B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C507F3301F8827BC0013D2B7 /* UUHttpSession.m in Sources */,
+				C507F32A1F8827AE0013D2B7 /* OnePasswordExtension.m in Sources */,
+				C507F34D1F8828640013D2B7 /* pprint.c in Sources */,
+				C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */,
+				C507F3511F8828640013D2B7 /* tidylib.c in Sources */,
+				C507F3321F8827BC0013D2B7 /* UUString.m in Sources */,
+				C507F32D1F8827BC0013D2B7 /* UUDictionary.m in Sources */,
+				C507F3441F8828640013D2B7 /* config.c in Sources */,
+				C507F33A1F8828390013D2B7 /* CTidy.m in Sources */,
+				C507F31E1F8827970013D2B7 /* RFMicropub.m in Sources */,
+				C507F3371F88281C0013D2B7 /* RFFiltersController.m in Sources */,
+				C507F31B1F88278C0013D2B7 /* RFPhotoCell.m in Sources */,
+				C507F3311F8827BC0013D2B7 /* UUImage.m in Sources */,
+				C507F30C1F8827420013D2B7 /* ShareViewController.m in Sources */,
+				C507F3291F8827A90013D2B7 /* RFMenuView.m in Sources */,
+				C507F3251F8827A90013D2B7 /* UIBarButtonItem+Extras.m in Sources */,
+				C507F33C1F8828640013D2B7 /* alloc.c in Sources */,
+				C507F34A1F8828640013D2B7 /* localize.c in Sources */,
+				C507F32F1F8827BC0013D2B7 /* UUHttpResponseHandler.m in Sources */,
+				C507F3241F8827A90013D2B7 /* RFThinLineView.m in Sources */,
+				C507F3201F88279E0013D2B7 /* RFXMLRPCRequest.m in Sources */,
+				C5A66B111F88325E0063F325 /* UILabel+MarkupExtensions.m in Sources */,
+				C5A66B101F88325E0063F325 /* UIFont+StyleUtilities.m in Sources */,
+				C507F33D1F8828640013D2B7 /* attrask.c in Sources */,
+				C507F3521F8828640013D2B7 /* tmbstr.c in Sources */,
+				C5A66B0C1F88325E0063F325 /* CColorConverter.m in Sources */,
+				C507F3341F8827C20013D2B7 /* SSKeychainQuery.m in Sources */,
+				C507F3261F8827A90013D2B7 /* RFMenuButton.m in Sources */,
+				C507F3281F8827A90013D2B7 /* UIFont+Extras.m in Sources */,
+				C507F3181F8827820013D2B7 /* RFSettings.m in Sources */,
+				C507F3221F8827A90013D2B7 /* RFXMLRSDParser.m in Sources */,
+				C507F32C1F8827BC0013D2B7 /* UUDate.m in Sources */,
+				C513F6E81F994197007319F0 /* UUAlert.m in Sources */,
+				C507F32B1F8827BC0013D2B7 /* UUDataCache.m in Sources */,
+				C507F33E1F8828640013D2B7 /* attrdict.c in Sources */,
+				C507F3531F8828640013D2B7 /* utf8.c in Sources */,
+				C507F34F1F8828640013D2B7 /* tagask.c in Sources */,
+				C507F31F1F88279B0013D2B7 /* RFXMLLinkParser.m in Sources */,
+				C507F33B1F8828640013D2B7 /* access.c in Sources */,
+				C507F3541F8828640013D2B7 /* win32tc.c in Sources */,
+				C507F3191F8827850013D2B7 /* RFHighlightingTextStorage.m in Sources */,
+				C507F34C1F8828640013D2B7 /* parser.c in Sources */,
+				C507F3421F8828640013D2B7 /* charsets.c in Sources */,
+				C507F3451F8828640013D2B7 /* entities.c in Sources */,
+				C507F31D1F8827950013D2B7 /* RFClient.m in Sources */,
+				C507F3471F8828640013D2B7 /* iconvtc.c in Sources */,
+				C507F34B1F8828640013D2B7 /* mappedio.c in Sources */,
+				C507F3231F8827A90013D2B7 /* RFXMLElementStack.m in Sources */,
+				C507F3431F8828640013D2B7 /* clean.c in Sources */,
+				C5A66B0F1F88325E0063F325 /* NSString+MarkupExtensions.m in Sources */,
+				C507F3481F8828640013D2B7 /* istack.c in Sources */,
+				C513F6E71F993F21007319F0 /* RFAppExtensionViewController.m in Sources */,
+				C507F3461F8828640013D2B7 /* fileio.c in Sources */,
+				C507F31A1F8827880013D2B7 /* RFPhotosController.m in Sources */,
+				C507F3271F8827A90013D2B7 /* NSString+Extras.m in Sources */,
+				C507F34E1F8828640013D2B7 /* streamio.c in Sources */,
+				C507F3411F8828640013D2B7 /* buffio.c in Sources */,
+				C507F3391F8828310013D2B7 /* RFFilterCell.m in Sources */,
+				C507F3501F8828640013D2B7 /* tags.c in Sources */,
+				C507F3381F88282D0013D2B7 /* RFFilter.m in Sources */,
+				C507F3401F8828640013D2B7 /* attrs.c in Sources */,
+				C507F31C1F88278F0013D2B7 /* RFPhoto.m in Sources */,
+				C507F3211F8827A90013D2B7 /* RFXMLRPCParser.m in Sources */,
+				C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */,
+				C507F32E1F8827BC0013D2B7 /* UUHttpClient.m in Sources */,
+				C507F3491F8828640013D2B7 /* lexer.c in Sources */,
+				C507F33F1F8828640013D2B7 /* attrget.c in Sources */,
+				C507F3171F8827780013D2B7 /* RFPostController.m in Sources */,
+				C507F3331F8827C20013D2B7 /* SSKeychain.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C507F3121F8827420013D2B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C507F3071F8827420013D2B7 /* Micro.blog Sharing */;
+			targetProxy = C507F3111F8827420013D2B7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4B0D55561B93B3F00076AD9F /* Wordpress.xib */ = {
@@ -1206,14 +1429,6 @@
 				4B0D55711B95586F0076AD9F /* Base */,
 			);
 			name = SettingChoiceCell.xib;
-			sourceTree = "<group>";
-		};
-		4B1114FA1E8C1A5C0043AB6B /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4B1114FB1E8C1A5C0043AB6B /* Base */,
-			);
-			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		4B1BD2821D8754DC00B3C93D /* Help.xib */ = {
@@ -1328,6 +1543,14 @@
 			name = FilterCell.xib;
 			sourceTree = "<group>";
 		};
+		C507F30D1F8827420013D2B7 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C507F30E1F8827420013D2B7 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		C5666B611F23C95F00AE13DC /* User.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1339,42 +1562,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		4B1115021E8C1A5C0043AB6B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = S4E235RUB9;
-				INFOPLIST_FILE = "Photo Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.riverfold.snippets.PhotoExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		4B1115031E8C1A5C0043AB6B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = S4E235RUB9;
-				INFOPLIST_FILE = "Photo Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.riverfold.snippets.PhotoExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		4BA2C9941B2109D10038C0E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1463,6 +1650,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
@@ -1493,6 +1681,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
@@ -1515,18 +1704,82 @@
 			};
 			name = Release;
 		};
+		C507F3151F8827420013D2B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Micro.blog Sharing/Micro.blog Sharing.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Micro.blog Sharing/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "blog.micro.ios.Micro-blog-Sharing";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C507F3161F8827420013D2B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Micro.blog Sharing/Micro.blog Sharing.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Micro.blog Sharing/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "blog.micro.ios.Micro-blog-Sharing";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4B1115011E8C1A5C0043AB6B /* Build configuration list for PBXNativeTarget "Photo Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4B1115021E8C1A5C0043AB6B /* Debug */,
-				4B1115031E8C1A5C0043AB6B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4BA2C96E1B2109D10038C0E5 /* Build configuration list for PBXProject "Micro.blog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1541,6 +1794,15 @@
 			buildConfigurations = (
 				4BA2C9971B2109D10038C0E5 /* Debug */,
 				4BA2C9981B2109D10038C0E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C507F3141F8827420013D2B7 /* Build configuration list for PBXNativeTarget "Micro.blog Sharing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C507F3151F8827420013D2B7 /* Debug */,
+				C507F3161F8827420013D2B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

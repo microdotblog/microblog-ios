@@ -7,7 +7,7 @@
 //
 
 #import "RFPostController.h"
-
+#import "RFSettings.h"
 #import "RFPhotosController.h"
 #import "RFPhoto.h"
 #import "RFPhotoCell.h"
@@ -26,13 +26,30 @@
 #import "UUString.h"
 #import "UUImage.h"
 #import "SSKeychain.h"
-#import "Microblog-Swift.h"
+//#import "Microblog-Swift.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+@import MobileCoreServices;
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
+@interface RFPostController()
+	@property (nonatomic, strong) NSExtensionContext* appExtensionContext;
+@end
+
 @implementation RFPostController
+
+
+//Used
+- (instancetype) initWithCoder:(NSCoder *)aDecoder
+{
+    return [self init];
+}
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    return [self init];
+}
 
 - (instancetype) init
 {
@@ -58,6 +75,17 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	return self;
 }
 
+- (instancetype) initWithAppExtensionContext:(NSExtensionContext*)extensionContext
+{
+	self = [self init];
+	if (self)
+	{
+		self.appExtensionContext = extensionContext;
+	}
+	
+	return self;
+}
+
 - (void) viewDidLoad
 {
 	[super viewDidLoad];
@@ -70,7 +98,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self setupEditingButtons];
 	[self setupCollectionView];
 	[self setupGestures];
-	
+	[self setupAppExtensionElements];
 	[self updateTitleHeader];
 }
 
@@ -86,7 +114,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[super viewDidAppear:animated];
 	
-	[self.textView becomeFirstResponder];
+	[self.composeTextView becomeFirstResponder];
 }
 
 - (void) setupNavigation
@@ -106,7 +134,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupFont
 {
-	self.textView.font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
+	self.composeTextView.font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
 }
 
 - (void) setupText
@@ -120,10 +148,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		s = [NSString stringWithFormat:@"@%@ ", self.replyUsername];
 	}
 	NSAttributedString* attr_s = [[NSAttributedString alloc] initWithString:s];
-	self.textView.attributedText = attr_s;
+	self.composeTextView.attributedText = attr_s;
 
 	[self.textStorage appendAttributedString:attr_s];
-	[self.textStorage addLayoutManager:self.textView.layoutManager];
+	[self.textStorage addLayoutManager:self.composeTextView.layoutManager];
 
 	[self updateRemainingChars];
 }
@@ -151,16 +179,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		self.blognameField.hidden = YES;
 	}
 	else {
-		if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
-			self.blognameField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountDefaultSite"];
+		if ([RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
+			self.blognameField.text = [RFSettings accountDefaultSite];
 		}
-		else if ([self hasMicropubBlog]) {
-			NSString* endpoint_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubMe"];
+		else if ([RFSettings hasMicropubBlog]) {
+			NSString* endpoint_s = [RFSettings externalMicropubMe];
 			NSURL* endpoint_url = [NSURL URLWithString:endpoint_s];
 			self.blognameField.text = endpoint_url.host;
 		}
 		else {
-			NSString* endpoint_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogEndpoint"];
+			NSString* endpoint_s = [RFSettings externalBlogEndpoint];
 			NSURL* endpoint_url = [NSURL URLWithString:endpoint_s];
 			self.blognameField.text = endpoint_url.host;
 		}
@@ -190,11 +218,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	UISwipeGestureRecognizer* left_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft:)];
 	left_gesture.direction = UISwipeGestureRecognizerDirectionLeft;
-	[self.textView addGestureRecognizer:left_gesture];
+	[self.composeTextView addGestureRecognizer:left_gesture];
 
 	UISwipeGestureRecognizer* right_gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
 	right_gesture.direction = UISwipeGestureRecognizerDirectionRight;
-	[self.textView addGestureRecognizer:right_gesture];
+	[self.composeTextView addGestureRecognizer:right_gesture];
 }
 
 - (void) updateTitleHeader
@@ -211,20 +239,20 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) swipeLeft:(UISwipeGestureRecognizer *)gesture
 {
-	NSRange r = self.textView.selectedRange;
+	NSRange r = self.composeTextView.selectedRange;
 	if (r.location > 0) {
 		r.location = r.location - 1;
-		self.textView.selectedRange = r;
+		self.composeTextView.selectedRange = r;
 	}
 }
 
 - (void) swipeRight:(UISwipeGestureRecognizer *)gesture
 {
-	NSRange r = self.textView.selectedRange;
+	NSRange r = self.composeTextView.selectedRange;
 	NSUInteger len = [[self.textStorage string] length];
 	if (r.location < len) {
 		r.location = r.location + 1;
-		self.textView.selectedRange = r;
+		self.composeTextView.selectedRange = r;
 	}
 }
 
@@ -341,21 +369,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}];
 }
 
-- (BOOL) hasSnippetsBlog
-{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"HasSnippetsBlog"];
-}
-
-- (BOOL) hasMicropubBlog
-{
-	return ([[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubMe"] != nil);
-}
-
-- (BOOL) prefersExternalBlog
-{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"ExternalBlogIsPreferred"];
-}
-
 #pragma mark -
 
 - (IBAction) sendPost:(id)sender
@@ -371,9 +384,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 }
 
+
+
+
 - (IBAction) close:(id)sender
 {
-	[[NSNotificationCenter defaultCenter] postNotificationName:kClosePostingNotification object:self];
+	if (![self checkForAppExtensionClose])
+	{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kClosePostingNotification object:self];
+	}
 }
 
 - (IBAction) showPhotos:(id)sender
@@ -404,40 +423,40 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (IBAction) linkPressed:(id)sender
 {
 	NSRange r;
-	UITextRange* text_r = self.textView.selectedTextRange;
+	UITextRange* text_r = self.composeTextView.selectedTextRange;
 	if ([text_r isEmpty]) {
-		[self.textView insertText:@"[]()"];
-		r = self.textView.selectedRange;
+		[self.composeTextView insertText:@"[]()"];
+		r = self.composeTextView.selectedRange;
 		r.location = r.location - 3;
-		self.textView.selectedRange = r;
+		self.composeTextView.selectedRange = r;
 	}
 	else {
 		[self replaceSelectionBySurrounding:@[ @"[", @"]()" ]];
-		r = self.textView.selectedRange;
+		r = self.composeTextView.selectedRange;
 		r.location = r.location - 1;
-		self.textView.selectedRange = r;
+		self.composeTextView.selectedRange = r;
 	}
 }
 
 - (void) replaceSelectionBySurrounding:(NSArray *)markup
 {
-	UITextRange* r = self.textView.selectedTextRange;
+	UITextRange* r = self.composeTextView.selectedTextRange;
 	if ([r isEmpty]) {
-		[self.textView insertText:[markup firstObject]];
+		[self.composeTextView insertText:[markup firstObject]];
 	}
 	else {
-		NSString* s = [self.textView textInRange:r];
+		NSString* s = [self.composeTextView textInRange:r];
 		NSString* new_s = [NSString stringWithFormat:@"%@%@%@", [markup firstObject], s, [markup lastObject]];
-		[self.textView replaceRange:r withText:new_s];
+		[self.composeTextView replaceRange:r withText:new_s];
 	}
 }
 
 - (void) checkMediaEndpoint
 {
-	if ([self hasMicropubBlog]) {
-		NSString* media_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubMediaEndpoint"];
+	if ([RFSettings hasMicropubBlog]) {
+		NSString* media_endpoint = [RFSettings externalMicropubMediaEndpoint];
 		if (media_endpoint.length == 0) {
-			NSString* micropub_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubPostingEndpoint"];
+			NSString* micropub_endpoint = [RFSettings externalMicropubPostingEndpoint];
 			RFMicropub* client = [[RFMicropub alloc] initWithURL:micropub_endpoint];
 			NSDictionary* args = @{
 				@"q": @"config"
@@ -447,14 +466,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]]) {
 					NSString* new_endpoint = [response.parsedResponse objectForKey:@"media-endpoint"];
 					if (new_endpoint) {
-						[[NSUserDefaults standardUserDefaults] setObject:new_endpoint forKey:@"ExternalMicropubMediaEndpoint"];
+						[RFSettings setExternalMicropubMediaEndpoint:new_endpoint];
 						found = YES;
 					}
 				}
 				
 				if (!found) {
 					RFDispatchMain (^{
-						[UIAlertView uuShowOneButtonAlert:@"Error Checking Server" message:@"Micropub media-endpoint was not found." button:@"OK" completionHandler:NULL];
+						[UUAlertViewController uuShowOneButtonAlert:@"Error Checking Server" message:@"Micropub media-endpoint was not found." button:@"OK" completionHandler:NULL];
 					});
 				}
 			}];
@@ -480,7 +499,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 	else {
 		[self showProgressHeader:@"Now publishing to your microblog..."];
-		if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
+		if ([RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
 			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
 			NSDictionary* args;
 			if ([self.attachedPhotos count] > 0) {
@@ -507,7 +526,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
 						[self hideProgressHeader];
 						NSString* msg = response.parsedResponse[@"error_description"];
-						[UIAlertView uuShowOneButtonAlert:@"Error Sending Post" message:msg button:@"OK" completionHandler:NULL];
+						[UUAlertViewController uuShowOneButtonAlert:@"Error Sending Post" message:msg button:@"OK" completionHandler:NULL];
 					}
 					else {
 						[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
@@ -516,8 +535,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				});
 			}];
 		}
-		else if ([self hasMicropubBlog]) {
-			NSString* micropub_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubPostingEndpoint"];
+		else if ([RFSettings hasMicropubBlog]) {
+			NSString* micropub_endpoint = [RFSettings externalMicropubPostingEndpoint];
 			RFMicropub* client = [[RFMicropub alloc] initWithURL:micropub_endpoint];
 			NSDictionary* args;
 			if ([self.attachedPhotos count] > 0) {
@@ -556,7 +575,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
 						[self hideProgressHeader];
 						NSString* msg = response.parsedResponse[@"error_description"];
-						[UIAlertView uuShowOneButtonAlert:@"Error Sending Post" message:msg button:@"OK" completionHandler:NULL];
+						[UUAlertViewController uuShowOneButtonAlert:@"Error Sending Post" message:msg button:@"OK" completionHandler:NULL];
 					}
 					else {
 						[Answers logCustomEventWithName:@"Sent Post" customAttributes:nil];
@@ -566,23 +585,23 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			}];
 		}
 		else {
-			NSString* xmlrpc_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogEndpoint"];
-			NSString* blog_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogID"];
-			NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogUsername"];
-			NSString* password = [SSKeychain passwordForService:@"ExternalBlog" account:@"default"];
+			NSString* xmlrpc_endpoint = [RFSettings externalBlogEndpoint];
+			NSString* blog_s = [RFSettings externalBlogID];
+			NSString* username = [RFSettings externalBlogUsername];
+			NSString* password = [RFSettings externalBlogPassword];
 			
 			NSString* post_text = text;
 			NSString* app_key = @"";
 			NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
 			RFBoolean* publish = [[RFBoolean alloc] initWithBool:YES];
 
-			NSString* post_format = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogFormat"];
-			NSString* post_category = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogCategory"];
+			NSString* post_format = [RFSettings externalBlogFormat];
+			NSString* post_category = [RFSettings externalBlogCategory];
 
 			NSArray* params;
 			NSString* method_name;
 
-			if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogApp"] isEqualToString:@"WordPress"]) {
+			if ([RFSettings externalBlogUsesWordPress]) {
 				NSMutableDictionary* content = [NSMutableDictionary dictionary];
 				
 				content[@"post_status"] = @"publish";
@@ -616,7 +635,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				RFDispatchMainAsync ((^{
 					if (xmlrpc.responseFault) {
 						NSString* s = [NSString stringWithFormat:@"%@ (error: %@)", xmlrpc.responseFault[@"faultString"], xmlrpc.responseFault[@"faultCode"]];
-						[UIAlertView uuShowOneButtonAlert:@"Error Sending Post" message:s button:@"OK" completionHandler:NULL];
+						[UUAlertViewController uuShowOneButtonAlert:@"Error Sending Post" message:s button:@"OK" completionHandler:NULL];
 						[self hideProgressHeader];
 						self.photoButton.hidden = NO;
 					}
@@ -645,7 +664,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	else {
 		NSString* s = [self currentText];
 		
-		if ([self prefersExternalBlog] && ![self hasMicropubBlog]) {
+		if ([RFSettings prefersExternalBlog] && ![RFSettings hasMicropubBlog]) {
 			if (s.length > 0) {
 				s = [s stringByAppendingString:@"\n\n"];
 			}
@@ -671,7 +690,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	UIImage* img = photo.thumbnailImage;
 	NSData* d = UIImageJPEGRepresentation (img, 0.6);
 	if (d) {
-		if ([self hasSnippetsBlog] && ![self prefersExternalBlog]) {
+		if ([RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
 			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];
 			NSDictionary* args = @{
 			};
@@ -680,7 +699,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				NSString* image_url = headers[@"Location"];
 				RFDispatchMainAsync (^{
 					if (image_url == nil) {
-						[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
+						[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
 						[self hideProgressHeader];
 						self.photoButton.hidden = NO;
 					}
@@ -692,8 +711,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				});
 			}];
 		}
-		else if ([self hasMicropubBlog]) {
-			NSString* micropub_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubMediaEndpoint"];
+		else if ([RFSettings hasMicropubBlog]) {
+			NSString* micropub_endpoint = [RFSettings externalMicropubMediaEndpoint];
 			RFMicropub* client = [[RFMicropub alloc] initWithURL:micropub_endpoint];
 			NSDictionary* args = @{
 			};
@@ -702,7 +721,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				NSString* image_url = headers[@"Location"];
 				RFDispatchMainAsync (^{
 					if (image_url == nil) {
-						[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
+						[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
 						[self hideProgressHeader];
 						self.photoButton.hidden = NO;
 					}
@@ -715,16 +734,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			}];
 		}
 		else {
-			NSString* xmlrpc_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogEndpoint"];
-			NSString* blog_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogID"];
-			NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogUsername"];
-			NSString* password = [SSKeychain passwordForService:@"ExternalBlog" account:@"default"];
+			NSString* xmlrpc_endpoint = [RFSettings externalBlogEndpoint];
+			NSString* blog_s = [RFSettings externalBlogID];
+			NSString* username = [RFSettings externalBlogUsername];
+			NSString* password = [RFSettings externalBlogPassword];
 			
 			NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
 			NSString* filename = [[[[NSString uuGenerateUUIDString] lowercaseString] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByAppendingPathExtension:@"jpg"];
 			
 			if (!blog_id || !username || !password) {
-				[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Your blog settings were not saved correctly. Try signing out and trying again." button:@"OK" completionHandler:NULL];
+				[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Your blog settings were not saved correctly. Try signing out and trying again." button:@"OK" completionHandler:NULL];
 				[self hideProgressHeader];
 				self.photoButton.hidden = NO;
 				return;
@@ -743,14 +762,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				RFDispatchMainAsync ((^{
 					if (xmlrpc.responseFault) {
 						NSString* s = [NSString stringWithFormat:@"%@ (error: %@)", xmlrpc.responseFault[@"faultString"], xmlrpc.responseFault[@"faultCode"]];
-						[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:s button:@"OK" completionHandler:NULL];
+						[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Photo" message:s button:@"OK" completionHandler:NULL];
 						[self hideProgressHeader];
 						self.photoButton.hidden = NO;
 					}
 					else {
 						NSString* image_url = [[xmlrpc.responseParams firstObject] objectForKey:@"link"];
 						if (image_url == nil) {
-							[UIAlertView uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
+							[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
 							[self hideProgressHeader];
 							self.photoButton.hidden = NO;
 						}
@@ -843,7 +862,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[self showPhotosBar];
 		
 		if (too_many_photos) {
-			[UIAlertView uuShowOneButtonAlert:@"Only 10 Photos Added" message:@"The first 10 photos were added to your post." button:@"OK" completionHandler:NULL];
+			[UUAlertViewController uuShowOneButtonAlert:@"Only 10 Photos Added" message:@"The first 10 photos were added to your post." button:@"OK" completionHandler:NULL];
 		}
 	}];
 }
@@ -899,6 +918,61 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
 	return 0;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void) setupAppExtensionElements
+{
+	for (NSExtensionItem *item in self.appExtensionContext.inputItems)
+	{
+		for (NSItemProvider *itemProvider in item.attachments)
+		{
+			if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage])
+			{
+				[itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error)
+				 {
+					 if(image)
+					 {
+						 dispatch_async(dispatch_get_main_queue(), ^
+										{
+											//[self.navigationController setNavigationBarHidden:NO];
+											
+											RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:image];
+											NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
+											[new_photos addObject:photo];
+											self.attachedPhotos = new_photos;
+											[self.collectionView reloadData];
+											[self showPhotosBar];
+										});
+					 }
+				 }];
+				break;
+			}
+		}
+	}
+}
+
+- (BOOL) checkForAppExtensionClose
+{
+	if (self.appExtensionContext)
+	{
+		[self.appExtensionContext completeRequestReturningItems:nil completionHandler:nil];
+		return YES;
+	}
+	
+	return NO;
+}
+
+- (void) postFromExtension:(UIImage*)image withText:(NSString*)text
+{
+    self.textStorage = (RFHighlightingTextStorage*)[[NSAttributedString alloc] initWithString:text];    
+    self.queuedPhotos = [NSMutableArray arrayWithObject:image];
+    
+    [self uploadNextPhoto];
 }
 
 @end

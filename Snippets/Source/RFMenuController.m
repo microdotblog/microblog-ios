@@ -68,9 +68,9 @@
 
 - (void) setupProfileInfo
 {
-	NSString* full_name = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountFullName"];
-	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountUsername"];
-	NSString* gravatar_url = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountGravatarURL"];
+	NSString* full_name = [RFSettings snippetsAccountFullName];
+	NSString* username = [RFSettings snippetsUsername];
+	NSString* gravatar_url = [RFSettings snippetsGravatarURL];
 
 	if (full_name && username) {
 		self.fullNameField.text = full_name;
@@ -98,9 +98,9 @@
 				NSString* username = [response.parsedResponse objectForKey:@"username"];
 				NSString* gravatar_url = [response.parsedResponse objectForKey:@"gravatar_url"];
 
-				[[NSUserDefaults standardUserDefaults] setObject:full_name forKey:@"AccountFullName"];
-				[[NSUserDefaults standardUserDefaults] setObject:username forKey:@"AccountUsername"];
-				[[NSUserDefaults standardUserDefaults] setObject:gravatar_url forKey:@"AccountGravatarURL"];
+				[RFSettings setSnippetsAccountFullName:full_name];
+				[RFSettings setSnippetsUsername:username];
+				[RFSettings setSnippetsGravatarURL:gravatar_url];
 
 				RFDispatchMain (^{
 					[self setupProfileInfo];
@@ -150,7 +150,7 @@
 
 - (IBAction) showUserProfile:(id)sender
 {
-	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountUsername"];
+	NSString* username = [RFSettings snippetsUsername];
 	if (username) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:kShowUserProfileNotification object:self userInfo:@{ kShowUserProfileUsernameKey: username }];
 	}
@@ -197,30 +197,10 @@
 
 - (IBAction) signOut:(id)sender
 {
-	[UIAlertView uuShowTwoButtonAlert:@"Sign out of Micro.blog?" message:@"Signing out will reset your settings and let you sign in with a new account or different microblog." buttonOne:@"Cancel" buttonTwo:@"Sign Out" completionHandler:^(NSInteger buttonIndex) {
+	[UUAlertViewController uuShowTwoButtonAlert:@"Sign out of Micro.blog?" message:@"Signing out will reset your settings and let you sign in with a new account or different microblog." buttonOne:@"Cancel" buttonTwo:@"Sign Out" completionHandler:^(NSInteger buttonIndex) {
 		NSLog (@"button %d", buttonIndex);
 		if (buttonIndex == 1) {
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountUsername"];
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountGravatarURL"];
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"AccountDefaultSite"];
-
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"HasSnippetsBlog"];
-
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogUsername"];
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogApp"];
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogEndpoint"];
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogID"];
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalBlogIsPreferred"];
-
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubMe"];
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubTokenEndpoint"];
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubPostingEndpoint"];
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubMediaEndpoint"];
-			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"ExternalMicropubState"];
-
-			[SSKeychain deletePasswordForService:@"Snippets" account:@"default"];
-			[SSKeychain deletePasswordForService:@"ExternalBlog" account:@"default"];
-			[SSKeychain deletePasswordForService:@"MicropubBlog" account:@"default"];
+			[RFSettings clearAllSettings];
 
 			[Answers logCustomEventWithName:@"Sign Out" customAttributes:nil];
 

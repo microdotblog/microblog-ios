@@ -13,7 +13,7 @@
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
 #import "UUAlert.h"
-#import "SSKeychain.h"
+#import "RFSettings.h"
 #import "UUHttpSession.h"
 #import "UUString.h"
 #import "NSString+Extras.h"
@@ -108,9 +108,9 @@
 					[auth_with_params appendString:@"&scope=create"];
 					[auth_with_params appendString:@"&response_type=code"];
 
-					[[NSUserDefaults standardUserDefaults] setObject:micropub_state forKey:@"ExternalMicropubState"];
-					[[NSUserDefaults standardUserDefaults] setObject:token_endpoint forKey:@"ExternalMicropubTokenEndpoint"];
-					[[NSUserDefaults standardUserDefaults] setObject:micropub_endpoint forKey:@"ExternalMicropubPostingEndpoint"];
+					[RFSettings setExternalMicropubState:micropub_state];
+					[RFSettings setExternalMicropubTokenEndpoint:token_endpoint];
+					[RFSettings setExternalMicropubPostingEndpoint:micropub_endpoint];
 
 					RFDispatchMainAsync (^{
 						SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:auth_with_params]];
@@ -121,7 +121,7 @@
 			else {
 				RFDispatchMainAsync (^{
 					[self.progressSpinner stopAnimating];
-					[UIAlertView uuShowTwoButtonAlert:@"Error Discovering Settings" message:@"Could not find the XML-RPC endpoint or Micropub API for your weblog. Please see help.micro.blog for troubleshooting tips." buttonOne:@"Visit Help" buttonTwo:@"OK" completionHandler:^(NSInteger buttonIndex) {
+					[UUAlertViewController uuShowTwoButtonAlert:@"Error Discovering Settings" message:@"Could not find the XML-RPC endpoint or Micropub API for your weblog. Please see help.micro.blog for troubleshooting tips." buttonOne:@"Visit Help" buttonTwo:@"OK" completionHandler:^(NSInteger buttonIndex) {
 						if (buttonIndex == 0) {
 							[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://help.micro.blog/"]];
 						}

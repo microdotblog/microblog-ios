@@ -12,7 +12,7 @@
 
 + (CGFloat) rf_preferredTimelineFontSize
 {
-	NSString* content_size = [UIApplication sharedApplication].preferredContentSizeCategory;
+    NSString* content_size = @"";//[UIApplication sharedApplication].preferredContentSizeCategory;
 
 	NSDictionary* body_sizes = @{
 		UIContentSizeCategoryAccessibilityExtraExtraExtraLarge: @21,

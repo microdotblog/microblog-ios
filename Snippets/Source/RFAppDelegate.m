@@ -27,11 +27,14 @@
 #import <Crashlytics/Crashlytics.h>
 #import <SafariServices/SafariServices.h>
 #import "Microblog-Swift.h"
+#import "RFSettings.h"
 
 @implementation RFAppDelegate
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	[RFSettings migrateAllKeys];
+	
 	[self setupCrashlytics];
 	[self setupWindow];
 	[self setupAppearance];
@@ -115,14 +118,14 @@
 	if (application.applicationState == UIApplicationStateActive) {
 		NSString* message = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
 		if (post_id.length > 0) {
-			[UIAlertView uuShowTwoButtonAlert:@"" message:message buttonOne:@"Cancel" buttonTwo:@"View" completionHandler:^(NSInteger buttonIndex) {
+			[UUAlertViewController uuShowTwoButtonAlert:@"" message:message buttonOne:@"Cancel" buttonTwo:@"View" completionHandler:^(NSInteger buttonIndex) {
 				if (buttonIndex == 1) {
 					[self showConversationWithPostID:post_id];
 				}
 			}];
 		}
 		else {
-			[UIAlertView uuShowOneButtonAlert:@"" message:message button:@"OK" completionHandler:NULL];
+			[UUAlertViewController uuShowOneButtonAlert:@"" message:message button:@"OK" completionHandler:NULL];
 		}
 	}
 	else if (post_id.length > 0) {
@@ -385,15 +388,15 @@
 
 	if (!code || !state || !me) {
 		NSString* msg = [NSString stringWithFormat:@"Authorization \"code\", \"state\", or \"me\" parameters were missing."];
-		[UIAlertView uuShowOneButtonAlert:@"Micropub Error" message:msg button:@"OK" completionHandler:NULL];
+		[UUAlertViewController uuShowOneButtonAlert:@"Micropub Error" message:msg button:@"OK" completionHandler:NULL];
 		return;
 	}
 	
-	NSString* saved_state = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubState"];
-	NSString* saved_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalMicropubTokenEndpoint"];
+	NSString* saved_state = [RFSettings externalMicropubState];
+	NSString* saved_endpoint = [RFSettings externalMicropubTokenEndpoint];
 	
 	if (![state isEqualToString:saved_state]) {
-		[UIAlertView uuShowOneButtonAlert:@"Micropub Error" message:@"Authorization state did not match." button:@"OK" completionHandler:NULL];
+		[UUAlertViewController uuShowOneButtonAlert:@"Micropub Error" message:@"Authorization state did not match." button:@"OK" completionHandler:NULL];
 	}
 	else {
 		NSDictionary* info = @{
@@ -413,18 +416,18 @@
 					if (msg.length > 200) {
 						msg = @"";
 					}
-					[UIAlertView uuShowOneButtonAlert:@"Micropub Error" message:msg button:@"OK" completionHandler:NULL];
+					[UUAlertViewController uuShowOneButtonAlert:@"Micropub Error" message:msg button:@"OK" completionHandler:NULL];
 				}
 				else {
 					NSString* access_token = [response.parsedResponse objectForKey:@"access_token"];
 					if (access_token == nil) {
 						NSString* msg = [response.parsedResponse objectForKey:@"error_description"];
-						[UIAlertView uuShowOneButtonAlert:@"Micropub Error" message:msg button:@"OK" completionHandler:NULL];
+						[UUAlertViewController uuShowOneButtonAlert:@"Micropub Error" message:msg button:@"OK" completionHandler:NULL];
 					}
 					else {
-						[[NSUserDefaults standardUserDefaults] setObject:me forKey:@"ExternalMicropubMe"];
-						[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ExternalBlogIsPreferred"];
-						[SSKeychain setPassword:access_token forService:@"ExternalMicropub" account:@"default"];
+						[RFSettings setExternalMicropubMe:me];
+						[RFSettings setPrefersExternalBlog:YES];
+						[RFSettings setExternalBlogPassword:access_token];
 					}
 					
 					[[self activeNavigationController] dismissViewControllerAnimated:YES completion:^{
@@ -438,8 +441,8 @@
 
 - (BOOL) hasValidToken
 {
-	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
-	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountUsername"];
+	NSString* token = [RFSettings snippetsPassword];
+	NSString* username = [RFSettings snippetsUsername];
 
 	return ((token.length > 0) && (username.length > 0));
 }

@@ -10,6 +10,7 @@
 
 #import "RFSettingChoiceCell.h"
 #import "RFConstants.h"
+#import "RFSettings.h"
 #import "UIBarButtonItem+Extras.h"
 #import "RFXMLRPCRequest.h"
 #import "RFXMLRPCParser.h"
@@ -45,7 +46,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	[super viewWillAppear:animated];
 
 	NSIndexPath* index_path;
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ExternalBlogIsPreferred"]) {
+	if ([RFSettings prefersExternalBlog]) {
 		index_path = [NSIndexPath indexPathForRow:1 inSection:0];
 	}
 	else {
@@ -85,12 +86,12 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	self.categoryValues = @[ ];
 	self.selectedCategory = @"";
 
-	NSString* xmlrpc_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogEndpoint"];
-	NSString* blog_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogID"];
-	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogUsername"];
-	NSString* password = [SSKeychain passwordForService:@"ExternalBlog" account:@"default"];
+	NSString* xmlrpc_endpoint = [RFSettings externalBlogEndpoint];
+	NSString* blog_s = [RFSettings externalBlogID];
+	NSString* username = [RFSettings externalBlogUsername];
+	NSString* password = [RFSettings externalBlogPassword];
 
-	if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogApp"] isEqualToString:@"WordPress"]) {
+	if (![RFSettings externalBlogUsesWordPress]) {
 		self.categoriesIntroField.hidden = YES;
 		self.categoriesTableView.hidden = YES;
 		return;
@@ -136,7 +137,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 
 - (void) setupSelectedCategory
 {
-	NSString* selected_category = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogCategory"];
+	NSString* selected_category = [RFSettings externalBlogCategory];
 	if (selected_category) {
 		NSUInteger row = [self.categoryIDs indexOfObject:selected_category];
 		if (row != NSNotFound) {
@@ -184,7 +185,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	else if (tableView == self.categoriesTableView) {
 		cell.nameField.text = [self.categoryValues objectAtIndex:indexPath.row];
 		NSString* category_id = [self.categoryIDs objectAtIndex:indexPath.row];
-		NSString* selected_category = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogCategory"];
+		NSString* selected_category = [RFSettings externalBlogCategory];
 		if (selected_category) {
 			cell.checkmarkView.hidden = ![selected_category isEqualToString:category_id];
 		}
@@ -200,11 +201,11 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 {
 	if (tableView == self.serversTableView) {
 		BOOL prefer_external_blog = (indexPath.row == 1);
-		[[NSUserDefaults standardUserDefaults] setBool:prefer_external_blog forKey:@"ExternalBlogIsPreferred"];
+		[RFSettings setPrefersExternalBlog:prefer_external_blog];
 	}
 	else if (tableView == self.categoriesTableView) {
 		self.selectedCategory = [self.categoryIDs objectAtIndex:indexPath.row];
-		[[NSUserDefaults standardUserDefaults] setObject:self.selectedCategory forKey:@"ExternalBlogCategory"];
+		[RFSettings setExternalBlogCategory:self.selectedCategory];
 	}
 }
 

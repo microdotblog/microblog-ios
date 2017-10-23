@@ -1,8 +1,8 @@
 //
 //  ShareViewController.m
-//  Photo Extension
+//  Micro.blog Sharing
 //
-//  Created by Manton Reece on 3/29/17.
+//  Created by Jonathan Hays on 10/6/17.
 //  Copyright © 2017 Riverfold Software. All rights reserved.
 //
 

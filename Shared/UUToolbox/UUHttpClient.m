@@ -690,7 +690,7 @@ static NSTimeInterval theDefaultHttpTimeout = kUUDefaultHttpTimeout;
 
 + (void) toggleNetworkActivityIndicator:(BOOL)enabled
 {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:enabled];
+    //[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:enabled];
 }
 
 + (void) addToRequestQueue:(id)client

@@ -11,6 +11,7 @@
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "RFConstants.h"
+#import "RFSettings.h"
 #import "UUAlert.h"
 #import "UILabel+MarkupExtensions.h"
 #import <Fabric/Fabric.h>
@@ -109,15 +110,15 @@
 			NSString* gravatar_url = [response.parsedResponse objectForKey:@"gravatar_url"];
 			NSNumber* has_site = [response.parsedResponse objectForKey:@"has_site"];
 			NSNumber* is_fullaccess = [response.parsedResponse objectForKey:@"is_fullaccess"];
-			NSNumber* default_site = [response.parsedResponse objectForKey:@"default_site"];
+			NSString* default_site = [response.parsedResponse objectForKey:@"default_site"];
 			
-			[[NSUserDefaults standardUserDefaults] setObject:full_name forKey:@"AccountFullName"];
-			[[NSUserDefaults standardUserDefaults] setObject:username forKey:@"AccountUsername"];
-			[[NSUserDefaults standardUserDefaults] setObject:default_site forKey:@"AccountDefaultSite"];
-			[[NSUserDefaults standardUserDefaults] setObject:email forKey:@"AccountEmail"];
-			[[NSUserDefaults standardUserDefaults] setObject:gravatar_url forKey:@"AccountGravatarURL"];
-			[[NSUserDefaults standardUserDefaults] setBool:[has_site boolValue] forKey:@"HasSnippetsBlog"];
-			[[NSUserDefaults standardUserDefaults] setBool:[is_fullaccess boolValue] forKey:@"IsFullAccess"];
+			[RFSettings setSnippetsAccountFullName:full_name];
+			[RFSettings setSnippetsUsername:username];
+			[RFSettings setAccountDefaultSite:default_site];
+			[RFSettings setSnippetsAccountEmail:email];
+			[RFSettings setSnippetsGravatarURL:gravatar_url];
+			[RFSettings setHasSnippetsBlog:[has_site boolValue]];
+			[RFSettings setSnippetsFullAccess:[is_fullaccess boolValue]];
 		
 			RFDispatchMainAsync (^{
 				[Answers logLoginWithMethod:@"Token" success:@YES customAttributes:nil];

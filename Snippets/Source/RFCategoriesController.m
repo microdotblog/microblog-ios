@@ -13,9 +13,9 @@
 #import "RFPostController.h"
 #import "RFSettingChoiceCell.h"
 #import "RFConstants.h"
+#import "RFSettings.h"
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
-#import "SSKeychain.h"
 
 static NSString* const kFormatCellIdentifier = @"FormatCell";
 static NSString* const kCategoryCellIdentifier = @"CategoryCell";
@@ -72,10 +72,10 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 	
 	[self.progressSpinner startAnimating];
 
-	NSString* xmlrpc_endpoint = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogEndpoint"];
-	NSString* blog_s = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogID"];
-	NSString* username = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogUsername"];
-	NSString* password = [SSKeychain passwordForService:@"ExternalBlog" account:@"default"];
+	NSString* xmlrpc_endpoint = [RFSettings externalBlogEndpoint];
+	NSString* blog_s = [RFSettings externalBlogID];
+	NSString* username = [RFSettings externalBlogUsername];
+	NSString* password = [RFSettings externalBlogPassword];
 	
 	NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
 	NSString* taxonomy = @"category";
@@ -109,8 +109,8 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 
 - (IBAction) finish:(id)sender
 {
-	[[NSUserDefaults standardUserDefaults] setObject:self.selectedFormat forKey:@"ExternalBlogFormat"];
-	[[NSUserDefaults standardUserDefaults] setObject:self.selectedCategory forKey:@"ExternalBlogCategory"];
+	[RFSettings setExternalBlogFormat:self.selectedFormat];
+	[RFSettings setExternalBlogCategory:self.selectedCategory];
 	
 	RFPostController* post_controller = [[RFPostController alloc] init];
 	[self.navigationController pushViewController:post_controller animated:YES];

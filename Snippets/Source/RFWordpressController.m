@@ -15,7 +15,7 @@
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
 #import "UUAlert.h"
-#import "SSKeychain.h"
+#import "RFSettings.h"
 #import "OnePasswordExtension.h"
 
 @implementation RFWordpressController
@@ -66,17 +66,17 @@
 
 - (void) saveAccountWithEndpointURL:(NSString *)xmlrpcEndpointURL blogID:(NSString *)blogID
 {
-	[[NSUserDefaults standardUserDefaults] setObject:self.usernameField.text forKey:@"ExternalBlogUsername"];
-	[[NSUserDefaults standardUserDefaults] setObject:xmlrpcEndpointURL forKey:@"ExternalBlogEndpoint"];
-	[[NSUserDefaults standardUserDefaults] setObject:blogID forKey:@"ExternalBlogID"];
-	[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ExternalBlogIsPreferred"];
-	[SSKeychain setPassword:self.passwordField.text forService:@"ExternalBlog" account:@"default"];
+	[RFSettings setExternalBlogUsername:self.usernameField.text];
+	[RFSettings setExternalBlogEndpoint:xmlrpcEndpointURL];
+	[RFSettings setExternalBlogID:blogID];
+	[RFSettings setPrefersExternalBlog:YES];
+	[RFSettings setExternalBlogPassword:self.passwordField.text];
 	
 	if ([xmlrpcEndpointURL containsString:@"xmlrpc.php"]) {
-		[[NSUserDefaults standardUserDefaults] setObject:@"WordPress" forKey:@"ExternalBlogApp"];
+		[RFSettings setExternalBlogApp:@"WordPress"];
 	}
 	else {
-		[[NSUserDefaults standardUserDefaults] setObject:@"Other" forKey:@"ExternalBlogApp"];
+		[RFSettings setExternalBlogApp:@"Other"];
 	}
 }
 
@@ -92,7 +92,7 @@
 		RFDispatchMainAsync ((^{
 			if (xmlrpc.responseFault) {
 				NSString* s = [NSString stringWithFormat:@"%@ (error: %@)", xmlrpc.responseFault[@"faultString"], xmlrpc.responseFault[@"faultCode"]];
-				[UIAlertView uuShowOneButtonAlert:@"Error Signing In" message:s button:@"OK" completionHandler:NULL];
+				[UUAlertViewController uuShowOneButtonAlert:@"Error Signing In" message:s button:@"OK" completionHandler:NULL];
 				[self.progressSpinner stopAnimating];
 			}
 			else {
@@ -150,7 +150,7 @@
 			if (xmlrpcEndpointURL && blogID) {
 				[self verifyUsername:self.usernameField.text password:self.passwordField.text forEndpoint:xmlrpcEndpointURL withCompletion:^{
 					[self saveAccountWithEndpointURL:xmlrpcEndpointURL blogID:blogID];
-					if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"ExternalBlogApp"] isEqualToString:@"WordPress"]) {
+					if ([RFSettings externalBlogUsesWordPress]) {
 						RFCategoriesController* categories_controller = [[RFCategoriesController alloc] init];
 						[self.navigationController pushViewController:categories_controller animated:YES];
 					}
@@ -161,7 +161,7 @@
 				}];
 			}
 			else {
-				[UIAlertView uuShowTwoButtonAlert:@"Error Discovering Settings" message:@"Could not find the XML-RPC endpoint for your weblog. Please see help.micro.blog for troubleshooting tips." buttonOne:@"Visit Help" buttonTwo:@"OK" completionHandler:^(NSInteger buttonIndex) {
+				[UUAlertViewController uuShowTwoButtonAlert:@"Error Discovering Settings" message:@"Could not find the XML-RPC endpoint for your weblog. Please see help.micro.blog for troubleshooting tips." buttonOne:@"Visit Help" buttonTwo:@"OK" completionHandler:^(NSInteger buttonIndex) {
 					if (buttonIndex == 0) {
 						[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://help.micro.blog/"]];
 					}
