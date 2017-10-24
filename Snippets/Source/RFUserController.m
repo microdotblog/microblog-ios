@@ -10,6 +10,7 @@
 
 #import "RFClient.h"
 #import "RFMacros.h"
+#import "RFConstants.h"
 #import "UIFont+Extras.h"
 #import "UUDataCache.h"
 #import <SafariServices/SafariServices.h>
@@ -76,6 +77,8 @@
 	
 	[self setupNavigation];
 	[self setupFont];
+	
+	self.followingView.hidden = YES;
 	
 	self.navigationItem.rightBarButtonItem = nil;
 	
@@ -214,6 +217,11 @@
     }];
 }
 
+- (IBAction) onFollowing:(id)sender
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:kShowUserFollowingNotification object:nil userInfo:@{ kShowUserFollowingUsernameKey : self.username } ];
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - User Info
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -252,7 +260,22 @@
     self.blogAddressLabel.text = [authorInfo objectForKey:@"url"];
     
     self.pathToBlog = [authorInfo objectForKey:@"url"];
-    
+	
+	NSString* followingCountString = @"";
+	if (microBlogInfo)
+	{
+		NSNumber* followingCountNumber = [microBlogInfo objectForKey:@"following_count"];
+		if (followingCountNumber)
+		{
+			followingCountString = followingCountNumber.stringValue;
+		}
+	}
+	NSString* titleText = @"Following ";
+	titleText = [titleText stringByAppendingString:followingCountString];
+	
+	[self.followingButton setTitle:titleText forState:UIControlStateNormal];
+	self.followingView.hidden = NO;
+	
     NSString* avatarURL = [authorInfo objectForKey:@"avatar"];
     UIImage* image = [RFUserCache avatar:[NSURL URLWithString:avatarURL]];
     if (image)

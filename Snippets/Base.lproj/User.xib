@@ -4,8 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -19,6 +18,8 @@
                 <outlet property="avatar" destination="rpF-ZJ-SH2" id="LxE-kf-xwC"/>
                 <outlet property="bioLabel" destination="PN5-iQ-and" id="98C-6C-Vjv"/>
                 <outlet property="blogAddressLabel" destination="7va-2J-ahS" id="SUS-eI-4hj"/>
+                <outlet property="followingButton" destination="8EX-eR-CJn" id="yMp-dl-cjo"/>
+                <outlet property="followingView" destination="6fQ-oE-lsZ" id="Nm4-kB-GLQ"/>
                 <outlet property="fullNameLabel" destination="cYb-nT-P5S" id="TOG-T5-43y"/>
                 <outlet property="maxHeaderHeightConstraint" destination="5Id-8T-LTY" id="OjX-EP-cKs"/>
                 <outlet property="moreButton" destination="qID-0k-fNf" id="fix-j4-N1v"/>
@@ -34,7 +35,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnY-ie-t8x">
-                    <rect key="frame" x="0.0" y="188" width="375" height="479"/>
+                    <rect key="frame" x="0.0" y="232" width="375" height="435"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <dataDetectorType key="dataDetectorTypes"/>
                     <connections>
@@ -139,16 +140,57 @@
                         <constraint firstItem="HyZ-JH-oYd" firstAttribute="leading" secondItem="zMe-wL-fBq" secondAttribute="leading" id="yA6-IZ-O08"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fQ-oE-lsZ">
+                    <rect key="frame" x="0.0" y="188" width="375" height="44"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcU-yQ-wtM">
+                            <rect key="frame" x="4" y="0.0" width="367" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="swQ-8Q-vN6"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFr-bN-FXx">
+                            <rect key="frame" x="4" y="43" width="367" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="knk-fq-zyf"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EX-eR-CJn">
+                            <rect key="frame" x="8" y="7" width="65" height="30"/>
+                            <state key="normal" title="Following"/>
+                            <connections>
+                                <action selector="onFollowing:" destination="-1" eventType="touchUpInside" id="hDn-5A-8wb"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="VcU-yQ-wtM" firstAttribute="top" secondItem="6fQ-oE-lsZ" secondAttribute="top" id="4zL-rx-UGL"/>
+                        <constraint firstAttribute="height" constant="44" id="T81-SU-XaR"/>
+                        <constraint firstItem="8EX-eR-CJn" firstAttribute="leading" secondItem="6fQ-oE-lsZ" secondAttribute="leading" constant="8" id="WQN-oo-jX9"/>
+                        <constraint firstItem="VcU-yQ-wtM" firstAttribute="leading" secondItem="6fQ-oE-lsZ" secondAttribute="leading" constant="4" id="Wcn-or-Zam"/>
+                        <constraint firstAttribute="trailing" secondItem="rFr-bN-FXx" secondAttribute="trailing" constant="4" id="ZvM-jG-Ut0"/>
+                        <constraint firstItem="8EX-eR-CJn" firstAttribute="centerY" secondItem="6fQ-oE-lsZ" secondAttribute="centerY" id="c3g-uY-Xi3"/>
+                        <constraint firstAttribute="bottom" secondItem="rFr-bN-FXx" secondAttribute="bottom" id="dc5-gn-nge"/>
+                        <constraint firstItem="rFr-bN-FXx" firstAttribute="leading" secondItem="6fQ-oE-lsZ" secondAttribute="leading" constant="4" id="ezz-Lq-2jp"/>
+                        <constraint firstAttribute="trailing" secondItem="VcU-yQ-wtM" secondAttribute="trailing" constant="4" id="yOe-pm-Qjw"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="lnY-ie-t8x" firstAttribute="top" secondItem="zMe-wL-fBq" secondAttribute="bottom" id="5eE-Kd-GQ9"/>
+                <constraint firstAttribute="trailing" secondItem="6fQ-oE-lsZ" secondAttribute="trailing" id="54q-lf-XKr"/>
+                <constraint firstItem="lnY-ie-t8x" firstAttribute="top" secondItem="6fQ-oE-lsZ" secondAttribute="bottom" id="6WO-tI-Y9Y"/>
                 <constraint firstItem="lnY-ie-t8x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FHc-Wh-YnB"/>
                 <constraint firstItem="zMe-wL-fBq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="62" id="l6R-6t-dfX"/>
                 <constraint firstAttribute="trailing" secondItem="zMe-wL-fBq" secondAttribute="trailing" id="qYK-yj-wxk"/>
+                <constraint firstItem="6fQ-oE-lsZ" firstAttribute="top" secondItem="zMe-wL-fBq" secondAttribute="bottom" id="rhU-6H-pHj"/>
                 <constraint firstAttribute="trailing" secondItem="lnY-ie-t8x" secondAttribute="trailing" id="w23-UN-24O"/>
                 <constraint firstAttribute="bottom" secondItem="lnY-ie-t8x" secondAttribute="bottom" id="wQI-xX-dXE"/>
                 <constraint firstItem="zMe-wL-fBq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xC6-FY-GLE"/>
+                <constraint firstItem="6fQ-oE-lsZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yAZ-3p-ymV"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="91.5"/>
         </view>

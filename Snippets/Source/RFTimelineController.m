@@ -303,6 +303,10 @@
 	else if ([self.endpoint containsString:@"/hybrid/discover/search"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@&width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
+	else if ([self.endpoint containsString:@"/hybrid/following/"])
+	{
+		client = [[RFClient alloc] initWithPath:self.endpoint];
+	}
 	else {
 		client = [[RFClient alloc] initWithFormat:@"/hybrid/signin?token=%@&width=%d&fontsize=%f&minutes=%ld", token, width, fontsize, timezone_offset];
 	}

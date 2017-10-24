@@ -23,6 +23,8 @@
 @property (nonatomic, strong) IBOutlet UILabel* blogAddressLabel;
 @property (nonatomic, strong) IBOutlet UILabel* bioLabel;
 @property (nonatomic, strong) IBOutlet UIImageView* avatar;
+@property (nonatomic, strong) IBOutlet UIButton* followingButton;
+@property (nonatomic, strong) IBOutlet UIView* followingView;
 
 
 @end
