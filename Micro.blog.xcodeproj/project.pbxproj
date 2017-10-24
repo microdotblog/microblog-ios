@@ -31,6 +31,7 @@
 		4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */; };
 		4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */; };
 		4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DEDD51BF8D14B00F3152B /* RFUserController.m */; };
+		4B37DEF61F9FD3C7007A25AF /* Filters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123FE1E88343600B56138 /* Filters.plist */; };
 		4B3BD0DF1E82B5F800F4B4E0 /* RFPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */; };
 		4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B3BD0E01E82B61700F4B4E0 /* Photos.xib */; };
 		4B43700C1EC7AF3300B46D56 /* RFSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43700B1EC7AF3300B46D56 /* RFSettings.m */; };
@@ -1172,6 +1173,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B37DEF61F9FD3C7007A25AF /* Filters.plist in Resources */,
 				C507F35C1F8831530013D2B7 /* SignIn.xib in Resources */,
 				C507F35B1F8831530013D2B7 /* Options.xib in Resources */,
 				C507F3601F8831530013D2B7 /* Help.xib in Resources */,
