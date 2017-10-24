@@ -23,7 +23,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[super viewDidLoad];
 
-	[self setupSegmentView];
+//	[self setupSegmentView];
+	[self setupNavigation];
 	[self setupSearchButton];
 }
 
@@ -43,6 +44,13 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.segmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
 	
 	self.navigationItem.titleView = self.segmentedControl;
+}
+
+- (void) setupNavigation
+{
+	[super setupNavigation];
+
+	self.title = @"Discover";
 }
 
 - (void) setupSearchButton
