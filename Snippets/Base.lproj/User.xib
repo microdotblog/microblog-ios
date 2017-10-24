@@ -143,22 +143,22 @@
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fQ-oE-lsZ">
                     <rect key="frame" x="0.0" y="188" width="375" height="44"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcU-yQ-wtM">
-                            <rect key="frame" x="4" y="0.0" width="367" height="1"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcU-yQ-wtM" customClass="RFThinLineView">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                            <color key="backgroundColor" white="0.80111177884615381" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="swQ-8Q-vN6"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFr-bN-FXx">
-                            <rect key="frame" x="4" y="43" width="367" height="1"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFr-bN-FXx" customClass="RFThinLineView">
+                            <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                            <color key="backgroundColor" white="0.8035516826923077" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="knk-fq-zyf"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EX-eR-CJn">
-                            <rect key="frame" x="8" y="7" width="65" height="30"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EX-eR-CJn">
+                            <rect key="frame" x="12" y="7" width="65" height="30"/>
                             <state key="normal" title="Following"/>
                             <connections>
                                 <action selector="onFollowing:" destination="-1" eventType="touchUpInside" id="hDn-5A-8wb"/>
@@ -169,13 +169,13 @@
                     <constraints>
                         <constraint firstItem="VcU-yQ-wtM" firstAttribute="top" secondItem="6fQ-oE-lsZ" secondAttribute="top" id="4zL-rx-UGL"/>
                         <constraint firstAttribute="height" constant="44" id="T81-SU-XaR"/>
-                        <constraint firstItem="8EX-eR-CJn" firstAttribute="leading" secondItem="6fQ-oE-lsZ" secondAttribute="leading" constant="8" id="WQN-oo-jX9"/>
-                        <constraint firstItem="VcU-yQ-wtM" firstAttribute="leading" secondItem="6fQ-oE-lsZ" secondAttribute="leading" constant="4" id="Wcn-or-Zam"/>
-                        <constraint firstAttribute="trailing" secondItem="rFr-bN-FXx" secondAttribute="trailing" constant="4" id="ZvM-jG-Ut0"/>
+                        <constraint firstItem="8EX-eR-CJn" firstAttribute="leading" secondItem="6fQ-oE-lsZ" secondAttribute="leading" constant="12" id="WQN-oo-jX9"/>
+                        <constraint firstItem="VcU-yQ-wtM" firstAttribute="leading" secondItem="6fQ-oE-lsZ" secondAttribute="leading" id="Wcn-or-Zam"/>
+                        <constraint firstAttribute="trailing" secondItem="rFr-bN-FXx" secondAttribute="trailing" id="ZvM-jG-Ut0"/>
                         <constraint firstItem="8EX-eR-CJn" firstAttribute="centerY" secondItem="6fQ-oE-lsZ" secondAttribute="centerY" id="c3g-uY-Xi3"/>
                         <constraint firstAttribute="bottom" secondItem="rFr-bN-FXx" secondAttribute="bottom" id="dc5-gn-nge"/>
-                        <constraint firstItem="rFr-bN-FXx" firstAttribute="leading" secondItem="6fQ-oE-lsZ" secondAttribute="leading" constant="4" id="ezz-Lq-2jp"/>
-                        <constraint firstAttribute="trailing" secondItem="VcU-yQ-wtM" secondAttribute="trailing" constant="4" id="yOe-pm-Qjw"/>
+                        <constraint firstItem="rFr-bN-FXx" firstAttribute="leading" secondItem="6fQ-oE-lsZ" secondAttribute="leading" id="ezz-Lq-2jp"/>
+                        <constraint firstAttribute="trailing" secondItem="VcU-yQ-wtM" secondAttribute="trailing" id="yOe-pm-Qjw"/>
                     </constraints>
                 </view>
             </subviews>
