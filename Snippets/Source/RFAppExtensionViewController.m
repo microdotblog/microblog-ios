@@ -33,7 +33,7 @@
 	}
 	else
 	{
-		[UUAlertViewController uuShowOneButtonAlert:nil message:@"You need to configure your settings first. Please launch Micro.blog and login to your account." button:@"OK" completionHandler:^(NSInteger buttonIndex)
+		[UUAlertViewController uuShowOneButtonAlert:nil message:@"You need to configure your weblog settings first. Please launch Micro.blog and sign in to your account." button:@"OK" completionHandler:^(NSInteger buttonIndex)
 		{
 			[self.extensionContext completeRequestReturningItems:nil completionHandler:^(BOOL expired)
 			{
