@@ -77,6 +77,7 @@
 	
 	[self setupNavigation];
 	[self setupFont];
+	[self setupSpacing];
 	
 	self.followingView.hidden = YES;
 	
@@ -93,6 +94,11 @@
 	self.avatar.layer.cornerRadius = self.avatar.bounds.size.width / 2.0;
 	
     [self fetchUserInfo];
+}
+
+- (void) setupSpacing
+{
+	self.verticalOffsetConstraint.constant = 44 + RFStatusBarHeight();
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -274,9 +280,10 @@
 	titleText = [titleText stringByAppendingString:followingCountString];
 	
 	[self.followingButton setTitle:titleText forState:UIControlStateNormal];
-	self.followingButton.hidden = NO;
-	if (followingCountString)
+	if (followingCountString) {
+		self.followingButton.hidden = NO;
 		self.followingView.hidden = NO;
+	}
 	
     NSString* avatarURL = [authorInfo objectForKey:@"avatar"];
     UIImage* image = [RFUserCache avatar:[NSURL URLWithString:avatarURL]];
