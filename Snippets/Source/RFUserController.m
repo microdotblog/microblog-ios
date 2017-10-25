@@ -77,6 +77,7 @@
 	
 	[self setupNavigation];
 	[self setupFont];
+	[self setupSpacing];
 	
 	self.followingView.hidden = YES;
 	
@@ -93,6 +94,11 @@
 	self.avatar.layer.cornerRadius = self.avatar.bounds.size.width / 2.0;
 	
     [self fetchUserInfo];
+}
+
+- (void) setupSpacing
+{
+	self.verticalOffsetConstraint.constant = 44 + RFStatusBarHeight();
 }
 
 - (void) viewDidAppear:(BOOL)animated
