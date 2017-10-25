@@ -143,7 +143,7 @@
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fQ-oE-lsZ">
                     <rect key="frame" x="0.0" y="188" width="375" height="44"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcU-yQ-wtM" customClass="RFThinLineView">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcU-yQ-wtM" customClass="RFBottomLineView">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                             <color key="backgroundColor" white="0.80111177884615381" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
