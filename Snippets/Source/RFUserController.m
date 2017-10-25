@@ -280,9 +280,10 @@
 	titleText = [titleText stringByAppendingString:followingCountString];
 	
 	[self.followingButton setTitle:titleText forState:UIControlStateNormal];
-	self.followingButton.hidden = NO;
-	if (followingCountString)
+	if (followingCountString) {
+		self.followingButton.hidden = NO;
 		self.followingView.hidden = NO;
+	}
 	
     NSString* avatarURL = [authorInfo objectForKey:@"avatar"];
     UIImage* image = [RFUserCache avatar:[NSURL URLWithString:avatarURL]];
