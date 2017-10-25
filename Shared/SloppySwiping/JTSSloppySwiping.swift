@@ -384,8 +384,12 @@ fileprivate final class InteractivePopAnimator: NSObject, UIViewControllerAnimat
 				toView.frame.size.height -= 32
 			}
 			else {
-				toView.frame.origin.y = 44 + 20
-				toView.frame.size.height -= (44 + 22)
+				var status_height:CGFloat = 20
+				if UIScreen.main.bounds.size.height == 812 {
+					status_height = 44
+				}
+				toView.frame.origin.y = 44 + status_height
+				toView.frame.size.height -= (44 + status_height)
 			}
 		}
         toView.transform = CGAffineTransform(translationX: -maxOffset, y: 0)
