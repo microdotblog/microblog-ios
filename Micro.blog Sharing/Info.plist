@@ -33,9 +33,11 @@
 			<dict>
 				<key>NSExtensionActivationSupportsImageWithMaxCount</key>
 				<integer>5</integer>
+				<key>NSExtensionActivationSupportsWebURLWithMaxCount</key>
+				<integer>1</integer>
+				<key>NSExtensionActivationSupportsText</key>
+				<true/>
 			</dict>
-			<key>New itemNSExtensionActivationSupportsText</key>
-			<true/>
 		</dict>
 		<key>NSExtensionMainStoryboard</key>
 		<string>MainInterface</string>
