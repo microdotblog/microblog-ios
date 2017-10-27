@@ -940,21 +940,21 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				{
 					NSURL* url = [(NSURL*)item copy];;
 					dispatch_async(dispatch_get_main_queue(), ^
-				   {
-					   [self insertURL:url];
-				   });
+					{
+						[self insertSharedURL:url];
+					});
 				}];
 			}
 
 			if ([itemProvider hasItemConformingToTypeIdentifier:@"public.text"])
 			{
 				[itemProvider loadItemForTypeIdentifier:@"public.text" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
-				 {
-					 NSString* s = [(NSString*)item copy];
-					 dispatch_async(dispatch_get_main_queue(), ^
-									{
-										[self.textView insertText:s];
-									});
+				{
+					NSString* s = [(NSString*)item copy];
+					dispatch_async(dispatch_get_main_queue(), ^
+					{
+						[self insertSharedText:s];
+					});
 				 }];
 			}
 
@@ -993,7 +993,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	return NO;
 }
 
-- (void) insertURL:(NSURL *)url
+- (void) insertSharedURL:(NSURL *)url
 {
 	NSString* hostname = url.host;
 	NSString* s = [NSString stringWithFormat:@" [%@](%@)", hostname, url.absoluteString];
@@ -1003,5 +1003,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	NSRange r = NSMakeRange (0, 0);
 	self.textView.selectedRange = r;
 }
+
+- (void) insertSharedText:(NSString *)text
+{
+	NSString* s = [NSString stringWithFormat:@"\n\n> %@", text];
+	
+	[self.textView insertText:s];
+
+	NSRange r = NSMakeRange (0, 0);
+	self.textView.selectedRange = r;
+}
+
 
 @end
