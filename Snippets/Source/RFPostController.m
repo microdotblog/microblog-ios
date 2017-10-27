@@ -934,6 +934,32 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	{
 		for (NSItemProvider *itemProvider in item.attachments)
 		{
+			if ([itemProvider hasItemConformingToTypeIdentifier:@"public.url"])
+			{
+				[itemProvider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
+				{
+					NSURL* url = (NSURL*)item;
+					__block NSString* s = [url.absoluteString copy];
+					dispatch_async(dispatch_get_main_queue(), ^
+				   {
+					   [self.textView insertText:s];
+				   });
+				}];
+			}
+
+			if ([itemProvider hasItemConformingToTypeIdentifier:@"public.text"])
+			{
+				[itemProvider loadItemForTypeIdentifier:@"public.text" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
+				 {
+					 NSString* s = [(NSString*)item copy];
+					 dispatch_async(dispatch_get_main_queue(), ^
+									{
+										[self.textView insertText:s];
+									});
+				 }];
+			}
+
+			
 			if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage])
 			{
 				[itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error)
