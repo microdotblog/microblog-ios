@@ -938,11 +938,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			{
 				[itemProvider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
 				{
-					NSURL* url = (NSURL*)item;
-					__block NSString* s = [url.absoluteString copy];
+					NSURL* url = [(NSURL*)item copy];;
 					dispatch_async(dispatch_get_main_queue(), ^
 				   {
-					   [self.textView insertText:s];
+					   [self insertURL:url];
 				   });
 				}];
 			}
@@ -992,6 +991,17 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 	
 	return NO;
+}
+
+- (void) insertURL:(NSURL *)url
+{
+	NSString* hostname = url.host;
+	NSString* s = [NSString stringWithFormat:@" [%@](%@)", hostname, url.absoluteString];
+	
+	[self.textView insertText:s];
+
+	NSRange r = NSMakeRange (0, 0);
+	self.textView.selectedRange = r;
 }
 
 @end
