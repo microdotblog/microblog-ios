@@ -157,8 +157,12 @@
                                 <constraint firstAttribute="height" constant="1" id="knk-fq-zyf"/>
                             </constraints>
                         </view>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EX-eR-CJn">
-                            <rect key="frame" x="13" y="5" width="70" height="34"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EX-eR-CJn">
+                            <rect key="frame" x="13" y="5" width="148" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="6bI-qz-KBt"/>
+                                <constraint firstAttribute="width" constant="148" id="Yk9-7X-mt1"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                             <state key="normal" title="Following"/>
                             <connections>

@@ -276,13 +276,14 @@
 			followingCountString = followingCountNumber.stringValue;
 		}
 	}
-	NSString* titleText = @"Following ";
-	titleText = [titleText stringByAppendingString:followingCountString];
 	
-	[self.followingButton setTitle:titleText forState:UIControlStateNormal];
-	if (followingCountString) {
-		self.followingButton.hidden = NO;
-		self.followingView.hidden = NO;
+	if (followingCountString.length > 0) {
+		NSString* titleText = @"Following ";
+		titleText = [titleText stringByAppendingString:followingCountString];
+		[self.followingButton setTitle:titleText forState:UIControlStateNormal];
+		RFDispatchSeconds (0.1, ^{
+			self.followingView.hidden = NO;
+		});
 	}
 	
     NSString* avatarURL = [authorInfo objectForKey:@"avatar"];
