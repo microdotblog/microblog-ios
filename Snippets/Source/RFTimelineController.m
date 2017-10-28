@@ -91,6 +91,8 @@
 	
 	[self setupNavigation];
 	[self setupPreventHorizontalScrolling];
+
+	[self.refreshControl endRefreshing];
 }
 
 - (void) setupNavigation
