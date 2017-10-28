@@ -16,7 +16,9 @@
 + (BOOL) hasMicropubBlog;
 + (BOOL) needsExternalBlogSetup;
 
++ (BOOL) 		prefersPlainSharedURLs;
 + (BOOL) 		prefersExternalBlog;
++ (void) 		setPrefersPlainSharedURLs:(BOOL)value;
 + (void) 		setPrefersExternalBlog:(BOOL)value;
 + (NSString*) 	accountDefaultSite;
 

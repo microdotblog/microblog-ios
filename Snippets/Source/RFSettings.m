@@ -24,6 +24,7 @@
 #define ExternalBlogEndpoint			@"ExternalBlogEndpoint"
 #define ExternalMicropubMe				@"ExternalMicropubMe"
 #define AccountDefaultSite				@"AccountDefaultSite"
+#define PlainSharedURLsPreferred		@"PlainSharedURLsPreferred"
 #define ExternalBlogIsPreferred			@"ExternalBlogIsPreferred"
 #define HasSnippetsBlog					@"HasSnippetsBlog"
 #define AccountUsername					@"AccountUsername"
@@ -123,6 +124,15 @@
 	[RFSettings setUserDefault:@(value) forKey:ExternalBlogIsPreferred];
 }
 
++ (BOOL) prefersPlainSharedURLs
+{
+	return [RFSettings loadUserDefaultBool:PlainSharedURLsPreferred];
+}
+
++ (void) setPrefersPlainSharedURLs:(BOOL)value
+{
+	[RFSettings setUserDefault:@(value) forKey:PlainSharedURLsPreferred];
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -36,6 +36,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	[super viewDidLoad];
 
 	[self setupNavigation];
+	[self setupSharing];
 	[self setupServers];
 	[self setupCategories];
 //	[self setupGestures];
@@ -46,6 +47,16 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	[super viewWillAppear:animated];
 
 	NSIndexPath* index_path;
+
+	if ([RFSettings prefersPlainSharedURLs]) {
+		index_path = [NSIndexPath indexPathForRow:1 inSection:0];
+	}
+	else {
+		index_path = [NSIndexPath indexPathForRow:0 inSection:0];
+	}
+
+	[self.sharingTableView selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
+
 	if ([RFSettings prefersExternalBlog]) {
 		index_path = [NSIndexPath indexPathForRow:1 inSection:0];
 	}
@@ -71,6 +82,14 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	if (self.navigationController.topViewController != root_controller) {
 		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 	}
+}
+
+- (void) setupSharing
+{
+	self.sharingNames = @[ @"Markdown link", @"Plain URL" ];
+
+	[self.sharingTableView registerNib:[UINib nibWithNibName:@"SettingChoiceCell" bundle:nil] forCellReuseIdentifier:kServerCellIdentifier];
+	self.sharingTableView.layer.cornerRadius = 5.0;
 }
 
 - (void) setupServers
@@ -163,7 +182,10 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (tableView == self.serversTableView) {
+	if (tableView == self.sharingTableView) {
+		return self.sharingNames.count;
+	}
+	else if (tableView == self.serversTableView) {
 		return self.serverNames.count;
 	}
 	else if (tableView == self.categoriesTableView) {
@@ -178,7 +200,11 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 {
 	RFSettingChoiceCell* cell = [tableView dequeueReusableCellWithIdentifier:kServerCellIdentifier forIndexPath:indexPath];
 	
-	if (tableView == self.serversTableView) {
+	if (tableView == self.sharingTableView) {
+		cell.nameField.text = [self.sharingNames objectAtIndex:indexPath.row];
+		cell.checkmarkView.hidden = (indexPath.row > 0);
+	}
+	else if (tableView == self.serversTableView) {
 		cell.nameField.text = [self.serverNames objectAtIndex:indexPath.row];
 		cell.checkmarkView.hidden = (indexPath.row > 0);
 	}
@@ -199,7 +225,11 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (tableView == self.serversTableView) {
+	if (tableView == self.sharingTableView) {
+		BOOL prefer_plain_urls = (indexPath.row == 1);
+		[RFSettings setPrefersPlainSharedURLs:prefer_plain_urls];
+	}
+	else if (tableView == self.serversTableView) {
 		BOOL prefer_external_blog = (indexPath.row == 1);
 		[RFSettings setPrefersExternalBlog:prefer_external_blog];
 	}

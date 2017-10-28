@@ -995,8 +995,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) insertSharedURL:(NSURL *)url
 {
-	NSString* hostname = url.host;
-	NSString* s = [NSString stringWithFormat:@" [%@](%@)", hostname, url.absoluteString];
+	NSString* s;
+	
+	if ([RFSettings prefersPlainSharedURLs]) {
+		s = [NSString stringWithFormat:@" %@", url.absoluteString];
+	}
+	else {
+		s = [NSString stringWithFormat:@" [%@](%@)", url.host, url.absoluteString];
+	}
 	
 	[self.textView insertText:s];
 
