@@ -32,6 +32,8 @@
 #define AccountFullName					@"AccountFullName"
 #define AccountGravatarURL				@"AccountGravatarURL"
 #define IsFullAccess					@"IsFullAccess"
+#define LatestDraftTitle				@"LatestDraftTitle"
+#define LatestDraftText					@"LatestDraftText"
 
 @implementation RFSettings
 
@@ -384,6 +386,7 @@
 	[RFSettings removeObjectForKey:AccountDefaultSite];
 
 	[RFSettings removeObjectForKey:HasSnippetsBlog];
+	[RFSettings removeObjectForKey:PlainSharedURLsPreferred];
 
 	[RFSettings removeObjectForKey:ExternalBlogUsername];
 	[RFSettings removeObjectForKey:ExternalBlogApp];
@@ -434,5 +437,34 @@
 	[sharedDefaults synchronize];
 }
 
++ (NSString *) draftTitle
+{
+	NSString* s = [RFSettings loadUserDefault:LatestDraftTitle];
+	if (s == nil) {
+		s = @"";
+	}
+	
+	return s;
+}
+
++ (NSString *) draftText
+{
+	NSString* s = [RFSettings loadUserDefault:LatestDraftText];
+	if (s == nil) {
+		s = @"";
+	}
+	
+	return s;
+}
+
++ (void) setDraftTitle:(NSString *)value
+{
+	[RFSettings setUserDefault:value forKey:LatestDraftTitle];
+}
+
++ (void) setDraftText:(NSString *)value
+{
+	[RFSettings setUserDefault:value forKey:LatestDraftText];
+}
 
 @end

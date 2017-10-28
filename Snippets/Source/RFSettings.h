@@ -69,6 +69,11 @@
 + (void) 		setExternalMicropubState:(NSString*)value;
 + (void) 		setExternalMicropubTokenEndpoint:(NSString*)value;
 
+//Drafts
++ (NSString *)	draftTitle;
++ (NSString *)	draftText;
++ (void)		setDraftTitle:(NSString *)value;
++ (void)		setDraftText:(NSString *)value;
 
 + (void) migrateAllKeys;
 

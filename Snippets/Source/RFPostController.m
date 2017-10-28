@@ -138,6 +138,13 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	if (self.replyUsername) {
 		s = [NSString stringWithFormat:@"@%@ ", self.replyUsername];
 	}
+	else {
+		s = [RFSettings draftText];
+		if (s.length > 280) {
+			self.titleField.text = [RFSettings draftTitle];
+		}
+	}
+	
 	NSAttributedString* attr_s = [[NSAttributedString alloc] initWithString:s];
 	self.textView.attributedText = attr_s;
 
@@ -265,6 +272,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 #pragma mark -
 
+- (NSString *) currentTitle
+{
+	return self.titleField.text;
+}
+
 - (NSString *) currentText
 {
 //	return self.textView.text
@@ -366,6 +378,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	self.photoButton.hidden = YES;
 
+	[RFSettings setDraftTitle:@""];
+	[RFSettings setDraftText:@""];
+
 	if (self.attachedPhotos.count > 0) {
 		self.queuedPhotos = [self.attachedPhotos copy];
 		[self uploadNextPhoto];
@@ -375,11 +390,13 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 }
 
-
-
-
 - (IBAction) close:(id)sender
 {
+	if (!self.isReply) {
+		[RFSettings setDraftTitle:[self currentTitle]];
+		[RFSettings setDraftText:[self currentText]];
+	}
+
 	if (![self checkForAppExtensionClose])
 	{
 		[[NSNotificationCenter defaultCenter] postNotificationName:kClosePostingNotification object:self];
