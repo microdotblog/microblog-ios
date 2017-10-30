@@ -1008,6 +1008,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	if (self.appExtensionContext)
 	{
+		[UUAlertViewController setActiveViewController:nil];
+
 		[self.navigationController dismissViewControllerAnimated:NO completion:^
 		{
 			[self.appExtensionContext completeRequestReturningItems:@[] completionHandler:nil];
