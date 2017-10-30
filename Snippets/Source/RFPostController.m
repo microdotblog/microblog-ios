@@ -108,6 +108,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	});
 }
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void) setupNavigation
 {
 	if (self.isReply) {
@@ -1003,7 +1009,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	if (self.appExtensionContext)
 	{
-		[self.appExtensionContext completeRequestReturningItems:nil completionHandler:nil];
+		[self.navigationController dismissViewControllerAnimated:NO completion:^
+		{
+			[self.appExtensionContext completeRequestReturningItems:nil completionHandler:nil];
+		}];
 		return YES;
 	}
 	
