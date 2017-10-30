@@ -34,7 +34,7 @@
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 @interface RFPostController()
-	@property (nonatomic, strong) NSExtensionContext* appExtensionContext;
+	@property (nonatomic, weak) NSExtensionContext* appExtensionContext;
 @end
 
 @implementation RFPostController
