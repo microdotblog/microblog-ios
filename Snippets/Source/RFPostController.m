@@ -34,7 +34,7 @@
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 @interface RFPostController()
-	@property (nonatomic, strong) NSExtensionContext* appExtensionContext;
+	@property (nonatomic, weak) NSExtensionContext* appExtensionContext;
 @end
 
 @implementation RFPostController
@@ -1008,6 +1008,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	if (self.appExtensionContext)
 	{
+		[UUAlertViewController setActiveViewController:nil];
+
 		[self.navigationController dismissViewControllerAnimated:NO completion:^
 		{
 			[self.appExtensionContext completeRequestReturningItems:@[] completionHandler:nil];
