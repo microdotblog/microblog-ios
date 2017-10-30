@@ -102,8 +102,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[super viewDidAppear:animated];
 	
-	dispatch_async(dispatch_get_main_queue(), ^
-	{
+	RFDispatchSeconds (0.1, ^{
 		[self.textView becomeFirstResponder];
 	});
 }
