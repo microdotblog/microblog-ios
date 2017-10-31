@@ -75,6 +75,9 @@
 + (void)		setDraftTitle:(NSString *)value;
 + (void)		setDraftText:(NSString *)value;
 
++ (NSString *)  preferredContentSize;
++ (void)  		setPreferredContentSize:(NSString *)value;
+
 + (void) migrateAllKeys;
 
 @end

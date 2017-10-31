@@ -8,12 +8,17 @@
 
 #import "UIFont+Extras.h"
 
+#import "RFSettings.h"
+
 @implementation UIFont (Extras)
 
 + (CGFloat) rf_preferredTimelineFontSize
 {
-    NSString* content_size = @"";//[UIApplication sharedApplication].preferredContentSizeCategory;
-
+	NSString* content_size = [RFSettings preferredContentSize];
+	if (content_size == nil) {
+		content_size = UIContentSizeCategoryMedium;
+    }
+	
 	NSDictionary* body_sizes = @{
 		UIContentSizeCategoryAccessibilityExtraExtraExtraLarge: @21,
 		UIContentSizeCategoryAccessibilityExtraExtraLarge: @20,

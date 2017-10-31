@@ -107,12 +107,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	});
 }
 
-- (void) viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void) setupNavigation
 {
 	if (self.isReply) {
@@ -130,6 +124,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupFont
 {
+	#ifndef SHARING_EXTENSION
+		NSString* content_size = [UIApplication sharedApplication].preferredContentSizeCategory;
+		[RFSettings setPreferredContentSize:content_size];
+	#endif
+
 	self.textView.font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
 }
 
@@ -383,6 +382,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	self.photoButton.hidden = YES;
 
+	self.isSent = YES;
 	[RFSettings setDraftTitle:@""];
 	[RFSettings setDraftText:@""];
 
@@ -397,7 +397,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) close:(id)sender
 {
-	if (!self.isReply) {
+	if (!self.isReply && !self.isSent) {
 		[RFSettings setDraftTitle:[self currentTitle]];
 		[RFSettings setDraftText:[self currentText]];
 	}

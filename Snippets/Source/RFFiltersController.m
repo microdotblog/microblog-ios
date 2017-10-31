@@ -179,14 +179,21 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	image_crop_r.size.width = ui_crop_r.size.width / scaled_ratio * img.scale;
 	image_crop_r.size.height = ui_crop_r.size.height / scaled_ratio * img.scale;
 	
+	BOOL needs_cg_cleanup = NO;
 	CGImageRef cg_image = img.CGImage;
 	if (cg_image == nil) {
 		CIContext* context = [CIContext contextWithOptions:nil];
 		cg_image = [context createCGImage:img.CIImage fromRect:img.CIImage.extent];
+		needs_cg_cleanup = YES;
 	}
+	
 	CGImageRef new_img = CGImageCreateWithImageInRect (cg_image, image_crop_r);
 	UIImage* cropped_img = [[UIImage alloc] initWithCGImage:new_img];
     CGImageRelease(new_img);
+
+	if (needs_cg_cleanup) {
+		CGImageRelease (cg_image);
+	}
 
 	if (cropped_img) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:kAttachPhotoNotification object:self userInfo:@{ kAttachPhotoKey: cropped_img }];
