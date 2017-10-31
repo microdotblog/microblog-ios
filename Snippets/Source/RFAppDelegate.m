@@ -144,6 +144,16 @@
 	}
 }
 
+- (UIInterfaceOrientationMask) application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window
+{
+	if (RFIsPhone()) {
+		return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+	}
+	else {
+		return UIInterfaceOrientationMaskAll;
+	}
+}
+
 #pragma mark -
 
 - (void) setupCrashlytics
