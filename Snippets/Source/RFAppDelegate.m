@@ -173,6 +173,9 @@
 
 - (void) setupAppearance
 {
+	NSString* content_size = [UIApplication sharedApplication].preferredContentSizeCategory;
+	[RFSettings setPreferredContentSize:content_size];
+
 	[[UINavigationBar appearance] setTitleTextAttributes:@{
 		NSForegroundColorAttributeName: [UIColor colorWithWhite:0.259 alpha:1.000],
 		NSFontAttributeName: [UIFont fontWithName:@"Avenir-Light" size:16]

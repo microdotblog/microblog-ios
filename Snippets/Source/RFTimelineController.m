@@ -350,6 +350,9 @@
 
 - (void) didChangePreferredContentSize:(NSNotification *)notification
 {
+	NSString* content_size = [UIApplication sharedApplication].preferredContentSizeCategory;
+	[RFSettings setPreferredContentSize:content_size];
+
 	[self refreshTimeline];
 }
 

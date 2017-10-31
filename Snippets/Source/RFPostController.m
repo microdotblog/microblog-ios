@@ -124,6 +124,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupFont
 {
+	#ifndef SHARING_EXTENSION
+		NSString* content_size = [UIApplication sharedApplication].preferredContentSizeCategory;
+		[RFSettings setPreferredContentSize:content_size];
+	#endif
+
 	self.textView.font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
 }
 

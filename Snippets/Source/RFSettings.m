@@ -34,6 +34,7 @@
 #define IsFullAccess					@"IsFullAccess"
 #define LatestDraftTitle				@"LatestDraftTitle"
 #define LatestDraftText					@"LatestDraftText"
+#define PreferredContentSize			@"PreferredContentSize"
 
 @implementation RFSettings
 
@@ -465,6 +466,16 @@
 + (void) setDraftText:(NSString *)value
 {
 	[RFSettings setUserDefault:value forKey:LatestDraftText];
+}
+
++ (NSString *) preferredContentSize
+{
+	return [RFSettings loadUserDefault:PreferredContentSize];
+}
+
++ (void) setPreferredContentSize:(NSString *)value
+{
+	[RFSettings setUserDefault:value forKey:PreferredContentSize];
 }
 
 @end
