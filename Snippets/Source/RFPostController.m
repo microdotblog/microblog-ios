@@ -377,6 +377,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	self.photoButton.hidden = YES;
 
+	self.isSent = YES;
 	[RFSettings setDraftTitle:@""];
 	[RFSettings setDraftText:@""];
 
@@ -391,7 +392,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) close:(id)sender
 {
-	if (!self.isReply) {
+	if (!self.isReply && !self.isSent) {
 		[RFSettings setDraftTitle:[self currentTitle]];
 		[RFSettings setDraftText:[self currentText]];
 	}
