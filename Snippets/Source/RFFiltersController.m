@@ -8,6 +8,7 @@
 
 #import "RFFiltersController.h"
 
+#import "RFMacros.h"
 #import "RFFilterCell.h"
 #import "RFFilter.h"
 #import "RFPhoto.h"
@@ -50,7 +51,7 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 {
 	[super viewWillLayoutSubviews];
 
-//	[self setupPhotoBounds];
+	[self setupPhotoBounds];
 }
 
 - (void) viewDidLayoutSubviews
@@ -87,14 +88,14 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 
 - (void) setupPhotoBounds
 {
-	if ([UIScreen mainScreen].bounds.size.width == 320) { // iPhone SE
-		self.collectionHeightConstraint.constant = 184;
+	if (self.view.bounds.size.height > self.view.bounds.size.width) {
+		self.collectionHeightConstraint.constant = self.view.bounds.size.height  - self.view.bounds.size.width;
+		if (self.collectionHeightConstraint.constant > 300) {
+			self.collectionLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+		}
 	}
-	else if ([UIScreen mainScreen].bounds.size.width == 375) { // iPhone 6/7
-		self.collectionHeightConstraint.constant = 228;
-	}
-	else if ([UIScreen mainScreen].bounds.size.width == 414) { // iPhone Plus
-		self.collectionHeightConstraint.constant = 258;
+	else {
+		self.collectionHeightConstraint.constant = 250;
 	}
 }
 
@@ -242,12 +243,12 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 
 - (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-	if (collectionView.bounds.size.height > 300) {
-		return UIEdgeInsetsMake (25, 5, 25, 5);
-	}
-	else {
+//	if (collectionView.bounds.size.height > 300) {
+//		return UIEdgeInsetsMake (25, 5, 25, 5);
+//	}
+//	else {
 		return UIEdgeInsetsMake (5, 5, 5, 5);
-	}
+//	}
 }
 
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
