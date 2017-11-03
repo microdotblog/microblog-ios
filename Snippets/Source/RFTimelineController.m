@@ -411,7 +411,8 @@
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
 	CGFloat offset = scrollView.contentOffset.y;
-	if ((offset < -130) && !scrollView.isDecelerating) {
+	CGFloat threshold = RFStatusBarHeight() + 110;
+	if ((offset < -threshold) && !scrollView.isDecelerating) {
 		if (!self.refreshControl.isRefreshing) {
 			[self refreshTimelineShowingSpinner:YES];
 		}
