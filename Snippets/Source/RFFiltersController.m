@@ -50,7 +50,7 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 {
 	[super viewWillLayoutSubviews];
 
-	[self setupPhotoBounds];
+//	[self setupPhotoBounds];
 }
 
 - (void) viewDidLayoutSubviews
@@ -242,7 +242,12 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 
 - (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-	return UIEdgeInsetsMake (5, 5, 5, 5);
+	if (collectionView.bounds.size.height > 300) {
+		return UIEdgeInsetsMake (25, 5, 25, 5);
+	}
+	else {
+		return UIEdgeInsetsMake (5, 5, 5, 5);
+	}
 }
 
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
