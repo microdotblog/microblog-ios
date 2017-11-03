@@ -96,6 +96,11 @@
     [self fetchUserInfo];
 }
 
+- (void) setupRefresh
+{
+	self.webView.scrollView.showsHorizontalScrollIndicator = NO;
+}
+
 - (void) setupSpacing
 {
 	self.verticalOffsetConstraint.constant = 44 + RFStatusBarHeight();
