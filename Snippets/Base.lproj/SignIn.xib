@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -32,7 +32,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phR-tm-5p6">
-                    <rect key="frame" x="0.0" y="147" width="320" height="43"/>
+                    <rect key="frame" x="0.0" y="151" width="320" height="43"/>
                     <subviews>
                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="og7-T2-Oy9">
                             <rect key="frame" x="293" y="12" width="20" height="20"/>
@@ -50,7 +50,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a Micro.blog app token or your email address:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6V4-1T-7uy">
-                    <rect key="frame" x="31" y="90" width="258" height="46"/>
+                    <rect key="frame" x="31" y="94" width="258" height="46"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="258" id="29l-OC-V93"/>
                         <constraint firstAttribute="height" constant="46" id="ho6-Eh-HvJ"/>
@@ -60,7 +60,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can find these in your account page on the web. Or enter your email address to receive a sign-in link." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-Up-MMg">
-                    <rect key="frame" x="31" y="199" width="258" height="68"/>
+                    <rect key="frame" x="31" y="203" width="258" height="68"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="258" id="A9a-QO-YsC"/>
                         <constraint firstAttribute="height" constant="68" id="MDh-X5-oty"/>
@@ -70,7 +70,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app requires a Micro.blog account. Micro.blog is a timeline and publishing service for microblogs." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-IB-pTa">
-                    <rect key="frame" x="31" y="281" width="258" height="73"/>
+                    <rect key="frame" x="31" y="285" width="258" height="73"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="73" id="axv-AS-sex"/>
                         <constraint firstAttribute="width" constant="258" id="eZ4-DO-hI1"/>
@@ -80,7 +80,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address or app token" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZD-8e-rD1">
-                    <rect key="frame" x="31" y="154" width="258" height="30"/>
+                    <rect key="frame" x="31" y="158" width="258" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="258" id="QQV-j5-m22"/>
                         <constraint firstAttribute="height" constant="30" id="TSi-ho-JFa"/>
@@ -92,7 +92,7 @@
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTE-zP-eNE" customClass="RFThinLineView">
-                    <rect key="frame" x="0.0" y="275" width="320" height="1"/>
+                    <rect key="frame" x="0.0" y="279" width="320" height="1"/>
                     <color key="backgroundColor" red="0.89740008115768433" green="0.89740008115768433" blue="0.89740008115768433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="qNy-No-J2u"/>
@@ -124,7 +124,7 @@
                 <constraint firstItem="6V4-1T-7uy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1ju-3m-hYa"/>
                 <constraint firstItem="phR-tm-5p6" firstAttribute="top" secondItem="6V4-1T-7uy" secondAttribute="bottom" constant="11" id="536-z7-3AH"/>
                 <constraint firstItem="1ZD-8e-rD1" firstAttribute="top" secondItem="6V4-1T-7uy" secondAttribute="bottom" constant="18" id="86w-60-8ft"/>
-                <constraint firstItem="6V4-1T-7uy" firstAttribute="top" secondItem="9Zr-YD-fRb" secondAttribute="bottom" constant="10" id="H8U-KG-9I8"/>
+                <constraint firstItem="6V4-1T-7uy" firstAttribute="top" secondItem="9Zr-YD-fRb" secondAttribute="bottom" constant="14" id="H8U-KG-9I8"/>
                 <constraint firstItem="OqG-Up-MMg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HrN-A0-6eP"/>
                 <constraint firstItem="9Zr-YD-fRb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RbU-8X-0Lq"/>
                 <constraint firstItem="OqG-Up-MMg" firstAttribute="top" secondItem="1ZD-8e-rD1" secondAttribute="bottom" constant="15" id="RpX-7o-QO0"/>
