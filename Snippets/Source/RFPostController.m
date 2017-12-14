@@ -968,11 +968,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					
 					dispatch_async(dispatch_get_main_queue(), ^
 					{
-						if (title)
+						if (title && url) {
+							[self insertSharedURL:url withTitle:title];
+						}
+						else if (title) {
 							[self insertSharedText:title];
-						
-						if (url)
-							[self insertSharedURL:url];
+						}
+						else if (url) {
+							[self insertSharedURL:url withTitle:@""];
+						}
 					});
 
 				}];
@@ -985,7 +989,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					NSURL* url = [(NSURL*)item copy];;
 					dispatch_async(dispatch_get_main_queue(), ^
 					{
-						[self insertSharedURL:url];
+						[self insertSharedURL:url withTitle:@""];
 					});
 				}];
 			}
@@ -1045,12 +1049,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	return NO;
 }
 
-- (void) insertSharedURL:(NSURL *)url
+- (void) insertSharedURL:(NSURL *)url withTitle:(NSString *)title
 {
 	NSString* s;
 	
 	if ([RFSettings prefersPlainSharedURLs]) {
 		s = [NSString stringWithFormat:@" %@", url.absoluteString];
+	}
+	else if (title.length > 0) {
+		s = [NSString stringWithFormat:@" [%@](%@)", title, url.absoluteString];
 	}
 	else {
 		s = [NSString stringWithFormat:@" [%@](%@)", url.host, url.absoluteString];
