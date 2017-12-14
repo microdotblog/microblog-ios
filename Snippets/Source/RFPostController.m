@@ -957,6 +957,27 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	{
 		for (NSItemProvider *itemProvider in item.attachments)
 		{
+			if ([itemProvider hasItemConformingToTypeIdentifier:(NSString*)kUTTypePropertyList])
+			{
+				[itemProvider loadItemForTypeIdentifier:(NSString*)kUTTypePropertyList options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
+				{
+					NSDictionary* dictionary = (NSDictionary*)item;
+					dictionary = dictionary[NSExtensionJavaScriptPreprocessingResultsKey];
+					NSString* title = [dictionary objectForKey:@"title"];
+					NSURL* url = [NSURL URLWithString:[dictionary objectForKey:@"url"]];
+					
+					dispatch_async(dispatch_get_main_queue(), ^
+					{
+						if (title)
+							[self insertSharedText:title];
+						
+						if (url)
+							[self insertSharedURL:url];
+					});
+
+				}];
+			}
+			
 			if ([itemProvider hasItemConformingToTypeIdentifier:@"public.url"])
 			{
 				[itemProvider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)

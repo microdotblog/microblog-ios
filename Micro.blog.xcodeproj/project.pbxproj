@@ -151,6 +151,7 @@
 		C55044A21F8EBB7800C1D5F2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B94052C1E2933DE00B01E79 /* Images.xcassets */; };
 		C55044A31F8EBB7B00C1D5F2 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */; };
 		C5666B631F23C95F00AE13DC /* User.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5666B611F23C95F00AE13DC /* User.xib */; };
+		C58942611FE245F400A30EB9 /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = C589425F1FE245F400A30EB9 /* GetURL.js */; };
 		C5A66B0C1F88325E0063F325 /* CColorConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631F1B8F51710034FC5C /* CColorConverter.m */; };
 		C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663211B8F51710034FC5C /* CMarkupTransformer.m */; };
 		C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663231B8F51710034FC5C /* CSimpleMarkupParser.m */; };
@@ -423,6 +424,7 @@
 		C513F6E41F993D2D007319F0 /* RFAppExtensionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFAppExtensionViewController.h; path = Source/RFAppExtensionViewController.h; sourceTree = "<group>"; };
 		C513F6E51F993D2D007319F0 /* RFAppExtensionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAppExtensionViewController.m; path = Source/RFAppExtensionViewController.m; sourceTree = "<group>"; };
 		C5666B621F23C95F00AE13DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/User.xib; sourceTree = "<group>"; };
+		C589425F1FE245F400A30EB9 /* GetURL.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = GetURL.js; sourceTree = "<group>"; };
 		C5A4AC011F9A507400415646 /* Micro.blog Sharing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Micro.blog Sharing.entitlements"; sourceTree = "<group>"; };
 		C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIBilateralFilter.cikernel; sourceTree = "<group>"; };
 		C5CED6B91ECF792E0068F537 /* YUCIBilateralFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIBilateralFilter.h; sourceTree = "<group>"; };
@@ -825,6 +827,7 @@
 				C507F30A1F8827420013D2B7 /* ShareViewController.h */,
 				C507F30B1F8827420013D2B7 /* ShareViewController.m */,
 				C507F30D1F8827420013D2B7 /* MainInterface.storyboard */,
+				C589425F1FE245F400A30EB9 /* GetURL.js */,
 				C507F3101F8827420013D2B7 /* Info.plist */,
 			);
 			path = "Micro.blog Sharing";
@@ -1184,6 +1187,7 @@
 				C507F35E1F8831530013D2B7 /* Filters.xib in Resources */,
 				C507F3621F8831530013D2B7 /* Wordpress.xib in Resources */,
 				C507F3571F88314B0013D2B7 /* PhotoCell.xib in Resources */,
+				C58942611FE245F400A30EB9 /* GetURL.js in Resources */,
 				C55044A31F8EBB7B00C1D5F2 /* 1Password.xcassets in Resources */,
 				C507F3581F8831530013D2B7 /* Menu.xib in Resources */,
 				C507F30F1F8827420013D2B7 /* MainInterface.storyboard in Resources */,
