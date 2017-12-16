@@ -62,7 +62,11 @@
 	else if ([url.host isEqualToString:@"micropub"]) {
 		[self showMicropubWithURL:[url absoluteString]];
 	}
-	
+	else if ([url.host isEqualToString:@"post"]) {
+		NSString* text = [[[url absoluteString] uuFindQueryStringArg:@"text"] uuUrlDecoded];
+		[self showNewPostWithText:text];
+	}
+
 	return YES;
 }
 
@@ -348,6 +352,13 @@
 	else {
 		return self.navigationController;
 	}
+}
+
+- (void) showNewPostWithText:(NSString *)text
+{
+	RFPostController* post_controller = [[RFPostController alloc] initWithText:text];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
+	[[self activeNavigationController] presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 - (void) showOptionsMenuWithPostID:(NSString *)postID

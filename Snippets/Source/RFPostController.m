@@ -50,6 +50,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	return self;
 }
 
+- (instancetype) initWithText:(NSString *)text
+{
+	self = [self init];
+	if (self) {
+		self.initialText = text;
+	}
+	
+	return self;
+}
+
 - (instancetype) initWithReplyTo:(NSString *)postID replyUsername:(NSString *)username
 {
 	self = [self init];
@@ -141,6 +151,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	NSString* s = @"";
 	if (self.replyUsername) {
 		s = [NSString stringWithFormat:@"@%@ ", self.replyUsername];
+	}
+	else if (self.initialText) {
+		s = self.initialText;
 	}
 	else {
 		s = [RFSettings draftText];
