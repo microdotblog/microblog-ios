@@ -1026,8 +1026,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				 {
 					 if(image)
 					 {
-						UIImage* new_img = [image uuRemoveOrientation];
-						new_img = [new_img uuScaleToWidth:1200];
+						 UIImage* new_img = image;
+						//UIImage* new_img = [image uuScaleToWidth:1200];
+						 //new_img = [image uuRemoveOrientation];
 
 						 RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
 						 [new_photos addObject:photo];
