@@ -793,7 +793,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 						self.photoButton.hidden = NO;
 					}
 					else {
-						NSString* image_url = [[xmlrpc.responseParams firstObject] objectForKey:@"link"];
+						NSString* image_url = [[xmlrpc.responseParams firstObject] objectForKey:@"url"];
+						if (image_url == nil) {
+							image_url = [[xmlrpc.responseParams firstObject] objectForKey:@"link"];
+						}
+
 						if (image_url == nil) {
 							[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Photo" message:@"Photo URL was blank." button:@"OK" completionHandler:NULL];
 							[self hideProgressHeader];
