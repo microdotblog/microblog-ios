@@ -186,7 +186,10 @@
     UIImage *newImage = nil;
     
     CGSize destSize = [self uuCalculateScaleToWidthDestSize:width];
-    
+
+	destSize.width /= [[UIScreen mainScreen] scale];
+	destSize.height /= [[UIScreen mainScreen] scale];
+
     // this is actually the interesting part:
     UIGraphicsBeginImageContext(destSize);
     
