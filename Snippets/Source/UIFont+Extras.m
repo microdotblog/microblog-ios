@@ -44,7 +44,7 @@
 
 + (CGFloat) rf_preferredPostingFontSize
 {
-	CGFloat scale = 1.1;
+	CGFloat scale = 1.2;
 	CGFloat fontsize = [self rf_preferredTimelineFontSize] * scale;
 	return fontsize;
 }
