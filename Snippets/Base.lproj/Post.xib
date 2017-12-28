@@ -9,9 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Light</string>
-        </array>
         <array key="AvenirNext.ttc">
             <string>AvenirNext-Regular</string>
             <string>AvenirNext-UltraLight</string>
@@ -172,7 +169,7 @@
                                         <constraint firstAttribute="width" constant="33" id="3Zd-LX-wKk"/>
                                         <constraint firstAttribute="height" constant="21" id="Oil-Vo-vWL"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -192,7 +189,7 @@
                                         <constraint firstAttribute="width" constant="33" id="Dic-57-FhP"/>
                                         <constraint firstAttribute="height" constant="30" id="a61-dy-Uyv"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -240,7 +237,7 @@
                                         <constraint firstAttribute="height" constant="21" id="XLG-57-gjc"/>
                                         <constraint firstAttribute="width" constant="21" id="iiV-Ay-xJv"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
