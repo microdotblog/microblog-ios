@@ -881,8 +881,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		
 		for (UIImage* img in objects) {
 			if (new_photos.count < 10) {
-				UIImage* new_img = [img uuRemoveOrientation];
-				new_img = [new_img uuScaleToWidth:1200];
+				UIImage* new_img = img;
+				if (new_img.size.width > 1200) {
+					new_img = [new_img uuScaleToWidth:1200];
+				}
+				new_img = [new_img uuRemoveOrientation];
 				RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
 				[new_photos addObject:photo];
 			}
@@ -1030,7 +1033,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				 {
 					 if(image)
 					 {
-						  UIImage* new_img = [image uuScaleToWidth:1200];
+						UIImage* new_img = image;
+						if (image.size.width > 1200) {
+							image = [image uuScaleToWidth:1200];
+						}
 						 new_img = [new_img uuRemoveOrientation];
 
 						 RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
