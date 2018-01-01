@@ -1034,8 +1034,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					 if(image)
 					 {
 						UIImage* new_img = image;
-						if (image.size.width > 1200) {
-							image = [image uuScaleToWidth:1200];
+						if (new_img.size.width > 1200) {
+							new_img = [new_img uuScaleToWidth:1200];
 						}
 						 new_img = [new_img uuRemoveOrientation];
 
