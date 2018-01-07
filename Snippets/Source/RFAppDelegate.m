@@ -254,6 +254,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePostingNotification:) name:kClosePostingNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openURLNotification:) name:kOpenURLNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUserFollowingNotification:) name:kShowUserFollowingNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTopicNotification:) name:kShowTopicNotification object:nil];
 }
 
 - (void) setupShortcuts
@@ -299,6 +300,12 @@
 {
 	NSString* username = [notification.userInfo objectForKey:kShowUserFollowingUsernameKey];
 	[self showUserFollowingWithUsername:username];
+}
+
+- (void) showTopicNotification:(NSNotification*)notification
+{
+	NSString* term = [notification.userInfo objectForKey:kShowTopicKey];
+	[self showTopicWithSearch:term];
 }
 
 - (void) showReplyPostNotification:(NSNotification *)notification
@@ -410,6 +417,13 @@
 {
 	NSString* path = [NSString stringWithFormat:@"/hybrid/following/%@", username];
 	RFTimelineController* user_controller = [[RFTimelineController alloc] initWithEndpoint:path title:@"Following"];
+	[[self activeNavigationController] pushViewController:user_controller animated:YES];
+}
+
+- (void) showTopicWithSearch:(NSString *)term
+{
+	NSString* path = [NSString stringWithFormat:@"/hybrid/discover/%@", term];
+	RFTimelineController* user_controller = [[RFTimelineController alloc] initWithEndpoint:path title:term];
 	[[self activeNavigationController] pushViewController:user_controller animated:YES];
 }
 

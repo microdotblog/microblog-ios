@@ -305,6 +305,9 @@
 	else if ([self.endpoint containsString:@"/hybrid/discover/search"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@&width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
+	else if ([self.endpoint containsString:@"/hybrid/discover/"]) {
+		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
+	}
 	else if ([self.endpoint containsString:@"/hybrid/following/"])
 	{
 		client = [[RFClient alloc] initWithPath:self.endpoint];
@@ -365,10 +368,24 @@
 	NSString* hostname = [url host];
 	NSString* path = [url path];
 	if ([hostname isEqualToString:@"micro.blog"]) {
-		NSString* username = [path stringByReplacingOccurrencesOfString:@"/" withString:@""];
-		if (username.length > 0) {
+		NSMutableArray* pieces = [[path componentsSeparatedByString:@"/"] mutableCopy];
+		[pieces removeObjectAtIndex:0];
+		if ((pieces.count == 2) && [[pieces firstObject] isEqualToString:@"discover"]) {
+			// e.g. /discover/books
 			found_microblog_url = YES;
-			[[NSNotificationCenter defaultCenter] postNotificationName:kShowUserProfileNotification object:self userInfo:@{ kShowUserProfileUsernameKey: username }];
+			[self showTopicsWithSearch:[pieces lastObject]];
+		}
+		else if ([[pieces firstObject] isEqualToString:@"about"]) {
+			// e.g. /about/api
+			found_microblog_url = NO;
+		}
+		else {
+			NSString* username = [path stringByReplacingOccurrencesOfString:@"/" withString:@""];
+			if (username.length > 0) {
+				// e.g. /manton
+				found_microblog_url = YES;
+				[self showProfileWithUsername:username];
+			}
 		}
 	}
 	
@@ -376,6 +393,16 @@
 		SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:url];
 		[self presentViewController:safari_controller animated:YES completion:NULL];
 	}
+}
+
+- (void) showTopicsWithSearch:(NSString *)term
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:kShowTopicNotification object:self userInfo:@{ kShowTopicKey: term }];
+}
+
+- (void) showProfileWithUsername:(NSString *)username
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:kShowUserProfileNotification object:self userInfo:@{ kShowUserProfileUsernameKey: username }];
 }
 
 #pragma mark -
