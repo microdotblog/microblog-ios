@@ -379,6 +379,16 @@
 			// e.g. /about/api
 			found_microblog_url = NO;
 		}
+		else if ([[pieces firstObject] isEqualToString:@"discover"]) {
+			// e.g. /discover
+			found_microblog_url = NO;
+//			[self showDiscover:nil];
+		}
+		else if (pieces.count == 2) {
+			// e.g. /manton/12345
+			found_microblog_url = YES;
+			[self showConversationWithPostID:[pieces lastObject]];
+		}
 		else {
 			NSString* username = [path stringByReplacingOccurrencesOfString:@"/" withString:@""];
 			if (username.length > 0) {
@@ -403,6 +413,11 @@
 - (void) showProfileWithUsername:(NSString *)username
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:kShowUserProfileNotification object:self userInfo:@{ kShowUserProfileUsernameKey: username }];
+}
+
+- (void) showConversationWithPostID:(NSString *)postID
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:kShowConversationNotification object:self userInfo:@{ kShowConversationPostIDKey: postID }];
 }
 
 #pragma mark -
