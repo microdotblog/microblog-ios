@@ -7,7 +7,9 @@
 //
 
 #import "RFPostController.h"
+
 #import "RFSettings.h"
+#import "RFFeedsController.h"
 #import "RFPhotosController.h"
 #import "RFPhoto.h"
 #import "RFPhotoCell.h"
@@ -467,6 +469,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) settingsPressed:(id)sender
 {
+	RFFeedsController* feeds_controller = [[RFFeedsController alloc] init];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:feeds_controller];
+	[self presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 - (void) replaceSelectionBySurrounding:(NSArray *)markup

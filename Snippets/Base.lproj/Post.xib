@@ -332,7 +332,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="280" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjg-el-aBq">
-                            <rect key="frame" x="241" y="507" width="71" height="24"/>
+                            <rect key="frame" x="241" y="505" width="71" height="24"/>
                             <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="0jo-Pq-HPJ"/>
@@ -349,7 +349,7 @@
                         <constraint firstItem="va1-Ew-xJV" firstAttribute="leading" secondItem="VbH-di-quh" secondAttribute="leading" id="7UL-I2-m2C"/>
                         <constraint firstItem="F7T-Eg-dhD" firstAttribute="top" secondItem="KVQ-Eh-uyS" secondAttribute="bottom" constant="10" id="9xi-sx-RiC"/>
                         <constraint firstItem="I8I-kA-x0u" firstAttribute="top" secondItem="7Ic-hx-PZp" secondAttribute="bottom" id="Agv-ma-Hla"/>
-                        <constraint firstItem="7Ic-hx-PZp" firstAttribute="top" secondItem="qjg-el-aBq" secondAttribute="bottom" constant="1" id="BlS-pq-07h"/>
+                        <constraint firstItem="7Ic-hx-PZp" firstAttribute="top" secondItem="qjg-el-aBq" secondAttribute="bottom" constant="3" id="BlS-pq-07h"/>
                         <constraint firstItem="7Ic-hx-PZp" firstAttribute="leading" secondItem="VbH-di-quh" secondAttribute="leading" id="BwC-Fu-3PD"/>
                         <constraint firstAttribute="trailing" secondItem="va1-Ew-xJV" secondAttribute="trailing" id="GuN-8x-dCq"/>
                         <constraint firstItem="ihB-7W-Vup" firstAttribute="top" secondItem="VbH-di-quh" secondAttribute="top" constant="64" id="Iwd-b0-Yid"/>
