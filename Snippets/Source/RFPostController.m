@@ -217,6 +217,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.markdownBoldButton setBackgroundImage:img forState:UIControlStateNormal];
 	[self.markdownItalicsButton setBackgroundImage:img forState:UIControlStateNormal];
 	[self.markdownLinkButton setBackgroundImage:img forState:UIControlStateNormal];
+	[self.settingsButton setBackgroundImage:img forState:UIControlStateNormal];
 
 	if (self.isReply) {
 		self.photoButtonLeftConstraint.constant = -34;
@@ -462,6 +463,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		r.location = r.location - 1;
 		self.textView.selectedRange = r;
 	}
+}
+
+- (IBAction) settingsPressed:(id)sender
+{
 }
 
 - (void) replaceSelectionBySurrounding:(NSArray *)markup
