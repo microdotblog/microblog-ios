@@ -223,6 +223,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	if (self.isReply) {
 		self.photoButtonLeftConstraint.constant = -34;
+		self.settingsButtonRightConstraint.constant = -34;
 	}
 }
 

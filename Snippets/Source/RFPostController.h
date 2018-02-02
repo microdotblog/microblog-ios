@@ -31,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet UIButton* settingsButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* photoButtonLeftConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* photoBarHeightConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* settingsButtonRightConstraint;
 
 @property (assign, nonatomic) BOOL isSent;
 @property (assign, nonatomic) BOOL isReply;
