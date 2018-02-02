@@ -22,6 +22,7 @@
                 <outlet property="categoriesTableView" destination="SFL-G3-6LV" id="pWG-Hq-IRc"/>
                 <outlet property="serversTableView" destination="T30-Wk-89C" id="tKt-jr-5GW"/>
                 <outlet property="sharingTableView" destination="UQT-f1-fD9" id="MKX-DR-aZt"/>
+                <outlet property="versionField" destination="q9C-zN-V6g" id="lJC-6z-KJB"/>
                 <outlet property="view" destination="iN0-l3-epB" id="hIw-Ic-YgV"/>
             </connections>
         </placeholder>

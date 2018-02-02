@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel* categoriesIntroField;
 @property (strong, nonatomic) IBOutlet UITableView* categoriesTableView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* categoriesProgressSpinner;
+@property (strong, nonatomic) IBOutlet UILabel* versionField;
 
 @property (strong, nonatomic) NSArray* sharingNames; // NSString
 @property (strong, nonatomic) NSArray* serverNames; // NSString

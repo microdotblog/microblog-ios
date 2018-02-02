@@ -39,6 +39,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	[self setupSharing];
 	[self setupServers];
 	[self setupCategories];
+	[self setupVersion];
 //	[self setupGestures];
 }
 
@@ -145,6 +146,14 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 			[self setupSelectedCategory];
 		});
 	}];
+}
+
+- (void) setupVersion
+{
+	NSDictionary* info = [[NSBundle mainBundle] infoDictionary];
+	NSString* version = [info objectForKey:@"CFBundleShortVersionString"];
+
+	self.versionField.text = [NSString stringWithFormat:@"Version %@", version];
 }
 
 - (void) setupGestures
