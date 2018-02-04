@@ -10,4 +10,8 @@
 
 @interface RFFeedsController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITableView* feedsTable;
+
+@property (strong, nonatomic) NSArray* feeds; // NSDictionary
+
 @end

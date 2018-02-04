@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="72" id="ylI-6r-gUs" customClass="RFFeedCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ylI-6r-gUs" id="jcI-cr-GFn">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="manton.org/feed.json" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5N-fH-A6Q">
+                        <rect key="frame" x="12" y="12" width="306" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="VBk-nA-HxR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter: @manton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUM-gU-E6h">
+                        <rect key="frame" x="12" y="39" width="306" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="44s-Km-lXW"/>
+                            <constraint firstAttribute="width" constant="306" id="Vit-TX-vw4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark_icon" translatesAutoresizingMaskIntoConstraints="NO" id="LDY-Mv-tv3">
+                        <rect key="frame" x="341" y="25" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="EyX-pc-oP1"/>
+                            <constraint firstAttribute="height" constant="20" id="NE9-aA-yb0"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LDY-Mv-tv3" firstAttribute="leading" secondItem="g5N-fH-A6Q" secondAttribute="trailing" constant="23" id="F23-mf-33n"/>
+                    <constraint firstItem="FUM-gU-E6h" firstAttribute="leading" secondItem="jcI-cr-GFn" secondAttribute="leading" constant="12" id="MKh-VP-udn"/>
+                    <constraint firstAttribute="bottom" secondItem="FUM-gU-E6h" secondAttribute="bottom" constant="9.5" id="RfR-5M-zNL"/>
+                    <constraint firstItem="LDY-Mv-tv3" firstAttribute="leading" secondItem="FUM-gU-E6h" secondAttribute="trailing" constant="23" id="YZR-Jj-a6z"/>
+                    <constraint firstItem="g5N-fH-A6Q" firstAttribute="leading" secondItem="jcI-cr-GFn" secondAttribute="leading" constant="12" id="qCC-hH-CS3"/>
+                    <constraint firstAttribute="trailing" secondItem="LDY-Mv-tv3" secondAttribute="trailing" constant="14" id="sJD-MQ-p6s"/>
+                    <constraint firstItem="g5N-fH-A6Q" firstAttribute="top" secondItem="jcI-cr-GFn" secondAttribute="top" constant="12" id="uKm-p4-deN"/>
+                    <constraint firstItem="LDY-Mv-tv3" firstAttribute="top" secondItem="jcI-cr-GFn" secondAttribute="top" constant="25" id="wfq-Jb-tmO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="checkmarkView" destination="LDY-Mv-tv3" id="4dg-pE-Ysd"/>
+                <outlet property="urlField" destination="g5N-fH-A6Q" id="v66-ef-6dV"/>
+                <outlet property="usernamesField" destination="FUM-gU-E6h" id="Jfv-sA-JWl"/>
+            </connections>
+            <point key="canvasLocation" x="49.5" y="-26.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark_icon" width="20" height="20"/>
+    </resources>
+</document>

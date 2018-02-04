@@ -471,8 +471,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (IBAction) settingsPressed:(id)sender
 {
 	RFFeedsController* feeds_controller = [[RFFeedsController alloc] init];
-	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:feeds_controller];
-	[self presentViewController:nav_controller animated:YES completion:NULL];
+	[self.navigationController pushViewController:feeds_controller animated:YES];
 }
 
 - (void) replaceSelectionBySurrounding:(NSArray *)markup
