@@ -79,6 +79,10 @@ static NSString* const kServerSchemeAndHostname = @"https://micro.blog";
 			NSString* val_encoded = [val rf_urlEncoded];
 			[body_s appendFormat:@"%@=%@", key, val_encoded];
 		}
+		else if ([params[key] isKindOfClass:[NSNumber class]]) {
+			NSNumber* val = params[key];
+			[body_s appendFormat:@"%@=%@", key, val];
+		}
 		else if ([params[key] isKindOfClass:[NSArray class]]) {
 			for (NSString* val in params[key]) {
 				NSString* val_encoded = [val rf_urlEncoded];
