@@ -133,9 +133,12 @@ public final class SloppySwiping: NSObject {
                 let view = navigationController.view
                 let t = recognizer.translation(in: view)
                 let v = recognizer.velocity(in: view)
+                let pt = recognizer.location(in: view)
+
+				let info = [ kShowConversationPointKey: pt.y ]
 
 				if (t.x < -150) && (t.y < 50) && (t.y > -50) {
-					NotificationCenter.default.post(name: NSNotification.Name(kShowConversationNotification), object: self)
+					NotificationCenter.default.post(name: NSNotification.Name(kShowConversationNotification), object: self, userInfo: info)
 				}
 
                 if animator.shouldCancelForGestureEndingWithTranslation(t, velocity: v) {
@@ -407,7 +410,7 @@ fileprivate final class InteractivePopAnimator: NSObject, UIViewControllerAnimat
             let toView = transitionContext.view(forKey: UITransitionContextViewKey.to) else {
                 return
         }
-        
+		
         let container = transitionContext.containerView
         let maxDistance = container.bounds.size.width
         let percent = percentDismissedForTranslation(translation, container: container)
@@ -427,7 +430,12 @@ fileprivate final class InteractivePopAnimator: NSObject, UIViewControllerAnimat
     
     private func percentDismissedForTranslation(_ translation: CGPoint, container: UIView) -> CGFloat {
         let maxDistance = container.bounds.size.width
-        return (min(maxDistance, max(0, translation.x))) / maxDistance
+        if translation.x < 0 {
+        	return (min(0, translation.x)) / maxDistance
+		}
+		else {
+        	return (min(maxDistance, max(0, translation.x))) / maxDistance
+		}
     }
     
     private func durationForDistance(distance d: CGFloat, velocity v: CGFloat) -> TimeInterval {

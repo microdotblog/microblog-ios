@@ -27,6 +27,7 @@
 - (void) setupNavigation;
 
 - (void) setSelected:(BOOL)isSelected withPostID:(NSString *)postID;
+- (NSArray *) allPostIDs; // NSString
 - (CGRect) rectOfPostID:(NSString *)postID;
 - (RFOptionsPopoverType) popoverTypeOfPostID:(NSString *)postID;
 - (NSString *) usernameOfPostID:(NSString *)postID;

@@ -205,9 +205,17 @@
 
 - (NSString *) firstPostID
 {
-	NSString* first_js = [NSString stringWithFormat:@"$('.post').first().attr('id').replace('post_', '')"];
+	NSString* first_js = [NSString stringWithFormat:@"$('.post').first().attr('id').replace('post_', '');"];
 	NSString* first_s = [self.webView stringByEvaluatingJavaScriptFromString:first_js];
 	return [first_s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (NSArray *) allPostIDs
+{
+	NSString* all_js = @"var post_ids = []; $('.post').each(function() { post_ids.push($(this).attr('id').replace('post_', '')); }); post_ids.toString();";
+	NSString* all_s = [self.webView stringByEvaluatingJavaScriptFromString:all_js];
+	NSArray* post_ids = [all_s componentsSeparatedByString:@","];
+	return post_ids;
 }
 
 - (NSString *) usernameOfPostID:(NSString *)postID
