@@ -42,6 +42,8 @@
 		4B400D16202524B500C71AAF /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B400D13202524B500C71AAF /* FeedCell.xib */; };
 		4B400D192025270900C71AAF /* RFFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B400D182025270900C71AAF /* RFFeedCell.m */; };
 		4B400D1A2025270900C71AAF /* RFFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B400D182025270900C71AAF /* RFFeedCell.m */; };
+		4B400D1D2027535700C71AAF /* RFFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B400D1C2027535700C71AAF /* RFFeed.m */; };
+		4B400D1E2027535700C71AAF /* RFFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B400D1C2027535700C71AAF /* RFFeed.m */; };
 		4B43700C1EC7AF3300B46D56 /* RFSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B43700B1EC7AF3300B46D56 /* RFSettings.m */; };
 		4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */; };
 		4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631F1B8F51710034FC5C /* CColorConverter.m */; };
@@ -330,6 +332,8 @@
 		4B400D14202524B500C71AAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeedCell.xib; sourceTree = "<group>"; };
 		4B400D172025270900C71AAF /* RFFeedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFFeedCell.h; path = Source/RFFeedCell.h; sourceTree = "<group>"; };
 		4B400D182025270900C71AAF /* RFFeedCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFFeedCell.m; path = Source/RFFeedCell.m; sourceTree = "<group>"; };
+		4B400D1B2027535700C71AAF /* RFFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFFeed.h; path = Source/RFFeed.h; sourceTree = "<group>"; };
+		4B400D1C2027535700C71AAF /* RFFeed.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFFeed.m; path = Source/RFFeed.m; sourceTree = "<group>"; };
 		4B43700A1EC7AF3300B46D56 /* RFSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFSettings.h; path = Source/RFSettings.h; sourceTree = "<group>"; };
 		4B43700B1EC7AF3300B46D56 /* RFSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFSettings.m; path = Source/RFSettings.m; sourceTree = "<group>"; };
 		4B46631A1B8EA5C20034FC5C /* NSString+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Extras.h"; path = "Source/NSString+Extras.h"; sourceTree = "<group>"; };
@@ -700,6 +704,8 @@
 				4BA910811B83D20C00D58F83 /* RFPostController.m */,
 				4B400D0B202448DB00C71AAF /* RFFeedsController.h */,
 				4B400D0C202448DB00C71AAF /* RFFeedsController.m */,
+				4B400D1B2027535700C71AAF /* RFFeed.h */,
+				4B400D1C2027535700C71AAF /* RFFeed.m */,
 				4B400D172025270900C71AAF /* RFFeedCell.h */,
 				4B400D182025270900C71AAF /* RFFeedCell.m */,
 				C513F6E41F993D2D007319F0 /* RFAppExtensionViewController.h */,
@@ -1263,6 +1269,7 @@
 				4B46632B1B8F51710034FC5C /* CMarkupTransformer.m in Sources */,
 				4B1712DB1F069FB200267045 /* RFMenuView.m in Sources */,
 				C5CED7061ECF792E0068F537 /* YUCIFXAA.m in Sources */,
+				4B400D1D2027535700C71AAF /* RFFeed.m in Sources */,
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
 				4B43700C1EC7AF3300B46D56 /* RFSettings.m in Sources */,
 				C5CED7151ECF792E0068F537 /* YUCISkyGenerator.m in Sources */,
@@ -1372,6 +1379,7 @@
 				C507F31A1F8827880013D2B7 /* RFPhotosController.m in Sources */,
 				4B400D1A2025270900C71AAF /* RFFeedCell.m in Sources */,
 				C507F3271F8827A90013D2B7 /* NSString+Extras.m in Sources */,
+				4B400D1E2027535700C71AAF /* RFFeed.m in Sources */,
 				C507F3391F8828310013D2B7 /* RFFilterCell.m in Sources */,
 				C507F3381F88282D0013D2B7 /* RFFilter.m in Sources */,
 				C507F31C1F88278F0013D2B7 /* RFPhoto.m in Sources */,
