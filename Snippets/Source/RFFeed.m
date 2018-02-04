@@ -31,10 +31,10 @@
 	NSString* facebook_s = self.facebookName;
 	NSString* usernames_s = @"";
 	if ((twitter_s.length > 0) && (facebook_s.length > 0)) {
-		usernames_s = [NSString stringWithFormat:@"Twitter: %@, Facebook: %@", twitter_s, facebook_s];
+		usernames_s = [NSString stringWithFormat:@"Twitter: @%@, Facebook: %@", twitter_s, facebook_s];
 	}
 	else if (twitter_s.length > 0) {
-		usernames_s = [NSString stringWithFormat:@"Twitter: %@", twitter_s];
+		usernames_s = [NSString stringWithFormat:@"Twitter: @%@", twitter_s];
 	}
 	else if (facebook_s.length > 0) {
 		usernames_s = [NSString stringWithFormat:@"Facebook: %@", facebook_s];
