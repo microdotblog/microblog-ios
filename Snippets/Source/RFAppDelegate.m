@@ -288,7 +288,7 @@
 	NSArray* post_ids = [timeline_controller allPostIDs];
 	for (NSString* post_id in post_ids) {
 		CGRect r = [timeline_controller rectOfPostID:post_id];
-		CGFloat adjusted_y = y + timeline_controller.webView.scrollView.contentOffset.y;
+		CGFloat adjusted_y = y + timeline_controller.webView.scrollView.contentOffset.y - timeline_controller.webView.frame.origin.y;
 		r.origin.y = r.origin.y + timeline_controller.webView.scrollView.contentOffset.y;
 		CGPoint pt = CGPointMake (5, adjusted_y);
 		if (CGRectContainsPoint(r, pt)) {
