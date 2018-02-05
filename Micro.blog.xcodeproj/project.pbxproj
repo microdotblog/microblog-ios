@@ -72,6 +72,8 @@
 		4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9A21B210A9A0038C0E5 /* RFTimelineController.m */; };
 		4BA2C9A61B210C0E0038C0E5 /* RFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9A51B210C0E0038C0E5 /* RFAppDelegate.m */; };
 		4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9A71B210C1C0038C0E5 /* main.m */; };
+		4BA713212028B1590083948C /* RFSwipeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA713202028B1590083948C /* RFSwipeNavigationController.m */; };
+		4BA713222028B1590083948C /* RFSwipeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA713202028B1590083948C /* RFSwipeNavigationController.m */; };
 		4BA910761B83CDC400D58F83 /* RFMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910751B83CDC400D58F83 /* RFMenuController.m */; };
 		4BA910791B83CE7600D58F83 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910771B83CE7600D58F83 /* Menu.xib */; };
 		4BA9107C1B83CFD200D58F83 /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9107A1B83CFD200D58F83 /* SignIn.xib */; };
@@ -385,6 +387,8 @@
 		4BA2C9A51B210C0E0038C0E5 /* RFAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFAppDelegate.m; path = Source/RFAppDelegate.m; sourceTree = "<group>"; };
 		4BA2C9A71B210C1C0038C0E5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Source/main.m; sourceTree = "<group>"; };
 		4BA3A1641D8876D70097D02E /* Snippets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Snippets.entitlements; path = Snippets/Snippets.entitlements; sourceTree = "<group>"; };
+		4BA7131F2028B1590083948C /* RFSwipeNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFSwipeNavigationController.h; path = Source/RFSwipeNavigationController.h; sourceTree = "<group>"; };
+		4BA713202028B1590083948C /* RFSwipeNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFSwipeNavigationController.m; path = Source/RFSwipeNavigationController.m; sourceTree = "<group>"; };
 		4BA910741B83CDC400D58F83 /* RFMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFMenuController.h; path = Source/RFMenuController.h; sourceTree = "<group>"; };
 		4BA910751B83CDC400D58F83 /* RFMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = RFMenuController.m; path = Source/RFMenuController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		4BA910781B83CE7600D58F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Menu.xib; sourceTree = "<group>"; };
@@ -678,6 +682,8 @@
 				4BA2C9A51B210C0E0038C0E5 /* RFAppDelegate.m */,
 				4BA9107D1B83CFFD00D58F83 /* RFSignInController.h */,
 				4BA9107E1B83CFFD00D58F83 /* RFSignInController.m */,
+				4BA7131F2028B1590083948C /* RFSwipeNavigationController.h */,
+				4BA713202028B1590083948C /* RFSwipeNavigationController.m */,
 				4BA910741B83CDC400D58F83 /* RFMenuController.h */,
 				4BA910751B83CDC400D58F83 /* RFMenuController.m */,
 				4BA2C9A11B210A9A0038C0E5 /* RFTimelineController.h */,
@@ -1334,6 +1340,7 @@
 				4BBA71031F5DF9CE00B56A04 /* RFHighlightingTextStorage.m in Sources */,
 				C5CED7021ECF792E0068F537 /* YUCIFilterUtilities.m in Sources */,
 				4B3BD0DF1E82B5F800F4B4E0 /* RFPhotosController.m in Sources */,
+				4BA713212028B1590083948C /* RFSwipeNavigationController.m in Sources */,
 				C5CED7101ECF792E0068F537 /* YUCIReflectedTileROICalculator.m in Sources */,
 				C5CED7131ECF792E0068F537 /* YUCIRGBToneCurve.m in Sources */,
 				4B9A7BA71E82F107002A49E5 /* RFPhotoCell.m in Sources */,
@@ -1385,6 +1392,7 @@
 				C507F31C1F88278F0013D2B7 /* RFPhoto.m in Sources */,
 				C507F3211F8827A90013D2B7 /* RFXMLRPCParser.m in Sources */,
 				C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */,
+				4BA713222028B1590083948C /* RFSwipeNavigationController.m in Sources */,
 				4B400D11202449C600C71AAF /* RFFeedsController.m in Sources */,
 				C507F3171F8827780013D2B7 /* RFPostController.m in Sources */,
 				C507F3331F8827C20013D2B7 /* SSKeychain.m in Sources */,

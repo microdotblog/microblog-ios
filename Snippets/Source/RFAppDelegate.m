@@ -17,6 +17,7 @@
 #import "RFClient.h"
 #import "RFMicropub.h"
 #import "RFBrowserActivity.h"
+#import "RFSwipeNavigationController.h"
 #import "RFConstants.h"
 #import "RFMacros.h"
 #import "SSKeychain.h"
@@ -211,10 +212,8 @@
 	self.splitViewController.delegate = self;
     self.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
 
-//	self.menuNavController = [[UINavigationController alloc] initWithRootViewController:self.menuController];
-//	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.timelineController];
-	self.self.menuNavController = [[JTSSloppyNavigationController alloc] initWithRootViewController:self.menuController];
-	self.navigationController = [[JTSSloppyNavigationController alloc] initWithRootViewController:self.timelineController];
+	self.self.menuNavController = [[RFSwipeNavigationController alloc] initWithRootViewController:self.menuController];
+	self.navigationController = [[RFSwipeNavigationController alloc] initWithRootViewController:self.timelineController];
 
 	self.splitViewController.viewControllers = @[ self.menuNavController, self.navigationController ];
 
@@ -333,8 +332,7 @@
 		[self.menuNavController pushViewController:controller animated:YES];
 	}
 	else {
-//		self.navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-		self.navigationController = [[JTSSloppyNavigationController alloc] initWithRootViewController:controller];
+		self.navigationController = [[RFSwipeNavigationController alloc] initWithRootViewController:controller];
 		self.splitViewController.viewControllers = @[ self.menuNavController, self.navigationController ];
 	}
 }

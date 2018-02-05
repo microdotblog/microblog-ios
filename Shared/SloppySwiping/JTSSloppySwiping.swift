@@ -113,10 +113,18 @@ public final class SloppySwiping: NSObject {
             
         case .began:
             if (!isAnimatingANonInteractiveTransition) {
-                if (navigationController.viewControllers.count > 1) {
-                    isInteractivelyPopping = true
-                    _ = self.navigationController?.popViewController(animated: true)
+                let view = navigationController.view
+                let t = recognizer.translation(in: view)
+                if t.x < 0 {
+					isInteractivelyPopping = true
+					_ = self.navigationController?.popViewController(animated: true)
                 }
+                else {
+					if (navigationController.viewControllers.count > 1) {
+						isInteractivelyPopping = true
+						_ = self.navigationController?.popViewController(animated: true)
+					}
+				}
             }
             
         case .changed:
