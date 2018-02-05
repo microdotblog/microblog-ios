@@ -14,6 +14,8 @@
 @property (assign, nonatomic) BOOL isSwipingBack;
 @property (assign, nonatomic) BOOL isSwipingForward;
 @property (strong, nonatomic) UIView* revealedView;
+@property (strong, nonatomic) UIView* revealedLine;
+@property (strong, nonatomic) UIView* revealedBackground;
 @property (strong, nonatomic) UIViewController* nextController;
 
 - (id) initWithRootViewController:(UIViewController *)controller;

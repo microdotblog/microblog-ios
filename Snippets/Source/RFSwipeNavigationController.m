@@ -106,6 +106,10 @@
 			[self.view insertSubview:self.revealedView belowSubview:v];
 			[self.view sendSubviewToBack:self.revealedView];
 			self.revealedView.frame = revealed_r;
+
+			v.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+			v.layer.shadowOpacity = 0.3;
+			v.layer.shadowOffset = CGSizeMake (-1.5, 1.5);
 		}
 		else {
 			revealed_r = self.revealedView.frame;
@@ -130,6 +134,26 @@
 			[self.view insertSubview:self.revealedView aboveSubview:v];
 			[self.view bringSubviewToFront:self.revealedView];
 			self.revealedView.frame = revealed_r;
+			
+			self.revealedView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+			self.revealedView.layer.shadowOpacity = 0.3;
+			self.revealedView.layer.shadowOffset = CGSizeMake (-1.5, 1.5);
+
+			CGRect line_r = self.nextController.view.frame;
+			line_r.origin.x = 0;
+			line_r.size.height = 0.5;
+			self.revealedLine = [[UIView alloc] initWithFrame:line_r];
+			self.revealedLine.layer.backgroundColor = [UIColor lightGrayColor].CGColor;
+			self.revealedLine.layer.opaque = YES;
+			[self.view insertSubview:self.revealedLine aboveSubview:self.revealedView];
+			[self.view bringSubviewToFront:self.revealedLine];
+			
+			CGRect background_r = self.view.frame;
+			self.revealedBackground = [[UIView alloc] initWithFrame:background_r];
+			self.revealedBackground.layer.backgroundColor = [UIColor whiteColor].CGColor;
+			self.revealedBackground.layer.opaque = YES;
+			[self.view insertSubview:self.revealedBackground belowSubview:self.revealedView];
+			[self.view sendSubviewToBack:self.revealedBackground];
 		}
 		else {
 			revealed_r = self.revealedView.frame;
@@ -185,7 +209,15 @@
 		}
 
 		[self.revealedView removeFromSuperview];
+		[self.revealedLine removeFromSuperview];
+		[self.revealedBackground removeFromSuperview];
+
+		v.layer.shadowColor = nil;
+		v.layer.shadowOpacity = 0;
+
 		self.revealedView = nil;
+		self.revealedLine = nil;
+		self.revealedBackground = nil;
 		self.nextController = nil;
 	}];
 }
