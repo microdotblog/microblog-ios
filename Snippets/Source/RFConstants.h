@@ -12,7 +12,10 @@ static NSString* const kClosePostingNotification = @"RFClosePosting";
 
 #define kShowConversationNotification @"RFShowConversationNotification"
 #define kShowConversationPostIDKey @"post_id"
-#define kShowConversationPointKey @"point"
+
+#define kPrepareConversationNotification @"RFPrepareConversationNotification"
+#define kPrepareConversationPointKey @"point" // CGFloat y
+#define kPrepareConversationControllersKey @"controllers" // NSMutableArray of UIViewController
 
 #define kShowUserProfileNotification @"RFShowUserProfileNotification"
 #define kShowUserProfileUsernameKey @"username"

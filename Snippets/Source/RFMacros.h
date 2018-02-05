@@ -17,4 +17,5 @@
 
 #define RFiPhoneXHeight 812
 #define RFStatusBarHeight() (([UIScreen mainScreen].bounds.size.height == RFiPhoneXHeight) ? 44 : 20)
+#define RFStatusAndNavigationHeight() (RFStatusBarHeight() + 44)
 

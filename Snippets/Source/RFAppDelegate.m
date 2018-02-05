@@ -27,7 +27,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <SafariServices/SafariServices.h>
-#import "Microblog-Swift.h"
+//#import "Microblog-Swift.h"
 #import "RFSettings.h"
 
 @implementation RFAppDelegate
@@ -245,6 +245,7 @@
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showSigninNotification:) name:kShowSigninNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showConversationNotification:) name:kShowConversationNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prepareConversationNotification:) name:kPrepareConversationNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sharePostNotification:) name:kSharePostNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUserProfileNotification:) name:kShowUserProfileNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showReplyPostNotification:) name:kShowReplyPostNotification object:nil];
@@ -274,12 +275,28 @@
 - (void) showConversationNotification:(NSNotification *)notification
 {
 	NSString* post_id = [notification.userInfo objectForKey:kShowConversationPostIDKey];
-	NSNumber* y = [notification.userInfo objectForKey:kShowConversationPointKey];
 	if (post_id) {
 		[self showConversationWithPostID:post_id];
 	}
-	else if (y) {
-		[self showConversationWithPoint:[y floatValue]];
+}
+
+- (void) prepareConversationNotification:(NSNotification *)notification
+{
+	NSMutableArray* new_controllers = [notification.userInfo objectForKey:kPrepareConversationControllersKey];
+	CGFloat y = [[notification.userInfo objectForKey:kPrepareConversationPointKey] floatValue];
+	NSArray* post_ids = [self.timelineController allPostIDs];
+	for (NSString* post_id in post_ids) {
+		CGRect r = [self.timelineController rectOfPostID:post_id];
+		CGFloat adjusted_y = y + self.timelineController.webView.scrollView.contentOffset.y;
+		r.origin.y = r.origin.y + self.timelineController.webView.scrollView.contentOffset.y;
+		CGPoint pt = CGPointMake (5, adjusted_y);
+		if (CGRectContainsPoint(r, pt)) {
+			NSString* path = [NSString stringWithFormat:@"/hybrid/conversation/%@", post_id];
+			RFTimelineController* conversation_controller = [[RFTimelineController alloc] initWithEndpoint:path title:@"Conversation"];
+			conversation_controller.menuController = self.menuController;
+			[new_controllers addObject:conversation_controller];
+			break;
+		}
 	}
 }
 
@@ -402,21 +419,6 @@
 	RFTimelineController* conversation_controller = [[RFTimelineController alloc] initWithEndpoint:path title:@"Conversation"];
 	conversation_controller.menuController = self.menuController;
 	[[self activeNavigationController] pushViewController:conversation_controller animated:YES];
-}
-
-- (void) showConversationWithPoint:(CGFloat)y
-{
-	NSArray* post_ids = [self.timelineController allPostIDs];
-	for (NSString* post_id in post_ids) {
-		CGRect r = [self.timelineController rectOfPostID:post_id];
-		CGFloat adjusted_y = y + self.timelineController.webView.scrollView.contentOffset.y;
-		r.origin.y = r.origin.y + self.timelineController.webView.scrollView.contentOffset.y;
-		CGPoint pt = CGPointMake (5, adjusted_y);
-		if (CGRectContainsPoint(r, pt)) {
-			[self showConversationWithPostID:post_id];
-			break;
-		}
-	}
 }
 
 - (void) showProfileWithUsername:(NSString *)username

@@ -21,7 +21,6 @@
 		4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */; };
 		4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E41F1E82F5B50032F54B /* Photos.framework */; };
 		4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E4201E82F5B50032F54B /* PhotosUI.framework */; };
-		4B1712D81F05BF0D00267045 /* JTSSloppySwiping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1712D71F05BF0D00267045 /* JTSSloppySwiping.swift */; };
 		4B1712DB1F069FB200267045 /* RFMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1712DA1F069FB200267045 /* RFMenuView.m */; };
 		4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
 		4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */; };
@@ -73,7 +72,6 @@
 		4BA2C9A61B210C0E0038C0E5 /* RFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9A51B210C0E0038C0E5 /* RFAppDelegate.m */; };
 		4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA2C9A71B210C1C0038C0E5 /* main.m */; };
 		4BA713212028B1590083948C /* RFSwipeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA713202028B1590083948C /* RFSwipeNavigationController.m */; };
-		4BA713222028B1590083948C /* RFSwipeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA713202028B1590083948C /* RFSwipeNavigationController.m */; };
 		4BA910761B83CDC400D58F83 /* RFMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910751B83CDC400D58F83 /* RFMenuController.m */; };
 		4BA910791B83CE7600D58F83 /* Menu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910771B83CE7600D58F83 /* Menu.xib */; };
 		4BA9107C1B83CFD200D58F83 /* SignIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA9107A1B83CFD200D58F83 /* SignIn.xib */; };
@@ -307,7 +305,6 @@
 		4B14E41F1E82F5B50032F54B /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		4B14E4201E82F5B50032F54B /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		4B1712D61F05BF0C00267045 /* Micro.blog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Micro.blog-Bridging-Header.h"; sourceTree = "<group>"; };
-		4B1712D71F05BF0D00267045 /* JTSSloppySwiping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JTSSloppySwiping.swift; path = Shared/SloppySwiping/JTSSloppySwiping.swift; sourceTree = SOURCE_ROOT; };
 		4B1712D91F069FB200267045 /* RFMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFMenuView.h; path = Source/RFMenuView.h; sourceTree = "<group>"; };
 		4B1712DA1F069FB200267045 /* RFMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFMenuView.m; path = Source/RFMenuView.m; sourceTree = "<group>"; };
 		4B1BAEFE1B852BC9008097F7 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSKeychain.h; path = Shared/SSKeychain/SSKeychain.h; sourceTree = SOURCE_ROOT; };
@@ -612,7 +609,6 @@
 		4B1712D51F05BEF100267045 /* SloppySwiping */ = {
 			isa = PBXGroup;
 			children = (
-				4B1712D71F05BF0D00267045 /* JTSSloppySwiping.swift */,
 				4B1712D61F05BF0C00267045 /* Micro.blog-Bridging-Header.h */,
 			);
 			name = SloppySwiping;
@@ -1289,7 +1285,6 @@
 				4B0D556C1B9552310076AD9F /* RFCategoriesController.m in Sources */,
 				4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */,
 				4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */,
-				4B1712D81F05BF0D00267045 /* JTSSloppySwiping.swift in Sources */,
 				C5CED7001ECF792E0068F537 /* YUCIFilterConstructor.m in Sources */,
 				4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */,
 				4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */,
@@ -1392,7 +1387,6 @@
 				C507F31C1F88278F0013D2B7 /* RFPhoto.m in Sources */,
 				C507F3211F8827A90013D2B7 /* RFXMLRPCParser.m in Sources */,
 				C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */,
-				4BA713222028B1590083948C /* RFSwipeNavigationController.m in Sources */,
 				4B400D11202449C600C71AAF /* RFFeedsController.m in Sources */,
 				C507F3171F8827780013D2B7 /* RFPostController.m in Sources */,
 				C507F3331F8827C20013D2B7 /* SSKeychain.m in Sources */,
