@@ -37,7 +37,7 @@
 	CGPoint v = [gesture velocityInView:self.view];
 	UIViewController* current_controller = [self.viewControllers lastObject];
 
-	NSLog (@"pt: %f, v: %f", pt.x, v.x);
+//	NSLog (@"pt: %f, v: %f", pt.x, v.x);
 
 	if (gesture.state == UIGestureRecognizerStateBegan) {
 		if (v.x > 0.0) {
@@ -66,10 +66,10 @@
 		[self updateDraggedView:current_controller.view forX:pt.x];
 	}
 	else if (gesture.state == UIGestureRecognizerStateEnded) {
-		[self updateDroppedView:current_controller.view forX:pt.x];
+		[self updateDroppedView:current_controller.view forX:pt.x withVelocity:v.x];
 	}
 	else if (gesture.state == UIGestureRecognizerStateCancelled) {
-		[self updateDroppedView:current_controller.view forX:pt.x];
+		[self updateDroppedView:current_controller.view forX:pt.x withVelocity:v.x];
 	}
 }
 
@@ -172,17 +172,20 @@
 	}
 }
 
-- (void) updateDroppedView:(UIView *)v forX:(CGFloat)x
+- (void) updateDroppedView:(UIView *)v forX:(CGFloat)x withVelocity:(CGFloat)velocity
 {
 	CGRect top_r = v.frame;
 	CGRect revealed_r = self.revealedView.frame;
 	CGFloat half_width = v.bounds.size.width / 2.0;
 	
-	if (self.isSwipingBack && (x > half_width)) {
+	BOOL is_threshold_back = ((x > half_width) || (velocity > 500));
+	BOOL is_threshold_forward = ((x < -half_width) || (velocity < -500));
+
+	if (self.isSwipingBack && is_threshold_back) {
 		top_r.origin.x = v.bounds.size.width;
 		revealed_r.origin.x = 0;
 	}
-	else if (self.isSwipingForward && (x < -half_width)) {
+	else if (self.isSwipingForward && is_threshold_forward) {
 		top_r.origin.x = -v.bounds.size.width;
 		revealed_r.origin.x = 0;
 	}
@@ -199,10 +202,10 @@
 		v.frame = top_r;
 		self.revealedView.frame = revealed_r;
 	} completion:^(BOOL finished) {
-		if (self.isSwipingBack && (x > half_width)) {
+		if (self.isSwipingBack && is_threshold_back) {
 			[self popViewControllerAnimated:NO];
 		}
-		else if (self.isSwipingForward && (x < -half_width)) {
+		else if (self.isSwipingForward && is_threshold_forward) {
 			if (self.nextController) {
 				[self pushViewController:self.nextController animated:NO];
 			}
