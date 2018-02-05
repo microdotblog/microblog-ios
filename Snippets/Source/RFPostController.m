@@ -28,6 +28,7 @@
 #import "UUString.h"
 #import "UUImage.h"
 #import "SSKeychain.h"
+#import "MMMarkdown.h"
 //#import "Microblog-Swift.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -157,7 +158,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	else if (self.initialText) {
 		s = self.initialText;
 	}
-	else {
+	else if (!self.appExtensionContext) {
 		s = [RFSettings draftText];
 		if (s.length > 280) {
 			self.titleField.text = [RFSettings draftTitle];
@@ -246,7 +247,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) updateTitleHeader
 {
-	if (!self.isReply && ([[self.textStorage string] length] > 280)) {
+	if (!self.isReply && ([self currentProcessedMarkup].length > 280)) {
 		self.titleHeaderHeightConstraint.constant = 44;
 	}
 	else {
@@ -304,6 +305,19 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	return [self.textStorage string];
 }
 
+- (NSString *) currentProcessedMarkup
+{
+	NSError* error = nil;
+	NSString* html = [MMMarkdown HTMLStringWithMarkdown:[self currentText] error:&error];
+	if (html.length > 0) {
+		// Markdown processor adds a return at the end
+		html = [html substringToIndex:html.length - 1];
+		html = [html stringByReplacingOccurrencesOfString:@"</p>\n<p>" withString:@"</p>\n\n<p>"];
+	}
+	
+	return [html rf_stripHTML];
+}
+
 - (void) updateRemainingChars
 {
 	if (!self.isReply && self.titleField.text.length > 0) {
@@ -314,7 +328,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 
 	NSInteger max_chars = 280;
-	NSInteger num_chars = [self currentText].length;
+	NSInteger num_chars = [self currentProcessedMarkup].length;
 	NSInteger num_remaining = max_chars - num_chars;
 	if (num_chars <= 140) {
 		[self.remainingField setMarkup:[NSString stringWithFormat:@"<font color=\"#428BCA\">%ld</font>/%ld", (long)num_chars, (long)max_chars]];
@@ -386,7 +400,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[self updateTitleHeader];
 		[self.view layoutIfNeeded];
 	} completion:^(BOOL finished) {
-		if ([[self.textStorage string] length] <= 280) {
+		if ([self currentProcessedMarkup].length <= 280) {
 			self.titleField.text = @"";
 			[self updateRemainingChars];
 		}
@@ -414,7 +428,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) close:(id)sender
 {
-	if (!self.isReply && !self.isSent) {
+	if (!self.isReply && !self.isSent && !self.appExtensionContext) {
 		[RFSettings setDraftTitle:[self currentTitle]];
 		[RFSettings setDraftText:[self currentText]];
 	}
