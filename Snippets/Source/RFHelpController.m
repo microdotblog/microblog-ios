@@ -16,7 +16,7 @@
 {
 	self = [super initWithNibName:@"Help" bundle:nil];
 	if (self) {
-		self.url = [NSURL URLWithString:@"http://help.micro.blog/about"];
+		self.url = [NSURL URLWithString:@"http://help.micro.blog/"];
 	}
 	
 	return self;
