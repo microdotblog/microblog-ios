@@ -9,6 +9,7 @@
 #import "RFSwipeNavigationController.h"
 
 #import "RFTimelineController.h"
+#import "RFMenuController.h"
 #import "RFMacros.h"
 #import "RFConstants.h"
 
@@ -78,7 +79,9 @@
 	CGPoint pt = [self.panGesture locationOfTouch:0 inView:self.view];
 	NSDictionary* info = @{
 		kPrepareConversationPointKey: @(pt.y),
-		kPrepareConversationControllersKey: new_controllers
+		kPrepareConversationControllersKey: new_controllers,
+		kPrepareConversationTimelineKey: [self.viewControllers lastObject]
+
 	};
 	[[NSNotificationCenter defaultCenter] postNotificationName:kPrepareConversationNotification object:self userInfo:info];
 	if (new_controllers.count > 0) {
@@ -95,9 +98,11 @@
 		if (self.revealedView == nil) {
 			UIViewController* controller = [self.viewControllers objectAtIndex:self.viewControllers.count - 2];
 			self.revealedView = controller.view;
-			revealed_r.origin.y = RFStatusAndNavigationHeight();
 			revealed_r.origin.x = 0;
-			[self.revealedView removeFromSuperview];
+			if ([controller isKindOfClass:[RFMenuController class]]) {
+				revealed_r.origin.y = RFStatusAndNavigationHeight();
+				revealed_r.size.height = revealed_r.size.height - RFStatusAndNavigationHeight();
+			}
 			[self.view insertSubview:self.revealedView belowSubview:v];
 			[self.view sendSubviewToBack:self.revealedView];
 			self.revealedView.frame = revealed_r;
@@ -122,7 +127,6 @@
 			self.revealedView = self.nextController.view;
 			revealed_r.origin.y = RFStatusAndNavigationHeight();
 			revealed_r.origin.x = v.bounds.size.width;
-			[self.revealedView removeFromSuperview];
 			[self.view insertSubview:self.revealedView aboveSubview:v];
 			[self.view bringSubviewToFront:self.revealedView];
 			self.revealedView.frame = revealed_r;
@@ -180,6 +184,7 @@
 			}
 		}
 
+		[self.revealedView removeFromSuperview];
 		self.revealedView = nil;
 		self.nextController = nil;
 	}];

@@ -283,12 +283,13 @@
 - (void) prepareConversationNotification:(NSNotification *)notification
 {
 	NSMutableArray* new_controllers = [notification.userInfo objectForKey:kPrepareConversationControllersKey];
+	RFTimelineController* timeline_controller = [notification.userInfo objectForKey:kPrepareConversationTimelineKey];
 	CGFloat y = [[notification.userInfo objectForKey:kPrepareConversationPointKey] floatValue];
-	NSArray* post_ids = [self.timelineController allPostIDs];
+	NSArray* post_ids = [timeline_controller allPostIDs];
 	for (NSString* post_id in post_ids) {
-		CGRect r = [self.timelineController rectOfPostID:post_id];
-		CGFloat adjusted_y = y + self.timelineController.webView.scrollView.contentOffset.y;
-		r.origin.y = r.origin.y + self.timelineController.webView.scrollView.contentOffset.y;
+		CGRect r = [timeline_controller rectOfPostID:post_id];
+		CGFloat adjusted_y = y + timeline_controller.webView.scrollView.contentOffset.y;
+		r.origin.y = r.origin.y + timeline_controller.webView.scrollView.contentOffset.y;
 		CGPoint pt = CGPointMake (5, adjusted_y);
 		if (CGRectContainsPoint(r, pt)) {
 			NSString* path = [NSString stringWithFormat:@"/hybrid/conversation/%@", post_id];
