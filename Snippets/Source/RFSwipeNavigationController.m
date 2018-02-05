@@ -180,6 +180,10 @@
 	
 	BOOL is_threshold_back = ((x > half_width) || (velocity > 500));
 	BOOL is_threshold_forward = ((x < -half_width) || (velocity < -500));
+	CGFloat animation_seconds = 0.3;
+	if ((velocity > 500) || (velocity < -500)) {
+		animation_seconds = 0.2;
+	}
 
 	if (self.isSwipingBack && is_threshold_back) {
 		top_r.origin.x = v.bounds.size.width;
