@@ -12,5 +12,7 @@
 @interface UIBarButtonItem (Extras)
 
 + (UIBarButtonItem *) rf_barButtonWithImageNamed:(NSString *)imageName target:(id)target action:(SEL)action;
+- (UIImage *) rf_customImage;
+- (void) rf_setCustomImage:(UIImage *)img;
 
 @end

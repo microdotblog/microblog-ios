@@ -23,4 +23,16 @@
 	return item;
 }
 
+- (UIImage *) rf_customImage
+{
+	UIImageView* v = self.customView;
+	return v.image;
+}
+
+- (void) rf_setCustomImage:(UIImage *)img
+{
+	UIImageView* v = self.customView;
+	v.image = img;
+}
+
 @end

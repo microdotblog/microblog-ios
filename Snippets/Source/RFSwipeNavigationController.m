@@ -12,6 +12,9 @@
 #import "RFMenuController.h"
 #import "RFMacros.h"
 #import "RFConstants.h"
+#import "UIBarButtonItem+Extras.h"
+
+static CGFloat const kSwipeDropAnimationDuration = 0.3;
 
 @implementation RFSwipeNavigationController
 
@@ -177,21 +180,37 @@
 	CGRect top_r = v.frame;
 	CGRect revealed_r = self.revealedView.frame;
 	CGFloat half_width = v.bounds.size.width / 2.0;
-	
+	UIViewController* current_controller = [self.viewControllers lastObject];
+	NSString* preserved_title = current_controller.title;
+	UIImage* preserved_right_img = [current_controller.navigationItem.rightBarButtonItem rf_customImage];
+	UIBarButtonItem* hide_bar_item = nil;
+
 	BOOL is_threshold_back = ((x > half_width) || (velocity > 500));
 	BOOL is_threshold_forward = ((x < -half_width) || (velocity < -500));
-	CGFloat animation_seconds = 0.3;
-	if ((velocity > 500) || (velocity < -500)) {
-		animation_seconds = 0.2;
-	}
+	CGFloat animation_seconds = kSwipeDropAnimationDuration;
+
+//	if ((velocity > 700) || (velocity < -700)) {
+//		animation_seconds = 0.2;
+//	}
 
 	if (self.isSwipingBack && is_threshold_back) {
 		top_r.origin.x = v.bounds.size.width;
 		revealed_r.origin.x = 0;
+
+		UIViewController* previous_controller = [self.viewControllers objectAtIndex:self.viewControllers.count - 2];
+		[self updateTitle:previous_controller.title withController:current_controller];
+		if (self.viewControllers.count == 2) {
+			hide_bar_item = current_controller.navigationItem.leftBarButtonItem;
+		}
 	}
 	else if (self.isSwipingForward && is_threshold_forward) {
 		top_r.origin.x = -v.bounds.size.width;
 		revealed_r.origin.x = 0;
+
+		if (self.nextController) {
+			[self updateTitle:self.nextController.title withController:current_controller];
+			[self updateRightImage:[UIImage imageNamed:@"reply_button"] withController:current_controller];
+		}
 	}
 	else if (self.isSwipingBack) {
 		top_r.origin.x = 0;
@@ -202,9 +221,13 @@
 		revealed_r.origin.x = v.bounds.size.width;
 	}
 
-	[UIView animateWithDuration:0.3 animations:^{
+	[UIView animateWithDuration:animation_seconds animations:^{
 		v.frame = top_r;
 		self.revealedView.frame = revealed_r;
+		
+		if (hide_bar_item) {
+			hide_bar_item.customView.alpha = 0.0;
+		}
 	} completion:^(BOOL finished) {
 		if (self.isSwipingBack && is_threshold_back) {
 			[self popViewControllerAnimated:NO];
@@ -212,7 +235,12 @@
 		else if (self.isSwipingForward && is_threshold_forward) {
 			if (self.nextController) {
 				[self pushViewController:self.nextController animated:NO];
+				current_controller.navigationItem.title = preserved_title;
 			}
+		}
+
+		if (preserved_right_img) {
+			[current_controller.navigationItem.rightBarButtonItem rf_setCustomImage:preserved_right_img];
 		}
 
 		[self.revealedView removeFromSuperview];
@@ -227,6 +255,27 @@
 		self.revealedBackground = nil;
 		self.nextController = nil;
 	}];
+}
+
+- (void) updateTitle:(NSString *)title withController:(UIViewController *)controller
+{
+	CATransition* fade_animation = [CATransition animation];
+	fade_animation.duration = kSwipeDropAnimationDuration;
+	fade_animation.type = kCATransitionFade;
+
+	[self.navigationBar.layer addAnimation:fade_animation forKey:@"fadeText"];
+	controller.navigationItem.title = title;
+}
+
+- (void) updateRightImage:(UIImage *)img withController:(UIViewController *)controller
+{
+	CATransition* fade_animation = [CATransition animation];
+	fade_animation.duration = kSwipeDropAnimationDuration;
+	fade_animation.type = kCATransitionFade;
+
+	UIImageView* v = controller.navigationItem.rightBarButtonItem.customView;
+	[v.layer addAnimation:fade_animation forKey:@"fadeImage"];
+	v.image = img;
 }
 
 @end
