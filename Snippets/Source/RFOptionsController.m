@@ -12,6 +12,7 @@
 #import "RFPostController.h"
 #import "RFConstants.h"
 #import "RFMacros.h"
+#import "UUAlert.h"
 
 @implementation RFOptionsController
 
@@ -123,12 +124,16 @@
 
 - (IBAction) deletePost:(id)sender
 {
-	RFClient* client = [[RFClient alloc] initWithFormat:@"/posts/%@", self.postID];
-	[client deleteWithObject:nil completion:^(UUHttpResponse* response) {
-		RFDispatchMainAsync (^{
-			[[NSNotificationCenter defaultCenter] postNotificationName:kPostWasDeletedNotification object:self userInfo:@{ kPostNotificationPostIDKey: self.postID}];
-			[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
-		});
+	[UUAlertViewController uuShowTwoButtonAlert:@"Remove this post?" message:@"Posts from external feeds such as WordPress should also be removed from your blog." buttonOne:@"Cancel" buttonTwo:@"Remove" completionHandler:^(NSInteger buttonIndex) {
+		if (buttonIndex == 1) {
+			RFClient* client = [[RFClient alloc] initWithFormat:@"/posts/%@", self.postID];
+			[client deleteWithObject:nil completion:^(UUHttpResponse* response) {
+				RFDispatchMainAsync (^{
+					[[NSNotificationCenter defaultCenter] postNotificationName:kPostWasDeletedNotification object:self userInfo:@{ kPostNotificationPostIDKey: self.postID}];
+					[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+				});
+			}];
+		}
 	}];
 }
 
