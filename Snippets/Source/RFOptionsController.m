@@ -124,7 +124,7 @@
 
 - (IBAction) deletePost:(id)sender
 {
-	[UUAlertViewController uuShowTwoButtonAlert:@"Remove this post?" message:@"Posts from external feeds such as WordPress should also be removed from your blog." buttonOne:@"Cancel" buttonTwo:@"Remove" completionHandler:^(NSInteger buttonIndex) {
+	[UUAlertViewController uuShowTwoButtonAlert:@"Remove this post?" message:@"If you are using an external blog such as WordPress, you should also remove the post from that blog." buttonOne:@"Cancel" buttonTwo:@"Remove" completionHandler:^(NSInteger buttonIndex) {
 		if (buttonIndex == 1) {
 			RFClient* client = [[RFClient alloc] initWithFormat:@"/posts/%@", self.postID];
 			[client deleteWithObject:nil completion:^(UUHttpResponse* response) {
