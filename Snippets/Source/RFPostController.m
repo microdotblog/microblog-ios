@@ -719,6 +719,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				s = [s stringByAppendingString:@"\n\n"];
 			}
 			
+			// FIXME: preserve aspect ratio
+			// ...
+			
 			for (RFPhoto* photo in self.attachedPhotos) {
 				s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" />", photo.publishedURL, 600.0, 600.0];
 			}
