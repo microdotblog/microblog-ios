@@ -719,11 +719,31 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				s = [s stringByAppendingString:@"\n\n"];
 			}
 			
-			// FIXME: preserve aspect ratio
-			// ...
-			
 			for (RFPhoto* photo in self.attachedPhotos) {
-				s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" />", photo.publishedURL, 600.0, 600.0];
+				CGSize original_size = photo.thumbnailImage.size;
+				CGFloat width = 0;
+				CGFloat height = 0;
+
+				if (original_size.width > original_size.height) {
+					if (original_size.width > 600.0) {
+						width = 600.0;
+					}
+					else {
+						width = original_size.width;
+					}
+					height = width / original_size.width * original_size.height;
+				}
+				else {
+					if (original_size.height > 600.0) {
+						height = 600.0;
+					}
+					else {
+						height = original_size.height;
+					}
+					width = height / original_size.height * original_size.width;
+				}
+
+				s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" />", photo.publishedURL, width, height];
 			}
 		}
 
