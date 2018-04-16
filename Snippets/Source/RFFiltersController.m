@@ -17,6 +17,11 @@
 
 static NSString* const kFilterCellIdentifier = @"FilterCell";
 
+@interface RFFiltersController()
+	@property (nonatomic, assign) BOOL zoomDisabled;
+@end
+
+
 @implementation RFFiltersController
 
 - (id) initWithPhoto:(RFPhoto *)photo
@@ -110,8 +115,29 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
 	options.resizeMode = PHImageRequestOptionsResizeModeExact;
 	options.networkAccessAllowed = YES;
-	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1800, 1800) contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage* result, NSDictionary* info) {
-		UIImage* img = [result uuRemoveOrientation];
+	[manager requestImageDataForAsset:self.photo.asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+		UIImage* img = [UIImage imageWithData:imageData];//[result uuRemoveOrientation];
+		
+		if (img.size.width > 1800 || img.size.height > 1800)
+		{
+			if (img.size.width > img.size.height)
+			{
+				img = [img uuScaleToWidth:1800];
+			}
+			else
+			{
+				img = [img uuScaleToHeight:1800];
+			}
+		}
+
+		img = [img uuRemoveOrientation];
+
+		self.nonZoomImageView.hidden = YES;
+		self.nonZoomImageView.alpha = 0.0;
+		self.croppingScrollView.hidden = NO;
+		self.croppingScrollView.alpha = 1.0;
+		
+		self.nonZoomImageView.image = img;
 		self.fullImage = img;
 
 		CGRect r = CGRectZero;
@@ -155,6 +181,42 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 
 #pragma mark -
 
+- (IBAction) onToggleZoom:(id)sender
+{
+	self.zoomDisabled = !self.zoomDisabled;
+	
+	CGFloat croppingScrollViewAlpha;
+	CGFloat nonZoomImageViewAlpha;
+	
+	if (self.zoomDisabled)
+	{
+		self.croppingScrollView.hidden = YES;
+		self.nonZoomImageView.hidden = NO;
+		
+		nonZoomImageViewAlpha = 1.0;
+		croppingScrollViewAlpha = 0.0;
+	}
+	else
+	{
+		self.croppingScrollView.hidden = NO;
+		self.nonZoomImageView.hidden = YES;
+
+		nonZoomImageViewAlpha = 0.0;
+		croppingScrollViewAlpha = 1.0;
+	}
+	
+
+	[UIView animateWithDuration:0.35 animations:^
+	{
+		self.nonZoomImageView.alpha = nonZoomImageViewAlpha;
+		self.croppingScrollView.alpha = croppingScrollViewAlpha;
+	}
+	completion:^(BOOL finished)
+	{
+	}];
+
+}
+
 - (void) back:(id)sender
 {
 	[self.navigationController popViewControllerAnimated:YES];
@@ -162,42 +224,51 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 
 - (void) attachPhoto:(id)sender
 {
-	CGRect ui_crop_r = [self cropAreaRect];
-	UIImage* img = self.fullImage;
+	UIImage* cropped_image = nil;
 	
-	CGPoint content_offset = self.croppingScrollView.contentOffset;
-	CGSize scaled_size = self.croppingScrollView.contentSize;
-	CGSize img_size = [img size];
+	if (self.zoomDisabled)
+	{
+		cropped_image = self.fullImage;
+	}
+	else
+	{
+		CGRect ui_crop_r = [self cropAreaRect];
+		UIImage* img = self.fullImage;
 	
-	CGFloat scaled_ratio = scaled_size.width / img_size.width;
+		CGPoint content_offset = self.croppingScrollView.contentOffset;
+		CGSize scaled_size = self.croppingScrollView.contentSize;
+		CGSize img_size = [img size];
+	
+		CGFloat scaled_ratio = scaled_size.width / img_size.width;
 
-	ui_crop_r.origin.x += content_offset.x;
-	ui_crop_r.origin.y += content_offset.y;
+		ui_crop_r.origin.x += content_offset.x;
+		ui_crop_r.origin.y += content_offset.y;
 	
-	CGRect image_crop_r;
-	image_crop_r.origin.x = ui_crop_r.origin.x / scaled_ratio * img.scale;
-	image_crop_r.origin.y = ui_crop_r.origin.y / scaled_ratio * img.scale;
-	image_crop_r.size.width = ui_crop_r.size.width / scaled_ratio * img.scale;
-	image_crop_r.size.height = ui_crop_r.size.height / scaled_ratio * img.scale;
+		CGRect image_crop_r;
+		image_crop_r.origin.x = ui_crop_r.origin.x / scaled_ratio * img.scale;
+		image_crop_r.origin.y = ui_crop_r.origin.y / scaled_ratio * img.scale;
+		image_crop_r.size.width = ui_crop_r.size.width / scaled_ratio * img.scale;
+		image_crop_r.size.height = ui_crop_r.size.height / scaled_ratio * img.scale;
 	
-	BOOL needs_cg_cleanup = NO;
-	CGImageRef cg_image = img.CGImage;
-	if (cg_image == nil) {
-		CIContext* context = [CIContext contextWithOptions:nil];
-		cg_image = [context createCGImage:img.CIImage fromRect:img.CIImage.extent];
-		needs_cg_cleanup = YES;
+		BOOL needs_cg_cleanup = NO;
+		CGImageRef cg_image = img.CGImage;
+		if (cg_image == nil) {
+			CIContext* context = [CIContext contextWithOptions:nil];
+			cg_image = [context createCGImage:img.CIImage fromRect:img.CIImage.extent];
+			needs_cg_cleanup = YES;
+		}
+	
+		CGImageRef new_img = CGImageCreateWithImageInRect (cg_image, image_crop_r);
+		cropped_image = [[UIImage alloc] initWithCGImage:new_img];
+    	CGImageRelease(new_img);
+
+		if (needs_cg_cleanup) {
+			CGImageRelease (cg_image);
+		}
 	}
 	
-	CGImageRef new_img = CGImageCreateWithImageInRect (cg_image, image_crop_r);
-	UIImage* cropped_img = [[UIImage alloc] initWithCGImage:new_img];
-    CGImageRelease(new_img);
-
-	if (needs_cg_cleanup) {
-		CGImageRelease (cg_image);
-	}
-
-	if (cropped_img) {
-		[[NSNotificationCenter defaultCenter] postNotificationName:kAttachPhotoNotification object:self userInfo:@{ kAttachPhotoKey: cropped_img }];
+	if (cropped_image) {
+			[[NSNotificationCenter defaultCenter] postNotificationName:kAttachPhotoNotification object:self userInfo:@{ kAttachPhotoKey: cropped_image }];
 	}
 }
 

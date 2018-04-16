@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,6 +16,7 @@
                 <outlet property="collectionLayout" destination="UKn-pj-y9d" id="KVl-X0-r4g"/>
                 <outlet property="collectionView" destination="xb4-Uy-xke" id="Zau-gN-k7r"/>
                 <outlet property="croppingScrollView" destination="CBq-4M-B2F" id="QFo-Sy-2WW"/>
+                <outlet property="nonZoomImageView" destination="yfb-fY-EGN" id="XN7-HY-MIs"/>
                 <outlet property="view" destination="iN0-l3-epB" id="1JO-2S-BTt"/>
             </connections>
         </placeholder>
@@ -24,6 +25,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yfb-fY-EGN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBq-4M-B2F">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,18 +56,34 @@
                         <outlet property="delegate" destination="-1" id="Lqy-QF-wCE"/>
                     </connections>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Li-c9-7LM">
+                    <rect key="frame" x="8" y="383" width="40" height="40"/>
+                    <state key="normal" image="zoomButton"/>
+                    <connections>
+                        <action selector="onToggleZoom:" destination="-1" eventType="touchUpInside" id="AhH-HC-KPN"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="CBq-4M-B2F" firstAttribute="trailing" secondItem="yfb-fY-EGN" secondAttribute="trailing" id="4gj-hD-47I"/>
                 <constraint firstItem="xb4-Uy-xke" firstAttribute="top" secondItem="CBq-4M-B2F" secondAttribute="bottom" id="8Ta-au-rPT"/>
                 <constraint firstItem="CBq-4M-B2F" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ODH-y8-nea"/>
+                <constraint firstItem="CBq-4M-B2F" firstAttribute="leading" secondItem="yfb-fY-EGN" secondAttribute="leading" id="Rmi-Lo-NUE"/>
+                <constraint firstItem="9Li-c9-7LM" firstAttribute="top" secondItem="CBq-4M-B2F" secondAttribute="bottom" constant="8" id="SiN-eQ-gzK"/>
                 <constraint firstItem="xb4-Uy-xke" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zq5-ac-XCA"/>
+                <constraint firstItem="9Li-c9-7LM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cYX-PQ-TNX"/>
                 <constraint firstAttribute="bottom" secondItem="xb4-Uy-xke" secondAttribute="bottom" id="cmR-Kw-mOX"/>
                 <constraint firstItem="CBq-4M-B2F" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="g7Q-Uu-uws"/>
+                <constraint firstItem="CBq-4M-B2F" firstAttribute="top" secondItem="yfb-fY-EGN" secondAttribute="top" id="lXA-SH-SKj"/>
+                <constraint firstItem="CBq-4M-B2F" firstAttribute="bottom" secondItem="yfb-fY-EGN" secondAttribute="bottom" id="yM9-9t-W0i"/>
                 <constraint firstAttribute="trailing" secondItem="xb4-Uy-xke" secondAttribute="trailing" id="yhx-Dm-2fA"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="zoomButton" width="40" height="40"/>
+    </resources>
 </document>

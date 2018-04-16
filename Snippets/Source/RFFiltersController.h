@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
 @property (strong, nonatomic) IBOutlet UICollectionViewFlowLayout* collectionLayout;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* collectionHeightConstraint;
+@property (strong, nonatomic) IBOutlet UIImageView* nonZoomImageView;
 
 @property (strong, nonatomic) RFPhoto* photo;
 @property (strong, nonatomic) NSArray* filters; // RFFilter
