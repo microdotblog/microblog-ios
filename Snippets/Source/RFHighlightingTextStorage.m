@@ -63,6 +63,8 @@
 	[self endEditing];
 }
 
+#pragma mark -
+
 - (void) safe_addAttribute:(NSAttributedStringKey)name value:(id)value range:(NSRange)range;
 {
 	NSString* s = self.string;
@@ -77,6 +79,13 @@
 	if ((range.location + range.length) <= s.length) {
 		[self removeAttribute:name range:range];
 	}
+}
+
+#pragma mark -
+
+- (BOOL) isValidUsernameChar:(unichar)c
+{
+	return (isalnum (c) || (c == '_'));
 }
 
 - (void) processBold
@@ -115,18 +124,58 @@
 	UIFont* italic_font = [UIFont fontWithName:@"Avenir-Oblique" size:[UIFont rf_preferredPostingFontSize]];
 	NSRange current_r = NSMakeRange (0, 0);
 	BOOL is_italic = NO;
-	
+	BOOL is_link = NO;
+	BOOL is_username = NO;
+
 	for (NSInteger i = 0; i < self.string.length; i++) {
 		unichar c = [self.string characterAtIndex:i];
+		unichar next_c = '\0';
+		unichar prev_c = '\0';
+		if ((i + 1) < self.string.length) {
+			next_c = [self.string characterAtIndex:i + 1];
+		}
+		if ((i - 1) > 0) {
+			prev_c = [self.string characterAtIndex:i - 1];
+		}
+
 		if (c == '_') {
-			if (!is_italic) {
-				is_italic = YES;
-				current_r.location = i;
+			if (!is_link && !is_username) {
+				if (!is_italic) {
+					if ((prev_c == ' ') || (prev_c == '\0')) {
+						is_italic = YES;
+						current_r.location = i;
+					}
+				}
+				else {
+					is_italic = NO;
+					current_r.length = i - current_r.location + 1;
+					[self safe_addAttribute:NSFontAttributeName value:italic_font range:current_r];
+				}
 			}
-			else {
-				is_italic = NO;
-				current_r.length = i - current_r.location + 1;
-				[self safe_addAttribute:NSFontAttributeName value:italic_font range:current_r];
+		}
+		else if (c == '[') {
+			if (!is_link) {
+				is_link = YES;
+			}
+		}
+		else if (c == ')') {
+			if (is_link) {
+				is_link = NO;
+			}
+		}
+		else if (c == ')') {
+			if (is_link) {
+				is_link = NO;
+			}
+		}
+		else if ((c == '@') && [self isValidUsernameChar:next_c]) {
+			if (!is_username) {
+				is_username = YES;
+			}
+		}
+		else if (![self isValidUsernameChar:c]) {
+			if (is_username) {
+				is_username = NO;
 			}
 		}
 	}
@@ -181,7 +230,7 @@
 {
 	UIColor* title_c = [UIColor colorWithRed:0.2 green:0.478 blue:0.718 alpha:1.0];
 	UIColor* url_c = [UIColor colorWithWhite:0.502 alpha:1.0];
-	
+
 	NSRange current_r = NSMakeRange (0, 0);
 	BOOL is_title = NO;
 	BOOL is_url = NO;
@@ -241,7 +290,7 @@
 - (void) processUsernames
 {
 	UIColor* username_c = [UIColor colorWithWhite:0.502 alpha:1.0];
-	
+
 	NSRange current_r = NSMakeRange (0, 0);
 	BOOL is_username = NO;
 	
@@ -252,13 +301,13 @@
 			next_c = [self.string characterAtIndex:i + 1];
 		}
 
-		if ((c == '@') && isalpha (next_c)) {
+		if ((c == '@') && [self isValidUsernameChar:next_c]) {
 			if (!is_username) {
 				is_username = YES;
 				current_r.location = i;
 			}
 		}
-		else if (!isalnum (c)) {
+		else if (![self isValidUsernameChar:c]) {
 			if (is_username) {
 				is_username = NO;
 				current_r.length = i - current_r.location;
@@ -318,7 +367,7 @@
 
 - (void) processEditing
 {
-	// clear fonts and color**
+	// clear fonts and colors
 	NSRange paragraph_r = NSMakeRange (0, self.string.length);
 	UIFont* normal_font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
 	[self safe_removeAttribute:NSForegroundColorAttributeName range:paragraph_r];
@@ -333,8 +382,8 @@
 	[self processUsernames];
 	[self processHeaders];
 
-	// call super after, as it finalizes the attributes and calls the delegate methods
 	[super processEditing];
 }
 
 @end
+
