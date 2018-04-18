@@ -1010,6 +1010,112 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 #pragma mark-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+- (void) processAppExtensionItems:(NSMutableArray*)inputItems
+{
+	NSItemProvider * itemProvider = inputItems.firstObject;
+	[inputItems removeObject:itemProvider];
+		
+	if ([itemProvider hasItemConformingToTypeIdentifier:(NSString*)kUTTypePropertyList])
+	{
+		[itemProvider loadItemForTypeIdentifier:(NSString*)kUTTypePropertyList options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
+		{
+			NSDictionary* dictionary = (NSDictionary*)item;
+			dictionary = dictionary[NSExtensionJavaScriptPreprocessingResultsKey];
+			NSString* title = [dictionary objectForKey:@"title"];
+			NSURL* url = [NSURL URLWithString:[dictionary objectForKey:@"url"]];
+					
+			dispatch_async(dispatch_get_main_queue(), ^
+			{
+				if (title && url) {
+					[self insertSharedURL:url withTitle:title];
+				}
+				else if (title) {
+					[self insertSharedText:title];
+				}
+				else if (url) {
+					[self insertSharedURL:url withTitle:@""];
+				}
+					
+				if (inputItems.count)
+				{
+					[self processAppExtensionItems:inputItems];
+				}
+			});
+		}];
+	}
+	else if ([itemProvider hasItemConformingToTypeIdentifier:@"public.url"])
+	{
+		[itemProvider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
+		{
+			NSURL* url = [(NSURL*)item copy];;
+			dispatch_async(dispatch_get_main_queue(), ^
+			{
+				[self insertSharedURL:url withTitle:@""];
+					
+				if (inputItems.count)
+				{
+					[self processAppExtensionItems:inputItems];
+				}
+			});
+		}];
+	}
+	else if ([itemProvider hasItemConformingToTypeIdentifier:@"public.text"])
+	{
+		[itemProvider loadItemForTypeIdentifier:@"public.text" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
+		{
+			NSString* s = [(NSString*)item copy];
+			dispatch_async(dispatch_get_main_queue(), ^
+			{
+				[self insertSharedText:s];
+				
+				if (inputItems.count)
+				{
+					[self processAppExtensionItems:inputItems];
+				}
+			});
+		}];
+	}
+	else if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage])
+	{
+		[itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error)
+		{
+			if(image)
+			{
+				UIImage* new_img = image;
+				if (new_img.size.width > 1200) {
+					new_img = [new_img uuScaleToWidth:1200];
+				}
+				new_img = [new_img uuRemoveOrientation];
+
+				RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
+							
+				NSMutableArray* new_photos = [NSMutableArray arrayWithArray:self.attachedPhotos];
+				[new_photos addObject:photo];
+								
+				dispatch_async(dispatch_get_main_queue(), ^
+				{
+					self.attachedPhotos = new_photos;
+					[self.collectionView reloadData];
+
+					[self showPhotosBar];
+								
+					if (inputItems.count)
+					{
+						[self processAppExtensionItems:inputItems];
+					}
+				});
+			}
+		}];
+	}
+	else // If we got here, it means we were passed an item that we don't handle. Sort of weird, but what can we do???
+	{
+		if (inputItems.count)
+		{
+			[self processAppExtensionItems:inputItems];
+		}
+	}
+}
+
 - (void) setupAppExtensionElements
 {
 	if (!self.appExtensionContext)
@@ -1018,89 +1124,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	// Handle alert views...
 	[UUAlertViewController setActiveViewController:self];
 	
-	NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
-
-	for (NSExtensionItem *item in self.appExtensionContext.inputItems)
-	{
-		for (NSItemProvider *itemProvider in item.attachments)
-		{
-			if ([itemProvider hasItemConformingToTypeIdentifier:(NSString*)kUTTypePropertyList])
-			{
-				[itemProvider loadItemForTypeIdentifier:(NSString*)kUTTypePropertyList options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
-				{
-					NSDictionary* dictionary = (NSDictionary*)item;
-					dictionary = dictionary[NSExtensionJavaScriptPreprocessingResultsKey];
-					NSString* title = [dictionary objectForKey:@"title"];
-					NSURL* url = [NSURL URLWithString:[dictionary objectForKey:@"url"]];
-					
-					dispatch_async(dispatch_get_main_queue(), ^
-					{
-						if (title && url) {
-							[self insertSharedURL:url withTitle:title];
-						}
-						else if (title) {
-							[self insertSharedText:title];
-						}
-						else if (url) {
-							[self insertSharedURL:url withTitle:@""];
-						}
-					});
-
-				}];
-			}
-			
-			if ([itemProvider hasItemConformingToTypeIdentifier:@"public.url"])
-			{
-				[itemProvider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
-				{
-					NSURL* url = [(NSURL*)item copy];;
-					dispatch_async(dispatch_get_main_queue(), ^
-					{
-						[self insertSharedURL:url withTitle:@""];
-					});
-				}];
-			}
-
-			if ([itemProvider hasItemConformingToTypeIdentifier:@"public.text"])
-			{
-				[itemProvider loadItemForTypeIdentifier:@"public.text" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
-				{
-					NSString* s = [(NSString*)item copy];
-					dispatch_async(dispatch_get_main_queue(), ^
-					{
-						[self insertSharedText:s];
-					});
-				 }];
-			}
-
-			
-			if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage])
-			{
-				[itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error)
-				 {
-					 if(image)
-					 {
-						UIImage* new_img = image;
-						if (new_img.size.width > 1200) {
-							new_img = [new_img uuScaleToWidth:1200];
-						}
-						 new_img = [new_img uuRemoveOrientation];
-
-						 RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
-						 [new_photos addObject:photo];
-						 
-						 dispatch_async(dispatch_get_main_queue(), ^
-										{
-											self.attachedPhotos = new_photos;
-											[self.collectionView reloadData];
-										});
-					 }
-				 }];
-				
-				[self showPhotosBar];
-			}
-		}
-	}
+	// Grab the first extension item. We really should only ever have one...
+	NSExtensionItem* extensionItem = self.appExtensionContext.inputItems.firstObject;
+	
+	// Process all the attachements...
+	NSMutableArray* itemsToProcess = [NSMutableArray arrayWithArray:extensionItem.attachments];
+	[self processAppExtensionItems:itemsToProcess];
 }
 
 - (BOOL) checkForAppExtensionClose
