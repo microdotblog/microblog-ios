@@ -974,6 +974,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	RFPhotoCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
 
 	RFPhoto* photo = [self.attachedPhotos objectAtIndex:indexPath.item];
+	cell.thumbnailView.contentMode = UIViewContentModeScaleAspectFit;
 	[cell setupWithPhoto:photo];
 	
 	return cell;
