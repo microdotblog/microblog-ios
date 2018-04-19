@@ -19,6 +19,7 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 
 @interface RFFiltersController()
 	@property (nonatomic, assign) BOOL zoomDisabled;
+	@property (nonatomic, strong) RFFilter* selectedFilter;
 @end
 
 
@@ -267,8 +268,14 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 		}
 	}
 	
-	if (cropped_image) {
-			[[NSNotificationCenter defaultCenter] postNotificationName:kAttachPhotoNotification object:self userInfo:@{ kAttachPhotoKey: cropped_image }];
+	if (cropped_image)
+	{
+		if (self.selectedFilter && self.selectedFilter.ciFilter)
+		{
+			cropped_image = [self.selectedFilter filterImage:cropped_image];
+		}
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:kAttachPhotoNotification object:self userInfo:@{ kAttachPhotoKey: cropped_image }];
 	}
 }
 
@@ -299,10 +306,12 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	options.resizeMode = PHImageRequestOptionsResizeModeExact;
 	options.networkAccessAllowed = YES;
 	*/
+	self.selectedFilter = filter;
+	
 	UIImage* img = self.fullImage;
-	if (filter.ciFilter)
+	if (self.selectedFilter.ciFilter)
 	{
-		img = [filter filterImage:self.fullImage];
+		img = [self.selectedFilter filterImage:self.fullImage];
 		self.imageView.image = img;
 		self.nonZoomImageView.image = img;
 	}
