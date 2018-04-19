@@ -1088,38 +1088,67 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 	else if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage])
 	{
-		NSDictionary* load_options = @{
-			NSItemProviderPreferredImageSizeKey: [NSValue valueWithCGSize:CGSizeMake (1800, 1800)]
-		};
-		[itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:load_options completionHandler:^(UIImage *image, NSError *error)
-		{
-			if(image)
-			{
-				UIImage* new_img = image;
-				if (new_img.size.width > 1800) {
-					new_img = [new_img uuScaleToWidth:1800];
-				}
-				new_img = [new_img uuRemoveOrientation];
-
-				RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
-							
-				NSMutableArray* new_photos = [NSMutableArray arrayWithArray:self.attachedPhotos];
-				[new_photos addObject:photo];
-								
-				dispatch_async(dispatch_get_main_queue(), ^
-				{
-					self.attachedPhotos = new_photos;
-					[self.collectionView reloadData];
-
-					[self showPhotosBar];
-								
-					if (inputItems.count)
-					{
-						[self processAppExtensionItems:inputItems];
+		if (@available(iOS 11.0, *)) {
+			[itemProvider loadFileRepresentationForTypeIdentifier:(NSString *)kUTTypeImage completionHandler:^(NSURL * _Nullable url, NSError * _Nullable error) {
+				UIImage* image = [UIImage imageWithContentsOfFile:[url path]];
+				if (image) {
+					UIImage* new_img = image;
+					if (new_img.size.width > 1800) {
+						new_img = [new_img uuScaleToWidth:1800];
 					}
-				});
-			}
-		}];
+					new_img = [new_img uuRemoveOrientation];
+
+					RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
+
+					NSMutableArray* new_photos = [NSMutableArray arrayWithArray:self.attachedPhotos];
+					[new_photos addObject:photo];
+
+					dispatch_async(dispatch_get_main_queue(), ^
+					{
+						self.attachedPhotos = new_photos;
+						[self.collectionView reloadData];
+
+						[self showPhotosBar];
+
+						if (inputItems.count)
+						{
+							[self processAppExtensionItems:inputItems];
+						}
+					});
+				}
+			}];
+		}
+		else {
+			[itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error)
+			{
+				if(image)
+				{
+					UIImage* new_img = image;
+					if (new_img.size.width > 1800) {
+						new_img = [new_img uuScaleToWidth:1800];
+					}
+					new_img = [new_img uuRemoveOrientation];
+
+					RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
+
+					NSMutableArray* new_photos = [NSMutableArray arrayWithArray:self.attachedPhotos];
+					[new_photos addObject:photo];
+
+					dispatch_async(dispatch_get_main_queue(), ^
+					{
+						self.attachedPhotos = new_photos;
+						[self.collectionView reloadData];
+
+						[self showPhotosBar];
+
+						if (inputItems.count)
+						{
+							[self processAppExtensionItems:inputItems];
+						}
+					});
+				}
+			}];
+		}
 	}
 	else // If we got here, it means we were passed an item that we don't handle. Sort of weird, but what can we do???
 	{
