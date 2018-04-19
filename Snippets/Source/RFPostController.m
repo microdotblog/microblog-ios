@@ -1088,7 +1088,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 	else if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage])
 	{
-		[itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error)
+		NSDictionary* load_options = @{
+			NSItemProviderPreferredImageSizeKey: [NSValue valueWithCGSize:CGSizeMake (1800, 1800)]
+		};
+		[itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:load_options completionHandler:^(UIImage *image, NSError *error)
 		{
 			if(image)
 			{
