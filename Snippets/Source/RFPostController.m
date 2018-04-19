@@ -411,6 +411,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) sendPost:(id)sender
 {
+	NSString* s = [self currentText];
+	
+	if (self.attachedPhotos.count > 0) {
+		if (([s characterAtIndex:0] == '@') && [RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
+			NSString* msg = @"When replying to another Micro.blog user, photos are not currently supported. Start the post with different text and @-mention the user elsewhere in the post to make this a microblog post with inline photos on your site.";
+			[UUAlertViewController uuShowOneButtonAlert:@"Replies Can't Use Photos" message:msg button:@"OK" completionHandler:NULL];
+			return;
+		}
+	}
+	
 	self.photoButton.hidden = YES;
 
 	self.isSent = YES;
@@ -422,7 +432,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[self uploadNextPhoto];
 	}
 	else {
-		[self uploadText:[self currentText]];
+		[self uploadText:s];
 	}
 }
 
