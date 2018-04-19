@@ -312,9 +312,12 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	if (self.selectedFilter.ciFilter)
 	{
 		img = [self.selectedFilter filterImage:self.fullImage];
-		self.imageView.image = img;
-		self.nonZoomImageView.image = img;
 	}
+
+
+	self.imageView.image = img;
+	self.nonZoomImageView.image = img;
+	
 	/*
 	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1800, 1800) contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 		UIImage* img = [result uuRemoveOrientation];
