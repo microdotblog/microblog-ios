@@ -292,11 +292,21 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	RFFilter* filter = [self.filters objectAtIndex:indexPath.item];
+	/*
 	PHImageManager* manager = [PHImageManager defaultManager];
 	PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
 	options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
 	options.resizeMode = PHImageRequestOptionsResizeModeExact;
 	options.networkAccessAllowed = YES;
+	*/
+	UIImage* img = self.fullImage;
+	if (filter.ciFilter)
+	{
+		img = [filter filterImage:self.fullImage];
+		self.imageView.image = img;
+		self.nonZoomImageView.image = img;
+	}
+	/*
 	[manager requestImageForAsset:self.photo.asset targetSize:CGSizeMake (1800, 1800) contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 		UIImage* img = [result uuRemoveOrientation];
 		if (filter.ciFilter) {
@@ -305,6 +315,7 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 		self.imageView.image = img;
 		self.fullImage = img;
 	}];
+	*/
 }
 
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
