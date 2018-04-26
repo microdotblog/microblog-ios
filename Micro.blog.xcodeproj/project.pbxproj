@@ -178,6 +178,9 @@
 		C55044A31F8EBB7B00C1D5F2 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */; };
 		C5666B631F23C95F00AE13DC /* User.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5666B611F23C95F00AE13DC /* User.xib */; };
 		C58942611FE245F400A30EB9 /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = C589425F1FE245F400A30EB9 /* GetURL.js */; };
+		C59C3B1820923DE50076A754 /* Blogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59C3B1720923DE50076A754 /* Blogs.storyboard */; };
+		C59C3B1B20923E220076A754 /* RFSelectBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B1A20923E220076A754 /* RFSelectBlogViewController.m */; };
+		C59C3B1E20923EFC0076A754 /* RFBlogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B1D20923EFC0076A754 /* RFBlogTableViewCell.m */; };
 		C5A66B0C1F88325E0063F325 /* CColorConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631F1B8F51710034FC5C /* CColorConverter.m */; };
 		C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663211B8F51710034FC5C /* CMarkupTransformer.m */; };
 		C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663231B8F51710034FC5C /* CSimpleMarkupParser.m */; };
@@ -477,6 +480,11 @@
 		C513F6E51F993D2D007319F0 /* RFAppExtensionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAppExtensionViewController.m; path = Source/RFAppExtensionViewController.m; sourceTree = "<group>"; };
 		C5666B621F23C95F00AE13DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/User.xib; sourceTree = "<group>"; };
 		C589425F1FE245F400A30EB9 /* GetURL.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = GetURL.js; sourceTree = "<group>"; };
+		C59C3B1720923DE50076A754 /* Blogs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Blogs.storyboard; path = Resources/Blogs.storyboard; sourceTree = "<group>"; };
+		C59C3B1920923E220076A754 /* RFSelectBlogViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFSelectBlogViewController.h; path = Source/RFSelectBlogViewController.h; sourceTree = "<group>"; };
+		C59C3B1A20923E220076A754 /* RFSelectBlogViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFSelectBlogViewController.m; path = Source/RFSelectBlogViewController.m; sourceTree = "<group>"; };
+		C59C3B1C20923EFC0076A754 /* RFBlogTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFBlogTableViewCell.h; path = Source/RFBlogTableViewCell.h; sourceTree = "<group>"; };
+		C59C3B1D20923EFC0076A754 /* RFBlogTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFBlogTableViewCell.m; path = Source/RFBlogTableViewCell.m; sourceTree = "<group>"; };
 		C5A4AC011F9A507400415646 /* Micro.blog Sharing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Micro.blog Sharing.entitlements"; sourceTree = "<group>"; };
 		C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIBilateralFilter.cikernel; sourceTree = "<group>"; };
 		C5CED6B91ECF792E0068F537 /* YUCIBilateralFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIBilateralFilter.h; sourceTree = "<group>"; };
@@ -793,6 +801,10 @@
 				4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */,
 				4B1712D91F069FB200267045 /* RFMenuView.h */,
 				4B1712DA1F069FB200267045 /* RFMenuView.m */,
+				C59C3B1920923E220076A754 /* RFSelectBlogViewController.h */,
+				C59C3B1A20923E220076A754 /* RFSelectBlogViewController.m */,
+				C59C3B1C20923EFC0076A754 /* RFBlogTableViewCell.h */,
+				C59C3B1D20923EFC0076A754 /* RFBlogTableViewCell.m */,
 			);
 			name = Source;
 			path = Snippets;
@@ -801,6 +813,7 @@
 		4BA2C99C1B2109DC0038C0E5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C59C3B1720923DE50076A754 /* Blogs.storyboard */,
 				4BA2C9771B2109D10038C0E5 /* Info.plist */,
 				4BF123FE1E88343600B56138 /* Filters.plist */,
 				4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */,
@@ -1242,6 +1255,7 @@
 				4B9A7BAD1E82F1C1002A49E5 /* PhotoCell.xib in Resources */,
 				4B94052D1E2933DE00B01E79 /* Images.xcassets in Resources */,
 				4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */,
+				C59C3B1820923DE50076A754 /* Blogs.storyboard in Resources */,
 				C5CED6FD1ECF792E0068F537 /* YUCIColorLookupTableDefault.png in Resources */,
 				C5CED71A1ECF792E0068F537 /* YUCITriangularPixellate.cikernel in Resources */,
 				C5CED6FE1ECF792E0068F537 /* YUCICrossZoomTransition.cikernel in Resources */,
@@ -1384,12 +1398,14 @@
 				C5CED6FA1ECF792E0068F537 /* YUCICLAHE.m in Sources */,
 				4BF123F11E882F3000B56138 /* RFFiltersController.m in Sources */,
 				C5CED6F61ECF792E0068F537 /* YUCIBilateralFilter.m in Sources */,
+				C59C3B1B20923E220076A754 /* RFSelectBlogViewController.m in Sources */,
 				4BA2C9A61B210C0E0038C0E5 /* RFAppDelegate.m in Sources */,
 				4BA910821B83D20C00D58F83 /* RFPostController.m in Sources */,
 				4B400D0D202448DB00C71AAF /* RFFeedsController.m in Sources */,
 				4BF803511B87AACF00D6670C /* RFClient.m in Sources */,
 				4B0D55551B93B3590076AD9F /* RFWordpressController.m in Sources */,
 				4BF8034B1B87AA2C00D6670C /* UUHttpSession.m in Sources */,
+				C59C3B1E20923EFC0076A754 /* RFBlogTableViewCell.m in Sources */,
 				C5CED7171ECF792E0068F537 /* YUCIStarfieldGenerator.m in Sources */,
 				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
 				C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */,
