@@ -6,6 +6,7 @@
 //  Copyright © 2015 Riverfold Software. All rights reserved.
 //
 
+#import "RFViewController.h"
 #import "RFWordpressController.h"
 
 #import "RFXMLRPCRequest.h"

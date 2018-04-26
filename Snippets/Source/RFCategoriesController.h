@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RFCategoriesController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface RFCategoriesController : RFViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView* formatsTableView;
 @property (strong, nonatomic) IBOutlet UITableView* categoriesTableView;

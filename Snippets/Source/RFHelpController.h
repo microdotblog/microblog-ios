@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RFHelpController : UIViewController <UIWebViewDelegate>
+@interface RFHelpController : RFViewController <UIWebViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWebView* webView;
 

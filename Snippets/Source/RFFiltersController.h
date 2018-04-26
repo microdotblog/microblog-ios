@@ -10,7 +10,7 @@
 
 @class RFPhoto;
 
-@interface RFFiltersController : UIViewController <UIScrollViewDelegate>
+@interface RFFiltersController : RFViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView* croppingScrollView;
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;

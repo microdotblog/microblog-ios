@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RFSettingsController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface RFSettingsController : RFViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView* sharingTableView;
 @property (strong, nonatomic) IBOutlet UITableView* serversTableView;

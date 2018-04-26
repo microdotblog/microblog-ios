@@ -12,7 +12,7 @@
 
 static NSString* const kPhotosDidCloseNotification = @"RFPhotosDidCloseNotification";
 
-@interface RFPhotosController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface RFPhotosController : RFViewController <UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
 @property (strong, nonatomic) IBOutlet UIButton* overlayButton;

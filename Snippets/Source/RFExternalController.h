@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RFExternalController : UIViewController <UITextFieldDelegate>
+@interface RFExternalController : RFViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField* websiteField;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* progressSpinner;

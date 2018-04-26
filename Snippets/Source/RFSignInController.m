@@ -120,13 +120,53 @@
 			[RFSettings setHasSnippetsBlog:[has_site boolValue]];
 			[RFSettings setSnippetsFullAccess:[is_fullaccess boolValue]];
 		
-			RFDispatchMainAsync (^{
-				[Answers logLoginWithMethod:@"Token" success:@YES customAttributes:nil];
-				[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self userInfo:@{
-					@"token": self.tokenField.text
-				}];
-				[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
-			});
+			[self checkForMultipleBlogs];
+		}
+	}];
+}
+
+- (void) completeLoginProcess
+{
+	RFDispatchMainAsync (^{
+		[Answers logLoginWithMethod:@"Token" success:@YES customAttributes:nil];
+		[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self userInfo:@{
+			@"token": self.tokenField.text
+		}];
+		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+	});
+}
+
+- (void) checkForMultipleBlogs
+{
+	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub?q=config"];
+	[client getWithQueryArguments:nil completion:^(UUHttpResponse* response)
+	{
+		NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
+		[[NSUserDefaults standardUserDefaults] setObject:blogs forKey:@"Micro.blog list"];
+
+		if (blogs.count > 0)
+		{
+			if (blogs.count > 1)
+			{
+				UIViewController* savedParent = self.presentingViewController;
+				dispatch_async(dispatch_get_main_queue(), ^
+				{
+					[Answers logLoginWithMethod:@"Token" success:@YES customAttributes:nil];
+					[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self userInfo:@{ @"token": self.tokenField.text }];
+					[self.presentingViewController dismissViewControllerAnimated:NO completion:^
+					{
+						UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Blogs" bundle:nil];
+						UIViewController* controller = [storyboard instantiateViewControllerWithIdentifier:@"BlogsNavigation"];
+						[savedParent presentViewController:controller animated:NO completion:NULL];
+					}];
+				});
+			}
+			else
+			{
+				NSDictionary* blogInfo = blogs.firstObject;
+				[RFSettings setSelectedBlogInfo:blogInfo];
+				[self completeLoginProcess];
+			}
 		}
 	}];
 }

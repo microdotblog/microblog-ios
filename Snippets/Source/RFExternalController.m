@@ -6,6 +6,7 @@
 //  Copyright © 2017 Riverfold Software. All rights reserved.
 //
 
+#import "RFViewController.h"
 #import "RFExternalController.h"
 
 #import "RFXMLLinkParser.h"

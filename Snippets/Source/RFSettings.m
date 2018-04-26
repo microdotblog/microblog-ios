@@ -35,6 +35,7 @@
 #define LatestDraftTitle				@"LatestDraftTitle"
 #define LatestDraftText					@"LatestDraftText"
 #define PreferredContentSize			@"PreferredContentSize"
+#define SelectedBlogInfo				@"Microblog::SelectedBlog"
 
 @implementation RFSettings
 
@@ -75,6 +76,13 @@
 	}
 	
 	return value.boolValue;
+}
+
++ (NSDictionary*) loadUserDefaultDictionary:(NSString*)name
+{
+	NSUserDefaults* sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kSharedGroupDefaults];
+	NSDictionary* dictionary = [sharedDefaults objectForKey:name];
+	return dictionary;
 }
 
 + (void) removeObjectForKey:(NSString*)key
@@ -317,6 +325,31 @@
 + (void) setExternalMicropubState:(NSString*)value
 {
 	[RFSettings setUserDefault:value forKey:ExternalMicropubState];
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
++ (void) setSelectedBlogInfo:(NSDictionary*)blogInfo
+{
+	[RFSettings setUserDefault:blogInfo forKey:SelectedBlogInfo];
+}
+
++ (NSDictionary*) selectedBlogInfo
+{
+	return [RFSettings loadUserDefaultDictionary:SelectedBlogInfo];
+}
+
++ (NSString*) selectedBlogUid
+{
+	NSDictionary* blogInfo = [RFSettings selectedBlogInfo];
+	NSString* uid = nil;
+	if (blogInfo)
+	{
+		uid = [blogInfo objectForKey:@"uid"];
+		//NSString* name = [blogInfo objectForKey:@"name"];
+	}
+	
+	return uid;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

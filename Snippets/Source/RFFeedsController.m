@@ -6,6 +6,7 @@
 //  Copyright © 2018 Riverfold Software. All rights reserved.
 //
 
+#import "RFViewController.h"
 #import "RFFeedsController.h"
 
 #import "RFFeedCell.h"

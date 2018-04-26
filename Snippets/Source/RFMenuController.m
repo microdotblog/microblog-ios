@@ -42,6 +42,17 @@
 	[super viewDidLoad];
 	
 	[self setupNavigation];
+	
+	self.switchAccountLine.hidden = YES;
+	self.switchAccountLabel.hidden = YES;
+	self.switchAccountButton.hidden = YES;
+	NSArray* availableMicroBlogs = [[NSUserDefaults standardUserDefaults] objectForKey:@"Micro.blog list"];
+	if (availableMicroBlogs.count > 1)
+	{
+		self.switchAccountLine.hidden = NO;
+		self.switchAccountLabel.hidden = NO;
+		self.switchAccountButton.hidden = NO;
+	}
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -82,6 +93,17 @@
 		self.fullNameField.text = @"";
 		self.usernameField.text = @"";
 	}
+	
+	self.switchAccountLine.hidden = YES;
+	self.switchAccountLabel.hidden = YES;
+	self.switchAccountButton.hidden = YES;
+	NSArray* availableMicroBlogs = [[NSUserDefaults standardUserDefaults] objectForKey:@"Micro.blog list"];
+	if (availableMicroBlogs.count > 1)
+	{
+		self.switchAccountLine.hidden = NO;
+		self.switchAccountLabel.hidden = NO;
+		self.switchAccountButton.hidden = NO;
+	}
 }
 
 - (void) checkUserDetails
@@ -107,6 +129,26 @@
 				});
 			}
 		}];
+		
+		// Update the list of blogs assigned to the users...
+		client = [[RFClient alloc] initWithPath:@"/micropub?q=config"];
+		[client getWithQueryArguments:nil completion:^(UUHttpResponse* response)
+		{
+			NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
+			[[NSUserDefaults standardUserDefaults] setObject:blogs forKey:@"Micro.blog list"];
+			RFDispatchMain (^{
+				[self setupProfileInfo];
+			});
+		}];
+	}
+}
+
+- (IBAction) onSwitchMicroBlog:(id)sender
+{
+	NSArray* availableMicroBlogs = [[NSUserDefaults standardUserDefaults] objectForKey:@"Micro.blog list"];
+	if (availableMicroBlogs.count > 1)
+	{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kMicroblogSelectNotification object:nil];
 	}
 }
 

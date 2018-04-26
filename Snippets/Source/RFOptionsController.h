@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RFViewController.h"
 
 typedef enum {
 	kOptionsPopoverDefault = 0,
@@ -14,7 +15,7 @@ typedef enum {
 	kOptionsPopoverWithDelete = 2
 } RFOptionsPopoverType;
 
-@interface RFOptionsController : UIViewController <UIPopoverPresentationControllerDelegate>
+@interface RFOptionsController : RFViewController <UIPopoverPresentationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView* defaultView;
 @property (strong, nonatomic) IBOutlet UIView* withUnfavoriteView;

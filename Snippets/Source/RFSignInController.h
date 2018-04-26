@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RFViewController.h"
 
 @interface RFSignInController : UIViewController <UITextFieldDelegate>
 

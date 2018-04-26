@@ -27,6 +27,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+	[super viewWillAppear:animated];
+	
 	if (![RFSettings needsExternalBlogSetup] || [RFSettings hasSnippetsBlog])
 	{
 		[self presentViewController:self.postNavigationController animated:NO completion:^

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RFFeedsController : UIViewController
+@interface RFFeedsController : RFViewController
 
 @property (strong, nonatomic) IBOutlet UITableView* feedsTable;
 

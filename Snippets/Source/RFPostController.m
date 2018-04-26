@@ -6,8 +6,9 @@
 //  Copyright © 2015 Riverfold Software. All rights reserved.
 //
 
-#import "RFPostController.h"
 
+#import "RFViewController.h"
+#import "RFPostController.h"
 #import "RFSettings.h"
 #import "RFFeedsController.h"
 #import "RFPhotosController.h"
@@ -546,10 +547,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	if (self.isReply) {
 		[self showProgressHeader:@"Now sending your reply..."];
 		RFClient* client = [[RFClient alloc] initWithPath:@"/posts/reply"];
-		NSDictionary* args = @{
-			@"id": self.replyPostID,
-			@"text": text
-		};
+		NSMutableDictionary* args = [NSMutableDictionary dictionary];
+		NSString* uid = [RFSettings selectedBlogUid];
+		if (uid)
+		{
+			[args setObject:uid forKey:@"mp-destination"];
+		}
+		[args setObject:self.replyPostID forKey:@"id"];
+		[args setObject:text forKey:@"text"];
+
 		[client postWithParams:args completion:^(UUHttpResponse* response) {
 			RFDispatchMainAsync (^{
 				[Answers logCustomEventWithName:@"Sent Reply" customAttributes:nil];
@@ -561,24 +567,22 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[self showProgressHeader:@"Now publishing to your microblog..."];
 		if ([RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
 			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
-			NSDictionary* args;
+			NSMutableDictionary* args = [NSMutableDictionary dictionary];
+			NSString* uid = [RFSettings selectedBlogUid];
+			if (uid)
+			{
+				[args setObject:uid forKey:@"mp-destination"];
+			}
+			[args setObject:self.titleField.text forKey:@"name"];
+			[args setObject:text forKey:@"content"];
+			
 			if ([self.attachedPhotos count] > 0) {
 				NSMutableArray* photo_urls = [NSMutableArray array];
 				for (RFPhoto* photo in self.attachedPhotos) {
 					[photo_urls addObject:photo.publishedURL];
 				}
 				
-				args = @{
-					@"name": self.titleField.text,
-					@"content": text,
-					@"photo[]": photo_urls
-				};
-			}
-			else {
-				args = @{
-					@"name": self.titleField.text,
-					@"content": text
-				};
+				[args setObject:photo_urls forKey:@"photo[]"];
 			}
 
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
@@ -775,8 +779,13 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	if (d) {
 		if ([RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
 			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];
-			NSDictionary* args = @{
-			};
+			NSMutableDictionary* args = [NSMutableDictionary dictionary];
+			NSString* uid = [RFSettings selectedBlogUid];
+			if (uid)
+			{
+				[args setObject:uid forKey:@"mp-destination"];
+			}
+			
 			[client uploadImageData:d named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
 				NSDictionary* headers = response.httpResponse.allHeaderFields;
 				NSString* image_url = headers[@"Location"];

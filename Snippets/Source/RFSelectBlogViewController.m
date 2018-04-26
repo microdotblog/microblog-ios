@@ -10,6 +10,7 @@
 #import "RFBlogTableViewCell.h"
 #import "RFClient.h"
 #import "UUAlert.h"
+#import "RFSettings.h"
 
 @interface RFSelectBlogViewController ()
 
@@ -67,13 +68,7 @@
 
 - (void) selectBlog:(NSDictionary*)blogInfo
 {
-	NSString* uid = [blogInfo objectForKey:@"uid"];
-	NSString* name = [blogInfo objectForKey:@"name"];
-	
-	[[NSUserDefaults standardUserDefaults] setObject:uid forKey:@"Sunlit:blog:uid"];
-	[[NSUserDefaults standardUserDefaults] setObject:name forKey:@"Sunlit:blog:name"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	
+	[RFSettings setSelectedBlogInfo:blogInfo];	
 	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 

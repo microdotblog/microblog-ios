@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RFWordpressController : UIViewController <UIScrollViewDelegate, UITextFieldDelegate>
+@interface RFWordpressController : RFViewController <UIScrollViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField* usernameField;
 @property (strong, nonatomic) IBOutlet UITextField* passwordField;
