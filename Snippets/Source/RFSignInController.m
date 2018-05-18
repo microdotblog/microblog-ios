@@ -16,6 +16,7 @@
 #import "UILabel+MarkupExtensions.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+@import UserNotifications;
 
 @implementation RFSignInController
 
@@ -132,7 +133,18 @@
 		[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self userInfo:@{
 			@"token": self.tokenField.text
 		}];
-		[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+		[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+
+			//Now that we're logged in, request push tokens...
+			UNAuthorizationOptions options = UNAuthorizationOptionBadge | UNAuthorizationOptionAlert | UNAuthorizationOptionSound;
+			[[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError * _Nullable error)
+			{
+				dispatch_async(dispatch_get_main_queue(), ^
+				{
+					[UIApplication.sharedApplication registerForRemoteNotifications];
+				});
+			}];
+		}];
 	});
 }
 

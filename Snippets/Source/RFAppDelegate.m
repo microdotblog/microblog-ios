@@ -24,11 +24,14 @@
 #import "UUAlert.h"
 #import "UUString.h"
 #import "NSString+Extras.h"
+#import "RFPopupNotificationViewController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <SafariServices/SafariServices.h>
 //#import "Microblog-Swift.h"
 #import "RFSettings.h"
+@import UserNotifications;
+
 
 @implementation RFAppDelegate
 
@@ -114,6 +117,7 @@
 	
 	RFClient* client = [[RFClient alloc] initWithPath:@"/users/push/register"];
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
+		NSLog(@"%@", response);
 	}];
 }
 
@@ -122,20 +126,23 @@
 	NSString* post_id = [userInfo[@"post_id"] stringValue];
 	if (application.applicationState == UIApplicationStateActive) {
 		NSString* message = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
-		if (post_id.length > 0) {
-			[UUAlertViewController uuShowTwoButtonAlert:@"" message:message buttonOne:@"Cancel" buttonTwo:@"View" completionHandler:^(NSInteger buttonIndex) {
-				if (buttonIndex == 1) {
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[RFPopupNotificationViewController show:message inController:UIApplication.sharedApplication.keyWindow.rootViewController completionBlock:^
+			{
+				if (post_id.length > 0)
+				{
 					[self showConversationWithPostID:post_id];
 				}
 			}];
-		}
-		else {
-			[UUAlertViewController uuShowOneButtonAlert:@"" message:message button:@"OK" completionHandler:NULL];
-		}
+		});
 	}
 	else if (post_id.length > 0) {
 		[self showConversationWithPostID:post_id];
 	}
+
+	if (completionHandler)
+		completionHandler(UIBackgroundFetchResultNewData);
 }
 
 - (void) application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))handler
@@ -181,9 +188,14 @@
 
 - (void) setupPushNotifications
 {
-	UIUserNotificationSettings* settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert categories:nil];
-	[[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-	[[UIApplication sharedApplication] registerForRemoteNotifications];
+	UNAuthorizationOptions options = UNAuthorizationOptionBadge | UNAuthorizationOptionAlert | UNAuthorizationOptionSound;
+	[[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError * _Nullable error)
+	{
+		dispatch_async(dispatch_get_main_queue(), ^
+		{
+			[UIApplication.sharedApplication registerForRemoteNotifications];
+		});
+	}];
 }
 
 - (void) setupAppearance

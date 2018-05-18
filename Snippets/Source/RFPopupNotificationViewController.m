@@ -1,0 +1,91 @@
+//
+//  RFPopupNotificationViewController.m
+//  Micro.blog
+//
+//  Created by Jonathan Hays on 5/17/18.
+//  Copyright © 2018 Riverfold Software. All rights reserved.
+//
+
+#import "RFPopupNotificationViewController.h"
+
+@interface RFPopupNotificationViewController ()
+	@property (nonatomic, strong) NSTimer* dismissTimer ;
+@end
+
+@implementation RFPopupNotificationViewController
+
+
+- (IBAction) onTapped:(id)sender
+{
+	[self dismiss];
+
+	if (self.completionHandler)
+	{
+		dispatch_async(dispatch_get_main_queue(), ^
+		{
+			self.completionHandler();
+		});
+	}
+}
+
+- (void) queueAutoDismissTimer
+{
+	[self.dismissTimer invalidate];
+	self.dismissTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(dismiss) userInfo:nil repeats:NO];
+}
+
+- (void) dismiss
+{
+	[self.dismissTimer invalidate];
+	self.dismissTimer = nil;
+	
+	CGRect f = self.view.frame;
+	f.origin.y = -f.size.height;
+	
+	[UIView animateWithDuration:0.5 animations:^
+	{
+		self.view.frame = f;
+	}
+	completion:^(BOOL finished)
+	{
+		[self.view removeFromSuperview];
+		[self removeFromParentViewController];
+	}];
+}
+
++ (void) show:(NSString*) body inController:(UIViewController*) controller completionBlock:(void(^)())completionBlock
+{
+	dispatch_async(dispatch_get_main_queue(), ^
+	{
+		RFPopupNotificationViewController* vc = [RFPopupNotificationViewController new];
+		CGFloat margin = 4.0;
+		CGRect f = vc.view.frame;
+		f.origin.y = -f.size.height;
+		f.origin.x = margin;
+		f.size.width = controller.view.bounds.size.width - (margin * 2);
+		
+		vc.view.frame = f;
+		[controller.view addSubview:vc.view];
+		[controller addChildViewController:vc];
+		
+		vc.messageLabel.text = body;
+		vc.completionHandler = completionBlock;
+		
+		vc.view.layer.cornerRadius = 10.0;
+		vc.view.layer.borderWidth = 1.0;
+		vc.view.layer.masksToBounds = YES;
+		vc.view.layer.borderColor = UIColor.lightGrayColor.CGColor;
+		
+		f.origin.y = 44;
+		[UIView animateWithDuration:0.5 animations:^
+		{
+			vc.view.frame = f;
+		}
+		completion:^(BOOL finished)
+		{
+			[vc queueAutoDismissTimer];
+		}];
+	});
+}
+
+@end

@@ -41,6 +41,8 @@ static NSString* const kClosePostingNotification = @"RFClosePosting";
 
 #define kMicroblogSelectNotification @"kMicroblogSelectNotification"
 
+#define kPushNotificationReceived @"kPushNotificationReceived"
+
 #define kSharePostNotification @"RFSharePostNotification"
 #define kSharePostIDKey @"post_id"
 
