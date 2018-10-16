@@ -16,6 +16,7 @@
 #import "UILabel+MarkupExtensions.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "SSKeychain.h"
 @import UserNotifications;
 
 @implementation RFSignInController
@@ -93,8 +94,9 @@
 - (void) verifyAppToken
 {
 	RFClient* client = [[RFClient alloc] initWithPath:@"/account/verify"];
+	NSString* token = self.tokenField.text;
 	NSDictionary* args = @{
-		@"token": self.tokenField.text
+		@"token": token
 	};
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
 		NSString* error = [response.parsedResponse objectForKey:@"error"];
@@ -120,7 +122,8 @@
 			[RFSettings setSnippetsGravatarURL:gravatar_url];
 			[RFSettings setHasSnippetsBlog:[has_site boolValue]];
 			[RFSettings setSnippetsFullAccess:[is_fullaccess boolValue]];
-		
+			[SSKeychain setPassword:token forService:@"Snippets" account:@"default"];
+
 			[self checkForMultipleBlogs];
 		}
 	}];
