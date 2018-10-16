@@ -180,6 +180,10 @@
 				[self completeLoginProcess];
 			}
 		}
+		else
+		{
+			[self completeLoginProcess];
+		}
 	}];
 }
 
