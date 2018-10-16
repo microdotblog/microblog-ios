@@ -1030,6 +1030,33 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 #pragma mark-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+- (void) processImageForAppExtension:(UIImage*)image withInputItems:(NSMutableArray*)inputItems
+{
+	UIImage* new_img = image;
+	if (new_img.size.width > 1800) {
+		new_img = [new_img uuScaleToWidth:1800];
+	}
+	new_img = [new_img uuRemoveOrientation];
+
+	RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
+
+	NSMutableArray* new_photos = [NSMutableArray arrayWithArray:self.attachedPhotos];
+	[new_photos addObject:photo];
+
+	dispatch_async(dispatch_get_main_queue(), ^
+	{
+		self.attachedPhotos = new_photos;
+		[self.collectionView reloadData];
+
+		[self showPhotosBar];
+
+		if (inputItems.count)
+		{
+			[self processAppExtensionItems:inputItems];
+		}
+	});
+}
+
 - (void) processAppExtensionItems:(NSMutableArray*)inputItems
 {
 	NSItemProvider * itemProvider = inputItems.firstObject;
@@ -1098,32 +1125,25 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	else if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage])
 	{
 		if (@available(iOS 11.0, *)) {
-			[itemProvider loadFileRepresentationForTypeIdentifier:(NSString *)kUTTypeImage completionHandler:^(NSURL * _Nullable url, NSError * _Nullable error) {
-				UIImage* image = [UIImage imageWithContentsOfFile:[url path]];
-				if (image) {
-					UIImage* new_img = image;
-					if (new_img.size.width > 1800) {
-						new_img = [new_img uuScaleToWidth:1800];
-					}
-					new_img = [new_img uuRemoveOrientation];
-
-					RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
-
-					NSMutableArray* new_photos = [NSMutableArray arrayWithArray:self.attachedPhotos];
-					[new_photos addObject:photo];
-
-					dispatch_async(dispatch_get_main_queue(), ^
+			[itemProvider loadInPlaceFileRepresentationForTypeIdentifier:(NSString*)kUTTypeImage completionHandler:^(NSURL * _Nullable url, BOOL isInPlace, NSError * _Nullable error)
+			{
+				NSData* data = [NSData dataWithContentsOfURL:url];
+				UIImage* image = [UIImage imageWithData:data];
+				if (image)
+				{
+					[self processImageForAppExtension:image withInputItems:inputItems];
+				}
+				else
+				{
+					[itemProvider loadFileRepresentationForTypeIdentifier:(NSString *)kUTTypeImage completionHandler:^(NSURL * _Nullable url, NSError * _Nullable error)
 					{
-						self.attachedPhotos = new_photos;
-						[self.collectionView reloadData];
-
-						[self showPhotosBar];
-
-						if (inputItems.count)
+						NSData* data = [NSData dataWithContentsOfURL:url];
+						UIImage* image = [UIImage imageWithData:data];
+						if (image)
 						{
-							[self processAppExtensionItems:inputItems];
+							[self processImageForAppExtension:image withInputItems:inputItems];
 						}
-					});
+					}];
 				}
 			}];
 		}
