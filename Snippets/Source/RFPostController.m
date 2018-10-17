@@ -948,8 +948,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		for (UIImage* img in objects) {
 			if (new_photos.count < 10) {
 				UIImage* new_img = img;
-				if (new_img.size.width > 1800) {
-					new_img = [new_img uuScaleToWidth:1800];
+				CGFloat maxWidth = 1800.0 / [[UIScreen mainScreen] scale];
+				if (new_img.size.width > maxWidth) {
+					new_img = [new_img uuScaleToWidth:maxWidth];
 				}
 				new_img = [new_img uuRemoveOrientation];
 				RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
@@ -1033,8 +1034,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) processImageForAppExtension:(UIImage*)image withInputItems:(NSMutableArray*)inputItems
 {
 	UIImage* new_img = image;
-	if (new_img.size.width > 1800) {
-		new_img = [new_img uuScaleToWidth:1800];
+	CGFloat maxWidth = 1800.0 / [[UIScreen mainScreen] scale];
+	if (new_img.size.width > maxWidth) {
+		new_img = [new_img uuScaleToWidth:maxWidth];
 	}
 	new_img = [new_img uuRemoveOrientation];
 
@@ -1152,9 +1154,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			{
 				if(image)
 				{
+					CGFloat maxWidth = 1800.0 / [[UIScreen mainScreen] scale];
 					UIImage* new_img = image;
-					if (new_img.size.width > 1800) {
-						new_img = [new_img uuScaleToWidth:1800];
+					if (new_img.size.width > maxWidth) {
+						new_img = [new_img uuScaleToWidth:maxWidth];
 					}
 					new_img = [new_img uuRemoveOrientation];
 
