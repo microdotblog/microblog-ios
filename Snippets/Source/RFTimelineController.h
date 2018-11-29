@@ -33,6 +33,7 @@
 - (RFOptionsPopoverType) popoverTypeOfPostID:(NSString *)postID;
 - (NSString *) usernameOfPostID:(NSString *)postID;
 - (NSString *) linkOfPostID:(NSString *)postID;
+- (NSString *) photoSrcOfPostID:(NSString *)postID;
 
 - (IBAction) promptNewPost:(id)sender;
 - (void) refreshTimeline;

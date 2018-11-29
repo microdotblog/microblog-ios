@@ -232,6 +232,13 @@
 	return [username_s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
+- (NSString *) photoSrcOfPostID:(NSString *)postID
+{
+	NSString* js = [NSString stringWithFormat:@"$('#post_%@').find('.post_content').find('img').attr('src');", postID];
+	NSString* s = [self.webView stringByEvaluatingJavaScriptFromString:js];
+	return [s stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 #pragma mark -
 
 - (void) viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator

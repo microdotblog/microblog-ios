@@ -54,6 +54,10 @@
 	if ([url.host isEqualToString:@"open"]) {
 		[self showOptionsMenuWithPostID:param];
 	}
+	else if ([url.host isEqualToString:@"photo"]) {
+		NSString* photo_url = [url.path substringFromIndex:1];
+		[self showPhotoWithURL:photo_url];
+	}
 	else if ([url.host isEqualToString:@"user"]) {
 		[self showProfileWithUsername:param];
 	}
@@ -407,6 +411,15 @@
 		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:postID username:username popoverType:popover_type];
 		[options_controller attachToView:timeline_controller.webView atRect:r];
 		[[self activeNavigationController] presentViewController:options_controller animated:YES completion:NULL];
+	}
+}
+
+- (void) showPhotoWithURL:(NSString *)photoURL
+{
+	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
+	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
+		// TODO: open the URL in viewer
+		// ...
 	}
 }
 
