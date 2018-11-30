@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -124,6 +124,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiA-DF-hAa">
                                     <rect key="frame" x="286" y="0.0" width="34" height="34"/>
+                                    <accessibility key="accessibilityConfiguration" label="Settings"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34" id="fjg-8K-whd"/>
                                         <constraint firstAttribute="width" constant="34" id="yfE-t9-daa"/>
@@ -134,6 +135,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6of-5U-PI0">
                                     <rect key="frame" x="102" y="0.0" width="34" height="34"/>
+                                    <accessibility key="accessibilityConfiguration" label="Markdown link"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34" id="5qe-gv-kZ6"/>
                                         <constraint firstAttribute="width" constant="34" id="7ue-3n-p3C"/>
@@ -144,6 +146,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gl-6r-27N">
                                     <rect key="frame" x="68" y="0.0" width="34" height="34"/>
+                                    <accessibility key="accessibilityConfiguration" label="Markdown italics"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="34" id="9Nn-AH-GTL"/>
                                         <constraint firstAttribute="height" constant="34" id="xkS-Ke-Cmh"/>
@@ -154,6 +157,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6s7-RJ-qLM">
                                     <rect key="frame" x="34" y="0.0" width="34" height="34"/>
+                                    <accessibility key="accessibilityConfiguration" label="Markdown bold"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34" id="P4N-TY-fBt"/>
                                         <constraint firstAttribute="width" constant="34" id="ela-UF-c0I"/>
@@ -165,6 +169,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vZ-FK-rFO">
                                     <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                    <accessibility key="accessibilityConfiguration" label="Add photo"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="34" id="oMW-jt-Qsf"/>
                                         <constraint firstAttribute="height" constant="34" id="yfr-3Y-lLm"/>
@@ -175,6 +180,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6os-a6-fTT">
                                     <rect key="frame" x="140" y="2" width="142" height="30"/>
+                                    <accessibility key="accessibilityConfiguration" label="Select blog"/>
                                     <connections>
                                         <action selector="blogHostnamePressed:" destination="-1" eventType="touchUpInside" id="kqq-0B-4nJ"/>
                                     </connections>
