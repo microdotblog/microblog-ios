@@ -558,7 +558,7 @@
 	self.photoToView.image = nil;
 
 	self.photoViewerController = [[NYTPhotosViewController alloc] initWithDataSource:self initialPhoto:self.photoToView delegate:self];
-	//self.photoViewerController.rightBarButtonItems = @[];
+	self.photoViewerController.rightBarButtonItems = @[];
 	
 	[self presentViewController:self.photoViewerController animated:YES completion:^
 	{
