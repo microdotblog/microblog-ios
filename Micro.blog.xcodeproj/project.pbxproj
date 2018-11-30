@@ -54,9 +54,6 @@
 		4B4BF25A21B1CE93002A84EE /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */; };
 		4B4BF25B21B1CE94002A84EE /* NYTPhotoViewerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25721B1CE93002A84EE /* NYTPhotoViewerCore.framework */; };
 		4B4BF25D21B1CE94002A84EE /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */; };
-		4B4BF25E21B1CEA7002A84EE /* FLAnimatedImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4B4BF26021B1CEA7002A84EE /* NYTPhotoViewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4B4BF26121B1CEA7002A84EE /* NYTPhotoViewerCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25721B1CE93002A84EE /* NYTPhotoViewerCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4B4D9B551ED520F800315BBA /* RFFeaturedPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D9B541ED520F800315BBA /* RFFeaturedPhoto.m */; };
 		4B4D9B581ED5213E00315BBA /* FeaturedPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B4D9B561ED5213E00315BBA /* FeaturedPhotoCell.xib */; };
 		4B4D9B5B1ED521BB00315BBA /* RFFeaturedPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D9B5A1ED521BB00315BBA /* RFFeaturedPhotoCell.m */; };
@@ -295,9 +292,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4B4BF25E21B1CEA7002A84EE /* FLAnimatedImage.framework in Embed Frameworks */,
-				4B4BF26021B1CEA7002A84EE /* NYTPhotoViewer.framework in Embed Frameworks */,
-				4B4BF26121B1CEA7002A84EE /* NYTPhotoViewerCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1139,6 +1133,7 @@
 				4BA2C9701B2109D10038C0E5 /* Frameworks */,
 				4BA2C9711B2109D10038C0E5 /* Resources */,
 				4BA9109D1B84A51B00D58F83 /* ShellScript */,
+				4B4BF26221B1D042002A84EE /* ShellScript */,
 				C58FB69E1F87F5D70039823A /* Embed App Extensions */,
 				C5A5159A21B1B6EF00C15092 /* Embed Frameworks */,
 			);
@@ -1341,6 +1336,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4B4BF26221B1D042002A84EE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Shared/Carthage/FLAnimatedImage.framework",
+				"$(SRCROOT)/Shared/Carthage/NYTPhotoViewer.framework",
+				"$(SRCROOT)/Shared/Carthage/NYTPhotoViewerCore.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FLAnimatedImage.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NYTPhotoViewer.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NYTPhotoViewerCore.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 		4BA9109D1B84A51B00D58F83 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
