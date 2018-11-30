@@ -582,11 +582,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			
 			if ([self.attachedPhotos count] > 0) {
 				NSMutableArray* photo_urls = [NSMutableArray array];
+				NSMutableArray* photo_alts = [NSMutableArray array];
+
 				for (RFPhoto* photo in self.attachedPhotos) {
 					[photo_urls addObject:photo.publishedURL];
+					[photo_alts addObject:photo.altText];
 				}
 				
 				[args setObject:photo_urls forKey:@"photo[]"];
+				[args setObject:photo_alts forKey:@"mp-photo-alt[]"];
 			}
 
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
@@ -609,8 +613,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			NSDictionary* args;
 			if ([self.attachedPhotos count] > 0) {
 				NSMutableArray* photo_urls = [NSMutableArray array];
+				NSMutableArray* photo_alts = [NSMutableArray array];
+
 				for (RFPhoto* photo in self.attachedPhotos) {
 					[photo_urls addObject:photo.publishedURL];
+					[photo_alts addObject:photo.altText];
 				}
 
 				if (photo_urls.count == 1) {
@@ -618,7 +625,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 						@"h": @"entry",
 						@"name": self.titleField.text,
 						@"content": text,
-						@"photo": [photo_urls firstObject]
+						@"photo": [photo_urls firstObject],
+						@"mp-photo-alt[]": [photo_alts firstObject]
 					};
 				}
 				else {
@@ -626,7 +634,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 						@"h": @"entry",
 						@"name": self.titleField.text,
 						@"content": text,
-						@"photo[]": photo_urls
+						@"photo[]": photo_urls,
+						@"mp-photo-alt[]": photo_alts
 					};
 				}
 			}
