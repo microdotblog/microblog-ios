@@ -935,7 +935,63 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}];
 }
 
-#pragma mark -
+- (void) removePhoto:(RFPhoto*)photo
+{
+	NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
+	NSUInteger index = [new_photos indexOfObject:photo];
+	[new_photos removeObjectAtIndex:index];
+	self.attachedPhotos = new_photos;
+	[self.collectionView deleteItemsAtIndexPaths:@[ [NSIndexPath indexPathForItem:index inSection:0] ]];
+
+	if (self.attachedPhotos.count == 0) {
+		[UIView animateWithDuration:0.3 animations:^{
+			self.photoBarHeightConstraint.constant = 0;
+			[self.view layoutIfNeeded];
+		}];
+	}
+
+}
+
+- (void) addAltTextToPhoto:(RFPhoto*)photo
+{
+	__block UITextField* altTextTextField = nil;
+	
+	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Alt Text" message:nil preferredStyle:UIAlertControllerStyleAlert];
+	[alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+		altTextTextField = textField;
+	}];
+	
+	[alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+	}]];
+	
+	[alertController addAction:[UIAlertAction actionWithTitle:@"Set" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		NSString* altText = altTextTextField.text;
+		photo.altText = altText;
+	}]];
+	
+	[self.navigationController presentViewController:alertController animated:YES completion:nil];
+
+}
+
+- (void) handlePhotoTap:(RFPhoto*)photo
+{
+	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+	
+	[alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+	}]];
+	
+	[alertController addAction:[UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[self removePhoto:photo];
+	}]];
+	
+	[alertController addAction:[UIAlertAction actionWithTitle:@"Set Alt Text" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[self addAltTextToPhoto:photo];
+	}]];
+	
+	[self.navigationController presentViewController:alertController animated:YES completion:nil];
+}
+
+#pragma mark - Drag and Drop
 
 - (BOOL) dropInteraction:(UIDropInteraction *)interaction canHandleSession:(id<UIDropSession>)session NS_AVAILABLE_IOS(11.0)
 {
@@ -985,7 +1041,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}];
 }
 
-#pragma mark -
+#pragma mark UICollectionViewDataSource UICollectionViewDelegate
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -1005,19 +1061,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	
-
-	NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
-	[new_photos removeObjectAtIndex:indexPath.item];
-	self.attachedPhotos = new_photos;
-	[self.collectionView deleteItemsAtIndexPaths:@[ indexPath ]];
-
-	if (self.attachedPhotos.count == 0) {
-		[UIView animateWithDuration:0.3 animations:^{
-			self.photoBarHeightConstraint.constant = 0;
-			[self.view layoutIfNeeded];
-		}];
-	}
+	RFPhoto* photo = [self.attachedPhotos objectAtIndex:indexPath.item];
+	[self handlePhotoTap:photo];
 }
 
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
