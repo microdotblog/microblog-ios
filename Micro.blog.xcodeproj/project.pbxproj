@@ -185,18 +185,15 @@
 		C59C3B1E20923EFC0076A754 /* RFBlogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B1D20923EFC0076A754 /* RFBlogTableViewCell.m */; };
 		C59C3B21209242310076A754 /* RFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B20209242310076A754 /* RFViewController.m */; };
 		C59C3B22209245570076A754 /* RFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B20209242310076A754 /* RFViewController.m */; };
-		C5A5156921B1AE8900C15092 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5156521B1AE8800C15092 /* FLAnimatedImage.framework */; };
-		C5A5156A21B1AE8900C15092 /* ImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5156621B1AE8800C15092 /* ImagePicker.framework */; };
-		C5A5156B21B1AE8900C15092 /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5156721B1AE8900C15092 /* NYTPhotoViewer.framework */; };
-		C5A5156C21B1AE8900C15092 /* NYTPhotoViewerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5156821B1AE8900C15092 /* NYTPhotoViewerCore.framework */; };
-		C5A5157121B1B37A00C15092 /* ImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5156D21B1B37A00C15092 /* ImagePicker.framework */; };
-		C5A5157221B1B37A00C15092 /* ImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5156D21B1B37A00C15092 /* ImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C5A5157321B1B37A00C15092 /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5156E21B1B37A00C15092 /* NYTPhotoViewer.framework */; };
-		C5A5157421B1B37A00C15092 /* NYTPhotoViewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5156E21B1B37A00C15092 /* NYTPhotoViewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C5A5157521B1B37A00C15092 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5156F21B1B37A00C15092 /* FLAnimatedImage.framework */; };
-		C5A5157621B1B37A00C15092 /* FLAnimatedImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5156F21B1B37A00C15092 /* FLAnimatedImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C5A5157721B1B37A00C15092 /* NYTPhotoViewerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5157021B1B37A00C15092 /* NYTPhotoViewerCore.framework */; };
-		C5A5157821B1B37A00C15092 /* NYTPhotoViewerCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5157021B1B37A00C15092 /* NYTPhotoViewerCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5A5158A21B1B6E300C15092 /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5158621B1B6E300C15092 /* NYTPhotoViewer.framework */; };
+		C5A5158B21B1B6E300C15092 /* NYTPhotoViewerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5158721B1B6E300C15092 /* NYTPhotoViewerCore.framework */; };
+		C5A5158C21B1B6E300C15092 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5158821B1B6E300C15092 /* FLAnimatedImage.framework */; };
+		C5A5159421B1B6EF00C15092 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5158F21B1B6EE00C15092 /* FLAnimatedImage.framework */; };
+		C5A5159521B1B6EF00C15092 /* FLAnimatedImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5158F21B1B6EE00C15092 /* FLAnimatedImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5A5159621B1B6EF00C15092 /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5159021B1B6EF00C15092 /* NYTPhotoViewer.framework */; };
+		C5A5159721B1B6EF00C15092 /* NYTPhotoViewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5159021B1B6EF00C15092 /* NYTPhotoViewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5A5159821B1B6EF00C15092 /* NYTPhotoViewerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5159121B1B6EF00C15092 /* NYTPhotoViewerCore.framework */; };
+		C5A5159921B1B6EF00C15092 /* NYTPhotoViewerCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5159121B1B6EF00C15092 /* NYTPhotoViewerCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5A66B0C1F88325E0063F325 /* CColorConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631F1B8F51710034FC5C /* CColorConverter.m */; };
 		C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663211B8F51710034FC5C /* CMarkupTransformer.m */; };
 		C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663231B8F51710034FC5C /* CSimpleMarkupParser.m */; };
@@ -284,20 +281,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4B9680101E74770A00C9E459 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C5A5157821B1B37A00C15092 /* NYTPhotoViewerCore.framework in Embed Frameworks */,
-				C5A5157221B1B37A00C15092 /* ImagePicker.framework in Embed Frameworks */,
-				C5A5157621B1B37A00C15092 /* FLAnimatedImage.framework in Embed Frameworks */,
-				C5A5157421B1B37A00C15092 /* NYTPhotoViewer.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C58FB69E1F87F5D70039823A /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,6 +290,19 @@
 				C507F3131F8827420013D2B7 /* Micro.blog Sharing.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5A5159A21B1B6EF00C15092 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C5A5159921B1B6EF00C15092 /* NYTPhotoViewerCore.framework in Embed Frameworks */,
+				C5A5159721B1B6EF00C15092 /* NYTPhotoViewer.framework in Embed Frameworks */,
+				C5A5159521B1B6EF00C15092 /* FLAnimatedImage.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C5D77D1B1F9E3B1B00AB0144 /* CopyFiles */ = {
@@ -519,6 +515,14 @@
 		C5A5156E21B1B37A00C15092 /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Carthage/Build/iOS/NYTPhotoViewer.framework; sourceTree = "<group>"; };
 		C5A5156F21B1B37A00C15092 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
 		C5A5157021B1B37A00C15092 /* NYTPhotoViewerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewerCore.framework; path = Carthage/Build/iOS/NYTPhotoViewerCore.framework; sourceTree = "<group>"; };
+		C5A5158621B1B6E300C15092 /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Shared/Carthage/NYTPhotoViewer.framework; sourceTree = SOURCE_ROOT; };
+		C5A5158721B1B6E300C15092 /* NYTPhotoViewerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewerCore.framework; path = Shared/Carthage/NYTPhotoViewerCore.framework; sourceTree = SOURCE_ROOT; };
+		C5A5158821B1B6E300C15092 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Shared/Carthage/FLAnimatedImage.framework; sourceTree = SOURCE_ROOT; };
+		C5A5158921B1B6E300C15092 /* ImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImagePicker.framework; path = Shared/Carthage/ImagePicker.framework; sourceTree = SOURCE_ROOT; };
+		C5A5158E21B1B6EE00C15092 /* ImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImagePicker.framework; path = Shared/Carthage/ImagePicker.framework; sourceTree = "<group>"; };
+		C5A5158F21B1B6EE00C15092 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Shared/Carthage/FLAnimatedImage.framework; sourceTree = "<group>"; };
+		C5A5159021B1B6EF00C15092 /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Shared/Carthage/NYTPhotoViewer.framework; sourceTree = "<group>"; };
+		C5A5159121B1B6EF00C15092 /* NYTPhotoViewerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewerCore.framework; path = Shared/Carthage/NYTPhotoViewerCore.framework; sourceTree = "<group>"; };
 		C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIBilateralFilter.cikernel; sourceTree = "<group>"; };
 		C5CED6B91ECF792E0068F537 /* YUCIBilateralFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIBilateralFilter.h; sourceTree = "<group>"; };
 		C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIBilateralFilter.m; sourceTree = "<group>"; };
@@ -643,15 +647,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5A5157321B1B37A00C15092 /* NYTPhotoViewer.framework in Frameworks */,
-				C5A5157521B1B37A00C15092 /* FLAnimatedImage.framework in Frameworks */,
-				C5A5156921B1AE8900C15092 /* FLAnimatedImage.framework in Frameworks */,
-				C5A5156A21B1AE8900C15092 /* ImagePicker.framework in Frameworks */,
-				C5A5157121B1B37A00C15092 /* ImagePicker.framework in Frameworks */,
-				C5A5156B21B1AE8900C15092 /* NYTPhotoViewer.framework in Frameworks */,
-				C5A5156C21B1AE8900C15092 /* NYTPhotoViewerCore.framework in Frameworks */,
+				C5A5158A21B1B6E300C15092 /* NYTPhotoViewer.framework in Frameworks */,
+				C5A5159421B1B6EF00C15092 /* FLAnimatedImage.framework in Frameworks */,
+				C5A5158B21B1B6E300C15092 /* NYTPhotoViewerCore.framework in Frameworks */,
+				C5A5159621B1B6EF00C15092 /* NYTPhotoViewer.framework in Frameworks */,
+				C5A5158C21B1B6E300C15092 /* FLAnimatedImage.framework in Frameworks */,
 				4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */,
-				C5A5157721B1B37A00C15092 /* NYTPhotoViewerCore.framework in Frameworks */,
+				C5A5159821B1B6EF00C15092 /* NYTPhotoViewerCore.framework in Frameworks */,
 				C5403B691F9E3C30002696EE /* libCTidy.a in Frameworks */,
 				4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */,
 				4BA910A21B84A54A00D58F83 /* Crashlytics.framework in Frameworks */,
@@ -730,9 +732,13 @@
 			isa = PBXGroup;
 			children = (
 				C5A5156F21B1B37A00C15092 /* FLAnimatedImage.framework */,
+				C5A5158F21B1B6EE00C15092 /* FLAnimatedImage.framework */,
 				C5A5156D21B1B37A00C15092 /* ImagePicker.framework */,
 				C5A5156E21B1B37A00C15092 /* NYTPhotoViewer.framework */,
 				C5A5157021B1B37A00C15092 /* NYTPhotoViewerCore.framework */,
+				C5A5158E21B1B6EE00C15092 /* ImagePicker.framework */,
+				C5A5159021B1B6EF00C15092 /* NYTPhotoViewer.framework */,
+				C5A5159121B1B6EF00C15092 /* NYTPhotoViewerCore.framework */,
 				4BA3A1641D8876D70097D02E /* Snippets.entitlements */,
 				4BA2C9751B2109D10038C0E5 /* Source */,
 				4BA2C99D1B2109E10038C0E5 /* Shared */,
@@ -937,8 +943,12 @@
 			children = (
 				C5A5156521B1AE8800C15092 /* FLAnimatedImage.framework */,
 				C5A5156621B1AE8800C15092 /* ImagePicker.framework */,
+				C5A5158821B1B6E300C15092 /* FLAnimatedImage.framework */,
+				C5A5158921B1B6E300C15092 /* ImagePicker.framework */,
 				C5A5156721B1AE8900C15092 /* NYTPhotoViewer.framework */,
 				C5A5156821B1AE8900C15092 /* NYTPhotoViewerCore.framework */,
+				C5A5158621B1B6E300C15092 /* NYTPhotoViewer.framework */,
+				C5A5158721B1B6E300C15092 /* NYTPhotoViewerCore.framework */,
 				4B14E41F1E82F5B50032F54B /* Photos.framework */,
 				4B14E4201E82F5B50032F54B /* PhotosUI.framework */,
 				4BA9109F1B84A54A00D58F83 /* Fabric.framework */,
@@ -1161,8 +1171,8 @@
 				4BA2C9701B2109D10038C0E5 /* Frameworks */,
 				4BA2C9711B2109D10038C0E5 /* Resources */,
 				4BA9109D1B84A51B00D58F83 /* ShellScript */,
-				4B9680101E74770A00C9E459 /* Embed Frameworks */,
 				C58FB69E1F87F5D70039823A /* Embed App Extensions */,
+				C5A5159A21B1B6EF00C15092 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1841,7 +1851,6 @@
 		4BA2C9971B2109D10038C0E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
@@ -1855,6 +1864,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Shared/Zendesk",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Shared/Carthage",
 				);
 				INFOPLIST_FILE = Snippets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1872,7 +1882,6 @@
 		4BA2C9981B2109D10038C0E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
@@ -1886,6 +1895,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Shared/Zendesk",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Shared/Carthage",
 				);
 				INFOPLIST_FILE = Snippets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
