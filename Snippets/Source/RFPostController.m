@@ -956,9 +956,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	__block UITextField* altTextTextField = nil;
 	
-	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Alt Text" message:nil preferredStyle:UIAlertControllerStyleAlert];
+	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Description" message:nil preferredStyle:UIAlertControllerStyleAlert];
 	[alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
 		altTextTextField = textField;
+		altTextTextField.text = photo.altText;
 	}];
 	
 	[alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -980,14 +981,21 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 	}]];
 	
-	[alertController addAction:[UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+	if (photo.altText.length > 0) {
+		[alertController addAction:[UIAlertAction actionWithTitle:@"Edit Description" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+			[self addAltTextToPhoto:photo];
+		}]];
+	}
+	else {
+		[alertController addAction:[UIAlertAction actionWithTitle:@"Add Description" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+			[self addAltTextToPhoto:photo];
+		}]];
+	}
+
+	[alertController addAction:[UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 		[self removePhoto:photo];
 	}]];
-	
-	[alertController addAction:[UIAlertAction actionWithTitle:@"Set Alt Text" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-		[self addAltTextToPhoto:photo];
-	}]];
-	
+
 	[self.navigationController presentViewController:alertController animated:YES completion:nil];
 }
 
