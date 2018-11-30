@@ -66,6 +66,23 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self hideSearch];
 }
 
+- (UITextField *) findTextFieldInView:(UIView *)v
+{
+	id result = nil;
+	
+	for (UIView* sub in v.subviews) {
+		if ([sub isKindOfClass:[UITextField class]]) {
+			result = sub;
+			break;
+		}
+		else {
+			result = [self findTextFieldInView:sub];
+		}
+	}
+	
+	return result;
+}
+
 - (void) showSearch
 {
 	CGRect r = self.view.bounds;
@@ -85,13 +102,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.view addSubview:self.backdropView];
 	[self.view addSubview:self.searchBar];
 
-	UITextField* field = nil;
-	for (UIView* sub in self.searchBar.subviews) {
-		if ([sub isKindOfClass:[UITextField class]]) {
-			field = sub;
-			field.tintColor = [UIColor clearColor];
-			break;
-		}
+	UITextField* field = [self findTextFieldInView:self.searchBar];
+	if (field) {
+		// to avoid animation glitch, temporary hide the cursor
+		field.tintColor = [UIColor clearColor];
 	}
 
 	[UIView animateWithDuration:0.3 animations:^{
