@@ -51,9 +51,12 @@
 		4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663251B8F51710034FC5C /* NSString+MarkupExtensions.m */; };
 		4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */; };
 		4B46632F1B8F51710034FC5C /* UILabel+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */; };
-		4B4BF25321B1C825002A84EE /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5158821B1B6E300C15092 /* FLAnimatedImage.framework */; };
-		4B4BF25421B1C825002A84EE /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5158621B1B6E300C15092 /* NYTPhotoViewer.framework */; };
-		4B4BF25521B1C825002A84EE /* NYTPhotoViewerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5158721B1B6E300C15092 /* NYTPhotoViewerCore.framework */; };
+		4B4BF25A21B1CE93002A84EE /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */; };
+		4B4BF25B21B1CE94002A84EE /* NYTPhotoViewerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25721B1CE93002A84EE /* NYTPhotoViewerCore.framework */; };
+		4B4BF25D21B1CE94002A84EE /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */; };
+		4B4BF25E21B1CEA7002A84EE /* FLAnimatedImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4B4BF26021B1CEA7002A84EE /* NYTPhotoViewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4B4BF26121B1CEA7002A84EE /* NYTPhotoViewerCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25721B1CE93002A84EE /* NYTPhotoViewerCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4B4D9B551ED520F800315BBA /* RFFeaturedPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D9B541ED520F800315BBA /* RFFeaturedPhoto.m */; };
 		4B4D9B581ED5213E00315BBA /* FeaturedPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B4D9B561ED5213E00315BBA /* FeaturedPhotoCell.xib */; };
 		4B4D9B5B1ED521BB00315BBA /* RFFeaturedPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D9B5A1ED521BB00315BBA /* RFFeaturedPhotoCell.m */; };
@@ -188,9 +191,6 @@
 		C59C3B1E20923EFC0076A754 /* RFBlogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B1D20923EFC0076A754 /* RFBlogTableViewCell.m */; };
 		C59C3B21209242310076A754 /* RFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B20209242310076A754 /* RFViewController.m */; };
 		C59C3B22209245570076A754 /* RFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B20209242310076A754 /* RFViewController.m */; };
-		C5A5159521B1B6EF00C15092 /* FLAnimatedImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5158F21B1B6EE00C15092 /* FLAnimatedImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C5A5159721B1B6EF00C15092 /* NYTPhotoViewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5159021B1B6EF00C15092 /* NYTPhotoViewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C5A5159921B1B6EF00C15092 /* NYTPhotoViewerCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5159121B1B6EF00C15092 /* NYTPhotoViewerCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5A66B0C1F88325E0063F325 /* CColorConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631F1B8F51710034FC5C /* CColorConverter.m */; };
 		C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663211B8F51710034FC5C /* CMarkupTransformer.m */; };
 		C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663231B8F51710034FC5C /* CSimpleMarkupParser.m */; };
@@ -295,9 +295,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C5A5159921B1B6EF00C15092 /* NYTPhotoViewerCore.framework in Embed Frameworks */,
-				C5A5159721B1B6EF00C15092 /* NYTPhotoViewer.framework in Embed Frameworks */,
-				C5A5159521B1B6EF00C15092 /* FLAnimatedImage.framework in Embed Frameworks */,
+				4B4BF25E21B1CEA7002A84EE /* FLAnimatedImage.framework in Embed Frameworks */,
+				4B4BF26021B1CEA7002A84EE /* NYTPhotoViewer.framework in Embed Frameworks */,
+				4B4BF26121B1CEA7002A84EE /* NYTPhotoViewerCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +381,9 @@
 		4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+StyleUtilities.m"; path = "Shared/MarkupLabel/UIFont+StyleUtilities.m"; sourceTree = SOURCE_ROOT; };
 		4B4663281B8F51710034FC5C /* UILabel+MarkupExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+MarkupExtensions.h"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.h"; sourceTree = SOURCE_ROOT; };
 		4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+MarkupExtensions.m"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.m"; sourceTree = SOURCE_ROOT; };
+		4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Shared/Carthage/NYTPhotoViewer.framework; sourceTree = SOURCE_ROOT; };
+		4B4BF25721B1CE93002A84EE /* NYTPhotoViewerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewerCore.framework; path = Shared/Carthage/NYTPhotoViewerCore.framework; sourceTree = SOURCE_ROOT; };
+		4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Shared/Carthage/FLAnimatedImage.framework; sourceTree = SOURCE_ROOT; };
 		4B4D9B531ED520F800315BBA /* RFFeaturedPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFeaturedPhoto.h; path = Source/RFFeaturedPhoto.h; sourceTree = "<group>"; };
 		4B4D9B541ED520F800315BBA /* RFFeaturedPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFFeaturedPhoto.m; path = Source/RFFeaturedPhoto.m; sourceTree = "<group>"; };
 		4B4D9B571ED5213E00315BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeaturedPhotoCell.xib; sourceTree = "<group>"; };
@@ -504,22 +507,6 @@
 		C59C3B1F209242310076A754 /* RFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFViewController.h; path = Source/RFViewController.h; sourceTree = "<group>"; };
 		C59C3B20209242310076A754 /* RFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFViewController.m; path = Source/RFViewController.m; sourceTree = "<group>"; };
 		C5A4AC011F9A507400415646 /* Micro.blog Sharing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Micro.blog Sharing.entitlements"; sourceTree = "<group>"; };
-		C5A5156521B1AE8800C15092 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = SOURCE_ROOT; };
-		C5A5156621B1AE8800C15092 /* ImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImagePicker.framework; path = Carthage/Build/iOS/ImagePicker.framework; sourceTree = SOURCE_ROOT; };
-		C5A5156721B1AE8900C15092 /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Carthage/Build/iOS/NYTPhotoViewer.framework; sourceTree = SOURCE_ROOT; };
-		C5A5156821B1AE8900C15092 /* NYTPhotoViewerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewerCore.framework; path = Carthage/Build/iOS/NYTPhotoViewerCore.framework; sourceTree = SOURCE_ROOT; };
-		C5A5156D21B1B37A00C15092 /* ImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImagePicker.framework; path = Carthage/Build/iOS/ImagePicker.framework; sourceTree = "<group>"; };
-		C5A5156E21B1B37A00C15092 /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Carthage/Build/iOS/NYTPhotoViewer.framework; sourceTree = "<group>"; };
-		C5A5156F21B1B37A00C15092 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
-		C5A5157021B1B37A00C15092 /* NYTPhotoViewerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewerCore.framework; path = Carthage/Build/iOS/NYTPhotoViewerCore.framework; sourceTree = "<group>"; };
-		C5A5158621B1B6E300C15092 /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Shared/Carthage/NYTPhotoViewer.framework; sourceTree = SOURCE_ROOT; };
-		C5A5158721B1B6E300C15092 /* NYTPhotoViewerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewerCore.framework; path = Shared/Carthage/NYTPhotoViewerCore.framework; sourceTree = SOURCE_ROOT; };
-		C5A5158821B1B6E300C15092 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Shared/Carthage/FLAnimatedImage.framework; sourceTree = SOURCE_ROOT; };
-		C5A5158921B1B6E300C15092 /* ImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImagePicker.framework; path = Shared/Carthage/ImagePicker.framework; sourceTree = SOURCE_ROOT; };
-		C5A5158E21B1B6EE00C15092 /* ImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImagePicker.framework; path = Shared/Carthage/ImagePicker.framework; sourceTree = "<group>"; };
-		C5A5158F21B1B6EE00C15092 /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Shared/Carthage/FLAnimatedImage.framework; sourceTree = "<group>"; };
-		C5A5159021B1B6EF00C15092 /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Shared/Carthage/NYTPhotoViewer.framework; sourceTree = "<group>"; };
-		C5A5159121B1B6EF00C15092 /* NYTPhotoViewerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewerCore.framework; path = Shared/Carthage/NYTPhotoViewerCore.framework; sourceTree = "<group>"; };
 		C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIBilateralFilter.cikernel; sourceTree = "<group>"; };
 		C5CED6B91ECF792E0068F537 /* YUCIBilateralFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIBilateralFilter.h; sourceTree = "<group>"; };
 		C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIBilateralFilter.m; sourceTree = "<group>"; };
@@ -644,12 +631,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B4BF25321B1C825002A84EE /* FLAnimatedImage.framework in Frameworks */,
-				4B4BF25421B1C825002A84EE /* NYTPhotoViewer.framework in Frameworks */,
-				4B4BF25521B1C825002A84EE /* NYTPhotoViewerCore.framework in Frameworks */,
 				4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */,
+				4B4BF25D21B1CE94002A84EE /* FLAnimatedImage.framework in Frameworks */,
+				4B4BF25B21B1CE94002A84EE /* NYTPhotoViewerCore.framework in Frameworks */,
 				C5403B691F9E3C30002696EE /* libCTidy.a in Frameworks */,
 				4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */,
+				4B4BF25A21B1CE93002A84EE /* NYTPhotoViewer.framework in Frameworks */,
 				4BA910A21B84A54A00D58F83 /* Crashlytics.framework in Frameworks */,
 				4BA910A11B84A54A00D58F83 /* Fabric.framework in Frameworks */,
 			);
@@ -725,14 +712,6 @@
 		4BA2C96A1B2109D10038C0E5 = {
 			isa = PBXGroup;
 			children = (
-				C5A5156F21B1B37A00C15092 /* FLAnimatedImage.framework */,
-				C5A5158F21B1B6EE00C15092 /* FLAnimatedImage.framework */,
-				C5A5156D21B1B37A00C15092 /* ImagePicker.framework */,
-				C5A5156E21B1B37A00C15092 /* NYTPhotoViewer.framework */,
-				C5A5157021B1B37A00C15092 /* NYTPhotoViewerCore.framework */,
-				C5A5158E21B1B6EE00C15092 /* ImagePicker.framework */,
-				C5A5159021B1B6EF00C15092 /* NYTPhotoViewer.framework */,
-				C5A5159121B1B6EF00C15092 /* NYTPhotoViewerCore.framework */,
 				4BA3A1641D8876D70097D02E /* Snippets.entitlements */,
 				4BA2C9751B2109D10038C0E5 /* Source */,
 				4BA2C99D1B2109E10038C0E5 /* Shared */,
@@ -935,14 +914,9 @@
 		4BA9109E1B84A53A00D58F83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C5A5156521B1AE8800C15092 /* FLAnimatedImage.framework */,
-				C5A5156621B1AE8800C15092 /* ImagePicker.framework */,
-				C5A5158821B1B6E300C15092 /* FLAnimatedImage.framework */,
-				C5A5158921B1B6E300C15092 /* ImagePicker.framework */,
-				C5A5156721B1AE8900C15092 /* NYTPhotoViewer.framework */,
-				C5A5156821B1AE8900C15092 /* NYTPhotoViewerCore.framework */,
-				C5A5158621B1B6E300C15092 /* NYTPhotoViewer.framework */,
-				C5A5158721B1B6E300C15092 /* NYTPhotoViewerCore.framework */,
+				4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */,
+				4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */,
+				4B4BF25721B1CE93002A84EE /* NYTPhotoViewerCore.framework */,
 				4B14E41F1E82F5B50032F54B /* Photos.framework */,
 				4B14E4201E82F5B50032F54B /* PhotosUI.framework */,
 				4BA9109F1B84A54A00D58F83 /* Fabric.framework */,
