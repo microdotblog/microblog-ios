@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="AvenirNext.ttc">
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-UltraLight</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFPostController">
             <connections>
@@ -66,7 +60,7 @@
                                     </constraints>
                                 </activityIndicatorView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now publishing to your microblog." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuZ-E2-gY3">
-                                    <rect key="frame" x="32" y="11.5" width="278" height="22"/>
+                                    <rect key="frame" x="32" y="11" width="278" height="22"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -179,6 +173,12 @@
                                         <action selector="showPhotos:" destination="-1" eventType="touchUpInside" id="aeN-gY-cXQ"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6os-a6-fTT">
+                                    <rect key="frame" x="140" y="2" width="142" height="30"/>
+                                    <connections>
+                                        <action selector="blogHostnamePressed:" destination="-1" eventType="touchUpInside" id="kqq-0B-4nJ"/>
+                                    </connections>
+                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[ ]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLn-xb-oNU">
                                     <rect key="frame" x="109" y="6" width="21" height="21"/>
                                     <constraints>
@@ -284,15 +284,18 @@
                                 <constraint firstAttribute="bottom" secondItem="fWw-bk-EkH" secondAttribute="bottom" id="VSK-gk-raz"/>
                                 <constraint firstAttribute="bottom" secondItem="boh-G1-f3J" secondAttribute="bottom" constant="6" id="WMr-tv-Xcb"/>
                                 <constraint firstAttribute="bottom" secondItem="DWX-HH-zje" secondAttribute="bottom" id="WXg-95-2Ep"/>
+                                <constraint firstItem="AiA-DF-hAa" firstAttribute="leading" secondItem="6os-a6-fTT" secondAttribute="trailing" constant="4" id="X9j-eU-zkn"/>
                                 <constraint firstItem="Wws-YI-Nr0" firstAttribute="leading" secondItem="0ev-DD-PlQ" secondAttribute="trailing" id="Xm5-Ye-e5T"/>
                                 <constraint firstItem="3P0-OZ-HYq" firstAttribute="leading" secondItem="6of-5U-PI0" secondAttribute="trailing" id="Zhf-Nd-8jn"/>
                                 <constraint firstItem="boh-G1-f3J" firstAttribute="leading" secondItem="3P0-OZ-HYq" secondAttribute="trailing" constant="6" id="a0p-Ta-YRo"/>
                                 <constraint firstItem="1Gl-6r-27N" firstAttribute="leading" secondItem="DWX-HH-zje" secondAttribute="trailing" id="a41-Rk-bg6"/>
                                 <constraint firstAttribute="bottom" secondItem="7vZ-FK-rFO" secondAttribute="bottom" id="bcQ-MM-Z5o"/>
+                                <constraint firstItem="6os-a6-fTT" firstAttribute="leading" secondItem="3P0-OZ-HYq" secondAttribute="trailing" constant="3" id="ggj-Sy-Z4Q"/>
                                 <constraint firstItem="Wws-YI-Nr0" firstAttribute="top" secondItem="I8I-kA-x0u" secondAttribute="top" id="j2Z-wx-ZxJ"/>
                                 <constraint firstAttribute="bottom" secondItem="AiA-DF-hAa" secondAttribute="bottom" id="lUM-KA-bGO"/>
                                 <constraint firstItem="t9n-Nv-bEP" firstAttribute="centerX" secondItem="7vZ-FK-rFO" secondAttribute="centerX" id="lva-ua-wPH"/>
                                 <constraint firstItem="AiA-DF-hAa" firstAttribute="leading" secondItem="fWw-bk-EkH" secondAttribute="trailing" constant="-1" id="nnr-2X-hCc"/>
+                                <constraint firstAttribute="bottom" secondItem="6os-a6-fTT" secondAttribute="bottom" constant="2" id="ped-e1-rJM"/>
                                 <constraint firstItem="oqz-qQ-S4M" firstAttribute="top" secondItem="I8I-kA-x0u" secondAttribute="top" id="pnQ-ap-hZI"/>
                                 <constraint firstItem="0ev-DD-PlQ" firstAttribute="leading" secondItem="dbM-Ug-ApQ" secondAttribute="trailing" id="rMU-kl-m29"/>
                                 <constraint firstAttribute="bottom" secondItem="Wws-YI-Nr0" secondAttribute="bottom" id="s6S-LC-cLS"/>
@@ -306,6 +309,7 @@
                                 <constraint firstAttribute="bottom" secondItem="xLn-xb-oNU" secondAttribute="bottom" constant="7" id="y0g-SN-sUM"/>
                                 <constraint firstAttribute="bottom" secondItem="6of-5U-PI0" secondAttribute="bottom" id="y8o-8D-j8V"/>
                                 <constraint firstAttribute="trailing" secondItem="AiA-DF-hAa" secondAttribute="trailing" id="yFL-WT-cwV"/>
+                                <constraint firstItem="6os-a6-fTT" firstAttribute="top" secondItem="I8I-kA-x0u" secondAttribute="top" constant="2" id="yx3-yy-Lqs"/>
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="va1-Ew-xJV">
@@ -377,10 +381,11 @@
                 <constraint firstItem="VbH-di-quh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="K6B-pq-R5p"/>
                 <constraint firstItem="VbH-di-quh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZLo-BP-189"/>
             </constraints>
+            <point key="canvasLocation" x="138.75" y="153.16901408450704"/>
         </view>
     </objects>
     <resources>
-        <image name="post_camera" width="16" height="16"/>
-        <image name="post_settings" width="16" height="16"/>
+        <image name="post_camera" width="24" height="24"/>
+        <image name="post_settings" width="24" height="24"/>
     </resources>
 </document>

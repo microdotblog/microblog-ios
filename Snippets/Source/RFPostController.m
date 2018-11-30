@@ -110,6 +110,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	self.progressHeaderHeightConstraint.constant = 0.0;
 	self.progressHeaderView.alpha = 0.0;
+
+	[self setupBlogName];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -491,6 +493,13 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		r.location = r.location - 1;
 		self.textView.selectedRange = r;
 	}
+}
+
+- (IBAction) blogHostnamePressed:(id)sender
+{
+	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Blogs" bundle:nil];
+	UIViewController* controller = [storyboard instantiateViewControllerWithIdentifier:@"BlogsNavigation"];
+	[self presentViewController:controller animated:NO completion:NULL];
 }
 
 - (IBAction) settingsPressed:(id)sender

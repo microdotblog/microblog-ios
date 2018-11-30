@@ -68,7 +68,8 @@
 
 - (void) selectBlog:(NSDictionary*)blogInfo
 {
-	[RFSettings setSelectedBlogInfo:blogInfo];	
+	[RFSettings setSelectedBlogInfo:blogInfo];
+	[RFSettings setAccountDefaultSite:[blogInfo objectForKey:@"name"]];
 	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
