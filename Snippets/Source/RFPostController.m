@@ -557,11 +557,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[self showProgressHeader:@"Now sending your reply..."];
 		RFClient* client = [[RFClient alloc] initWithPath:@"/posts/reply"];
 		NSMutableDictionary* args = [NSMutableDictionary dictionary];
-		NSString* uid = [RFSettings selectedBlogUid];
-		if (uid)
-		{
-			[args setObject:uid forKey:@"mp-destination"];
-		}
 		[args setObject:self.replyPostID forKey:@"id"];
 		[args setObject:text forKey:@"text"];
 
