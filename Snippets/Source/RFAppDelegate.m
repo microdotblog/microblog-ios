@@ -456,7 +456,7 @@
 
 - (void) showUserFollowingWithUsername:(NSString*)username
 {
-	NSString* path = [NSString stringWithFormat:@"/hybrid/following/%@", username];
+	NSString* path = [NSString stringWithFormat:@"/hybrid/users/discover/%@", username];
 	RFTimelineController* user_controller = [[RFTimelineController alloc] initWithEndpoint:path title:@"Following"];
 	[[self activeNavigationController] pushViewController:user_controller animated:YES];
 }

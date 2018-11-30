@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Book</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFUserController">
             <connections>
@@ -158,10 +154,9 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EX-eR-CJn">
-                            <rect key="frame" x="13" y="5" width="148" height="34"/>
+                            <rect key="frame" x="13" y="5" width="349" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="34" id="6bI-qz-KBt"/>
-                                <constraint firstAttribute="width" constant="148" id="Yk9-7X-mt1"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                             <state key="normal" title="Following"/>
@@ -172,6 +167,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="8EX-eR-CJn" secondAttribute="trailing" constant="13" id="1fV-24-bG7"/>
                         <constraint firstItem="VcU-yQ-wtM" firstAttribute="top" secondItem="6fQ-oE-lsZ" secondAttribute="top" id="4zL-rx-UGL"/>
                         <constraint firstAttribute="height" constant="44" id="T81-SU-XaR"/>
                         <constraint firstItem="8EX-eR-CJn" firstAttribute="leading" secondItem="6fQ-oE-lsZ" secondAttribute="leading" constant="13" id="WQN-oo-jX9"/>
@@ -197,7 +193,7 @@
                 <constraint firstItem="zMe-wL-fBq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xC6-FY-GLE"/>
                 <constraint firstItem="6fQ-oE-lsZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yAZ-3p-ymV"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="91.5"/>
+            <point key="canvasLocation" x="32.799999999999997" y="91.304347826086968"/>
         </view>
     </objects>
 </document>

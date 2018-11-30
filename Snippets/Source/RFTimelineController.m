@@ -323,7 +323,7 @@
 	else if ([self.endpoint containsString:@"/hybrid/discover/"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
-	else if ([self.endpoint containsString:@"/hybrid/following/"])
+	else if ([self.endpoint containsString:@"/hybrid/users/discover/"])
 	{
 		client = [[RFClient alloc] initWithPath:self.endpoint];
 	}

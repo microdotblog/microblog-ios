@@ -275,7 +275,7 @@
 	NSString* followingCountString = @"";
 	if (microBlogInfo)
 	{
-		NSNumber* followingCountNumber = [microBlogInfo objectForKey:@"following_count"];
+		NSNumber* followingCountNumber = [microBlogInfo objectForKey:@"discover_count"];
 		if (followingCountNumber)
 		{
 			followingCountString = followingCountNumber.stringValue;
@@ -283,8 +283,7 @@
 	}
 	
 	if (followingCountString.length > 0) {
-		NSString* titleText = @"Following ";
-		titleText = [titleText stringByAppendingString:followingCountString];
+		NSString* titleText = [NSString stringWithFormat:@"Following %@ users you aren't following", followingCountString];
 		[self.followingButton setTitle:titleText forState:UIControlStateNormal];
 		RFDispatchSeconds (0.1, ^{
 			self.followingView.hidden = NO;
