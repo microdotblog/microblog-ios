@@ -11,6 +11,7 @@
 @interface RFUserController : RFTimelineController
 
 @property (strong, nonatomic) NSString* username;
+@property (assign, nonatomic) BOOL isYou;
 
 - (instancetype) initWithEndpoint:(NSString *)endpoint username:(NSString *)username;
 

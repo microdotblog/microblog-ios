@@ -230,7 +230,12 @@
 
 - (IBAction) onFollowing:(id)sender
 {
-	[[NSNotificationCenter defaultCenter] postNotificationName:kShowUserFollowingNotification object:nil userInfo:@{ kShowUserFollowingUsernameKey : self.username } ];
+	if (self.isYou) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:kShowUserFollowingNotification object:nil userInfo:@{ kShowUserFollowingUsernameKey : self.username } ];
+	}
+	else {
+		[[NSNotificationCenter defaultCenter] postNotificationName:kShowUserDiscoverNotification object:nil userInfo:@{ kShowUserDiscoverUsernameKey : self.username } ];
+	}
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -269,13 +274,21 @@
     self.fullNameLabel.text = [authorInfo objectForKey:@"name"];
     self.bioLabel.text = [microBlogInfo objectForKey:@"bio"];
     self.blogAddressLabel.text = [authorInfo objectForKey:@"url"];
-    
+    self.isYou = [[microBlogInfo objectForKey:@"is_you"] boolValue];
+
     self.pathToBlog = [authorInfo objectForKey:@"url"];
 	
 	NSString* followingCountString = @"";
 	if (microBlogInfo)
 	{
-		NSNumber* followingCountNumber = [microBlogInfo objectForKey:@"discover_count"];
+		NSNumber* followingCountNumber;
+		if (self.isYou) {
+			followingCountNumber = [microBlogInfo objectForKey:@"following_count"];
+		}
+		else {
+			followingCountNumber = [microBlogInfo objectForKey:@"discover_count"];
+		}
+		
 		if (followingCountNumber)
 		{
 			followingCountString = followingCountNumber.stringValue;
@@ -283,7 +296,14 @@
 	}
 	
 	if (followingCountString.length > 0) {
-		NSString* titleText = [NSString stringWithFormat:@"Following %@ users you aren't following", followingCountString];
+		NSString* titleText;
+		if (self.isYou) {
+			titleText = [NSString stringWithFormat:@"Following %@", followingCountString];
+		}
+		else {
+			titleText = [NSString stringWithFormat:@"Following %@ users you aren't following", followingCountString];
+		}
+
 		[self.followingButton setTitle:titleText forState:UIControlStateNormal];
 		RFDispatchSeconds (0.1, ^{
 			self.followingView.hidden = NO;
