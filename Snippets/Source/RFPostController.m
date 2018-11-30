@@ -1005,6 +1005,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+	
+
 	NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
 	[new_photos removeObjectAtIndex:indexPath.item];
 	self.attachedPhotos = new_photos;
