@@ -99,13 +99,13 @@ class ImageStackView: UIView {
     activityView.startAnimating()
     UIView.animate(withDuration: 0.3, animations: {
       self.activityView.alpha = 1.0
-    }) 
+    })
   }
 }
 
 extension ImageStackView {
 
-  func imageDidPush(_ notification: Notification) {
+  @objc func imageDidPush(_ notification: Notification) {
     let emptyView = views.filter { $0.image == nil }.first
 
     if let emptyView = emptyView {
@@ -118,16 +118,16 @@ extension ImageStackView {
     }
   }
 
-  func imageStackDidChangeContent(_ notification: Notification) {
+  @objc func imageStackDidChangeContent(_ notification: Notification) {
     if let sender = notification.object as? ImageStack {
       renderViews(sender.assets)
       activityView.stopAnimating()
     }
   }
 
-  func renderViews(_ assets: [PHAsset]) {
-    if let firstView = views.first , assets.isEmpty {
-      views.forEach{
+  @objc func renderViews(_ assets: [PHAsset]) {
+    if let firstView = views.first, assets.isEmpty {
+      views.forEach {
         $0.image = nil
         $0.alpha = 0
       }
@@ -152,7 +152,7 @@ extension ImageStackView {
       if index == photos.count {
         UIView.animate(withDuration: 0.3, animations: {
           self.activityView.frame.origin = CGPoint(x: view.center.x + 3, y: view.center.x + 3)
-        }) 
+        })
       }
     }
   }
@@ -169,6 +169,6 @@ extension ImageStackView {
           }, completion: { _ in
             self.activityView.stopAnimating()
         })
-    }) 
+    })
   }
 }

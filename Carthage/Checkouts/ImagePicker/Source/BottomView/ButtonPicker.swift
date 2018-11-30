@@ -13,10 +13,12 @@ class ButtonPicker: UIButton {
     static let buttonBorderSize: CGFloat = 68
   }
 
+  var configuration = Configuration()
+
   lazy var numberLabel: UILabel = { [unowned self] in
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = Configuration.numberLabelFont
+    label.font = self.configuration.numberLabelFont
 
     return label
     }()
@@ -25,9 +27,20 @@ class ButtonPicker: UIButton {
 
   // MARK: - Initializers
 
+  public init(configuration: Configuration? = nil) {
+    if let configuration = configuration {
+      self.configuration = configuration
+    }
+    super.init(frame: .zero)
+    configure()
+  }
+
   override init(frame: CGRect) {
     super.init(frame: frame)
+    configure()
+  }
 
+  func configure() {
     addSubview(numberLabel)
 
     subscribe()
@@ -72,20 +85,20 @@ class ButtonPicker: UIButton {
 
   // MARK: - Actions
 
-  func recalculatePhotosCount(_ notification: Notification) {
+  @objc func recalculatePhotosCount(_ notification: Notification) {
     guard let sender = notification.object as? ImageStack else { return }
     numberLabel.text = sender.assets.isEmpty ? "" : String(sender.assets.count)
   }
 
-  func pickerButtonDidPress(_ button: UIButton) {
+  @objc func pickerButtonDidPress(_ button: UIButton) {
     backgroundColor = UIColor.white
     numberLabel.textColor = UIColor.black
     numberLabel.sizeToFit()
     delegate?.buttonDidPress()
   }
 
-  func pickerButtonDidHighlight(_ button: UIButton) {
+  @objc func pickerButtonDidHighlight(_ button: UIButton) {
     numberLabel.textColor = UIColor.white
-    backgroundColor = UIColor(red:0.3, green:0.3, blue:0.3, alpha:1)
+    backgroundColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
   }
 }

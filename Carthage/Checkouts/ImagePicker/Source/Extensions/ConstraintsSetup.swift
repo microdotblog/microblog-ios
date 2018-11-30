@@ -44,13 +44,15 @@ extension BottomContainerView {
       relatedBy: .equal, toItem: self, attribute: .centerY,
       multiplier: 1, constant: -2))
 
+    let screenSize = Helper.screenSizeForOrientation()
+
     addConstraint(NSLayoutConstraint(item: doneButton, attribute: .centerX,
       relatedBy: .equal, toItem: self, attribute: .right,
-      multiplier: 1, constant: -(UIScreen.main.bounds.width - (ButtonPicker.Dimensions.buttonBorderSize + UIScreen.main.bounds.width)/2)/2))
+      multiplier: 1, constant: -(screenSize.width - (ButtonPicker.Dimensions.buttonBorderSize + screenSize.width)/2)/2))
 
     addConstraint(NSLayoutConstraint(item: stackView, attribute: .centerX,
       relatedBy: .equal, toItem: self, attribute: .left,
-      multiplier: 1, constant: UIScreen.main.bounds.width/4 - ButtonPicker.Dimensions.buttonBorderSize/3))
+      multiplier: 1, constant: screenSize.width/4 - ButtonPicker.Dimensions.buttonBorderSize/3))
 
     addConstraint(NSLayoutConstraint(item: topSeparator, attribute: .height,
       relatedBy: .equal, toItem: nil, attribute: .notAnAttribute,
@@ -75,7 +77,7 @@ extension TopView {
       relatedBy: .equal, toItem: nil, attribute: .notAnAttribute,
       multiplier: 1, constant: 55))
 
-    if Configuration.canRotateCamera {
+    if configuration.canRotateCamera {
       addConstraint(NSLayoutConstraint(item: rotateCamera, attribute: .right,
         relatedBy: .equal, toItem: self, attribute: .right,
         multiplier: 1, constant: Dimensions.rightOffset))
@@ -101,7 +103,7 @@ extension ImagePickerController {
 
   func setupConstraints() {
     let attributes: [NSLayoutAttribute] = [.bottom, .right, .width]
-    let topViewAttributes: [NSLayoutAttribute] = [.left, .top, .width]
+    let topViewAttributes: [NSLayoutAttribute] = [.left, .width]
 
     for attribute in attributes {
       view.addConstraint(NSLayoutConstraint(item: bottomContainer, attribute: attribute,
@@ -121,9 +123,32 @@ extension ImagePickerController {
         multiplier: 1, constant: 0))
     }
 
-    view.addConstraint(NSLayoutConstraint(item: bottomContainer, attribute: .height,
-      relatedBy: .equal, toItem: nil, attribute: .notAnAttribute,
-      multiplier: 1, constant: BottomContainerView.Dimensions.height))
+    if #available(iOS 11.0, *) {
+      view.addConstraint(NSLayoutConstraint(item: topView, attribute: .top,
+                                            relatedBy: .equal, toItem: view.safeAreaLayoutGuide,
+                                            attribute: .top,
+                                            multiplier: 1, constant: 0))
+    } else {
+      view.addConstraint(NSLayoutConstraint(item: topView, attribute: .top,
+                                            relatedBy: .equal, toItem: view,
+                                            attribute: .top,
+                                            multiplier: 1, constant: 0))
+    }
+    
+    if #available(iOS 11.0, *) {
+      let heightPadding = UIApplication.shared.keyWindow!.safeAreaInsets.bottom
+      view.addConstraint(NSLayoutConstraint(item: bottomContainer, attribute: .height,
+                                            relatedBy: .equal, toItem: nil,
+                                            attribute: .notAnAttribute,
+                                            multiplier: 1,
+                                            constant: BottomContainerView.Dimensions.height + heightPadding))
+    } else {
+      view.addConstraint(NSLayoutConstraint(item: bottomContainer, attribute: .height,
+                                            relatedBy: .equal, toItem: nil,
+                                            attribute: .notAnAttribute,
+                                            multiplier: 1,
+                                            constant: BottomContainerView.Dimensions.height))
+    }
 
     view.addConstraint(NSLayoutConstraint(item: topView, attribute: .height,
       relatedBy: .equal, toItem: nil, attribute: .notAnAttribute,
