@@ -194,6 +194,7 @@
 		C5A5159721B1B6EF00C15092 /* NYTPhotoViewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5159021B1B6EF00C15092 /* NYTPhotoViewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5A5159821B1B6EF00C15092 /* NYTPhotoViewerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5159121B1B6EF00C15092 /* NYTPhotoViewerCore.framework */; };
 		C5A5159921B1B6EF00C15092 /* NYTPhotoViewerCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C5A5159121B1B6EF00C15092 /* NYTPhotoViewerCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C5A5159B21B1C74600C15092 /* FLAnimatedImage.framework in Resources */ = {isa = PBXBuildFile; fileRef = C5A5158F21B1B6EE00C15092 /* FLAnimatedImage.framework */; };
 		C5A66B0C1F88325E0063F325 /* CColorConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631F1B8F51710034FC5C /* CColorConverter.m */; };
 		C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663211B8F51710034FC5C /* CMarkupTransformer.m */; };
 		C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663231B8F51710034FC5C /* CSimpleMarkupParser.m */; };
@@ -1343,6 +1344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5A5159B21B1C74600C15092 /* FLAnimatedImage.framework in Resources */,
 				4B37DEF61F9FD3C7007A25AF /* Filters.plist in Resources */,
 				C507F35C1F8831530013D2B7 /* SignIn.xib in Resources */,
 				C507F35B1F8831530013D2B7 /* Options.xib in Resources */,
