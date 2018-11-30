@@ -19,7 +19,39 @@
 #import "UIFont+Extras.h"
 #import "SSKeychain.h"
 #import "RFMacros.h"
-#import <SafariServices/SafariServices.h>
+
+@import SafariServices;
+@import NYTPhotoViewer;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - NYTPhoto Helper Class
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@interface RFNYTPhoto : NSObject <NYTPhoto>
+
+// Redeclare all the properties as readwrite for sample/testing purposes.
+@property (nonatomic) UIImage *image;
+@property (nonatomic) NSData *imageData;
+@property (nonatomic) UIImage *placeholderImage;
+@property (nonatomic) NSAttributedString *attributedCaptionTitle;
+@property (nonatomic) NSAttributedString *attributedCaptionSummary;
+@property (nonatomic) NSAttributedString *attributedCaptionCredit;
+
+@end
+
+
+@implementation RFNYTPhoto
+
+@end
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@interface RFTimelineController()<NYTPhotosViewControllerDelegate, NYTPhotoViewerDataSource>
+	@property (nonatomic, strong) NYTPhotosViewController* photoViewerController;
+	@property (nonatomic, strong) RFNYTPhoto* photoToView;
+@end
 
 @implementation RFTimelineController
 
@@ -476,4 +508,76 @@
 	}
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - NYTPhotosViewControllerDelegate
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//- (UIView * _Nullable)photosViewController:(NYTPhotosViewController *)photosViewController captionViewForPhoto:(id <NYTPhoto>)photo
+//{
+	//if (!self.captionViewController)
+	//{
+	//	self.captionViewController = [SLPhotoViewerCaptionViewController new];
+	//}
+
+	//self.captionViewController.photoViewController = photosViewController;
+
+	//[self.captionViewController setPhotoInfo:self.dictionary];
+	
+	//return self.captionViewController.view;
+//}
+
+- (NSNumber*) numberOfPhotos
+{
+	return @(0);
+}
+
+- (NSInteger)indexOfPhoto:(id <NYTPhoto>)photo
+{
+	return 0;
+}
+
+- (nullable id <NYTPhoto>)photoAtIndex:(NSInteger)photoIndex
+{
+	return self.photoToView;
+}
+
+- (UIView * _Nullable)photosViewController:(NYTPhotosViewController *)photosViewController loadingViewForPhoto:(id <NYTPhoto>)photo
+{
+	UIActivityIndicatorView* activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	[activityIndicator startAnimating];
+	
+	return activityIndicator;
+}
+
+- (void) openImageViewer:(NSString*)url
+{
+	self.photoToView = [[RFNYTPhoto alloc] init];
+	self.photoToView.image = nil;
+
+	self.photoViewerController = [[NYTPhotosViewController alloc] initWithDataSource:self initialPhoto:self.photoToView delegate:self];
+	self.photoViewerController.rightBarButtonItems = @[];
+	
+	[self presentViewController:self.photoViewerController animated:YES completion:^
+	{
+	}];
+
+
+	[UUHttpSession get:url queryArguments:nil completionHandler:^(UUHttpResponse *response) {
+		UIImage* image = response.parsedResponse;
+		if (image)
+		{
+			dispatch_async(dispatch_get_main_queue(), ^
+			{
+				self.photoToView.image = image;
+				[self.photoViewerController updatePhoto:self.photoToView];
+				self.photoViewerController.pageViewController.dataSource = nil;
+			});
+		}
+	}];
+}
+
+
 @end
+
+

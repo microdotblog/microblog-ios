@@ -418,8 +418,7 @@
 {
 	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
 	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
-		// TODO: open the URL in viewer
-		// ...
+		[timeline_controller openImageViewer:photoURL];
 	}
 }
 
