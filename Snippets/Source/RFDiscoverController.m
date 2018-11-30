@@ -23,7 +23,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[super viewDidLoad];
 
-//	[self setupSegmentView];
 	[self setupNavigation];
 	[self setupSearchButton];
 }
@@ -33,17 +32,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[super viewDidAppear:animated];
 
 	[self setupSearchButton];
-}
-
-- (void) setupSegmentView
-{
-	self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[ @"Users", @"Photos" ]];
-	self.segmentedControl.tintColor = [UIColor grayColor];
-	[self.segmentedControl setSelectedSegmentIndex:0];
-
-	[self.segmentedControl addTarget:self action:@selector(segmentChanged:) forControlEvents:UIControlEventValueChanged];
-	
-	self.navigationItem.titleView = self.segmentedControl;
 }
 
 - (void) setupNavigation
@@ -73,22 +61,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-	[self.segmentedControl setSelectedSegmentIndex:0];
-	[self hidePhotos];
-	
 	self.endpoint = [NSString stringWithFormat:@"/hybrid/discover/search?q=%@", [searchBar.text rf_urlEncoded]];
 	[self refreshTimeline];
 	[self hideSearch];
-}
-
-- (void) segmentChanged:(UISegmentedControl *)sender
-{
-	if (sender.selectedSegmentIndex == 0) {
-		[self hidePhotos];
-	}
-	else if (sender.selectedSegmentIndex == 1) {
-		[self showPhotos];
-	}
 }
 
 - (void) showSearch
@@ -110,12 +85,24 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.view addSubview:self.backdropView];
 	[self.view addSubview:self.searchBar];
 
+	UITextField* field = nil;
+	for (UIView* sub in self.searchBar.subviews) {
+		if ([sub isKindOfClass:[UITextField class]]) {
+			field = sub;
+			field.tintColor = [UIColor clearColor];
+			break;
+		}
+	}
+
 	[UIView animateWithDuration:0.3 animations:^{
 		self.searchBar.alpha = 1.0;
-		self.backdropView.alpha = 0.1;
-		
+		self.backdropView.alpha = 0.15;
 	} completion:^(BOOL finished) {
 		[self.searchBar becomeFirstResponder];
+		
+		RFDispatchSeconds (1.0, ^{
+			field.tintColor = nil;
+		});
 	}];
 }
 
@@ -227,7 +214,5 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	return 0;
 }
-
-
 
 @end

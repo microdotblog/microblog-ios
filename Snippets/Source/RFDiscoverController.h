@@ -10,7 +10,6 @@
 
 @interface RFDiscoverController : RFTimelineController <UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate>
 
-@property (strong, nonatomic) UISegmentedControl* segmentedControl;
 @property (strong, nonatomic) UICollectionView* photosCollectionView;
 @property (strong, nonatomic) NSArray* featuredPhotos; // RFFeaturedPhoto
 @property (strong, nonatomic) UISearchBar* searchBar;
