@@ -52,7 +52,6 @@
 		4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */; };
 		4B46632F1B8F51710034FC5C /* UILabel+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */; };
 		4B4BF25A21B1CE93002A84EE /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */; };
-		4B4BF25B21B1CE94002A84EE /* NYTPhotoViewerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25721B1CE93002A84EE /* NYTPhotoViewerCore.framework */; };
 		4B4BF25D21B1CE94002A84EE /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */; };
 		4B4D9B551ED520F800315BBA /* RFFeaturedPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D9B541ED520F800315BBA /* RFFeaturedPhoto.m */; };
 		4B4D9B581ED5213E00315BBA /* FeaturedPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B4D9B561ED5213E00315BBA /* FeaturedPhotoCell.xib */; };
@@ -376,7 +375,6 @@
 		4B4663281B8F51710034FC5C /* UILabel+MarkupExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+MarkupExtensions.h"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.h"; sourceTree = SOURCE_ROOT; };
 		4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+MarkupExtensions.m"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.m"; sourceTree = SOURCE_ROOT; };
 		4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Shared/Carthage/NYTPhotoViewer.framework; sourceTree = SOURCE_ROOT; };
-		4B4BF25721B1CE93002A84EE /* NYTPhotoViewerCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewerCore.framework; path = Shared/Carthage/NYTPhotoViewerCore.framework; sourceTree = SOURCE_ROOT; };
 		4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Shared/Carthage/FLAnimatedImage.framework; sourceTree = SOURCE_ROOT; };
 		4B4D9B531ED520F800315BBA /* RFFeaturedPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFeaturedPhoto.h; path = Source/RFFeaturedPhoto.h; sourceTree = "<group>"; };
 		4B4D9B541ED520F800315BBA /* RFFeaturedPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFFeaturedPhoto.m; path = Source/RFFeaturedPhoto.m; sourceTree = "<group>"; };
@@ -627,7 +625,6 @@
 			files = (
 				4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */,
 				4B4BF25D21B1CE94002A84EE /* FLAnimatedImage.framework in Frameworks */,
-				4B4BF25B21B1CE94002A84EE /* NYTPhotoViewerCore.framework in Frameworks */,
 				C5403B691F9E3C30002696EE /* libCTidy.a in Frameworks */,
 				4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */,
 				4B4BF25A21B1CE93002A84EE /* NYTPhotoViewer.framework in Frameworks */,
@@ -910,7 +907,6 @@
 			children = (
 				4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */,
 				4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */,
-				4B4BF25721B1CE93002A84EE /* NYTPhotoViewerCore.framework */,
 				4B14E41F1E82F5B50032F54B /* Photos.framework */,
 				4B14E4201E82F5B50032F54B /* PhotosUI.framework */,
 				4BA9109F1B84A54A00D58F83 /* Fabric.framework */,
@@ -1346,14 +1342,12 @@
 			inputPaths = (
 				"$(SRCROOT)/Shared/Carthage/FLAnimatedImage.framework",
 				"$(SRCROOT)/Shared/Carthage/NYTPhotoViewer.framework",
-				"$(SRCROOT)/Shared/Carthage/NYTPhotoViewerCore.framework",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FLAnimatedImage.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NYTPhotoViewer.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NYTPhotoViewerCore.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
