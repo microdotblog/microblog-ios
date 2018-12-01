@@ -10,9 +10,10 @@
 
 @interface RFPopupNotificationViewController : UIViewController
 
-	+ (void) show:(NSString*) body inController:(UIViewController*) controller completionBlock:(void(^)())completionBlock;
+	+ (void) show:(NSString*)body fromUsername:(NSString *)username inController:(UIViewController*) controller completionBlock:(void(^)())completionBlock;
 
 	@property (nonatomic, strong) IBOutlet UILabel* messageLabel;
+	@property (nonatomic, strong) IBOutlet UIImageView* profileImageView;
 	@property (nonatomic, copy) void (^completionHandler)();
 
 @end

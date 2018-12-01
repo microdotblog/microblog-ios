@@ -1025,7 +1025,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	__block UITextField* altTextTextField = nil;
 	
-	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Description" message:nil preferredStyle:UIAlertControllerStyleAlert];
+	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Accessibility Description" message:nil preferredStyle:UIAlertControllerStyleAlert];
 	[alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
 		altTextTextField = textField;
 		altTextTextField.text = photo.altText;
@@ -1034,7 +1034,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 	}]];
 	
-	[alertController addAction:[UIAlertAction actionWithTitle:@"Set" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+	NSString* save_title;
+	if (photo.altText.length > 0) {
+		save_title = @"Update";
+	}
+	else {
+		save_title = @"Add";
+	}
+	
+	[alertController addAction:[UIAlertAction actionWithTitle:save_title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 		NSString* altText = altTextTextField.text;
 		photo.altText = altText;
 	}]];
@@ -1050,16 +1058,17 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 	}]];
 	
+	NSString* edit_title;
 	if (photo.altText.length > 0) {
-		[alertController addAction:[UIAlertAction actionWithTitle:@"Edit Description" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-			[self addAltTextToPhoto:photo];
-		}]];
+		edit_title = @"Edit Description";
 	}
 	else {
-		[alertController addAction:[UIAlertAction actionWithTitle:@"Add Description" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-			[self addAltTextToPhoto:photo];
-		}]];
+		edit_title = @"Add Description";
 	}
+	
+	[alertController addAction:[UIAlertAction actionWithTitle:edit_title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[self addAltTextToPhoto:photo];
+	}]];
 
 	[alertController addAction:[UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 		[self removePhoto:photo];

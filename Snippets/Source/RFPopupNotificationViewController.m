@@ -8,6 +8,8 @@
 
 #import "RFPopupNotificationViewController.h"
 
+#import "UUImageView.h"
+
 @interface RFPopupNotificationViewController ()
 	@property (nonatomic, strong) NSTimer* dismissTimer ;
 @end
@@ -53,7 +55,7 @@
 	}];
 }
 
-+ (void) show:(NSString*) body inController:(UIViewController*) controller completionBlock:(void(^)())completionBlock
++ (void) show:(NSString*)body fromUsername:(NSString *)username inController:(UIViewController*) controller completionBlock:(void(^)())completionBlock
 {
 	dispatch_async(dispatch_get_main_queue(), ^
 	{
@@ -72,10 +74,18 @@
 		vc.completionHandler = completionBlock;
 		
 		vc.view.layer.cornerRadius = 10.0;
-		vc.view.layer.borderWidth = 1.0;
+		vc.view.layer.borderWidth = 0.5;
 		vc.view.layer.masksToBounds = YES;
 		vc.view.layer.borderColor = UIColor.lightGrayColor.CGColor;
-		
+
+		if (username.length > 0) {
+			NSString* profile_s = [NSString stringWithFormat:@"https://micro.blog/%@/avatar.jpg", username];
+			NSURL* profile_url = [NSURL URLWithString:profile_s];
+			[vc.profileImageView uuLoadImageFromURL:profile_url defaultImage:nil loadCompleteHandler:^(UIImageView* imageView) {
+				imageView.layer.cornerRadius = imageView.bounds.size.width / 2.0;
+			}];
+		}
+
 		f.origin.y = 44;
 		[UIView animateWithDuration:0.5 animations:^
 		{
