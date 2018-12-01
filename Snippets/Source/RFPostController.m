@@ -956,7 +956,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	__block UITextField* altTextTextField = nil;
 	
-	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Description" message:nil preferredStyle:UIAlertControllerStyleAlert];
+	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Accessibility Description" message:nil preferredStyle:UIAlertControllerStyleAlert];
 	[alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
 		altTextTextField = textField;
 		altTextTextField.text = photo.altText;
