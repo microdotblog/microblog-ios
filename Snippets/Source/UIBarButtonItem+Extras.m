@@ -15,6 +15,8 @@
 	UIImage* img = [UIImage imageNamed:imageName];
 	UIImageView* v = [[UIImageView alloc] initWithFrame:CGRectMake (0, 0, img.size.width, img.size.height)];
 	v.image = img;
+	v.isAccessibilityElement = YES;
+	v.accessibilityLabel = [imageName stringByReplacingOccurrencesOfString:@"_" withString:@" "];
 	
 	UIGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:target action:action];
 	[v addGestureRecognizer:gesture];

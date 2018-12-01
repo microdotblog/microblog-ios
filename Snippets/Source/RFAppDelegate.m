@@ -276,7 +276,7 @@
 
 - (void) setupShortcuts
 {
-	UIApplicationShortcutIcon* post_icon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"new_button"];
+	UIApplicationShortcutIcon* post_icon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"new_post_button"];
 	UIApplicationShortcutItem* post_item = [[UIApplicationShortcutItem alloc] initWithType:kShortcutActionNewPost localizedTitle:@"New Post" localizedSubtitle:@"Post to your microblog" icon:post_icon userInfo:nil];
 	[[UIApplication sharedApplication] setShortcutItems:@[ post_item ]];
 }
