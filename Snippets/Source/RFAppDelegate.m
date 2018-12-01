@@ -128,11 +128,13 @@
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler
 {
 	NSString* post_id = [userInfo[@"post_id"] stringValue];
+	NSString* from_username = [userInfo[@"from_username"] stringValue];
+
 	if (application.applicationState == UIApplicationStateActive) {
 		NSString* message = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[RFPopupNotificationViewController show:message inController:UIApplication.sharedApplication.keyWindow.rootViewController completionBlock:^
+			[RFPopupNotificationViewController show:message fromUsername:from_username  inController:UIApplication.sharedApplication.keyWindow.rootViewController completionBlock:^
 			{
 				if (post_id.length > 0)
 				{
