@@ -31,6 +31,8 @@
 #import <SafariServices/SafariServices.h>
 //#import "Microblog-Swift.h"
 #import "RFSettings.h"
+#import "RFAutoCompleteCache.h"
+
 @import UserNotifications;
 
 
@@ -45,6 +47,7 @@
 	[self setupAppearance];
 	[self setupNotifications];
 	[self setupShortcuts];
+	[self setupFollowerAutoComplete];
 	
 	return YES;
 }
@@ -172,6 +175,27 @@
 }
 
 #pragma mark -
+
+- (void) setupFollowerAutoComplete
+{
+	NSString* path = [NSString stringWithFormat:@"/users/following/%@", [RFSettings snippetsUsername]];
+	RFClient* client = [[RFClient alloc] initWithPath:path];
+	[client getWithQueryArguments:nil completion:^(UUHttpResponse *response)
+	{
+		NSArray* array = response.parsedResponse;
+		if (array)
+		{
+			for (NSDictionary* dictionary in array)
+			{
+				NSString* username = dictionary[@"username"];
+				if (username)
+				{
+					[RFAutoCompleteCache addAutoCompleteString:username];
+				}
+			}
+		}
+	}];
+}
 
 - (void) setupCrashlytics
 {
