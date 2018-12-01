@@ -366,7 +366,7 @@
                                     </connections>
                                 </collectionView>
                             </subviews>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="kyc-qr-Kyh" secondAttribute="trailing" id="39d-46-mck"/>
                                 <constraint firstAttribute="bottom" secondItem="kyc-qr-Kyh" secondAttribute="bottom" id="TK5-rt-K0H"/>

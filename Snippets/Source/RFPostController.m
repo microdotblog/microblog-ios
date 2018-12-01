@@ -30,6 +30,7 @@
 #import "UUImage.h"
 #import "SSKeychain.h"
 #import "MMMarkdown.h"
+#import "RFUserCache.h"
 #import "RFAutoCompleteCache.h"
 #import "RFAutoCompleteCollectionViewCell.h"
 //#import "Microblog-Swift.h"
@@ -369,6 +370,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	
 	dispatch_async(dispatch_get_main_queue(), ^
 	{
+		[self.autoCompleteCollectionView setContentOffset:CGPointZero animated:FALSE];
+		
 		CGFloat size = 36.0;
 		if (!array.count)
 			size = 0.0;
@@ -390,15 +393,37 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		for (NSUInteger i = 0; i < count; i++)
 		{
 			NSString* username = [array objectAtIndex:i];
-			NSString* avatarPath = [NSString stringWithFormat:@"http://]
-			
-			
-			NSDictionary* userDictionary = @{ @"username" : username,
-											  @"avatar" : [UIImage imageNamed:@"icon"]
-											};
+			UIImage* image = [UIImage imageNamed:@"icon"];
+			NSMutableDictionary* userDictionary = [NSMutableDictionary dictionaryWithDictionary:@{ 	@"username" : username,
+																									@"avatar" : image }];
 
-			[self.autoCompleteData addObject:userDictionary];
+			NSString* profile_s = [NSString stringWithFormat:@"https://micro.blog/%@/avatar.jpg", username];
 			
+			//Check the cache for the avatar...
+			image = [RFUserCache avatar:[NSURL URLWithString:profile_s]];
+			if (image)
+			{
+				[userDictionary setObject:image forKey:@"avatar"];
+			}
+			else
+			{
+				[UUHttpSession get:profile_s queryArguments:nil completionHandler:^(UUHttpResponse *response)
+				{
+					UIImage* avatar = response.parsedResponse;
+					if (avatar)
+					{
+						[RFUserCache cacheAvatar:avatar forURL:[NSURL URLWithString:profile_s]];
+						
+						[userDictionary setObject:avatar forKey:@"avatar"];
+						
+						dispatch_async(dispatch_get_main_queue(), ^{
+							[self.autoCompleteCollectionView reloadData];
+						});
+					}
+				}];
+			}
+			
+			[self.autoCompleteData addObject:userDictionary];
 		}
 		
 		[self.autoCompleteCollectionView reloadData];
