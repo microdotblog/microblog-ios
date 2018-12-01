@@ -13,6 +13,7 @@
 #import "RFConstants.h"
 #import "UIFont+Extras.h"
 #import "UUDataCache.h"
+#import "RFAutoCompleteCache.h"
 #import <SafariServices/SafariServices.h>
 
 @interface RFUserCache : NSObject
@@ -49,6 +50,8 @@
 + (void) setCache:(NSDictionary*)userInfo forUser:(NSString*)user
 {
     [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:user];
+	
+    [RFAutoCompleteCache addAutoCompleteString:user];
 }
 
 @end

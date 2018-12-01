@@ -7,8 +7,9 @@
 //
 
 #import "RFHighlightingTextStorage.h"
-
 #import "UIFont+Extras.h"
+#import "RFAutoCompleteCache.h"
+#import "RFConstants.h"
 
 @implementation RFHighlightingTextStorage
 {
@@ -319,6 +320,17 @@
 	if (is_username) {
 		current_r.length = self.string.length - current_r.location;
 		[self safe_addAttribute:NSForegroundColorAttributeName value:username_c range:current_r];
+		
+		NSString* nameString = [self.string substringWithRange:current_r];
+		[RFAutoCompleteCache findAutoCompleteFor:nameString completion:^(NSArray * _Nonnull results)
+		{
+			dispatch_async(dispatch_get_main_queue(), ^
+			{
+				NSDictionary* dictionary = @{ @"string" : nameString, @"array" : results };
+				[[NSNotificationCenter defaultCenter] postNotificationName:kRFFoundUserAutoCompleteNotification object:dictionary];
+			});
+			
+		}];
 	}
 }
 

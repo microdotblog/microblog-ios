@@ -14,6 +14,7 @@
 #import "RFMacros.h"
 #import "RFConstants.h"
 #import "NSString+Extras.h"
+#import "RFAutoCompleteCache.h"
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
@@ -160,6 +161,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				photo.username = info[@"username"];
 				photo.imageURL = info[@"image_url"];
 				[featured_photos addObject:photo];
+				
+				[RFAutoCompleteCache addAutoCompleteString:info[@"username"]];
 			}
 			
 			RFDispatchMain (^{

@@ -25,6 +25,7 @@
 #import "UUString.h"
 #import "NSString+Extras.h"
 #import "RFPopupNotificationViewController.h"
+#import "RFAutoCompleteCache.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <SafariServices/SafariServices.h>
@@ -415,6 +416,9 @@
 		CGRect r = [timeline_controller rectOfPostID:postID];
 		RFOptionsPopoverType popover_type = [timeline_controller popoverTypeOfPostID:postID];
 		NSString* username = [timeline_controller usernameOfPostID:postID];
+		
+		[RFAutoCompleteCache addAutoCompleteString:username];
+		
 		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:postID username:username popoverType:popover_type];
 		[options_controller attachToView:timeline_controller.webView atRect:r];
 		[[self activeNavigationController] presentViewController:options_controller animated:YES completion:NULL];

@@ -30,6 +30,7 @@
 #import "UUImage.h"
 #import "SSKeychain.h"
 #import "MMMarkdown.h"
+#import "RFAutoCompleteCache.h"
 //#import "Microblog-Swift.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -39,6 +40,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 @interface RFPostController()
 	@property (nonatomic, weak) NSExtensionContext* appExtensionContext;
+	@property (nonatomic, strong) NSMutableArray* autoCompleteButtons;
+	@property (nonatomic, strong) NSString* activeReplacementString;
 @end
 
 @implementation RFPostController
@@ -72,6 +75,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		self.replyPostID = postID;
 		self.replyUsername = username;
 		self.attachedPhotos = @[];
+	
+		[RFAutoCompleteCache addAutoCompleteString:username];
 	}
 	
 	return self;
@@ -192,6 +197,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangePreferredContentSize:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAutoCompleteNotification:) name:kRFFoundUserAutoCompleteNotification object:nil];
 }
 
 - (void) setupBlogName
@@ -342,6 +348,69 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	else {
 		self.remainingField.text = [NSString stringWithFormat:@"%ld/%ld", (long)num_chars, (long)max_chars];
 	}
+}
+
+- (void) handleAutoCompleteNotification:(NSNotification*)notification
+{
+	NSDictionary* dictionary = notification.object;
+	NSArray* array = dictionary[@"array"];
+	self.activeReplacementString = dictionary[@"string"];
+	
+	dispatch_async(dispatch_get_main_queue(), ^
+	{
+		CGFloat size = 32.0;
+		if (!array.count)
+			size = 0.0;
+		
+		[UIView animateWithDuration:0.25 animations:^{
+			self.autoCompleteHeightConstraint.constant = size;
+			[self.view layoutIfNeeded];
+		}];
+	
+		for (UIView* subview in self.autoCompleteButtons)
+		{
+			[subview removeFromSuperview];
+		}
+		
+		[self.autoCompleteButtons removeAllObjects];
+		self.autoCompleteButtons = [NSMutableArray array];
+		
+		NSUInteger count = array.count;
+		if (count > 3)
+		{
+			count = 3;
+		}
+		
+		for (NSUInteger i = 0; i < count; i++)
+		{
+			NSString* string = [NSString stringWithFormat:@"@%@", [array objectAtIndex:i]];
+			UIButton* button = [[UIButton alloc] init];
+			
+			[button setTitle:string forState:UIControlStateNormal];
+			button.backgroundColor = UIColor.lightTextColor;
+			button.titleLabel.textAlignment = NSTextAlignmentCenter;
+			[button sizeToFit];
+			[button addTarget:self action:@selector(autoCompleteSelected:) forControlEvents:UIControlEventTouchUpInside];
+			
+			[self.autoCompleteButtons addObject:button];
+			[self.autoCompleteContentView addArrangedSubview:button];
+		}
+	});
+}
+
+- (void) autoCompleteSelected:(UIButton*)button
+{
+	[UIView animateWithDuration:0.25 animations:^{
+		self.autoCompleteHeightConstraint.constant = 0.0;
+		[self.view layoutIfNeeded];
+	}];
+	
+	NSString* stringToReplace = self.activeReplacementString;
+	NSString* replacementString = [button titleForState:UIControlStateNormal];
+	NSString* remainingString = [replacementString stringByReplacingOccurrencesOfString:stringToReplace withString:@""];
+	remainingString = [remainingString stringByAppendingString:@" "];
+	
+	[self.textView insertText:remainingString];
 }
 
 - (void) attachPhotoNotification:(NSNotification *)notification

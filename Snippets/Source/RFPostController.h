@@ -34,6 +34,10 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* photoBarHeightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* settingsButtonRightConstraint;
 
+@property (strong, nonatomic) IBOutlet UIView* autoCompleteContainerView;
+@property (strong, nonatomic) IBOutlet UIStackView* autoCompleteContentView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* autoCompleteHeightConstraint;
+
 @property (assign, nonatomic) BOOL isSent;
 @property (assign, nonatomic) BOOL isReply;
 @property (strong, nonatomic) NSString* replyPostID;
