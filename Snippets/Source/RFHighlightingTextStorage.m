@@ -332,6 +332,14 @@
 			
 		}];
 	}
+	else
+	{
+		dispatch_async(dispatch_get_main_queue(), ^
+		{
+			NSDictionary* dictionary = @{ @"string" : @"", @"array" : @[] };
+			[[NSNotificationCenter defaultCenter] postNotificationName:kRFFoundUserAutoCompleteNotification object:dictionary];
+		});
+	}
 }
 
 - (void) processHeaders
