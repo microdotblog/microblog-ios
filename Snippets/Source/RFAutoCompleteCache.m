@@ -24,7 +24,10 @@
 
 + (void) addAutoCompleteString:(NSString*)inString
 {
-	NSString* string = [inString stringByReplacingOccurrencesOfString:@"@" withString:@""];
+	NSString* string = inString;
+	if ([string uuStartsWithSubstring:@"@"])
+		string = [string substringFromIndex:1];
+
 	NSMutableArray* newStrings = [NSMutableArray array];
 	NSArray* oldStrings = [RFAutoCompleteCache allAutoCompleteStrings];
 	if (oldStrings)
@@ -41,7 +44,10 @@
 
 + (void) findAutoCompleteFor:(NSString*)inString completion:(void (^)(NSArray* results))completion
 {
-	NSString* string = [inString stringByReplacingOccurrencesOfString:@"@" withString:@""];
+	NSString* string = inString;
+	if ([string uuStartsWithSubstring:@"@"])
+		string = [string substringFromIndex:1];
+	
 	NSMutableArray* foundStrings = [NSMutableArray array];
 	NSArray* autoCompleteStrings = [RFAutoCompleteCache allAutoCompleteStrings];
 	for (NSString* autoCompleteString in autoCompleteStrings)
