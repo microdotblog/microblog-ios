@@ -374,7 +374,38 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		
 		CGFloat size = 36.0;
 		if (!array.count)
+		{
 			size = 0.0;
+			
+			if (self.activeReplacementString.length > 2)
+			{
+				NSString* cleanUserName = self.activeReplacementString;
+				if ([cleanUserName uuStartsWithSubstring:@"@"])
+				{
+					cleanUserName = [cleanUserName substringFromIndex:1];
+				}
+				
+				NSString* path = [NSString stringWithFormat:@"/users/search?q=%@", cleanUserName];  //https://micro.blog/users/search?q=jon]
+				RFClient* client = [[RFClient alloc] initWithPath:path];
+				[client getWithQueryArguments:nil completion:^(UUHttpResponse *response)
+				{
+					if (response.parsedResponse)
+					{
+						NSMutableArray* matchingUsernames = [NSMutableArray array];
+						NSArray* array = response.parsedResponse;
+						for (NSDictionary* userDictionary in array)
+						{
+							NSString* userName = userDictionary[@"username"];
+							[matchingUsernames addObject:userName];
+						}
+						
+						NSDictionary* dictionary = @{ @"string" : self.activeReplacementString, @"array" : matchingUsernames };
+						[[NSNotificationCenter defaultCenter] postNotificationName:kRFFoundUserAutoCompleteNotification object:dictionary];
+					}
+				}];
+			}
+		}
+		
 		
 		[UIView animateWithDuration:0.25 animations:^{
 			self.autoCompleteHeightConstraint.constant = size;
@@ -410,7 +441,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				[UUHttpSession get:profile_s queryArguments:nil completionHandler:^(UUHttpResponse *response)
 				{
 					UIImage* avatar = response.parsedResponse;
-					if (avatar)
+					if (avatar && [avatar isKindOfClass:[UIImage class]])
 					{
 						[RFUserCache cacheAvatar:avatar forURL:[NSURL URLWithString:profile_s]];
 						

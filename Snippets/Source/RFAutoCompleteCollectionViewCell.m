@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-	self.userImageView.layer.cornerRadius = 8.0;//self.userImageView.bounds.size.height / 2.0;
+	self.userImageView.layer.cornerRadius = self.userImageView.bounds.size.height / 2.0;
 
     if (@available(iOS 12.0, *)) {
         // Addresses a separate issue and prevent auto layout warnings due to the temporary width constraint in the xib.
