@@ -8,8 +8,7 @@
 
 #import "RFSettings.h"
 #import "SSKeychain.h"
-
-#define kSharedGroupDefaults			@"group.blog.micro.ios"
+#import "RFConstants.h"
 
 #define ExternalBlogFormat 				@"ExternalBlogFormat"
 #define ExternalMicropubTokenEndpoint 	@"ExternalMicropubTokenEndpoint"

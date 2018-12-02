@@ -8,18 +8,21 @@
 
 #import "RFAutoCompleteCache.h"
 #import "UUString.h"
+#import "RFConstants.h"
 
 @implementation RFAutoCompleteCache
 
 + (NSArray*) allAutoCompleteStrings
 {
-	NSArray* strings = [[NSUserDefaults standardUserDefaults] objectForKey:@"RFAutoCompleteCache"];
+	NSUserDefaults* sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kSharedGroupDefaults];
+	NSArray* strings = [sharedDefaults objectForKey:@"RFAutoCompleteCache"];
 	return strings;
 }
 
 + (void) setAutoCompleteStrings:(NSArray*)array
 {
-	[[NSUserDefaults standardUserDefaults] setObject:array forKey:@"RFAutoCompleteCache"];
+	NSUserDefaults* sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kSharedGroupDefaults];
+	[sharedDefaults setObject:array forKey:@"RFAutoCompleteCache"];
 }
 
 + (void) addAutoCompleteString:(NSString*)inString
