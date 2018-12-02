@@ -1315,7 +1315,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			dictionary = dictionary[NSExtensionJavaScriptPreprocessingResultsKey];
 			NSString* title = [dictionary objectForKey:@"title"];
 			NSURL* url = [NSURL URLWithString:[dictionary objectForKey:@"url"]];
-					
+
 			dispatch_async(dispatch_get_main_queue(), ^
 			{
 				if (title && url) {
@@ -1474,7 +1474,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		s = [NSString stringWithFormat:@" %@", url.absoluteString];
 	}
 	else if (title.length > 0) {
-		s = [NSString stringWithFormat:@" [%@](%@)", title, url.absoluteString];
+		// work around pipe character messing up Markdown
+		NSString* new_title = [title stringByReplacingOccurrencesOfString:@"|" withString:@"-"];
+		s = [NSString stringWithFormat:@" [%@](%@)", new_title, url.absoluteString];
 	}
 	else {
 		s = [NSString stringWithFormat:@" [%@](%@)", url.host, url.absoluteString];
