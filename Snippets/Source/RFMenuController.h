@@ -18,8 +18,4 @@
 @property (strong, nonatomic) IBOutlet UIButton* discoverButton;
 @property (strong, nonatomic) IBOutlet UIView* discoverLine;
 
-@property (strong, nonatomic) IBOutlet UIView* switchAccountLine;
-@property (strong, nonatomic) IBOutlet UIButton* switchAccountButton;
-@property (strong, nonatomic) IBOutlet UILabel* switchAccountLabel;
-
 @end
