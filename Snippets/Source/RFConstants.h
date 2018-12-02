@@ -54,6 +54,8 @@ static NSString* const kClosePostingNotification = @"RFClosePosting";
 
 #define kRFFoundUserAutoCompleteNotification @"RFFoundUserAutoCompleteNotification"
 
+#define kSharedGroupDefaults @"group.blog.micro.ios"
+
 static NSString* const kResetDetailNotification = @"RFResetDetail";
 static NSString* const kResetDetailControllerKey = @"controller";
 
