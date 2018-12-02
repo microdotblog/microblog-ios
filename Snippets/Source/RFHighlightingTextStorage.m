@@ -380,7 +380,10 @@
 			NSString* new_s = [NSString stringWithFormat:@"%C", c];
 			[username insertString:new_s atIndex:0];
 
-			if (c == '@') {
+			if (c == ' ') {
+				break;
+			}
+			else if (c == '@') {
 				is_found = YES;
 				break;
 			}

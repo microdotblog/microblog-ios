@@ -475,6 +475,17 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	
 	[self.textView insertText:remainingString];
 	//self.textView.selectedTextRange = nil;
+	
+	[self hideAutocompleteBar];
+}
+
+- (void) hideAutocompleteBar
+{
+	dispatch_async(dispatch_get_main_queue(), ^
+	{
+		NSDictionary* dictionary = @{ @"string" : @"", @"array" : @[] };
+		[[NSNotificationCenter defaultCenter] postNotificationName:kRFFoundUserAutoCompleteNotification object:dictionary];
+	});
 }
 
 - (void) attachPhotoNotification:(NSNotification *)notification
