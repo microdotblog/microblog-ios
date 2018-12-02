@@ -10,7 +10,7 @@
 #import <Social/Social.h>
 #import "RFViewController.h"
 
-@interface RFPostController : RFViewController <UITextViewDelegate, UIDropInteractionDelegate, UITextFieldDelegate, NSLayoutManagerDelegate>
+@interface RFPostController : RFViewController <UITextViewDelegate, UIDropInteractionDelegate, UITextFieldDelegate, NSLayoutManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITextView* textView;
 @property (strong, nonatomic) IBOutlet UILabel* remainingField;
@@ -33,6 +33,10 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* photoButtonLeftConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* photoBarHeightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* settingsButtonRightConstraint;
+
+@property (strong, nonatomic) IBOutlet UIView* autoCompleteContainerView;
+@property (strong, nonatomic) IBOutlet UICollectionView* autoCompleteCollectionView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* autoCompleteHeightConstraint;
 
 @property (assign, nonatomic) BOOL isSent;
 @property (assign, nonatomic) BOOL isReply;

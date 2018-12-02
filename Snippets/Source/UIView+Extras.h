@@ -1,5 +1,5 @@
 //
-//  UIWindow+Extras.h
+//  UIView+Extras.h
 //  Micro.blog
 //
 //  Created by Manton Reece on 12/2/18.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIWindow (Extras)
+@interface UIView (Extras)
 
 - (CGFloat) rf_statusBarHeight;
 - (CGFloat) rf_statusBarAndNavigationHeight;

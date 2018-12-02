@@ -25,12 +25,15 @@
 #import "NSString+Extras.h"
 #import "UILabel+MarkupExtensions.h"
 #import "UIFont+Extras.h"
-#import "UIWindow+Extras.h"
+#import "UIView+Extras.h"
 #import "UUAlert.h"
 #import "UUString.h"
 #import "UUImage.h"
 #import "SSKeychain.h"
 #import "MMMarkdown.h"
+#import "RFUserCache.h"
+#import "RFAutoCompleteCache.h"
+#import "RFAutoCompleteCollectionViewCell.h"
 //#import "Microblog-Swift.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -40,6 +43,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 @interface RFPostController()
 	@property (nonatomic, weak) NSExtensionContext* appExtensionContext;
+	@property (nonatomic, strong) NSMutableArray* autoCompleteData;
+	@property (nonatomic, strong) NSString* activeReplacementString;
 @end
 
 @implementation RFPostController
@@ -73,6 +78,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		self.replyPostID = postID;
 		self.replyUsername = username;
 		self.attachedPhotos = @[];
+	
+		[RFAutoCompleteCache addAutoCompleteString:username];
 	}
 	
 	return self;
@@ -118,7 +125,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	
+
+	self.progressHeaderTopConstraint.constant = 44 + [self.view rf_statusBarHeight];
+
 	RFDispatchSeconds (0.1, ^{
 		[self.textView becomeFirstResponder];
 	});
@@ -135,8 +144,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
-
-	self.progressHeaderTopConstraint.constant = 44 + [self.view.window rf_statusBarHeight];
 }
 
 - (void) setupFont
@@ -193,6 +200,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangePreferredContentSize:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAutoCompleteNotification:) name:kRFFoundUserAutoCompleteNotification object:nil];
 }
 
 - (void) setupBlogName
@@ -234,8 +242,18 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupCollectionView
 {
+	[self.autoCompleteCollectionView registerNib:[UINib nibWithNibName:@"RFAutoCompleteCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"RFAutoCompleteCollectionViewCell"];
 	[self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCell" bundle:nil] forCellWithReuseIdentifier:kPhotoCellIdentifier];
 	self.photoBarHeightConstraint.constant = 0;
+	
+	UICollectionViewFlowLayout* flowLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+	flowLayout.itemSize = CGSizeMake(50.0, 50.0);
+	self.collectionView.collectionViewLayout = flowLayout;
+	
+	flowLayout = (UICollectionViewFlowLayout*)self.autoCompleteCollectionView.collectionViewLayout;
+	flowLayout.itemSize = UICollectionViewFlowLayoutAutomaticSize;
+	flowLayout.estimatedItemSize = CGSizeMake(150,36);
+	self.autoCompleteCollectionView.collectionViewLayout = flowLayout;
 }
 
 - (void) setupGestures
@@ -343,6 +361,121 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	else {
 		self.remainingField.text = [NSString stringWithFormat:@"%ld/%ld", (long)num_chars, (long)max_chars];
 	}
+}
+
+- (void) handleAutoCompleteNotification:(NSNotification*)notification
+{
+	NSDictionary* dictionary = notification.object;
+	NSArray* array = dictionary[@"array"];
+	self.activeReplacementString = dictionary[@"string"];
+	
+	dispatch_async(dispatch_get_main_queue(), ^
+	{
+		[self.autoCompleteCollectionView setContentOffset:CGPointZero animated:FALSE];
+		
+		CGFloat size = 36.0;
+		if (!array.count)
+		{
+			size = 0.0;
+			
+			if (self.activeReplacementString.length > 2)
+			{
+				NSString* cleanUserName = self.activeReplacementString;
+				if ([cleanUserName uuStartsWithSubstring:@"@"])
+				{
+					cleanUserName = [cleanUserName substringFromIndex:1];
+				}
+				
+				NSString* path = [NSString stringWithFormat:@"/users/search?q=%@", cleanUserName];  //https://micro.blog/users/search?q=jon]
+				RFClient* client = [[RFClient alloc] initWithPath:path];
+				[client getWithQueryArguments:nil completion:^(UUHttpResponse *response)
+				{
+					if (response.parsedResponse)
+					{
+						NSMutableArray* matchingUsernames = [NSMutableArray array];
+						NSArray* array = response.parsedResponse;
+						for (NSDictionary* userDictionary in array)
+						{
+							NSString* userName = userDictionary[@"username"];
+							[matchingUsernames addObject:userName];
+						}
+						
+						NSDictionary* dictionary = @{ @"string" : self.activeReplacementString, @"array" : matchingUsernames };
+						[[NSNotificationCenter defaultCenter] postNotificationName:kRFFoundUserAutoCompleteNotification object:dictionary];
+					}
+				}];
+			}
+		}
+		
+		
+		[UIView animateWithDuration:0.25 animations:^{
+			self.autoCompleteHeightConstraint.constant = size;
+			[self.view layoutIfNeeded];
+		}];
+
+		[self.autoCompleteData removeAllObjects];
+		self.autoCompleteData = [NSMutableArray array];
+
+		NSUInteger count = array.count;
+		//if (count > 3)
+		//{
+		//	count = 3;
+		//}
+		
+		for (NSUInteger i = 0; i < count; i++)
+		{
+			NSString* username = [array objectAtIndex:i];
+			UIImage* image = [UIImage imageNamed:@"icon"];
+			NSMutableDictionary* userDictionary = [NSMutableDictionary dictionaryWithDictionary:@{ 	@"username" : username,
+																									@"avatar" : image }];
+
+			NSString* profile_s = [NSString stringWithFormat:@"https://micro.blog/%@/avatar.jpg", username];
+			
+			//Check the cache for the avatar...
+			image = [RFUserCache avatar:[NSURL URLWithString:profile_s]];
+			if (image)
+			{
+				[userDictionary setObject:image forKey:@"avatar"];
+			}
+			else
+			{
+				[UUHttpSession get:profile_s queryArguments:nil completionHandler:^(UUHttpResponse *response)
+				{
+					UIImage* avatar = response.parsedResponse;
+					if (avatar && [avatar isKindOfClass:[UIImage class]])
+					{
+						[RFUserCache cacheAvatar:avatar forURL:[NSURL URLWithString:profile_s]];
+						
+						[userDictionary setObject:avatar forKey:@"avatar"];
+						
+						dispatch_async(dispatch_get_main_queue(), ^{
+							[self.autoCompleteCollectionView reloadData];
+						});
+					}
+				}];
+			}
+			
+			[self.autoCompleteData addObject:userDictionary];
+		}
+		
+		[self.autoCompleteCollectionView reloadData];
+	});
+}
+
+- (void) autoCompleteSelected:(NSString*)username
+{
+	[UIView animateWithDuration:0.25 animations:^{
+		self.autoCompleteHeightConstraint.constant = 0.0;
+		[self.view layoutIfNeeded];
+	}];
+	
+	NSString* stringToReplace = self.activeReplacementString;
+	NSString* replacementString = username;
+	NSString* remainingString = [replacementString stringByReplacingOccurrencesOfString:stringToReplace withString:@""];
+	remainingString = [remainingString stringByAppendingString:@" "];
+	
+	[self.textView insertText:remainingString];
+	//self.textView.selectedTextRange = nil;
 }
 
 - (void) attachPhotoNotification:(NSNotification *)notification
@@ -905,7 +1038,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	if (self.progressHeaderHeightConstraint.constant == 0.0) {
 		[UIView animateWithDuration:0.3 animations:^{
 			self.progressHeaderHeightConstraint.constant = 40.0;
-			self.progressHeaderTopConstraint.constant = 44 + [self.view.window rf_statusBarHeight];
+			self.progressHeaderTopConstraint.constant = 44 + [self.view rf_statusBarHeight];
 			self.progressHeaderView.alpha = 1.0;
 			[self.view layoutIfNeeded];
 		}];
@@ -918,7 +1051,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	[UIView animateWithDuration:0.3 animations:^{
 		self.progressHeaderHeightConstraint.constant = 0.0;
-		self.progressHeaderTopConstraint.constant = 44 + [self.view.window rf_statusBarHeight];
+		self.progressHeaderTopConstraint.constant = 44 + [self.view rf_statusBarHeight];
 		self.progressHeaderView.alpha = 0.0;
 	} completion:^(BOOL finished) {
 		[self.networkSpinner stopAnimating];
@@ -1063,11 +1196,25 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+	if (collectionView == self.autoCompleteCollectionView)
+	{
+		return self.autoCompleteData.count;
+	}
+	
 	return self.attachedPhotos.count;
 }
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+	if (collectionView == self.autoCompleteCollectionView)
+	{
+		NSDictionary* dictionary = [self.autoCompleteData objectAtIndex:indexPath.item];
+		RFAutoCompleteCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RFAutoCompleteCollectionViewCell" forIndexPath:indexPath];
+		cell.userNameLabel.text = [NSString stringWithFormat:@"@%@", dictionary[@"username"]];
+		cell.userImageView.image = dictionary[@"avatar"];
+		return cell;
+	}
+	
 	RFPhotoCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
 
 	RFPhoto* photo = [self.attachedPhotos objectAtIndex:indexPath.item];
@@ -1079,16 +1226,31 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+	if (collectionView == self.autoCompleteCollectionView)
+	{
+		NSDictionary* dictionary = [self.autoCompleteData objectAtIndex:indexPath.item];
+		NSString* userName = [NSString stringWithFormat:@"@%@", dictionary[@"username"]];
+		[self autoCompleteSelected:userName];
+		return;
+	}
+	
 	RFPhoto* photo = [self.attachedPhotos objectAtIndex:indexPath.item];
 	[self handlePhotoTap:photo];
 }
 
+/*
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+	if (collectionView == self.autoCompleteCollectionView)
+	{
+		return CGSizeMake(-1.0, -1.0);
+	}
+	
 	CGFloat w = 50;
 	return CGSizeMake (w, w);
 }
-
+*/
+/*
 - (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
 	return UIEdgeInsetsMake (5, 5, 5, 5);
@@ -1096,6 +1258,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
+	if (collectionView == self.autoCompleteCollectionView)
+	{
+		return 0;
+	}
 	return 5;
 }
 
@@ -1103,7 +1269,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	return 0;
 }
-
+*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark-

@@ -12,48 +12,11 @@
 #import "RFMacros.h"
 #import "RFConstants.h"
 #import "UIFont+Extras.h"
-#import "UIWindow+Extras.h"
+#import "UIView+Extras.h"
 #import "UUDataCache.h"
+#import "RFAutoCompleteCache.h"
+#import "RFUserCache.h"
 #import <SafariServices/SafariServices.h>
-
-@interface RFUserCache : NSObject
-
-    + (NSDictionary*) user:(NSString*)user;
-    + (void) setCache:(NSDictionary*)userInfo forUser:(NSString*)user;
-
-    + (UIImage*) avatar:(NSURL*)url;
-    + (void) cacheAvatar:(UIImage*)image forURL:(NSURL*)url;
-
-@end
-
-@implementation RFUserCache
-
-+ (UIImage*) avatar:(NSURL*)url
-{
-    NSData* cachedData = [UUDataCache uuDataForURL:url];
-    UIImage* image = [UIImage imageWithData:cachedData];
-    return image;
-}
-
-+ (void) cacheAvatar:(UIImage*)image forURL:(NSURL*)url
-{
-    NSData* data = UIImagePNGRepresentation(image);
-    [UUDataCache uuCacheData:data forURL:url];
-}
-
-+ (NSDictionary*) user:(NSString*)user
-{
-    NSDictionary* dictionary = [[NSUserDefaults standardUserDefaults] objectForKey:user];
-    return dictionary;
-}
-
-+ (void) setCache:(NSDictionary*)userInfo forUser:(NSString*)user
-{
-    [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:user];
-}
-
-@end
-
 
 @interface RFUserController()<UIScrollViewDelegate>
     @property (nonatomic, strong) NSString* pathToBlog;
@@ -78,7 +41,6 @@
 	
 	[self setupNavigation];
 	[self setupFont];
-	[self setupSpacing];
 	
 	self.followingView.hidden = YES;
 	
@@ -104,13 +66,20 @@
 
 - (void) setupSpacing
 {
-	self.verticalOffsetConstraint.constant = 44 + [self.view.window rf_statusBarHeight];
+	self.verticalOffsetConstraint.constant = 44 + [self.view rf_statusBarHeight];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+
+	[self setupSpacing];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	
+
 	self.navigationItem.rightBarButtonItem = nil;
 	[self checkFollowing];
 }

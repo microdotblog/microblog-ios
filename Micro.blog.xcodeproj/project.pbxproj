@@ -61,8 +61,8 @@
 		4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D21EB1E9DF44000AC101E /* RFMicropub.m */; };
 		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
 		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
-		4B821C7D21B428CD006CE005 /* UIWindow+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIWindow+Extras.m */; };
-		4B821C7E21B428D3006CE005 /* UIWindow+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIWindow+Extras.m */; };
+		4B821C7D21B428CD006CE005 /* UIView+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIView+Extras.m */; };
+		4B821C7E21B428D3006CE005 /* UIView+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIView+Extras.m */; };
 		4B8714741E64C07800C69589 /* External.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8714721E64C07800C69589 /* External.xib */; };
 		4B8714771E64C0DD00C69589 /* RFExternalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714761E64C0DD00C69589 /* RFExternalController.m */; };
 		4B87147A1E64C56A00C69589 /* RFXMLLinkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714791E64C56A00C69589 /* RFXMLLinkParser.m */; };
@@ -183,12 +183,18 @@
 		C5666B631F23C95F00AE13DC /* User.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5666B611F23C95F00AE13DC /* User.xib */; };
 		C58942611FE245F400A30EB9 /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = C589425F1FE245F400A30EB9 /* GetURL.js */; };
 		C58D8E2320ADF30900F22E42 /* RFPopupNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C58D8E2120ADF30900F22E42 /* RFPopupNotificationViewController.m */; };
-		C58D8E2420ADF30900F22E42 /* RFPopupNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C58D8E2220ADF30900F22E42 /* RFPopupNotificationViewController.xib */; };
 		C59C3B1820923DE50076A754 /* Blogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59C3B1720923DE50076A754 /* Blogs.storyboard */; };
 		C59C3B1B20923E220076A754 /* RFSelectBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B1A20923E220076A754 /* RFSelectBlogViewController.m */; };
 		C59C3B1E20923EFC0076A754 /* RFBlogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B1D20923EFC0076A754 /* RFBlogTableViewCell.m */; };
 		C59C3B21209242310076A754 /* RFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B20209242310076A754 /* RFViewController.m */; };
 		C59C3B22209245570076A754 /* RFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B20209242310076A754 /* RFViewController.m */; };
+		C5A515A521B3160100C15092 /* RFAutoCompleteCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A515A321B3160100C15092 /* RFAutoCompleteCollectionViewCell.m */; };
+		C5A515A921B3190300C15092 /* RFUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A515A821B3190300C15092 /* RFUserCache.m */; };
+		C5A515AC21B3194A00C15092 /* RFAutoCompleteCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A515AA21B3194A00C15092 /* RFAutoCompleteCache.m */; };
+		C5A515AF21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A515AD21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib */; };
+		C5A515B021B3196100C15092 /* RFPopupNotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A515AE21B3196100C15092 /* RFPopupNotificationViewController.xib */; };
+		C5A515B121B31F4600C15092 /* RFAutoCompleteCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A515AA21B3194A00C15092 /* RFAutoCompleteCache.m */; };
+		C5A515B221B31F4A00C15092 /* RFUserCache.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A515A821B3190300C15092 /* RFUserCache.m */; };
 		C5A66B0C1F88325E0063F325 /* CColorConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631F1B8F51710034FC5C /* CColorConverter.m */; };
 		C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663211B8F51710034FC5C /* CMarkupTransformer.m */; };
 		C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663231B8F51710034FC5C /* CSimpleMarkupParser.m */; };
@@ -392,8 +398,8 @@
 		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
 		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
 		4B5F75561B8CBA1F0074D88E /* RFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFConstants.h; path = Source/RFConstants.h; sourceTree = "<group>"; };
-		4B821C7B21B428CD006CE005 /* UIWindow+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIWindow+Extras.h"; path = "Source/UIWindow+Extras.h"; sourceTree = "<group>"; };
-		4B821C7C21B428CD006CE005 /* UIWindow+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIWindow+Extras.m"; path = "Source/UIWindow+Extras.m"; sourceTree = "<group>"; };
+		4B821C7B21B428CD006CE005 /* UIView+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIView+Extras.h"; path = "Source/UIView+Extras.h"; sourceTree = "<group>"; };
+		4B821C7C21B428CD006CE005 /* UIView+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIView+Extras.m"; path = "Source/UIView+Extras.m"; sourceTree = "<group>"; };
 		4B8714731E64C07800C69589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/External.xib; sourceTree = "<group>"; };
 		4B8714751E64C0DD00C69589 /* RFExternalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFExternalController.h; path = Source/RFExternalController.h; sourceTree = "<group>"; };
 		4B8714761E64C0DD00C69589 /* RFExternalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFExternalController.m; path = Source/RFExternalController.m; sourceTree = "<group>"; };
@@ -494,7 +500,6 @@
 		C589425F1FE245F400A30EB9 /* GetURL.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = GetURL.js; sourceTree = "<group>"; };
 		C58D8E2020ADF30900F22E42 /* RFPopupNotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFPopupNotificationViewController.h; path = Source/RFPopupNotificationViewController.h; sourceTree = "<group>"; };
 		C58D8E2120ADF30900F22E42 /* RFPopupNotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFPopupNotificationViewController.m; path = Source/RFPopupNotificationViewController.m; sourceTree = "<group>"; };
-		C58D8E2220ADF30900F22E42 /* RFPopupNotificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RFPopupNotificationViewController.xib; sourceTree = "<group>"; };
 		C59C3B1720923DE50076A754 /* Blogs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Blogs.storyboard; path = Resources/Blogs.storyboard; sourceTree = "<group>"; };
 		C59C3B1920923E220076A754 /* RFSelectBlogViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFSelectBlogViewController.h; path = Source/RFSelectBlogViewController.h; sourceTree = "<group>"; };
 		C59C3B1A20923E220076A754 /* RFSelectBlogViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFSelectBlogViewController.m; path = Source/RFSelectBlogViewController.m; sourceTree = "<group>"; };
@@ -503,6 +508,14 @@
 		C59C3B1F209242310076A754 /* RFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFViewController.h; path = Source/RFViewController.h; sourceTree = "<group>"; };
 		C59C3B20209242310076A754 /* RFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFViewController.m; path = Source/RFViewController.m; sourceTree = "<group>"; };
 		C5A4AC011F9A507400415646 /* Micro.blog Sharing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Micro.blog Sharing.entitlements"; sourceTree = "<group>"; };
+		C5A515A221B3160100C15092 /* RFAutoCompleteCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFAutoCompleteCollectionViewCell.h; path = Source/RFAutoCompleteCollectionViewCell.h; sourceTree = "<group>"; };
+		C5A515A321B3160100C15092 /* RFAutoCompleteCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAutoCompleteCollectionViewCell.m; path = Source/RFAutoCompleteCollectionViewCell.m; sourceTree = "<group>"; };
+		C5A515A721B3190300C15092 /* RFUserCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFUserCache.h; path = Source/RFUserCache.h; sourceTree = "<group>"; };
+		C5A515A821B3190300C15092 /* RFUserCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFUserCache.m; path = Source/RFUserCache.m; sourceTree = "<group>"; };
+		C5A515AA21B3194A00C15092 /* RFAutoCompleteCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFAutoCompleteCache.m; path = Source/RFAutoCompleteCache.m; sourceTree = "<group>"; };
+		C5A515AB21B3194A00C15092 /* RFAutoCompleteCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFAutoCompleteCache.h; path = Source/RFAutoCompleteCache.h; sourceTree = "<group>"; };
+		C5A515AD21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RFAutoCompleteCollectionViewCell.xib; path = Source/RFAutoCompleteCollectionViewCell.xib; sourceTree = "<group>"; };
+		C5A515AE21B3196100C15092 /* RFPopupNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RFPopupNotificationViewController.xib; path = Source/RFPopupNotificationViewController.xib; sourceTree = "<group>"; };
 		C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIBilateralFilter.cikernel; sourceTree = "<group>"; };
 		C5CED6B91ECF792E0068F537 /* YUCIBilateralFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIBilateralFilter.h; sourceTree = "<group>"; };
 		C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIBilateralFilter.m; sourceTree = "<group>"; };
@@ -820,8 +833,8 @@
 				4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */,
 				4B10602A1F0D39FB0045AB1A /* UIFont+Extras.h */,
 				4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */,
-				4B821C7B21B428CD006CE005 /* UIWindow+Extras.h */,
-				4B821C7C21B428CD006CE005 /* UIWindow+Extras.m */,
+				4B821C7B21B428CD006CE005 /* UIView+Extras.h */,
+				4B821C7C21B428CD006CE005 /* UIView+Extras.m */,
 				4B1712D91F069FB200267045 /* RFMenuView.h */,
 				4B1712DA1F069FB200267045 /* RFMenuView.m */,
 				C59C3B1C20923EFC0076A754 /* RFBlogTableViewCell.h */,
@@ -830,6 +843,12 @@
 				C59C3B1A20923E220076A754 /* RFSelectBlogViewController.m */,
 				C58D8E2020ADF30900F22E42 /* RFPopupNotificationViewController.h */,
 				C58D8E2120ADF30900F22E42 /* RFPopupNotificationViewController.m */,
+				C5A515A221B3160100C15092 /* RFAutoCompleteCollectionViewCell.h */,
+				C5A515A321B3160100C15092 /* RFAutoCompleteCollectionViewCell.m */,
+				C5A515AB21B3194A00C15092 /* RFAutoCompleteCache.h */,
+				C5A515AA21B3194A00C15092 /* RFAutoCompleteCache.m */,
+				C5A515A721B3190300C15092 /* RFUserCache.h */,
+				C5A515A821B3190300C15092 /* RFUserCache.m */,
 			);
 			name = Source;
 			path = Snippets;
@@ -838,6 +857,8 @@
 		4BA2C99C1B2109DC0038C0E5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C5A515AD21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib */,
+				C5A515AE21B3196100C15092 /* RFPopupNotificationViewController.xib */,
 				C59C3B1720923DE50076A754 /* Blogs.storyboard */,
 				4BA2C9771B2109D10038C0E5 /* Info.plist */,
 				4BF123FE1E88343600B56138 /* Filters.plist */,
@@ -861,7 +882,6 @@
 				4B0D556D1B9552F40076AD9F /* Categories.xib */,
 				4B5078D21B965E4F002A4F80 /* Settings.xib */,
 				4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */,
-				C58D8E2220ADF30900F22E42 /* RFPopupNotificationViewController.xib */,
 				4B94052C1E2933DE00B01E79 /* Images.xcassets */,
 				4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */,
 			);
@@ -1261,7 +1281,6 @@
 				C5CED6FB1ECF792E0068F537 /* YUCIColorLookup.cikernel in Resources */,
 				C5CED7181ECF792E0068F537 /* YUCISurfaceBlur.cikernel in Resources */,
 				4BF123FF1E88343600B56138 /* Filters.plist in Resources */,
-				C58D8E2420ADF30900F22E42 /* RFPopupNotificationViewController.xib in Resources */,
 				4BA2C9871B2109D10038C0E5 /* LaunchScreen.xib in Resources */,
 				4B5078D41B965E4F002A4F80 /* Settings.xib in Resources */,
 				4B0D556F1B9552F40076AD9F /* Categories.xib in Resources */,
@@ -1284,6 +1303,7 @@
 				4B0D55581B93B3F00076AD9F /* Wordpress.xib in Resources */,
 				4B9A7BAD1E82F1C1002A49E5 /* PhotoCell.xib in Resources */,
 				4B94052D1E2933DE00B01E79 /* Images.xcassets in Resources */,
+				C5A515B021B3196100C15092 /* RFPopupNotificationViewController.xib in Resources */,
 				4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */,
 				C59C3B1820923DE50076A754 /* Blogs.storyboard in Resources */,
 				C5CED6FD1ECF792E0068F537 /* YUCIColorLookupTableDefault.png in Resources */,
@@ -1292,6 +1312,7 @@
 				4B1BD2841D8754DC00B3C93D /* Help.xib in Resources */,
 				4B8714741E64C07800C69589 /* External.xib in Resources */,
 				C5CED7051ECF792E0068F537 /* YUCIFXAA.cikernel in Resources */,
+				C5A515AF21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib in Resources */,
 				4B400D15202524B500C71AAF /* FeedCell.xib in Resources */,
 				C5CED7161ECF792E0068F537 /* YUCIStarfieldGenerator.cikernel in Resources */,
 				4B12BAEA1E9FBFBC000E559F /* 1Password.xcassets in Resources */,
@@ -1383,8 +1404,9 @@
 				4BA713412029127E0083948C /* MMHTMLParser.m in Sources */,
 				4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */,
 				4BA7133F2029127E0083948C /* MMScanner.m in Sources */,
-				4B821C7D21B428CD006CE005 /* UIWindow+Extras.m in Sources */,
+				4B821C7D21B428CD006CE005 /* UIView+Extras.m in Sources */,
 				4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */,
+				C5A515A921B3190300C15092 /* RFUserCache.m in Sources */,
 				4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */,
 				4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */,
 				4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */,
@@ -1413,6 +1435,7 @@
 				4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */,
 				4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */,
 				4BA713392029127E0083948C /* MMMarkdown.m in Sources */,
+				C5A515AC21B3194A00C15092 /* RFAutoCompleteCache.m in Sources */,
 				C5CED7001ECF792E0068F537 /* YUCIFilterConstructor.m in Sources */,
 				4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */,
 				4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */,
@@ -1464,6 +1487,7 @@
 				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
 				C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */,
 				4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */,
+				C5A515A521B3160100C15092 /* RFAutoCompleteCollectionViewCell.m in Sources */,
 				C513F6E61F993D2D007319F0 /* RFAppExtensionViewController.m in Sources */,
 				C5CED7091ECF792E0068F537 /* YUCIHighPass.m in Sources */,
 				4B4D9B551ED520F800315BBA /* RFFeaturedPhoto.m in Sources */,
@@ -1486,7 +1510,7 @@
 				C507F32A1F8827AE0013D2B7 /* OnePasswordExtension.m in Sources */,
 				4BA713442029127E0083948C /* MMSpanParser.m in Sources */,
 				C59C3B22209245570076A754 /* RFViewController.m in Sources */,
-				4B821C7E21B428D3006CE005 /* UIWindow+Extras.m in Sources */,
+				4B821C7E21B428D3006CE005 /* UIView+Extras.m in Sources */,
 				C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */,
 				C507F3321F8827BC0013D2B7 /* UUString.m in Sources */,
 				C507F32D1F8827BC0013D2B7 /* UUDictionary.m in Sources */,
@@ -1529,12 +1553,14 @@
 				C507F3391F8828310013D2B7 /* RFFilterCell.m in Sources */,
 				C507F3381F88282D0013D2B7 /* RFFilter.m in Sources */,
 				C507F31C1F88278F0013D2B7 /* RFPhoto.m in Sources */,
+				C5A515B121B31F4600C15092 /* RFAutoCompleteCache.m in Sources */,
 				C507F3211F8827A90013D2B7 /* RFXMLRPCParser.m in Sources */,
 				C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */,
 				4BA713382029127E0083948C /* MMElement.m in Sources */,
 				4BA7133C2029127E0083948C /* MMParser.m in Sources */,
 				4B400D11202449C600C71AAF /* RFFeedsController.m in Sources */,
 				C507F3171F8827780013D2B7 /* RFPostController.m in Sources */,
+				C5A515B221B31F4A00C15092 /* RFUserCache.m in Sources */,
 				C507F3331F8827C20013D2B7 /* SSKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

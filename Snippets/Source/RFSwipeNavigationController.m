@@ -13,7 +13,7 @@
 #import "RFMacros.h"
 #import "RFConstants.h"
 #import "UIBarButtonItem+Extras.h"
-#import "UIWindow+Extras.h"
+#import "UIView+Extras.h"
 
 static CGFloat const kSwipeDropAnimationDuration = 0.3;
 

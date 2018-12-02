@@ -25,11 +25,14 @@
 #import "UUString.h"
 #import "NSString+Extras.h"
 #import "RFPopupNotificationViewController.h"
+#import "RFAutoCompleteCache.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <SafariServices/SafariServices.h>
 //#import "Microblog-Swift.h"
 #import "RFSettings.h"
+#import "RFAutoCompleteCache.h"
+
 @import UserNotifications;
 
 
@@ -44,6 +47,7 @@
 	[self setupAppearance];
 	[self setupNotifications];
 	[self setupShortcuts];
+	[self setupFollowerAutoComplete];
 	
 	return YES;
 }
@@ -173,6 +177,27 @@
 }
 
 #pragma mark -
+
+- (void) setupFollowerAutoComplete
+{
+	NSString* path = [NSString stringWithFormat:@"/users/following/%@", [RFSettings snippetsUsername]];
+	RFClient* client = [[RFClient alloc] initWithPath:path];
+	[client getWithQueryArguments:nil completion:^(UUHttpResponse *response)
+	{
+		NSArray* array = response.parsedResponse;
+		if (array)
+		{
+			for (NSDictionary* dictionary in array)
+			{
+				NSString* username = dictionary[@"username"];
+				if (username)
+				{
+					[RFAutoCompleteCache addAutoCompleteString:username];
+				}
+			}
+		}
+	}];
+}
 
 - (void) setupCrashlytics
 {
@@ -417,6 +442,9 @@
 		CGRect r = [timeline_controller rectOfPostID:postID];
 		RFOptionsPopoverType popover_type = [timeline_controller popoverTypeOfPostID:postID];
 		NSString* username = [timeline_controller usernameOfPostID:postID];
+		
+		[RFAutoCompleteCache addAutoCompleteString:username];
+		
 		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:postID username:username popoverType:popover_type];
 		[options_controller attachToView:timeline_controller.webView atRect:r];
 		[[self activeNavigationController] presentViewController:options_controller animated:YES completion:NULL];

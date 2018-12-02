@@ -52,6 +52,8 @@ static NSString* const kClosePostingNotification = @"RFClosePosting";
 #define kOpenURLNotification @"RFOpenURLNotification"
 #define kOpenURLKey @"url"
 
+#define kRFFoundUserAutoCompleteNotification @"RFFoundUserAutoCompleteNotification"
+
 static NSString* const kResetDetailNotification = @"RFResetDetail";
 static NSString* const kResetDetailControllerKey = @"controller";
 
