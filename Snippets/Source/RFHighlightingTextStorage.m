@@ -52,6 +52,7 @@
 	[self edited:NSTextStorageEditedCharacters | NSTextStorageEditedAttributes range:range changeInLength:(NSInteger)str.length - (NSInteger)range.length];
 	
 	[self endEditing];
+	[self processAutocompleteAtRange:range];
 }
 
 - (void) setAttributes:(NSDictionary *)attrs range:(NSRange)range
@@ -320,25 +321,6 @@
 	if (is_username) {
 		current_r.length = self.string.length - current_r.location;
 		[self safe_addAttribute:NSForegroundColorAttributeName value:username_c range:current_r];
-		
-		NSString* nameString = [self.string substringWithRange:current_r];
-		[RFAutoCompleteCache findAutoCompleteFor:nameString completion:^(NSArray * _Nonnull results)
-		{
-			dispatch_async(dispatch_get_main_queue(), ^
-			{
-				NSDictionary* dictionary = @{ @"string" : nameString, @"array" : results };
-				[[NSNotificationCenter defaultCenter] postNotificationName:kRFFoundUserAutoCompleteNotification object:dictionary];
-			});
-			
-		}];
-	}
-	else
-	{
-		dispatch_async(dispatch_get_main_queue(), ^
-		{
-			NSDictionary* dictionary = @{ @"string" : @"", @"array" : @[] };
-			[[NSNotificationCenter defaultCenter] postNotificationName:kRFFoundUserAutoCompleteNotification object:dictionary];
-		});
 	}
 }
 
@@ -382,6 +364,47 @@
 		current_r.length = self.string.length - current_r.location;
 		[self safe_addAttribute:NSFontAttributeName value:header_font range:current_r];
 		[self safe_addAttribute:NSForegroundColorAttributeName value:header_c range:current_r];
+	}
+}
+
+- (void) processAutocompleteAtRange:(NSRange)range
+{
+	NSMutableString* username = [NSMutableString string];
+	
+	// work backwards from current point
+	BOOL is_found = NO;
+	NSString* s = self.string;
+	for (NSInteger i = range.location; i >= 0; i--) {
+		if (s.length > i) {
+			unichar c = [s characterAtIndex:i];
+			NSString* new_s = [NSString stringWithFormat:@"%C", c];
+			[username insertString:new_s atIndex:0];
+
+			if (c == '@') {
+				is_found = YES;
+				break;
+			}
+		}
+	}
+	
+	if (is_found && (username.length > 0)) {
+		[RFAutoCompleteCache findAutoCompleteFor:username completion:^(NSArray * _Nonnull results)
+		{
+			dispatch_async(dispatch_get_main_queue(), ^
+			{
+				NSDictionary* dictionary = @{ @"string" : username, @"array" : results };
+				[[NSNotificationCenter defaultCenter] postNotificationName:kRFFoundUserAutoCompleteNotification object:dictionary];
+			});
+			
+		}];
+	}
+	else
+	{
+		dispatch_async(dispatch_get_main_queue(), ^
+		{
+			NSDictionary* dictionary = @{ @"string" : @"", @"array" : @[] };
+			[[NSNotificationCenter defaultCenter] postNotificationName:kRFFoundUserAutoCompleteNotification object:dictionary];
+		});
 	}
 }
 
