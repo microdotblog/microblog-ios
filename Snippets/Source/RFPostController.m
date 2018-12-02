@@ -424,7 +424,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		for (NSUInteger i = 0; i < count; i++)
 		{
 			NSString* username = [array objectAtIndex:i];
-			UIImage* image = [UIImage imageNamed:@"icon"];
+			UIImage* image = [UIImage uuSolidColorImage:[UIColor lightGrayColor]];
 			NSMutableDictionary* userDictionary = [NSMutableDictionary dictionaryWithDictionary:@{ 	@"username" : username,
 																									@"avatar" : image }];
 
