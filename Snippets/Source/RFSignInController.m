@@ -14,9 +14,11 @@
 #import "RFSettings.h"
 #import "UUAlert.h"
 #import "UILabel+MarkupExtensions.h"
+#import "UIWindow+Extras.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "SSKeychain.h"
+
 @import UserNotifications;
 
 @implementation RFSignInController
@@ -82,7 +84,7 @@
 	
 	if (self.messageContainer.alpha == 0.0) {
 		[UIView animateWithDuration:0.3 animations:^{
-			self.messageTopConstraint.constant = 44 + RFStatusBarHeight();
+			self.messageTopConstraint.constant = 44 + [self.view.window rf_statusBarHeight];
 			self.messageContainer.alpha = 1.0;
 			[self.view layoutIfNeeded];
 		}];

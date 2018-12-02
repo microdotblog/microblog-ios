@@ -15,6 +15,7 @@
 #import "RFConstants.h"
 #import "NSString+Extras.h"
 #import "RFAutoCompleteCache.h"
+#import "UIWindow+Extras.h"
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
@@ -87,7 +88,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) showSearch
 {
 	CGRect r = self.view.bounds;
-	r.origin.y = 44 + RFStatusBarHeight();
+	r.origin.y = 44 + [self.view.window rf_statusBarHeight];
 	r.size.height = 44;
 	self.searchBar = [[UISearchBar alloc] initWithFrame:r];
 	self.searchBar.alpha = 0.0;
@@ -139,8 +140,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	UICollectionViewFlowLayout* flow_layout = [[UICollectionViewFlowLayout alloc] init];
 
 	CGRect r = self.view.bounds;
-	r.origin.y += (44 + RFStatusBarHeight());
-	r.size.height -= (44 + RFStatusBarHeight());
+	r.origin.y += (44 + [self.view.window rf_statusBarHeight]);
+	r.size.height -= (44 + [self.view.window rf_statusBarHeight]);
 
 	self.photosCollectionView = [[UICollectionView alloc] initWithFrame:r collectionViewLayout:flow_layout];
 	self.photosCollectionView.delegate = self;
