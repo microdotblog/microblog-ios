@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,26 +22,26 @@
                         <rect key="frame" x="1" y="0.0" width="235" height="36"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eqb-XZ-h8U">
-                                <rect key="frame" x="2" y="2" width="32" height="32"/>
+                                <rect key="frame" x="4" y="2" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="W0n-gK-tss"/>
                                     <constraint firstAttribute="width" secondItem="Eqb-XZ-h8U" secondAttribute="height" multiplier="1:1" id="qeG-vZ-0l0"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dS4-cR-sVa">
-                                <rect key="frame" x="36" y="2" width="195" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <rect key="frame" x="40" y="2" width="191" height="32"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Eqb-XZ-h8U" firstAttribute="leading" secondItem="fh9-Bs-IlA" secondAttribute="leading" constant="2" id="HZs-ZE-f9x"/>
+                            <constraint firstItem="Eqb-XZ-h8U" firstAttribute="leading" secondItem="fh9-Bs-IlA" secondAttribute="leading" constant="4" id="HZs-ZE-f9x"/>
                             <constraint firstAttribute="bottom" secondItem="dS4-cR-sVa" secondAttribute="bottom" constant="2" id="Om0-mb-Eq7"/>
                             <constraint firstItem="dS4-cR-sVa" firstAttribute="top" secondItem="Eqb-XZ-h8U" secondAttribute="top" id="XXh-lH-mVb"/>
                             <constraint firstAttribute="bottom" secondItem="Eqb-XZ-h8U" secondAttribute="bottom" constant="2" id="Yyx-gl-RYm"/>
-                            <constraint firstItem="dS4-cR-sVa" firstAttribute="leading" secondItem="Eqb-XZ-h8U" secondAttribute="trailing" constant="2" id="fkd-sI-GK4"/>
+                            <constraint firstItem="dS4-cR-sVa" firstAttribute="leading" secondItem="Eqb-XZ-h8U" secondAttribute="trailing" constant="4" id="fkd-sI-GK4"/>
                             <constraint firstAttribute="trailing" secondItem="dS4-cR-sVa" secondAttribute="trailing" constant="4" id="hIX-jg-bHU"/>
                             <constraint firstItem="Eqb-XZ-h8U" firstAttribute="top" secondItem="fh9-Bs-IlA" secondAttribute="top" constant="2" id="hgA-nw-bfg"/>
                         </constraints>
