@@ -8,9 +8,8 @@
 
 #import "UIView+Extras.h"
 
+#import "RFSettings.h"
 #import "RFMacros.h"
-
-static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 
 @implementation UIView (Extras)
 
@@ -20,14 +19,14 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 	UIWindow* win = self.window;
 	
 	if (win == nil) {
-		result = [[NSUserDefaults standardUserDefaults] floatForKey:kLastStatusBarHeightPrefKey];
+		result = [RFSettings lastStatusBarHeight];
 		if (result == 0.0) {
 			result = RFStatusBarHeightOld();
 		}
 	}
 	else if ([win respondsToSelector:@selector(safeAreaInsets)]) {
 		result = win.safeAreaInsets.top;
-		[[NSUserDefaults standardUserDefaults] setFloat:result forKey:kLastStatusBarHeightPrefKey];
+		[RFSettings setLastStatusBarHeight:result];
 	}
 	else {
 		result = RFStatusBarHeightOld();

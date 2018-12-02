@@ -116,6 +116,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[super viewWillAppear:animated];
 
+	self.progressHeaderTopConstraint.constant = 44 + [self.view rf_statusBarHeight];
 	self.progressHeaderHeightConstraint.constant = 0.0;
 	self.progressHeaderView.alpha = 0.0;
 
@@ -125,8 +126,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-
-	self.progressHeaderTopConstraint.constant = 44 + [self.view rf_statusBarHeight];
 
 	RFDispatchSeconds (0.1, ^{
 		[self.textView becomeFirstResponder];

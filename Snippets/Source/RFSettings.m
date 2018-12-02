@@ -37,6 +37,8 @@
 #define PreferredContentSize			@"PreferredContentSize"
 #define SelectedBlogInfo				@"Microblog::SelectedBlog"
 
+static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
+
 @implementation RFSettings
 
 + (void) setUserDefault:(NSObject*)object forKey:(NSString*)key
@@ -509,6 +511,17 @@
 + (void) setPreferredContentSize:(NSString *)value
 {
 	[RFSettings setUserDefault:value forKey:PreferredContentSize];
+}
+
++ (float) lastStatusBarHeight
+{
+	NSString* s = [RFSettings loadUserDefault:kLastStatusBarHeightPrefKey];
+	return [s floatValue];
+}
+
++ (void) setLastStatusBarHeight:(float)value
+{
+	[RFSettings setUserDefault:[NSNumber numberWithFloat:value] forKey:kLastStatusBarHeightPrefKey];
 }
 
 @end

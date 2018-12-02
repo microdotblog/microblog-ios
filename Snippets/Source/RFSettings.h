@@ -81,6 +81,9 @@
 + (NSString *)  preferredContentSize;
 + (void)  		setPreferredContentSize:(NSString *)value;
 
++ (float) lastStatusBarHeight;
++ (void) setLastStatusBarHeight:(float)value;
+
 + (void) migrateAllKeys;
 
 @end
