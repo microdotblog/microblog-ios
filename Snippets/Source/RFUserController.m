@@ -12,7 +12,7 @@
 #import "RFMacros.h"
 #import "RFConstants.h"
 #import "UIFont+Extras.h"
-#import "UIWindow+Extras.h"
+#import "UIView+Extras.h"
 #import "UUDataCache.h"
 #import "RFAutoCompleteCache.h"
 #import "RFUserCache.h"
@@ -41,7 +41,6 @@
 	
 	[self setupNavigation];
 	[self setupFont];
-	[self setupSpacing];
 	
 	self.followingView.hidden = YES;
 	
@@ -67,13 +66,20 @@
 
 - (void) setupSpacing
 {
-	self.verticalOffsetConstraint.constant = 44 + [self.view.window rf_statusBarHeight];
+	self.verticalOffsetConstraint.constant = 44 + [self.view rf_statusBarHeight];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+
+	[self setupSpacing];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	
+
 	self.navigationItem.rightBarButtonItem = nil;
 	[self checkFollowing];
 }

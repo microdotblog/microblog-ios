@@ -25,7 +25,7 @@
 #import "NSString+Extras.h"
 #import "UILabel+MarkupExtensions.h"
 #import "UIFont+Extras.h"
-#import "UIWindow+Extras.h"
+#import "UIView+Extras.h"
 #import "UUAlert.h"
 #import "UUString.h"
 #import "UUImage.h"
@@ -125,7 +125,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	
+
+	self.progressHeaderTopConstraint.constant = 44 + [self.view rf_statusBarHeight];
+
 	RFDispatchSeconds (0.1, ^{
 		[self.textView becomeFirstResponder];
 	});
@@ -142,8 +144,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
-
-	self.progressHeaderTopConstraint.constant = 44 + [self.view.window rf_statusBarHeight];
 }
 
 - (void) setupFont
@@ -1038,7 +1038,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	if (self.progressHeaderHeightConstraint.constant == 0.0) {
 		[UIView animateWithDuration:0.3 animations:^{
 			self.progressHeaderHeightConstraint.constant = 40.0;
-			self.progressHeaderTopConstraint.constant = 44 + [self.view.window rf_statusBarHeight];
+			self.progressHeaderTopConstraint.constant = 44 + [self.view rf_statusBarHeight];
 			self.progressHeaderView.alpha = 1.0;
 			[self.view layoutIfNeeded];
 		}];
@@ -1051,7 +1051,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	[UIView animateWithDuration:0.3 animations:^{
 		self.progressHeaderHeightConstraint.constant = 0.0;
-		self.progressHeaderTopConstraint.constant = 44 + [self.view.window rf_statusBarHeight];
+		self.progressHeaderTopConstraint.constant = 44 + [self.view rf_statusBarHeight];
 		self.progressHeaderView.alpha = 0.0;
 	} completion:^(BOOL finished) {
 		[self.networkSpinner stopAnimating];

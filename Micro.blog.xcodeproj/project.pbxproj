@@ -61,8 +61,8 @@
 		4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D21EB1E9DF44000AC101E /* RFMicropub.m */; };
 		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
 		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
-		4B821C7D21B428CD006CE005 /* UIWindow+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIWindow+Extras.m */; };
-		4B821C7E21B428D3006CE005 /* UIWindow+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIWindow+Extras.m */; };
+		4B821C7D21B428CD006CE005 /* UIView+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIView+Extras.m */; };
+		4B821C7E21B428D3006CE005 /* UIView+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIView+Extras.m */; };
 		4B8714741E64C07800C69589 /* External.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8714721E64C07800C69589 /* External.xib */; };
 		4B8714771E64C0DD00C69589 /* RFExternalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714761E64C0DD00C69589 /* RFExternalController.m */; };
 		4B87147A1E64C56A00C69589 /* RFXMLLinkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714791E64C56A00C69589 /* RFXMLLinkParser.m */; };
@@ -398,8 +398,8 @@
 		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
 		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
 		4B5F75561B8CBA1F0074D88E /* RFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFConstants.h; path = Source/RFConstants.h; sourceTree = "<group>"; };
-		4B821C7B21B428CD006CE005 /* UIWindow+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIWindow+Extras.h"; path = "Source/UIWindow+Extras.h"; sourceTree = "<group>"; };
-		4B821C7C21B428CD006CE005 /* UIWindow+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIWindow+Extras.m"; path = "Source/UIWindow+Extras.m"; sourceTree = "<group>"; };
+		4B821C7B21B428CD006CE005 /* UIView+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIView+Extras.h"; path = "Source/UIView+Extras.h"; sourceTree = "<group>"; };
+		4B821C7C21B428CD006CE005 /* UIView+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIView+Extras.m"; path = "Source/UIView+Extras.m"; sourceTree = "<group>"; };
 		4B8714731E64C07800C69589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/External.xib; sourceTree = "<group>"; };
 		4B8714751E64C0DD00C69589 /* RFExternalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFExternalController.h; path = Source/RFExternalController.h; sourceTree = "<group>"; };
 		4B8714761E64C0DD00C69589 /* RFExternalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFExternalController.m; path = Source/RFExternalController.m; sourceTree = "<group>"; };
@@ -833,8 +833,8 @@
 				4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */,
 				4B10602A1F0D39FB0045AB1A /* UIFont+Extras.h */,
 				4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */,
-				4B821C7B21B428CD006CE005 /* UIWindow+Extras.h */,
-				4B821C7C21B428CD006CE005 /* UIWindow+Extras.m */,
+				4B821C7B21B428CD006CE005 /* UIView+Extras.h */,
+				4B821C7C21B428CD006CE005 /* UIView+Extras.m */,
 				4B1712D91F069FB200267045 /* RFMenuView.h */,
 				4B1712DA1F069FB200267045 /* RFMenuView.m */,
 				C59C3B1C20923EFC0076A754 /* RFBlogTableViewCell.h */,
@@ -1404,7 +1404,7 @@
 				4BA713412029127E0083948C /* MMHTMLParser.m in Sources */,
 				4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */,
 				4BA7133F2029127E0083948C /* MMScanner.m in Sources */,
-				4B821C7D21B428CD006CE005 /* UIWindow+Extras.m in Sources */,
+				4B821C7D21B428CD006CE005 /* UIView+Extras.m in Sources */,
 				4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */,
 				C5A515A921B3190300C15092 /* RFUserCache.m in Sources */,
 				4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */,
@@ -1510,7 +1510,7 @@
 				C507F32A1F8827AE0013D2B7 /* OnePasswordExtension.m in Sources */,
 				4BA713442029127E0083948C /* MMSpanParser.m in Sources */,
 				C59C3B22209245570076A754 /* RFViewController.m in Sources */,
-				4B821C7E21B428D3006CE005 /* UIWindow+Extras.m in Sources */,
+				4B821C7E21B428D3006CE005 /* UIView+Extras.m in Sources */,
 				C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */,
 				C507F3321F8827BC0013D2B7 /* UUString.m in Sources */,
 				C507F32D1F8827BC0013D2B7 /* UUDictionary.m in Sources */,
