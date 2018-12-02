@@ -12,6 +12,7 @@
 #import "RFMacros.h"
 #import "RFConstants.h"
 #import "UIFont+Extras.h"
+#import "UIWindow+Extras.h"
 #import "UUDataCache.h"
 #import <SafariServices/SafariServices.h>
 
@@ -103,7 +104,7 @@
 
 - (void) setupSpacing
 {
-	self.verticalOffsetConstraint.constant = 44 + RFStatusBarHeight();
+	self.verticalOffsetConstraint.constant = 44 + [self.view.window rf_statusBarHeight];
 }
 
 - (void) viewDidAppear:(BOOL)animated

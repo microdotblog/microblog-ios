@@ -13,6 +13,7 @@
 #import "RFMacros.h"
 #import "RFConstants.h"
 #import "UIBarButtonItem+Extras.h"
+#import "UIWindow+Extras.h"
 
 static CGFloat const kSwipeDropAnimationDuration = 0.3;
 
@@ -103,8 +104,8 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 			self.revealedView = controller.view;
 			revealed_r.origin.x = 0;
 			if ([controller isKindOfClass:[RFMenuController class]]) {
-				revealed_r.origin.y = RFStatusAndNavigationHeight();
-				revealed_r.size.height = revealed_r.size.height - RFStatusAndNavigationHeight();
+				revealed_r.origin.y = [self.view.window rf_statusBarAndNavigationHeight];
+				revealed_r.size.height = revealed_r.size.height - [self.view.window rf_statusBarAndNavigationHeight];
 			}
 			[self.view insertSubview:self.revealedView belowSubview:v];
 			[self.view sendSubviewToBack:self.revealedView];
@@ -132,7 +133,7 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 	else if (self.isSwipingForward) {
 		if (self.revealedView == nil) {
 			self.revealedView = self.nextController.view;
-			revealed_r.origin.y = RFStatusAndNavigationHeight();
+			revealed_r.origin.y = [self.view.window rf_statusBarAndNavigationHeight];
 			revealed_r.origin.x = v.bounds.size.width;
 			[self.view insertSubview:self.revealedView aboveSubview:v];
 			[self.view bringSubviewToFront:self.revealedView];

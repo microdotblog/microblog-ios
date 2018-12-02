@@ -17,6 +17,7 @@
 #import "RFSettings.h"
 #import "UIBarButtonItem+Extras.h"
 #import "UIFont+Extras.h"
+#import "UIWindow+Extras.h"
 #import "SSKeychain.h"
 #import "RFMacros.h"
 
@@ -502,7 +503,7 @@
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
 	CGFloat offset = scrollView.contentOffset.y;
-	CGFloat threshold = RFStatusBarHeight() + 110;
+	CGFloat threshold = [self.view.window rf_statusBarHeight] + 110;
 	if ((offset < -threshold) && !scrollView.isDecelerating) {
 		if (!self.refreshControl.isRefreshing) {
 			[self refreshTimelineShowingSpinner:YES];
