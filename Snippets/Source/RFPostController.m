@@ -468,8 +468,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[self.view layoutIfNeeded];
 	}];
 	
-	NSString* stringToReplace = self.activeReplacementString;
-	NSString* replacementString = username;
+	NSString* stringToReplace = [self.activeReplacementString lowercaseString];
+	NSString* replacementString = [username lowercaseString];
 	NSString* remainingString = [replacementString stringByReplacingOccurrencesOfString:stringToReplace withString:@""];
 	remainingString = [remainingString stringByAppendingString:@" "];
 	
