@@ -435,6 +435,10 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 	[RFSettings removeObjectForKey:ExternalMicropubMediaEndpoint];
 	[RFSettings removeObjectForKey:ExternalMicropubState];
 
+	[RFSettings removeObjectForKey:@"Micro.blog list"];
+	[RFSettings removeObjectForKey:@"RFAutoCompleteCache"];
+	[RFSettings removeObjectForKey:SelectedBlogInfo];
+
 	[SSKeychain deletePasswordForService:@"Snippets" account:@"default"];
 	[SSKeychain deletePasswordForService:@"ExternalBlog" account:@"default"];
 	[SSKeychain deletePasswordForService:@"MicropubBlog" account:@"default"];
