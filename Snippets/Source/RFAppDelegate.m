@@ -184,10 +184,16 @@
 	RFClient* client = [[RFClient alloc] initWithPath:path];
 	[client getWithQueryArguments:nil completion:^(UUHttpResponse *response)
 	{
-		NSArray* array = response.parsedResponse;
-		if (array)
+		// We didn't get a valid response...
+		if (response.httpResponse.statusCode < 200 || response.httpResponse.statusCode > 299)
 		{
-			for (NSDictionary* dictionary in array)
+			return;
+		}
+		
+		NSArray* array = response.parsedResponse;
+		if (array && [array isKindOfClass:[NSArray class]])
+		{
+ 			for (NSDictionary* dictionary in array)
 			{
 				NSString* username = dictionary[@"username"];
 				if (username)
