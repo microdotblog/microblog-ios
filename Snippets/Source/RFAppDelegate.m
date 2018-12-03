@@ -180,7 +180,12 @@
 
 - (void) setupFollowerAutoComplete
 {
-	NSString* path = [NSString stringWithFormat:@"/users/following/%@", [RFSettings snippetsUsername]];
+	NSString* username = [RFSettings snippetsUsername];
+	if (username == nil) {
+		return;
+	}
+	
+	NSString* path = [NSString stringWithFormat:@"/users/following/%@", username];
 	RFClient* client = [[RFClient alloc] initWithPath:path];
 	[client getWithQueryArguments:nil completion:^(UUHttpResponse *response)
 	{
