@@ -132,7 +132,7 @@
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler
 {
 	NSString* post_id = [userInfo[@"post_id"] stringValue];
-	NSString* from_username = [userInfo[@"from_username"] stringValue];
+	NSString* from_username = userInfo[@"from_user"][@"username"];
 
 	if (application.applicationState == UIApplicationStateActive) {
 		NSString* message = [[userInfo valueForKey:@"aps"] valueForKey:@"alert"];
