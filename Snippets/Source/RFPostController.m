@@ -1093,7 +1093,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			[self.view layoutIfNeeded];
 		}];
 	}
-
 }
 
 - (void) addAltTextToPhoto:(RFPhoto*)photo
@@ -1123,7 +1122,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}]];
 	
 	[self.navigationController presentViewController:alertController animated:YES completion:nil];
-
 }
 
 - (void) handlePhotoTap:(RFPhoto*)photo
@@ -1149,6 +1147,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[self removePhoto:photo];
 	}]];
 
+	NSIndexPath* path = [[self.collectionView indexPathsForSelectedItems] firstObject];
+	if (path) {
+		UICollectionViewLayoutAttributes* attrs = [self.collectionView layoutAttributesForItemAtIndexPath:path];
+
+		alertController.popoverPresentationController.sourceView = self.collectionView;
+		alertController.popoverPresentationController.sourceRect = attrs.frame;
+	}
+	
 	[self.navigationController presentViewController:alertController animated:YES completion:nil];
 }
 
