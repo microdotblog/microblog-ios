@@ -24,4 +24,5 @@ DerivedData
 # http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
 #
 # Pods/
-Micro.blog.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+Micro.blog.xcodeproj/project.xcworkspace/xcshareddata/*
+Micro.blog.xcodeproj/xcshareddata/*
