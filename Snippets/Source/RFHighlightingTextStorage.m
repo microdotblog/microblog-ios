@@ -31,6 +31,11 @@
 	return _imp.string;
 }
 
+- (NSString *) accessibilityValue
+{
+	return [self string];
+}
+
 - (NSDictionary *) attributesAtIndex:(NSUInteger)location effectiveRange:(NSRangePointer)range
 {
 	if (location < _imp.length) {
