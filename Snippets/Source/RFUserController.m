@@ -285,27 +285,14 @@
 	}
 	
     NSString* avatarURL = [authorInfo objectForKey:@"avatar"];
-    UIImage* image = [RFUserCache avatar:[NSURL URLWithString:avatarURL]];
-    if (image)
+    UIImage* image = [RFUserCache avatar:[NSURL URLWithString:avatarURL] completionHandler:^(UIImage * _Nonnull image)
     {
-        self.avatar.image = image;
-    }
-    
-    [UUHttpSession get:avatarURL queryArguments:nil completionHandler:^(UUHttpResponse *response)
-    {
-        if (response && !response.httpError)
-        {
-            NSData* imageData = response.rawResponse;
-            UIImage* image = [UIImage imageWithData:imageData];
-            [RFUserCache cacheAvatar:image forURL:[NSURL URLWithString:avatarURL]];
+		self.avatar.image = image;
+	}];
 
-            dispatch_async(dispatch_get_main_queue(), ^
-            {
-                self.avatar.image = image;
-            });
-        }
-    }];
+	self.avatar.image = image;
     
+	
     [RFUserCache setCache:userInfo forUser:self.username];
     
     self.moreButton.hidden = ![self hasMoreBioToShow];

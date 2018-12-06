@@ -43,7 +43,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 @interface RFPostController()
 	@property (nonatomic, weak) NSExtensionContext* appExtensionContext;
-	@property (nonatomic, strong) NSMutableArray* autoCompleteData;
+	@property (atomic, strong) NSMutableArray* autoCompleteData;
 	@property (nonatomic, strong) NSString* activeReplacementString;
 @end
 
@@ -130,6 +130,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	RFDispatchSeconds (0.1, ^{
 		[self.textView becomeFirstResponder];
 	});
+}
+
+- (void) viewWillLayoutSubviews
+{
+	[super viewWillLayoutSubviews];
+	[self.autoCompleteCollectionView.collectionViewLayout invalidateLayout];
 }
 
 - (void) setupNavigation
@@ -241,6 +247,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupCollectionView
 {
+	self.autoCompleteCollectionView.prefetchingEnabled = NO;
 	[self.autoCompleteCollectionView registerNib:[UINib nibWithNibName:@"RFAutoCompleteCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"RFAutoCompleteCollectionViewCell"];
 	[self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCell" bundle:nil] forCellWithReuseIdentifier:kPhotoCellIdentifier];
 	self.photoBarHeightConstraint.constant = 0;
@@ -412,49 +419,40 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			[self.view layoutIfNeeded];
 		}];
 
-		[self.autoCompleteData removeAllObjects];
-		self.autoCompleteData = [NSMutableArray array];
-
-		NSUInteger count = array.count;
-		//if (count > 3)
-		//{
-		//	count = 3;
-		//}
-		
-		for (NSUInteger i = 0; i < count; i++)
+		@synchronized(self.autoCompleteData)
 		{
-			NSString* username = [array objectAtIndex:i];
-			UIImage* image = [UIImage uuSolidColorImage:[UIColor lightGrayColor]];
-			NSMutableDictionary* userDictionary = [NSMutableDictionary dictionaryWithDictionary:@{ 	@"username" : username,
-																									@"avatar" : image }];
+			[self.autoCompleteData removeAllObjects];
+			self.autoCompleteData = [NSMutableArray array];
 
-			NSString* profile_s = [NSString stringWithFormat:@"https://micro.blog/%@/avatar.jpg", username];
+			NSUInteger count = array.count;
+		
+			for (NSUInteger i = 0; i < count; i++)
+			{
+				NSString* username = [array objectAtIndex:i];
+				UIImage* image = [UIImage uuSolidColorImage:[UIColor lightGrayColor]];
+				NSMutableDictionary* userDictionary = [NSMutableDictionary dictionaryWithDictionary:@{ 	@"username" : username,
+																										@"avatar" : image }];
+
+				NSString* profile_s = [NSString stringWithFormat:@"https://micro.blog/%@/avatar.jpg", username];
 			
-			//Check the cache for the avatar...
-			image = [RFUserCache avatar:[NSURL URLWithString:profile_s]];
-			if (image)
-			{
-				[userDictionary setObject:image forKey:@"avatar"];
-			}
-			else
-			{
-				[UUHttpSession get:profile_s queryArguments:nil completionHandler:^(UUHttpResponse *response)
+				//Check the cache for the avatar...
+				image = [RFUserCache avatar:[NSURL URLWithString:profile_s] completionHandler:^(UIImage * _Nonnull image)
 				{
-					UIImage* avatar = response.parsedResponse;
-					if (avatar && [avatar isKindOfClass:[UIImage class]])
-					{
-						[RFUserCache cacheAvatar:avatar forURL:[NSURL URLWithString:profile_s]];
+					[userDictionary setObject:image forKey:@"avatar"];
 						
-						[userDictionary setObject:avatar forKey:@"avatar"];
-						
-						dispatch_async(dispatch_get_main_queue(), ^{
-							[self.autoCompleteCollectionView reloadData];
-						});
-					}
+					dispatch_async(dispatch_get_main_queue(), ^{
+						[self.autoCompleteCollectionView reloadData];
+					});
 				}];
-			}
 			
-			[self.autoCompleteData addObject:userDictionary];
+				if (image)
+				{
+					[userDictionary setObject:image forKey:@"avatar"];
+				}
+		
+			
+				[self.autoCompleteData addObject:userDictionary];
+			}
 		}
 		
 		[self.autoCompleteCollectionView reloadData];
@@ -1214,7 +1212,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	if (collectionView == self.autoCompleteCollectionView)
 	{
-		return self.autoCompleteData.count;
+		@synchronized (self.autoCompleteData) {
+			return self.autoCompleteData.count;
+		}
 	}
 	
 	return self.attachedPhotos.count;
@@ -1224,11 +1224,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	if (collectionView == self.autoCompleteCollectionView)
 	{
-		NSDictionary* dictionary = [self.autoCompleteData objectAtIndex:indexPath.item];
 		RFAutoCompleteCollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RFAutoCompleteCollectionViewCell" forIndexPath:indexPath];
-		cell.userNameLabel.text = [NSString stringWithFormat:@"@%@", dictionary[@"username"]];
-		cell.userImageView.image = dictionary[@"avatar"];
+		@synchronized (self.autoCompleteData) {
+			NSDictionary* dictionary = [self.autoCompleteData objectAtIndex:indexPath.item];
+			cell.userNameLabel.text = [NSString stringWithFormat:@"@%@", dictionary[@"username"]];
+			cell.userImageView.image = dictionary[@"avatar"];
+		}
 		return cell;
+		
 	}
 	
 	RFPhotoCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
@@ -1244,9 +1247,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	if (collectionView == self.autoCompleteCollectionView)
 	{
-		NSDictionary* dictionary = [self.autoCompleteData objectAtIndex:indexPath.item];
-		NSString* userName = [NSString stringWithFormat:@"@%@", dictionary[@"username"]];
-		[self autoCompleteSelected:userName];
+		@synchronized (self.autoCompleteData) {
+			NSDictionary* dictionary = [self.autoCompleteData objectAtIndex:indexPath.item];
+			NSString* userName = [NSString stringWithFormat:@"@%@", dictionary[@"username"]];
+			[self autoCompleteSelected:userName];
+		}
 		return;
 	}
 	
@@ -1254,38 +1259,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self handlePhotoTap:photo];
 }
 
-/*
-- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-	if (collectionView == self.autoCompleteCollectionView)
-	{
-		return CGSizeMake(-1.0, -1.0);
-	}
-	
-	CGFloat w = 50;
-	return CGSizeMake (w, w);
+	[collectionView layoutIfNeeded];
+	return 1;
 }
-*/
-/*
-- (UIEdgeInsets) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-	return UIEdgeInsetsMake (5, 5, 5, 5);
-}
-
-- (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
-	if (collectionView == self.autoCompleteCollectionView)
-	{
-		return 0;
-	}
-	return 5;
-}
-
-- (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-	return 0;
-}
-*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark-
