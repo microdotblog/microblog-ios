@@ -18,6 +18,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "SSKeychain.h"
+#import "RFAutoCompleteCache.h"
 
 @import UserNotifications;
 
@@ -131,6 +132,38 @@
 	}];
 }
 
+- (void) setupFollowerAutoComplete
+{
+	NSString* username = [RFSettings snippetsUsername];
+	if (username == nil) {
+		return;
+	}
+	
+	NSString* path = [NSString stringWithFormat:@"/users/following/%@", username];
+	RFClient* client = [[RFClient alloc] initWithPath:path];
+	[client getWithQueryArguments:nil completion:^(UUHttpResponse *response)
+	{
+		// We didn't get a valid response...
+		if (response.httpResponse.statusCode < 200 || response.httpResponse.statusCode > 299)
+		{
+			return;
+		}
+		
+		NSArray* array = response.parsedResponse;
+		if (array && [array isKindOfClass:[NSArray class]])
+		{
+ 			for (NSDictionary* dictionary in array)
+			{
+				NSString* username = dictionary[@"username"];
+				if (username)
+				{
+					[RFAutoCompleteCache addAutoCompleteString:username];
+				}
+			}
+		}
+	}];
+}
+
 - (void) completeLoginProcess
 {
 	RFDispatchMainAsync (^{
@@ -139,6 +172,9 @@
 			@"token": self.tokenField.text
 		}];
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+
+			// After login, pre-populate the auto-complete cache...
+			[self setupFollowerAutoComplete];
 
 			//Now that we're logged in, request push tokens...
 			UNAuthorizationOptions options = UNAuthorizationOptionBadge | UNAuthorizationOptionAlert | UNAuthorizationOptionSound;
