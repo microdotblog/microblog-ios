@@ -16,6 +16,7 @@
 #import "UUDataCache.h"
 #import "RFAutoCompleteCache.h"
 #import "RFUserCache.h"
+#import "RFAutoCompleteCache.h"
 #import <SafariServices/SafariServices.h>
 
 @interface RFUserController()<UIScrollViewDelegate>
@@ -214,6 +215,9 @@
 
 - (void) fetchUserInfo
 {
+	// Add this user to the autocomplete cache...
+	[RFAutoCompleteCache addAutoCompleteString:self.username];
+
     NSDictionary* cachedUserInfo = [RFUserCache user:self.username];
     if (cachedUserInfo)
     {
