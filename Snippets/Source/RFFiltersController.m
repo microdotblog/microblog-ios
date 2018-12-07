@@ -120,20 +120,6 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	[manager requestImageDataForAsset:self.photo.asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
 		UIImage* img = [UIImage imageWithData:imageData];//[result uuRemoveOrientation];
 		
-		if (img.size.width > 1800 || img.size.height > 1800)
-		{
-			if (img.size.width > img.size.height)
-			{
-				img = [img uuScaleToWidth:1800];
-			}
-			else
-			{
-				img = [img uuScaleToHeight:1800];
-			}
-		}
-
-		img = [img uuRemoveOrientation];
-
 		self.nonZoomImageView.hidden = YES;
 		self.nonZoomImageView.alpha = 0.0;
 		self.croppingScrollView.hidden = NO;

@@ -187,8 +187,8 @@
     
     CGSize destSize = [self uuCalculateScaleToWidthDestSize:width];
 
-	destSize.width /= [[UIScreen mainScreen] scale];
-	destSize.height /= [[UIScreen mainScreen] scale];
+	//destSize.width /= [[UIScreen mainScreen] scale];
+	//destSize.height /= [[UIScreen mainScreen] scale];
 
     // this is actually the interesting part:
     UIGraphicsBeginImageContext(destSize);
@@ -262,7 +262,7 @@
     CGFloat srcHeight = srcSize.height;
     CGFloat srcAspectRatio = srcHeight / srcWidth;
     
-    CGFloat targetWidth = width * ([[UIScreen mainScreen] scale]);
+    CGFloat targetWidth = width;// * ([[UIScreen mainScreen] scale]);
     CGFloat targetHeight = targetWidth * srcAspectRatio;
     
     CGSize destSize = CGSizeMake(targetWidth, targetHeight);
@@ -275,7 +275,7 @@
     CGFloat srcHeight = srcSize.height;
     CGFloat srcAspectRatio = srcWidth / srcHeight;
     
-    CGFloat targetHeight = height * ([[UIScreen mainScreen] scale]);
+    CGFloat targetHeight = height * 1.0;//([[UIScreen mainScreen] scale]);
     CGFloat targetWidth = targetHeight * srcAspectRatio;
     
     CGSize destSize = CGSizeMake(targetWidth, targetHeight);
@@ -297,7 +297,7 @@
 
 -(UIImage*) uuScaleAndCropToSize:(CGSize)targetSize
 {
-    CGFloat deviceScale = [[UIScreen mainScreen] scale];
+    CGFloat deviceScale = 1.0;//[[UIScreen mainScreen] scale];
     UIImage *sourceImage = self;
     UIImage *newImage = nil;    
     CGSize imageSize = sourceImage.size;

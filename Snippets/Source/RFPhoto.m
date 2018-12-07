@@ -7,6 +7,7 @@
 //
 
 #import "RFPhoto.h"
+#import "UUImage.h"
 
 @implementation RFPhoto
 
@@ -25,11 +26,25 @@
 {
 	self = [super init];
 	if (self) {
-		self.thumbnailImage = image;
+        self.thumbnailImage = [RFPhoto sanitizeImage:image];
+        
 		self.altText = @"";
 	}
 	
 	return self;
 }
+
++ (UIImage*) sanitizeImage:(UIImage*)image
+{
+    UIImage* sanitizedImage = image;
+    if (sanitizedImage.size.width > 1800.0)
+    {
+        sanitizedImage = [sanitizedImage uuScaleToWidth:1800.0];
+    }
+    
+    sanitizedImage = [sanitizedImage uuRemoveOrientation];
+    return sanitizedImage;
+}
+
 
 @end
