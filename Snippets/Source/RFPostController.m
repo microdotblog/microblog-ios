@@ -200,7 +200,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangePreferredContentSize:) name:UIContentSizeCategoryDidChangeNotification object:nil];
     
-    if (@available(iOS 12, *)) {
+    if (@available(iOS 11, *)) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAutoCompleteNotification:) name:kRFFoundUserAutoCompleteNotification object:nil];
     }
 }
@@ -383,7 +383,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		{
 			size = 0.0;
 			
-			if (self.activeReplacementString.length > 2)
+			if (self.activeReplacementString.length > 3)
 			{
 				NSString* cleanUserName = self.activeReplacementString;
 				if ([cleanUserName uuStartsWithSubstring:@"@"])

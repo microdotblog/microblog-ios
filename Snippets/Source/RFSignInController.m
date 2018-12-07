@@ -173,9 +173,6 @@
 		}];
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
 
-			// After login, pre-populate the auto-complete cache...
-			[self setupFollowerAutoComplete];
-
 			//Now that we're logged in, request push tokens...
 			UNAuthorizationOptions options = UNAuthorizationOptionBadge | UNAuthorizationOptionAlert | UNAuthorizationOptionSound;
 			[[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:options completionHandler:^(BOOL granted, NSError * _Nullable error)
@@ -191,6 +188,9 @@
 
 - (void) checkForMultipleBlogs
 {
+    // After login, pre-populate the auto-complete cache...
+    [self setupFollowerAutoComplete];
+    
 	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub?q=config"];
 	[client getWithQueryArguments:nil completion:^(UUHttpResponse* response)
 	{
