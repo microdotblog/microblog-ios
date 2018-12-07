@@ -132,12 +132,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	});
 }
 
-- (void) viewWillLayoutSubviews
-{
-	[super viewWillLayoutSubviews];
-	[self.autoCompleteCollectionView.collectionViewLayout invalidateLayout];
-}
-
 - (void) setupNavigation
 {
 	if (self.isReply) {
@@ -205,7 +199,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangePreferredContentSize:) name:UIContentSizeCategoryDidChangeNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAutoCompleteNotification:) name:kRFFoundUserAutoCompleteNotification object:nil];
+    
+    if (@available(iOS 12, *)) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAutoCompleteNotification:) name:kRFFoundUserAutoCompleteNotification object:nil];
+    }
 }
 
 - (void) setupBlogName
@@ -247,6 +244,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupCollectionView
 {
+    self.autoCompleteHeightConstraint.constant = 0.0;
+    
 	self.autoCompleteCollectionView.prefetchingEnabled = NO;
 	[self.autoCompleteCollectionView registerNib:[UINib nibWithNibName:@"RFAutoCompleteCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"RFAutoCompleteCollectionViewCell"];
 	[self.collectionView registerNib:[UINib nibWithNibName:@"PhotoCell" bundle:nil] forCellWithReuseIdentifier:kPhotoCellIdentifier];
@@ -1257,12 +1256,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	
 	RFPhoto* photo = [self.attachedPhotos objectAtIndex:indexPath.item];
 	[self handlePhotoTap:photo];
-}
-
-- (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-	[collectionView layoutIfNeeded];
-	return 1;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
