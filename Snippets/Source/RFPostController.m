@@ -159,6 +159,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[self setupFont];
 
+	if (UIAccessibilityIsVoiceOverRunning()) {
+		// disable highlighting
+		// ...
+	}
+
 	self.textStorage = [[RFHighlightingTextStorage alloc] init];
 
 	NSString* s = @"";
