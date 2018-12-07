@@ -118,7 +118,8 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	options.resizeMode = PHImageRequestOptionsResizeModeExact;
 	options.networkAccessAllowed = YES;
 	[manager requestImageDataForAsset:self.photo.asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
-		UIImage* img = [UIImage imageWithData:imageData];//[result uuRemoveOrientation];
+		UIImage* img = [UIImage imageWithData:imageData];
+        img = [img uuRemoveOrientation];
 		
 		self.nonZoomImageView.hidden = YES;
 		self.nonZoomImageView.alpha = 0.0;
