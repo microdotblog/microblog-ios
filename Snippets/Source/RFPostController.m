@@ -161,10 +161,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	if (UIAccessibilityIsVoiceOverRunning()) {
 		// disable highlighting
-		// ...
+		self.textStorage = [[NSTextStorage alloc] init];
 	}
-
-	self.textStorage = [[RFHighlightingTextStorage alloc] init];
+	else {
+		self.textStorage = [[RFHighlightingTextStorage alloc] init];
+	}
 
 	NSString* s = @"";
 	if (self.replyUsername) {
@@ -183,7 +184,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	NSAttributedString* attr_s = [[NSAttributedString alloc] initWithString:s];
 	self.textView.attributedText = attr_s;
 
-	[self.textStorage appendAttributedString:attr_s];
+	NSRange r = NSMakeRange (0, 0);
+	[self.textStorage replaceCharactersInRange:r withAttributedString:attr_s];
 	[self.textStorage addLayoutManager:self.textView.layoutManager];
 
 	[self updateRemainingChars];
