@@ -3,7 +3,7 @@ var MyExtensionJavaScriptClass = function() {};
 MyExtensionJavaScriptClass.prototype = {
 run: function(arguments) {
 	// Pass the baseURI of the webpage to the extension.
-	arguments.completionFunction({"title": document.title, "url": document.URL});
+	arguments.completionFunction({"title": document.title, "url": document.URL, "text": document.getSelection().toString});
 } 
 };
 

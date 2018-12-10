@@ -1298,17 +1298,18 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			dictionary = dictionary[NSExtensionJavaScriptPreprocessingResultsKey];
 			NSString* title = [dictionary objectForKey:@"title"];
 			NSURL* url = [NSURL URLWithString:[dictionary objectForKey:@"url"]];
+			NSString* text = [dictionary objectForKey:@"text"];
 
 			dispatch_async(dispatch_get_main_queue(), ^
 			{
-				if (title && url) {
-					[self insertSharedURL:url withTitle:title];
+				if (title && url && text) {
+					[self insertSharedURL:url withTitle:title andText:text];
 				}
 				else if (title) {
 					[self insertSharedText:title];
 				}
 				else if (url) {
-					[self insertSharedURL:url withTitle:@""];
+					[self insertSharedURL:url withTitle:@"" andText:@""];
 				}
 					
 				if (inputItems.count)
@@ -1325,7 +1326,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			NSURL* url = [(NSURL*)item copy];;
 			dispatch_async(dispatch_get_main_queue(), ^
 			{
-				[self insertSharedURL:url withTitle:@""];
+				[self insertSharedURL:url withTitle:@"" andText:@""];
 					
 				if (inputItems.count)
 				{
@@ -1443,7 +1444,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	return NO;
 }
 
-- (void) insertSharedURL:(NSURL *)url withTitle:(NSString *)title
+- (void) insertSharedURL:(NSURL *)url withTitle:(NSString *)title andText:(NSString *)text
 {
 	NSString* s;
 	
@@ -1454,9 +1455,19 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		// work around pipe character messing up Markdown
 		NSString* new_title = [title stringByReplacingOccurrencesOfString:@"|" withString:@"-"];
 		s = [NSString stringWithFormat:@" [%@](%@)", new_title, url.absoluteString];
+		
+		if (text.length > 0) {
+			s = [s stringByAppendingString:@"\n\n> "];
+			s = [s stringByAppendingString:text];
+		}
 	}
 	else {
 		s = [NSString stringWithFormat:@" [%@](%@)", url.host, url.absoluteString];
+
+		if (text.length > 0) {
+			s = [s stringByAppendingString:@"\n\n> "];
+			s = [s stringByAppendingString:text];
+		}
 	}
 	
 	[self.textView insertText:s];
