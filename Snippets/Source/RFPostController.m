@@ -645,9 +645,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) blogHostnamePressed:(id)sender
 {
-	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Blogs" bundle:nil];
-	UIViewController* controller = [storyboard instantiateViewControllerWithIdentifier:@"BlogsNavigation"];
-	[self presentViewController:controller animated:NO completion:NULL];
+	if ([RFSettings hasMicropubBlog]) {
+		NSArray* blogs = [[NSUserDefaults standardUserDefaults] objectForKey:@"Micro.blog list"];
+		if (blogs.count > 1) {
+			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Blogs" bundle:nil];
+			UIViewController* controller = [storyboard instantiateViewControllerWithIdentifier:@"BlogsNavigation"];
+			[self presentViewController:controller animated:NO completion:NULL];
+		}
+	}
 }
 
 - (IBAction) settingsPressed:(id)sender
