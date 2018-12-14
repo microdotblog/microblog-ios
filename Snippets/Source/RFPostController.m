@@ -1290,75 +1290,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	});
 }
 
-- (void) processAppExtensionItems:(NSMutableArray*)inputItems
+- (void) loadExtensionImage:(NSItemProvider*)itemProvider inputItems:(NSMutableArray*)inputItems
 {
-	NSItemProvider * itemProvider = inputItems.firstObject;
-	[inputItems removeObject:itemProvider];
-		
-	if ([itemProvider hasItemConformingToTypeIdentifier:(NSString*)kUTTypePropertyList])
+	[itemProvider loadItemForTypeIdentifier:(NSString*)kUTTypeImage options:nil completionHandler:^(UIImage* image, NSError * _Null_unspecified error)
 	{
-		[itemProvider loadItemForTypeIdentifier:(NSString*)kUTTypePropertyList options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
+		if (image)
 		{
-			NSDictionary* dictionary = (NSDictionary*)item;
-			dictionary = dictionary[NSExtensionJavaScriptPreprocessingResultsKey];
-			NSString* title = [dictionary objectForKey:@"title"];
-			NSURL* url = [NSURL URLWithString:[dictionary objectForKey:@"url"]];
-			NSString* text = [dictionary objectForKey:@"text"];
-
-			dispatch_async(dispatch_get_main_queue(), ^
-			{
-				if (title && url && text) {
-					[self insertSharedURL:url withTitle:title andText:text];
-				}
-				else if (title) {
-					[self insertSharedText:title];
-				}
-				else if (url) {
-					[self insertSharedURL:url withTitle:@"" andText:@""];
-				}
-					
-				if (inputItems.count)
-				{
-					[self processAppExtensionItems:inputItems];
-				}
-			});
-		}];
-	}
-	else if ([itemProvider hasItemConformingToTypeIdentifier:@"public.url"])
-	{
-		[itemProvider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
+			[self processImageForAppExtension:image withInputItems:inputItems];
+		}
+		else if (@available(iOS 11.0, *))
 		{
-			NSURL* url = [(NSURL*)item copy];;
-			dispatch_async(dispatch_get_main_queue(), ^
-			{
-				[self insertSharedURL:url withTitle:@"" andText:@""];
-					
-				if (inputItems.count)
-				{
-					[self processAppExtensionItems:inputItems];
-				}
-			});
-		}];
-	}
-	else if ([itemProvider hasItemConformingToTypeIdentifier:@"public.text"])
-	{
-		[itemProvider loadItemForTypeIdentifier:@"public.text" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
-		{
-			NSString* s = [(NSString*)item copy];
-			dispatch_async(dispatch_get_main_queue(), ^
-			{
-				[self insertSharedText:s];
-				
-				if (inputItems.count)
-				{
-					[self processAppExtensionItems:inputItems];
-				}
-			});
-		}];
-	}
-	else if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage])
-	{
-		if (@available(iOS 11.0, *)) {
 			[itemProvider loadInPlaceFileRepresentationForTypeIdentifier:(NSString*)kUTTypeImage completionHandler:^(NSURL * _Nullable url, BOOL isInPlace, NSError * _Nullable error)
 			{
 				NSData* data = [NSData dataWithContentsOfURL:url];
@@ -1377,43 +1318,103 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 						{
 							[self processImageForAppExtension:image withInputItems:inputItems];
 						}
+						else // If we get here, we have exhausted our ability to load an image...
+						{
+							[self processAppExtensionItems:inputItems];
+						}
 					}];
 				}
 			}];
 		}
-		else {
-			[itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeImage options:nil completionHandler:^(UIImage *image, NSError *error)
-			{
-				if(image)
-				{
-					UIImage* new_img = image;
-					RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:new_img];
-
-					NSMutableArray* new_photos = [NSMutableArray arrayWithArray:self.attachedPhotos];
-					[new_photos addObject:photo];
-
-					dispatch_async(dispatch_get_main_queue(), ^
-					{
-						self.attachedPhotos = new_photos;
-						[self.collectionView reloadData];
-
-						[self showPhotosBar];
-
-						if (inputItems.count)
-						{
-							[self processAppExtensionItems:inputItems];
-						}
-					});
-				}
-			}];
-		}
-	}
-	else // If we got here, it means we were passed an item that we don't handle. Sort of weird, but what can we do???
-	{
-		if (inputItems.count)
+		else // If we get here, we have exhausted our ability to load an image...
 		{
 			[self processAppExtensionItems:inputItems];
 		}
+	}];
+}
+
+- (void) loadExtensionPropertyList:(NSItemProvider*)itemProvider inputItems:(NSMutableArray*)inputItems
+{
+	[itemProvider loadItemForTypeIdentifier:(NSString*)kUTTypePropertyList options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
+	{
+		NSDictionary* dictionary = (NSDictionary*)item;
+		dictionary = dictionary[NSExtensionJavaScriptPreprocessingResultsKey];
+		NSString* title = [dictionary objectForKey:@"title"];
+		NSURL* url = [NSURL URLWithString:[dictionary objectForKey:@"url"]];
+		NSString* text = [dictionary objectForKey:@"text"];
+
+		dispatch_async(dispatch_get_main_queue(), ^
+		{
+			if (title && url && text) {
+				[self insertSharedURL:url withTitle:title andText:text];
+			}
+			else if (title) {
+				[self insertSharedText:title];
+			}
+			else if (url) {
+				[self insertSharedURL:url withTitle:@"" andText:@""];
+			}
+				
+			[self processAppExtensionItems:inputItems];
+		});
+	}];
+}
+
+- (void) loadExtensionURL:(NSItemProvider*)itemProvider inputItems:(NSMutableArray*)inputItems
+{
+	[itemProvider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
+	{
+		NSURL* url = [(NSURL*)item copy];;
+		dispatch_async(dispatch_get_main_queue(), ^
+		{
+			[self insertSharedURL:url withTitle:@"" andText:@""];
+			[self processAppExtensionItems:inputItems];
+		});
+	}];
+}
+
+- (void) loadExtensionText:(NSItemProvider*)itemProvider inputItems:(NSMutableArray*)inputItems
+{
+	[itemProvider loadItemForTypeIdentifier:@"public.text" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
+	{
+		NSString* s = [(NSString*)item copy];
+		dispatch_async(dispatch_get_main_queue(), ^
+		{
+			[self insertSharedText:s];
+				
+			[self processAppExtensionItems:inputItems];
+		});
+	}];
+}
+
+- (void) processAppExtensionItems:(NSMutableArray*)inputItems
+{
+	// Bail if there's nothing to do...
+	if (!inputItems.count)
+		return;
+	
+	NSItemProvider * itemProvider = inputItems.firstObject;
+	[inputItems removeObject:itemProvider];
+		
+	if ([itemProvider hasItemConformingToTypeIdentifier:(NSString*)kUTTypePropertyList])
+	{
+		[self loadExtensionPropertyList:itemProvider inputItems:inputItems];
+	}
+	else if ([itemProvider hasItemConformingToTypeIdentifier:@"public.url"])
+	{
+		[self loadExtensionURL:itemProvider inputItems:inputItems];
+	}
+	else if ([itemProvider hasItemConformingToTypeIdentifier:@"public.text"])
+	{
+		[self loadExtensionText:itemProvider inputItems:inputItems];
+	}
+	else if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage])
+	{
+		[self loadExtensionImage:itemProvider inputItems:inputItems];
+	}
+	else // If we got here, it means we were passed an item that we don't handle. Sort of weird, but what can we do???
+	{
+		[self processAppExtensionItems:inputItems];
 	}
 }
 
