@@ -180,12 +180,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			self.titleField.text = [RFSettings draftTitle];
 		}
 	}
-	
-	NSAttributedString* attr_s = [[NSAttributedString alloc] initWithString:s];
+
+	NSDictionary* attr_info = @{
+		NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]]
+	};
+	NSAttributedString* attr_s = [[NSAttributedString alloc] initWithString:s attributes:attr_info];
 	self.textView.attributedText = attr_s;
 
-	NSRange r = NSMakeRange (0, 0);
-	[self.textStorage replaceCharactersInRange:r withAttributedString:attr_s];
+	[self.textStorage setAttributedString:attr_s];
 	[self.textStorage addLayoutManager:self.textView.layoutManager];
 
 	[self updateRemainingChars];
