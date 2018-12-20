@@ -40,7 +40,7 @@
 	}
 	
 	// make it a little because Avenir is smaller than San Francisco
-	result = result + 2.0;
+	result = result + 1.0;
 	
 	return result;
 }
