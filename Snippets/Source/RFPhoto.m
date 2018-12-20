@@ -37,9 +37,12 @@
 + (UIImage*) sanitizeImage:(UIImage*)image
 {
     UIImage* sanitizedImage = image;
-    if (sanitizedImage.size.width > 1800.0)
+    if (sanitizedImage.size.width >= sanitizedImage.size.height)
     {
         sanitizedImage = [sanitizedImage uuScaleToWidth:1800.0];
+	}
+    else {
+		sanitizedImage = [sanitizedImage uuScaleToHeight:1800.0];
     }
     
     sanitizedImage = [sanitizedImage uuRemoveOrientation];
