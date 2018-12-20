@@ -16,11 +16,12 @@
 - (CGFloat) rf_statusBarHeight
 {
 	CGFloat result;
-	if (@available(iOS 11, *)) {
-		result = self.safeAreaInsets.top;
-		[RFSettings setLastStatusBarHeight:result];
-		return result;
-	}
+
+//	if (@available(iOS 11, *)) {
+//		result = self.safeAreaInsets.top;
+//		[RFSettings setLastStatusBarHeight:result];
+//		return result;
+//	}
 	
 	UIWindow* win = self.window;
 	
@@ -29,6 +30,10 @@
 		if (result == 0.0) {
 			result = RFStatusBarHeightOld();
 		}
+	}
+	else if ([win respondsToSelector:@selector(safeAreaInsets)]) {
+		result = win.safeAreaInsets.top;
+		[RFSettings setLastStatusBarHeight:result];
 	}
 	else {
 		result = RFStatusBarHeightOld();
