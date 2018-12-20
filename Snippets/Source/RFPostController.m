@@ -647,7 +647,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) blogHostnamePressed:(id)sender
 {
-	if ([RFSettings hasMicropubBlog]) {
+	if ([RFSettings hasSnippetsBlog] || [RFSettings hasMicropubBlog]) {
 		NSArray* blogs = [[NSUserDefaults standardUserDefaults] objectForKey:@"Micro.blog list"];
 		if (blogs.count > 1) {
 			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Blogs" bundle:nil];
