@@ -18,7 +18,7 @@
 	if (content_size == nil) {
 		content_size = UIContentSizeCategoryMedium;
     }
-	
+
 	NSDictionary* body_sizes = @{
 		UIContentSizeCategoryAccessibilityExtraExtraExtraLarge: @21,
 		UIContentSizeCategoryAccessibilityExtraExtraLarge: @20,
@@ -36,8 +36,11 @@
 	
 	CGFloat result = [[body_sizes objectForKey:content_size] floatValue];
 	if (result == 0.0) {
-		result = 15.0;
+		result = 14.0;
 	}
+	
+	// make it a little because Avenir is smaller than San Francisco
+	result = result + 1.0;
 	
 	return result;
 }
@@ -45,7 +48,7 @@
 + (CGFloat) rf_preferredPostingFontSize
 {
 	CGFloat scale = 1.2;
-	CGFloat fontsize = [self rf_preferredTimelineFontSize] * scale;
+	CGFloat fontsize = round ([self rf_preferredTimelineFontSize] * scale);
 	return fontsize;
 }
 
