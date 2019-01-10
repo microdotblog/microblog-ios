@@ -8,7 +8,7 @@
 
 #import "RFViewController.h"
 #import "RFHelpController.h"
-
+#import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
 
 @implementation RFHelpController
@@ -59,11 +59,28 @@
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void) webViewDidStartLoad:(UIWebView *)webView
+{
+	// hide until we're done loading
+	self.webView.alpha = 0.0;
+}
+
 - (void) webViewDidFinishLoad:(UIWebView *)webView
 {
-	NSString* js = @"$('#snippets_link').remove()";
+	// hide the header and background image and move the content up
+	NSString* js = @"\
+		document.getElementsByClassName('banner')[0].style.display = 'none';\
+		document.getElementsByClassName('main')[0].style.paddingTop = '0px';\
+		document.getElementsByTagName('body')[0].style.background = '#fff';\
+	";
 	[self.webView stringByEvaluatingJavaScriptFromString:js];
-
+	
+	// fade back in
+	RFDispatchSeconds(0.1, ^{
+		[UIView animateWithDuration:0.3 animations:^{
+			self.webView.alpha = 1.0;
+		}];
+	});
 }
 
 @end
