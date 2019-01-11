@@ -32,6 +32,7 @@
 //#import "Microblog-Swift.h"
 #import "RFSettings.h"
 #import "RFAutoCompleteCache.h"
+#import "UUDataCache.h"
 
 @import UserNotifications;
 
@@ -41,6 +42,10 @@
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	[RFSettings migrateAllKeys];
+	
+	// We should only cache images for 24 hours...
+	[UUDataCache uuSetCacheExpirationLength:24.0 * 60.0 * 60.0];
+	[UUDataCache uuPurgeExpiredContent];
 	
 	[self setupCrashlytics];
 	[self setupWindow];
