@@ -10,8 +10,10 @@
 
 @interface RFFeedsController : RFViewController
 
+@property (strong, nonatomic) IBOutlet UITableView* categoriesTable;
 @property (strong, nonatomic) IBOutlet UITableView* feedsTable;
 
+@property (strong, nonatomic) NSArray* categories; // NSString
 @property (strong, nonatomic) NSArray* feeds; // NSDictionary
 
 @end

@@ -10,12 +10,15 @@
 #import "RFFeedsController.h"
 
 #import "RFFeedCell.h"
+#import "RFCategoryCell.h"
 #import "RFFeed.h"
 #import "RFClient.h"
 #import "RFConstants.h"
+#import "RFSettings.h"
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
 
+static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 static NSString* const kFeedCellIdentifier = @"FeedCell";
 
 @implementation RFFeedsController
@@ -41,28 +44,62 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 {
 	[super viewWillAppear:animated];
 
+	[self startProgress];
+	[self fetchCategories];
 	[self fetchFeeds];
 }
 
 - (void) setupNavigation
 {
-	self.navigationItem.title = @"Feeds";
+	self.navigationItem.title = @"Categories & Feeds";
 		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 }
 
 - (void) setupTable
 {
+	[self.categoriesTable registerNib:[UINib nibWithNibName:@"CategoryCell" bundle:nil] forCellReuseIdentifier:kCategoryCellIdentifier];
+	self.categoriesTable.layer.cornerRadius = 5.0;
+
 	[self.feedsTable registerNib:[UINib nibWithNibName:@"FeedCell" bundle:nil] forCellReuseIdentifier:kFeedCellIdentifier];
 	self.feedsTable.layer.cornerRadius = 5.0;
 }
 
-- (void) fetchFeeds
+- (void) startProgress
 {
     UIActivityIndicatorView* activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [activityView startAnimating];
     activityView.frame = CGRectMake(0, 0, 40, 40);
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:activityView];
+}
 
+- (void) fetchCategories
+{
+	NSMutableDictionary* args = [NSMutableDictionary dictionary];
+	[args setObject:@"category" forKey:@"q"];
+	NSString* uid = [RFSettings selectedBlogUid];
+	if (uid) {
+		[args setObject:uid forKey:@"mp-destination"];
+	}
+
+	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
+	[client getWithQueryArguments:args completion:^(UUHttpResponse* response) {
+		NSMutableArray* new_categories = [NSMutableArray array];
+		NSArray* categories = [response.parsedResponse objectForKey:@"categories"];
+		for (NSString* s in categories) {
+			[new_categories addObject:s];
+		}
+		
+		RFDispatchMainAsync (^{
+			self.categories = new_categories;
+			[self.categoriesTable reloadData];
+			
+    		self.navigationItem.rightBarButtonItem = nil;
+		});
+	}];
+}
+
+- (void) fetchFeeds
+{
 	RFClient* client = [[RFClient alloc] initWithPath:@"/account/info/feeds"];
 	[client getWithQueryArguments:nil completion:^(UUHttpResponse* response) {
 		NSMutableArray* new_feeds = [NSMutableArray array];
@@ -112,47 +149,79 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return self.feeds.count;
+	if (tableView == self.categoriesTable) {
+		return self.categories.count;
+	}
+	else {
+		return self.feeds.count;
+	}
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	RFFeedCell* cell = [tableView dequeueReusableCellWithIdentifier:kFeedCellIdentifier forIndexPath:indexPath];
-	
-	RFFeed* feed = [self.feeds objectAtIndex:indexPath.row];
+	if (tableView == self.categoriesTable) {
+		RFCategoryCell* cell = [tableView dequeueReusableCellWithIdentifier:kCategoryCellIdentifier forIndexPath:indexPath];
+		
+		NSString* category_name = [self.categories objectAtIndex:indexPath.row];
 
-	NSString* url_s = feed.url;
-	url_s = [url_s stringByReplacingOccurrencesOfString:@"http://" withString:@""];
-	url_s = [url_s stringByReplacingOccurrencesOfString:@"https://" withString:@""];
+		cell.nameField.text = category_name;
+		cell.checkmarkView.hidden = YES;
+		
+		return cell;
+	}
+	else {
+		RFFeedCell* cell = [tableView dequeueReusableCellWithIdentifier:kFeedCellIdentifier forIndexPath:indexPath];
+		
+		RFFeed* feed = [self.feeds objectAtIndex:indexPath.row];
 
-	cell.urlField.text = url_s;
-	cell.usernamesField.text = feed.summary;
-	cell.checkmarkView.hidden = !feed.isDisabledCrossposting;
-	
-	return cell;
+		NSString* url_s = feed.url;
+		url_s = [url_s stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+		url_s = [url_s stringByReplacingOccurrencesOfString:@"https://" withString:@""];
+
+		cell.urlField.text = url_s;
+		cell.usernamesField.text = feed.summary;
+		cell.checkmarkView.hidden = !feed.isDisabledCrossposting;
+		
+		return cell;
+	}
 }
 
 - (NSIndexPath *) tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	RFFeed* feed = [self.feeds objectAtIndex:indexPath.row];
-	if (feed.hasBot) {
+	if (tableView == self.categoriesTable) {
 		return indexPath;
 	}
 	else {
-		return nil;
+		RFFeed* feed = [self.feeds objectAtIndex:indexPath.row];
+		if (feed.hasBot) {
+			return indexPath;
+		}
+		else {
+			return nil;
+		}
 	}
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	RFFeed* feed = [self.feeds objectAtIndex:indexPath.row];
-	[self updateFeed:feed withDisabledCrossposting:false];
+	if (tableView == self.categoriesTable) {
+		// ...
+	}
+	else {
+		RFFeed* feed = [self.feeds objectAtIndex:indexPath.row];
+		[self updateFeed:feed withDisabledCrossposting:false];
+	}
 }
 
 - (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	RFFeed* feed = [self.feeds objectAtIndex:indexPath.row];
-	[self updateFeed:feed withDisabledCrossposting:true];
+	if (tableView == self.categoriesTable) {
+		// ...
+	}
+	else {
+		RFFeed* feed = [self.feeds objectAtIndex:indexPath.row];
+		[self updateFeed:feed withDisabledCrossposting:true];
+	}
 }
 
 @end

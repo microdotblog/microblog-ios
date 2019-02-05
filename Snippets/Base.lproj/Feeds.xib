@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="AvenirNext.ttc">
-            <string>AvenirNext-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFFeedsController">
             <connections>
+                <outlet property="categoriesTable" destination="DQV-Q0-iqC" id="eL2-3i-pt4"/>
                 <outlet property="feedsTable" destination="6QG-s9-s4S" id="ygO-Lh-12d"/>
                 <outlet property="view" destination="iN0-l3-epB" id="xgk-80-SRB"/>
             </connections>
@@ -27,36 +23,56 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6QG-s9-s4S">
-                    <rect key="frame" x="12" y="150" width="351" height="505"/>
+                    <rect key="frame" x="12" y="461" width="351" height="192"/>
                     <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="192" id="IX9-YC-JTN"/>
+                    </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="nxB-0E-Myq"/>
                         <outlet property="delegate" destination="-1" id="Pud-GT-UjJ"/>
                     </connections>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOd-P4-p1e">
-                    <rect key="frame" x="16" y="32" width="343" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="ydS-oE-Sag"/>
-                    </constraints>
-                    <string key="text">Disable cross-posting to Twitter and Facebook by unchecking your feed here. This setting will be remembered across Micro.blog until it is changed again.</string>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOd-P4-p1e">
+                    <rect key="frame" x="16" y="384.5" width="343" height="61.5"/>
+                    <string key="text">Disable cross-posting by unchecking your feed here. This setting will be remembered across Micro.blog until it is changed again.</string>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select categories for this post:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3e-3e-Zsw">
+                    <rect key="frame" x="16" y="40" width="343" height="20.5"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DQV-Q0-iqC">
+                    <rect key="frame" x="12" y="75.5" width="351" height="287"/>
+                    <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="3ve-5C-9VL"/>
+                        <outlet property="delegate" destination="-1" id="Ca9-bd-HX7"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="d3e-3e-Zsw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="1FR-Ea-Aej"/>
                 <constraint firstItem="jOd-P4-p1e" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="2F8-vG-7Bh"/>
-                <constraint firstItem="6QG-s9-s4S" firstAttribute="top" secondItem="jOd-P4-p1e" secondAttribute="bottom" constant="18" id="7aj-6Q-Szm"/>
+                <constraint firstItem="d3e-3e-Zsw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="4yf-Ab-Vnb"/>
+                <constraint firstItem="6QG-s9-s4S" firstAttribute="top" secondItem="jOd-P4-p1e" secondAttribute="bottom" constant="15" id="7aj-6Q-Szm"/>
+                <constraint firstItem="DQV-Q0-iqC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="L7f-MQ-ny2"/>
+                <constraint firstItem="DQV-Q0-iqC" firstAttribute="top" secondItem="d3e-3e-Zsw" secondAttribute="bottom" constant="15" id="NNJ-zR-eFF"/>
                 <constraint firstItem="6QG-s9-s4S" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-12" id="NhD-n8-1aB"/>
                 <constraint firstItem="6QG-s9-s4S" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="PnX-fr-IGo"/>
-                <constraint firstItem="6QG-s9-s4S" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-12" id="SgL-jh-q0H"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jOd-P4-p1e" secondAttribute="trailing" constant="16" id="UdQ-d7-Av5"/>
-                <constraint firstItem="jOd-P4-p1e" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="bvX-E4-x0f"/>
+                <constraint firstItem="jOd-P4-p1e" firstAttribute="top" secondItem="DQV-Q0-iqC" secondAttribute="bottom" constant="22" id="fNT-2Z-yVc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DQV-Q0-iqC" secondAttribute="trailing" constant="12" id="fTV-Qw-JV7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6QG-s9-s4S" secondAttribute="bottom" constant="14" id="tTw-Mi-3vu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="d3e-3e-Zsw" secondAttribute="trailing" constant="16" id="wSU-hR-X5O"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="34.5" y="54.5"/>
+            <point key="canvasLocation" x="34.399999999999999" y="54.422788605697157"/>
         </view>
     </objects>
 </document>

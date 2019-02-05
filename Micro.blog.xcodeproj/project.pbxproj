@@ -61,6 +61,10 @@
 		4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5D21EB1E9DF44000AC101E /* RFMicropub.m */; };
 		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
 		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
+		4B64B2E7220930E4005B92A0 /* RFCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64B2E6220930E4005B92A0 /* RFCategoryCell.m */; };
+		4B64B2E8220930E4005B92A0 /* RFCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64B2E6220930E4005B92A0 /* RFCategoryCell.m */; };
+		4B64B2EB22093139005B92A0 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B64B2E922093139005B92A0 /* CategoryCell.xib */; };
+		4B64B2EC22093139005B92A0 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B64B2E922093139005B92A0 /* CategoryCell.xib */; };
 		4B821C7D21B428CD006CE005 /* UIView+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIView+Extras.m */; };
 		4B821C7E21B428D3006CE005 /* UIView+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIView+Extras.m */; };
 		4B8714741E64C07800C69589 /* External.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8714721E64C07800C69589 /* External.xib */; };
@@ -400,6 +404,9 @@
 		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
 		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
 		4B5F75561B8CBA1F0074D88E /* RFConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFConstants.h; path = Source/RFConstants.h; sourceTree = "<group>"; };
+		4B64B2E5220930E4005B92A0 /* RFCategoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFCategoryCell.h; path = Source/RFCategoryCell.h; sourceTree = "<group>"; };
+		4B64B2E6220930E4005B92A0 /* RFCategoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFCategoryCell.m; path = Source/RFCategoryCell.m; sourceTree = "<group>"; };
+		4B64B2EA22093139005B92A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CategoryCell.xib; sourceTree = "<group>"; };
 		4B821C7B21B428CD006CE005 /* UIView+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIView+Extras.h"; path = "Source/UIView+Extras.h"; sourceTree = "<group>"; };
 		4B821C7C21B428CD006CE005 /* UIView+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIView+Extras.m"; path = "Source/UIView+Extras.m"; sourceTree = "<group>"; };
 		4B8714731E64C07800C69589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/External.xib; sourceTree = "<group>"; };
@@ -787,6 +794,8 @@
 				4B400D1C2027535700C71AAF /* RFFeed.m */,
 				4B400D172025270900C71AAF /* RFFeedCell.h */,
 				4B400D182025270900C71AAF /* RFFeedCell.m */,
+				4B64B2E5220930E4005B92A0 /* RFCategoryCell.h */,
+				4B64B2E6220930E4005B92A0 /* RFCategoryCell.m */,
 				C513F6E41F993D2D007319F0 /* RFAppExtensionViewController.h */,
 				C513F6E51F993D2D007319F0 /* RFAppExtensionViewController.m */,
 				4BBA71011F5DF9CE00B56A04 /* RFHighlightingTextStorage.h */,
@@ -873,6 +882,7 @@
 				4BA910831B83D22900D58F83 /* Post.xib */,
 				4B400D0E2024491400C71AAF /* Feeds.xib */,
 				4B400D13202524B500C71AAF /* FeedCell.xib */,
+				4B64B2E922093139005B92A0 /* CategoryCell.xib */,
 				4B3BD0E01E82B61700F4B4E0 /* Photos.xib */,
 				4B9A7BAB1E82F1C1002A49E5 /* PhotoCell.xib */,
 				4B4D9B561ED5213E00315BBA /* FeaturedPhotoCell.xib */,
@@ -1316,6 +1326,7 @@
 				C5CED7051ECF792E0068F537 /* YUCIFXAA.cikernel in Resources */,
 				C5A515AF21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib in Resources */,
 				4B400D15202524B500C71AAF /* FeedCell.xib in Resources */,
+				4B64B2EB22093139005B92A0 /* CategoryCell.xib in Resources */,
 				C5CED7161ECF792E0068F537 /* YUCIStarfieldGenerator.cikernel in Resources */,
 				4B12BAEA1E9FBFBC000E559F /* 1Password.xcassets in Resources */,
 				4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */,
@@ -1348,6 +1359,7 @@
 				C507F3581F8831530013D2B7 /* Menu.xib in Resources */,
 				C507F30F1F8827420013D2B7 /* MainInterface.storyboard in Resources */,
 				C507F3551F8831460013D2B7 /* Post.xib in Resources */,
+				4B64B2EC22093139005B92A0 /* CategoryCell.xib in Resources */,
 				C507F35A1F8831530013D2B7 /* User.xib in Resources */,
 				4B400D1220244A6600C71AAF /* Feeds.xib in Resources */,
 				C507F35F1F8831530013D2B7 /* FilterCell.xib in Resources */,
@@ -1484,6 +1496,7 @@
 				4B400D0D202448DB00C71AAF /* RFFeedsController.m in Sources */,
 				4BF803511B87AACF00D6670C /* RFClient.m in Sources */,
 				4B0D55551B93B3590076AD9F /* RFWordpressController.m in Sources */,
+				4B64B2E7220930E4005B92A0 /* RFCategoryCell.m in Sources */,
 				4BF8034B1B87AA2C00D6670C /* UUHttpSession.m in Sources */,
 				C59C3B1E20923EFC0076A754 /* RFBlogTableViewCell.m in Sources */,
 				C5CED7171ECF792E0068F537 /* YUCIStarfieldGenerator.m in Sources */,
@@ -1516,6 +1529,7 @@
 				4B821C7E21B428D3006CE005 /* UIView+Extras.m in Sources */,
 				C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */,
 				C507F3321F8827BC0013D2B7 /* UUString.m in Sources */,
+				4B64B2E8220930E4005B92A0 /* RFCategoryCell.m in Sources */,
 				C507F32D1F8827BC0013D2B7 /* UUDictionary.m in Sources */,
 				C507F31E1F8827970013D2B7 /* RFMicropub.m in Sources */,
 				C507F3371F88281C0013D2B7 /* RFFiltersController.m in Sources */,
@@ -1692,6 +1706,14 @@
 				4B5F75541B8CABF30074D88E /* Base */,
 			);
 			name = Options.xib;
+			sourceTree = "<group>";
+		};
+		4B64B2E922093139005B92A0 /* CategoryCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B64B2EA22093139005B92A0 /* Base */,
+			);
+			name = CategoryCell.xib;
 			sourceTree = "<group>";
 		};
 		4B8714721E64C07800C69589 /* External.xib */ = {
