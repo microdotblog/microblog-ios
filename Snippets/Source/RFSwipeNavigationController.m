@@ -79,17 +79,19 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 
 - (void) prepareConversation
 {
-	NSMutableArray* new_controllers = [NSMutableArray array];
-	CGPoint pt = [self.panGesture locationOfTouch:0 inView:self.view];
-	NSDictionary* info = @{
-		kPrepareConversationPointKey: @(pt.y),
-		kPrepareConversationControllersKey: new_controllers,
-		kPrepareConversationTimelineKey: [self.viewControllers lastObject]
+	if ([self.panGesture numberOfTouches] > 0) {
+		NSMutableArray* new_controllers = [NSMutableArray array];
+		CGPoint pt = [self.panGesture locationOfTouch:0 inView:self.view];
+		NSDictionary* info = @{
+			kPrepareConversationPointKey: @(pt.y),
+			kPrepareConversationControllersKey: new_controllers,
+			kPrepareConversationTimelineKey: [self.viewControllers lastObject]
 
-	};
-	[[NSNotificationCenter defaultCenter] postNotificationName:kPrepareConversationNotification object:self userInfo:info];
-	if (new_controllers.count > 0) {
-		self.nextController = [new_controllers firstObject];
+		};
+		[[NSNotificationCenter defaultCenter] postNotificationName:kPrepareConversationNotification object:self userInfo:info];
+		if (new_controllers.count > 0) {
+			self.nextController = [new_controllers firstObject];
+		}
 	}
 }
 
