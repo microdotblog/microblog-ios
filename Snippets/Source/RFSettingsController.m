@@ -121,32 +121,34 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	[self.categoriesTableView registerNib:[UINib nibWithNibName:@"SettingChoiceCell" bundle:nil] forCellReuseIdentifier:kServerCellIdentifier];
 	self.categoriesTableView.layer.cornerRadius = 5.0;
 	
-	[self.categoriesProgressSpinner startAnimating];
-	
-	NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
-	NSString* taxonomy = @"category";
-	
-	NSArray* params = @[ blog_id, username, password, taxonomy ];
-	
-	RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpc_endpoint];
-	[request sendMethod:@"wp.getTerms" params:params completion:^(UUHttpResponse* response) {
-		RFXMLRPCParser* xmlrpc = [RFXMLRPCParser parsedResponseFromData:response.rawResponse];
+	if (xmlrpc_endpoint && blog_s && username && password) {
+		[self.categoriesProgressSpinner startAnimating];
+		
+		NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
+		NSString* taxonomy = @"category";
+		
+		NSArray* params = @[ blog_id, username, password, taxonomy ];
+		
+		RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpc_endpoint];
+		[request sendMethod:@"wp.getTerms" params:params completion:^(UUHttpResponse* response) {
+			RFXMLRPCParser* xmlrpc = [RFXMLRPCParser parsedResponseFromData:response.rawResponse];
 
-		NSMutableArray* new_categories = [NSMutableArray array];
-		NSMutableArray* new_ids = [NSMutableArray array];
-		for (NSDictionary* cat_info in xmlrpc.responseParams.firstObject) {
-			[new_categories addObject:cat_info[@"name"]];
-			[new_ids addObject:cat_info[@"term_id"]];
-		}
+			NSMutableArray* new_categories = [NSMutableArray array];
+			NSMutableArray* new_ids = [NSMutableArray array];
+			for (NSDictionary* cat_info in xmlrpc.responseParams.firstObject) {
+				[new_categories addObject:cat_info[@"name"]];
+				[new_ids addObject:cat_info[@"term_id"]];
+			}
 
-		RFDispatchMainAsync (^{
-			self.categoryValues = new_categories;
-			self.categoryIDs = new_ids;
-			[self.categoriesTableView reloadData];
-			[self.categoriesProgressSpinner stopAnimating];
-			[self setupSelectedCategory];
-		});
-	}];
+			RFDispatchMainAsync (^{
+				self.categoryValues = new_categories;
+				self.categoryIDs = new_ids;
+				[self.categoriesTableView reloadData];
+				[self.categoriesProgressSpinner stopAnimating];
+				[self setupSelectedCategory];
+			});
+		}];
+	}
 }
 
 - (void) setupVersion
