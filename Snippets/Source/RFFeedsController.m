@@ -94,26 +94,28 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 	}
 	
 	[client getWithQueryArguments:args completion:^(UUHttpResponse* response) {
-		NSMutableArray* new_categories = [NSMutableArray array];
-		NSArray* categories = [response.parsedResponse objectForKey:@"categories"];
-		for (NSString* s in categories) {
-			[new_categories addObject:s];
-		}
-
-		RFDispatchMainAsync (^{
-			self.categories = new_categories;
-			[self.categoriesTable reloadData];
-
-			for (NSInteger i = 0; i < self.categories.count; i++) {
-				NSString* category_name = [self.categories objectAtIndex:i];
-				if ([self.selectedCategories containsObject:category_name]) {
-					NSIndexPath* index_path = [NSIndexPath indexPathForItem:i inSection:0];
-					[self.categoriesTable selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
-				}
+		if ([response isKindOfClass:[NSDictionary class]]) {
+			NSMutableArray* new_categories = [NSMutableArray array];
+			NSArray* categories = [response.parsedResponse objectForKey:@"categories"];
+			for (NSString* s in categories) {
+				[new_categories addObject:s];
 			}
 
-    		self.navigationItem.rightBarButtonItem = nil;
-		});
+			RFDispatchMainAsync (^{
+				self.categories = new_categories;
+				[self.categoriesTable reloadData];
+
+				for (NSInteger i = 0; i < self.categories.count; i++) {
+					NSString* category_name = [self.categories objectAtIndex:i];
+					if ([self.selectedCategories containsObject:category_name]) {
+						NSIndexPath* index_path = [NSIndexPath indexPathForItem:i inSection:0];
+						[self.categoriesTable selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
+					}
+				}
+
+				self.navigationItem.rightBarButtonItem = nil;
+			});
+		}
 	}];
 }
 
@@ -121,27 +123,29 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 {
 	RFClient* client = [[RFClient alloc] initWithPath:@"/account/info/feeds"];
 	[client getWithQueryArguments:nil completion:^(UUHttpResponse* response) {
-		NSMutableArray* new_feeds = [NSMutableArray array];
-		NSArray* feeds = [response.parsedResponse objectForKey:@"rss_feeds"];
-		for (NSDictionary* info in feeds) {
-			RFFeed* f = [[RFFeed alloc] initWithResponse:info];
-			[new_feeds addObject:f];
-		}
-		
-		RFDispatchMainAsync (^{
-			self.feeds = new_feeds;
-			[self.feedsTable reloadData];
-			
-			for (NSInteger i = 0; i < self.feeds.count; i++) {
-				RFFeed* f = [self.feeds objectAtIndex:i];
-				if (f.hasBot && !f.isDisabledCrossposting) {
-					NSIndexPath* index_path = [NSIndexPath indexPathForItem:i inSection:0];
-					[self.feedsTable selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
-				}
+		if ([response isKindOfClass:[NSDictionary class]]) {
+			NSMutableArray* new_feeds = [NSMutableArray array];
+			NSArray* feeds = [response.parsedResponse objectForKey:@"rss_feeds"];
+			for (NSDictionary* info in feeds) {
+				RFFeed* f = [[RFFeed alloc] initWithResponse:info];
+				[new_feeds addObject:f];
 			}
+			
+			RFDispatchMainAsync (^{
+				self.feeds = new_feeds;
+				[self.feedsTable reloadData];
+				
+				for (NSInteger i = 0; i < self.feeds.count; i++) {
+					RFFeed* f = [self.feeds objectAtIndex:i];
+					if (f.hasBot && !f.isDisabledCrossposting) {
+						NSIndexPath* index_path = [NSIndexPath indexPathForItem:i inSection:0];
+						[self.feedsTable selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
+					}
+				}
 
-    		self.navigationItem.rightBarButtonItem = nil;
-		});
+				self.navigationItem.rightBarButtonItem = nil;
+			});
+		}
 	}];
 }
 
