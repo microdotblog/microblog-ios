@@ -14,6 +14,9 @@
 @property (strong, nonatomic) IBOutlet UITableView* feedsTable;
 
 @property (strong, nonatomic) NSArray* categories; // NSString
+@property (strong, nonatomic) NSSet* selectedCategories; // NSString
 @property (strong, nonatomic) NSArray* feeds; // NSDictionary
+
+- (id) initWithSelectedCategories:(NSSet *)selectedCategories;
 
 @end

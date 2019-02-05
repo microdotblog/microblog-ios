@@ -10,6 +10,8 @@
 #import <Social/Social.h>
 #import "RFViewController.h"
 
+@class RFFeedsController;
+
 @interface RFPostController : RFViewController <UITextViewDelegate, UIDropInteractionDelegate, UITextFieldDelegate, NSLayoutManagerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITextView* textView;
@@ -45,7 +47,9 @@
 @property (strong, nonatomic) NSString* initialText;
 @property (strong, nonatomic) NSArray* attachedPhotos; // RFPhoto
 @property (strong, nonatomic) NSArray* queuedPhotos; // RFPhoto
+@property (strong, nonatomic) NSSet* selectedCategories; // NSString
 @property (strong, nonatomic) id textStorage;
+@property (strong, nonatomic) RFFeedsController* feedsController;
 
 - (instancetype) initWithText:(NSString *)text;
 - (instancetype) initWithReplyTo:(NSString *)postID replyUsername:(NSString *)username;

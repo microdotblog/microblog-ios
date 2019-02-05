@@ -55,6 +55,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	if (self) {
 		self.attachedPhotos = @[];
 		self.edgesForExtendedLayout = UIRectEdgeTop;
+		self.selectedCategories = [NSSet set];
 	}
 	
 	return self;
@@ -126,6 +127,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
+
+	if (self.feedsController) {
+		self.selectedCategories = self.feedsController.selectedCategories;
+	}
 
 	RFDispatchSeconds (0.1, ^{
 		[self.textView becomeFirstResponder];
@@ -659,8 +664,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) settingsPressed:(id)sender
 {
-	RFFeedsController* feeds_controller = [[RFFeedsController alloc] init];
-	[self.navigationController pushViewController:feeds_controller animated:YES];
+	self.feedsController = [[RFFeedsController alloc] initWithSelectedCategories:self.selectedCategories];
+	[self.navigationController pushViewController:self.feedsController animated:YES];
 }
 
 - (void) replaceSelectionBySurrounding:(NSArray *)markup
@@ -748,6 +753,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				[args setObject:photo_alts forKey:@"mp-photo-alt[]"];
 			}
 
+			if (self.selectedCategories.count > 0) {
+				[args setObject:[self.selectedCategories allObjects] forKey:@"category[]"];
+			}
+
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
 				RFDispatchMainAsync (^{
 					if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
@@ -765,7 +774,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		else if ([RFSettings hasMicropubBlog]) {
 			NSString* micropub_endpoint = [RFSettings externalMicropubPostingEndpoint];
 			RFMicropub* client = [[RFMicropub alloc] initWithURL:micropub_endpoint];
-			NSDictionary* args;
+			NSMutableDictionary* args = [NSMutableDictionary dictionary];
 			if ([self.attachedPhotos count] > 0) {
 				NSMutableArray* photo_urls = [NSMutableArray array];
 				NSMutableArray* photo_alts = [NSMutableArray array];
@@ -776,32 +785,30 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				}
 
 				if (photo_urls.count == 1) {
-					args = @{
-						@"h": @"entry",
-						@"name": self.titleField.text,
-						@"content": text,
-						@"photo": [photo_urls firstObject],
-						@"mp-photo-alt[]": [photo_alts firstObject]
-					};
+					[args setObject:@"entry" forKey:@"h"];
+					[args setObject:self.titleField.text forKey:@"name"];
+					[args setObject:text forKey:@"content"];
+					[args setObject:[photo_urls firstObject] forKey:@"photo"];
+					[args setObject:[photo_alts firstObject] forKey:@"mp-photo-alt"];
 				}
 				else {
-					args = @{
-						@"h": @"entry",
-						@"name": self.titleField.text,
-						@"content": text,
-						@"photo[]": photo_urls,
-						@"mp-photo-alt[]": photo_alts
-					};
+					[args setObject:@"entry" forKey:@"h"];
+					[args setObject:self.titleField.text forKey:@"name"];
+					[args setObject:text forKey:@"content"];
+					[args setObject:photo_urls forKey:@"photo[]"];
+					[args setObject:photo_alts forKey:@"mp-photo-alt[]"];
 				}
 			}
 			else {
-				args = @{
-					@"h": @"entry",
-					@"name": self.titleField.text,
-					@"content": text
-				};
+				[args setObject:@"entry" forKey:@"h"];
+				[args setObject:self.titleField.text forKey:@"name"];
+				[args setObject:text forKey:@"content"];
 			}
-			
+
+			if (self.selectedCategories.count > 0) {
+				[args setObject:[self.selectedCategories allObjects] forKey:@"category[]"];
+			}
+
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
 				RFDispatchMainAsync (^{
 					if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {

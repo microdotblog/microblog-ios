@@ -13,6 +13,7 @@
 #import "RFCategoryCell.h"
 #import "RFFeed.h"
 #import "RFClient.h"
+#import "RFMicropub.h"
 #import "RFConstants.h"
 #import "RFSettings.h"
 #import "RFMacros.h"
@@ -23,10 +24,11 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 
 @implementation RFFeedsController
 
-- (id) init
+- (id) initWithSelectedCategories:(NSSet *)selectedCategories
 {
 	self = [super initWithNibName:@"Feeds" bundle:nil];
 	if (self) {
+		self.selectedCategories = selectedCategories;
 	}
 	
 	return self;
@@ -74,25 +76,42 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 
 - (void) fetchCategories
 {
+	id client = nil;
 	NSMutableDictionary* args = [NSMutableDictionary dictionary];
 	[args setObject:@"category" forKey:@"q"];
-	NSString* uid = [RFSettings selectedBlogUid];
-	if (uid) {
-		[args setObject:uid forKey:@"mp-destination"];
-	}
 
-	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
+	if ([RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
+		NSString* uid = [RFSettings selectedBlogUid];
+		if (uid) {
+			[args setObject:uid forKey:@"mp-destination"];
+		}
+	
+		client = [[RFClient alloc] initWithPath:@"/micropub"];
+	}
+	else if ([RFSettings hasMicropubBlog]) {
+		NSString* micropub_endpoint = [RFSettings externalMicropubPostingEndpoint];
+		client = [[RFMicropub alloc] initWithURL:micropub_endpoint];
+	}
+	
 	[client getWithQueryArguments:args completion:^(UUHttpResponse* response) {
 		NSMutableArray* new_categories = [NSMutableArray array];
 		NSArray* categories = [response.parsedResponse objectForKey:@"categories"];
 		for (NSString* s in categories) {
 			[new_categories addObject:s];
 		}
-		
+
 		RFDispatchMainAsync (^{
 			self.categories = new_categories;
 			[self.categoriesTable reloadData];
-			
+
+			for (NSInteger i = 0; i < self.categories.count; i++) {
+				NSString* category_name = [self.categories objectAtIndex:i];
+				if ([self.selectedCategories containsObject:category_name]) {
+					NSIndexPath* index_path = [NSIndexPath indexPathForItem:i inSection:0];
+					[self.categoriesTable selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
+				}
+			}
+
     		self.navigationItem.rightBarButtonItem = nil;
 		});
 	}];
@@ -205,7 +224,8 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (tableView == self.categoriesTable) {
-		// ...
+		NSString* category_name = [self.categories objectAtIndex:indexPath.row];
+		self.selectedCategories = [self.selectedCategories setByAddingObject:category_name];
 	}
 	else {
 		RFFeed* feed = [self.feeds objectAtIndex:indexPath.row];
@@ -216,7 +236,10 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 - (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (tableView == self.categoriesTable) {
-		// ...
+		NSString* category_name = [self.categories objectAtIndex:indexPath.row];
+		NSMutableSet* new_selected = [self.selectedCategories mutableCopy];
+		[new_selected removeObject:category_name];
+		self.selectedCategories = new_selected;
 	}
 	else {
 		RFFeed* feed = [self.feeds objectAtIndex:indexPath.row];
