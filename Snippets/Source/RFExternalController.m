@@ -142,6 +142,8 @@
 		s = [@"http://" stringByAppendingString:s];
 	}
 	
+	s = [s uuTrimWhitespace];
+	
 	return s;
 }
 
