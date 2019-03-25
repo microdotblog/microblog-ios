@@ -209,6 +209,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) setupNotifications
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attachPhotoNotification:) name:kAttachPhotoNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(attachVideoNotification:) name:kAttachVideoNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(photosDidCloseNotification:) name:kPhotosDidCloseNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
@@ -515,6 +516,25 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}];
 }
 
+- (void) attachVideoNotification:(NSNotification*)notification
+{
+	[self setupNavigation];
+	
+	NSURL* url = [notification.userInfo objectForKey:kAttachVideoKey];
+	UIImage* thumbnail = [notification.userInfo objectForKey:kAttachVideoThumbnailKey];
+
+	RFPhoto* photo = [[RFPhoto alloc] initWithVideo:url thumbnail:thumbnail];
+	NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
+	[new_photos addObject:photo];
+	self.attachedPhotos = new_photos;
+	[self.collectionView reloadData];
+	
+	[self dismissViewControllerAnimated:YES completion:^{
+		[self showPhotosBar];
+	}];
+
+}
+	
 - (void) photosDidCloseNotification:(NSNotification *)notification
 {
 	[self setupNavigation];
@@ -896,7 +916,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[new_photos removeObjectAtIndex:0];
 		self.queuedPhotos = new_photos;
 		
-		[self uploadPhoto:photo completion:^{
+		[self uploadMedia:photo completion:^{
 			[self uploadNextPhoto];
 		}];
 	}
@@ -940,7 +960,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 }
 
-- (void) uploadPhoto:(RFPhoto *)photo completion:(void (^)(void))handler
+- (void) uploadMedia:(RFPhoto*)photo completion:(void(^)(void))handler
 {
 	if (self.attachedPhotos.count > 0) {
 		[self showProgressHeader:@"Uploading photos..."];
@@ -948,7 +968,22 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	else {
 		[self showProgressHeader:@"Uploading photo..."];
 	}
+
+	if (photo.videoURL)
+	{
+		[self uploadVideo:photo completion:handler];
+	}
+	else {
+		[self uploadPhoto:photo completion:handler];
+	}
+}
 	
+- (void) uploadVideo:(RFPhoto*)photo completion:(void(^)(void))handler
+{
+}
+	
+- (void) uploadPhoto:(RFPhoto *)photo completion:(void (^)(void))handler
+{
 	UIImage* img = photo.thumbnailImage;
 	NSData* d = UIImageJPEGRepresentation (img, 0.6);
 	if (d) {

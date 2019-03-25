@@ -14,6 +14,7 @@
 #import "RFFiltersController.h"
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
+@import MobileCoreServices;
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
@@ -66,10 +67,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	PHFetchOptions* options = [[PHFetchOptions alloc] init];
 	options.sortDescriptors = @[ [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO] ];
-
+	options.predicate = [NSPredicate predicateWithFormat:@"mediaType == %ld || mediaType == %ld", PHAssetMediaTypeImage, PHAssetMediaTypeVideo];
+	
 	PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
 	if (status == PHAuthorizationStatusAuthorized) {
-		self.photosResult = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:options];
+		self.photosResult = [PHAsset fetchAssetsWithOptions:options];//[PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:options];
 	}
 	else if (status == PHAuthorizationStatusNotDetermined) {
 		[PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
@@ -127,6 +129,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	UIImagePickerController* picker_controller = [[UIImagePickerController alloc] init];
 	picker_controller.delegate = self;
 	picker_controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+	picker_controller.mediaTypes = @[ (NSString*)kUTTypeMovie, (NSString*)kUTTypeImage ];
 	[self presentViewController:picker_controller animated:YES completion:NULL];
 }
 
@@ -179,8 +182,27 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	PHAsset* asset = [self.photosResult objectAtIndex:indexPath.item];
 	RFPhoto* photo = [[RFPhoto alloc] initWithAsset:asset];
 	
-	RFFiltersController* filters_controller = [[RFFiltersController alloc] initWithPhoto:photo];
-	[self.navigationController pushViewController:filters_controller animated:YES];
+	if (asset.mediaType == PHAssetMediaTypeImage)
+	{
+		RFFiltersController* filters_controller = [[RFFiltersController alloc] initWithPhoto:photo];
+		[self.navigationController pushViewController:filters_controller animated:YES];
+	}
+	else if (asset.mediaType == PHAssetMediaTypeVideo)
+	{
+		[photo generateVideoThumbnail:^(UIImage *thumbnail) {
+			[photo generateVideoURL:^(NSURL* url) {
+				
+				dispatch_async(dispatch_get_main_queue(), ^{
+					
+					NSDictionary* dictionary = @{ kAttachVideoKey : url,
+												  kAttachVideoThumbnailKey : thumbnail
+												};
+					
+					[[NSNotificationCenter defaultCenter] postNotificationName:kAttachVideoNotification object:self userInfo:dictionary];
+				});
+			}];
+		}];
+	}
 }
 
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
