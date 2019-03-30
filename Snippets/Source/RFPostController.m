@@ -763,14 +763,24 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			if ([self.attachedPhotos count] > 0) {
 				NSMutableArray* photo_urls = [NSMutableArray array];
 				NSMutableArray* photo_alts = [NSMutableArray array];
+				NSMutableArray* video_urls = [NSMutableArray array];
+				NSMutableArray* video_alts = [NSMutableArray array];
 
 				for (RFPhoto* photo in self.attachedPhotos) {
-					[photo_urls addObject:photo.publishedURL];
-					[photo_alts addObject:photo.altText];
+					if (photo.videoURL) {
+						[video_urls addObject:photo.publishedURL];
+						[video_alts addObject:photo.altText];
+					}
+					else {
+						[photo_urls addObject:photo.publishedURL];
+						[photo_alts addObject:photo.altText];
+					}
 				}
 				
 				[args setObject:photo_urls forKey:@"photo[]"];
 				[args setObject:photo_alts forKey:@"mp-photo-alt[]"];
+				[args setObject:video_urls forKey:@"video[]"];
+				[args setObject:video_alts forKey:@"mp-video-alt[]"];
 			}
 
 			if (self.selectedCategories.count > 0) {
@@ -798,26 +808,28 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			if ([self.attachedPhotos count] > 0) {
 				NSMutableArray* photo_urls = [NSMutableArray array];
 				NSMutableArray* photo_alts = [NSMutableArray array];
-
+				NSMutableArray* video_urls = [NSMutableArray array];
+				NSMutableArray* video_alts = [NSMutableArray array];
+				
 				for (RFPhoto* photo in self.attachedPhotos) {
-					[photo_urls addObject:photo.publishedURL];
-					[photo_alts addObject:photo.altText];
+					if (photo.videoURL) {
+						[video_urls addObject:photo.publishedURL];
+						[video_alts addObject:photo.altText];
+					}
+					else {
+						[photo_urls addObject:photo.publishedURL];
+						[photo_alts addObject:photo.altText];
+					}
 				}
+				
 
-				if (photo_urls.count == 1) {
-					[args setObject:@"entry" forKey:@"h"];
-					[args setObject:self.titleField.text forKey:@"name"];
-					[args setObject:text forKey:@"content"];
-					[args setObject:[photo_urls firstObject] forKey:@"photo"];
-					[args setObject:[photo_alts firstObject] forKey:@"mp-photo-alt"];
-				}
-				else {
-					[args setObject:@"entry" forKey:@"h"];
-					[args setObject:self.titleField.text forKey:@"name"];
-					[args setObject:text forKey:@"content"];
-					[args setObject:photo_urls forKey:@"photo[]"];
-					[args setObject:photo_alts forKey:@"mp-photo-alt[]"];
-				}
+				[args setObject:@"entry" forKey:@"h"];
+				[args setObject:self.titleField.text forKey:@"name"];
+				[args setObject:text forKey:@"content"];
+				[args setObject:photo_urls forKey:@"photo[]"];
+				[args setObject:photo_alts forKey:@"mp-photo-alt[]"];
+				[args setObject:video_urls forKey:@"video[]"];
+				[args setObject:video_alts forKey:@"mp-video-alt[]"];
 			}
 			else {
 				[args setObject:@"entry" forKey:@"h"];
@@ -951,8 +963,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 					}
 					width = height / original_size.height * original_size.width;
 				}
-
-				s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" alt=\"%@\" />", photo.publishedURL, width, height, photo.altText];
+				
+				if (photo.videoURL)
+					s = [s stringByAppendingFormat:@"<video controls=\"controls\" src=\"%@\" width=\"%.0f\" height=\"%.0f\" alt=\"%@\" />", photo.publishedURL, width, height, photo.altText];
+				else
+					s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" alt=\"%@\" />", photo.publishedURL, width, height, photo.altText];
 			}
 		}
 
@@ -964,6 +979,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	if (self.attachedPhotos.count > 0) {
 		[self showProgressHeader:@"Uploading photos..."];
+	}
+	else if (photo.videoURL) {
+		[self showProgressHeader:@"Uploading video..."];
 	}
 	else {
 		[self showProgressHeader:@"Uploading photo..."];
@@ -980,6 +998,111 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	
 - (void) uploadVideo:(RFPhoto*)photo completion:(void(^)(void))handler
 {
+	NSData* d = [NSData dataWithContentsOfURL:photo.videoURL];
+	if (d) {
+		if ([RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
+			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];
+			NSMutableDictionary* args = [NSMutableDictionary dictionary];
+			NSString* uid = [RFSettings selectedBlogUid];
+			if (uid)
+			{
+				[args setObject:uid forKey:@"mp-destination"];
+			}
+			
+			[client uploadVideoData:d named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
+				NSDictionary* headers = response.httpResponse.allHeaderFields;
+				NSString* image_url = headers[@"Location"];
+				RFDispatchMainAsync (^{
+					if (image_url == nil) {
+						[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Video" message:@"Video URL was blank." button:@"OK" completionHandler:NULL];
+						[self hideProgressHeader];
+						self.photoButton.hidden = NO;
+					}
+					else {
+						photo.publishedURL = image_url;
+						[Answers logCustomEventWithName:@"Uploaded Video" customAttributes:nil];
+						handler();
+					}
+				});
+			}];
+		}
+		else if ([RFSettings hasMicropubBlog]) {
+			NSString* micropub_endpoint = [RFSettings externalMicropubMediaEndpoint];
+			RFMicropub* client = [[RFMicropub alloc] initWithURL:micropub_endpoint];
+			NSDictionary* args = @{
+								   };
+			[client uploadVideoData:d named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
+				NSDictionary* headers = response.httpResponse.allHeaderFields;
+				NSString* image_url = headers[@"Location"];
+				RFDispatchMainAsync (^{
+					if (image_url == nil) {
+						[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Video" message:@"Video URL was blank." button:@"OK" completionHandler:NULL];
+						[self hideProgressHeader];
+						self.photoButton.hidden = NO;
+					}
+					else {
+						photo.publishedURL = image_url;
+						[Answers logCustomEventWithName:@"Uploaded Micropub Video" customAttributes:nil];
+						handler();
+					}
+				});
+			}];
+		}
+		else {
+			NSString* xmlrpc_endpoint = [RFSettings externalBlogEndpoint];
+			NSString* blog_s = [RFSettings externalBlogID];
+			NSString* username = [RFSettings externalBlogUsername];
+			NSString* password = [RFSettings externalBlogPassword];
+			
+			NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
+			NSString* filename = [[[[NSString uuGenerateUUIDString] lowercaseString] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByAppendingPathExtension:@"jpg"];
+			
+			if (!blog_id || !username || !password) {
+				[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Video" message:@"Your blog settings were not saved correctly. Try signing out and trying again." button:@"OK" completionHandler:NULL];
+				[self hideProgressHeader];
+				self.photoButton.hidden = NO;
+				return;
+			}
+			
+			NSArray* params = @[ blog_id, username, password, @{
+									 @"name": filename,
+									 @"type": @"video/mov",
+									 @"bits": d
+									 }];
+			NSString* method_name = @"metaWeblog.newMediaObject";
+			
+			RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpc_endpoint];
+			[request sendMethod:method_name params:params completion:^(UUHttpResponse* response) {
+				RFXMLRPCParser* xmlrpc = [RFXMLRPCParser parsedResponseFromData:response.rawResponse];
+				RFDispatchMainAsync ((^{
+					if (xmlrpc.responseFault) {
+						NSString* s = [NSString stringWithFormat:@"%@ (error: %@)", xmlrpc.responseFault[@"faultString"], xmlrpc.responseFault[@"faultCode"]];
+						[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Video" message:s button:@"OK" completionHandler:NULL];
+						[self hideProgressHeader];
+						self.photoButton.hidden = NO;
+					}
+					else {
+						NSString* image_url = [[xmlrpc.responseParams firstObject] objectForKey:@"url"];
+						if (image_url == nil) {
+							image_url = [[xmlrpc.responseParams firstObject] objectForKey:@"link"];
+						}
+						
+						if (image_url == nil) {
+							[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Video" message:@"Video URL was blank." button:@"OK" completionHandler:NULL];
+							[self hideProgressHeader];
+							self.photoButton.hidden = NO;
+						}
+						else {
+							photo.publishedURL = image_url;
+							
+							[Answers logCustomEventWithName:@"Uploaded External Video" customAttributes:nil];
+							handler();
+						}
+					}
+				}));
+			}];
+		}
+	}
 }
 	
 - (void) uploadPhoto:(RFPhoto *)photo completion:(void (^)(void))handler
