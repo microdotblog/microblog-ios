@@ -1472,25 +1472,34 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		AVAssetImageGenerator* imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
 		CGImageRef cgImage = [imageGenerator copyCGImageAtTime:CMTimeMake(0, 1) actualTime:nil error:&error];
 		UIImage* thumbnail = [UIImage imageWithCGImage:cgImage];
-
-		RFPhoto* photo = [[RFPhoto alloc] initWithVideo:url thumbnail:thumbnail];
-
-		NSMutableArray* new_photos = [NSMutableArray arrayWithArray:self.attachedPhotos];
-		[new_photos addObject:photo];
 		
-		dispatch_async(dispatch_get_main_queue(), ^
-		{
-			self.attachedPhotos = new_photos;
-			[self.collectionView reloadData];
-						   
-			[self showPhotosBar];
-						   
-			if (inputItems.count)
-			{
-				[self processAppExtensionItems:inputItems];
-			}
-		});
+		NSString* tempPath = NSTemporaryDirectory();
+		tempPath = [tempPath stringByAppendingPathComponent:@"video.mov"];
+		
+		AVAssetExportSession* exportSession = [AVAssetExportSession exportSessionWithAsset:asset presetName:AVAssetExportPreset640x480];
+		exportSession.outputURL = [NSURL fileURLWithPath:tempPath];
+		exportSession.outputFileType = AVFileTypeAppleM4V;
+		[exportSession exportAsynchronouslyWithCompletionHandler:^
+		 {
+			 RFPhoto* photo = [[RFPhoto alloc] initWithVideo:exportSession.outputURL thumbnail:thumbnail];
+			 
+			 NSMutableArray* new_photos = [NSMutableArray arrayWithArray:self.attachedPhotos];
+			 [new_photos addObject:photo];
+			 
+			 dispatch_async(dispatch_get_main_queue(), ^
+							{
+								self.attachedPhotos = new_photos;
+								[self.collectionView reloadData];
+								
+								[self showPhotosBar];
+								
+								if (inputItems.count)
+								{
+									[self processAppExtensionItems:inputItems];
+								}
+							});
 
+		 }];
 	}];
 }
 
