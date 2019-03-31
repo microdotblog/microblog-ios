@@ -40,6 +40,8 @@
 	if (self) {
 		self.thumbnailImage = thumbnail;
 		self.videoURL = url;
+		
+		self.altText = @"";
 	}
 		
 	return self;
