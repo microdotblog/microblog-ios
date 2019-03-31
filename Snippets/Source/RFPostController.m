@@ -620,6 +620,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[RFSettings setDraftTitle:[self currentTitle]];
 		[RFSettings setDraftText:[self currentText]];
 	}
+	
+	for (RFPhoto* photo in self.attachedPhotos) {
+		if (photo.videoURL) {
+			[[NSFileManager defaultManager] removeItemAtURL:photo.videoURL error:nil];
+		}
+	}
 
 	if (![self checkForAppExtensionClose])
 	{
