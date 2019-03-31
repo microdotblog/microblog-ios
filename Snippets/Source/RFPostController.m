@@ -1463,6 +1463,37 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	});
 }
 
+- (void) loadExtensionVideo:(NSItemProvider*)itemProvider inputItems:(NSMutableArray*)inputItems
+{
+	[itemProvider loadItemForTypeIdentifier:(NSString*)kUTTypeMovie options:nil completionHandler:^(NSURL* url, NSError * _Null_unspecified err) {
+		
+		NSError* error = nil;
+		AVURLAsset* asset = [AVURLAsset assetWithURL:url];
+		AVAssetImageGenerator* imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+		CGImageRef cgImage = [imageGenerator copyCGImageAtTime:CMTimeMake(0, 1) actualTime:nil error:&error];
+		UIImage* thumbnail = [UIImage imageWithCGImage:cgImage];
+
+		RFPhoto* photo = [[RFPhoto alloc] initWithVideo:url thumbnail:thumbnail];
+
+		NSMutableArray* new_photos = [NSMutableArray arrayWithArray:self.attachedPhotos];
+		[new_photos addObject:photo];
+		
+		dispatch_async(dispatch_get_main_queue(), ^
+		{
+			self.attachedPhotos = new_photos;
+			[self.collectionView reloadData];
+						   
+			[self showPhotosBar];
+						   
+			if (inputItems.count)
+			{
+				[self processAppExtensionItems:inputItems];
+			}
+		});
+
+	}];
+}
+
 - (void) loadExtensionImage:(NSItemProvider*)itemProvider inputItems:(NSMutableArray*)inputItems
 {
 	[itemProvider loadItemForTypeIdentifier:(NSString*)kUTTypeImage options:nil completionHandler:^(UIImage* image, NSError * _Null_unspecified error)
@@ -1584,6 +1615,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	else if ([itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeImage])
 	{
 		[self loadExtensionImage:itemProvider inputItems:inputItems];
+	}
+	else if ([itemProvider hasItemConformingToTypeIdentifier:(NSString*)kUTTypeMovie])
+	{
+		[self loadExtensionVideo:itemProvider inputItems:inputItems];
 	}
 	else // If we got here, it means we were passed an item that we don't handle. Sort of weird, but what can we do???
 	{
