@@ -74,11 +74,33 @@
 	
 	[[PHImageManager defaultManager] requestAVAssetForVideo:self.asset options:options resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info)
 	{
-		AVURLAsset* urlAsset = (AVURLAsset*)asset;
-		completionBlock(urlAsset.URL);
+		NSString* localPath = [RFPhoto localPathForVideoData];
+		AVAssetExportSession* exportSession = [AVAssetExportSession exportSessionWithAsset:asset presetName:AVAssetExportPreset640x480];
+		exportSession.outputURL = [NSURL fileURLWithPath:localPath];
+		exportSession.outputFileType = AVFileTypeAppleM4V;
+		[exportSession exportAsynchronouslyWithCompletionHandler:^
+		 {
+			 self.videoURL = exportSession.outputURL;
+			 completionBlock(self.videoURL);
+		 }];
 	}];
 }
 
++ (NSString*) localPathForVideoData
+{
+	NSArray* paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString* docs_folder = [paths objectAtIndex:0];
+	NSString* images_folder = [docs_folder stringByAppendingPathComponent:@"Videos"];
+	[[NSFileManager defaultManager] createDirectoryAtPath:images_folder withIntermediateDirectories:YES attributes:nil error:nil];
+		
+	CFUUIDRef uuid = CFUUIDCreate (NULL);
+	NSString* image_guid = (NSString *) CFBridgingRelease (CFUUIDCreateString (NULL, uuid));
+	CFRelease (uuid);
+		
+	NSString* image_path = [[images_folder stringByAppendingPathComponent:image_guid] stringByAppendingPathExtension:@"mp4"];
+		
+	return image_path;
+}
 	
 + (UIImage*) sanitizeImage:(UIImage*)image
 {

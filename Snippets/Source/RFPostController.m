@@ -977,11 +977,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) uploadMedia:(RFPhoto*)photo completion:(void(^)(void))handler
 {
-	if (self.attachedPhotos.count > 0) {
-		[self showProgressHeader:@"Uploading photos..."];
-	}
-	else if (photo.videoURL) {
+	if (photo.videoURL) {
 		[self showProgressHeader:@"Uploading video..."];
+	}
+	else if (self.attachedPhotos.count > 0) {
+		[self showProgressHeader:@"Uploading photos..."];
 	}
 	else {
 		[self showProgressHeader:@"Uploading photo..."];
