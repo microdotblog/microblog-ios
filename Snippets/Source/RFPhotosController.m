@@ -14,6 +14,9 @@
 #import "RFFiltersController.h"
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
+#import "RFUpgradeController.h"
+#import "RFSettings.h"
+
 @import MobileCoreServices;
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
@@ -133,6 +136,30 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self presentViewController:picker_controller animated:YES completion:NULL];
 }
 
+- (void) checkVideoUpload:(RFPhoto *)photo completion:(void (^)(BOOL canUpload))handler
+{
+	BOOL needs_upgrade = NO;
+	
+	if ([RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
+		NSDictionary* info = [RFSettings selectedBlogInfo];
+		if (info && ![[info objectForKey:@"microblog-audio"] boolValue]) {
+			needs_upgrade = YES;
+		}
+	}
+	
+	if (needs_upgrade) {
+		RFUpgradeController* upgrade_controller = [[RFUpgradeController alloc] init];
+		upgrade_controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+		upgrade_controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+		[self presentViewController:upgrade_controller animated:YES completion:^{
+			handler(upgrade_controller.canUpload);
+		}];
+	}
+	else {
+		handler(YES);
+	}
+}
+
 #pragma mark -
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
@@ -189,18 +216,22 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 	else if (asset.mediaType == PHAssetMediaTypeVideo)
 	{
-		[photo generateVideoThumbnail:^(UIImage *thumbnail) {
-			[photo generateVideoURL:^(NSURL* url) {
-				
-				dispatch_async(dispatch_get_main_queue(), ^{
-					
-					NSDictionary* dictionary = @{ kAttachVideoKey : url,
-												  kAttachVideoThumbnailKey : thumbnail
-												};
-					
-					[[NSNotificationCenter defaultCenter] postNotificationName:kAttachVideoNotification object:self userInfo:dictionary];
-				});
-			}];
+		[self checkVideoUpload:photo completion:^(BOOL canUpload) {
+			if (canUpload) {
+				[photo generateVideoThumbnail:^(UIImage *thumbnail) {
+					[photo generateVideoURL:^(NSURL* url) {
+						
+						dispatch_async(dispatch_get_main_queue(), ^{
+							
+							NSDictionary* dictionary = @{ kAttachVideoKey : url,
+														  kAttachVideoThumbnailKey : thumbnail
+														};
+							
+							[[NSNotificationCenter defaultCenter] postNotificationName:kAttachVideoNotification object:self userInfo:dictionary];
+						});
+					}];
+				}];
+			}
 		}];
 	}
 }
