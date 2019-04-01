@@ -8,7 +8,9 @@
 
 #import "RFPhoto.h"
 #import "UUImage.h"
+#import "UUAlert.h"
 #import "SDAVAssetExportSession.h"
+#import "RFMacros.h"
 
 @implementation RFPhoto
 
@@ -89,11 +91,21 @@
 		exportSession.videoSettings = [RFPhoto videoSettingsForSize:size];
 		exportSession.audioSettings = [RFPhoto audioSettings];
 
-		[exportSession exportAsynchronouslyWithCompletionHandler:^
-		 {
-			 self.videoURL = exportSession.outputURL;
-			 completionBlock(self.videoURL);
-		 }];
+		[exportSession exportAsynchronouslyWithCompletionHandler:^{
+			RFDispatchMain (^{
+				NSURL* file_url = exportSession.outputURL;
+				NSDictionary* file_info = [[NSFileManager defaultManager] attributesOfItemAtPath:file_url.path error:NULL];
+				NSNumber* file_size = [file_info objectForKey:NSFileSize];
+				if ([file_size integerValue] > 45000000) { // 45 MB
+					NSString* msg = @"Micro.blog is designed for short videos. File uploads should be 45 MB or less. (Usually about 2 minutes of video.)";
+					[UUAlertViewController uuShowOneButtonAlert:@"Video Can't Be Uploaded" message:msg button:@"OK" completionHandler:NULL];
+				}
+				else {
+					self.videoURL = file_url;
+					completionBlock(self.videoURL);
+				}
+			});
+		}];
 	}];
 }
 
