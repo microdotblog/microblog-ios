@@ -27,6 +27,7 @@ static NSString* const kAttachVideoThumbnailKey = @"thumbnail";
 - (id) initWithAsset:(PHAsset *)asset;
 - (id) initWithThumbnail:(UIImage *)image;
 - (id) initWithVideo:(NSURL*)url thumbnail:(UIImage*)thumbnail;
+- (id) initWithVideo:(NSURL*)url asset:(PHAsset*)asset;
 
 + (UIImage*) sanitizeImage:(UIImage*)image;
 	

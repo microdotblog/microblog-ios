@@ -166,14 +166,36 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	NSURL* reference_url = [info objectForKey:UIImagePickerControllerReferenceURL];
 	PHAsset* asset = [[PHAsset fetchAssetsWithALAssetURLs:@[ reference_url ] options:nil] lastObject];
-	[self dismissViewControllerAnimated:YES completion:^{
-		if (asset) {
-			RFPhoto* photo = [[RFPhoto alloc] initWithAsset:asset];
+
+	if (asset) {
+		if (asset.mediaType == PHAssetMediaTypeVideo)
+		{
+			RFPhoto* photo = [[RFPhoto alloc] initWithVideo:reference_url asset:asset];
 			
-			RFFiltersController* filters_controller = [[RFFiltersController alloc] initWithPhoto:photo];
-			[self.navigationController pushViewController:filters_controller animated:YES];
+			[photo generateVideoThumbnail:^(UIImage *thumbnail) {
+				[photo generateVideoURL:^(NSURL* url) {
+					
+					dispatch_async(dispatch_get_main_queue(), ^{
+						
+						NSDictionary* dictionary = @{ kAttachVideoKey : url,
+													  kAttachVideoThumbnailKey : thumbnail
+													  };
+						
+						[[NSNotificationCenter defaultCenter] postNotificationName:kAttachVideoNotification object:self userInfo:dictionary];
+					});
+				}];
+			}];
 		}
-	}];
+		else {
+
+			[self dismissViewControllerAnimated:YES completion:^{
+				RFPhoto* photo = [[RFPhoto alloc] initWithAsset:asset];
+			
+				RFFiltersController* filters_controller = [[RFFiltersController alloc] initWithPhoto:photo];
+				[self.navigationController pushViewController:filters_controller animated:YES];
+			}];
+		}
+	}
 }
 
 - (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker
