@@ -1465,46 +1465,53 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	});
 }
 
+- (void) handleVideoObject:(AVURLAsset*)asset
+{
+	NSError* error = nil;
+	AVAssetImageGenerator* imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+	CGImageRef cgImage = [imageGenerator copyCGImageAtTime:CMTimeMake(0, 1) actualTime:nil error:&error];
+	UIImage* thumbnail = [UIImage imageWithCGImage:cgImage];
+	
+	NSString* tempPath = NSTemporaryDirectory();
+	tempPath = [tempPath stringByAppendingPathComponent:@"video.mov"];
+	
+	SDAVAssetExportSession* exportSession = [[SDAVAssetExportSession alloc] initWithAsset:asset];
+	exportSession.outputURL = [NSURL fileURLWithPath:tempPath];
+	exportSession.outputFileType = AVFileTypeAppleM4V;
+	exportSession.videoSettings = [RFPhoto videoSettingsForSize:thumbnail.size];
+	exportSession.audioSettings = [RFPhoto audioSettings];
+	
+	[exportSession exportAsynchronouslyWithCompletionHandler:^
+	 {
+		 RFPhoto* photo = [[RFPhoto alloc] initWithVideo:exportSession.outputURL thumbnail:thumbnail];
+		 
+		 NSMutableArray* new_photos = [NSMutableArray arrayWithArray:self.attachedPhotos];
+		 [new_photos addObject:photo];
+		 
+		 dispatch_async(dispatch_get_main_queue(), ^
+						{
+							self.attachedPhotos = new_photos;
+							[self.collectionView reloadData];
+							
+							[self showPhotosBar];
+							
+						});
+		 
+	 }];
+
+}
+
 - (void) loadExtensionVideo:(NSItemProvider*)itemProvider inputItems:(NSMutableArray*)inputItems
 {
 	[itemProvider loadItemForTypeIdentifier:(NSString*)kUTTypeMovie options:nil completionHandler:^(NSURL* url, NSError * _Null_unspecified err) {
 		
-		NSError* error = nil;
 		AVURLAsset* asset = [AVURLAsset assetWithURL:url];
-		AVAssetImageGenerator* imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-		CGImageRef cgImage = [imageGenerator copyCGImageAtTime:CMTimeMake(0, 1) actualTime:nil error:&error];
-		UIImage* thumbnail = [UIImage imageWithCGImage:cgImage];
-		
-		NSString* tempPath = NSTemporaryDirectory();
-		tempPath = [tempPath stringByAppendingPathComponent:@"video.mov"];
-		
-		SDAVAssetExportSession* exportSession = [[SDAVAssetExportSession alloc] initWithAsset:asset];
-		exportSession.outputURL = [NSURL fileURLWithPath:tempPath];
-		exportSession.outputFileType = AVFileTypeAppleM4V;
-		exportSession.videoSettings = [RFPhoto videoSettingsForSize:thumbnail.size];
-		exportSession.audioSettings = [RFPhoto audioSettings];
+		[self handleVideoObject:asset];
 
-		[exportSession exportAsynchronouslyWithCompletionHandler:^
-		 {
-			 RFPhoto* photo = [[RFPhoto alloc] initWithVideo:exportSession.outputURL thumbnail:thumbnail];
-			 
-			 NSMutableArray* new_photos = [NSMutableArray arrayWithArray:self.attachedPhotos];
-			 [new_photos addObject:photo];
-			 
-			 dispatch_async(dispatch_get_main_queue(), ^
-							{
-								self.attachedPhotos = new_photos;
-								[self.collectionView reloadData];
-								
-								[self showPhotosBar];
-								
-								if (inputItems.count)
-								{
-									[self processAppExtensionItems:inputItems];
-								}
-							});
-
-		 }];
+		if (inputItems.count)
+		{
+			[self processAppExtensionItems:inputItems];
+		}
 	}];
 }
 
@@ -1582,12 +1589,30 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[itemProvider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
 	{
-		NSURL* url = [(NSURL*)item copy];;
-		dispatch_async(dispatch_get_main_queue(), ^
+		NSURL* url = [(NSURL*)item copy];
+		
+		AVURLAsset* asset = [AVURLAsset assetWithURL:url];
+		BOOL playable = NO;
+		for (AVAssetTrack* track in asset.tracks)
 		{
-			[self insertSharedURL:url withTitle:@"" andText:@""];
-			[self processAppExtensionItems:inputItems];
-		});
+			if (track.isPlayable) {
+				playable = YES;
+			}
+		}
+		
+		if (playable)
+		{
+			[self handleVideoObject:asset];
+		}
+		else {
+			dispatch_async(dispatch_get_main_queue(), ^
+			{
+				[self insertSharedURL:url withTitle:@"" andText:@""];
+			});
+		}
+	
+		[self processAppExtensionItems:inputItems];
+
 	}];
 }
 
