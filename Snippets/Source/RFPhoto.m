@@ -128,7 +128,7 @@
 		new_height = 480;
 	}
 	else if ((size.width > 640) && (size.height > 640)) {
-		if (size.width > size.height) {
+		if (size.width < size.height) {
 			new_width = 640;
 			new_height = size.width * new_width / size.height;
 		}
