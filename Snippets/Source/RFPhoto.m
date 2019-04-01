@@ -62,6 +62,7 @@
 	
 	[manager requestImageForAsset:self.asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage* result, NSDictionary* info)
 	{
+		self.thumbnailImage = result;
 		completionBlock(result);
 	}];
 }
@@ -75,11 +76,17 @@
 	
 	[[PHImageManager defaultManager] requestAVAssetForVideo:self.asset options:options resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info)
 	{
+		NSArray* videoTracks = [asset tracksWithMediaType:AVMediaTypeVideo];
+		AVAssetTrack* videoTrack = [videoTracks objectAtIndex:0];
+		CGSize size = CGSizeApplyAffineTransform(videoTrack.naturalSize, videoTrack.preferredTransform);
+		size.width = fabs(size.width);
+		size.height = fabs(size.height);
+
 		NSString* localPath = [RFPhoto localPathForVideoData];
 		SDAVAssetExportSession* exportSession = [[SDAVAssetExportSession alloc] initWithAsset:asset];
 		exportSession.outputURL = [NSURL fileURLWithPath:localPath];
 		exportSession.outputFileType = AVFileTypeAppleM4V;
-		exportSession.videoSettings = [RFPhoto videoSettingsForSize:asset.naturalSize];
+		exportSession.videoSettings = [RFPhoto videoSettingsForSize:size];
 		exportSession.audioSettings = [RFPhoto audioSettings];
 
 		[exportSession exportAsynchronouslyWithCompletionHandler:^
@@ -130,11 +137,11 @@
 	else if ((size.width > 640) && (size.height > 640)) {
 		if (size.width > size.height) {
 			new_width = 640;
-			new_height = size.width * new_width / size.height;
+			new_height = size.height * (new_width / size.width);
 		}
 		else {
 			new_height = 640;
-			new_width = size.height * new_height / size.width;
+			new_width = size.width * (new_height / size.height);
 		}
 	}
 	else {
