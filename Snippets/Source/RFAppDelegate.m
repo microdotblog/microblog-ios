@@ -97,15 +97,37 @@
 
 - (void) applicationWillEnterForeground:(UIApplication *)application
 {
-//	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
-//	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
-//		[timeline_controller refreshTimelineShowingSpinner:YES];
-//	}
 }
 
 - (void) applicationDidBecomeActive:(UIApplication *)application
 {
-}
+	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub?q=config"];
+	[client getWithQueryArguments:nil completion:^(UUHttpResponse* response)
+	 {
+		 if (response.parsedResponse)
+		 {
+			 if ([response.parsedResponse isKindOfClass:[NSDictionary class]])
+			 {
+				 NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
+				 if (blogs)
+				 {
+					 [[NSUserDefaults standardUserDefaults] setObject:blogs forKey:@"Micro.blog list"];
+					 
+					 NSDictionary* selectedBlogInfo = [RFSettings selectedBlogInfo];
+					 NSString* selectedUid = [selectedBlogInfo objectForKey:@"uid"];
+					 
+					 for (NSDictionary* blogInfo in blogs)
+					 {
+						 NSString* uid = [blogInfo objectForKey:@"uid"];
+						 if ([uid isEqualToString:selectedUid])
+						 {
+							 [RFSettings setSelectedBlogInfo:blogInfo];
+						 }
+					 }
+				 }
+			 }
+		 }
+	 }];}
 
 - (void) applicationWillTerminate:(UIApplication *)application
 {
