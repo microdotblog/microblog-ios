@@ -10,6 +10,7 @@
 
 #import "RFClient.h"
 #import "RFSettings.h"
+#import "UUAlert.h"
 
 @implementation RFUpgradeController
 
@@ -79,6 +80,7 @@
 
 - (void) showError:(NSString *)error
 {
+	[UUAlertViewController uuShowOneButtonAlert:@"Error Upgrading" message:error button:@"OK" completionHandler:NULL];
 }
 
 @end
