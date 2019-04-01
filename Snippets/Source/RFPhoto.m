@@ -48,6 +48,17 @@
 	return self;
 }
 
+- (id) initWithVideo:(NSURL*)url asset:(PHAsset*)asset
+{
+	self = [super init];
+	if (self) {
+		self.videoURL = url;
+		self.asset = asset;
+		self.altText = @"";
+	}
+	
+	return self;
+}
 	
 - (void) generateVideoThumbnail:(void(^)(UIImage* thumbnail))completionBlock
 {
