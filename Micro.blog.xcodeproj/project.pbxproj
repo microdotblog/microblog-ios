@@ -29,6 +29,10 @@
 		4B1D74FC1B95ECF4004A0ACD /* RFXMLElementStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D74FB1B95ECF4004A0ACD /* RFXMLElementStack.m */; };
 		4B1F7FE22251B3D300E8AF3E /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */; };
 		4B1F7FE32251B3E400E8AF3E /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */; };
+		4B1F7FE6225269E100E8AF3E /* Upgrade.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE4225269E100E8AF3E /* Upgrade.xib */; };
+		4B1F7FE922526A0D00E8AF3E /* RFUpgradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE822526A0D00E8AF3E /* RFUpgradeController.m */; };
+		4B1F7FEA22526CD200E8AF3E /* RFUpgradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE822526A0D00E8AF3E /* RFUpgradeController.m */; };
+		4B1F7FEB22526CDA00E8AF3E /* Upgrade.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE4225269E100E8AF3E /* Upgrade.xib */; };
 		4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */; };
 		4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */; };
 		4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DEDD51BF8D14B00F3152B /* RFUserController.m */; };
@@ -359,6 +363,9 @@
 		4B1D74FB1B95ECF4004A0ACD /* RFXMLElementStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFXMLElementStack.m; path = Source/RFXMLElementStack.m; sourceTree = "<group>"; };
 		4B1F7FE02251B3D300E8AF3E /* SDAVAssetExportSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDAVAssetExportSession.h; path = Shared/SDAVAssetExport/SDAVAssetExportSession.h; sourceTree = SOURCE_ROOT; };
 		4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDAVAssetExportSession.m; path = Shared/SDAVAssetExport/SDAVAssetExportSession.m; sourceTree = SOURCE_ROOT; };
+		4B1F7FE5225269E100E8AF3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Upgrade.xib; sourceTree = "<group>"; };
+		4B1F7FE722526A0D00E8AF3E /* RFUpgradeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFUpgradeController.h; path = Source/RFUpgradeController.h; sourceTree = "<group>"; };
+		4B1F7FE822526A0D00E8AF3E /* RFUpgradeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFUpgradeController.m; path = Source/RFUpgradeController.m; sourceTree = "<group>"; };
 		4B27AA881EB3D85B00CC3F3A /* RFMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFMenuButton.h; path = Source/RFMenuButton.h; sourceTree = "<group>"; };
 		4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFMenuButton.m; path = Source/RFMenuButton.m; sourceTree = "<group>"; };
 		4B27AA8B1EB3F18D00CC3F3A /* RFDiscoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFDiscoverController.h; path = Source/RFDiscoverController.h; sourceTree = "<group>"; };
@@ -873,6 +880,8 @@
 				C5A515AA21B3194A00C15092 /* RFAutoCompleteCache.m */,
 				C5A515A721B3190300C15092 /* RFUserCache.h */,
 				C5A515A821B3190300C15092 /* RFUserCache.m */,
+				4B1F7FE722526A0D00E8AF3E /* RFUpgradeController.h */,
+				4B1F7FE822526A0D00E8AF3E /* RFUpgradeController.m */,
 			);
 			name = Source;
 			path = Snippets;
@@ -907,6 +916,7 @@
 				4B0D556D1B9552F40076AD9F /* Categories.xib */,
 				4B5078D21B965E4F002A4F80 /* Settings.xib */,
 				4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */,
+				4B1F7FE4225269E100E8AF3E /* Upgrade.xib */,
 				4B94052C1E2933DE00B01E79 /* Images.xcassets */,
 				4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */,
 			);
@@ -1342,6 +1352,7 @@
 				4B400D15202524B500C71AAF /* FeedCell.xib in Resources */,
 				4B64B2EB22093139005B92A0 /* CategoryCell.xib in Resources */,
 				C5CED7161ECF792E0068F537 /* YUCIStarfieldGenerator.cikernel in Resources */,
+				4B1F7FE6225269E100E8AF3E /* Upgrade.xib in Resources */,
 				4B12BAEA1E9FBFBC000E559F /* 1Password.xcassets in Resources */,
 				4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */,
 				4B4D9B581ED5213E00315BBA /* FeaturedPhotoCell.xib in Resources */,
@@ -1362,6 +1373,7 @@
 				C507F3601F8831530013D2B7 /* Help.xib in Resources */,
 				C507F35D1F8831530013D2B7 /* FeaturedPhotoCell.xib in Resources */,
 				C507F3611F8831530013D2B7 /* External.xib in Resources */,
+				4B1F7FEB22526CDA00E8AF3E /* Upgrade.xib in Resources */,
 				C507F3641F8831530013D2B7 /* Settings.xib in Resources */,
 				C507F3631F8831530013D2B7 /* Categories.xib in Resources */,
 				C507F35E1F8831530013D2B7 /* Filters.xib in Resources */,
@@ -1461,6 +1473,7 @@
 				4B400D192025270900C71AAF /* RFFeedCell.m in Sources */,
 				4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */,
 				4B0D556C1B9552310076AD9F /* RFCategoriesController.m in Sources */,
+				4B1F7FE922526A0D00E8AF3E /* RFUpgradeController.m in Sources */,
 				4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */,
 				4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */,
 				4BA713392029127E0083948C /* MMMarkdown.m in Sources */,
@@ -1557,6 +1570,7 @@
 				C507F3241F8827A90013D2B7 /* RFThinLineView.m in Sources */,
 				C507F3201F88279E0013D2B7 /* RFXMLRPCRequest.m in Sources */,
 				C5A66B111F88325E0063F325 /* UILabel+MarkupExtensions.m in Sources */,
+				4B1F7FEA22526CD200E8AF3E /* RFUpgradeController.m in Sources */,
 				C5A66B101F88325E0063F325 /* UIFont+StyleUtilities.m in Sources */,
 				C5A66B0C1F88325E0063F325 /* CColorConverter.m in Sources */,
 				4B1F7FE32251B3E400E8AF3E /* SDAVAssetExportSession.m in Sources */,
@@ -1674,6 +1688,14 @@
 				4B1BD2831D8754DC00B3C93D /* Base */,
 			);
 			name = Help.xib;
+			sourceTree = "<group>";
+		};
+		4B1F7FE4225269E100E8AF3E /* Upgrade.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B1F7FE5225269E100E8AF3E /* Base */,
+			);
+			name = Upgrade.xib;
 			sourceTree = "<group>";
 		};
 		4B3BD0E01E82B61700F4B4E0 /* Photos.xib */ = {
