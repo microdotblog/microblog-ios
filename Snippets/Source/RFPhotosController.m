@@ -151,9 +151,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		RFUpgradeController* upgrade_controller = [[RFUpgradeController alloc] init];
 		upgrade_controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 		upgrade_controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-		[self presentViewController:upgrade_controller animated:YES completion:^{
-			handler(upgrade_controller.canUpload);
-		}];
+		upgrade_controller.handler = handler;
+		[self presentViewController:upgrade_controller animated:YES completion:NULL];
 	}
 	else {
 		handler(YES);

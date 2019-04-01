@@ -66,8 +66,9 @@
 						[self showError:error];
 					}
 					else {
-						self.canUpload = YES;
-						[self cancel:nil];
+						[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+							self.handler(YES);
+						}];
 					}
 				}
 				else {
@@ -80,7 +81,10 @@
 
 - (void) showError:(NSString *)error
 {
-	[UUAlertViewController uuShowOneButtonAlert:@"Error Upgrading" message:error button:@"OK" completionHandler:NULL];
+	[UUAlertViewController uuShowOneButtonAlert:@"Error Upgrading" message:error button:@"OK" completionHandler:^(NSInteger buttonIndex) {
+		[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+		}];
+	}];
 }
 
 @end

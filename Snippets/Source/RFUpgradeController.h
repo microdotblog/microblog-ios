@@ -10,13 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void (^RFUpgradeCompletion)(BOOL canUpload);
+
 @interface RFUpgradeController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIView* containerView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* progressSpinner;
 @property (strong, nonatomic) IBOutlet UILabel* blogField;
 
-@property (assign, nonatomic) BOOL canUpload;
+@property (strong, nonatomic) RFUpgradeCompletion handler;
 
 @end
 
