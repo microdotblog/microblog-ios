@@ -8,6 +8,7 @@
 
 #import "RFPhoto.h"
 #import "UUImage.h"
+#import "SDAVAssetExportSession.h"
 
 @implementation RFPhoto
 
@@ -75,9 +76,12 @@
 	[[PHImageManager defaultManager] requestAVAssetForVideo:self.asset options:options resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info)
 	{
 		NSString* localPath = [RFPhoto localPathForVideoData];
-		AVAssetExportSession* exportSession = [AVAssetExportSession exportSessionWithAsset:asset presetName:AVAssetExportPreset640x480];
+		SDAVAssetExportSession* exportSession = [[SDAVAssetExportSession alloc] initWithAsset:asset];
 		exportSession.outputURL = [NSURL fileURLWithPath:localPath];
 		exportSession.outputFileType = AVFileTypeAppleM4V;
+		exportSession.videoSettings = [RFPhoto videoSettingsForSize:asset.naturalSize];
+		exportSession.audioSettings = [RFPhoto audioSettings];
+
 		[exportSession exportAsynchronouslyWithCompletionHandler:^
 		 {
 			 self.videoURL = exportSession.outputURL;
@@ -114,5 +118,49 @@
     return sanitizedImage;
 }
 
++ (NSDictionary *) videoSettingsForSize:(CGSize)size
+{
+	NSInteger new_width;
+	NSInteger new_height;
+
+	if ((size.width == 0) || (size.height == 0)) {
+		new_width = 640;
+		new_height = 480;
+	}
+	else if ((size.width > 640) && (size.height > 640)) {
+		if (size.width > size.height) {
+			new_width = 640;
+			new_height = size.width * new_width / size.height;
+		}
+		else {
+			new_height = 640;
+			new_width = size.height * new_height / size.width;
+		}
+	}
+	else {
+		new_width = size.width;
+		new_height = size.height;
+	}
+
+	return @{
+		AVVideoCodecKey: AVVideoCodecH264,
+		AVVideoWidthKey: @(new_width),
+		AVVideoHeightKey: @(new_height),
+		AVVideoCompressionPropertiesKey: @{
+			AVVideoAverageBitRateKey: @3000000,
+			AVVideoProfileLevelKey: AVVideoProfileLevelH264High40,
+		}
+	};
+}
+
++ (NSDictionary *) audioSettings
+{
+	return @{
+		AVFormatIDKey: @(kAudioFormatMPEG4AAC),
+		AVNumberOfChannelsKey: @1,
+		AVSampleRateKey: @44100,
+		AVEncoderBitRateKey: @128000,
+	};
+}
 
 @end

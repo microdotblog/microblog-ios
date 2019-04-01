@@ -27,6 +27,8 @@
 		4B1BD2811D87548C00B3C93D /* RFHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BD2801D87548C00B3C93D /* RFHelpController.m */; };
 		4B1BD2841D8754DC00B3C93D /* Help.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1BD2821D8754DC00B3C93D /* Help.xib */; };
 		4B1D74FC1B95ECF4004A0ACD /* RFXMLElementStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D74FB1B95ECF4004A0ACD /* RFXMLElementStack.m */; };
+		4B1F7FE22251B3D300E8AF3E /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */; };
+		4B1F7FE32251B3E400E8AF3E /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */; };
 		4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */; };
 		4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */; };
 		4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DEDD51BF8D14B00F3152B /* RFUserController.m */; };
@@ -355,6 +357,8 @@
 		4B1BD2831D8754DC00B3C93D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Help.xib; sourceTree = "<group>"; };
 		4B1D74FA1B95ECF4004A0ACD /* RFXMLElementStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFXMLElementStack.h; path = Source/RFXMLElementStack.h; sourceTree = "<group>"; };
 		4B1D74FB1B95ECF4004A0ACD /* RFXMLElementStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFXMLElementStack.m; path = Source/RFXMLElementStack.m; sourceTree = "<group>"; };
+		4B1F7FE02251B3D300E8AF3E /* SDAVAssetExportSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDAVAssetExportSession.h; path = Shared/SDAVAssetExport/SDAVAssetExportSession.h; sourceTree = SOURCE_ROOT; };
+		4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDAVAssetExportSession.m; path = Shared/SDAVAssetExport/SDAVAssetExportSession.m; sourceTree = SOURCE_ROOT; };
 		4B27AA881EB3D85B00CC3F3A /* RFMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFMenuButton.h; path = Source/RFMenuButton.h; sourceTree = "<group>"; };
 		4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFMenuButton.m; path = Source/RFMenuButton.m; sourceTree = "<group>"; };
 		4B27AA8B1EB3F18D00CC3F3A /* RFDiscoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFDiscoverController.h; path = Source/RFDiscoverController.h; sourceTree = "<group>"; };
@@ -707,6 +711,15 @@
 			name = SSKeychain;
 			sourceTree = "<group>";
 		};
+		4B1F7FDF2251B39C00E8AF3E /* SDAVAssetExport */ = {
+			isa = PBXGroup;
+			children = (
+				4B1F7FE02251B3D300E8AF3E /* SDAVAssetExportSession.h */,
+				4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */,
+			);
+			name = SDAVAssetExport;
+			sourceTree = "<group>";
+		};
 		4B46631D1B8F51670034FC5C /* MarkupLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -904,6 +917,7 @@
 		4BA2C99D1B2109E10038C0E5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4B1F7FDF2251B39C00E8AF3E /* SDAVAssetExport */,
 				4BA71323202912710083948C /* MMMarkdown */,
 				4B1712D51F05BEF100267045 /* SloppySwiping */,
 				C5CED6B71ECF792E0068F537 /* VividFilters */,
@@ -1495,6 +1509,7 @@
 				4BA910821B83D20C00D58F83 /* RFPostController.m in Sources */,
 				4B400D0D202448DB00C71AAF /* RFFeedsController.m in Sources */,
 				4BF803511B87AACF00D6670C /* RFClient.m in Sources */,
+				4B1F7FE22251B3D300E8AF3E /* SDAVAssetExportSession.m in Sources */,
 				4B0D55551B93B3590076AD9F /* RFWordpressController.m in Sources */,
 				4B64B2E7220930E4005B92A0 /* RFCategoryCell.m in Sources */,
 				4BF8034B1B87AA2C00D6670C /* UUHttpSession.m in Sources */,
@@ -1544,6 +1559,7 @@
 				C5A66B111F88325E0063F325 /* UILabel+MarkupExtensions.m in Sources */,
 				C5A66B101F88325E0063F325 /* UIFont+StyleUtilities.m in Sources */,
 				C5A66B0C1F88325E0063F325 /* CColorConverter.m in Sources */,
+				4B1F7FE32251B3E400E8AF3E /* SDAVAssetExportSession.m in Sources */,
 				C507F3341F8827C20013D2B7 /* SSKeychainQuery.m in Sources */,
 				4BA713422029127E0083948C /* MMHTMLParser.m in Sources */,
 				C507F3261F8827A90013D2B7 /* RFMenuButton.m in Sources */,

@@ -33,4 +33,7 @@ static NSString* const kAttachVideoThumbnailKey = @"thumbnail";
 - (void) generateVideoThumbnail:(void(^)(UIImage* thumbnail))completionBlock;
 - (void) generateVideoURL:(void(^)(NSURL* url))completionBlock;
 
++ (NSDictionary *) videoSettingsForSize:(CGSize)size;
++ (NSDictionary *) audioSettings;
+
 @end

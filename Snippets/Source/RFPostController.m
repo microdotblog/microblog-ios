@@ -34,9 +34,11 @@
 #import "RFUserCache.h"
 #import "RFAutoCompleteCache.h"
 #import "RFAutoCompleteCollectionViewCell.h"
+#import "SDAVAssetExportSession.h"
 //#import "Microblog-Swift.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+
 @import MobileCoreServices;
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
@@ -1476,9 +1478,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		NSString* tempPath = NSTemporaryDirectory();
 		tempPath = [tempPath stringByAppendingPathComponent:@"video.mov"];
 		
-		AVAssetExportSession* exportSession = [AVAssetExportSession exportSessionWithAsset:asset presetName:AVAssetExportPreset640x480];
+		SDAVAssetExportSession* exportSession = [[SDAVAssetExportSession alloc] initWithAsset:asset];
 		exportSession.outputURL = [NSURL fileURLWithPath:tempPath];
 		exportSession.outputFileType = AVFileTypeAppleM4V;
+		exportSession.videoSettings = [RFPhoto videoSettingsForSize:thumbnail.size];
+		exportSession.audioSettings = [RFPhoto audioSettings];
+
 		[exportSession exportAsynchronouslyWithCompletionHandler:^
 		 {
 			 RFPhoto* photo = [[RFPhoto alloc] initWithVideo:exportSession.outputURL thumbnail:thumbnail];
