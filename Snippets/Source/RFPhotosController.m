@@ -147,9 +147,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		}
 	}
 	
-	//DO NOT SHIP WITH THIS!!!!!
-	needs_upgrade = NO;
-	
 	if (needs_upgrade) {
 		RFUpgradeController* upgrade_controller = [[RFUpgradeController alloc] init];
 		upgrade_controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
