@@ -16,6 +16,7 @@ static NSString* const kPhotosDidCloseNotification = @"RFPhotosDidCloseNotificat
 
 @property (strong, nonatomic) IBOutlet UICollectionView* collectionView;
 @property (strong, nonatomic) IBOutlet UIButton* overlayButton;
+@property (strong, nonatomic) IBOutlet UIView* busyIndicator;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* photosHeightConstraint;
 
 @property (strong, nonatomic) PHFetchResult* photosResult;

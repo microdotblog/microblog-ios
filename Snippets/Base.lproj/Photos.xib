@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFPhotosController">
             <connections>
+                <outlet property="busyIndicator" destination="Bg1-5R-wvh" id="naF-zf-wLl"/>
                 <outlet property="collectionView" destination="5ch-YY-uXp" id="XfD-Kv-5T4"/>
                 <outlet property="overlayButton" destination="leU-W1-6cN" id="wvl-I8-nCI"/>
                 <outlet property="photosHeightConstraint" destination="Jj6-h8-ZOl" id="UaX-tZ-aOP"/>
@@ -47,18 +48,35 @@
                         <action selector="closePhotos:" destination="-1" eventType="touchUpInside" id="maM-GD-VzQ"/>
                     </connections>
                 </button>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bg1-5R-wvh">
+                    <rect key="frame" x="0.0" y="367" width="375" height="300"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="d4f-Zy-qKi">
+                            <rect key="frame" x="169" y="131.5" width="37" height="37"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.79000000000000004" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="d4f-Zy-qKi" firstAttribute="centerY" secondItem="Bg1-5R-wvh" secondAttribute="centerY" id="bRK-hU-ge4"/>
+                        <constraint firstItem="d4f-Zy-qKi" firstAttribute="centerX" secondItem="Bg1-5R-wvh" secondAttribute="centerX" id="y85-aH-PLR"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="5ch-YY-uXp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0t5-u8-fkY"/>
                 <constraint firstItem="leU-W1-6cN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3sP-vA-zk2"/>
+                <constraint firstItem="Bg1-5R-wvh" firstAttribute="top" secondItem="leU-W1-6cN" secondAttribute="bottom" id="8qS-T5-N81"/>
                 <constraint firstItem="leU-W1-6cN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Efo-qG-s9b"/>
                 <constraint firstItem="5ch-YY-uXp" firstAttribute="top" secondItem="leU-W1-6cN" secondAttribute="bottom" id="G9U-px-0pt"/>
                 <constraint firstAttribute="trailing" secondItem="leU-W1-6cN" secondAttribute="trailing" id="RQv-40-uty"/>
+                <constraint firstAttribute="bottom" secondItem="Bg1-5R-wvh" secondAttribute="bottom" id="WTz-yi-pQd"/>
+                <constraint firstAttribute="trailing" secondItem="Bg1-5R-wvh" secondAttribute="trailing" id="crC-Jf-yqr"/>
                 <constraint firstAttribute="trailing" secondItem="5ch-YY-uXp" secondAttribute="trailing" id="kXA-bz-Enr"/>
+                <constraint firstItem="Bg1-5R-wvh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yeZ-DV-3lK"/>
                 <constraint firstAttribute="bottom" secondItem="5ch-YY-uXp" secondAttribute="bottom" id="yv5-UH-Y06"/>
             </constraints>
-            <point key="canvasLocation" x="53.5" y="53.5"/>
+            <point key="canvasLocation" x="52" y="52.623688155922046"/>
         </view>
     </objects>
 </document>

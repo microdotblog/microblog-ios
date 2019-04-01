@@ -147,6 +147,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		}
 	}
 	
+	//DO NOT SHIP WITH THIS!!!!!
+	needs_upgrade = NO;
+	
 	if (needs_upgrade) {
 		RFUpgradeController* upgrade_controller = [[RFUpgradeController alloc] init];
 		upgrade_controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -240,6 +243,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	{
 		[self checkVideoUpload:photo completion:^(BOOL canUpload) {
 			if (canUpload) {
+				self.busyIndicator.hidden = NO;
+				
 				[photo generateVideoThumbnail:^(UIImage *thumbnail) {
 					[photo generateVideoURL:^(NSURL* url) {
 						
@@ -250,6 +255,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 														};
 							
 							[[NSNotificationCenter defaultCenter] postNotificationName:kAttachVideoNotification object:self userInfo:dictionary];
+							
+							self.busyIndicator.hidden = YES;
 						});
 					}];
 				}];
