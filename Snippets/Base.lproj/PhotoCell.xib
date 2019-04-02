@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="95" height="95"/>
                     </imageView>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzj-ZB-giE">
-                        <rect key="frame" x="55" y="75" width="36" height="16"/>
-                        <color key="backgroundColor" white="0.79000000000000004" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="56" y="76" width="36" height="16"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.44929627862595417" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="RmR-5I-a6V"/>
                             <constraint firstAttribute="width" constant="36" id="lqU-dC-lgR"/>
@@ -39,8 +39,8 @@
                 <constraint firstAttribute="trailing" secondItem="Kja-d0-tmx" secondAttribute="trailing" id="1zL-2A-wae"/>
                 <constraint firstAttribute="bottom" secondItem="Kja-d0-tmx" secondAttribute="bottom" id="5yF-wE-8r8"/>
                 <constraint firstItem="Kja-d0-tmx" firstAttribute="top" secondItem="miI-9j-tZw" secondAttribute="top" id="CvF-g3-uwG"/>
-                <constraint firstAttribute="bottom" secondItem="hzj-ZB-giE" secondAttribute="bottom" constant="4" id="cdN-99-viu"/>
-                <constraint firstAttribute="trailing" secondItem="hzj-ZB-giE" secondAttribute="trailing" constant="4" id="fGY-o2-u9o"/>
+                <constraint firstAttribute="bottom" secondItem="hzj-ZB-giE" secondAttribute="bottom" constant="3" id="cdN-99-viu"/>
+                <constraint firstAttribute="trailing" secondItem="hzj-ZB-giE" secondAttribute="trailing" constant="3" id="fGY-o2-u9o"/>
                 <constraint firstItem="Kja-d0-tmx" firstAttribute="leading" secondItem="miI-9j-tZw" secondAttribute="leading" id="tzi-ko-PSk"/>
             </constraints>
             <size key="customSize" width="95" height="83"/>
