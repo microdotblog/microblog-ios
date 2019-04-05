@@ -63,6 +63,11 @@
 	if ([url.host isEqualToString:@"open"]) {
 		[self showOptionsMenuWithPostID:param];
 	}
+	else if ([url.host isEqualToString:@"video"]) {
+		NSString* video_url = [url.path substringFromIndex:1];
+		[self showVideoWithURL:video_url];
+
+	}
 	else if ([url.host isEqualToString:@"photo"]) {
 		NSString* photo_url = [url.path substringFromIndex:1];
 		[self showPhotoWithURL:photo_url];
@@ -496,6 +501,15 @@
 		[timeline_controller openImageViewer:photoURL];
 	}
 }
+
+- (void) showVideoWithURL:(NSString *)videoURL
+{
+	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
+	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
+		[timeline_controller openVideoViewer:videoURL];
+	}
+}
+
 
 - (void) showShareSheetWithPostID:(NSString *)postID
 {

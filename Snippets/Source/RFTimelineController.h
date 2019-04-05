@@ -40,6 +40,7 @@
 - (void) refreshTimelineShowingSpinner:(BOOL)showSpinner;
 
 - (void) openImageViewer:(NSString*)url;
+- (void) openVideoViewer:(NSString*)url;
 
 
 @end

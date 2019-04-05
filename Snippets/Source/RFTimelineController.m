@@ -23,6 +23,7 @@
 
 @import SafariServices;
 @import NYTPhotoViewer;
+@import AVKit;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NYTPhoto Helper Class
@@ -580,6 +581,17 @@
 	}];
 }
 
+- (void) openVideoViewer:(NSString*)url
+{
+	AVPlayer* player = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:url]];
+	AVPlayerViewController* viewController = [[AVPlayerViewController alloc] init];
+	viewController.player = player;
+	
+	[self presentViewController:viewController animated:YES completion:^
+	 {
+	 }];
+	
+}
 
 @end
 
