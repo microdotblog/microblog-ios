@@ -270,10 +270,9 @@
 
 - (NSString *) uuUrlEncoded
 {
-	NSCharacterSet* characterSet = [NSCharacterSet characterSetWithCharactersInString:@"!*'();:@&=+$,/?%#[]"];
-	return [self stringByAddingPercentEncodingWithAllowedCharacters:characterSet];
+	//NSCharacterSet* characterSet = [NSCharacterSet characterSetWithCharactersInString:@"!*'();:@&=+$,/?%#[]"];
+	//return [self stringByAddingPercentEncodingWithAllowedCharacters:characterSet];
 	
-	/*
 	 CFStringRef cf = CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)self, NULL, (CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8);
 	if (cf) {
 		NSString* s = UU_NATIVE_CAST(NSString *)cf;
@@ -282,7 +281,7 @@
 	else {
 		return self;
 	}
- 	*/
+	
 }
 
 - (NSString *) uuUrlDecoded
