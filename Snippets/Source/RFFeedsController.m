@@ -94,7 +94,7 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 	}
 	
 	[client getWithQueryArguments:args completion:^(UUHttpResponse* response) {
-		if ([response isKindOfClass:[NSDictionary class]]) {
+		if ([response.parsedResponse isKindOfClass:[NSDictionary class]]) {
 			NSMutableArray* new_categories = [NSMutableArray array];
 			NSArray* categories = [response.parsedResponse objectForKey:@"categories"];
 			for (NSString* s in categories) {
