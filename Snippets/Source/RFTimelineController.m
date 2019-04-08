@@ -107,6 +107,8 @@
 	[self setupNotifications];
 	[self setupRefresh];
 	[self setupScrollView];
+	
+	self.webView.allowsInlineMediaPlayback = YES;
 }
 
 - (void) viewDidLayoutSubviews
