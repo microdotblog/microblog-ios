@@ -341,7 +341,7 @@
 	if ([self.endpoint isEqualToString:@"/hybrid/mentions"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
-	else if ([self.endpoint isEqualToString:@"/hybrid/favorites"]) {
+	else if ([self.endpoint isEqualToString:@"/hybrid/favorites?test_html=1"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
 	else if ([self.endpoint isEqualToString:@"/hybrid/discover"]) {
