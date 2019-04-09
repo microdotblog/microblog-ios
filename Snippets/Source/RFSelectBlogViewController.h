@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define kPostToBlogSelectedNotification @"kPostToBlogSelectedNotification"
+
 @interface RFSelectBlogViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITableView* tableView;

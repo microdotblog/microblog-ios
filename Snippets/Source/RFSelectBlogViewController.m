@@ -70,6 +70,8 @@
 {
 	[RFSettings setSelectedBlogInfo:blogInfo];
 	[RFSettings setAccountDefaultSite:[blogInfo objectForKey:@"name"]];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:kPostToBlogSelectedNotification object:blogInfo];
 	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 

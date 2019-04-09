@@ -35,6 +35,7 @@
 #import "RFAutoCompleteCache.h"
 #import "RFAutoCompleteCollectionViewCell.h"
 #import "SDAVAssetExportSession.h"
+#import "RFSelectBlogViewController.h"
 //#import "Microblog-Swift.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -221,8 +222,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangePreferredContentSize:) name:UIContentSizeCategoryDidChangeNotification object:nil];
-    
-    if (@available(iOS 11, *)) {
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupBlogName) name:kPostToBlogSelectedNotification object:nil];
+	
+	if (@available(iOS 11, *)) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAutoCompleteNotification:) name:kRFFoundUserAutoCompleteNotification object:nil];
     }
 }
