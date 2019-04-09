@@ -109,6 +109,7 @@
 	[self setupScrollView];
 	
 	self.webView.allowsInlineMediaPlayback = YES;
+	self.webView.mediaPlaybackRequiresUserAction = NO;
 }
 
 - (void) viewDidLayoutSubviews
@@ -341,7 +342,7 @@
 	if ([self.endpoint isEqualToString:@"/hybrid/mentions"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
-	else if ([self.endpoint isEqualToString:@"/hybrid/favorites?test_html=1"]) {
+	else if ([self.endpoint isEqualToString:@"/hybrid/favorites"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
 	else if ([self.endpoint isEqualToString:@"/hybrid/discover"]) {

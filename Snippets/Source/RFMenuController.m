@@ -198,7 +198,7 @@
 
 - (IBAction) showFavorites:(id)sender
 {
-	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/favorites?test_html=1" title:@"Favorites"];
+	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/favorites" title:@"Favorites"];
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
 }
