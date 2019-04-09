@@ -36,6 +36,8 @@
 #import "RFAutoCompleteCollectionViewCell.h"
 #import "SDAVAssetExportSession.h"
 #import "RFSelectBlogViewController.h"
+#import "RFUpgradeController.h"
+
 //#import "Microblog-Swift.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
@@ -596,6 +598,31 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 #pragma mark -
 
+- (BOOL) canPublish:(RFPhoto*)photo
+{
+	BOOL can_publish = YES;
+
+	if (photo.videoURL)
+	{
+		if ([RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
+			NSDictionary* info = [RFSettings selectedBlogInfo];
+			if (info && ![[info objectForKey:@"microblog-audio"] boolValue]) {
+				can_publish = NO;
+			}
+		}
+	}
+	return can_publish;
+}
+
+- (void) upgradeVideo:(void (^)(BOOL canUpload))handler
+{
+	RFUpgradeController* upgrade_controller = [[RFUpgradeController alloc] init];
+	upgrade_controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+	upgrade_controller.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+	upgrade_controller.handler = handler;
+	[self presentViewController:upgrade_controller animated:YES completion:NULL];
+}
+
 - (IBAction) sendPost:(id)sender
 {
 	NSString* s = [self currentText];
@@ -608,12 +635,42 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		}
 	}
 	
-	self.photoButton.hidden = YES;
+	BOOL needsUpgrade = NO;
+	for (RFPhoto* photo in self.attachedPhotos)
+	{
+		if (![self canPublish:photo])
+		{
+			needsUpgrade = YES;
+		}
+	}
+	
+	if (needsUpgrade)
+	{
+		[self upgradeVideo:^(BOOL canUpload) {
+			if (canUpload)
+			{
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[self beginPost];
+				});
+			}
+		}];
+	}
+	else
+	{
+		[self beginPost];
+	}
+}
 
+- (void) beginPost
+{
+	NSString* s = [self currentText];
+
+	self.photoButton.hidden = YES;
+	
 	self.isSent = YES;
 	[RFSettings setDraftTitle:@""];
 	[RFSettings setDraftText:@""];
-
+	
 	if (self.attachedPhotos.count > 0) {
 		self.queuedPhotos = [self.attachedPhotos copy];
 		[self uploadNextPhoto];
