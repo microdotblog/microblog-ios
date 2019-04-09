@@ -66,7 +66,6 @@
 	else if ([url.host isEqualToString:@"video"]) {
 		NSString* video_url = [url.path substringFromIndex:1];
 		[self showVideoWithURL:video_url];
-
 	}
 	else if ([url.host isEqualToString:@"photo"]) {
 		NSString* photo_url = [url.path substringFromIndex:1];
