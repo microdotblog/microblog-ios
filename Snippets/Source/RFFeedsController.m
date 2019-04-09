@@ -123,7 +123,7 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 {
 	RFClient* client = [[RFClient alloc] initWithPath:@"/account/info/feeds"];
 	[client getWithQueryArguments:nil completion:^(UUHttpResponse* response) {
-		if ([response isKindOfClass:[NSDictionary class]]) {
+		if ([response.parsedResponse isKindOfClass:[NSDictionary class]]) {
 			NSMutableArray* new_feeds = [NSMutableArray array];
 			NSArray* feeds = [response.parsedResponse objectForKey:@"rss_feeds"];
 			for (NSDictionary* info in feeds) {
