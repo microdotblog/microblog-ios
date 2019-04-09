@@ -186,9 +186,10 @@
 		C507F3631F8831530013D2B7 /* Categories.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D556D1B9552F40076AD9F /* Categories.xib */; };
 		C507F3641F8831530013D2B7 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5078D21B965E4F002A4F80 /* Settings.xib */; };
 		C507F3651F8831530013D2B7 /* SettingChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */; };
-		C513F6E61F993D2D007319F0 /* RFAppExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C513F6E51F993D2D007319F0 /* RFAppExtensionViewController.m */; };
-		C513F6E71F993F21007319F0 /* RFAppExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C513F6E51F993D2D007319F0 /* RFAppExtensionViewController.m */; };
 		C513F6E81F994197007319F0 /* UUAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803311B87AA2C00D6670C /* UUAlert.m */; };
+		C52DB578225D0CC100172077 /* Blogs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59C3B1720923DE50076A754 /* Blogs.storyboard */; };
+		C52DB579225D0CFB00172077 /* RFSelectBlogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B1A20923E220076A754 /* RFSelectBlogViewController.m */; };
+		C52DB57A225D0D2100172077 /* RFBlogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B1D20923EFC0076A754 /* RFBlogTableViewCell.m */; };
 		C5403B691F9E3C30002696EE /* libCTidy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D77D1D1F9E3B1B00AB0144 /* libCTidy.a */; };
 		C55044A21F8EBB7800C1D5F2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B94052C1E2933DE00B01E79 /* Images.xcassets */; };
 		C55044A31F8EBB7B00C1D5F2 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */; };
@@ -514,8 +515,6 @@
 		C507F30B1F8827420013D2B7 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		C507F30E1F8827420013D2B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		C507F3101F8827420013D2B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C513F6E41F993D2D007319F0 /* RFAppExtensionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFAppExtensionViewController.h; path = Source/RFAppExtensionViewController.h; sourceTree = "<group>"; };
-		C513F6E51F993D2D007319F0 /* RFAppExtensionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAppExtensionViewController.m; path = Source/RFAppExtensionViewController.m; sourceTree = "<group>"; };
 		C5666B621F23C95F00AE13DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/User.xib; sourceTree = "<group>"; };
 		C589425F1FE245F400A30EB9 /* GetURL.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = GetURL.js; sourceTree = "<group>"; };
 		C58D8E2020ADF30900F22E42 /* RFPopupNotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFPopupNotificationViewController.h; path = Source/RFPopupNotificationViewController.h; sourceTree = "<group>"; };
@@ -816,8 +815,6 @@
 				4B400D182025270900C71AAF /* RFFeedCell.m */,
 				4B64B2E5220930E4005B92A0 /* RFCategoryCell.h */,
 				4B64B2E6220930E4005B92A0 /* RFCategoryCell.m */,
-				C513F6E41F993D2D007319F0 /* RFAppExtensionViewController.h */,
-				C513F6E51F993D2D007319F0 /* RFAppExtensionViewController.m */,
 				4BBA71011F5DF9CE00B56A04 /* RFHighlightingTextStorage.h */,
 				4BBA71021F5DF9CE00B56A04 /* RFHighlightingTextStorage.m */,
 				4B3BD0DD1E82B5F800F4B4E0 /* RFPhotosController.h */,
@@ -1382,6 +1379,7 @@
 				C507F3621F8831530013D2B7 /* Wordpress.xib in Resources */,
 				C507F3571F88314B0013D2B7 /* PhotoCell.xib in Resources */,
 				C58942611FE245F400A30EB9 /* GetURL.js in Resources */,
+				C52DB578225D0CC100172077 /* Blogs.storyboard in Resources */,
 				C55044A31F8EBB7B00C1D5F2 /* 1Password.xcassets in Resources */,
 				C507F3581F8831530013D2B7 /* Menu.xib in Resources */,
 				C507F30F1F8827420013D2B7 /* MainInterface.storyboard in Resources */,
@@ -1533,7 +1531,6 @@
 				C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */,
 				4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */,
 				C5A515A521B3160100C15092 /* RFAutoCompleteCollectionViewCell.m in Sources */,
-				C513F6E61F993D2D007319F0 /* RFAppExtensionViewController.m in Sources */,
 				C5CED7091ECF792E0068F537 /* YUCIHighPass.m in Sources */,
 				4B4D9B551ED520F800315BBA /* RFFeaturedPhoto.m in Sources */,
 				4BF803451B87AA2C00D6670C /* UUAlert.m in Sources */,
@@ -1555,6 +1552,7 @@
 				C507F32A1F8827AE0013D2B7 /* OnePasswordExtension.m in Sources */,
 				4BA713442029127E0083948C /* MMSpanParser.m in Sources */,
 				C59C3B22209245570076A754 /* RFViewController.m in Sources */,
+				C52DB579225D0CFB00172077 /* RFSelectBlogViewController.m in Sources */,
 				4B821C7E21B428D3006CE005 /* UIView+Extras.m in Sources */,
 				C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */,
 				C507F3321F8827BC0013D2B7 /* UUString.m in Sources */,
@@ -1565,6 +1563,7 @@
 				C507F31B1F88278C0013D2B7 /* RFPhotoCell.m in Sources */,
 				C507F3311F8827BC0013D2B7 /* UUImage.m in Sources */,
 				C507F30C1F8827420013D2B7 /* ShareViewController.m in Sources */,
+				C52DB57A225D0D2100172077 /* RFBlogTableViewCell.m in Sources */,
 				C507F3291F8827A90013D2B7 /* RFMenuView.m in Sources */,
 				C507F3251F8827A90013D2B7 /* UIBarButtonItem+Extras.m in Sources */,
 				C507F32F1F8827BC0013D2B7 /* UUHttpResponseHandler.m in Sources */,
@@ -1593,7 +1592,6 @@
 				C5A66B0F1F88325E0063F325 /* NSString+MarkupExtensions.m in Sources */,
 				4BA7133E2029127E0083948C /* MMGenerator.m in Sources */,
 				4BA713402029127E0083948C /* MMScanner.m in Sources */,
-				C513F6E71F993F21007319F0 /* RFAppExtensionViewController.m in Sources */,
 				C507F31A1F8827880013D2B7 /* RFPhotosController.m in Sources */,
 				4BBC298321B47C6E001E3BDB /* RFAutoCompleteCollectionViewCell.m in Sources */,
 				4B400D1A2025270900C71AAF /* RFFeedCell.m in Sources */,

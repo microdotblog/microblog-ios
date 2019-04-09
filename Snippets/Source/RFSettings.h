@@ -41,6 +41,8 @@
 + (void) 			setSnippetsGravatarURL:(NSString*)value;
 + (void) 			setSnippetsFullAccess:(BOOL)fullAccess;
 + (void)			setSelectedBlogInfo:(NSDictionary*)blogInfo;
++ (NSArray*)		blogList;
++ (void)			setBlogList:(NSArray*)blogList;
 
 //External Blog settings
 + (NSString*) 	externalBlogEndpoint;

@@ -53,6 +53,5 @@
 
 - (instancetype) initWithText:(NSString *)text;
 - (instancetype) initWithReplyTo:(NSString *)postID replyUsername:(NSString *)username;
-- (instancetype) initWithAppExtensionContext:(NSExtensionContext*)extensionContext;
 
 @end

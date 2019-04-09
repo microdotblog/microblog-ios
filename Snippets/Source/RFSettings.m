@@ -35,6 +35,7 @@
 #define LatestDraftText					@"LatestDraftText"
 #define PreferredContentSize			@"PreferredContentSize"
 #define SelectedBlogInfo				@"Microblog::SelectedBlog"
+#define BlogList						@"Micro.blog list"
 
 static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 
@@ -54,6 +55,20 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 {
 	NSUserDefaults* sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kSharedGroupDefaults];
 	NSString* value = [sharedDefaults objectForKey:name];
+	if (!value)
+	{
+		value = [[NSUserDefaults standardUserDefaults] objectForKey:name];
+		[sharedDefaults setObject:value forKey:name];
+		[sharedDefaults synchronize];
+	}
+	
+	return value;
+}
+
++ (NSArray*) loadUserDefaultArray:(NSString*)name
+{
+	NSUserDefaults* sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kSharedGroupDefaults];
+	NSArray* value = [sharedDefaults objectForKey:name];
 	if (!value)
 	{
 		value = [[NSUserDefaults standardUserDefaults] objectForKey:name];
@@ -355,6 +370,19 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
++ (NSArray*) blogList
+{
+	return [RFSettings loadUserDefaultArray:BlogList];
+}
+
++ (void) setBlogList:(NSArray*)blogList
+{
+	[RFSettings setUserDefault:blogList forKey:BlogList];
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 + (NSString*) externalMicropubTokenEndpoint
 {
 	return [RFSettings loadUserDefault:ExternalMicropubTokenEndpoint];
@@ -466,6 +494,7 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 	[RFSettings migrateValueForKey:AccountFullName];
 	[RFSettings migrateValueForKey:AccountGravatarURL];
 	[RFSettings migrateValueForKey:IsFullAccess];
+	[RFSettings migrateValueForKey:BlogList];
 }
 
 + (void) migrateValueForKey:(NSString*)key

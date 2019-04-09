@@ -116,7 +116,7 @@
 				 NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
 				 if (blogs)
 				 {
-					 [[NSUserDefaults standardUserDefaults] setObject:blogs forKey:@"Micro.blog list"];
+					 [RFSettings setBlogList:blogs];
 					 
 					 NSDictionary* selectedBlogInfo = [RFSettings selectedBlogInfo];
 					 NSString* selectedUid = [selectedBlogInfo objectForKey:@"uid"];

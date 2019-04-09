@@ -195,7 +195,7 @@
 	[client getWithQueryArguments:nil completion:^(UUHttpResponse* response)
 	{
 		NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
-		[[NSUserDefaults standardUserDefaults] setObject:blogs forKey:@"Micro.blog list"];
+		[RFSettings setBlogList:blogs];
 
 		if (blogs.count > 0)
 		{

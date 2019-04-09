@@ -44,7 +44,6 @@
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 @interface RFPostController()
-	@property (nonatomic, weak) NSExtensionContext* appExtensionContext;
 	@property (atomic, strong) NSMutableArray* autoCompleteData;
 	@property (nonatomic, strong) NSString* activeReplacementString;
 @end
@@ -88,17 +87,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	return self;
 }
 
-- (instancetype) initWithAppExtensionContext:(NSExtensionContext*)extensionContext
-{
-	self = [self init];
-	if (self)
-	{
-		self.appExtensionContext = extensionContext;
-	}
-	
-	return self;
-}
-
 - (void) viewDidLoad
 {
 	[super viewDidLoad];
@@ -124,6 +112,23 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	self.progressHeaderView.alpha = 0.0;
 
 	[self setupBlogName];
+	
+	if (self.extensionContext)
+	{
+		if ([RFSettings needsExternalBlogSetup] && ![RFSettings hasSnippetsBlog])
+		{
+			[UUAlertViewController setActiveViewController:self];
+		
+			[UUAlertViewController uuShowOneButtonAlert:nil message:@"You need to configure your weblog settings first. Please launch Micro.blog and sign in to your account." button:@"OK" completionHandler:^(NSInteger buttonIndex)
+			 {
+				 [UUAlertViewController setActiveViewController:nil];
+			 
+				 [self.extensionContext completeRequestReturningItems:nil completionHandler:^(BOOL expired)
+				  {
+				  }];
+			 }];
+		}
+	}
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -181,7 +186,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	else if (self.initialText) {
 		s = self.initialText;
 	}
-	else if (!self.appExtensionContext) {
+	else if (!self.extensionContext) {
 		s = [RFSettings draftText];
 		if (s.length > 280) {
 			self.titleField.text = [RFSettings draftTitle];
@@ -618,7 +623,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) close:(id)sender
 {
-	if (!self.isReply && !self.isSent && !self.appExtensionContext) {
+	if (!self.isReply && !self.isSent && !self.extensionContext) {
 		[RFSettings setDraftTitle:[self currentTitle]];
 		[RFSettings setDraftText:[self currentText]];
 	}
@@ -632,6 +637,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	if (![self checkForAppExtensionClose])
 	{
 		[[NSNotificationCenter defaultCenter] postNotificationName:kClosePostingNotification object:self];
+	}
+	else {
+		[self.extensionContext completeRequestReturningItems:nil completionHandler:^(BOOL expired)
+		 {
+		 }];
 	}
 }
 
@@ -681,7 +691,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (IBAction) blogHostnamePressed:(id)sender
 {
 	if ([RFSettings hasSnippetsBlog] || [RFSettings hasMicropubBlog]) {
-		NSArray* blogs = [[NSUserDefaults standardUserDefaults] objectForKey:@"Micro.blog list"];
+		NSArray* blogs = [RFSettings blogList];
 		if (blogs.count > 1) {
 			UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Blogs" bundle:nil];
 			UIViewController* controller = [storyboard instantiateViewControllerWithIdentifier:@"BlogsNavigation"];
@@ -1667,14 +1677,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupAppExtensionElements
 {
-	if (!self.appExtensionContext)
+	if (!self.extensionContext)
 		return;
 	
 	// Handle alert views...
 	[UUAlertViewController setActiveViewController:self];
 	
 	// Grab the first extension item. We really should only ever have one...
-	NSExtensionItem* extensionItem = self.appExtensionContext.inputItems.firstObject;
+	NSExtensionItem* extensionItem = self.extensionContext.inputItems.firstObject;
 	
 	// Process all the attachements...
 	NSMutableArray* itemsToProcess = [NSMutableArray arrayWithArray:extensionItem.attachments];
@@ -1683,13 +1693,13 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (BOOL) checkForAppExtensionClose
 {
-	if (self.appExtensionContext)
+	if (self.extensionContext)
 	{
 		[UUAlertViewController setActiveViewController:nil];
 
 		[self.navigationController dismissViewControllerAnimated:NO completion:^
 		{
-			[self.appExtensionContext completeRequestReturningItems:@[] completionHandler:nil];
+			[self.extensionContext completeRequestReturningItems:@[] completionHandler:nil];
 		}];
 		return YES;
 	}

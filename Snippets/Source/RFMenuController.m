@@ -113,7 +113,7 @@
 		[client getWithQueryArguments:nil completion:^(UUHttpResponse* response)
 		{
 			NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
-			[[NSUserDefaults standardUserDefaults] setObject:blogs forKey:@"Micro.blog list"];
+			[RFSettings setBlogList:blogs];
 			RFDispatchMain (^{
 				[self setupProfileInfo];
 			});
@@ -123,7 +123,7 @@
 
 - (IBAction) onSwitchMicroBlog:(id)sender
 {
-	NSArray* availableMicroBlogs = [[NSUserDefaults standardUserDefaults] objectForKey:@"Micro.blog list"];
+	NSArray* availableMicroBlogs = [RFSettings blogList];
 	if (availableMicroBlogs.count > 1)
 	{
 		[[NSNotificationCenter defaultCenter] postNotificationName:kMicroblogSelectNotification object:nil];
