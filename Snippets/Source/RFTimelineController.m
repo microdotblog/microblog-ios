@@ -341,13 +341,8 @@
 	if ([self.endpoint isEqualToString:@"/hybrid/mentions"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
 	}
-<<<<<<< HEAD
 	else if ([self.endpoint isEqualToString:@"/hybrid/favorites?test_html=1"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
-=======
-	else if ([self.endpoint isEqualToString:@"/hybrid/favorites"]) {
-		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f&test_html=1", self.endpoint, width, fontsize];
->>>>>>> 55791508686ce84c2c63ab233e5a7e6f98925aad
 	}
 	else if ([self.endpoint isEqualToString:@"/hybrid/discover"]) {
 		client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", self.endpoint, width, fontsize];
