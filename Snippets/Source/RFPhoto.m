@@ -173,7 +173,7 @@
 	}
 
 	return @{
-		AVVideoCodecKey: AVVideoCodecH264,
+		AVVideoCodecKey: AVVideoCodecTypeH264,
 		AVVideoWidthKey: @(new_width),
 		AVVideoHeightKey: @(new_height),
 		AVVideoCompressionPropertiesKey: @{
