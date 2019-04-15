@@ -317,6 +317,7 @@
 	if (transform.tx == -560) {
 		transform.tx = 0;
 	}
+	
 
 	CGFloat videoAngleInDegree  = atan2(transform.b, transform.a) * 180 / M_PI;
 	if (videoAngleInDegree == 90 || videoAngleInDegree == -90) {
@@ -324,6 +325,20 @@
 		naturalSize.width = naturalSize.height;
 		naturalSize.height = width;
 	}
+	
+	// hack for time-lapse videos?
+	if (transform.c < 0) {
+		transform.tx = naturalSize.width;
+	}
+
+	// hack to try to fix transform when 2 resolutions
+	if (transform.tx > naturalSize.width) {
+		transform.tx = naturalSize.width;
+	}
+	if (transform.ty > naturalSize.height) {
+		transform.ty = naturalSize.height;
+	}
+
 	videoComposition.renderSize = naturalSize;
 	// center inside
 	{
