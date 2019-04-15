@@ -172,15 +172,27 @@
 		new_height = size.height;
 	}
 
-	return @{
-		AVVideoCodecKey: AVVideoCodecTypeH264,
-		AVVideoWidthKey: @(new_width),
-		AVVideoHeightKey: @(new_height),
-		AVVideoCompressionPropertiesKey: @{
-			AVVideoAverageBitRateKey: @3000000,
-			AVVideoProfileLevelKey: AVVideoProfileLevelH264High40,
-		}
-	};
+	if (@available(iOS 11.0, *)) {
+		return @{
+				 AVVideoCodecKey: AVVideoCodecTypeH264,
+				 AVVideoWidthKey: @(new_width),
+				 AVVideoHeightKey: @(new_height),
+				 AVVideoCompressionPropertiesKey: @{
+						 AVVideoAverageBitRateKey: @3000000,
+						 AVVideoProfileLevelKey: AVVideoProfileLevelH264High40,
+						 }
+				 };
+	} else {
+		return @{
+				 AVVideoCodecKey: AVVideoCodecH264,
+				 AVVideoWidthKey: @(new_width),
+				 AVVideoHeightKey: @(new_height),
+				 AVVideoCompressionPropertiesKey: @{
+						 AVVideoAverageBitRateKey: @3000000,
+						 AVVideoProfileLevelKey: AVVideoProfileLevelH264High40,
+						 }
+				 };
+	}
 }
 
 + (NSDictionary *) audioSettings
