@@ -572,7 +572,7 @@
 
 	[UUHttpSession get:url queryArguments:nil completionHandler:^(UUHttpResponse *response) {
 		UIImage* image = response.parsedResponse;
-		if (image)
+		if (image && [image isKindOfClass:[UIImage class]])
 		{
 			dispatch_async(dispatch_get_main_queue(), ^
 			{
