@@ -214,30 +214,30 @@
 		C5A66B0F1F88325E0063F325 /* NSString+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663251B8F51710034FC5C /* NSString+MarkupExtensions.m */; };
 		C5A66B101F88325E0063F325 /* UIFont+StyleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */; };
 		C5A66B111F88325E0063F325 /* UILabel+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */; };
-		C5AF58972294CD9500830C25 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF588F2294CD9500830C25 /* ZipException.m */; };
-		C5AF58982294CD9500830C25 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF588F2294CD9500830C25 /* ZipException.m */; };
-		C5AF58992294CD9500830C25 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58902294CD9500830C25 /* ZipReadStream.m */; };
-		C5AF589A2294CD9500830C25 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58902294CD9500830C25 /* ZipReadStream.m */; };
-		C5AF589B2294CD9500830C25 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58922294CD9500830C25 /* ZipWriteStream.m */; };
-		C5AF589C2294CD9500830C25 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58922294CD9500830C25 /* ZipWriteStream.m */; };
-		C5AF589D2294CD9500830C25 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58942294CD9500830C25 /* ZipFile.m */; };
-		C5AF589E2294CD9500830C25 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58942294CD9500830C25 /* ZipFile.m */; };
-		C5AF589F2294CD9500830C25 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58952294CD9500830C25 /* FileInZipInfo.m */; };
-		C5AF58A02294CD9500830C25 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58952294CD9500830C25 /* FileInZipInfo.m */; };
-		C5AF58A92294CDAB00830C25 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58A12294CDAB00830C25 /* zip.c */; };
-		C5AF58AA2294CDAB00830C25 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58A12294CDAB00830C25 /* zip.c */; };
-		C5AF58AB2294CDAB00830C25 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58A22294CDAB00830C25 /* unzip.c */; };
-		C5AF58AC2294CDAB00830C25 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58A22294CDAB00830C25 /* unzip.c */; };
-		C5AF58AD2294CDAB00830C25 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58A32294CDAB00830C25 /* ioapi.c */; };
-		C5AF58AE2294CDAB00830C25 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58A32294CDAB00830C25 /* ioapi.c */; };
-		C5AF58AF2294CDAB00830C25 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58A42294CDAB00830C25 /* mztools.c */; };
-		C5AF58B02294CDAB00830C25 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58A42294CDAB00830C25 /* mztools.c */; };
 		C5AF58B92294CECD00830C25 /* UZKFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58B42294CECD00830C25 /* UZKFileInfo.m */; };
 		C5AF58BA2294CECD00830C25 /* UZKFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58B42294CECD00830C25 /* UZKFileInfo.m */; };
 		C5AF58BB2294CECD00830C25 /* UZKArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58B52294CECD00830C25 /* UZKArchive.m */; };
 		C5AF58BC2294CECD00830C25 /* UZKArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58B52294CECD00830C25 /* UZKArchive.m */; };
 		C5AF58C12294CEF300830C25 /* NSURL+UnzipKitExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58C02294CEF300830C25 /* NSURL+UnzipKitExtensions.m */; };
 		C5AF58C22294CEF300830C25 /* NSURL+UnzipKitExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AF58C02294CEF300830C25 /* NSURL+UnzipKitExtensions.m */; };
+		C5B48B272294E59100776248 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B1D2294E59000776248 /* ZipWriteStream.m */; };
+		C5B48B282294E59100776248 /* ZipWriteStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B1D2294E59000776248 /* ZipWriteStream.m */; };
+		C5B48B292294E59100776248 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B212294E59000776248 /* ZipException.m */; };
+		C5B48B2A2294E59100776248 /* ZipException.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B212294E59000776248 /* ZipException.m */; };
+		C5B48B2B2294E59100776248 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B232294E59100776248 /* ZipFile.m */; };
+		C5B48B2C2294E59100776248 /* ZipFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B232294E59100776248 /* ZipFile.m */; };
+		C5B48B2D2294E59100776248 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B242294E59100776248 /* ZipReadStream.m */; };
+		C5B48B2E2294E59100776248 /* ZipReadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B242294E59100776248 /* ZipReadStream.m */; };
+		C5B48B2F2294E59100776248 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B252294E59100776248 /* FileInZipInfo.m */; };
+		C5B48B302294E59100776248 /* FileInZipInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B252294E59100776248 /* FileInZipInfo.m */; };
+		C5B48B392294E5A300776248 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B322294E5A200776248 /* ioapi.c */; };
+		C5B48B3A2294E5A300776248 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B322294E5A200776248 /* ioapi.c */; };
+		C5B48B3B2294E5A300776248 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B332294E5A200776248 /* zip.c */; };
+		C5B48B3C2294E5A300776248 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B332294E5A200776248 /* zip.c */; };
+		C5B48B3D2294E5A300776248 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B342294E5A200776248 /* mztools.c */; };
+		C5B48B3E2294E5A300776248 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B342294E5A200776248 /* mztools.c */; };
+		C5B48B3F2294E5A300776248 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B362294E5A200776248 /* unzip.c */; };
+		C5B48B402294E5A300776248 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = C5B48B362294E5A200776248 /* unzip.c */; };
 		C5CED6F51ECF792E0068F537 /* YUCIBilateralFilter.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */; };
 		C5CED6F61ECF792E0068F537 /* YUCIBilateralFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */; };
 		C5CED6F71ECF792E0068F537 /* YUCIBlobsGenerator.cikernel in Resources */ = {isa = PBXBuildFile; fileRef = C5CED6BB1ECF792E0068F537 /* YUCIBlobsGenerator.cikernel */; };
@@ -559,24 +559,6 @@
 		C5A515AB21B3194A00C15092 /* RFAutoCompleteCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFAutoCompleteCache.h; path = Source/RFAutoCompleteCache.h; sourceTree = "<group>"; };
 		C5A515AD21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RFAutoCompleteCollectionViewCell.xib; path = Source/RFAutoCompleteCollectionViewCell.xib; sourceTree = "<group>"; };
 		C5A515AE21B3196100C15092 /* RFPopupNotificationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RFPopupNotificationViewController.xib; path = Source/RFPopupNotificationViewController.xib; sourceTree = "<group>"; };
-		C5AF588D2294CD9500830C25 /* ZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipFile.h; path = "Shared/objective-zip/Objective-Zip/ZipFile.h"; sourceTree = SOURCE_ROOT; };
-		C5AF588E2294CD9500830C25 /* FileInZipInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInZipInfo.h; path = "Shared/objective-zip/Objective-Zip/FileInZipInfo.h"; sourceTree = SOURCE_ROOT; };
-		C5AF588F2294CD9500830C25 /* ZipException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipException.m; path = "Shared/objective-zip/Objective-Zip/ZipException.m"; sourceTree = SOURCE_ROOT; };
-		C5AF58902294CD9500830C25 /* ZipReadStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipReadStream.m; path = "Shared/objective-zip/Objective-Zip/ZipReadStream.m"; sourceTree = SOURCE_ROOT; };
-		C5AF58912294CD9500830C25 /* ZipWriteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipWriteStream.h; path = "Shared/objective-zip/Objective-Zip/ZipWriteStream.h"; sourceTree = SOURCE_ROOT; };
-		C5AF58922294CD9500830C25 /* ZipWriteStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipWriteStream.m; path = "Shared/objective-zip/Objective-Zip/ZipWriteStream.m"; sourceTree = SOURCE_ROOT; };
-		C5AF58932294CD9500830C25 /* ZipException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipException.h; path = "Shared/objective-zip/Objective-Zip/ZipException.h"; sourceTree = SOURCE_ROOT; };
-		C5AF58942294CD9500830C25 /* ZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipFile.m; path = "Shared/objective-zip/Objective-Zip/ZipFile.m"; sourceTree = SOURCE_ROOT; };
-		C5AF58952294CD9500830C25 /* FileInZipInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileInZipInfo.m; path = "Shared/objective-zip/Objective-Zip/FileInZipInfo.m"; sourceTree = SOURCE_ROOT; };
-		C5AF58962294CD9500830C25 /* ZipReadStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipReadStream.h; path = "Shared/objective-zip/Objective-Zip/ZipReadStream.h"; sourceTree = SOURCE_ROOT; };
-		C5AF58A12294CDAB00830C25 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zip.c; path = "Shared/objective-zip/MiniZip/zip.c"; sourceTree = SOURCE_ROOT; };
-		C5AF58A22294CDAB00830C25 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = "Shared/objective-zip/MiniZip/unzip.c"; sourceTree = SOURCE_ROOT; };
-		C5AF58A32294CDAB00830C25 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = "Shared/objective-zip/MiniZip/ioapi.c"; sourceTree = SOURCE_ROOT; };
-		C5AF58A42294CDAB00830C25 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mztools.c; path = "Shared/objective-zip/MiniZip/mztools.c"; sourceTree = SOURCE_ROOT; };
-		C5AF58A52294CDAB00830C25 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mztools.h; path = "Shared/objective-zip/MiniZip/mztools.h"; sourceTree = SOURCE_ROOT; };
-		C5AF58A62294CDAB00830C25 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = "Shared/objective-zip/MiniZip/unzip.h"; sourceTree = SOURCE_ROOT; };
-		C5AF58A72294CDAB00830C25 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zip.h; path = "Shared/objective-zip/MiniZip/zip.h"; sourceTree = SOURCE_ROOT; };
-		C5AF58A82294CDAB00830C25 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = "Shared/objective-zip/MiniZip/ioapi.h"; sourceTree = SOURCE_ROOT; };
 		C5AF58B22294CECD00830C25 /* UZKFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UZKFileInfo.h; path = Shared/UnzipKit/UZKFileInfo.h; sourceTree = SOURCE_ROOT; };
 		C5AF58B32294CECD00830C25 /* UnzipKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnzipKit.h; path = Shared/UnzipKit/UnzipKit.h; sourceTree = SOURCE_ROOT; };
 		C5AF58B42294CECD00830C25 /* UZKFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UZKFileInfo.m; path = Shared/UnzipKit/UZKFileInfo.m; sourceTree = SOURCE_ROOT; };
@@ -585,6 +567,24 @@
 		C5AF58B82294CECD00830C25 /* UZKFileInfo_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UZKFileInfo_Private.h; path = Shared/UnzipKit/UZKFileInfo_Private.h; sourceTree = SOURCE_ROOT; };
 		C5AF58BF2294CEF300830C25 /* NSURL+UnzipKitExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+UnzipKitExtensions.h"; path = "Shared/UnzipKit/NSURL+UnzipKitExtensions.h"; sourceTree = SOURCE_ROOT; };
 		C5AF58C02294CEF300830C25 /* NSURL+UnzipKitExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+UnzipKitExtensions.m"; path = "Shared/UnzipKit/NSURL+UnzipKitExtensions.m"; sourceTree = SOURCE_ROOT; };
+		C5B48B1D2294E59000776248 /* ZipWriteStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipWriteStream.m; path = "Shared/UnzipKit/Objective-Zip/ZipWriteStream.m"; sourceTree = SOURCE_ROOT; };
+		C5B48B1E2294E59000776248 /* ZipException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipException.h; path = "Shared/UnzipKit/Objective-Zip/ZipException.h"; sourceTree = SOURCE_ROOT; };
+		C5B48B1F2294E59000776248 /* ZipWriteStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipWriteStream.h; path = "Shared/UnzipKit/Objective-Zip/ZipWriteStream.h"; sourceTree = SOURCE_ROOT; };
+		C5B48B202294E59000776248 /* ZipFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipFile.h; path = "Shared/UnzipKit/Objective-Zip/ZipFile.h"; sourceTree = SOURCE_ROOT; };
+		C5B48B212294E59000776248 /* ZipException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipException.m; path = "Shared/UnzipKit/Objective-Zip/ZipException.m"; sourceTree = SOURCE_ROOT; };
+		C5B48B222294E59000776248 /* FileInZipInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileInZipInfo.h; path = "Shared/UnzipKit/Objective-Zip/FileInZipInfo.h"; sourceTree = SOURCE_ROOT; };
+		C5B48B232294E59100776248 /* ZipFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipFile.m; path = "Shared/UnzipKit/Objective-Zip/ZipFile.m"; sourceTree = SOURCE_ROOT; };
+		C5B48B242294E59100776248 /* ZipReadStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZipReadStream.m; path = "Shared/UnzipKit/Objective-Zip/ZipReadStream.m"; sourceTree = SOURCE_ROOT; };
+		C5B48B252294E59100776248 /* FileInZipInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileInZipInfo.m; path = "Shared/UnzipKit/Objective-Zip/FileInZipInfo.m"; sourceTree = SOURCE_ROOT; };
+		C5B48B262294E59100776248 /* ZipReadStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipReadStream.h; path = "Shared/UnzipKit/Objective-Zip/ZipReadStream.h"; sourceTree = SOURCE_ROOT; };
+		C5B48B312294E5A200776248 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mztools.h; path = Shared/UnzipKit/MiniZip/mztools.h; sourceTree = SOURCE_ROOT; };
+		C5B48B322294E5A200776248 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = Shared/UnzipKit/MiniZip/ioapi.c; sourceTree = SOURCE_ROOT; };
+		C5B48B332294E5A200776248 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zip.c; path = Shared/UnzipKit/MiniZip/zip.c; sourceTree = SOURCE_ROOT; };
+		C5B48B342294E5A200776248 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mztools.c; path = Shared/UnzipKit/MiniZip/mztools.c; sourceTree = SOURCE_ROOT; };
+		C5B48B352294E5A200776248 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = Shared/UnzipKit/MiniZip/ioapi.h; sourceTree = SOURCE_ROOT; };
+		C5B48B362294E5A200776248 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = Shared/UnzipKit/MiniZip/unzip.c; sourceTree = SOURCE_ROOT; };
+		C5B48B372294E5A200776248 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = Shared/UnzipKit/MiniZip/unzip.h; sourceTree = SOURCE_ROOT; };
+		C5B48B382294E5A300776248 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zip.h; path = Shared/UnzipKit/MiniZip/zip.h; sourceTree = SOURCE_ROOT; };
 		C5CED6B81ECF792E0068F537 /* YUCIBilateralFilter.cikernel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YUCIBilateralFilter.cikernel; sourceTree = "<group>"; };
 		C5CED6B91ECF792E0068F537 /* YUCIBilateralFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YUCIBilateralFilter.h; sourceTree = "<group>"; };
 		C5CED6BA1ECF792E0068F537 /* YUCIBilateralFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YUCIBilateralFilter.m; sourceTree = "<group>"; };
@@ -1077,14 +1077,14 @@
 		C5AF588B2294CD7200830C25 /* Minizip */ = {
 			isa = PBXGroup;
 			children = (
-				C5AF58A32294CDAB00830C25 /* ioapi.c */,
-				C5AF58A82294CDAB00830C25 /* ioapi.h */,
-				C5AF58A42294CDAB00830C25 /* mztools.c */,
-				C5AF58A52294CDAB00830C25 /* mztools.h */,
-				C5AF58A22294CDAB00830C25 /* unzip.c */,
-				C5AF58A62294CDAB00830C25 /* unzip.h */,
-				C5AF58A12294CDAB00830C25 /* zip.c */,
-				C5AF58A72294CDAB00830C25 /* zip.h */,
+				C5B48B322294E5A200776248 /* ioapi.c */,
+				C5B48B352294E5A200776248 /* ioapi.h */,
+				C5B48B342294E5A200776248 /* mztools.c */,
+				C5B48B312294E5A200776248 /* mztools.h */,
+				C5B48B362294E5A200776248 /* unzip.c */,
+				C5B48B372294E5A200776248 /* unzip.h */,
+				C5B48B332294E5A200776248 /* zip.c */,
+				C5B48B382294E5A300776248 /* zip.h */,
 			);
 			name = Minizip;
 			sourceTree = "<group>";
@@ -1092,16 +1092,16 @@
 		C5AF588C2294CD7900830C25 /* ObjZip */ = {
 			isa = PBXGroup;
 			children = (
-				C5AF588E2294CD9500830C25 /* FileInZipInfo.h */,
-				C5AF58952294CD9500830C25 /* FileInZipInfo.m */,
-				C5AF58932294CD9500830C25 /* ZipException.h */,
-				C5AF588F2294CD9500830C25 /* ZipException.m */,
-				C5AF588D2294CD9500830C25 /* ZipFile.h */,
-				C5AF58942294CD9500830C25 /* ZipFile.m */,
-				C5AF58962294CD9500830C25 /* ZipReadStream.h */,
-				C5AF58902294CD9500830C25 /* ZipReadStream.m */,
-				C5AF58912294CD9500830C25 /* ZipWriteStream.h */,
-				C5AF58922294CD9500830C25 /* ZipWriteStream.m */,
+				C5B48B222294E59000776248 /* FileInZipInfo.h */,
+				C5B48B252294E59100776248 /* FileInZipInfo.m */,
+				C5B48B1E2294E59000776248 /* ZipException.h */,
+				C5B48B212294E59000776248 /* ZipException.m */,
+				C5B48B202294E59000776248 /* ZipFile.h */,
+				C5B48B232294E59100776248 /* ZipFile.m */,
+				C5B48B262294E59100776248 /* ZipReadStream.h */,
+				C5B48B242294E59100776248 /* ZipReadStream.m */,
+				C5B48B1F2294E59000776248 /* ZipWriteStream.h */,
+				C5B48B1D2294E59000776248 /* ZipWriteStream.m */,
 			);
 			name = ObjZip;
 			sourceTree = "<group>";
@@ -1560,11 +1560,14 @@
 				4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */,
 				4B9A7BAA1E82F149002A49E5 /* RFPhoto.m in Sources */,
 				C5CED70A1ECF792E0068F537 /* YUCIHighPassSkinSmoothing.m in Sources */,
+				C5B48B3B2294E5A300776248 /* zip.c in Sources */,
 				4BA713352029127E0083948C /* MMDocument.m in Sources */,
 				4B0D55691B93C0390076AD9F /* RFXMLRSDParser.m in Sources */,
 				4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */,
 				4B4D9B5B1ED521BB00315BBA /* RFFeaturedPhotoCell.m in Sources */,
 				4BF870651F679070005C9849 /* RFBrowserActivity.m in Sources */,
+				C5B48B3D2294E5A300776248 /* mztools.c in Sources */,
+				C5B48B292294E59100776248 /* ZipException.m in Sources */,
 				4B46632B1B8F51710034FC5C /* CMarkupTransformer.m in Sources */,
 				4B1712DB1F069FB200267045 /* RFMenuView.m in Sources */,
 				C5CED7061ECF792E0068F537 /* YUCIFXAA.m in Sources */,
@@ -1583,8 +1586,9 @@
 				4B1F7FE922526A0D00E8AF3E /* RFUpgradeController.m in Sources */,
 				4B46631C1B8EA5C20034FC5C /* NSString+Extras.m in Sources */,
 				4BA2C9A81B210C1C0038C0E5 /* main.m in Sources */,
-				C5AF589B2294CD9500830C25 /* ZipWriteStream.m in Sources */,
 				4BA713392029127E0083948C /* MMMarkdown.m in Sources */,
+				C5B48B2D2294E59100776248 /* ZipReadStream.m in Sources */,
+				C5B48B272294E59100776248 /* ZipWriteStream.m in Sources */,
 				C5A515AC21B3194A00C15092 /* RFAutoCompleteCache.m in Sources */,
 				C5CED7001ECF792E0068F537 /* YUCIFilterConstructor.m in Sources */,
 				4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */,
@@ -1593,26 +1597,25 @@
 				4BA7133B2029127E0083948C /* MMParser.m in Sources */,
 				4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */,
 				4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */,
+				C5B48B3F2294E5A300776248 /* unzip.c in Sources */,
 				4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */,
+				C5B48B2B2294E59100776248 /* ZipFile.m in Sources */,
 				4B0D55521B93827D0076AD9F /* RFXMLRPCRequest.m in Sources */,
 				4B1BD2811D87548C00B3C93D /* RFHelpController.m in Sources */,
+				C5B48B2F2294E59100776248 /* FileInZipInfo.m in Sources */,
 				4B5078D11B965C79002A4F80 /* RFSettingsController.m in Sources */,
 				4BF803471B87AA2C00D6670C /* UUDate.m in Sources */,
 				4BA9107F1B83CFFD00D58F83 /* RFSignInController.m in Sources */,
 				C58D8E2320ADF30900F22E42 /* RFPopupNotificationViewController.m in Sources */,
-				C5AF58972294CD9500830C25 /* ZipException.m in Sources */,
 				C5AF58C12294CEF300830C25 /* NSURL+UnzipKitExtensions.m in Sources */,
 				4B46632C1B8F51710034FC5C /* CSimpleMarkupParser.m in Sources */,
 				4BA910761B83CDC400D58F83 /* RFMenuController.m in Sources */,
 				C5CED6FF1ECF792E0068F537 /* YUCICrossZoomTransition.m in Sources */,
 				4BA713372029127E0083948C /* MMElement.m in Sources */,
-				C5AF589F2294CD9500830C25 /* FileInZipInfo.m in Sources */,
 				C5CED6F81ECF792E0068F537 /* YUCIBlobsGenerator.m in Sources */,
 				4B1D74FC1B95ECF4004A0ACD /* RFXMLElementStack.m in Sources */,
 				4BF8034E1B87AA2C00D6670C /* UUString.m in Sources */,
-				C5AF58AF2294CDAB00830C25 /* mztools.c in Sources */,
 				4BF8034A1B87AA2C00D6670C /* UUHttpResponseHandler.m in Sources */,
-				C5AF58992294CD9500830C25 /* ZipReadStream.m in Sources */,
 				4BA713432029127E0083948C /* MMSpanParser.m in Sources */,
 				4BF123FD1E88302B00B56138 /* RFFilterCell.m in Sources */,
 				C5CED6FC1ECF792E0068F537 /* YUCIColorLookup.m in Sources */,
@@ -1622,10 +1625,9 @@
 				4BA7133D2029127E0083948C /* MMGenerator.m in Sources */,
 				4BF8034C1B87AA2C00D6670C /* UUImage.m in Sources */,
 				4BF803481B87AA2C00D6670C /* UUDictionary.m in Sources */,
+				C5B48B392294E5A300776248 /* ioapi.c in Sources */,
 				4B46632F1B8F51710034FC5C /* UILabel+MarkupExtensions.m in Sources */,
-				C5AF58AD2294CDAB00830C25 /* ioapi.c in Sources */,
 				4BF123FA1E88301500B56138 /* RFFilter.m in Sources */,
-				C5AF58AB2294CDAB00830C25 /* unzip.c in Sources */,
 				C5AF58B92294CECD00830C25 /* UZKFileInfo.m in Sources */,
 				4B8714771E64C0DD00C69589 /* RFExternalController.m in Sources */,
 				C5CED70C1ECF792E0068F537 /* YUCIHistogramEqualization.m in Sources */,
@@ -1645,11 +1647,9 @@
 				C59C3B1E20923EFC0076A754 /* RFBlogTableViewCell.m in Sources */,
 				C5CED7171ECF792E0068F537 /* YUCIStarfieldGenerator.m in Sources */,
 				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
-				C5AF58A92294CDAB00830C25 /* zip.c in Sources */,
 				C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */,
 				4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */,
 				C5A515A521B3160100C15092 /* RFAutoCompleteCollectionViewCell.m in Sources */,
-				C5AF589D2294CD9500830C25 /* ZipFile.m in Sources */,
 				C5CED7091ECF792E0068F537 /* YUCIHighPass.m in Sources */,
 				4B4D9B551ED520F800315BBA /* RFFeaturedPhoto.m in Sources */,
 				4BF803451B87AA2C00D6670C /* UUAlert.m in Sources */,
@@ -1670,26 +1670,22 @@
 			files = (
 				C507F3301F8827BC0013D2B7 /* UUHttpSession.m in Sources */,
 				C507F32A1F8827AE0013D2B7 /* OnePasswordExtension.m in Sources */,
+				C5B48B3E2294E5A300776248 /* mztools.c in Sources */,
 				4BA713442029127E0083948C /* MMSpanParser.m in Sources */,
 				C59C3B22209245570076A754 /* RFViewController.m in Sources */,
 				C52DB579225D0CFB00172077 /* RFSelectBlogViewController.m in Sources */,
-				C5AF58A02294CD9500830C25 /* FileInZipInfo.m in Sources */,
-				C5AF589E2294CD9500830C25 /* ZipFile.m in Sources */,
-				C5AF589A2294CD9500830C25 /* ZipReadStream.m in Sources */,
 				4B821C7E21B428D3006CE005 /* UIView+Extras.m in Sources */,
 				C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */,
 				C507F3321F8827BC0013D2B7 /* UUString.m in Sources */,
 				4B64B2E8220930E4005B92A0 /* RFCategoryCell.m in Sources */,
 				C507F32D1F8827BC0013D2B7 /* UUDictionary.m in Sources */,
 				C507F31E1F8827970013D2B7 /* RFMicropub.m in Sources */,
-				C5AF58982294CD9500830C25 /* ZipException.m in Sources */,
 				C507F3371F88281C0013D2B7 /* RFFiltersController.m in Sources */,
 				C507F31B1F88278C0013D2B7 /* RFPhotoCell.m in Sources */,
 				C507F3311F8827BC0013D2B7 /* UUImage.m in Sources */,
 				C507F30C1F8827420013D2B7 /* ShareViewController.m in Sources */,
 				C52DB57A225D0D2100172077 /* RFBlogTableViewCell.m in Sources */,
 				C507F3291F8827A90013D2B7 /* RFMenuView.m in Sources */,
-				C5AF58AC2294CDAB00830C25 /* unzip.c in Sources */,
 				C507F3251F8827A90013D2B7 /* UIBarButtonItem+Extras.m in Sources */,
 				C507F32F1F8827BC0013D2B7 /* UUHttpResponseHandler.m in Sources */,
 				C507F3241F8827A90013D2B7 /* RFThinLineView.m in Sources */,
@@ -1701,14 +1697,17 @@
 				4B1F7FE32251B3E400E8AF3E /* SDAVAssetExportSession.m in Sources */,
 				C507F3341F8827C20013D2B7 /* SSKeychainQuery.m in Sources */,
 				4BA713422029127E0083948C /* MMHTMLParser.m in Sources */,
+				C5B48B2C2294E59100776248 /* ZipFile.m in Sources */,
 				C5AF58BC2294CECD00830C25 /* UZKArchive.m in Sources */,
 				C507F3261F8827A90013D2B7 /* RFMenuButton.m in Sources */,
-				C5AF58AE2294CDAB00830C25 /* ioapi.c in Sources */,
+				C5B48B3C2294E5A300776248 /* zip.c in Sources */,
 				C507F3281F8827A90013D2B7 /* UIFont+Extras.m in Sources */,
 				C507F3181F8827820013D2B7 /* RFSettings.m in Sources */,
 				C507F3221F8827A90013D2B7 /* RFXMLRSDParser.m in Sources */,
+				C5B48B3A2294E5A300776248 /* ioapi.c in Sources */,
 				4BA713362029127E0083948C /* MMDocument.m in Sources */,
 				C507F32C1F8827BC0013D2B7 /* UUDate.m in Sources */,
+				C5B48B2A2294E59100776248 /* ZipException.m in Sources */,
 				C513F6E81F994197007319F0 /* UUAlert.m in Sources */,
 				C507F32B1F8827BC0013D2B7 /* UUDataCache.m in Sources */,
 				C507F31F1F88279B0013D2B7 /* RFXMLLinkParser.m in Sources */,
@@ -1717,9 +1716,11 @@
 				C507F31D1F8827950013D2B7 /* RFClient.m in Sources */,
 				C507F3231F8827A90013D2B7 /* RFXMLElementStack.m in Sources */,
 				C5A66B0F1F88325E0063F325 /* NSString+MarkupExtensions.m in Sources */,
+				C5B48B302294E59100776248 /* FileInZipInfo.m in Sources */,
 				4BA7133E2029127E0083948C /* MMGenerator.m in Sources */,
 				4BA713402029127E0083948C /* MMScanner.m in Sources */,
 				C507F31A1F8827880013D2B7 /* RFPhotosController.m in Sources */,
+				C5B48B402294E5A300776248 /* unzip.c in Sources */,
 				4BBC298321B47C6E001E3BDB /* RFAutoCompleteCollectionViewCell.m in Sources */,
 				4B400D1A2025270900C71AAF /* RFFeedCell.m in Sources */,
 				C507F3271F8827A90013D2B7 /* NSString+Extras.m in Sources */,
@@ -1727,14 +1728,13 @@
 				4B400D1E2027535700C71AAF /* RFFeed.m in Sources */,
 				C507F3391F8828310013D2B7 /* RFFilterCell.m in Sources */,
 				C507F3381F88282D0013D2B7 /* RFFilter.m in Sources */,
-				C5AF58B02294CDAB00830C25 /* mztools.c in Sources */,
 				C507F31C1F88278F0013D2B7 /* RFPhoto.m in Sources */,
-				C5AF58AA2294CDAB00830C25 /* zip.c in Sources */,
 				C5A515B121B31F4600C15092 /* RFAutoCompleteCache.m in Sources */,
-				C5AF589C2294CD9500830C25 /* ZipWriteStream.m in Sources */,
 				C507F3211F8827A90013D2B7 /* RFXMLRPCParser.m in Sources */,
+				C5B48B282294E59100776248 /* ZipWriteStream.m in Sources */,
 				C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */,
 				4BA713382029127E0083948C /* MMElement.m in Sources */,
+				C5B48B2E2294E59100776248 /* ZipReadStream.m in Sources */,
 				4BA7133C2029127E0083948C /* MMParser.m in Sources */,
 				4B400D11202449C600C71AAF /* RFFeedsController.m in Sources */,
 				C5AF58C22294CEF300830C25 /* NSURL+UnzipKitExtensions.m in Sources */,
