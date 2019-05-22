@@ -37,6 +37,7 @@
 #import "SDAVAssetExportSession.h"
 #import "RFSelectBlogViewController.h"
 #import "RFUpgradeController.h"
+#import "UnzipKit.h"
 
 //#import "Microblog-Swift.h"
 #import <Fabric/Fabric.h>
@@ -1654,12 +1655,121 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}];
 }
 
+- (NSString *)tempPath
+{
+    NSString* tempDirectory = NSTemporaryDirectory();
+    tempDirectory = [tempDirectory stringByAppendingPathComponent:[NSUUID UUID].UUIDString];
+    
+    NSURL *url = [NSURL fileURLWithPath:tempDirectory];
+    NSError *error = nil;
+    [[NSFileManager defaultManager] createDirectoryAtURL:url
+                             withIntermediateDirectories:YES
+                                              attributes:nil
+                                                   error:&error];
+    if (error) {
+        return nil;
+    }
+    return url.path;
+}
+
+
+- (void) handleZipFileContents:(NSArray*)contents
+{
+    for (NSFileWrapper* item in contents)
+    {
+        if (item.isDirectory)
+        {
+            NSDictionary* fileWrappers = item.fileWrappers;
+            NSMutableArray* subContents = [NSMutableArray array];
+            for (id key in fileWrappers)
+            {
+                NSFileWrapper* fileWrapper = [fileWrappers objectForKey:key];
+                [subContents addObject:fileWrapper];
+            }
+            
+            [self handleZipFileContents:subContents];
+        }
+        else if (item.isRegularFile)
+        {
+            NSString* extension = item.filename.pathExtension.lowercaseString;
+            NSData* data = item.regularFileContents;
+            
+            if ([extension isEqualToString:@"txt"])
+            {
+                NSString* text = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                dispatch_async(dispatch_get_main_queue(), ^
+                {
+                    [self insertSharedText:text];
+                });
+            }
+            else {
+                UIImage* image = [UIImage imageWithData:data];
+                if (image)
+                {
+                    [self processImageForAppExtension:image withInputItems:nil];
+                }
+            }
+        }
+    }
+}
+
+- (void) loadZipFileExtension:(NSURL*)url inputItems:(NSMutableArray*)inputItems
+{
+    NSString* destFilePath = [self tempPath];
+    NSError* archiveError = nil;
+    NSError* decompressError = nil;
+
+    UZKArchive *archive = [[UZKArchive alloc] initWithURL:url error:&archiveError];
+    BOOL success = [archive extractFilesTo:destFilePath overwrite:YES progress:^(UZKFileInfo * _Nonnull currentFile, CGFloat percentArchiveDecompressed)
+    {
+        //NSLog(@"Decompressing %f", (float)percentArchiveDecompressed);
+    }
+    error:&decompressError];
+    
+    if (success && !decompressError)
+    {
+        destFilePath = [destFilePath stringByAppendingPathComponent:url.lastPathComponent];
+        NSURL* url = [NSURL fileURLWithPath:destFilePath];
+        
+        NSError* readError = nil;
+        NSFileWrapper* textBundleFileWrapper = [[NSFileWrapper alloc] initWithURL:url options:NSFileWrapperReadingImmediate error:&readError];
+        if (textBundleFileWrapper && !readError)
+        {
+            if (textBundleFileWrapper.isDirectory)
+            {
+                NSDictionary* fileWrappers = textBundleFileWrapper.fileWrappers;
+                NSMutableArray* subContents = [NSMutableArray array];
+                for (id key in fileWrappers)
+                {
+                    NSFileWrapper* fileWrapper = [fileWrappers objectForKey:key];
+                    [subContents addObject:fileWrapper];
+                }
+                
+                [self handleZipFileContents:subContents];
+            }
+        }
+    }
+
+    [self processAppExtensionItems:inputItems];
+}
+
 - (void) loadExtensionURL:(NSItemProvider*)itemProvider inputItems:(NSMutableArray*)inputItems
 {
 	[itemProvider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error)
 	{
 		NSURL* url = [(NSURL*)item copy];
 		
+        // Check for known archive extensions
+        NSString* extension = [url pathExtension].lowercaseString;
+        if ([extension isEqualToString:@"bearnote"] ||
+            [extension isEqualToString:@"zip"] ||
+            [extension isEqualToString:@"archive"])
+        {
+            [self loadZipFileExtension:url inputItems:inputItems];
+            return;
+        }
+        
+
 		AVURLAsset* asset = [AVURLAsset assetWithURL:url];
 		BOOL playable = NO;
 		for (AVAssetTrack* track in asset.tracks)

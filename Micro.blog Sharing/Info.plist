@@ -29,8 +29,14 @@
 	<dict>
 		<key>NSExtensionAttributes</key>
 		<dict>
+			<key>NSExtensionOverridesHostUIAppearance</key>
+			<true/>
+			<key>NSExtensionActionWantsFullScreenPresentation</key>
+			<true/>
 			<key>NSExtensionActivationRule</key>
 			<dict>
+				<key>NSExtensionActivationSupportsFileWithMaxCount</key>
+				<integer>10</integer>
 				<key>NSExtensionActivationSupportsImageWithMaxCount</key>
 				<integer>5</integer>
 				<key>NSExtensionActivationSupportsMovieWithMaxCount</key>
