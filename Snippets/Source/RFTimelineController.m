@@ -337,6 +337,7 @@
 	long timezone_offset = 0 - [[NSTimeZone systemTimeZone] secondsFromGMTForDate:now] / 60;
 	int width = self.view.bounds.size.width;
 	CGFloat fontsize = [UIFont rf_preferredTimelineFontSize];
+	long darkmode = 1;
 	
 	RFClient* client;
 	if ([self.endpoint isEqualToString:@"/hybrid/mentions"]) {
@@ -367,7 +368,7 @@
 		client = [[RFClient alloc] initWithPath:self.endpoint];
 	}
 	else {
-		client = [[RFClient alloc] initWithFormat:@"/hybrid/signin?token=%@&width=%d&fontsize=%f&minutes=%ld", token, width, fontsize, timezone_offset];
+		client = [[RFClient alloc] initWithFormat:@"/hybrid/signin?token=%@&width=%d&fontsize=%f&minutes=%ld&darkmode=%ld", token, width, fontsize, timezone_offset, darkmode];
 	}
 	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:client.url]]];
 }
