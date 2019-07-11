@@ -14,5 +14,12 @@
 @property (strong, nonatomic) NSArray* featuredPhotos; // RFFeaturedPhoto
 @property (strong, nonatomic) UISearchBar* searchBar;
 @property (strong, nonatomic) UIView* backdropView;
+@property (strong, nonatomic) IBOutlet UIView* emojiPickerView;
+@property (strong, nonatomic) IBOutlet UILabel* emojiLabel;
+@property (strong, nonatomic) IBOutlet UILabel* descriptionLabel;
+@property (strong, nonatomic) IBOutlet UIStackView* emojiStackView;
+@property (strong, nonatomic) IBOutlet UIView* stackViewContainerView;
+
+@property (strong, nonatomic) NSArray* tagmoji;
 
 @end

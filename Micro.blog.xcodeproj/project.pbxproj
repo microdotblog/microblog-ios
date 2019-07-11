@@ -306,6 +306,7 @@
 		C5D77D7B1F9E3B3A00AB0144 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = C5D77D5A1F9E3B3900AB0144 /* utf8.c */; };
 		C5D77D7C1F9E3B3A00AB0144 /* win32tc.c in Sources */ = {isa = PBXBuildFile; fileRef = C5D77D5D1F9E3B3900AB0144 /* win32tc.c */; };
 		C5D77D7D1F9E3B3A00AB0144 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D77D621F9E3B3900AB0144 /* CTidy.m */; };
+		C5DEFA0B22D6D6D1009D5FAF /* Discover.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5DEFA0922D6D6D1009D5FAF /* Discover.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -702,6 +703,7 @@
 		C5D77D601F9E3B3900AB0144 /* CTidy-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTidy-Prefix.pch"; sourceTree = "<group>"; };
 		C5D77D611F9E3B3900AB0144 /* CTidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTidy.h; sourceTree = "<group>"; };
 		C5D77D621F9E3B3900AB0144 /* CTidy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTidy.m; sourceTree = "<group>"; };
+		C5DEFA0A22D6D6D1009D5FAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Discover.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -940,6 +942,7 @@
 				C5A515AD21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib */,
 				C5A515AE21B3196100C15092 /* RFPopupNotificationViewController.xib */,
 				C59C3B1720923DE50076A754 /* Blogs.storyboard */,
+				C5DEFA0922D6D6D1009D5FAF /* Discover.xib */,
 				4BA2C9771B2109D10038C0E5 /* Info.plist */,
 				4BF123FE1E88343600B56138 /* Filters.plist */,
 				4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */,
@@ -1431,6 +1434,7 @@
 				4BA2C9A01B210A620038C0E5 /* Timeline.xib in Resources */,
 				C5CED7111ECF792E0068F537 /* YUCIRGBToHSL.cikernel in Resources */,
 				4BF123F41E882F4500B56138 /* Filters.xib in Resources */,
+				C5DEFA0B22D6D6D1009D5FAF /* Discover.xib in Resources */,
 				4BA9107C1B83CFD200D58F83 /* SignIn.xib in Resources */,
 				C5CED70E1ECF792E0068F537 /* YUCIReflectedTile.cikernel in Resources */,
 				C5CED6F71ECF792E0068F537 /* YUCIBlobsGenerator.cikernel in Resources */,
@@ -1971,6 +1975,14 @@
 				C5666B621F23C95F00AE13DC /* Base */,
 			);
 			name = User.xib;
+			sourceTree = "<group>";
+		};
+		C5DEFA0922D6D6D1009D5FAF /* Discover.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5DEFA0A22D6D6D1009D5FAF /* Base */,
+			);
+			name = Discover.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

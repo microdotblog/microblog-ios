@@ -16,10 +16,33 @@
 #import "NSString+Extras.h"
 #import "RFAutoCompleteCache.h"
 #import "UIView+Extras.h"
+#import "UIFont+Extras.h"
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 @implementation RFDiscoverController
+
+- (instancetype) init
+{
+    self = [super initWithNibName:@"Discover" bundle:nil];
+    if (self) {
+        self.endpoint = @"/hybrid/discover";
+        self.timelineTitle = @"Discover";
+    }
+    
+    return self;
+}
+
+- (instancetype) initWithEndpoint:(NSString *)endpoint title:(NSString *)title
+{
+    self = [self init];
+    if (self) {
+        self.endpoint = endpoint;
+        self.timelineTitle = title;
+    }
+    
+    return self;
+}
 
 - (void) viewDidLoad
 {
@@ -27,6 +50,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	[self setupNavigation];
 	[self setupSearchButton];
+    [self setupEmojiPicker];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -46,6 +70,101 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) setupSearchButton
 {
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleSearch:)];
+}
+
+- (void) setupEmojiPicker
+{
+    self.stackViewContainerView.hidden = YES;
+
+    int width = self.view.bounds.size.width;
+    CGFloat fontsize = [UIFont rf_preferredTimelineFontSize];
+    
+    RFClient* client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f", @"/posts/discover", width, fontsize];
+    [client getWithQueryArguments:nil completion:^(UUHttpResponse *response) {
+        NSDictionary* dictionary = response.parsedResponse;
+        if (dictionary && [dictionary isKindOfClass:[NSDictionary class]])
+        {
+            NSDictionary* microblogDictionary = [dictionary objectForKey:@"_microblog"];
+            if (microblogDictionary && [microblogDictionary isKindOfClass:[NSDictionary class]])
+            {
+                NSArray* tagmoji = [microblogDictionary objectForKey:@"tagmoji"];
+                if (tagmoji && [tagmoji isKindOfClass:[NSArray class]])
+                {
+                    self.tagmoji = tagmoji;
+                    
+                    [[NSUserDefaults standardUserDefaults] setObject:tagmoji forKey:@"Saved::Tagmoji"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self updateTagmoji];
+                    });
+                }
+            }
+            
+        }
+    }];
+    
+    self.tagmoji = [[NSUserDefaults standardUserDefaults] objectForKey:@"Saved::Tagmoji"];
+    [self updateTagmoji];
+    
+    self.emojiPickerView.clipsToBounds = YES;
+    self.emojiPickerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
+    self.emojiPickerView.layer.borderWidth = 1.0;
+
+}
+
+- (void) updateTagmoji
+{
+    if (self.tagmoji)
+    {
+        self.emojiPickerView.hidden = NO;
+
+        for (UIView* subview  in self.emojiStackView.arrangedSubviews)
+        {
+            [subview removeFromSuperview];
+        }
+        
+        NSString* emojiList = @"";
+        NSMutableArray* featuredEmoji = [NSMutableArray array];
+        for (NSDictionary* dictionary in self.tagmoji)
+        {
+            NSNumber* featured = [dictionary objectForKey:@"is_featured"];
+            NSString* emoji = [dictionary objectForKey:@"emoji"];
+            if ([featured boolValue] == YES)
+            {
+                [featuredEmoji addObject:emoji];
+            }
+            
+            NSString* title = [emoji stringByAppendingString:[dictionary objectForKey:@"title"]];
+            UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.emojiStackView.frame.size.width, 14.0)];
+            button.translatesAutoresizingMaskIntoConstraints = NO;
+            
+            [button setTitle:title forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:13.0];
+            [button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+            [button.titleLabel sizeToFit];
+            button.tag = [self.tagmoji indexOfObject:dictionary];
+            
+            [self.emojiStackView addArrangedSubview:button];
+            [button addTarget:self action:@selector(onHandleEmojiSelect:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        
+        for (int i = 0; i < 3; i++)
+        {
+            NSUInteger index = arc4random_uniform((int)featuredEmoji.count);
+            NSString* emoji = [featuredEmoji objectAtIndex:index];
+            emojiList = [emojiList stringByAppendingString:emoji];
+            [featuredEmoji removeObject:emoji];
+        }
+        
+        self.emojiLabel.text = emojiList;
+        
+    }
+    else {
+        self.descriptionLabel.text = @"Some recent posts from the community.";
+        self.emojiPickerView.hidden = YES;
+    }
+    
 }
 
 - (void) toggleSearch:(id)sender
@@ -187,6 +306,23 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		self.photosCollectionView = nil;
 		self.featuredPhotos = @[];
 	}];
+}
+
+- (IBAction) onSelectEmoji:(UIButton*)sender
+{
+    self.stackViewContainerView.hidden = NO;
+}
+
+- (IBAction) onHandleEmojiSelect:(UIButton*)sender
+{
+    NSInteger index = sender.tag;
+    NSDictionary* dictionary = [self.tagmoji objectAtIndex:index];
+    NSString* name = [dictionary objectForKey:@"name"];
+    NSString* description = [NSString stringWithFormat:@"Some %@ posts from the community.", [sender titleForState:UIControlStateNormal]];
+    self.descriptionLabel.text = description;
+    self.endpoint = [NSString stringWithFormat:@"/hybrid/discover/%@", name];
+    self.stackViewContainerView.hidden = YES;
+    [self refreshTimelineShowingSpinner:YES];
 }
 
 #pragma mark -
