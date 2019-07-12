@@ -75,6 +75,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) setupEmojiPicker
 {
     self.stackViewContainerView.hidden = YES;
+    self.stackViewContainerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
+    self.stackViewContainerView.layer.borderWidth = 0.5;
 
     int width = self.view.bounds.size.width;
     CGFloat fontsize = [UIFont rf_preferredTimelineFontSize];
@@ -110,7 +112,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     self.emojiPickerView.clipsToBounds = YES;
     self.emojiPickerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
     self.emojiPickerView.layer.borderWidth = 1.0;
-
+    self.emojiPickerView.layer.cornerRadius = 2.0;
 }
 
 - (void) updateTagmoji
@@ -135,7 +137,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
                 [featuredEmoji addObject:emoji];
             }
             
-            NSString* title = [emoji stringByAppendingString:[dictionary objectForKey:@"title"]];
+            NSString* title = [NSString stringWithFormat:@"%@ %@", emoji, [dictionary objectForKey:@"title"]];
             UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.emojiStackView.frame.size.width, 14.0)];
             button.translatesAutoresizingMaskIntoConstraints = NO;
             
@@ -158,6 +160,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
         }
         
         self.emojiLabel.text = emojiList;
+        [self.emojiLabel sizeToFit];
+        [self.view layoutIfNeeded];
         
     }
     else {
@@ -310,7 +314,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (IBAction) onSelectEmoji:(UIButton*)sender
 {
-    self.stackViewContainerView.hidden = NO;
+    self.stackViewContainerView.hidden = !self.stackViewContainerView.hidden;
 }
 
 - (IBAction) onHandleEmojiSelect:(UIButton*)sender
