@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,6 +17,7 @@
                 <outlet property="emojiLabel" destination="3fV-G1-kqv" id="lL2-83-T16"/>
                 <outlet property="emojiPickerView" destination="p07-RB-zhL" id="vp8-vn-l66"/>
                 <outlet property="emojiStackView" destination="gmc-tU-QVO" id="Sd9-4q-gZr"/>
+                <outlet property="emojiWidthContraint" destination="lcD-gr-bSg" id="DN1-YU-hcZ"/>
                 <outlet property="stackViewContainerView" destination="924-dz-CX6" id="Xio-MC-KIf"/>
                 <outlet property="view" destination="iN0-l3-epB" id="bl6-Wp-njK"/>
                 <outlet property="webView" destination="TJR-UI-7g4" id="XMu-Db-vTR"/>
@@ -36,7 +38,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEO-4T-5wM">
                     <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some recent posts from the community." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRx-YB-TN4">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some recent posts from the community." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRx-YB-TN4">
                             <rect key="frame" x="8" y="4" width="262" height="36"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <nil key="textColor"/>
@@ -84,21 +86,69 @@
                         <constraint firstAttribute="height" constant="44" id="xtk-nc-4g6"/>
                     </constraints>
                 </view>
-                <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="924-dz-CX6">
-                    <rect key="frame" x="265" y="88" width="110" height="128"/>
+                <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="924-dz-CX6">
+                    <rect key="frame" x="149" y="98" width="216" height="254"/>
                     <subviews>
-                        <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="gmc-tU-QVO">
-                            <rect key="frame" x="0.0" y="-36" width="110" height="200"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UX-qU-MK7">
+                            <rect key="frame" x="8" y="8" width="200" height="191"/>
+                            <subviews>
+                                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gmc-tU-QVO">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="189"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="200" id="lcD-gr-bSg"/>
+                                    </constraints>
+                                    <viewLayoutGuide key="safeArea" id="Pep-Ac-b82"/>
+                                </stackView>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <viewLayoutGuide key="safeArea" id="Pep-Ac-b82"/>
-                        </stackView>
+                            <constraints>
+                                <constraint firstAttribute="height" secondItem="gmc-tU-QVO" secondAttribute="height" id="6Ab-5x-Rpc"/>
+                                <constraint firstAttribute="width" secondItem="gmc-tU-QVO" secondAttribute="width" id="F3Y-Es-qMO"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qro-9P-b2E">
+                            <rect key="frame" x="8" y="222" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="Gsn-g7-h80"/>
+                                <constraint firstAttribute="height" constant="20" id="JSV-K2-ZZe"/>
+                            </constraints>
+                            <state key="normal" image="zoomButton"/>
+                            <connections>
+                                <action selector="onHandleEmojiSelect:" destination="-1" eventType="touchUpInside" id="Pez-AU-4FC"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuK-39-VSV">
+                            <rect key="frame" x="33" y="217" width="77" height="30"/>
+                            <state key="normal" title="Show More">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </state>
+                            <connections>
+                                <action selector="onHandleZoom:" destination="-1" eventType="touchUpInside" id="l5e-nd-Cds"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyu-gX-rVp" customClass="RFThinLineView">
+                            <rect key="frame" x="0.0" y="209" width="216" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="LVV-QU-Cxj"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="gmc-tU-QVO" secondAttribute="bottom" id="HmI-Vm-WYB"/>
-                        <constraint firstItem="gmc-tU-QVO" firstAttribute="top" secondItem="924-dz-CX6" secondAttribute="top" id="TIh-qz-bde"/>
-                        <constraint firstItem="gmc-tU-QVO" firstAttribute="leading" secondItem="924-dz-CX6" secondAttribute="leading" constant="4" id="gvo-FH-10a"/>
-                        <constraint firstAttribute="trailing" secondItem="gmc-tU-QVO" secondAttribute="trailing" constant="4" id="qH6-U2-HmO"/>
+                        <constraint firstItem="Qro-9P-b2E" firstAttribute="top" secondItem="iyu-gX-rVp" secondAttribute="bottom" constant="12" id="6H4-c7-XyY"/>
+                        <constraint firstAttribute="bottom" secondItem="Qro-9P-b2E" secondAttribute="bottom" constant="12" id="CUi-VG-biv"/>
+                        <constraint firstAttribute="trailing" secondItem="iyu-gX-rVp" secondAttribute="trailing" id="Cgy-l4-yFI"/>
+                        <constraint firstAttribute="height" priority="250" constant="254" id="DvZ-zc-quZ"/>
+                        <constraint firstItem="5UX-qU-MK7" firstAttribute="leading" secondItem="924-dz-CX6" secondAttribute="leading" constant="8" id="Ogd-Mh-VM5"/>
+                        <constraint firstItem="5UX-qU-MK7" firstAttribute="top" secondItem="924-dz-CX6" secondAttribute="top" constant="8" id="P9h-h6-6Ic"/>
+                        <constraint firstAttribute="trailing" secondItem="5UX-qU-MK7" secondAttribute="trailing" constant="8" id="R00-hq-Z4E"/>
+                        <constraint firstAttribute="bottom" secondItem="5UX-qU-MK7" secondAttribute="bottom" constant="55" id="VbQ-mm-vQM"/>
+                        <constraint firstItem="EuK-39-VSV" firstAttribute="centerY" secondItem="Qro-9P-b2E" secondAttribute="centerY" id="Wr6-if-Xva"/>
+                        <constraint firstItem="iyu-gX-rVp" firstAttribute="leading" secondItem="924-dz-CX6" secondAttribute="leading" id="cH9-gj-FPr"/>
+                        <constraint firstItem="EuK-39-VSV" firstAttribute="leading" secondItem="Qro-9P-b2E" secondAttribute="trailing" constant="5" id="hxN-Vg-N8A"/>
+                        <constraint firstItem="Qro-9P-b2E" firstAttribute="leading" secondItem="924-dz-CX6" secondAttribute="leading" constant="8" id="jd7-gn-Mk2"/>
                     </constraints>
                 </view>
             </subviews>
@@ -107,9 +157,9 @@
                 <constraint firstItem="qEO-4T-5wM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9RK-z3-HGd"/>
                 <constraint firstItem="qEO-4T-5wM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="BV2-co-cXq"/>
                 <constraint firstItem="qEO-4T-5wM" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="CoS-vB-vOZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="924-dz-CX6" secondAttribute="trailing" constant="10" id="Lhx-ej-Zly"/>
                 <constraint firstItem="TJR-UI-7g4" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="N4Z-b2-yjp"/>
-                <constraint firstItem="924-dz-CX6" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="anA-Ij-LI2"/>
-                <constraint firstItem="924-dz-CX6" firstAttribute="top" secondItem="qEO-4T-5wM" secondAttribute="bottom" id="dIf-HU-Aky"/>
+                <constraint firstItem="924-dz-CX6" firstAttribute="top" secondItem="qEO-4T-5wM" secondAttribute="bottom" constant="10" id="Rh3-pv-iUF"/>
                 <constraint firstItem="TJR-UI-7g4" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="gdr-lN-rjq"/>
                 <constraint firstItem="TJR-UI-7g4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mgg-3L-fV9"/>
                 <constraint firstItem="TJR-UI-7g4" firstAttribute="top" secondItem="qEO-4T-5wM" secondAttribute="bottom" id="qR6-3p-Eks"/>
@@ -118,4 +168,7 @@
             <point key="canvasLocation" x="48.799999999999997" y="35.467980295566505"/>
         </view>
     </objects>
+    <resources>
+        <image name="zoomButton" width="40" height="40"/>
+    </resources>
 </document>
