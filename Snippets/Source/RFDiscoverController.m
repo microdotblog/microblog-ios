@@ -99,7 +99,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [self updateTagmoji];
+                        [self updateTagmoji:NO];
                     });
                 }
             }
@@ -108,7 +108,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     }];
     
     self.tagmoji = [[NSUserDefaults standardUserDefaults] objectForKey:@"Saved::Tagmoji"];
-    [self updateTagmoji];
+    [self updateTagmoji:NO];
     
     self.emojiPickerView.clipsToBounds = YES;
     self.emojiPickerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
@@ -116,7 +116,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     self.emojiPickerView.layer.cornerRadius = 5.0;
 }
 
-- (void) updateTagmoji
+- (void) updateTagmoji:(BOOL)includeAll
 {
     if (self.tagmoji)
     {
@@ -133,10 +133,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
         {
             NSNumber* featured = [dictionary objectForKey:@"is_featured"];
             NSString* emoji = [dictionary objectForKey:@"emoji"];
-            if ([featured boolValue] == YES)
-            {
+            if ([featured boolValue]) {
                 [featuredEmoji addObject:emoji];
-				
+			}
+			
+			if ([featured boolValue] || includeAll) {
 				NSString* title = [NSString stringWithFormat:@"%@ %@", emoji, [dictionary objectForKey:@"title"]];
 				UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.emojiStackView.frame.size.width, 14.0)];
 				button.translatesAutoresizingMaskIntoConstraints = NO;
@@ -170,6 +171,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
         self.emojiPickerView.hidden = YES;
     }
     
+}
+
+- (void) collapseTagmoji
+{
+	self.emojiWidthContraint.constant = 180;
+	[self updateTagmoji:NO];
 }
 
 - (void) toggleSearch:(id)sender
@@ -317,8 +324,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
     self.stackViewContainerView.hidden = !self.stackViewContainerView.hidden;
     if (self.stackViewContainerView.hidden) {
-    	// reset back to smaller width
-    	self.emojiWidthContraint.constant = 180;
+    	[self collapseTagmoji];
     }
 }
 
@@ -332,10 +338,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     self.endpoint = [NSString stringWithFormat:@"/hybrid/discover/%@", name];
     self.stackViewContainerView.hidden = YES;
     [self refreshTimelineShowingSpinner:YES];
+
+	[self collapseTagmoji];
 }
 
 - (IBAction) onHandleZoom:(id)sender
 {
+	[self updateTagmoji:YES];
+	
 	[UIView animateWithDuration:0.3 animations:^{
 		const CGFloat popover_padding = 10;
 		const CGFloat inset_padding = 8;
