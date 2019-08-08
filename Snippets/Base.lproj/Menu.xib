@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFMenuController">
@@ -126,12 +125,12 @@
                         <constraint firstAttribute="height" constant="24" id="cXX-0K-n1j"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                    <color key="textColor" red="0.052822355180000002" green="0.052822355180000002" blue="0.052822355180000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61T-Br-Mwy" customClass="RFThinLineView">
                     <rect key="frame" x="0.0" y="257" width="375" height="1"/>
-                    <color key="backgroundColor" red="0.83169692750000002" green="0.83169692750000002" blue="0.83169692750000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="separatorColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="HcO-ac-hbY"/>
                     </constraints>
@@ -146,12 +145,12 @@
                         <constraint firstAttribute="width" constant="78" id="INB-Zx-Jm9"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                    <color key="textColor" red="0.052822355180978775" green="0.052822355180978775" blue="0.052822355180978775" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpR-ef-4dr" customClass="RFThinLineView">
                     <rect key="frame" x="0.0" y="646" width="375" height="1"/>
-                    <color key="backgroundColor" red="0.83169692754745483" green="0.83169692754745483" blue="0.83169692754745483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="separatorColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="XhD-Qh-qGm"/>
                     </constraints>
@@ -166,12 +165,12 @@
                         <constraint firstAttribute="height" constant="24" id="a89-Z8-pP7"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                    <color key="textColor" red="0.052822355180978775" green="0.052822355180978775" blue="0.052822355180978775" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tM4-jm-6Ab" customClass="RFThinLineView">
                     <rect key="frame" x="0.0" y="690" width="375" height="1"/>
-                    <color key="backgroundColor" red="0.83169692754745483" green="0.83169692754745483" blue="0.83169692754745483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="separatorColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="VM8-uF-9iu"/>
                     </constraints>
@@ -186,12 +185,12 @@
                         <constraint firstAttribute="height" constant="24" id="Qa6-xJ-oEl"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                    <color key="textColor" red="0.052822355180978775" green="0.052822355180978775" blue="0.052822355180978775" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B4S-QT-5lv" customClass="RFThinLineView">
                     <rect key="frame" x="0.0" y="734" width="375" height="1"/>
-                    <color key="backgroundColor" red="0.83169692754745483" green="0.83169692754745483" blue="0.83169692754745483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="separatorColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="A15-Jd-9qI"/>
                     </constraints>
@@ -206,26 +205,26 @@
                         <constraint firstAttribute="height" constant="24" id="XR8-d1-34q"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                    <color key="textColor" red="0.052822355180978775" green="0.052822355180978775" blue="0.052822355180978775" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bph-yI-JDn" customClass="RFThinLineView">
                     <rect key="frame" x="0.0" y="213" width="375" height="1"/>
-                    <color key="backgroundColor" red="0.83169692754745483" green="0.83169692754745483" blue="0.83169692754745483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="separatorColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="jOL-B7-SIR"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbg-ms-cvD" customClass="RFThinLineView">
                     <rect key="frame" x="0.0" y="169" width="375" height="1"/>
-                    <color key="backgroundColor" red="0.83169692754745483" green="0.83169692754745483" blue="0.83169692754745483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="separatorColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="CDm-NQ-YM7"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IF4-kS-Fgq" customClass="RFThinLineView">
                     <rect key="frame" x="0.0" y="125" width="375" height="1"/>
-                    <color key="backgroundColor" red="0.83169692754745483" green="0.83169692754745483" blue="0.83169692754745483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="separatorColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="6H3-Gf-CO8"/>
                     </constraints>
@@ -247,7 +246,7 @@
                         <constraint firstAttribute="width" constant="88" id="xIO-ST-lwa"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                    <color key="textColor" red="0.052822355180978775" green="0.052822355180978775" blue="0.052822355180978775" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOe-L8-xaI">
@@ -260,7 +259,7 @@
                         <constraint firstAttribute="height" constant="21" id="k19-bU-iyu"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                    <color key="textColor" red="0.052822355180978775" green="0.052822355180978775" blue="0.052822355180978775" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKu-aF-vwl">
@@ -290,7 +289,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.79775521663519056" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemGroupedBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="A4s-dV-BQU" secondAttribute="bottom" constant="14" id="3ue-yd-mue"/>
                         <constraint firstAttribute="trailing" secondItem="A4s-dV-BQU" secondAttribute="trailing" constant="60" id="72O-cI-Lcx"/>
@@ -311,7 +310,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.89717060327529907" green="0.89717060327529907" blue="0.89717060327529907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="EkV-QU-esD" secondAttribute="trailing" id="0Y3-1I-fHN"/>
                 <constraint firstItem="cml-0g-CCo" firstAttribute="top" secondItem="9wW-WR-XZH" secondAttribute="bottom" constant="9" id="0oy-kk-s42"/>

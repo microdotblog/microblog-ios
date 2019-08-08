@@ -24,6 +24,7 @@
 #import "UUAlert.h"
 #import "UUString.h"
 #import "NSString+Extras.h"
+#import "UITraitCollection+Extras.h"
 #import "RFPopupNotificationViewController.h"
 #import "RFAutoCompleteCache.h"
 #import <Fabric/Fabric.h>
@@ -277,12 +278,18 @@
 	NSString* content_size = [UIApplication sharedApplication].preferredContentSizeCategory;
 	[RFSettings setPreferredContentSize:content_size];
 
+	UIColor* c = [UIColor colorWithWhite:0.259 alpha:1.000];
+
+	if ([UITraitCollection rf_isDarkMode]) {
+		c = [UIColor whiteColor];
+	}
+
 	[[UINavigationBar appearance] setTitleTextAttributes:@{
-		NSForegroundColorAttributeName: [UIColor colorWithWhite:0.259 alpha:1.000],
+		NSForegroundColorAttributeName: c,
 		NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-Regular" size:16]
 	}];
 	[[UIBarButtonItem appearance] setTitleTextAttributes:@{
-		NSForegroundColorAttributeName: [UIColor colorWithWhite:0.259 alpha:1.000],
+		NSForegroundColorAttributeName: c,
 		NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-Medium" size:16]
 	} forState:UIControlStateNormal];
 }
