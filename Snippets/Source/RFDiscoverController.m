@@ -77,6 +77,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     self.stackViewContainerView.hidden = YES;
     self.stackViewContainerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
     self.stackViewContainerView.layer.borderWidth = 0.5;
+    self.stackViewContainerView.layer.cornerRadius = 5.0;
 
     int width = self.view.bounds.size.width;
     CGFloat fontsize = [UIFont rf_preferredTimelineFontSize];
@@ -112,7 +113,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     self.emojiPickerView.clipsToBounds = YES;
     self.emojiPickerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
     self.emojiPickerView.layer.borderWidth = 1.0;
-    self.emojiPickerView.layer.cornerRadius = 2.0;
+    self.emojiPickerView.layer.cornerRadius = 5.0;
 }
 
 - (void) updateTagmoji
@@ -135,20 +136,20 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
             if ([featured boolValue] == YES)
             {
                 [featuredEmoji addObject:emoji];
-            }
-            
-            NSString* title = [NSString stringWithFormat:@"%@ %@", emoji, [dictionary objectForKey:@"title"]];
-            UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.emojiStackView.frame.size.width, 14.0)];
-            button.translatesAutoresizingMaskIntoConstraints = NO;
-            
-            [button setTitle:title forState:UIControlStateNormal];
-            button.titleLabel.font = [UIFont systemFontOfSize:13.0];
-            [button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
-            [button.titleLabel sizeToFit];
-            button.tag = [self.tagmoji indexOfObject:dictionary];
-            
-            [self.emojiStackView addArrangedSubview:button];
-            [button addTarget:self action:@selector(onHandleEmojiSelect:) forControlEvents:UIControlEventTouchUpInside];
+				
+				NSString* title = [NSString stringWithFormat:@"%@ %@", emoji, [dictionary objectForKey:@"title"]];
+				UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.emojiStackView.frame.size.width, 14.0)];
+				button.translatesAutoresizingMaskIntoConstraints = NO;
+				
+				[button setTitle:title forState:UIControlStateNormal];
+				button.titleLabel.font = [UIFont systemFontOfSize:13.0];
+				[button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+				[button.titleLabel sizeToFit];
+				button.tag = [self.tagmoji indexOfObject:dictionary];
+				
+				[self.emojiStackView addArrangedSubview:button];
+				[button addTarget:self action:@selector(onHandleEmojiSelect:) forControlEvents:UIControlEventTouchUpInside];
+			}
         }
         
         for (int i = 0; i < 3; i++)
