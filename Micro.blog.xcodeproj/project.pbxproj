@@ -114,6 +114,8 @@
 		4BBA71031F5DF9CE00B56A04 /* RFHighlightingTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA71021F5DF9CE00B56A04 /* RFHighlightingTextStorage.m */; };
 		4BBC298321B47C6E001E3BDB /* RFAutoCompleteCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A515A321B3160100C15092 /* RFAutoCompleteCollectionViewCell.m */; };
 		4BBC298421B47CB3001E3BDB /* RFAutoCompleteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A515AD21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib */; };
+		4BED552322FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */; };
+		4BED552422FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */; };
 		4BF123F11E882F3000B56138 /* RFFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123F01E882F3000B56138 /* RFFiltersController.m */; };
 		4BF123F41E882F4500B56138 /* Filters.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123F21E882F4500B56138 /* Filters.xib */; };
 		4BF123F71E882F5400B56138 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123F51E882F5400B56138 /* FilterCell.xib */; };
@@ -501,6 +503,8 @@
 		4BA910A01B84A54A00D58F83 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		4BBA71011F5DF9CE00B56A04 /* RFHighlightingTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFHighlightingTextStorage.h; path = Source/RFHighlightingTextStorage.h; sourceTree = "<group>"; };
 		4BBA71021F5DF9CE00B56A04 /* RFHighlightingTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFHighlightingTextStorage.m; path = Source/RFHighlightingTextStorage.m; sourceTree = "<group>"; };
+		4BED552122FC6D6A00F55BEB /* UITraitCollection+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UITraitCollection+Extras.h"; path = "Source/UITraitCollection+Extras.h"; sourceTree = "<group>"; };
+		4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UITraitCollection+Extras.m"; path = "Source/UITraitCollection+Extras.m"; sourceTree = "<group>"; };
 		4BF123EF1E882F3000B56138 /* RFFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFiltersController.h; path = Source/RFFiltersController.h; sourceTree = "<group>"; };
 		4BF123F01E882F3000B56138 /* RFFiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFFiltersController.m; path = Source/RFFiltersController.m; sourceTree = "<group>"; };
 		4BF123F31E882F4500B56138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Filters.xib; sourceTree = "<group>"; };
@@ -915,6 +919,8 @@
 				4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */,
 				4B821C7B21B428CD006CE005 /* UIView+Extras.h */,
 				4B821C7C21B428CD006CE005 /* UIView+Extras.m */,
+				4BED552122FC6D6A00F55BEB /* UITraitCollection+Extras.h */,
+				4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */,
 				4B1712D91F069FB200267045 /* RFMenuView.h */,
 				4B1712DA1F069FB200267045 /* RFMenuView.m */,
 				C59C3B1C20923EFC0076A754 /* RFBlogTableViewCell.h */,
@@ -1650,6 +1656,7 @@
 				4BF8034B1B87AA2C00D6670C /* UUHttpSession.m in Sources */,
 				C59C3B1E20923EFC0076A754 /* RFBlogTableViewCell.m in Sources */,
 				C5CED7171ECF792E0068F537 /* YUCIStarfieldGenerator.m in Sources */,
+				4BED552322FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */,
 				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
 				C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */,
 				4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */,
@@ -1694,6 +1701,7 @@
 				C507F32F1F8827BC0013D2B7 /* UUHttpResponseHandler.m in Sources */,
 				C507F3241F8827A90013D2B7 /* RFThinLineView.m in Sources */,
 				C507F3201F88279E0013D2B7 /* RFXMLRPCRequest.m in Sources */,
+				4BED552422FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */,
 				C5A66B111F88325E0063F325 /* UILabel+MarkupExtensions.m in Sources */,
 				4B1F7FEA22526CD200E8AF3E /* RFUpgradeController.m in Sources */,
 				C5A66B101F88325E0063F325 /* UIFont+StyleUtilities.m in Sources */,
@@ -2077,6 +2085,7 @@
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 196;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				ENABLE_BITCODE = NO;
@@ -2090,6 +2099,7 @@
 				INFOPLIST_FILE = Snippets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2108,6 +2118,7 @@
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 196;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				ENABLE_BITCODE = NO;
@@ -2121,6 +2132,7 @@
 				INFOPLIST_FILE = Snippets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2150,6 +2162,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 196;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2160,6 +2173,7 @@
 				INFOPLIST_FILE = "Micro.blog Sharing/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.7;
 				OTHER_CFLAGS = "-DSHARING_EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios.sharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2188,6 +2202,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 196;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2197,6 +2212,7 @@
 				INFOPLIST_FILE = "Micro.blog Sharing/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.7;
 				OTHER_CFLAGS = "-DSHARING_EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios.sharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";

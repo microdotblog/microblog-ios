@@ -18,6 +18,7 @@
 #import "UIBarButtonItem+Extras.h"
 #import "UIFont+Extras.h"
 #import "UIView+Extras.h"
+#import "UITraitCollection+Extras.h"
 #import "SSKeychain.h"
 #import "RFMacros.h"
 
@@ -337,7 +338,7 @@
 	long timezone_offset = 0 - [[NSTimeZone systemTimeZone] secondsFromGMTForDate:now] / 60;
 	int width = self.view.bounds.size.width;
 	CGFloat fontsize = [UIFont rf_preferredTimelineFontSize];
-	long darkmode = 1;
+	long darkmode = [UITraitCollection rf_isDarkMode];
 	
 	RFClient* client;
 	if ([self.endpoint isEqualToString:@"/hybrid/mentions"]) {
@@ -412,6 +413,16 @@
 	[RFSettings setPreferredContentSize:content_size];
 
 	[self refreshTimeline];
+}
+
+- (void) traitCollectionDidChange:(UITraitCollection *)previousTraitCollection
+{
+	[super traitCollectionDidChange:previousTraitCollection];
+
+	BOOL color_changed = [previousTraitCollection hasDifferentColorAppearanceComparedToTraitCollection:self.traitCollection];
+	if (color_changed) {
+		[self refreshTimeline];
+	}
 }
 
 #pragma mark -

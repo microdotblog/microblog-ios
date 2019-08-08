@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.6.2</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>195</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -29,8 +29,6 @@
 	<dict>
 		<key>NSExtensionAttributes</key>
 		<dict>
-			<key>NSExtensionOverridesHostUIAppearance</key>
-			<true/>
 			<key>NSExtensionActionWantsFullScreenPresentation</key>
 			<true/>
 			<key>NSExtensionActivationRule</key>
@@ -48,6 +46,8 @@
 			</dict>
 			<key>NSExtensionJavaScriptPreprocessingFile</key>
 			<string>GetURL</string>
+			<key>NSExtensionOverridesHostUIAppearance</key>
+			<true/>
 		</dict>
 		<key>NSExtensionMainStoryboard</key>
 		<string>MainInterface</string>
