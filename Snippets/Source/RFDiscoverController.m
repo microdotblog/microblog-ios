@@ -316,6 +316,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (IBAction) onSelectEmoji:(UIButton*)sender
 {
     self.stackViewContainerView.hidden = !self.stackViewContainerView.hidden;
+    if (self.stackViewContainerView.hidden) {
+    	// reset back to smaller width
+    	self.emojiWidthContraint.constant = 180;
+    }
 }
 
 - (IBAction) onHandleEmojiSelect:(UIButton*)sender
@@ -328,6 +332,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     self.endpoint = [NSString stringWithFormat:@"/hybrid/discover/%@", name];
     self.stackViewContainerView.hidden = YES;
     [self refreshTimelineShowingSpinner:YES];
+}
+
+- (IBAction) onHandleZoom:(id)sender
+{
+	[UIView animateWithDuration:0.3 animations:^{
+		const CGFloat popover_padding = 10;
+		const CGFloat inset_padding = 8;
+		self.emojiWidthContraint.constant = self.view.bounds.size.width - (popover_padding * 2) - (inset_padding * 2);
+	}];
 }
 
 #pragma mark -

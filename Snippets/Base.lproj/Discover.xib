@@ -17,6 +17,7 @@
                 <outlet property="emojiLabel" destination="3fV-G1-kqv" id="lL2-83-T16"/>
                 <outlet property="emojiPickerView" destination="p07-RB-zhL" id="vp8-vn-l66"/>
                 <outlet property="emojiStackView" destination="gmc-tU-QVO" id="Sd9-4q-gZr"/>
+                <outlet property="emojiWidthContraint" destination="lcD-gr-bSg" id="DN1-YU-hcZ"/>
                 <outlet property="stackViewContainerView" destination="924-dz-CX6" id="Xio-MC-KIf"/>
                 <outlet property="view" destination="iN0-l3-epB" id="bl6-Wp-njK"/>
                 <outlet property="webView" destination="TJR-UI-7g4" id="XMu-Db-vTR"/>
@@ -113,12 +114,18 @@
                                 <constraint firstAttribute="height" constant="20" id="JSV-K2-ZZe"/>
                             </constraints>
                             <state key="normal" image="zoomButton"/>
+                            <connections>
+                                <action selector="onHandleEmojiSelect:" destination="-1" eventType="touchUpInside" id="Pez-AU-4FC"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuK-39-VSV">
                             <rect key="frame" x="33" y="217" width="77" height="30"/>
                             <state key="normal" title="Show More">
                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                             </state>
+                            <connections>
+                                <action selector="onHandleZoom:" destination="-1" eventType="touchUpInside" id="l5e-nd-Cds"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyu-gX-rVp" customClass="RFThinLineView">
                             <rect key="frame" x="0.0" y="209" width="216" height="1"/>
