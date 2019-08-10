@@ -10,6 +10,7 @@
 
 #import "RFFeaturedPhoto.h"
 #import "RFFeaturedPhotoCell.h"
+#import "RFTagmojiController.h"
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "RFConstants.h"
@@ -17,7 +18,7 @@
 #import "RFAutoCompleteCache.h"
 #import "UIView+Extras.h"
 #import "UIFont+Extras.h"
-#import "RFTagmojiController.h"
+#import "UITraitCollection+Extras.h"
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
@@ -113,7 +114,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     [self updateTagmoji:NO];
     
     self.emojiPickerView.clipsToBounds = YES;
-    self.emojiPickerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
+    if ([UITraitCollection rf_isDarkMode]) {
+		self.emojiPickerView.layer.borderColor = UIColor.darkGrayColor.CGColor;
+    }
+    else {
+		self.emojiPickerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
+    }
     self.emojiPickerView.layer.borderWidth = 1.0;
     self.emojiPickerView.layer.cornerRadius = 5.0;
 }

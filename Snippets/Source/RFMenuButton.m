@@ -8,6 +8,8 @@
 
 #import "RFMenuButton.h"
 
+#import "UITraitCollection+Extras.h"
+
 @implementation RFMenuButton
 
 - (void) setHighlighted:(BOOL)highlighted
@@ -15,7 +17,12 @@
 	[super setHighlighted:highlighted];
 
 	if (highlighted) {
-		self.backgroundColor = [UIColor colorWithWhite:0.87 alpha:1.0];
+		if ([UITraitCollection rf_isDarkMode]) {
+			self.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
+		}
+		else {
+			self.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.0];
+		}
 	}
 	else {
 		self.backgroundColor = [UIColor clearColor];
