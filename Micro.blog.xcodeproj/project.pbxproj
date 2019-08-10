@@ -35,6 +35,10 @@
 		4B1F7FEB22526CDA00E8AF3E /* Upgrade.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE4225269E100E8AF3E /* Upgrade.xib */; };
 		4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */; };
 		4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */; };
+		4B2DC27922FE1AC00074D42A /* RFTagmojiController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DC27822FE1AC00074D42A /* RFTagmojiController.m */; };
+		4B2DC27C22FE1AEE0074D42A /* Tagmoji.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2DC27A22FE1AEE0074D42A /* Tagmoji.xib */; };
+		4B2DC27F22FE1BD80074D42A /* RFTagmojiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DC27E22FE1BD80074D42A /* RFTagmojiCell.m */; };
+		4B2DC28222FE1C0E0074D42A /* TagmojiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2DC28022FE1C0E0074D42A /* TagmojiCell.xib */; };
 		4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DEDD51BF8D14B00F3152B /* RFUserController.m */; };
 		4B37DEF61F9FD3C7007A25AF /* Filters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123FE1E88343600B56138 /* Filters.plist */; };
 		4B3BD0DF1E82B5F800F4B4E0 /* RFPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */; };
@@ -396,6 +400,12 @@
 		4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFMenuButton.m; path = Source/RFMenuButton.m; sourceTree = "<group>"; };
 		4B27AA8B1EB3F18D00CC3F3A /* RFDiscoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFDiscoverController.h; path = Source/RFDiscoverController.h; sourceTree = "<group>"; };
 		4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFDiscoverController.m; path = Source/RFDiscoverController.m; sourceTree = "<group>"; };
+		4B2DC27722FE1AC00074D42A /* RFTagmojiController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFTagmojiController.h; path = Source/RFTagmojiController.h; sourceTree = "<group>"; };
+		4B2DC27822FE1AC00074D42A /* RFTagmojiController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFTagmojiController.m; path = Source/RFTagmojiController.m; sourceTree = "<group>"; };
+		4B2DC27B22FE1AEE0074D42A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Tagmoji.xib; sourceTree = "<group>"; };
+		4B2DC27D22FE1BD80074D42A /* RFTagmojiCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFTagmojiCell.h; path = Source/RFTagmojiCell.h; sourceTree = "<group>"; };
+		4B2DC27E22FE1BD80074D42A /* RFTagmojiCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFTagmojiCell.m; path = Source/RFTagmojiCell.m; sourceTree = "<group>"; };
+		4B2DC28122FE1C0E0074D42A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TagmojiCell.xib; sourceTree = "<group>"; };
 		4B2DEDD41BF8D14B00F3152B /* RFUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFUserController.h; path = Source/RFUserController.h; sourceTree = "<group>"; };
 		4B2DEDD51BF8D14B00F3152B /* RFUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFUserController.m; path = Source/RFUserController.m; sourceTree = "<group>"; };
 		4B3BD0DD1E82B5F800F4B4E0 /* RFPhotosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFPhotosController.h; path = Source/RFPhotosController.h; sourceTree = "<group>"; };
@@ -843,6 +853,10 @@
 				4BF870641F679070005C9849 /* RFBrowserActivity.m */,
 				4B27AA8B1EB3F18D00CC3F3A /* RFDiscoverController.h */,
 				4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */,
+				4B2DC27722FE1AC00074D42A /* RFTagmojiController.h */,
+				4B2DC27822FE1AC00074D42A /* RFTagmojiController.m */,
+				4B2DC27D22FE1BD80074D42A /* RFTagmojiCell.h */,
+				4B2DC27E22FE1BD80074D42A /* RFTagmojiCell.m */,
 				4B4D9B531ED520F800315BBA /* RFFeaturedPhoto.h */,
 				4B4D9B541ED520F800315BBA /* RFFeaturedPhoto.m */,
 				4B4D9B591ED521BB00315BBA /* RFFeaturedPhotoCell.h */,
@@ -943,6 +957,8 @@
 				C5A515AE21B3196100C15092 /* RFPopupNotificationViewController.xib */,
 				C59C3B1720923DE50076A754 /* Blogs.storyboard */,
 				C5DEFA0922D6D6D1009D5FAF /* Discover.xib */,
+				4B2DC27A22FE1AEE0074D42A /* Tagmoji.xib */,
+				4B2DC28022FE1C0E0074D42A /* TagmojiCell.xib */,
 				4BA2C9771B2109D10038C0E5 /* Info.plist */,
 				4BF123FE1E88343600B56138 /* Filters.plist */,
 				4BA2C9851B2109D10038C0E5 /* LaunchScreen.xib */,
@@ -1434,6 +1450,7 @@
 				4BA2C9A01B210A620038C0E5 /* Timeline.xib in Resources */,
 				C5CED7111ECF792E0068F537 /* YUCIRGBToHSL.cikernel in Resources */,
 				4BF123F41E882F4500B56138 /* Filters.xib in Resources */,
+				4B2DC27C22FE1AEE0074D42A /* Tagmoji.xib in Resources */,
 				C5DEFA0B22D6D6D1009D5FAF /* Discover.xib in Resources */,
 				4BA9107C1B83CFD200D58F83 /* SignIn.xib in Resources */,
 				C5CED70E1ECF792E0068F537 /* YUCIReflectedTile.cikernel in Resources */,
@@ -1450,6 +1467,7 @@
 				4B9A7BAD1E82F1C1002A49E5 /* PhotoCell.xib in Resources */,
 				4B94052D1E2933DE00B01E79 /* Images.xcassets in Resources */,
 				C5A515B021B3196100C15092 /* RFPopupNotificationViewController.xib in Resources */,
+				4B2DC28222FE1C0E0074D42A /* TagmojiCell.xib in Resources */,
 				4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */,
 				C59C3B1820923DE50076A754 /* Blogs.storyboard in Resources */,
 				C5CED6FD1ECF792E0068F537 /* YUCIColorLookupTableDefault.png in Resources */,
@@ -1603,6 +1621,8 @@
 				4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */,
 				C5B48B3F2294E5A300776248 /* unzip.c in Sources */,
 				4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */,
+				4B2DC27922FE1AC00074D42A /* RFTagmojiController.m in Sources */,
+				4B2DC27F22FE1BD80074D42A /* RFTagmojiCell.m in Sources */,
 				C5B48B2B2294E59100776248 /* ZipFile.m in Sources */,
 				4B0D55521B93827D0076AD9F /* RFXMLRPCRequest.m in Sources */,
 				4B1BD2811D87548C00B3C93D /* RFHelpController.m in Sources */,
@@ -1831,6 +1851,22 @@
 				4B1F7FE5225269E100E8AF3E /* Base */,
 			);
 			name = Upgrade.xib;
+			sourceTree = "<group>";
+		};
+		4B2DC27A22FE1AEE0074D42A /* Tagmoji.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B2DC27B22FE1AEE0074D42A /* Base */,
+			);
+			name = Tagmoji.xib;
+			sourceTree = "<group>";
+		};
+		4B2DC28022FE1C0E0074D42A /* TagmojiCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B2DC28122FE1C0E0074D42A /* Base */,
+			);
+			name = TagmojiCell.xib;
 			sourceTree = "<group>";
 		};
 		4B3BD0E01E82B61700F4B4E0 /* Photos.xib */ = {

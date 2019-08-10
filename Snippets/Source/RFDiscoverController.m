@@ -17,6 +17,7 @@
 #import "RFAutoCompleteCache.h"
 #import "UIView+Extras.h"
 #import "UIFont+Extras.h"
+#import "RFTagmojiController.h"
 
 static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
@@ -51,6 +52,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self setupNavigation];
 	[self setupSearchButton];
     [self setupEmojiPicker];
+    [self setupNotifications];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -114,6 +116,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     self.emojiPickerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
     self.emojiPickerView.layer.borderWidth = 1.0;
     self.emojiPickerView.layer.cornerRadius = 5.0;
+}
+
+- (void) setupNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectTagmojiNotification:) name:kSelectTagmojiNotification object:nil];
 }
 
 - (void) updateTagmoji:(BOOL)includeAll
@@ -320,6 +327,25 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}];
 }
 
+- (void) selectEmoji:(NSDictionary *)info
+{
+    NSString* name = [info objectForKey:@"name"];
+    NSString* title = [info objectForKey:@"title"];
+    NSString* description = [NSString stringWithFormat:@"Some %@ posts from the community.", title];
+    self.descriptionLabel.text = description;
+    self.endpoint = [NSString stringWithFormat:@"/hybrid/discover/%@", name];
+    self.stackViewContainerView.hidden = YES;
+    [self refreshTimelineShowingSpinner:YES];
+
+	[self collapseTagmoji];
+}
+
+- (void) selectTagmojiNotification:(NSNotification *)notification
+{
+	NSDictionary* info = [notification.userInfo objectForKey:kSelectTagmojiInfoKey];
+	[self selectEmoji:info];
+}
+
 - (IBAction) onSelectEmoji:(UIButton*)sender
 {
     self.stackViewContainerView.hidden = !self.stackViewContainerView.hidden;
@@ -331,26 +357,25 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (IBAction) onHandleEmojiSelect:(UIButton*)sender
 {
     NSInteger index = sender.tag;
-    NSDictionary* dictionary = [self.tagmoji objectAtIndex:index];
-    NSString* name = [dictionary objectForKey:@"name"];
-    NSString* description = [NSString stringWithFormat:@"Some %@ posts from the community.", [sender titleForState:UIControlStateNormal]];
-    self.descriptionLabel.text = description;
-    self.endpoint = [NSString stringWithFormat:@"/hybrid/discover/%@", name];
-    self.stackViewContainerView.hidden = YES;
-    [self refreshTimelineShowingSpinner:YES];
-
-	[self collapseTagmoji];
+    NSDictionary* info = [self.tagmoji objectAtIndex:index];
+	[self selectEmoji:info];
 }
 
 - (IBAction) onHandleZoom:(id)sender
 {
-	[self updateTagmoji:YES];
+//	[self updateTagmoji:YES];
 	
-	[UIView animateWithDuration:0.3 animations:^{
-		const CGFloat popover_padding = 10;
-		const CGFloat inset_padding = 8;
-		self.emojiWidthContraint.constant = self.view.bounds.size.width - (popover_padding * 2) - (inset_padding * 2);
-	}];
+//	[UIView animateWithDuration:0.3 animations:^{
+//		const CGFloat popover_padding = 10;
+//		const CGFloat inset_padding = 8;
+//		self.emojiWidthContraint.constant = self.view.bounds.size.width - (popover_padding * 2) - (inset_padding * 2);
+//	}];
+
+	self.stackViewContainerView.hidden = YES;
+
+	self.tagmojiController = [[RFTagmojiController alloc] initWithTagmoji:self.tagmoji];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:self.tagmojiController];
+	[self presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 #pragma mark -
