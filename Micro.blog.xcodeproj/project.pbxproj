@@ -1420,10 +1420,9 @@
 			};
 			buildConfigurationList = 4BA2C96E1B2109D10038C0E5 /* Build configuration list for PBXProject "Micro.blog" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
