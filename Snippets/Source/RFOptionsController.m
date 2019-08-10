@@ -14,6 +14,7 @@
 #import "RFConstants.h"
 #import "RFMacros.h"
 #import "UUAlert.h"
+#import "UITraitCollection+Extras.h"
 
 @implementation RFOptionsController
 
@@ -42,6 +43,10 @@
 	}
 	else if (self.popoverType == kOptionsPopoverWithDelete) {
 		self.view = self.withDeleteView;
+	}
+
+	if ([UITraitCollection rf_isDarkMode]) {
+		self.view.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
 	}
 
 	self.popoverPresentationController.backgroundColor = self.view.backgroundColor;

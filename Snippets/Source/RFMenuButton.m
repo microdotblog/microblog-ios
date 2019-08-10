@@ -18,10 +18,10 @@
 
 	if (highlighted) {
 		if ([UITraitCollection rf_isDarkMode]) {
-			self.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
+			self.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
 		}
 		else {
-			self.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.0];
+			self.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1.0];
 		}
 	}
 	else {
