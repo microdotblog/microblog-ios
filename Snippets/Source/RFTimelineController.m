@@ -419,9 +419,11 @@
 {
 	[super traitCollectionDidChange:previousTraitCollection];
 
-	BOOL color_changed = [previousTraitCollection hasDifferentColorAppearanceComparedToTraitCollection:self.traitCollection];
-	if (color_changed) {
-		[self refreshTimeline];
+	if (@available(iOS 13.0, *)) {
+		BOOL color_changed = [previousTraitCollection hasDifferentColorAppearanceComparedToTraitCollection:self.traitCollection];
+		if (color_changed) {
+			[self refreshTimeline];
+		}
 	}
 }
 

@@ -31,7 +31,7 @@
 			result = RFStatusBarHeightOld();
 		}
 	}
-	else if ([win respondsToSelector:@selector(safeAreaInsets)]) {
+	else if (@available(iOS 11.0, *)) {
 		result = win.safeAreaInsets.top;
 		[RFSettings setLastStatusBarHeight:result];
 	}

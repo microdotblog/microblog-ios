@@ -2127,8 +2127,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Shared/Zendesk",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Shared/Carthage",
 				);
 				INFOPLIST_FILE = Snippets/Info.plist;
@@ -2160,8 +2158,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Shared/Zendesk",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)/Shared/Carthage",
 				);
 				INFOPLIST_FILE = Snippets/Info.plist;

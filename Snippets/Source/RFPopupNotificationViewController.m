@@ -55,7 +55,7 @@
 	}];
 }
 
-+ (void) show:(NSString*)body fromUsername:(NSString *)username inController:(UIViewController*) controller completionBlock:(void(^)())completionBlock
++ (void) show:(NSString*)body fromUsername:(NSString *)username inController:(UIViewController*) controller completionBlock:(void(^)(void))completionBlock
 {
 	dispatch_async(dispatch_get_main_queue(), ^
 	{
