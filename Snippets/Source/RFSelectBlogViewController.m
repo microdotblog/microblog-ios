@@ -35,7 +35,7 @@
 
 - (void) setupTable
 {
-	//self.tableView.layer.cornerRadius = 8.0;
+	self.tableView.layer.cornerRadius = 8.0;
 }
 
 - (void) fetchBlogs
