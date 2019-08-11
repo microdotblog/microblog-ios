@@ -18,12 +18,12 @@
 @property (strong, nonatomic) IBOutlet UIStackView* emojiStackView;
 @property (strong, nonatomic) IBOutlet UIView* stackViewContainerView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* emojiWidthContraint;
-@property (strong, nonatomic) IBOutlet RFTagmojiController* tagmojiController;
 
 @property (strong, nonatomic) UICollectionView* photosCollectionView;
 @property (strong, nonatomic) NSArray* featuredPhotos; // RFFeaturedPhoto
 @property (strong, nonatomic) UISearchBar* searchBar;
 @property (strong, nonatomic) UIView* backdropView;
 @property (strong, nonatomic) NSArray* tagmoji;
+@property (strong, nonatomic) RFTagmojiController* tagmojiController;
 
 @end

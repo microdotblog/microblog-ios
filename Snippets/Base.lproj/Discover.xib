@@ -26,8 +26,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJR-UI-7g4">
-                    <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJR-UI-7g4">
+                    <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="UTz-6t-RTa"/>
@@ -155,11 +155,11 @@
                 </view>
             </subviews>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="TJR-UI-7g4" secondAttribute="bottom" id="0pT-nd-GFV"/>
                 <constraint firstItem="qEO-4T-5wM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="9RK-z3-HGd"/>
                 <constraint firstItem="qEO-4T-5wM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="BV2-co-cXq"/>
                 <constraint firstItem="qEO-4T-5wM" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="CoS-vB-vOZ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="924-dz-CX6" secondAttribute="trailing" constant="10" id="Lhx-ej-Zly"/>
-                <constraint firstItem="TJR-UI-7g4" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="N4Z-b2-yjp"/>
                 <constraint firstItem="924-dz-CX6" firstAttribute="top" secondItem="qEO-4T-5wM" secondAttribute="bottom" constant="10" id="Rh3-pv-iUF"/>
                 <constraint firstItem="TJR-UI-7g4" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="gdr-lN-rjq"/>
                 <constraint firstItem="TJR-UI-7g4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="mgg-3L-fV9"/>

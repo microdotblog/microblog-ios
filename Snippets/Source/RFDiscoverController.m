@@ -100,14 +100,17 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
                 NSArray* tagmoji = [microblogDictionary objectForKey:@"tagmoji"];
                 if (tagmoji && [tagmoji isKindOfClass:[NSArray class]])
                 {
+					BOOL had_previous_emoji = (self.tagmoji.count > 0);
                     self.tagmoji = tagmoji;
                     
                     [[NSUserDefaults standardUserDefaults] setObject:tagmoji forKey:@"Saved::Tagmoji"];
                     [[NSUserDefaults standardUserDefaults] synchronize];
                     
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self updateTagmoji:NO];
-                    });
+                    if (!had_previous_emoji) {
+						dispatch_async(dispatch_get_main_queue(), ^{
+							[self updateTagmoji:NO];
+						});
+                    }
                 }
             }
             
@@ -193,7 +196,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) collapseTagmoji
 {
 	self.emojiWidthContraint.constant = 180;
-	[self updateTagmoji:NO];
 }
 
 - (void) toggleSearch:(id)sender
@@ -339,9 +341,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) selectEmoji:(NSDictionary *)info
 {
+    NSString* emoji = [info objectForKey:@"emoji"];
     NSString* name = [info objectForKey:@"name"];
     NSString* title = [info objectForKey:@"title"];
-    NSString* description = [NSString stringWithFormat:@"Some %@ posts from the community.", title];
+    NSString* description = [NSString stringWithFormat:@"Some recent posts for %@ %@.", emoji, title];
     self.descriptionLabel.text = description;
     self.endpoint = [NSString stringWithFormat:@"/hybrid/discover/%@", name];
     self.stackViewContainerView.hidden = YES;
