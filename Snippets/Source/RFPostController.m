@@ -558,6 +558,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     CGRect kb_r = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
 //	CGFloat kb_bottom = self.view.bounds.size.height - kb_r.origin.y;
 	CGFloat kb_bottom = 0 - kb_r.size.height;
+	if (@available(iOS 11.0, *)) {
+		kb_bottom = kb_bottom + self.view.safeAreaInsets.bottom;
+	}
+	
 	[UIView animateWithDuration:0.3 animations:^{
 		self.bottomConstraint.constant = kb_bottom;
 		[self.view layoutIfNeeded];
@@ -1302,8 +1306,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.networkSpinner startAnimating];
 	if (self.progressHeaderHeightConstraint.constant == 0.0) {
 		[UIView animateWithDuration:0.3 animations:^{
-			self.progressHeaderHeightConstraint.constant = 40.0;
-			self.progressHeaderTopConstraint.constant = [self.view rf_statusBarAndNavigationHeight];
+			self.progressHeaderHeightConstraint.constant = 44.0;
+			self.progressHeaderTopConstraint.constant = 0;
 			self.progressHeaderView.alpha = 1.0;
 			[self.view layoutIfNeeded];
 		}];
@@ -1316,7 +1320,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	[UIView animateWithDuration:0.3 animations:^{
 		self.progressHeaderHeightConstraint.constant = 0.0;
-		self.progressHeaderTopConstraint.constant = [self.view rf_statusBarAndNavigationHeight];
+		self.progressHeaderTopConstraint.constant = 0;
 		self.progressHeaderView.alpha = 0.0;
 	} completion:^(BOOL finished) {
 		[self.networkSpinner stopAnimating];

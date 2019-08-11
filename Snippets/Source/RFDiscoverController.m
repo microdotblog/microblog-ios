@@ -73,6 +73,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) setupSearchButton
 {
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleSearch:)];
+	
+	if ([UITraitCollection rf_isDarkMode]) {
+		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+	}
 }
 
 - (void) setupEmojiPicker

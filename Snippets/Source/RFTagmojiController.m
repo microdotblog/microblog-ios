@@ -78,4 +78,13 @@ static NSString* const kTagmojiCellIdentifier = @"TagmojiCell";
 	}];
 }
 
+- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	CGFloat inset = 20;
+	CGFloat w = ([UIScreen mainScreen].bounds.size.width / 2.0) - inset;
+	CGFloat h = 30;
+	
+	return CGSizeMake (w, h);
+}
+
 @end
