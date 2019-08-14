@@ -439,49 +439,52 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			}
 		}
 		
-		
-		[UIView animateWithDuration:0.25 animations:^{
-			self.autoCompleteHeightConstraint.constant = size;
-			[self.view layoutIfNeeded];
-		}];
-
-		@synchronized(self.autoCompleteData)
-		{
-			[self.autoCompleteData removeAllObjects];
-			self.autoCompleteData = [NSMutableArray array];
-
-			NSUInteger count = array.count;
-		
-			for (NSUInteger i = 0; i < count; i++)
-			{
-				NSString* username = [array objectAtIndex:i];
-				UIImage* image = [UIImage uuSolidColorImage:[UIColor lightGrayColor]];
-				NSMutableDictionary* userDictionary = [NSMutableDictionary dictionaryWithDictionary:@{ 	@"username" : username,
-																										@"avatar" : image }];
-
-				NSString* profile_s = [NSString stringWithFormat:@"https://micro.blog/%@/avatar.jpg", username];
-			
-				//Check the cache for the avatar...
-				image = [RFUserCache avatar:[NSURL URLWithString:profile_s] completionHandler:^(UIImage * _Nonnull image)
-				{
-					[userDictionary setObject:image forKey:@"avatar"];
-						
-					dispatch_async(dispatch_get_main_queue(), ^{
-						[self.autoCompleteCollectionView reloadData];
-					});
-				}];
-			
-				if (image)
-				{
-					[userDictionary setObject:image forKey:@"avatar"];
-				}
-		
-			
-				[self.autoCompleteData addObject:userDictionary];
-			}
+		if (size != self.autoCompleteHeightConstraint.constant) {
+			[UIView animateWithDuration:0.25 animations:^{
+				self.autoCompleteHeightConstraint.constant = size;
+				[self.view layoutIfNeeded];
+			}];
 		}
 		
-		[self.autoCompleteCollectionView reloadData];
+		if (size > 0) {
+			@synchronized(self.autoCompleteData)
+			{
+				[self.autoCompleteData removeAllObjects];
+				self.autoCompleteData = [NSMutableArray array];
+
+				NSUInteger count = array.count;
+			
+				for (NSUInteger i = 0; i < count; i++)
+				{
+					NSString* username = [array objectAtIndex:i];
+					UIImage* image = [UIImage uuSolidColorImage:[UIColor lightGrayColor]];
+					NSMutableDictionary* userDictionary = [NSMutableDictionary dictionaryWithDictionary:@{ 	@"username" : username,
+																											@"avatar" : image }];
+
+					NSString* profile_s = [NSString stringWithFormat:@"https://micro.blog/%@/avatar.jpg", username];
+				
+					//Check the cache for the avatar...
+					image = [RFUserCache avatar:[NSURL URLWithString:profile_s] completionHandler:^(UIImage * _Nonnull image)
+					{
+						[userDictionary setObject:image forKey:@"avatar"];
+							
+						dispatch_async(dispatch_get_main_queue(), ^{
+							[self.autoCompleteCollectionView reloadData];
+						});
+					}];
+				
+					if (image)
+					{
+						[userDictionary setObject:image forKey:@"avatar"];
+					}
+			
+				
+					[self.autoCompleteData addObject:userDictionary];
+				}
+			}
+			
+			[self.autoCompleteCollectionView reloadData];
+		}
 	});
 }
 
