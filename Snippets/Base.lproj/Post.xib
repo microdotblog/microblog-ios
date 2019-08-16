@@ -348,7 +348,7 @@
                         </collectionView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ic-hx-PZp" customClass="RFBottomLineView">
                             <rect key="frame" x="0.0" y="497" width="320" height="1"/>
-                            <color key="backgroundColor" white="0.88094951923076925" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="xLE-Zb-4bJ"/>
                             </constraints>
@@ -384,18 +384,18 @@
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="280" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjg-el-aBq">
                             <rect key="frame" x="241" y="470" width="71" height="24"/>
-                            <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <accessibility key="accessibilityConfiguration" hint="Characters remaining"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="0jo-Pq-HPJ"/>
                                 <constraint firstAttribute="width" constant="71" id="7xO-H2-eUk"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="16"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="I8I-kA-x0u" firstAttribute="trailing" secondItem="X7B-bm-JGs" secondAttribute="trailing" id="2JL-Ee-LC2"/>
                         <constraint firstItem="KVQ-Eh-uyS" firstAttribute="top" secondItem="ihB-7W-Vup" secondAttribute="bottom" id="3Je-NZ-385"/>

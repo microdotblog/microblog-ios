@@ -195,7 +195,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	UIView* old_superview = old_textview.superview;
 	self.textView = [[UITextView alloc] initWithFrame:r textContainer:text_container];
 	self.textView.delegate = self;
-	[old_superview addSubview:self.textView];
+	[old_superview insertSubview:self.textView belowSubview:self.remainingField];
 
 	// constraints
 	self.textView.translatesAutoresizingMaskIntoConstraints = NO;

@@ -10,6 +10,7 @@
 #import "UIFont+Extras.h"
 #import "RFAutoCompleteCache.h"
 #import "RFConstants.h"
+#import "UITraitCollection+Extras.h"
 
 @implementation RFHighlightingTextStorage
 {
@@ -421,9 +422,13 @@
 	// clear fonts and colors
 	NSRange paragraph_r = NSMakeRange (0, self.string.length);
 	UIFont* normal_font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
+	UIColor* c = [UIColor whiteColor];
 	[self safe_removeAttribute:NSForegroundColorAttributeName range:paragraph_r];
 	[self safe_removeAttribute:NSFontAttributeName range:paragraph_r];
 	[self safe_addAttribute:NSFontAttributeName value:normal_font range:paragraph_r];
+	if ([UITraitCollection rf_isDarkMode]) {
+		[self safe_addAttribute:NSForegroundColorAttributeName value:c range:paragraph_r];
+	}
 
 	// update style ranges
 	[self processBold];
