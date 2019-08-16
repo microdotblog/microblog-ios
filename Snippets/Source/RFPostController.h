@@ -49,6 +49,7 @@
 @property (strong, nonatomic) NSArray* queuedPhotos; // RFPhoto
 @property (strong, nonatomic) NSSet* selectedCategories; // NSString
 @property (strong, nonatomic) id textStorage;
+@property (strong, nonatomic) NSLayoutManager* textLayout;
 @property (strong, nonatomic) RFFeedsController* feedsController;
 
 - (instancetype) initWithText:(NSString *)text;

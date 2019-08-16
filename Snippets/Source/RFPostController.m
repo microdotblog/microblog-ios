@@ -173,8 +173,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupText
 {
-	[self setupFont];
-
 	if (UIAccessibilityIsVoiceOverRunning()) {
 		// disable highlighting
 		self.textStorage = [[NSTextStorage alloc] init];
@@ -182,6 +180,41 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	else {
 		self.textStorage = [[RFHighlightingTextStorage alloc] init];
 	}
+
+	// setup layout and container
+	NSLayoutManager* text_layout = [[NSLayoutManager alloc] init];
+	CGRect r = self.textView.frame;
+	CGSize container_size = CGSizeMake (r.size.width, CGFLOAT_MAX);
+	NSTextContainer* text_container = [[NSTextContainer alloc] initWithSize:container_size];
+	text_container.widthTracksTextView = YES;
+	[text_layout addTextContainer:text_container];
+	[self.textStorage addLayoutManager:text_layout];
+
+	// recreate text view
+	UITextView* old_textview = self.textView;
+	UIView* old_superview = old_textview.superview;
+	self.textView = [[UITextView alloc] initWithFrame:r textContainer:text_container];
+	self.textView.delegate = self;
+	[old_superview addSubview:self.textView];
+
+	// constraints
+	self.textView.translatesAutoresizingMaskIntoConstraints = NO;
+	NSArray* old_constraints = old_superview.constraints;
+	for (NSLayoutConstraint* old_c in old_constraints) {
+		if (old_c.firstItem == old_textview) {
+			NSLayoutConstraint* c = [NSLayoutConstraint constraintWithItem:self.textView attribute:old_c.firstAttribute relatedBy:old_c.relation toItem:old_c.secondItem attribute:old_c.secondAttribute multiplier:old_c.multiplier constant:old_c.constant];
+			[c setActive:YES];
+		}
+		else if (old_c.secondItem == old_textview) {
+			NSLayoutConstraint* c = [NSLayoutConstraint constraintWithItem:old_c.firstItem attribute:old_c.firstAttribute relatedBy:old_c.relation toItem:self.textView attribute:old_c.secondAttribute multiplier:old_c.multiplier constant:old_c.constant];
+			[c setActive:YES];
+		}
+	}
+
+	// remove old view
+	[old_textview removeFromSuperview];
+
+	[self setupFont];
 
 	NSString* s = @"";
 	if (self.replyUsername) {
@@ -204,7 +237,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	self.textView.attributedText = attr_s;
 
 	[self.textStorage setAttributedString:attr_s];
-	[self.textStorage addLayoutManager:self.textView.layoutManager];
+//	[self.textStorage addLayoutManager:self.textView.layoutManager];
+//	[self.textStorage addLayoutManager:self.textLayout];
 
 	[self updateRemainingChars];
 }
