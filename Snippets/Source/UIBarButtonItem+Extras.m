@@ -13,10 +13,13 @@
 + (UIBarButtonItem *) rf_barButtonWithImageNamed:(NSString *)imageName target:(id)target action:(SEL)action
 {
 	UIImage* img = [UIImage imageNamed:imageName];
-	UIImageView* v = [[UIImageView alloc] initWithFrame:CGRectMake (0, 0, img.size.width, img.size.height)];
+	CGFloat extra_tapping_space = 8;
+	CGFloat w = img.size.width + extra_tapping_space;
+	UIImageView* v = [[UIImageView alloc] initWithFrame:CGRectMake (0, 0, w, img.size.height)];
 	v.image = img;
 	v.isAccessibilityElement = YES;
 	v.accessibilityLabel = [imageName stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+	v.contentMode = UIViewContentModeCenter;
 	
 	UIGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:target action:action];
 	[v addGestureRecognizer:gesture];
