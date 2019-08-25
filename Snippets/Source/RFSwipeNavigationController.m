@@ -14,6 +14,7 @@
 #import "RFConstants.h"
 #import "UIBarButtonItem+Extras.h"
 #import "UIView+Extras.h"
+#import "UITraitCollection+Extras.h"
 
 static CGFloat const kSwipeDropAnimationDuration = 0.3;
 
@@ -113,7 +114,12 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 			[self.view sendSubviewToBack:self.revealedView];
 			self.revealedView.frame = revealed_r;
 
-			v.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+			if ([UITraitCollection rf_isDarkMode]) {
+				v.layer.shadowColor = [UIColor blackColor].CGColor;
+			}
+			else {
+				v.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+			}
 			v.layer.shadowOpacity = 0.3;
 			v.layer.shadowOffset = CGSizeMake (-1.5, 1.5);
 		}
@@ -141,7 +147,12 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 			[self.view bringSubviewToFront:self.revealedView];
 			self.revealedView.frame = revealed_r;
 			
-			self.revealedView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+			if ([UITraitCollection rf_isDarkMode]) {
+				self.revealedView.layer.shadowColor = [UIColor blackColor].CGColor;
+			}
+			else {
+				self.revealedView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+			}
 			self.revealedView.layer.shadowOpacity = 0.3;
 			self.revealedView.layer.shadowOffset = CGSizeMake (-1.5, 1.5);
 
