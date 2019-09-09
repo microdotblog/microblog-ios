@@ -30,10 +30,10 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import <SafariServices/SafariServices.h>
-//#import "Microblog-Swift.h"
 #import "RFSettings.h"
 #import "RFAutoCompleteCache.h"
 #import "UUDataCache.h"
+#import <AuthenticationServices/AuthenticationServices.h>
 
 @import UserNotifications;
 
@@ -49,6 +49,7 @@
 	[UUDataCache uuPurgeExpiredContent];
 	
 	[self setupCrashlytics];
+	[self setupAppleID];
 	[self setupWindow];
 	[self setupAppearance];
 	[self setupNotifications];
@@ -248,6 +249,24 @@
 	[Fabric with:@[ CrashlyticsKit ]];
 }
 
+- (void) setupAppleID
+{
+	if (@available(iOS 13.0, *)) {
+		NSString* apple_id_user_id = @"";
+		if (apple_id_user_id.length > 0) {
+			ASAuthorizationAppleIDProvider* provider = [[ASAuthorizationAppleIDProvider alloc] init];
+			[provider getCredentialStateForUserID:apple_id_user_id completion:^(ASAuthorizationAppleIDProviderCredentialState credentialState, NSError* error) {
+				if (credentialState == ASAuthorizationAppleIDProviderCredentialAuthorized) {
+					// ...
+				}
+				else {
+					// ...
+				}
+			}];
+		}
+	}
+}
+
 - (void) setupWindow
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -349,6 +368,10 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUserFollowingNotification:) name:kShowUserFollowingNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUserDiscoverNotification:) name:kShowUserDiscoverNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTopicNotification:) name:kShowTopicNotification object:nil];
+
+	if (@available(iOS 13.0, *)) {
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appleCredentialRevoked:) name:ASAuthorizationAppleIDProviderCredentialRevokedNotification object:nil];
+	}
 }
 
 - (void) setupShortcuts
@@ -423,6 +446,11 @@
 {
 	NSString* term = [notification.userInfo objectForKey:kShowTopicKey];
 	[self showTopicWithSearch:term];
+}
+
+- (void) appleCredentialRevoked:(NSNotification *)notification
+{
+	// TODO: sign user out
 }
 
 - (void) showReplyPostNotification:(NSNotification *)notification

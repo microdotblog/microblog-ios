@@ -19,6 +19,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "SSKeychain.h"
 #import "RFAutoCompleteCache.h"
+#import <AuthenticationServices/AuthenticationServices.h>
 
 @import UserNotifications;
 
@@ -39,6 +40,15 @@
 	
 	self.title = @"Welcome";
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
+	
+	if (@available(iOS 13.0, *)) {
+		ASAuthorizationAppleIDButton* button = self.signInWithAppleButton;
+		button.cornerRadius = 5.0;
+	}
+	else {
+		self.signInWithAppleButton.hidden = YES;
+		self.signInWithAppleIntro.hidden = YES;
+	}
 }
 
 - (void) updateToken:(NSString *)appToken
@@ -71,6 +81,46 @@
 		}
 	}
 }
+
+- (IBAction) signInWithApple:(id)sender
+{
+//	let provider = ASAuthorizationAppleIdProvider()
+//	let request = provider.createRequest()
+//	let controller = ASAuthorizationController(authorizationRequests: [request])
+	
+	if (@available(iOS 13.0, *)) {
+		ASAuthorizationAppleIDProvider* provider = [[ASAuthorizationAppleIDProvider alloc] init];
+		
+		ASAuthorizationAppleIDRequest* request = [provider createRequest];
+		request.requestedScopes = @[ ASAuthorizationScopeFullName, ASAuthorizationScopeEmail ];
+		
+		ASAuthorizationController* controller = [[ASAuthorizationController alloc] initWithAuthorizationRequests:@[ request ]];
+		controller.delegate = self;
+		controller.presentationContextProvider = self;
+		
+		[controller performRequests];
+	}
+}
+
+#pragma mark -
+
+- (void) authorizationController:(ASAuthorizationController *)controller didCompleteWithAuthorization:(ASAuthorization *)authorization NS_SWIFT_NAME(authorizationController(controller:didCompleteWithAuthorization:))
+{
+	ASAuthorizationAppleIDCredential* credential = authorization.credential;
+	NSString* user_id = credential.user;
+	NSString* identity_token = credential.identityToken;
+	NSString* auth_code = credential.authorizationCode;
+	NSString* email = credential.email;
+	NSString* full_name = credential.fullName;
+	
+	NSLog (@"signed in user: %@, %@", user_id, email);
+}
+
+- (void) authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error  NS_SWIFT_NAME(authorizationController(controller:didCompleteWithError:))
+{
+}
+
+#pragma mark -
 
 - (void) showMessage:(NSString *)message
 {

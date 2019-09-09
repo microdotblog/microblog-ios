@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment version="4864" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,6 +14,7 @@
                 <outlet property="messageField" destination="5m8-7r-f4A" id="Hg6-wk-1dj"/>
                 <outlet property="messageTopConstraint" destination="otr-jQ-b1x" id="hrC-hO-07h"/>
                 <outlet property="networkSpinner" destination="og7-T2-Oy9" id="vfd-sF-uhv"/>
+                <outlet property="signInWithAppleButton" destination="1ua-ob-xZF" id="HGp-Zh-xfn"/>
                 <outlet property="tokenField" destination="1ZD-8e-rD1" id="feo-wl-dem"/>
                 <outlet property="view" destination="iN0-l3-epB" id="1ij-Vc-zNB"/>
             </connections>
@@ -36,7 +35,7 @@
                             </constraints>
                         </activityIndicatorView>
                     </subviews>
-                    <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="og7-T2-Oy9" secondAttribute="trailing" constant="7" id="YEs-TK-CuZ"/>
                         <constraint firstItem="og7-T2-Oy9" firstAttribute="top" secondItem="phR-tm-5p6" secondAttribute="top" constant="12" id="YTU-9y-a3Y"/>
@@ -50,27 +49,27 @@
                         <constraint firstAttribute="height" constant="46" id="ho6-Eh-HvJ"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Micro.blog is a timeline and publishing service for microblogs." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-Up-MMg">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Micro.blog is a timeline and publishing service for microblogs." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-Up-MMg">
                     <rect key="frame" x="31" y="203" width="258" height="55"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="258" id="A9a-QO-YsC"/>
-                        <constraint firstAttribute="height" constant="68" id="MDh-X5-oty"/>
+                        <constraint firstAttribute="height" constant="55" id="MDh-X5-oty"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="New to Micro.blog? Sign up with your Apple ID:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-IB-pTa">
-                    <rect key="frame" x="31" y="280" width="258" height="52"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New to Micro.blog? Sign up with your Apple ID:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-IB-pTa">
+                    <rect key="frame" x="31" y="281" width="258" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="73" id="axv-AS-sex"/>
+                        <constraint firstAttribute="height" constant="50" id="axv-AS-sex"/>
                         <constraint firstAttribute="width" constant="258" id="eZ4-DO-hI1"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZD-8e-rD1">
@@ -85,9 +84,9 @@
                         <outlet property="delegate" destination="-1" id="5Ve-29-nDN"/>
                     </connections>
                 </textField>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTE-zP-eNE" customClass="RFThinLineView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTE-zP-eNE" customClass="RFThinLineView">
                     <rect key="frame" x="0.0" y="268" width="320" height="1"/>
-                    <color key="backgroundColor" red="0.89740008115768433" green="0.89740008115768433" blue="0.89740008115768433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="qNy-No-J2u"/>
                     </constraints>
@@ -102,7 +101,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="5m8-7r-f4A" firstAttribute="leading" secondItem="9Zr-YD-fRb" secondAttribute="leading" constant="17" id="8SJ-h1-OiW"/>
                         <constraint firstItem="5m8-7r-f4A" firstAttribute="top" secondItem="9Zr-YD-fRb" secondAttribute="top" constant="7" id="96q-dz-6qt"/>
@@ -111,8 +110,19 @@
                         <constraint firstAttribute="trailing" secondItem="5m8-7r-f4A" secondAttribute="trailing" constant="17" id="zRx-vD-TmF"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ua-ob-xZF" customClass="ASAuthorizationAppleIDButton">
+                    <rect key="frame" x="60" y="344" width="200" height="34"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="QfZ-zJ-QM5"/>
+                        <constraint firstAttribute="height" constant="34" id="SAl-yF-Mvb"/>
+                    </constraints>
+                    <connections>
+                        <action selector="signInWithApple:" destination="-1" eventType="touchUpInside" id="c8o-3j-wqf"/>
+                    </connections>
+                </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="fTE-zP-eNE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0ns-hk-nfY"/>
                 <constraint firstItem="6V4-1T-7uy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1ju-3m-hYa"/>
@@ -120,16 +130,18 @@
                 <constraint firstItem="1ZD-8e-rD1" firstAttribute="top" secondItem="6V4-1T-7uy" secondAttribute="bottom" constant="18" id="86w-60-8ft"/>
                 <constraint firstItem="6V4-1T-7uy" firstAttribute="top" secondItem="9Zr-YD-fRb" secondAttribute="bottom" constant="14" id="H8U-KG-9I8"/>
                 <constraint firstItem="OqG-Up-MMg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HrN-A0-6eP"/>
+                <constraint firstItem="1ua-ob-xZF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LqG-vS-xAP"/>
                 <constraint firstItem="9Zr-YD-fRb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RbU-8X-0Lq"/>
                 <constraint firstItem="OqG-Up-MMg" firstAttribute="top" secondItem="1ZD-8e-rD1" secondAttribute="bottom" constant="15" id="RpX-7o-QO0"/>
                 <constraint firstAttribute="trailing" secondItem="phR-tm-5p6" secondAttribute="trailing" id="T5c-Fn-DxE"/>
-                <constraint firstItem="fTE-zP-eNE" firstAttribute="top" secondItem="OqG-Up-MMg" secondAttribute="bottom" constant="8" id="TvT-c0-MOs"/>
+                <constraint firstItem="fTE-zP-eNE" firstAttribute="top" secondItem="OqG-Up-MMg" secondAttribute="bottom" constant="10" id="TvT-c0-MOs"/>
                 <constraint firstAttribute="trailing" secondItem="9Zr-YD-fRb" secondAttribute="trailing" id="Y8p-ll-uVb"/>
                 <constraint firstAttribute="trailing" secondItem="fTE-zP-eNE" secondAttribute="trailing" id="YJO-OH-ADp"/>
                 <constraint firstItem="1ZD-8e-rD1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yjm-KY-fJH"/>
                 <constraint firstItem="nqK-IB-pTa" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="akN-xv-pvl"/>
-                <constraint firstItem="nqK-IB-pTa" firstAttribute="top" secondItem="fTE-zP-eNE" secondAttribute="bottom" constant="5" id="d22-25-rOc"/>
+                <constraint firstItem="nqK-IB-pTa" firstAttribute="top" secondItem="fTE-zP-eNE" secondAttribute="bottom" constant="12" id="d22-25-rOc"/>
                 <constraint firstItem="phR-tm-5p6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jiE-R0-bK0"/>
+                <constraint firstItem="1ua-ob-xZF" firstAttribute="top" secondItem="nqK-IB-pTa" secondAttribute="bottom" constant="13" id="k2g-Tz-o5s"/>
                 <constraint firstItem="9Zr-YD-fRb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="otr-jQ-b1x"/>
             </constraints>
             <point key="canvasLocation" x="138.75" y="153.16901408450704"/>

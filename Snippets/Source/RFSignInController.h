@@ -17,6 +17,8 @@
 @property (strong, nonatomic) IBOutlet UIView* messageContainer;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint* messageTopConstraint;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* networkSpinner;
+@property (strong, nonatomic) IBOutlet UILabel* signInWithAppleIntro;
+@property (strong, nonatomic) IBOutlet UIView* signInWithAppleButton;
 
 - (void) updateToken:(NSString *)appToken;
 

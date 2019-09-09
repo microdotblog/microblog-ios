@@ -75,6 +75,7 @@
 		4B64B2E8220930E4005B92A0 /* RFCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64B2E6220930E4005B92A0 /* RFCategoryCell.m */; };
 		4B64B2EB22093139005B92A0 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B64B2E922093139005B92A0 /* CategoryCell.xib */; };
 		4B64B2EC22093139005B92A0 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B64B2E922093139005B92A0 /* CategoryCell.xib */; };
+		4B75B72B2326BAE200725DDD /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B75B72A2326BAE200725DDD /* AuthenticationServices.framework */; };
 		4B821C7D21B428CD006CE005 /* UIView+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIView+Extras.m */; };
 		4B821C7E21B428D3006CE005 /* UIView+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIView+Extras.m */; };
 		4B8714741E64C07800C69589 /* External.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8714721E64C07800C69589 /* External.xib */; };
@@ -456,6 +457,7 @@
 		4B64B2E5220930E4005B92A0 /* RFCategoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFCategoryCell.h; path = Source/RFCategoryCell.h; sourceTree = "<group>"; };
 		4B64B2E6220930E4005B92A0 /* RFCategoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFCategoryCell.m; path = Source/RFCategoryCell.m; sourceTree = "<group>"; };
 		4B64B2EA22093139005B92A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CategoryCell.xib; sourceTree = "<group>"; };
+		4B75B72A2326BAE200725DDD /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		4B821C7B21B428CD006CE005 /* UIView+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIView+Extras.h"; path = "Source/UIView+Extras.h"; sourceTree = "<group>"; };
 		4B821C7C21B428CD006CE005 /* UIView+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIView+Extras.m"; path = "Source/UIView+Extras.m"; sourceTree = "<group>"; };
 		4B8714731E64C07800C69589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/External.xib; sourceTree = "<group>"; };
@@ -725,6 +727,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B75B72B2326BAE200725DDD /* AuthenticationServices.framework in Frameworks */,
 				4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */,
 				4B4BF25D21B1CE94002A84EE /* FLAnimatedImage.framework in Frameworks */,
 				C5403B691F9E3C30002696EE /* libCTidy.a in Frameworks */,
@@ -1040,6 +1043,7 @@
 		4BA9109E1B84A53A00D58F83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4B75B72A2326BAE200725DDD /* AuthenticationServices.framework */,
 				4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */,
 				4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */,
 				4B14E41F1E82F5B50032F54B /* Photos.framework */,
