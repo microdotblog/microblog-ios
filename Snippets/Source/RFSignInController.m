@@ -104,7 +104,7 @@
 
 #pragma mark -
 
-- (void) authorizationController:(ASAuthorizationController *)controller didCompleteWithAuthorization:(ASAuthorization *)authorization NS_SWIFT_NAME(authorizationController(controller:didCompleteWithAuthorization:))
+- (void) authorizationController:(ASAuthorizationController *)controller didCompleteWithAuthorization:(ASAuthorization *)authorization
 {
 	ASAuthorizationAppleIDCredential* credential = authorization.credential;
 	NSString* user_id = credential.user;
@@ -114,10 +114,12 @@
 	NSString* full_name = credential.fullName;
 	
 	NSLog (@"signed in user: %@, %@", user_id, email);
+	[self showMessage:email];
 }
 
-- (void) authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error  NS_SWIFT_NAME(authorizationController(controller:didCompleteWithError:))
+- (void) authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error
 {
+	[self showMessage:@"Error from Sign In with Apple."];
 }
 
 #pragma mark -
