@@ -15,6 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UITextField* usernameField;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* networkSpinner;
 
+@property (strong, nonatomic) NSString* appleUserID;
+@property (strong, nonatomic) NSString* appleIdentityToken;
+
+- (instancetype) initWithUserID:(NSString *)userID identityToken:(NSString *)identityToken;
+
 @end
 
 NS_ASSUME_NONNULL_END

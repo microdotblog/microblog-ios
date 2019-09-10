@@ -43,7 +43,7 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
 	
 	if (@available(iOS 13.0, *)) {
-		ASAuthorizationAppleIDButton* button = self.signInWithAppleButton;
+		ASAuthorizationAppleIDButton* button = (ASAuthorizationAppleIDButton *)self.signInWithAppleButton;
 		button.cornerRadius = 5.0;
 	}
 	else {
@@ -85,10 +85,6 @@
 
 - (IBAction) signInWithApple:(id)sender
 {
-//	let provider = ASAuthorizationAppleIdProvider()
-//	let request = provider.createRequest()
-//	let controller = ASAuthorizationController(authorizationRequests: [request])
-	
 	if (@available(iOS 13.0, *)) {
 		ASAuthorizationAppleIDProvider* provider = [[ASAuthorizationAppleIDProvider alloc] init];
 		
@@ -107,19 +103,50 @@
 
 - (void) authorizationController:(ASAuthorizationController *)controller didCompleteWithAuthorization:(ASAuthorization *)authorization
 {
-	ASAuthorizationAppleIDCredential* credential = authorization.credential;
-	NSString* user_id = credential.user;
-	NSData* identity_token = credential.identityToken;
-	NSData* auth_code = credential.authorizationCode;
-	NSString* email = credential.email;
-	NSPersonNameComponents* name_components = credential.fullName;
-	NSString* full_name = [NSString stringWithFormat:@"%@ %@", name_components.givenName, name_components.familyName];
-	
-	NSLog (@"signed in user: %@, %@", user_id, email);
-//	[self showMessage:email];
+	if (@available(iOS 13.0, *)) {
+		ASAuthorizationAppleIDCredential* credential = authorization.credential;
+		NSString* user_id = credential.user;
+		NSData* identity_token = credential.identityToken;
+		NSString* email = credential.email;
+		NSPersonNameComponents* name_components = credential.fullName;
+		NSString* full_name = [NSString stringWithFormat:@"%@ %@", name_components.givenName, name_components.familyName];
+		NSString* identity_token_s = [[NSString alloc] initWithData:identity_token encoding:kCFStringEncodingUTF8];
 
-	RFUsernameController* username_controller = [[RFUsernameController alloc] init];
-	[self.navigationController pushViewController:username_controller animated:YES];
+//		NSData* auth_code = credential.authorizationCode;
+//		NSString* auth_code_s = [[NSString alloc] initWithData:auth_code encoding:kCFStringEncodingUTF8];
+
+		NSLog (@"signed in user: %@, %@, %@", user_id, email, identity_token_s);
+	//	[self showMessage:email];
+
+		NSMutableDictionary* params = [NSMutableDictionary dictionary];
+		[params setObject:user_id forKey:@"user_id"];
+		[params setObject:full_name forKey:@"full_name"];
+		[params setObject:identity_token_s forKey:@"identity_token"];
+		if (email) {
+			[params setObject:email forKey:@"email"];
+		}
+
+		RFClient* client = [[RFClient alloc] initWithPath:@"/account/apple"];
+		[client postWithParams:params completion:^(UUHttpResponse* response) {
+			NSString* username = [response.parsedResponse objectForKey:@"username"];
+			NSString* error = [response.parsedResponse objectForKey:@"error"];
+			RFDispatchMain (^{
+				if (error) {
+					[self showMessage:error];
+				}
+				else if ([username length] > 0) {
+					// user already has an account, sign them in
+					// ...
+
+					[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+				}
+				else {
+					RFUsernameController* username_controller = [[RFUsernameController alloc] initWithUserID:user_id identityToken:identity_token_s];
+					[self.navigationController pushViewController:username_controller animated:YES];
+				}
+			});
+		}];
+	}
 }
 
 - (void) authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error
