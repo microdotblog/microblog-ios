@@ -21,6 +21,8 @@
 		4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */; };
 		4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E41F1E82F5B50032F54B /* Photos.framework */; };
 		4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E4201E82F5B50032F54B /* PhotosUI.framework */; };
+		4B15282F2327285D006F1DBE /* Username.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B15282D2327285D006F1DBE /* Username.xib */; };
+		4B152832232729DF006F1DBE /* RFUsernameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B152831232729DF006F1DBE /* RFUsernameController.m */; };
 		4B1712DB1F069FB200267045 /* RFMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1712DA1F069FB200267045 /* RFMenuView.m */; };
 		4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
 		4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */; };
@@ -382,6 +384,9 @@
 		4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OnePasswordExtension.m; path = Shared/1Password/OnePasswordExtension.m; sourceTree = SOURCE_ROOT; };
 		4B14E41F1E82F5B50032F54B /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		4B14E4201E82F5B50032F54B /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
+		4B15282E2327285D006F1DBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Username.xib; sourceTree = "<group>"; };
+		4B152830232729DF006F1DBE /* RFUsernameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFUsernameController.h; path = Source/RFUsernameController.h; sourceTree = "<group>"; };
+		4B152831232729DF006F1DBE /* RFUsernameController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFUsernameController.m; path = Source/RFUsernameController.m; sourceTree = "<group>"; };
 		4B1712D61F05BF0C00267045 /* Micro.blog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Micro.blog-Bridging-Header.h"; sourceTree = "<group>"; };
 		4B1712D91F069FB200267045 /* RFMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFMenuView.h; path = Source/RFMenuView.h; sourceTree = "<group>"; };
 		4B1712DA1F069FB200267045 /* RFMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFMenuView.m; path = Source/RFMenuView.m; sourceTree = "<group>"; };
@@ -850,6 +855,8 @@
 				C59C3B20209242310076A754 /* RFViewController.m */,
 				4BA9107D1B83CFFD00D58F83 /* RFSignInController.h */,
 				4BA9107E1B83CFFD00D58F83 /* RFSignInController.m */,
+				4B152830232729DF006F1DBE /* RFUsernameController.h */,
+				4B152831232729DF006F1DBE /* RFUsernameController.m */,
 				4BA7131F2028B1590083948C /* RFSwipeNavigationController.h */,
 				4BA713202028B1590083948C /* RFSwipeNavigationController.m */,
 				4BA910741B83CDC400D58F83 /* RFMenuController.h */,
@@ -992,6 +999,7 @@
 				4B5078D21B965E4F002A4F80 /* Settings.xib */,
 				4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */,
 				4B1F7FE4225269E100E8AF3E /* Upgrade.xib */,
+				4B15282D2327285D006F1DBE /* Username.xib */,
 				4B94052C1E2933DE00B01E79 /* Images.xcassets */,
 				4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */,
 			);
@@ -1456,6 +1464,7 @@
 				4B0D556F1B9552F40076AD9F /* Categories.xib in Resources */,
 				4BA910851B83D22900D58F83 /* Post.xib in Resources */,
 				4BF123F71E882F5400B56138 /* FilterCell.xib in Resources */,
+				4B15282F2327285D006F1DBE /* Username.xib in Resources */,
 				4BA2C9A01B210A620038C0E5 /* Timeline.xib in Resources */,
 				C5CED7111ECF792E0068F537 /* YUCIRGBToHSL.cikernel in Resources */,
 				4BF123F41E882F4500B56138 /* Filters.xib in Resources */,
@@ -1678,6 +1687,7 @@
 				4B64B2E7220930E4005B92A0 /* RFCategoryCell.m in Sources */,
 				4BF8034B1B87AA2C00D6670C /* UUHttpSession.m in Sources */,
 				C59C3B1E20923EFC0076A754 /* RFBlogTableViewCell.m in Sources */,
+				4B152832232729DF006F1DBE /* RFUsernameController.m in Sources */,
 				C5CED7171ECF792E0068F537 /* YUCIStarfieldGenerator.m in Sources */,
 				4BED552322FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */,
 				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
@@ -1846,6 +1856,14 @@
 				4B0D55711B95586F0076AD9F /* Base */,
 			);
 			name = SettingChoiceCell.xib;
+			sourceTree = "<group>";
+		};
+		4B15282D2327285D006F1DBE /* Username.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B15282E2327285D006F1DBE /* Base */,
+			);
+			name = Username.xib;
 			sourceTree = "<group>";
 		};
 		4B1BD2821D8754DC00B3C93D /* Help.xib */ = {

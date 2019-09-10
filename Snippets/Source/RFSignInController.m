@@ -19,6 +19,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "SSKeychain.h"
 #import "RFAutoCompleteCache.h"
+#import "RFUsernameController.h"
 #import <AuthenticationServices/AuthenticationServices.h>
 
 @import UserNotifications;
@@ -108,18 +109,22 @@
 {
 	ASAuthorizationAppleIDCredential* credential = authorization.credential;
 	NSString* user_id = credential.user;
-	NSString* identity_token = credential.identityToken;
-	NSString* auth_code = credential.authorizationCode;
+	NSData* identity_token = credential.identityToken;
+	NSData* auth_code = credential.authorizationCode;
 	NSString* email = credential.email;
-	NSString* full_name = credential.fullName;
+	NSPersonNameComponents* name_components = credential.fullName;
+	NSString* full_name = [NSString stringWithFormat:@"%@ %@", name_components.givenName, name_components.familyName];
 	
 	NSLog (@"signed in user: %@, %@", user_id, email);
-	[self showMessage:email];
+//	[self showMessage:email];
+
+	RFUsernameController* username_controller = [[RFUsernameController alloc] init];
+	[self.navigationController pushViewController:username_controller animated:YES];
 }
 
 - (void) authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error
 {
-	[self showMessage:@"Error from Sign In with Apple."];
+//	[self showMessage:@"Error from Sign In with Apple."];
 }
 
 #pragma mark -
