@@ -208,6 +208,9 @@
 {
 	RFClient* client = [[RFClient alloc] initWithPath:@"/account/verify"];
 	NSString* token = self.signinToken;
+
+	NSLog (@"MBToken verifying: %@", token);
+
 	NSDictionary* args = @{
 		@"token": token
 	};
@@ -228,7 +231,9 @@
 			NSNumber* has_site = [response.parsedResponse objectForKey:@"has_site"];
 			NSNumber* is_fullaccess = [response.parsedResponse objectForKey:@"is_fullaccess"];
 			NSString* default_site = [response.parsedResponse objectForKey:@"default_site"];
-			
+
+			NSLog (@"MBToken got new token: %@", new_token);
+
 			[RFSettings setSnippetsAccountFullName:full_name];
 			[RFSettings setSnippetsUsername:username];
 			[RFSettings setAccountDefaultSite:default_site];
