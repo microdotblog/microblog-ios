@@ -12,6 +12,8 @@
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
 #import "UUAlert.h"
+#import "RFConstants.h"
+#import "UITraitCollection+Extras.h"
 
 @implementation RFUsernameController
 
@@ -30,7 +32,18 @@
 {
 	[super viewDidLoad];
 
+	if (@available(iOS 13.0, *)) {
+		self.modalInPresentation = YES;
+	}
+
 	[self setupNavigation];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+	[self.usernameField becomeFirstResponder];
 }
 
 - (void) setupNavigation
@@ -38,6 +51,9 @@
 	self.title = @"Username";
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Register" style:UIBarButtonItemStylePlain target:self action:@selector(checkUsername:)];
+	if ([UITraitCollection rf_isDarkMode]) {
+		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+	}
 }
 
 - (void) back:(id)sender
@@ -81,15 +97,14 @@
 	RFClient* client = [[RFClient alloc] initWithPath:@"/account/apple"];
 	[client postWithParams:params completion:^(UUHttpResponse* response) {
 		RFDispatchMain (^{
+			NSString* token = [response.parsedResponse objectForKey:@"token"];
 			NSString* error = [response.parsedResponse objectForKey:@"error"];
 			if (error) {
 				[UUAlertViewController uuShowAlertWithTitle:@"Error" message:error buttonTitle:@"OK" completionHandler:NULL];
 			}
 			else {
 				// sign user in
-				// ...
-
-				[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+				[[NSNotificationCenter defaultCenter] postNotificationName:kUpdateSigninTokenNotification object:self userInfo:@{ kUpdateSigninTokenKey: token }];
 			}
 		});
 	}];

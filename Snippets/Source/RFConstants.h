@@ -24,6 +24,9 @@ static NSString* const kSelectTagmojiInfoKey = @"info";
 #define kShowUserProfileNotification @"RFShowUserProfileNotification"
 #define kShowUserProfileUsernameKey @"username"
 
+#define kUpdateSigninTokenNotification @"RFUpdateSigninTokenNotification"
+#define kUpdateSigninTokenKey @"token"
+
 #define kShowUserFollowingNotification @"RFShowUserFollowingNotification"
 #define kShowUserFollowingUsernameKey @"username"
 

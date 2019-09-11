@@ -20,6 +20,8 @@
 @property (strong, nonatomic) IBOutlet UILabel* signInWithAppleIntro;
 @property (strong, nonatomic) IBOutlet UIView* signInWithAppleButton;
 
+@property (strong, nonatomic) NSString* signinToken;
+
 - (void) updateToken:(NSString *)appToken;
 
 @end

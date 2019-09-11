@@ -38,10 +38,29 @@
 - (void) viewDidLoad
 {
 	[super viewDidLoad];
-	
+
+	if (@available(iOS 13.0, *)) {
+		self.modalInPresentation = YES;
+	}
+
+	[self setupNavigation];
+	[self setupNotifications];
+	[self setupAppleSignIn];
+}
+
+- (void) setupNavigation
+{
 	self.title = @"Welcome";
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
-	
+}
+
+- (void) setupNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSigninTokenNotification:) name:kUpdateSigninTokenNotification object:nil];
+}
+
+- (void) setupAppleSignIn
+{
 	if (@available(iOS 13.0, *)) {
 		ASAuthorizationAppleIDButton* button = (ASAuthorizationAppleIDButton *)self.signInWithAppleButton;
 		button.cornerRadius = 5.0;
@@ -52,11 +71,17 @@
 	}
 }
 
+- (void) updateSigninTokenNotification:(NSNotification *)notification
+{
+	NSString* token = [notification.userInfo objectForKey:kUpdateSigninTokenKey];
+	[self updateToken:token];
+}
+
 - (void) updateToken:(NSString *)appToken
 {
 	if (appToken.length > 0) {
 		RFDispatchSeconds (0.5, ^{
-			self.tokenField.text = appToken;
+			self.signinToken = appToken;
 			[self.view endEditing:NO];
 			[self verifyAppToken];
 		});
@@ -78,6 +103,7 @@
 			[self sendSigninEmail];
 		}
 		else {
+			self.signinToken = self.tokenField.text;
 			[self verifyAppToken];
 		}
 	}
@@ -115,9 +141,6 @@
 //		NSData* auth_code = credential.authorizationCode;
 //		NSString* auth_code_s = [[NSString alloc] initWithData:auth_code encoding:kCFStringEncodingUTF8];
 
-		NSLog (@"signed in user: %@, %@, %@", user_id, email, identity_token_s);
-	//	[self showMessage:email];
-
 		NSMutableDictionary* params = [NSMutableDictionary dictionary];
 		[params setObject:user_id forKey:@"user_id"];
 		[params setObject:full_name forKey:@"full_name"];
@@ -129,6 +152,7 @@
 		RFClient* client = [[RFClient alloc] initWithPath:@"/account/apple"];
 		[client postWithParams:params completion:^(UUHttpResponse* response) {
 			NSString* username = [response.parsedResponse objectForKey:@"username"];
+			NSString* token = [response.parsedResponse objectForKey:@"token"];
 			NSString* error = [response.parsedResponse objectForKey:@"error"];
 			RFDispatchMain (^{
 				if (error) {
@@ -136,9 +160,7 @@
 				}
 				else if ([username length] > 0) {
 					// user already has an account, sign them in
-					// ...
-
-					[self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+					[self updateToken:token];
 				}
 				else {
 					RFUsernameController* username_controller = [[RFUsernameController alloc] initWithUserID:user_id identityToken:identity_token_s];
@@ -151,7 +173,7 @@
 
 - (void) authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error
 {
-//	[self showMessage:@"Error from Sign In with Apple."];
+//	[self showMessage:@"Error from Sign in with Apple."];
 }
 
 #pragma mark -
@@ -181,7 +203,7 @@
 - (void) verifyAppToken
 {
 	RFClient* client = [[RFClient alloc] initWithPath:@"/account/verify"];
-	NSString* token = self.tokenField.text;
+	NSString* token = self.signinToken;
 	NSDictionary* args = @{
 		@"token": token
 	};
@@ -253,7 +275,7 @@
 	RFDispatchMainAsync (^{
 		[Answers logLoginWithMethod:@"Token" success:@YES customAttributes:nil];
 		[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self userInfo:@{
-			@"token": self.tokenField.text
+			@"token": self.signinToken
 		}];
 		[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
 
@@ -289,7 +311,7 @@
 				dispatch_async(dispatch_get_main_queue(), ^
 				{
 					[Answers logLoginWithMethod:@"Token" success:@YES customAttributes:nil];
-					[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self userInfo:@{ @"token": self.tokenField.text }];
+					[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self userInfo:@{ @"token": self.signinToken }];
 					[self.presentingViewController dismissViewControllerAnimated:NO completion:^
 					{
 						UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Blogs" bundle:nil];
