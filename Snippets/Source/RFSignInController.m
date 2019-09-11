@@ -232,6 +232,7 @@
 			NSNumber* is_fullaccess = [response.parsedResponse objectForKey:@"is_fullaccess"];
 			NSString* default_site = [response.parsedResponse objectForKey:@"default_site"];
 
+			self.signinToken = new_token;
 			NSLog (@"MBToken got new token: %@", new_token);
 
 			[RFSettings setSnippetsAccountFullName:full_name];
