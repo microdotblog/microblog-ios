@@ -220,6 +220,7 @@
 			}));
 		}
 		else {
+			NSString* new_token = [response.parsedResponse objectForKey:@"token"];
 			NSString* full_name = [response.parsedResponse objectForKey:@"full_name"];
 			NSString* username = [response.parsedResponse objectForKey:@"username"];
 			NSString* email = [response.parsedResponse objectForKey:@"email"];
@@ -235,7 +236,7 @@
 			[RFSettings setSnippetsGravatarURL:gravatar_url];
 			[RFSettings setHasSnippetsBlog:[has_site boolValue]];
 			[RFSettings setSnippetsFullAccess:[is_fullaccess boolValue]];
-			[SSKeychain setPassword:token forService:@"Snippets" account:@"default"];
+			[SSKeychain setPassword:new_token forService:@"Snippets" account:@"default"];
 
 			[self checkForMultipleBlogs];
 		}
