@@ -57,20 +57,18 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Micro.blog is the fastest way to blog and a community for microblogs." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-Up-MMg">
-                    <rect key="frame" x="31" y="203" width="258" height="55"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Micro.blog is the fastest way to blog and a great community for microblogs." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-Up-MMg">
+                    <rect key="frame" x="31" y="203" width="258" height="61.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="258" id="A9a-QO-YsC"/>
-                        <constraint firstAttribute="height" constant="55" id="MDh-X5-oty"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New to Micro.blog? Sign up with your Apple ID:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-IB-pTa">
-                    <rect key="frame" x="31" y="281" width="258" height="50"/>
+                    <rect key="frame" x="31" y="292.5" width="258" height="41"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="axv-AS-sex"/>
                         <constraint firstAttribute="width" constant="258" id="eZ4-DO-hI1"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
@@ -90,7 +88,7 @@
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTE-zP-eNE" customClass="RFThinLineView">
-                    <rect key="frame" x="0.0" y="268" width="320" height="1"/>
+                    <rect key="frame" x="0.0" y="279.5" width="320" height="1"/>
                     <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="qNy-No-J2u"/>
@@ -116,7 +114,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ua-ob-xZF" customClass="ASAuthorizationAppleIDButton">
-                    <rect key="frame" x="60" y="344" width="200" height="40"/>
+                    <rect key="frame" x="60" y="346.5" width="200" height="40"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="QfZ-zJ-QM5"/>
@@ -139,7 +137,7 @@
                 <constraint firstItem="9Zr-YD-fRb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RbU-8X-0Lq"/>
                 <constraint firstItem="OqG-Up-MMg" firstAttribute="top" secondItem="1ZD-8e-rD1" secondAttribute="bottom" constant="15" id="RpX-7o-QO0"/>
                 <constraint firstAttribute="trailing" secondItem="phR-tm-5p6" secondAttribute="trailing" id="T5c-Fn-DxE"/>
-                <constraint firstItem="fTE-zP-eNE" firstAttribute="top" secondItem="OqG-Up-MMg" secondAttribute="bottom" constant="10" id="TvT-c0-MOs"/>
+                <constraint firstItem="fTE-zP-eNE" firstAttribute="top" secondItem="OqG-Up-MMg" secondAttribute="bottom" constant="15" id="TvT-c0-MOs"/>
                 <constraint firstAttribute="trailing" secondItem="9Zr-YD-fRb" secondAttribute="trailing" id="Y8p-ll-uVb"/>
                 <constraint firstAttribute="trailing" secondItem="fTE-zP-eNE" secondAttribute="trailing" id="YJO-OH-ADp"/>
                 <constraint firstItem="1ZD-8e-rD1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yjm-KY-fJH"/>

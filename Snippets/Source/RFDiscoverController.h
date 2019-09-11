@@ -25,5 +25,6 @@
 @property (strong, nonatomic) UIView* backdropView;
 @property (strong, nonatomic) NSArray* tagmoji;
 @property (strong, nonatomic) RFTagmojiController* tagmojiController;
+@property (strong, nonatomic) UIButton* overlayButton;
 
 @end

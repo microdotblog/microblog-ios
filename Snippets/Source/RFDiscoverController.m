@@ -184,7 +184,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
         self.emojiLabel.text = emojiList;
         [self.emojiLabel sizeToFit];
         [self.view layoutIfNeeded];
-        
     }
     else {
         self.descriptionLabel.text = @"Some recent posts from the community.";
@@ -196,6 +195,21 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) collapseTagmoji
 {
 	self.emojiWidthContraint.constant = 180;
+}
+
+- (void) showOverlay
+{
+	CGRect r = self.view.bounds;
+	self.overlayButton = [[UIButton alloc] initWithFrame:r];
+	self.overlayButton.backgroundColor = [UIColor clearColor];
+	[self.view insertSubview:self.overlayButton belowSubview:self.stackViewContainerView];
+
+	[self.overlayButton addTarget:self action:@selector(onSelectEmoji:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) hideOverlay
+{
+	[self.overlayButton removeFromSuperview];
 }
 
 - (void) toggleSearch:(id)sender
@@ -351,6 +365,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     [self refreshTimelineShowingSpinner:YES];
 
 	[self collapseTagmoji];
+	[self hideOverlay];
 }
 
 - (void) selectTagmojiNotification:(NSNotification *)notification
@@ -364,6 +379,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     self.stackViewContainerView.hidden = !self.stackViewContainerView.hidden;
     if (self.stackViewContainerView.hidden) {
     	[self collapseTagmoji];
+    	[self hideOverlay];
+    }
+    else {
+		[self showOverlay];
     }
 }
 
@@ -385,6 +404,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 //	}];
 
 	self.stackViewContainerView.hidden = YES;
+	[self hideOverlay];
 
 	self.tagmojiController = [[RFTagmojiController alloc] initWithTagmoji:self.tagmoji];
 	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:self.tagmojiController];
