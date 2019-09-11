@@ -49,7 +49,6 @@ static NSString* const kServerSchemeAndHostname = @"https://micro.blog";
 	
 	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
 	if (token) {
-		NSLog (@"MBToken setting header: %@", token);
 		[headers setObject:[NSString stringWithFormat:@"Token %@", token] forKey:@"Authorization"];
 	}
 	request.headerFields = headers;
