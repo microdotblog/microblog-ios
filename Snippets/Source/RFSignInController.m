@@ -20,6 +20,7 @@
 #import "SSKeychain.h"
 #import "RFAutoCompleteCache.h"
 #import "RFUsernameController.h"
+#import "UITraitCollection+Extras.h"
 #import <AuthenticationServices/AuthenticationServices.h>
 
 @import UserNotifications;
@@ -52,6 +53,9 @@
 {
 	self.title = @"Welcome";
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
+	if ([UITraitCollection rf_isDarkMode]) {
+		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+	}
 }
 
 - (void) setupNotifications

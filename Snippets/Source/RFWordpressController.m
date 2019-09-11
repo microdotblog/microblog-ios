@@ -18,6 +18,7 @@
 #import "UUAlert.h"
 #import "RFSettings.h"
 #import "OnePasswordExtension.h"
+#import "UITraitCollection+Extras.h"
 
 @implementation RFWordpressController
 
@@ -46,6 +47,9 @@
 	
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
+	if ([UITraitCollection rf_isDarkMode]) {
+		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+	}
 }
 
 - (void) setupOnePassword

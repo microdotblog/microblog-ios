@@ -17,6 +17,7 @@
 #import "RFAutoCompleteCache.h"
 #import "RFUserCache.h"
 #import "RFAutoCompleteCache.h"
+#import "UITraitCollection+Extras.h"
 #import <SafariServices/SafariServices.h>
 
 @interface RFUserController()<UIScrollViewDelegate>
@@ -137,6 +138,10 @@
 	}
 	else {
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Follow" style:UIBarButtonItemStylePlain target:self action:@selector(follow:)];
+	}
+
+	if ([UITraitCollection rf_isDarkMode]) {
+		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 	}
 }
 

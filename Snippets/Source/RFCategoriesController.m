@@ -16,6 +16,7 @@
 #import "RFConstants.h"
 #import "RFSettings.h"
 #import "RFMacros.h"
+#import "UITraitCollection+Extras.h"
 #import "UIBarButtonItem+Extras.h"
 
 static NSString* const kFormatCellIdentifier = @"FormatCell";
@@ -54,6 +55,9 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 	
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
+	if ([UITraitCollection rf_isDarkMode]) {
+		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+	}
 }
 
 - (void) setupFormats

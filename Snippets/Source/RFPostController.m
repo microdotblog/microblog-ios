@@ -38,6 +38,7 @@
 #import "RFSelectBlogViewController.h"
 #import "RFUpgradeController.h"
 #import "UnzipKit.h"
+#import "UITraitCollection+Extras.h"
 
 //#import "Microblog-Swift.h"
 #import <Fabric/Fabric.h>
@@ -159,6 +160,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
+	if ([UITraitCollection rf_isDarkMode]) {
+		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+	}
 }
 
 - (void) setupFont

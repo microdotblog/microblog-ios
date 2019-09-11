@@ -18,6 +18,7 @@
 #import "UUHttpSession.h"
 #import "UUString.h"
 #import "NSString+Extras.h"
+#import "UITraitCollection+Extras.h"
 #import <SafariServices/SafariServices.h>
 
 @implementation RFExternalController
@@ -51,6 +52,9 @@
 	
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
+	if ([UITraitCollection rf_isDarkMode]) {
+		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+	}
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField

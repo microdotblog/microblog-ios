@@ -14,6 +14,7 @@
 #import "RFFilter.h"
 #import "RFPhoto.h"
 #import "UIBarButtonItem+Extras.h"
+#import "UITraitCollection+Extras.h"
 #import "UUImage.h"
 
 static NSString* const kFilterCellIdentifier = @"FilterCell";
@@ -73,6 +74,10 @@ static NSString* const kFilterCellIdentifier = @"FilterCell";
 	self.title = @"Filters";
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Photo" style:UIBarButtonItemStylePlain target:self action:@selector(attachPhoto:)];
+
+	if ([UITraitCollection rf_isDarkMode]) {
+		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+	}
 }
 
 - (void) setupFilters
