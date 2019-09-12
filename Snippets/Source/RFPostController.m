@@ -294,12 +294,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupEditingButtons
 {
-	UIImage* img = [UIImage uuSolidColorImage:self.editingBar.backgroundColor];
-	[self.photoButton setBackgroundImage:img forState:UIControlStateNormal];
-	[self.markdownBoldButton setBackgroundImage:img forState:UIControlStateNormal];
-	[self.markdownItalicsButton setBackgroundImage:img forState:UIControlStateNormal];
-	[self.markdownLinkButton setBackgroundImage:img forState:UIControlStateNormal];
-	[self.settingsButton setBackgroundImage:img forState:UIControlStateNormal];
+//	UIImage* img = [UIImage uuSolidColorImage:self.editingBar.backgroundColor];
+//	[self.photoButton setBackgroundImage:img forState:UIControlStateNormal];
+//	[self.markdownBoldButton setBackgroundImage:img forState:UIControlStateNormal];
+//	[self.markdownItalicsButton setBackgroundImage:img forState:UIControlStateNormal];
+//	[self.markdownLinkButton setBackgroundImage:img forState:UIControlStateNormal];
+//	[self.settingsButton setBackgroundImage:img forState:UIControlStateNormal];
 
 	if (self.isReply) {
 		self.photoButtonLeftConstraint.constant = -34;
