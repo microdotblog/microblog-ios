@@ -63,6 +63,7 @@
 		4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663251B8F51710034FC5C /* NSString+MarkupExtensions.m */; };
 		4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */; };
 		4B46632F1B8F51710034FC5C /* UILabel+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */; };
+		4B49A0CA2329FA2F00F82DF5 /* RFShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B49A0C92329FA2F00F82DF5 /* RFShareController.m */; };
 		4B4BF25A21B1CE93002A84EE /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */; };
 		4B4BF25D21B1CE94002A84EE /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */; };
 		4B4D9B551ED520F800315BBA /* RFFeaturedPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D9B541ED520F800315BBA /* RFFeaturedPhoto.m */; };
@@ -443,6 +444,8 @@
 		4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+StyleUtilities.m"; path = "Shared/MarkupLabel/UIFont+StyleUtilities.m"; sourceTree = SOURCE_ROOT; };
 		4B4663281B8F51710034FC5C /* UILabel+MarkupExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+MarkupExtensions.h"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.h"; sourceTree = SOURCE_ROOT; };
 		4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+MarkupExtensions.m"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.m"; sourceTree = SOURCE_ROOT; };
+		4B49A0C82329FA2F00F82DF5 /* RFShareController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFShareController.h; sourceTree = "<group>"; };
+		4B49A0C92329FA2F00F82DF5 /* RFShareController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFShareController.m; sourceTree = "<group>"; };
 		4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Shared/Carthage/NYTPhotoViewer.framework; sourceTree = SOURCE_ROOT; };
 		4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Shared/Carthage/FLAnimatedImage.framework; sourceTree = SOURCE_ROOT; };
 		4B4D9B531ED520F800315BBA /* RFFeaturedPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFeaturedPhoto.h; path = Source/RFFeaturedPhoto.h; sourceTree = "<group>"; };
@@ -1094,6 +1097,8 @@
 				C5A4AC011F9A507400415646 /* Micro.blog Sharing.entitlements */,
 				C507F30A1F8827420013D2B7 /* ShareViewController.h */,
 				C507F30B1F8827420013D2B7 /* ShareViewController.m */,
+				4B49A0C82329FA2F00F82DF5 /* RFShareController.h */,
+				4B49A0C92329FA2F00F82DF5 /* RFShareController.m */,
 				C507F30D1F8827420013D2B7 /* MainInterface.storyboard */,
 				C589425F1FE245F400A30EB9 /* GetURL.js */,
 				C507F3101F8827420013D2B7 /* Info.plist */,
@@ -1716,6 +1721,7 @@
 				C507F32A1F8827AE0013D2B7 /* OnePasswordExtension.m in Sources */,
 				C5B48B3E2294E5A300776248 /* mztools.c in Sources */,
 				4BA713442029127E0083948C /* MMSpanParser.m in Sources */,
+				4B49A0CA2329FA2F00F82DF5 /* RFShareController.m in Sources */,
 				C59C3B22209245570076A754 /* RFViewController.m in Sources */,
 				C52DB579225D0CFB00172077 /* RFSelectBlogViewController.m in Sources */,
 				4B821C7E21B428D3006CE005 /* UIView+Extras.m in Sources */,
