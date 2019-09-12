@@ -82,7 +82,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) setupEmojiPicker
 {
     self.stackViewContainerView.hidden = YES;
-    self.stackViewContainerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
+    if ([UITraitCollection rf_isDarkMode]) {
+		self.stackViewContainerView.layer.borderColor = UIColor.darkGrayColor.CGColor;
+    }
+    else {
+		self.stackViewContainerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
+    }
     self.stackViewContainerView.layer.borderWidth = 0.5;
     self.stackViewContainerView.layer.cornerRadius = 5.0;
 
@@ -163,7 +168,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				button.translatesAutoresizingMaskIntoConstraints = NO;
 				
 				[button setTitle:title forState:UIControlStateNormal];
-				button.titleLabel.font = [UIFont systemFontOfSize:13.0];
+				button.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:15];
 				[button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
 				[button.titleLabel sizeToFit];
 				button.tag = [self.tagmoji indexOfObject:dictionary];
