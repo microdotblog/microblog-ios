@@ -95,7 +95,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) viewDidLoad
 {
 	[super viewDidLoad];
-	
+
+	if (@available(iOS 13.0, *)) {
+		self.modalInPresentation = YES;
+	}
+
 	[self setupNavigation];
 	[self setupText];
 	[self setupDragAndDrop];
