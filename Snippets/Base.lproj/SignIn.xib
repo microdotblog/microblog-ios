@@ -20,6 +20,7 @@
                 <outlet property="messageTopConstraint" destination="otr-jQ-b1x" id="hrC-hO-07h"/>
                 <outlet property="networkSpinner" destination="og7-T2-Oy9" id="vfd-sF-uhv"/>
                 <outlet property="signInWithAppleButton" destination="1ua-ob-xZF" id="HGp-Zh-xfn"/>
+                <outlet property="signInWithAppleIntro" destination="nqK-IB-pTa" id="UG0-x0-Bb2"/>
                 <outlet property="tokenField" destination="1ZD-8e-rD1" id="feo-wl-dem"/>
                 <outlet property="view" destination="iN0-l3-epB" id="1ij-Vc-zNB"/>
             </connections>
