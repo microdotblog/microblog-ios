@@ -33,7 +33,7 @@
                             </constraints>
                         </activityIndicatorView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="YGh-nX-rFZ" secondAttribute="trailing" constant="7" id="EIN-OL-sGs"/>
                         <constraint firstItem="YGh-nX-rFZ" firstAttribute="top" secondItem="iBP-kB-VGq" secondAttribute="top" constant="12" id="JoI-Ke-6vy"/>
