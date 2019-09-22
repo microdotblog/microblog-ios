@@ -167,6 +167,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	if ([UITraitCollection rf_isDarkMode]) {
 		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 	}
+	else {
+		self.navigationItem.rightBarButtonItem.tintColor = [UIColor blackColor];
+	}
 }
 
 - (void) setupFont
