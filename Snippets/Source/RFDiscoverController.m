@@ -138,6 +138,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupNotifications
 {
+	[super setupNotifications];
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectTagmojiNotification:) name:kSelectTagmojiNotification object:nil];
 }
 

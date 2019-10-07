@@ -26,6 +26,7 @@
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil endPoint:(NSString*)endpoint title:(NSString*)title;
 
 - (void) setupNavigation;
+- (void) setupNotifications;
 
 - (void) setSelected:(BOOL)isSelected withPostID:(NSString *)postID;
 - (NSArray *) allPostIDs; // NSString
