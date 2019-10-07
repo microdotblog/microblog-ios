@@ -1186,7 +1186,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			NSString* password = [RFSettings externalBlogPassword];
 			
 			NSNumber* blog_id = [NSNumber numberWithInteger:[blog_s integerValue]];
-			NSString* filename = [[[[NSString uuGenerateUUIDString] lowercaseString] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByAppendingPathExtension:@"jpg"];
+			NSString* filename = [[[[NSString uuGenerateUUIDString] lowercaseString] stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByAppendingPathExtension:@"mov"];
 			
 			if (!blog_id || !username || !password) {
 				[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Video" message:@"Your blog settings were not saved correctly. Try signing out and trying again." button:@"OK" completionHandler:NULL];
