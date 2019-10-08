@@ -81,6 +81,11 @@ static NSString* const kServerSchemeAndHostname = @"https://micro.blog";
 			[body_s appendFormat:@"%@=%@", key, val_encoded];
 			added_param = YES;
 		}
+		else if ([params[key] isKindOfClass:[NSNumber class]]) {
+			NSNumber* val = params[key];
+			[body_s appendFormat:@"%@=%@", key, val];
+			added_param = YES;
+		}
 		else if ([params[key] isKindOfClass:[NSArray class]]) {
 			NSArray* array_values = params[key];
 			for (int array_i = 0; array_i < [array_values count]; array_i++) {
