@@ -1072,6 +1072,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			}
 			
 			for (RFPhoto* photo in self.attachedPhotos) {
+				// TODO: for videos, need the actual size, thumbnail is smaller?
 				CGSize original_size = photo.thumbnailImage.size;
 				CGFloat width = 0;
 				CGFloat height = 0;
@@ -1096,7 +1097,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				}
 				
 				if (photo.videoURL)
-					s = [s stringByAppendingFormat:@"<video controls=\"controls\" src=\"%@\" width=\"%.0f\" height=\"%.0f\" alt=\"%@\" />", photo.publishedURL, width, height, photo.altText];
+					s = [s stringByAppendingFormat:@"<video controls=\"controls\" playsinline=\"playsinline\" src=\"%@\" width=\"%.0f\" height=\"%.0f\" alt=\"%@\" />", photo.publishedURL, width, height, photo.altText];
 				else
 					s = [s stringByAppendingFormat:@"<img src=\"%@\" width=\"%.0f\" height=\"%.0f\" alt=\"%@\" />", photo.publishedURL, width, height, photo.altText];
 			}
