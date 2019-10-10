@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment version="4864" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -28,23 +25,22 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpa-PS-17i">
-                    <rect key="frame" x="0.0" y="116" width="320" height="43"/>
-                    <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="0.0" y="96" width="320" height="43"/>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="43" id="zZP-fU-7C4"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you don't have a hosted Micro.blog microblog, you can publish to a WordPress, Movable Type, or Micropub weblog." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eap-Ec-nyv">
-                    <rect key="frame" x="10" y="35" width="300" height="73"/>
+                    <rect key="frame" x="10" y="15" width="300" height="73"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="73" id="seJ-LC-t1a"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="web site URL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HQV-Pp-0XM">
-                    <rect key="frame" x="8" y="122" width="277" height="30"/>
+                    <rect key="frame" x="8" y="102" width="277" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="2ou-l5-Dsp"/>
                     </constraints>
@@ -54,15 +50,15 @@
                         <outlet property="delegate" destination="-1" id="Eo3-eP-EAz"/>
                     </connections>
                 </textField>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="PV0-3C-7Ys">
-                    <rect key="frame" x="292" y="125" width="20" height="20"/>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="PV0-3C-7Ys">
+                    <rect key="frame" x="292" y="105" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="Ks5-ig-k9N"/>
                         <constraint firstAttribute="width" constant="20" id="h1T-Uu-9K3"/>
                     </constraints>
                 </activityIndicatorView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="mpa-PS-17i" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3kY-mz-Fbb"/>
                 <constraint firstAttribute="trailing" secondItem="PV0-3C-7Ys" secondAttribute="trailing" constant="8" id="5F5-aU-8oe"/>
@@ -76,6 +72,7 @@
                 <constraint firstItem="eap-Ec-nyv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" constant="15" id="gSv-BC-Ttn"/>
                 <constraint firstItem="PV0-3C-7Ys" firstAttribute="top" secondItem="eap-Ec-nyv" secondAttribute="bottom" constant="17" id="kyt-GD-BGz"/>
             </constraints>
+            <point key="canvasLocation" x="139" y="154"/>
         </view>
     </objects>
 </document>
