@@ -1964,7 +1964,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) insertSharedText:(NSString *)text
 {
-	NSString* s = [NSString stringWithFormat:@"\n\n> %@", text];
+	BOOL is_markup = NO;
+	
+	if ([text containsString:@"]("] || [text containsString:@"/>"] || [text containsString:@"</"]) {
+		is_markup = YES;
+	}
+
+	NSString* s = text;
+	if (!is_markup) {
+		s = [NSString stringWithFormat:@"\n\n> %@", text];
+	}
 	
 	[self.textView insertText:s];
 
