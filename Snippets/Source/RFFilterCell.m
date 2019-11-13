@@ -20,8 +20,9 @@
 
 	PHImageManager* manager = [PHImageManager defaultManager];
 	PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
-	options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
-	[manager requestImageForAsset:photo.asset targetSize:CGSizeMake (200, 200) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage* result, NSDictionary* info) {
+	options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+	options.resizeMode = PHImageRequestOptionsResizeModeExact;
+	[manager requestImageForAsset:photo.asset targetSize:CGSizeMake (320, 320) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 		self.nameField.text = filter.name;
 		if (filter.ciFilter) {
 			self.previewImageView.image = [filter filterImage:result];

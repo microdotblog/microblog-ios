@@ -39,8 +39,9 @@
 	else {
 		PHImageManager* manager = [PHImageManager defaultManager];
 		PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
-		options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
-		[manager requestImageForAsset:photo.asset targetSize:CGSizeMake (150, 150) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage* result, NSDictionary* info) {
+		options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+		options.resizeMode = PHImageRequestOptionsResizeModeExact;
+		[manager requestImageForAsset:photo.asset targetSize:CGSizeMake (320, 320) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage* result, NSDictionary* info) {
 			self.thumbnailView.image = result;
 		}];
 	}

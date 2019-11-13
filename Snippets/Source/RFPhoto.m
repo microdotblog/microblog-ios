@@ -66,12 +66,12 @@
 {
 	PHImageManager* manager = [PHImageManager defaultManager];
 	PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
-	options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
-	options.resizeMode = PHImageRequestOptionsResizeModeNone;
+	options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+	options.resizeMode = PHImageRequestOptionsResizeModeExact;
 	options.networkAccessAllowed = YES;
 	options.synchronous = NO;
 	
-	CGSize size = CGSizeMake(240.0, 240.0);
+	CGSize size = CGSizeMake(320.0, 320.0);
 	
 	[manager requestImageForAsset:self.asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage* result, NSDictionary* info)
 	{
