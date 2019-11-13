@@ -51,6 +51,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 @interface RFPostController()
 	@property (atomic, strong) NSMutableArray* autoCompleteData;
 	@property (nonatomic, strong) NSString* activeReplacementString;
+	@property (assign) UIBackgroundTaskIdentifier backgroundTaskIdentifier;
+
 @end
 
 @implementation RFPostController
@@ -62,6 +64,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		self.attachedPhotos = @[];
 		self.edgesForExtendedLayout = UIRectEdgeTop;
 		self.selectedCategories = [NSSet set];
+		self.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
 	}
 	
 	return self;
@@ -652,6 +655,26 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 #pragma mark -
 
+- (void) beginBackgrounding
+{
+#ifndef SHARING_EXTENSION
+	self.backgroundTaskIdentifier = [UIApplication.sharedApplication beginBackgroundTaskWithName:@"SunlitBackgroundTask" expirationHandler:^
+	{
+		[UIApplication.sharedApplication endBackgroundTask:self.backgroundTaskIdentifier];
+		self.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
+	}];
+#endif
+}
+
+- (void) endBackgrounding
+{
+#ifndef SHARING_EXTENSION
+	[UIApplication.sharedApplication endBackgroundTask:self.backgroundTaskIdentifier];
+	self.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
+#endif
+}
+
+
 - (BOOL) canPublish:(RFPhoto*)photo
 {
 	BOOL can_publish = YES;
@@ -717,6 +740,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) beginPost
 {
+	[self beginBackgrounding];
+
 	NSString* s = [self currentText];
 
 	self.photoButton.hidden = YES;
@@ -872,6 +897,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[args setObject:text forKey:@"text"];
 
 		[client postWithParams:args completion:^(UUHttpResponse* response) {
+			[self endBackgrounding];
+			
 			RFDispatchMainAsync (^{
 				[Answers logCustomEventWithName:@"Sent Reply" customAttributes:nil];
 				[self close:nil];
@@ -919,6 +946,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			}
 
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
+				[self endBackgrounding];
+
 				RFDispatchMainAsync (^{
 					if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
 						[self hideProgressHeader];
@@ -973,6 +1002,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			}
 
 			[client postWithParams:args completion:^(UUHttpResponse* response) {
+				[self endBackgrounding];
+
 				RFDispatchMainAsync (^{
 					if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
 						[self hideProgressHeader];
@@ -1033,6 +1064,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			
 			RFXMLRPCRequest* request = [[RFXMLRPCRequest alloc] initWithURL:xmlrpc_endpoint];
 			[request sendMethod:method_name params:params completion:^(UUHttpResponse* response) {
+
+				[self endBackgrounding];
+
 				RFXMLRPCParser* xmlrpc = [RFXMLRPCParser parsedResponseFromData:response.rawResponse];
 				RFDispatchMainAsync ((^{
 					if (xmlrpc.responseFault) {
