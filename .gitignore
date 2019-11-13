@@ -26,3 +26,4 @@ DerivedData
 # Pods/
 Micro.blog.xcodeproj/project.xcworkspace/xcshareddata/*
 Micro.blog.xcodeproj/xcshareddata/*
+.DS_Store
