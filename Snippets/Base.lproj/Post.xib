@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -136,7 +136,7 @@
                                 </button>
                                 <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6of-5U-PI0">
                                     <rect key="frame" x="102" y="0.0" width="34" height="34"/>
-                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <accessibility key="accessibilityConfiguration" label="Markdown link"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34" id="5qe-gv-kZ6"/>
@@ -148,7 +148,7 @@
                                 </button>
                                 <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gl-6r-27N">
                                     <rect key="frame" x="68" y="0.0" width="34" height="34"/>
-                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <accessibility key="accessibilityConfiguration" label="Markdown italics"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="34" id="9Nn-AH-GTL"/>
@@ -160,7 +160,7 @@
                                 </button>
                                 <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6s7-RJ-qLM">
                                     <rect key="frame" x="34" y="0.0" width="34" height="34"/>
-                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <accessibility key="accessibilityConfiguration" label="Markdown bold"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34" id="P4N-TY-fBt"/>
@@ -173,7 +173,7 @@
                                 </button>
                                 <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vZ-FK-rFO">
                                     <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
-                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <accessibility key="accessibilityConfiguration" label="Add photo"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="34" id="oMW-jt-Qsf"/>
@@ -185,7 +185,7 @@
                                 </button>
                                 <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6os-a6-fTT">
                                     <rect key="frame" x="137" y="0.0" width="149" height="34"/>
-                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <accessibility key="accessibilityConfiguration" label="Select blog"/>
                                     <connections>
                                         <action selector="blogHostnamePressed:" destination="-1" eventType="touchUpInside" id="kqq-0B-4nJ"/>
@@ -287,7 +287,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="DWX-HH-zje" firstAttribute="leading" secondItem="oqz-qQ-S4M" secondAttribute="trailing" id="3V5-0i-tdm"/>
                                 <constraint firstItem="oqz-qQ-S4M" firstAttribute="leading" secondItem="7vZ-FK-rFO" secondAttribute="trailing" id="718-GT-gbR"/>
@@ -352,7 +352,7 @@
                         </collectionView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ic-hx-PZp" customClass="RFBottomLineView">
                             <rect key="frame" x="0.0" y="497" width="320" height="1"/>
-                            <color key="backgroundColor" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="xLE-Zb-4bJ"/>
                             </constraints>
@@ -378,7 +378,7 @@
                                     </connections>
                                 </collectionView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="kyc-qr-Kyh" secondAttribute="trailing" id="39d-46-mck"/>
                                 <constraint firstAttribute="bottom" secondItem="kyc-qr-Kyh" secondAttribute="bottom" id="TK5-rt-K0H"/>
