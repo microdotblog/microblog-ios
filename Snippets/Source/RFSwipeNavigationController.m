@@ -156,18 +156,25 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 			self.revealedView.layer.shadowOpacity = 0.3;
 			self.revealedView.layer.shadowOffset = CGSizeMake (-1.5, 1.5);
 
-			CGRect line_r = self.nextController.view.frame;
-			line_r.origin.x = 0;
-			line_r.size.height = 0.5;
-			self.revealedLine = [[UIView alloc] initWithFrame:line_r];
-			self.revealedLine.layer.backgroundColor = [UIColor lightGrayColor].CGColor;
-			self.revealedLine.layer.opaque = YES;
-			[self.view insertSubview:self.revealedLine aboveSubview:self.revealedView];
-			[self.view bringSubviewToFront:self.revealedLine];
+			if (![UITraitCollection rf_isDarkMode]) {
+				CGRect line_r = self.nextController.view.frame;
+				line_r.origin.x = 0;
+				line_r.size.height = 0.5;
+				self.revealedLine = [[UIView alloc] initWithFrame:line_r];
+				self.revealedLine.layer.backgroundColor = [UIColor lightGrayColor].CGColor;
+				self.revealedLine.layer.opaque = YES;
+				[self.view insertSubview:self.revealedLine aboveSubview:self.revealedView];
+				[self.view bringSubviewToFront:self.revealedLine];
+			}
 			
 			CGRect background_r = self.view.frame;
 			self.revealedBackground = [[UIView alloc] initWithFrame:background_r];
-			self.revealedBackground.layer.backgroundColor = [UIColor whiteColor].CGColor;
+			if (![UITraitCollection rf_isDarkMode]) {
+				self.revealedBackground.layer.backgroundColor = [UIColor whiteColor].CGColor;
+			}
+			else {
+				self.revealedBackground.layer.backgroundColor = [UIColor blackColor].CGColor;
+			}
 			self.revealedBackground.layer.opaque = YES;
 			[self.view insertSubview:self.revealedBackground belowSubview:self.revealedView];
 			[self.view sendSubviewToBack:self.revealedBackground];
