@@ -298,8 +298,8 @@
 
 	UIColor* c = [UIColor colorWithWhite:0.259 alpha:1.000];
 
-	if ([UITraitCollection rf_isDarkMode]) {
-		c = [UIColor whiteColor];
+	if (@available(iOS 13.0, *)) {
+		c = [UIColor colorNamed:@"color_nav_title"];
 	}
 
 	[[UINavigationBar appearance] setTitleTextAttributes:@{
