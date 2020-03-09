@@ -1675,13 +1675,33 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) loadExtensionImage:(NSItemProvider*)itemProvider inputItems:(NSMutableArray*)inputItems
 {
-	[itemProvider loadItemForTypeIdentifier:(NSString*)kUTTypeImage options:nil completionHandler:^(UIImage* image, NSError * _Null_unspecified error)
-	{
-		if (image)
-		{
-			[self processImageForAppExtension:image withInputItems:inputItems];
-		}
-		else if (@available(iOS 11.0, *))
+//	[itemProvider loadItemForTypeIdentifier:(NSString*)kUTTypeImage options:nil completionHandler:^(UIImage* image, NSError * _Null_unspecified error)
+//	{
+//		if (image)
+//		{
+			// test to change color space from Display P3 to sRGB
+			// idea was to reduce memory, but it creates unrotated image
+#if 0
+			if (@available(iOS 11.0, *)) {
+				CGImageRef cg = image.CGImage;
+				CGColorSpaceRef colorspace = CGImageGetColorSpace(cg);
+				if ([(NSString *)CGColorSpaceGetName(colorspace) isEqualToString:kCGColorSpaceDisplayP3]) {
+					colorspace = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
+					if (colorspace) {
+						CGImageRef new_cg = CGImageCreateCopyWithColorSpace(cg, colorspace);
+						if (new_cg) {
+							image = [[UIImage alloc] initWithCGImage:new_cg];
+							CGImageRelease(new_cg);
+						}
+					}
+				}
+			}
+#endif
+
+//			[self processImageForAppExtension:image withInputItems:inputItems];
+//		}
+//		else
+		if (@available(iOS 11.0, *))
 		{
 			[itemProvider loadInPlaceFileRepresentationForTypeIdentifier:(NSString*)kUTTypeImage completionHandler:^(NSURL * _Nullable url, BOOL isInPlace, NSError * _Nullable error)
 			{
@@ -1713,7 +1733,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		{
 			[self processAppExtensionItems:inputItems];
 		}
-	}];
+//	}];
 }
 
 - (void) loadExtensionPropertyList:(NSItemProvider*)itemProvider inputItems:(NSMutableArray*)inputItems
