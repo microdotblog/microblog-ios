@@ -29,6 +29,9 @@
 		4B1BD2811D87548C00B3C93D /* RFHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BD2801D87548C00B3C93D /* RFHelpController.m */; };
 		4B1BD2841D8754DC00B3C93D /* Help.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1BD2821D8754DC00B3C93D /* Help.xib */; };
 		4B1D74FC1B95ECF4004A0ACD /* RFXMLElementStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D74FB1B95ECF4004A0ACD /* RFXMLElementStack.m */; };
+		4B1EE1AB241AECA4004627F7 /* RFAllPostsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1EE1AA241AECA4004627F7 /* RFAllPostsController.m */; };
+		4B1EE1AE241AED1C004627F7 /* AllPosts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1EE1AC241AED1C004627F7 /* AllPosts.storyboard */; };
+		4B1EE1B1241AF040004627F7 /* RFPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1EE1B0241AF040004627F7 /* RFPostCell.m */; };
 		4B1F7FE22251B3D300E8AF3E /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */; };
 		4B1F7FE32251B3E400E8AF3E /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */; };
 		4B1F7FE6225269E100E8AF3E /* Upgrade.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE4225269E100E8AF3E /* Upgrade.xib */; };
@@ -400,6 +403,11 @@
 		4B1BD2831D8754DC00B3C93D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Help.xib; sourceTree = "<group>"; };
 		4B1D74FA1B95ECF4004A0ACD /* RFXMLElementStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFXMLElementStack.h; path = Source/RFXMLElementStack.h; sourceTree = "<group>"; };
 		4B1D74FB1B95ECF4004A0ACD /* RFXMLElementStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFXMLElementStack.m; path = Source/RFXMLElementStack.m; sourceTree = "<group>"; };
+		4B1EE1A9241AECA4004627F7 /* RFAllPostsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFAllPostsController.h; path = Source/RFAllPostsController.h; sourceTree = "<group>"; };
+		4B1EE1AA241AECA4004627F7 /* RFAllPostsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAllPostsController.m; path = Source/RFAllPostsController.m; sourceTree = "<group>"; };
+		4B1EE1AD241AED1C004627F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AllPosts.storyboard; sourceTree = "<group>"; };
+		4B1EE1AF241AF040004627F7 /* RFPostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFPostCell.h; path = Source/RFPostCell.h; sourceTree = "<group>"; };
+		4B1EE1B0241AF040004627F7 /* RFPostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFPostCell.m; path = Source/RFPostCell.m; sourceTree = "<group>"; };
 		4B1F7FE02251B3D300E8AF3E /* SDAVAssetExportSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDAVAssetExportSession.h; path = Shared/SDAVAssetExport/SDAVAssetExportSession.h; sourceTree = SOURCE_ROOT; };
 		4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDAVAssetExportSession.m; path = Shared/SDAVAssetExport/SDAVAssetExportSession.m; sourceTree = SOURCE_ROOT; };
 		4B1F7FE5225269E100E8AF3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Upgrade.xib; sourceTree = "<group>"; };
@@ -870,6 +878,10 @@
 				4BF870641F679070005C9849 /* RFBrowserActivity.m */,
 				4B27AA8B1EB3F18D00CC3F3A /* RFDiscoverController.h */,
 				4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */,
+				4B1EE1A9241AECA4004627F7 /* RFAllPostsController.h */,
+				4B1EE1AA241AECA4004627F7 /* RFAllPostsController.m */,
+				4B1EE1AF241AF040004627F7 /* RFPostCell.h */,
+				4B1EE1B0241AF040004627F7 /* RFPostCell.m */,
 				4B2DC27722FE1AC00074D42A /* RFTagmojiController.h */,
 				4B2DC27822FE1AC00074D42A /* RFTagmojiController.m */,
 				4B2DC27D22FE1BD80074D42A /* RFTagmojiCell.h */,
@@ -994,6 +1006,7 @@
 				4B9A7BAB1E82F1C1002A49E5 /* PhotoCell.xib */,
 				4B4D9B561ED5213E00315BBA /* FeaturedPhotoCell.xib */,
 				4BF123F21E882F4500B56138 /* Filters.xib */,
+				4B1EE1AC241AED1C004627F7 /* AllPosts.storyboard */,
 				4BF123F51E882F5400B56138 /* FilterCell.xib */,
 				4B1BD2821D8754DC00B3C93D /* Help.xib */,
 				4B8714721E64C07800C69589 /* External.xib */,
@@ -1492,6 +1505,7 @@
 				C5A515B021B3196100C15092 /* RFPopupNotificationViewController.xib in Resources */,
 				4B2DC28222FE1C0E0074D42A /* TagmojiCell.xib in Resources */,
 				4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */,
+				4B1EE1AE241AED1C004627F7 /* AllPosts.storyboard in Resources */,
 				C59C3B1820923DE50076A754 /* Blogs.storyboard in Resources */,
 				C5CED6FD1ECF792E0068F537 /* YUCIColorLookupTableDefault.png in Resources */,
 				C5CED71A1ECF792E0068F537 /* YUCITriangularPixellate.cikernel in Resources */,
@@ -1626,6 +1640,7 @@
 				C5CED71B1ECF792E0068F537 /* YUCITriangularPixellate.m in Sources */,
 				4B87147A1E64C56A00C69589 /* RFXMLLinkParser.m in Sources */,
 				4B400D192025270900C71AAF /* RFFeedCell.m in Sources */,
+				4B1EE1AB241AECA4004627F7 /* RFAllPostsController.m in Sources */,
 				4B1BAF021B852BC9008097F7 /* SSKeychain.m in Sources */,
 				4B0D556C1B9552310076AD9F /* RFCategoriesController.m in Sources */,
 				4B1F7FE922526A0D00E8AF3E /* RFUpgradeController.m in Sources */,
@@ -1692,6 +1707,7 @@
 				4B64B2E7220930E4005B92A0 /* RFCategoryCell.m in Sources */,
 				4BF8034B1B87AA2C00D6670C /* UUHttpSession.m in Sources */,
 				C59C3B1E20923EFC0076A754 /* RFBlogTableViewCell.m in Sources */,
+				4B1EE1B1241AF040004627F7 /* RFPostCell.m in Sources */,
 				4B152832232729DF006F1DBE /* RFUsernameController.m in Sources */,
 				C5CED7171ECF792E0068F537 /* YUCIStarfieldGenerator.m in Sources */,
 				4BED552322FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */,
@@ -1878,6 +1894,14 @@
 				4B1BD2831D8754DC00B3C93D /* Base */,
 			);
 			name = Help.xib;
+			sourceTree = "<group>";
+		};
+		4B1EE1AC241AED1C004627F7 /* AllPosts.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B1EE1AD241AED1C004627F7 /* Base */,
+			);
+			name = AllPosts.storyboard;
 			sourceTree = "<group>";
 		};
 		4B1F7FE4225269E100E8AF3E /* Upgrade.xib */ = {

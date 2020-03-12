@@ -14,6 +14,7 @@
 #import "RFExternalController.h"
 #import "RFPostController.h"
 #import "RFHelpController.h"
+#import "RFAllPostsController.h"
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "RFConstants.h"
@@ -201,6 +202,12 @@
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/favorites" title:@"Favorites"];
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
+}
+
+- (IBAction) showPosts:(id)sender
+{
+	RFAllPostsController* posts_controller = [[RFAllPostsController alloc] init];
+	[self notifyResetDetail:posts_controller];
 }
 
 - (IBAction) showHelp:(id)sender
