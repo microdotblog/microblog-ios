@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UITextField* searchField;
 @property (strong, nonatomic) IBOutlet UITableView* tableView;
 
+@property (strong, nonatomic) NSArray* allPosts; // RFPost
+@property (strong, nonatomic) NSArray* currentPosts; // RFPost
+
 @end
 
 NS_ASSUME_NONNULL_END

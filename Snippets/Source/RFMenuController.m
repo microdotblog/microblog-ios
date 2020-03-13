@@ -206,7 +206,8 @@
 
 - (IBAction) showPosts:(id)sender
 {
-	RFAllPostsController* posts_controller = [[RFAllPostsController alloc] init];
+	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"AllPosts" bundle:nil];
+	UIViewController* posts_controller = [storyboard instantiateInitialViewController];
 	[self notifyResetDetail:posts_controller];
 }
 

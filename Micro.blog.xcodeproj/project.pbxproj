@@ -32,6 +32,7 @@
 		4B1EE1AB241AECA4004627F7 /* RFAllPostsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1EE1AA241AECA4004627F7 /* RFAllPostsController.m */; };
 		4B1EE1AE241AED1C004627F7 /* AllPosts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1EE1AC241AED1C004627F7 /* AllPosts.storyboard */; };
 		4B1EE1B1241AF040004627F7 /* RFPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1EE1B0241AF040004627F7 /* RFPostCell.m */; };
+		4B1EE1B4241B22EB004627F7 /* RFPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1EE1B2241B22EA004627F7 /* RFPost.m */; };
 		4B1F7FE22251B3D300E8AF3E /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */; };
 		4B1F7FE32251B3E400E8AF3E /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */; };
 		4B1F7FE6225269E100E8AF3E /* Upgrade.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE4225269E100E8AF3E /* Upgrade.xib */; };
@@ -408,6 +409,8 @@
 		4B1EE1AD241AED1C004627F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AllPosts.storyboard; sourceTree = "<group>"; };
 		4B1EE1AF241AF040004627F7 /* RFPostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFPostCell.h; path = Source/RFPostCell.h; sourceTree = "<group>"; };
 		4B1EE1B0241AF040004627F7 /* RFPostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFPostCell.m; path = Source/RFPostCell.m; sourceTree = "<group>"; };
+		4B1EE1B2241B22EA004627F7 /* RFPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFPost.m; path = Source/RFPost.m; sourceTree = "<group>"; };
+		4B1EE1B3241B22EB004627F7 /* RFPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFPost.h; path = Source/RFPost.h; sourceTree = "<group>"; };
 		4B1F7FE02251B3D300E8AF3E /* SDAVAssetExportSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDAVAssetExportSession.h; path = Shared/SDAVAssetExport/SDAVAssetExportSession.h; sourceTree = SOURCE_ROOT; };
 		4B1F7FE12251B3D300E8AF3E /* SDAVAssetExportSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDAVAssetExportSession.m; path = Shared/SDAVAssetExport/SDAVAssetExportSession.m; sourceTree = SOURCE_ROOT; };
 		4B1F7FE5225269E100E8AF3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Upgrade.xib; sourceTree = "<group>"; };
@@ -882,6 +885,8 @@
 				4B1EE1AA241AECA4004627F7 /* RFAllPostsController.m */,
 				4B1EE1AF241AF040004627F7 /* RFPostCell.h */,
 				4B1EE1B0241AF040004627F7 /* RFPostCell.m */,
+				4B1EE1B3241B22EB004627F7 /* RFPost.h */,
+				4B1EE1B2241B22EA004627F7 /* RFPost.m */,
 				4B2DC27722FE1AC00074D42A /* RFTagmojiController.h */,
 				4B2DC27822FE1AC00074D42A /* RFTagmojiController.m */,
 				4B2DC27D22FE1BD80074D42A /* RFTagmojiCell.h */,
@@ -1656,6 +1661,7 @@
 				C5CED7041ECF792E0068F537 /* YUCIFlashTransition.m in Sources */,
 				4BA7133B2029127E0083948C /* MMParser.m in Sources */,
 				4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */,
+				4B1EE1B4241B22EB004627F7 /* RFPost.m in Sources */,
 				4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */,
 				C5B48B3F2294E5A300776248 /* unzip.c in Sources */,
 				4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */,
