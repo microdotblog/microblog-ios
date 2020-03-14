@@ -46,6 +46,12 @@
 
 	[self setupNavigation];
 	[self setupNotifications];
+}
+
+- (void) viewDidLayoutSubviews
+{
+	[super viewDidLayoutSubviews];
+	
 	[self setupAppleSignIn];
 }
 
@@ -65,13 +71,30 @@
 
 - (void) setupAppleSignIn
 {
-	if (@available(iOS 13.0, *)) {
-		ASAuthorizationAppleIDButton* button = (ASAuthorizationAppleIDButton *)self.signInWithAppleButton;
-		button.cornerRadius = 5.0;
-	}
-	else {
-		self.signInWithAppleButton.hidden = YES;
-		self.signInWithAppleIntro.hidden = YES;
+	if (self.signInWithAppleButton) {
+		if (@available(iOS 13.0, *)) {
+			// replace placeholder button with real button
+			ASAuthorizationAppleIDButton* button;
+			if ([UITraitCollection rf_isDarkMode]) {
+				button = [ASAuthorizationAppleIDButton buttonWithType:ASAuthorizationAppleIDButtonTypeDefault style:ASAuthorizationAppleIDButtonStyleWhite];
+			}
+			else {
+				button = [ASAuthorizationAppleIDButton buttonWithType:ASAuthorizationAppleIDButtonTypeDefault style:ASAuthorizationAppleIDButtonStyleBlack];
+			}
+			button.cornerRadius = 5.0;
+			button.frame = self.signInWithAppleButton.frame;
+			[button addTarget:self action:@selector(signInWithApple:) forControlEvents:UIControlEventTouchUpInside];
+			[self.signInWithAppleButton.superview addSubview:button];
+
+			[self.signInWithAppleButton removeFromSuperview];
+			self.signInWithAppleButton = nil;
+		}
+		else {
+			// hide placeholder button and intro text
+			self.signInWithAppleButton.hidden = YES;
+			self.signInWithAppleIntro.hidden = YES;
+			self.signInWithAppleButton = nil;
+		}
 	}
 }
 
