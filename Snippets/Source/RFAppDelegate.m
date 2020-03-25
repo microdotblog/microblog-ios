@@ -302,13 +302,18 @@
 		c = [UIColor colorNamed:@"color_nav_title"];
 	}
 
+//	UIFont* bar_font = [UIFont fontWithName:@"AvenirNext-Regular" size:16];
+//	UIFont* button_font = [UIFont fontWithName:@"AvenirNext-Medium" size:16];
+	UIFont* bar_font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
+	UIFont* button_font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
+
 	[[UINavigationBar appearance] setTitleTextAttributes:@{
 		NSForegroundColorAttributeName: c,
-		NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-Regular" size:16]
+		NSFontAttributeName: bar_font
 	}];
 	[[UIBarButtonItem appearance] setTitleTextAttributes:@{
 		NSForegroundColorAttributeName: c,
-		NSFontAttributeName: [UIFont fontWithName:@"AvenirNext-Medium" size:16]
+		NSFontAttributeName: button_font
 	} forState:UIControlStateNormal];
 }
 

@@ -55,6 +55,7 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	self.allPosts = @[];
 	self.currentPosts = @[];
 	self.hostnameButton.hidden = YES;
+	self.tableView.alpha = 0.0;
 	[self.progressSpinner startAnimating];
 
 	NSString* destination_uid = [RFSettings selectedBlogUid];
@@ -96,6 +97,10 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 				[self.progressSpinner stopAnimating];
 				[self setupBlogName];
 				self.hostnameButton.hidden = NO;
+				
+				[UIView animateWithDuration:0.3 animations:^{
+					self.tableView.alpha = 1.0;
+				}];
 			});
 		}
 	}];
