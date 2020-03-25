@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class RFPost;
 
-@interface RFPostCell : UITableViewCell
+@interface RFPostCell : UITableViewCell <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel* titleField;
 @property (strong, nonatomic) IBOutlet UILabel* textField;

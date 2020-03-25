@@ -126,6 +126,10 @@
 		4BBA71031F5DF9CE00B56A04 /* RFHighlightingTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA71021F5DF9CE00B56A04 /* RFHighlightingTextStorage.m */; };
 		4BBC298321B47C6E001E3BDB /* RFAutoCompleteCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A515A321B3160100C15092 /* RFAutoCompleteCollectionViewCell.m */; };
 		4BBC298421B47CB3001E3BDB /* RFAutoCompleteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A515AD21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib */; };
+		4BD9D0C5242BF60600541D63 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C1242BF60600541D63 /* HTMLNode.m */; };
+		4BD9D0C6242BF60600541D63 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C3242BF60600541D63 /* HTMLParser.m */; };
+		4BD9D0CA242BF7D900541D63 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD9D0C9242BF7D900541D63 /* libxml2.2.dylib */; };
+		4BD9D0CB242BF7D900541D63 /* libxml2.2.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD9D0C9242BF7D900541D63 /* libxml2.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4BED552322FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */; };
 		4BED552422FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */; };
 		4BF123F11E882F3000B56138 /* RFFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123F01E882F3000B56138 /* RFFiltersController.m */; };
@@ -351,6 +355,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				4BD9D0CB242BF7D900541D63 /* libxml2.2.dylib in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,6 +539,11 @@
 		4BA910A01B84A54A00D58F83 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		4BBA71011F5DF9CE00B56A04 /* RFHighlightingTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFHighlightingTextStorage.h; path = Source/RFHighlightingTextStorage.h; sourceTree = "<group>"; };
 		4BBA71021F5DF9CE00B56A04 /* RFHighlightingTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFHighlightingTextStorage.m; path = Source/RFHighlightingTextStorage.m; sourceTree = "<group>"; };
+		4BD9D0C1242BF60600541D63 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLNode.m; path = Shared/HTMLParser/HTMLNode.m; sourceTree = SOURCE_ROOT; };
+		4BD9D0C2242BF60600541D63 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLNode.h; path = Shared/HTMLParser/HTMLNode.h; sourceTree = SOURCE_ROOT; };
+		4BD9D0C3242BF60600541D63 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = Shared/HTMLParser/HTMLParser.m; sourceTree = SOURCE_ROOT; };
+		4BD9D0C4242BF60600541D63 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = Shared/HTMLParser/HTMLParser.h; sourceTree = SOURCE_ROOT; };
+		4BD9D0C9242BF7D900541D63 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		4BED552122FC6D6A00F55BEB /* UITraitCollection+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UITraitCollection+Extras.h"; path = "Source/UITraitCollection+Extras.h"; sourceTree = "<group>"; };
 		4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UITraitCollection+Extras.m"; path = "Source/UITraitCollection+Extras.m"; sourceTree = "<group>"; };
 		4BF123EF1E882F3000B56138 /* RFFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFiltersController.h; path = Source/RFFiltersController.h; sourceTree = "<group>"; };
@@ -754,6 +764,7 @@
 				4B4BF25A21B1CE93002A84EE /* NYTPhotoViewer.framework in Frameworks */,
 				4BA910A21B84A54A00D58F83 /* Crashlytics.framework in Frameworks */,
 				4BA910A11B84A54A00D58F83 /* Fabric.framework in Frameworks */,
+				4BD9D0CA242BF7D900541D63 /* libxml2.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1039,6 +1050,7 @@
 				4B12BAEB1E9FBFC5000E559F /* 1Password */,
 				4B46631D1B8F51670034FC5C /* MarkupLabel */,
 				4BF8032D1B87AA2600D6670C /* UUToolbox */,
+				4BD9D0C0242BF5F800541D63 /* HTMLParser */,
 				4B1BAEFD1B852BC0008097F7 /* SSKeychain */,
 			);
 			name = Shared;
@@ -1072,6 +1084,7 @@
 		4BA9109E1B84A53A00D58F83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4BD9D0C9242BF7D900541D63 /* libxml2.2.dylib */,
 				4B75B72A2326BAE200725DDD /* AuthenticationServices.framework */,
 				4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */,
 				4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */,
@@ -1082,6 +1095,17 @@
 			);
 			name = Frameworks;
 			path = Snippets;
+			sourceTree = "<group>";
+		};
+		4BD9D0C0242BF5F800541D63 /* HTMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				4BD9D0C2242BF60600541D63 /* HTMLNode.h */,
+				4BD9D0C1242BF60600541D63 /* HTMLNode.m */,
+				4BD9D0C4242BF60600541D63 /* HTMLParser.h */,
+				4BD9D0C3242BF60600541D63 /* HTMLParser.m */,
+			);
+			name = HTMLParser;
 			sourceTree = "<group>";
 		};
 		4BF8032D1B87AA2600D6670C /* UUToolbox */ = {
@@ -1663,6 +1687,7 @@
 				4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */,
 				4B1EE1B4241B22EB004627F7 /* RFPost.m in Sources */,
 				4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */,
+				4BD9D0C6242BF60600541D63 /* HTMLParser.m in Sources */,
 				C5B48B3F2294E5A300776248 /* unzip.c in Sources */,
 				4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */,
 				4B2DC27922FE1AC00074D42A /* RFTagmojiController.m in Sources */,
@@ -1715,6 +1740,7 @@
 				C59C3B1E20923EFC0076A754 /* RFBlogTableViewCell.m in Sources */,
 				4B1EE1B1241AF040004627F7 /* RFPostCell.m in Sources */,
 				4B152832232729DF006F1DBE /* RFUsernameController.m in Sources */,
+				4BD9D0C5242BF60600541D63 /* HTMLNode.m in Sources */,
 				C5CED7171ECF792E0068F537 /* YUCIStarfieldGenerator.m in Sources */,
 				4BED552322FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */,
 				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
@@ -2187,6 +2213,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Shared/Carthage",
 				);
+				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = Snippets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2218,6 +2245,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Shared/Carthage",
 				);
+				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = Snippets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
