@@ -10,6 +10,7 @@
 
 #import "RFPostCell.h"
 #import "RFPost.h"
+#import "RFEditPostController.h"
 #import "UIBarButtonItem+Extras.h"
 #import "RFClient.h"
 #import "RFSettings.h"
@@ -111,6 +112,12 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	RFEditPostController* edit_controller = [segue destinationViewController];
+	edit_controller.post = self.selectedPost;
+}
+
 #pragma mark -
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -126,6 +133,12 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	[cell setupWithPost:post];
 	
 	return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	self.selectedPost = [self.currentPosts objectAtIndex:indexPath.row];
+	[self performSegueWithIdentifier:@"EditPostSegue" sender:self];
 }
 
 @end

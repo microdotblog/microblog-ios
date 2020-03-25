@@ -138,6 +138,7 @@
 		4BF123FA1E88301500B56138 /* RFFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123F91E88301500B56138 /* RFFilter.m */; };
 		4BF123FD1E88302B00B56138 /* RFFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123FC1E88302B00B56138 /* RFFilterCell.m */; };
 		4BF123FF1E88343600B56138 /* Filters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123FE1E88343600B56138 /* Filters.plist */; };
+		4BF13C69242C0B80009C6093 /* RFEditPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF13C68242C0B80009C6093 /* RFEditPostController.m */; };
 		4BF803451B87AA2C00D6670C /* UUAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803311B87AA2C00D6670C /* UUAlert.m */; };
 		4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803331B87AA2C00D6670C /* UUDataCache.m */; };
 		4BF803471B87AA2C00D6670C /* UUDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803351B87AA2C00D6670C /* UUDate.m */; };
@@ -555,6 +556,8 @@
 		4BF123FB1E88302B00B56138 /* RFFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFilterCell.h; path = Source/RFFilterCell.h; sourceTree = "<group>"; };
 		4BF123FC1E88302B00B56138 /* RFFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFFilterCell.m; path = Source/RFFilterCell.m; sourceTree = "<group>"; };
 		4BF123FE1E88343600B56138 /* Filters.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Filters.plist; path = Resources/Filters.plist; sourceTree = "<group>"; };
+		4BF13C67242C0B80009C6093 /* RFEditPostController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFEditPostController.h; path = Source/RFEditPostController.h; sourceTree = "<group>"; };
+		4BF13C68242C0B80009C6093 /* RFEditPostController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFEditPostController.m; path = Source/RFEditPostController.m; sourceTree = "<group>"; };
 		4BF803301B87AA2C00D6670C /* UUAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUAlert.h; path = Shared/UUToolbox/UUAlert.h; sourceTree = SOURCE_ROOT; };
 		4BF803311B87AA2C00D6670C /* UUAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UUAlert.m; path = Shared/UUToolbox/UUAlert.m; sourceTree = SOURCE_ROOT; };
 		4BF803321B87AA2C00D6670C /* UUDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UUDataCache.h; path = Shared/UUToolbox/UUDataCache.h; sourceTree = SOURCE_ROOT; };
@@ -894,6 +897,8 @@
 				4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */,
 				4B1EE1A9241AECA4004627F7 /* RFAllPostsController.h */,
 				4B1EE1AA241AECA4004627F7 /* RFAllPostsController.m */,
+				4BF13C67242C0B80009C6093 /* RFEditPostController.h */,
+				4BF13C68242C0B80009C6093 /* RFEditPostController.m */,
 				4B1EE1AF241AF040004627F7 /* RFPostCell.h */,
 				4B1EE1B0241AF040004627F7 /* RFPostCell.m */,
 				4B1EE1B3241B22EB004627F7 /* RFPost.h */,
@@ -1694,6 +1699,7 @@
 				4B2DC27F22FE1BD80074D42A /* RFTagmojiCell.m in Sources */,
 				C5B48B2B2294E59100776248 /* ZipFile.m in Sources */,
 				4B0D55521B93827D0076AD9F /* RFXMLRPCRequest.m in Sources */,
+				4BF13C69242C0B80009C6093 /* RFEditPostController.m in Sources */,
 				4B1BD2811D87548C00B3C93D /* RFHelpController.m in Sources */,
 				C5B48B2F2294E59100776248 /* FileInZipInfo.m in Sources */,
 				4B5078D11B965C79002A4F80 /* RFSettingsController.m in Sources */,
