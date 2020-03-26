@@ -69,4 +69,13 @@ static NSString* const kShortcutActionNewPost = @"com.riverfold.snippets.shortcu
 
 static NSString* const kDidJustUpdatePostPrefKey = @"DidJustUpdatePost";
 
+#define kEditPostNotification @"RFEditPostNotification"
+#define kEditPostIDKey @"post_id"
+
+#define kDeletePostNotification @"RFDeletePostNotification"
+#define kDeletePostIDKey @"post_id"
+
+#define kPublishPostNotification @"RFPublishPostNotification"
+#define kPublishPostIDKey @"post_id"
+
 #define APPSTORE 1

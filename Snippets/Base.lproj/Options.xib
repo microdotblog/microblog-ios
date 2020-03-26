@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFOptionsController">
             <connections>
                 <outlet property="defaultView" destination="Yfk-8I-dMD" id="Qku-gW-qIY"/>
+                <outlet property="editPostView" destination="rax-Me-zBf" id="YfF-L5-mqc"/>
+                <outlet property="editWithPublishView" destination="Lh4-Qx-5fH" id="hYc-j4-FOf"/>
                 <outlet property="view" destination="Yfk-8I-dMD" id="mtV-JX-RCz"/>
                 <outlet property="withDeleteView" destination="7eE-jX-OpT" id="SsN-eB-aT3"/>
                 <outlet property="withUnfavoriteView" destination="eOy-dA-XqP" id="u2u-9S-VX8"/>
@@ -83,7 +85,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="pFk-u0-PD6"/>
-            <point key="canvasLocation" x="471.5" y="207"/>
+            <point key="canvasLocation" x="511" y="184"/>
         </view>
         <view contentMode="scaleToFill" id="eOy-dA-XqP">
             <rect key="frame" x="0.0" y="0.0" width="328" height="44"/>
@@ -151,7 +153,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="UUf-Ds-mSz"/>
-            <point key="canvasLocation" x="475" y="303"/>
+            <point key="canvasLocation" x="518" y="286"/>
         </view>
         <view contentMode="scaleToFill" id="7eE-jX-OpT">
             <rect key="frame" x="0.0" y="0.0" width="228" height="44"/>
@@ -168,7 +170,7 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="deletePost:" destination="-1" eventType="touchUpInside" id="fPD-SH-mSH"/>
+                                <action selector="removePost:" destination="-1" eventType="touchUpInside" id="QRK-Oa-zbH"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucC-IH-NCh">
@@ -208,7 +210,110 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="gaH-KR-3wR"/>
-            <point key="canvasLocation" x="425" y="398"/>
+            <point key="canvasLocation" x="424" y="393"/>
+        </view>
+        <view contentMode="scaleToFill" id="rax-Me-zBf">
+            <rect key="frame" x="0.0" y="0.0" width="170" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-Ct-fpR">
+                    <rect key="frame" x="22" y="0.0" width="130" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tf5-fH-yyI">
+                            <rect key="frame" x="70" y="0.0" width="55" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Delete">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="deletePost:" destination="-1" eventType="touchUpInside" id="UY6-Rc-oWJ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPb-yG-m8p">
+                            <rect key="frame" x="5" y="0.0" width="55" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Edit">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="editPost:" destination="-1" eventType="touchUpInside" id="BEH-zf-2Sp"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="130" id="4KA-Zs-zOH"/>
+                        <constraint firstAttribute="height" constant="44" id="Nxw-6w-SPh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="gF4-Ct-fpR" firstAttribute="centerX" secondItem="DL6-bw-FSz" secondAttribute="centerX" constant="2" id="jCe-E6-3rI"/>
+                <constraint firstItem="gF4-Ct-fpR" firstAttribute="top" secondItem="DL6-bw-FSz" secondAttribute="top" id="qT0-4p-sNp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="DL6-bw-FSz"/>
+            <point key="canvasLocation" x="369" y="508"/>
+        </view>
+        <view contentMode="scaleToFill" id="Lh4-Qx-5fH">
+            <rect key="frame" x="0.0" y="0.0" width="228" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qjy-vf-2Fh">
+                    <rect key="frame" x="24" y="0.0" width="180" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CTM-by-vNm">
+                            <rect key="frame" x="55" y="0.0" width="55" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Delete">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="deletePost:" destination="-1" eventType="touchUpInside" id="Xwk-lp-q7y"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="950-Ni-k6o">
+                            <rect key="frame" x="0.0" y="0.0" width="39" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Edit">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="editPost:" destination="-1" eventType="touchUpInside" id="vVV-0G-JIQ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0T-wk-ose">
+                            <rect key="frame" x="125" y="0.0" width="55" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Publish">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="publishPost:" destination="-1" eventType="touchUpInside" id="WxZ-8V-RPF"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="180" id="QfL-Qy-PCB"/>
+                        <constraint firstAttribute="height" constant="44" id="kC0-a4-br6"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Qjy-vf-2Fh" firstAttribute="top" secondItem="8oK-4a-WCc" secondAttribute="top" id="VcH-Y2-bqB"/>
+                <constraint firstItem="Qjy-vf-2Fh" firstAttribute="centerX" secondItem="8oK-4a-WCc" secondAttribute="centerX" id="ogm-ja-B9b"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="8oK-4a-WCc"/>
+            <point key="canvasLocation" x="424" y="618"/>
         </view>
     </objects>
 </document>

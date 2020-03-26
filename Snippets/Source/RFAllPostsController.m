@@ -13,6 +13,7 @@
 #import "RFEditPostController.h"
 #import "RFSelectBlogViewController.h"
 #import "RFSwipeNavigationController.h"
+#import "RFOptionsController.h"
 #import "UIBarButtonItem+Extras.h"
 #import "RFClient.h"
 #import "RFSettings.h"
@@ -45,14 +46,14 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 
 	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:kDidJustUpdatePostPrefKey];
 
-	[[self swipeNavigationController] disableGesture];
+//	[[self swipeNavigationController] disableGesture];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
 	
-	[[self swipeNavigationController] enableGesture];
+//	[[self swipeNavigationController] enableGesture];
 }
 
 - (void) setupNavigation
@@ -68,6 +69,9 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 - (void) setupNotifications
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedBlogNotification:) name:kPostToBlogSelectedNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editPostNotification:) name:kEditPostNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deletePostNotification:) name:kDeletePostNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(publishPostNotification:) name:kPublishPostNotification object:nil];
 }
 
 - (void) setupBlogName
@@ -108,6 +112,7 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 			for (NSDictionary* item in items) {
 				RFPost* post = [[RFPost alloc] init];
 				NSDictionary* props = [item objectForKey:@"properties"];
+				post.postID = [[props objectForKey:@"uid"] firstObject];
 				post.title = [[props objectForKey:@"name"] firstObject];
 				post.text = [[props objectForKey:@"content"] firstObject];
 				post.url = [[props objectForKey:@"url"] firstObject];
@@ -217,11 +222,16 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	[self fetchPosts];
 }
 
-- (void) deletePostAtIndexPath:(NSIndexPath *)indexPath
+- (void) editPostNotification:(NSNotification *)notification
+{
+	[self performSegueWithIdentifier:@"EditPostSegue" sender:self];
+}
+
+- (void) deletePostNotification:(NSNotification *)notification
 {
 }
 
-- (void) publishPostAtIndexPath:(NSIndexPath *)indexPath
+- (void) publishPostNotification:(NSNotification *)notification
 {
 }
 
@@ -245,26 +255,20 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	self.selectedPost = [self.currentPosts objectAtIndex:indexPath.row];
-	[self performSegueWithIdentifier:@"EditPostSegue" sender:self];
-}
 
-- (NSArray *) tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
-	UITableViewRowAction* publish_action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Publish" handler:^(UITableViewRowAction* action, NSIndexPath* indexPath) {
-		[self publishPostAtIndexPath:indexPath];
-	}];
-
-	UITableViewRowAction* delete_action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction* action, NSIndexPath* indexPath) {
-		[self deletePostAtIndexPath:indexPath];
-	}];
-
-	RFPost* post = [self.currentPosts objectAtIndex:indexPath.row];
-	if (post.isDraft) {
-		return @[ delete_action, publish_action ];
-	}
-	else {
-		return @[ delete_action ];
-	}
+	RFDispatchMainAsync (^{
+		RFOptionsPopoverType popover_type = kOptionsPopoverEditPost;
+		if (self.selectedPost.isDraft) {
+			popover_type = kOptionsPopoverEditWithPublish;
+		}
+		
+		CGRect r = [tableView rectForRowAtIndexPath:indexPath];
+		NSString* post_id = [self.selectedPost.postID stringValue];
+		
+		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:post_id username:@"" popoverType:popover_type];
+		[options_controller attachToView:tableView atRect:r];
+		[self presentViewController:options_controller animated:YES completion:NULL];
+	});
 }
 
 @end

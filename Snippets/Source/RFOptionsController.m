@@ -44,6 +44,12 @@
 	else if (self.popoverType == kOptionsPopoverWithDelete) {
 		self.view = self.withDeleteView;
 	}
+	else if (self.popoverType == kOptionsPopoverEditPost) {
+		self.view = self.editPostView;
+	}
+	else if (self.popoverType == kOptionsPopoverEditWithPublish) {
+		self.view = self.editWithPublishView;
+	}
 
 	if ([UITraitCollection rf_isDarkMode]) {
 		self.view.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
@@ -128,7 +134,7 @@
 	}];
 }
 
-- (IBAction) deletePost:(id)sender
+- (IBAction) removePost:(id)sender
 {
 	[UUAlertViewController uuShowTwoButtonAlert:@"Remove this post?" message:@"If you are using an external blog such as WordPress, you should also remove the post from that blog." buttonOne:@"Cancel" buttonTwo:@"Remove" completionHandler:^(NSInteger buttonIndex) {
 		if (buttonIndex == 1) {
@@ -147,6 +153,31 @@
 {
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
 		[[NSNotificationCenter defaultCenter] postNotificationName:kSharePostNotification object:self userInfo:@{ kSharePostIDKey: self.postID }];
+	}];
+}
+
+- (IBAction) editPost:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kEditPostNotification object:self userInfo:@{ kEditPostIDKey: self.postID }];
+	}];
+}
+
+- (IBAction) deletePost:(id)sender
+{
+	[UUAlertViewController uuShowTwoButtonAlert:@"Delete this post?" message:@"This post will be deleted from your blog and removed from the timeline." buttonOne:@"Cancel" buttonTwo:@"Delete" completionHandler:^(NSInteger buttonIndex) {
+		if (buttonIndex == 1) {
+			[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+				[[NSNotificationCenter defaultCenter] postNotificationName:kDeletePostNotification object:self userInfo:@{ kDeletePostIDKey: self.postID }];
+			}];
+		}
+	}];
+}
+
+- (IBAction) publishPost:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kPublishPostNotification object:self userInfo:@{ kPublishPostIDKey: self.postID }];
 	}];
 }
 
