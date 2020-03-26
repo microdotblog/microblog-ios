@@ -213,14 +213,14 @@
             <point key="canvasLocation" x="424" y="393"/>
         </view>
         <view contentMode="scaleToFill" id="rax-Me-zBf">
-            <rect key="frame" x="0.0" y="0.0" width="170" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="161" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gF4-Ct-fpR">
-                    <rect key="frame" x="22" y="0.0" width="130" height="44"/>
+                    <rect key="frame" x="21" y="0.0" width="119" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tf5-fH-yyI">
-                            <rect key="frame" x="70" y="0.0" width="55" height="44"/>
+                            <rect key="frame" x="64" y="0.0" width="55" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Delete">
@@ -231,7 +231,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPb-yG-m8p">
-                            <rect key="frame" x="5" y="0.0" width="55" height="44"/>
+                            <rect key="frame" x="1" y="0.0" width="41" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Edit">
@@ -244,19 +244,19 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="130" id="4KA-Zs-zOH"/>
+                        <constraint firstAttribute="width" constant="119" id="4KA-Zs-zOH"/>
                         <constraint firstAttribute="height" constant="44" id="Nxw-6w-SPh"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="gF4-Ct-fpR" firstAttribute="centerX" secondItem="DL6-bw-FSz" secondAttribute="centerX" constant="2" id="jCe-E6-3rI"/>
+                <constraint firstItem="gF4-Ct-fpR" firstAttribute="centerX" secondItem="DL6-bw-FSz" secondAttribute="centerX" id="Any-Il-j8S"/>
                 <constraint firstItem="gF4-Ct-fpR" firstAttribute="top" secondItem="DL6-bw-FSz" secondAttribute="top" id="qT0-4p-sNp"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="DL6-bw-FSz"/>
-            <point key="canvasLocation" x="369" y="508"/>
+            <point key="canvasLocation" x="359.0625" y="507.04225352112678"/>
         </view>
         <view contentMode="scaleToFill" id="Lh4-Qx-5fH">
             <rect key="frame" x="0.0" y="0.0" width="228" height="44"/>
