@@ -128,8 +128,6 @@
 		4BBC298421B47CB3001E3BDB /* RFAutoCompleteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A515AD21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib */; };
 		4BD9D0C5242BF60600541D63 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C1242BF60600541D63 /* HTMLNode.m */; };
 		4BD9D0C6242BF60600541D63 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C3242BF60600541D63 /* HTMLParser.m */; };
-		4BD9D0CA242BF7D900541D63 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD9D0C9242BF7D900541D63 /* libxml2.2.dylib */; };
-		4BD9D0CB242BF7D900541D63 /* libxml2.2.dylib in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD9D0C9242BF7D900541D63 /* libxml2.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4BED552322FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */; };
 		4BED552422FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */; };
 		4BF123F11E882F3000B56138 /* RFFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123F01E882F3000B56138 /* RFFiltersController.m */; };
@@ -356,7 +354,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4BD9D0CB242BF7D900541D63 /* libxml2.2.dylib in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,7 +541,6 @@
 		4BD9D0C2242BF60600541D63 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLNode.h; path = Shared/HTMLParser/HTMLNode.h; sourceTree = SOURCE_ROOT; };
 		4BD9D0C3242BF60600541D63 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = Shared/HTMLParser/HTMLParser.m; sourceTree = SOURCE_ROOT; };
 		4BD9D0C4242BF60600541D63 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = Shared/HTMLParser/HTMLParser.h; sourceTree = SOURCE_ROOT; };
-		4BD9D0C9242BF7D900541D63 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		4BED552122FC6D6A00F55BEB /* UITraitCollection+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UITraitCollection+Extras.h"; path = "Source/UITraitCollection+Extras.h"; sourceTree = "<group>"; };
 		4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UITraitCollection+Extras.m"; path = "Source/UITraitCollection+Extras.m"; sourceTree = "<group>"; };
 		4BF123EF1E882F3000B56138 /* RFFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFiltersController.h; path = Source/RFFiltersController.h; sourceTree = "<group>"; };
@@ -767,7 +763,6 @@
 				4B4BF25A21B1CE93002A84EE /* NYTPhotoViewer.framework in Frameworks */,
 				4BA910A21B84A54A00D58F83 /* Crashlytics.framework in Frameworks */,
 				4BA910A11B84A54A00D58F83 /* Fabric.framework in Frameworks */,
-				4BD9D0CA242BF7D900541D63 /* libxml2.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1089,7 +1084,6 @@
 		4BA9109E1B84A53A00D58F83 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4BD9D0C9242BF7D900541D63 /* libxml2.2.dylib */,
 				4B75B72A2326BAE200725DDD /* AuthenticationServices.framework */,
 				4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */,
 				4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */,
@@ -2224,6 +2218,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.8;
+				OTHER_LDFLAGS = "-lxml2.2";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2256,6 +2251,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.8;
+				OTHER_LDFLAGS = "-lxml2.2";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";

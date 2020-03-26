@@ -6,11 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Book</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFExternalController">
             <connections>
@@ -36,7 +31,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="73" id="seJ-LC-t1a"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="web site URL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HQV-Pp-0XM">
@@ -44,7 +39,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="2ou-l5-Dsp"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" returnKeyType="next"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="Eo3-eP-EAz"/>

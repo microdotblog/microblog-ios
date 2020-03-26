@@ -62,8 +62,8 @@
                                     </constraints>
                                 </activityIndicatorView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now publishing to your microblog." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuZ-E2-gY3">
-                                    <rect key="frame" x="32" y="11" width="278" height="22"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                    <rect key="frame" x="32" y="12.5" width="278" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -85,8 +85,8 @@
                             <rect key="frame" x="0.0" y="44" width="320" height="44"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uf1-p8-p6f">
-                                    <rect key="frame" x="15" y="11" width="290" height="22"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                    <rect key="frame" x="15" y="12" width="290" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="kCa-Hw-xE9"/>
@@ -114,7 +114,7 @@
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7T-Eg-dhD">
                             <rect key="frame" x="10" y="98" width="300" height="330"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="twitter"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="A61-Zf-G8b"/>
@@ -200,7 +200,7 @@
                                         <constraint firstAttribute="height" constant="21" id="XLG-57-gjc"/>
                                         <constraint firstAttribute="width" constant="21" id="iiV-Ay-xJv"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -213,20 +213,20 @@
                                         <constraint firstAttribute="width" constant="33" id="Dic-57-FhP"/>
                                         <constraint firstAttribute="height" constant="30" id="a61-dy-Uyv"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWX-HH-zje">
-                                    <rect key="frame" x="35" y="13" width="33" height="21"/>
+                                    <rect key="frame" x="35" y="11" width="33" height="23"/>
                                     <accessibility key="accessibilityConfiguration">
                                         <bool key="isElement" value="NO"/>
                                     </accessibility>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="33" id="3Zd-LX-wKk"/>
-                                        <constraint firstAttribute="height" constant="21" id="Oil-Vo-vWL"/>
+                                        <constraint firstAttribute="height" constant="23" id="Oil-Vo-vWL"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -281,8 +281,8 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username.micro.blog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boh-G1-f3J">
-                                    <rect key="frame" x="143" y="6" width="136" height="22"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                    <rect key="frame" x="143" y="8.5" width="136" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -394,7 +394,7 @@
                                 <constraint firstAttribute="height" constant="24" id="0jo-Pq-HPJ"/>
                                 <constraint firstAttribute="width" constant="71" id="7xO-H2-eUk"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="16"/>
+                            <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>

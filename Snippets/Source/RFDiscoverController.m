@@ -170,7 +170,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				button.translatesAutoresizingMaskIntoConstraints = NO;
 				
 				[button setTitle:title forState:UIControlStateNormal];
-				button.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:15];
+				button.titleLabel.font = [UIFont systemFontOfSize:15];
 				[button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
 				[button.titleLabel sizeToFit];
 				button.tag = [self.tagmoji indexOfObject:dictionary];
