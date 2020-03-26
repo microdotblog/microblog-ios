@@ -147,6 +147,9 @@
                                         <state key="normal" title="me.micro.blog">
                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="blogHostnamePressed:" destination="jDs-uE-Nfa" eventType="touchUpInside" id="ZGI-GA-wlk"/>
+                                        </connections>
                                     </button>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="FQ3-UQ-x5T">
                                         <rect key="frame" x="20" y="22" width="20" height="20"/>
@@ -155,10 +158,13 @@
                                             <constraint firstAttribute="width" constant="20" id="nw7-qM-Yps"/>
                                         </constraints>
                                     </activityIndicatorView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pI7-Cd-mIv">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="pI7-Cd-mIv">
                                         <rect key="frame" x="228.5" y="15" width="165.5" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="jDs-uE-Nfa" id="KGU-Uu-ofQ"/>
+                                        </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnO-aC-LRJ" customClass="RFThinLineView">
                                         <rect key="frame" x="0.0" y="63" width="414" height="1"/>
@@ -218,7 +224,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="75p-As-EpM">
-                                <rect key="frame" x="10" y="55" width="394" height="667"/>
+                                <rect key="frame" x="10" y="55" width="394" height="743"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -254,7 +260,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="575-aV-Gbc" firstAttribute="trailing" secondItem="leh-wl-yUE" secondAttribute="trailing" id="7wa-s9-bkH"/>
-                            <constraint firstItem="leh-wl-yUE" firstAttribute="bottom" secondItem="75p-As-EpM" secondAttribute="bottom" constant="86" id="GEb-ez-6Ad"/>
+                            <constraint firstItem="leh-wl-yUE" firstAttribute="bottom" secondItem="75p-As-EpM" secondAttribute="bottom" constant="10" id="GEb-ez-6Ad"/>
                             <constraint firstAttribute="trailing" secondItem="aRr-Xh-gYu" secondAttribute="trailing" id="KWi-sn-ckD"/>
                             <constraint firstItem="leh-wl-yUE" firstAttribute="trailing" secondItem="75p-As-EpM" secondAttribute="trailing" constant="10" id="TdE-1X-4nR"/>
                             <constraint firstItem="aRr-Xh-gYu" firstAttribute="top" secondItem="575-aV-Gbc" secondAttribute="bottom" id="XKI-yd-a2c"/>
@@ -268,6 +274,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="3uy-wh-vau"/>
                     <connections>
+                        <outlet property="bottomConstraint" destination="GEb-ez-6Ad" id="jfH-WP-MFM"/>
                         <outlet property="textView" destination="75p-As-EpM" id="G3l-c2-6Dk"/>
                         <outlet property="titleField" destination="rz3-5G-RGc" id="xUx-bg-VkL"/>
                     </connections>

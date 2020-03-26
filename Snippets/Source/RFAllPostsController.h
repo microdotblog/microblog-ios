@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class RFPost;
 
-@interface RFAllPostsController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface RFAllPostsController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* progressSpinner;
 @property (strong, nonatomic) IBOutlet UIButton* hostnameButton;

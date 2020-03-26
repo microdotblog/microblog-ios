@@ -103,10 +103,10 @@
 - (void) setupFont
 {
 	CGFloat fontsize = [UIFont rf_preferredTimelineFontSize];
-	self.fullNameLabel.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
-	self.blogAddressLabel.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
-	self.bioLabel.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
-	self.moreButton.titleLabel.font = [UIFont fontWithName:@"Avenir-Book" size:fontsize];
+	self.fullNameLabel.font = [UIFont systemFontOfSize:fontsize];
+	self.blogAddressLabel.font = [UIFont systemFontOfSize:fontsize];
+	self.bioLabel.font = [UIFont systemFontOfSize:fontsize];
+	self.moreButton.titleLabel.font = [UIFont systemFontOfSize:fontsize];
 }
 
 - (void) checkFollowing

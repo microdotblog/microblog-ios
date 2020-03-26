@@ -11,9 +11,11 @@
 #import "RFPostCell.h"
 #import "RFPost.h"
 #import "RFEditPostController.h"
+#import "RFSelectBlogViewController.h"
 #import "UIBarButtonItem+Extras.h"
 #import "RFClient.h"
 #import "RFSettings.h"
+#import "RFConstants.h"
 #import "RFMacros.h"
 #import "UUDate.h"
 
@@ -26,8 +28,21 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	[super viewDidLoad];
 	
 	[self setupNavigation];
+	[self setupNotifications];
 	
 	[self fetchPosts];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:kDidJustUpdatePostPrefKey]) {
+		self.searchField.text = @"";
+		[self fetchPosts];
+	}
+
+	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:kDidJustUpdatePostPrefKey];
 }
 
 - (void) setupNavigation
@@ -38,6 +53,11 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	if (self.navigationController.topViewController != root_controller) {
 		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 	}
+}
+
+- (void) setupNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedBlogNotification:) name:kPostToBlogSelectedNotification object:nil];
 }
 
 - (void) setupBlogName
@@ -107,15 +127,71 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	}];
 }
 
+- (void) searchPosts:(NSString *)text
+{
+	NSString* q = [text lowercaseString];
+	if (q.length == 0) {
+		self.currentPosts = self.allPosts;
+	}
+	else {
+		NSMutableArray* filtered_posts = [NSMutableArray array];
+		for (RFPost* post in self.allPosts) {
+			if ([[post.title lowercaseString] containsString:q] || [[post.text lowercaseString] containsString:q]) {
+				[filtered_posts addObject:post];
+			}
+		}
+		
+		self.currentPosts = filtered_posts;
+	}
+	
+	[self.tableView reloadData];
+}
+
 - (void) back:(id)sender
 {
 	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction) blogHostnamePressed:(id)sender
+{
+	NSArray* blogs = [RFSettings blogList];
+	if (blogs.count > 1) {
+		UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Blogs" bundle:nil];
+		UIViewController* controller = [storyboard instantiateViewControllerWithIdentifier:@"BlogsNavigation"];
+		[self presentViewController:controller animated:NO completion:NULL];
+	}
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+	RFDispatchMainAsync(^{
+		[self.searchField resignFirstResponder];
+		[self searchPosts:self.searchField.text];
+	});
+
+	return YES;
+}
+
+- (BOOL) textFieldShouldClear:(UITextField *)textField
+{
+	RFDispatchMainAsync(^{
+		[self.searchField resignFirstResponder];
+		[self searchPosts:@""];
+	});
+
+	return YES;
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	RFEditPostController* edit_controller = [segue destinationViewController];
 	edit_controller.post = self.selectedPost;
+}
+
+- (void) selectedBlogNotification:(NSNotification *)notification
+{
+	[self setupBlogName];
+	[self fetchPosts];
 }
 
 #pragma mark -

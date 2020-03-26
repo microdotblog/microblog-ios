@@ -9,10 +9,15 @@
 #import "RFEditPostController.h"
 
 #import "RFPost.h"
+#import "RFClient.h"
+#import "RFMacros.h"
+#import "RFConstants.h"
+#import "RFSettings.h"
 #import "RFHighlightingTextStorage.h"
 #import "UIBarButtonItem+Extras.h"
 #import "UITraitCollection+Extras.h"
 #import "UIFont+Extras.h"
+#import "UUAlert.h"
 
 @implementation RFEditPostController
 
@@ -21,6 +26,7 @@
 	[super viewDidLoad];
 		
 	[self setupNavigation];
+	[self setupNotifications];
 	[self setupTitle];
 	[self setupText];
 }
@@ -36,6 +42,13 @@
 	else {
 		self.navigationItem.rightBarButtonItem.tintColor = [UIColor blackColor];
 	}
+}
+
+- (void) setupNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangePreferredContentSize:) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
 
 - (void) setupFont
@@ -119,6 +132,63 @@
 
 - (void) sendPost:(id)sender
 {
+	NSString* destination_uid = [RFSettings selectedBlogUid];
+	if (destination_uid == nil) {
+		destination_uid = @"";
+	}
+
+	NSDictionary* info = @{
+		@"action": @"update",
+		@"url": self.post.url,
+		@"mp-destination": destination_uid,
+		@"replace": @{
+			@"name": self.titleField.text,
+			@"content": self.textView.text
+		}
+	};
+
+	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
+	[client postWithObject:info completion:^(UUHttpResponse* response) {
+		RFDispatchMainAsync (^{
+			if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
+				NSString* msg = response.parsedResponse[@"error_description"];
+				[UUAlertViewController uuShowOneButtonAlert:@"Error Sending Post" message:msg button:@"OK" completionHandler:NULL];
+			}
+			else {
+				[[NSUserDefaults standardUserDefaults] setBool:YES forKey:kDidJustUpdatePostPrefKey];
+				[self.navigationController popViewControllerAnimated:YES];
+			}
+		});
+	}];
+}
+
+- (void) keyboardWillShowNotification:(NSNotification*)notification
+{
+    NSDictionary* info = [notification userInfo];
+    CGRect kb_r = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//	CGFloat kb_bottom = self.view.bounds.size.height - kb_r.origin.y;
+	CGFloat kb_bottom = 0 - kb_r.size.height;
+	if (@available(iOS 11.0, *)) {
+		kb_bottom = kb_bottom + self.view.safeAreaInsets.bottom;
+	}
+	
+	[UIView animateWithDuration:0.3 animations:^{
+		self.bottomConstraint.constant = kb_bottom;
+		[self.view layoutIfNeeded];
+	}];
+}
+ 
+- (void) keyboardWillHideNotification:(NSNotification*)aNotification
+{
+	[UIView animateWithDuration:0.3 animations:^{
+		self.bottomConstraint.constant = 0;
+		[self.view layoutIfNeeded];
+	}];
+}
+
+- (void) didChangePreferredContentSize:(NSNotification *)notification
+{
+	[self setupFont];
 }
 
 @end

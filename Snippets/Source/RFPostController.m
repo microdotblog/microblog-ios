@@ -182,7 +182,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		[RFSettings setPreferredContentSize:content_size];
 	#endif
 
-	self.textView.font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
+	self.textView.font = [UIFont systemFontOfSize:[UIFont rf_preferredPostingFontSize]];
 }
 
 - (void) setupText
@@ -245,7 +245,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 
 	NSDictionary* attr_info = @{
-		NSFontAttributeName: [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]]
+		NSFontAttributeName: [UIFont systemFontOfSize:[UIFont rf_preferredPostingFontSize]]
 	};
 	NSAttributedString* attr_s = [[NSAttributedString alloc] initWithString:s attributes:attr_info];
 	self.textView.attributedText = attr_s;

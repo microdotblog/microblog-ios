@@ -67,4 +67,6 @@ static NSString* const kResetDetailControllerKey = @"controller";
 
 static NSString* const kShortcutActionNewPost = @"com.riverfold.snippets.shortcut.post";
 
+static NSString* const kDidJustUpdatePostPrefKey = @"DidJustUpdatePost";
+
 #define APPSTORE 1
