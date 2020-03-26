@@ -12,6 +12,7 @@
 #import "RFPost.h"
 #import "RFEditPostController.h"
 #import "RFSelectBlogViewController.h"
+#import "RFSwipeNavigationController.h"
 #import "UIBarButtonItem+Extras.h"
 #import "RFClient.h"
 #import "RFSettings.h"
@@ -29,7 +30,7 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	
 	[self setupNavigation];
 	[self setupNotifications];
-	
+		
 	[self fetchPosts];
 }
 
@@ -43,6 +44,15 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	}
 
 	[[NSUserDefaults standardUserDefaults] setBool:NO forKey:kDidJustUpdatePostPrefKey];
+
+	[[self swipeNavigationController] disableGesture];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	
+	[[self swipeNavigationController] enableGesture];
 }
 
 - (void) setupNavigation
@@ -147,6 +157,17 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	[self.tableView reloadData];
 }
 
+- (RFSwipeNavigationController *) swipeNavigationController
+{
+	if ([self.navigationController isKindOfClass:[RFSwipeNavigationController class]]) {
+		RFSwipeNavigationController* nav_controller = (RFSwipeNavigationController *)self.navigationController;
+		return nav_controller;
+	}
+	else {
+		return nil;
+	}
+}
+
 - (void) back:(id)sender
 {
 	[self.navigationController popViewControllerAnimated:YES];
@@ -196,6 +217,14 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	[self fetchPosts];
 }
 
+- (void) deletePostAtIndexPath:(NSIndexPath *)indexPath
+{
+}
+
+- (void) publishPostAtIndexPath:(NSIndexPath *)indexPath
+{
+}
+
 #pragma mark -
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -217,6 +246,25 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 {
 	self.selectedPost = [self.currentPosts objectAtIndex:indexPath.row];
 	[self performSegueWithIdentifier:@"EditPostSegue" sender:self];
+}
+
+- (NSArray *) tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+	UITableViewRowAction* publish_action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"Publish" handler:^(UITableViewRowAction* action, NSIndexPath* indexPath) {
+		[self publishPostAtIndexPath:indexPath];
+	}];
+
+	UITableViewRowAction* delete_action = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Delete" handler:^(UITableViewRowAction* action, NSIndexPath* indexPath) {
+		[self deletePostAtIndexPath:indexPath];
+	}];
+
+	RFPost* post = [self.currentPosts objectAtIndex:indexPath.row];
+	if (post.isDraft) {
+		return @[ delete_action, publish_action ];
+	}
+	else {
+		return @[ delete_action ];
+	}
 }
 
 @end

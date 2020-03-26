@@ -20,4 +20,7 @@
 
 - (id) initWithRootViewController:(UIViewController *)controller;
 
+- (void) enableGesture;
+- (void) disableGesture;
+
 @end

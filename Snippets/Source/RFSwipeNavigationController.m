@@ -24,16 +24,26 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 {
 	self = [super initWithRootViewController:controller];
 	if (self) {
-		[self setupGesture];
+		[self enableGesture];
 	}
 	
 	return self;
 }
 
-- (void) setupGesture
+- (void) enableGesture
 {
-	self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
-	[self.view addGestureRecognizer:self.panGesture];
+	if (self.panGesture == nil) {
+		self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+		[self.view addGestureRecognizer:self.panGesture];
+	}
+}
+
+- (void) disableGesture
+{
+	if (self.panGesture) {
+		[self.view removeGestureRecognizer:self.panGesture];
+		self.panGesture = nil;
+	}
 }
 
 - (void) panGesture:(UIPanGestureRecognizer *)gesture
