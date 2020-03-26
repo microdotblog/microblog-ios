@@ -16,5 +16,6 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* progressSpinner;
 
 @property (strong, nonatomic) NSArray* blogs; // NSDictionary (uid, name)
+@property (assign, nonatomic) BOOL isCancelable;
 
 @end

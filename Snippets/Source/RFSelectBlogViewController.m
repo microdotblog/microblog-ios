@@ -11,10 +11,7 @@
 #import "RFClient.h"
 #import "UUAlert.h"
 #import "RFSettings.h"
-
-@interface RFSelectBlogViewController ()
-
-@end
+#import "UIBarButtonItem+Extras.h"
 
 @implementation RFSelectBlogViewController
 
@@ -22,7 +19,9 @@
 {
 	[super viewDidLoad];
 	
+	[self setupNavigation];
 	[self setupTable];
+	
 	[self fetchBlogs];
 }
 
@@ -31,6 +30,13 @@
 	[super viewWillAppear:animated];
 	
 	[self clearSelection];
+}
+
+- (void) setupNavigation
+{
+	if (self.isCancelable) {
+		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(cancel:)];
+	}
 }
 
 - (void) setupTable

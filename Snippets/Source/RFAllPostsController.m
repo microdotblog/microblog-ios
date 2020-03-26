@@ -158,7 +158,9 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	if (blogs.count > 1) {
 		UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Blogs" bundle:nil];
 		UIViewController* controller = [storyboard instantiateViewControllerWithIdentifier:@"BlogsNavigation"];
-		[self presentViewController:controller animated:NO completion:NULL];
+		RFSelectBlogViewController* select_controller = [controller.childViewControllers firstObject];
+		select_controller.isCancelable = YES;
+		[self presentViewController:controller animated:YES completion:NULL];
 	}
 }
 
