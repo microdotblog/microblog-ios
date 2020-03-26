@@ -19,6 +19,10 @@
 		content_size = UIContentSizeCategoryMedium;
     }
 
+	UIFont* font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+	CGFloat result = font.pointSize;
+
+#if 0
 	NSDictionary* body_sizes = @{
 		UIContentSizeCategoryAccessibilityExtraExtraExtraLarge: @21,
 		UIContentSizeCategoryAccessibilityExtraExtraLarge: @20,
@@ -41,7 +45,8 @@
 	
 	// make it a little because Avenir is smaller than San Francisco
 	result = result + 1.0;
-	
+#endif
+
 	return result;
 }
 
