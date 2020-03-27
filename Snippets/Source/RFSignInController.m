@@ -338,6 +338,15 @@
 		{
 			if (blogs.count > 1)
 			{
+				// set the blog info for the current default
+				for (NSDictionary* blogInfo in blogs) {
+					if ([blogInfo[@"name"] isEqualToString:[RFSettings accountDefaultSite]]) {
+						[RFSettings setSelectedBlogInfo:blogInfo];
+						break;
+					}
+				}
+			
+				// prompt for them to select a client-side default
 				UIViewController* savedParent = self.presentingViewController;
 				dispatch_async(dispatch_get_main_queue(), ^
 				{
@@ -353,6 +362,7 @@
 			}
 			else
 			{
+				// only 1 blog, set it as default
 				NSDictionary* blogInfo = blogs.firstObject;
 				[RFSettings setSelectedBlogInfo:blogInfo];
 				[self completeLoginProcess];
