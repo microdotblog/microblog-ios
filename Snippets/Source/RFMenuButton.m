@@ -12,11 +12,31 @@
 
 @implementation RFMenuButton
 
+- (void) awakeFromNib
+{
+	[super awakeFromNib];
+	
+	[self setImage:nil forState:UIControlStateHighlighted];
+	[self setImage:nil forState:UIControlStateSelected];
+}
+
 - (void) setHighlighted:(BOOL)highlighted
 {
 	[super setHighlighted:highlighted];
 
-	if (highlighted) {
+	[self updateStateBackground];
+}
+
+- (void) setSelected:(BOOL)selected
+{
+	[super setSelected:selected];
+
+	[self updateStateBackground];
+}
+
+- (void) updateStateBackground
+{
+	if (self.isHighlighted || self.isSelected) {
 		if ([UITraitCollection rf_isDarkMode]) {
 			self.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
 		}

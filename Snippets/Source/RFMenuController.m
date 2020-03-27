@@ -43,6 +43,7 @@
 	[super viewDidLoad];
 	
 	[self setupNavigation];
+	[self setupDefaultSource];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -65,6 +66,11 @@
 	else {
 		self.navigationItem.rightBarButtonItem = nil;
 	}
+}
+
+- (void) setupDefaultSource
+{
+	self.timelineButton.selected = YES;
 }
 
 - (void) setupProfileInfo
@@ -153,6 +159,16 @@
 	return commands;
 }
 
+- (void) deselectMenuExceptButton:(UIButton *)selectedButton
+{
+	NSArray* buttons = @[ self.timelineButton, self.mentionsButton, self.favoritesButton, self.discoverButton, self.postsButton, self.helpButton, self.settingsButton ];
+	for (UIButton* button in buttons) {
+		if (button != selectedButton) {
+			button.selected = NO;
+		}
+	}
+}
+
 #pragma mark -
 
 - (IBAction) promptNewPost:(id)sender
@@ -182,12 +198,9 @@
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] init];
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
-}
-
-- (IBAction) showDiscover:(id)sender
-{
-	RFDiscoverController* timeline_controller = [[RFDiscoverController alloc] initWithEndpoint:@"/hybrid/discover" title:@"Discover"];
-	[self notifyResetDetail:timeline_controller];
+	
+	self.timelineButton.selected = YES;
+	[self deselectMenuExceptButton:self.timelineButton];
 }
 
 - (IBAction) showMentions:(id)sender
@@ -195,6 +208,9 @@
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/mentions" title:@"Mentions"];
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
+
+	self.mentionsButton.selected = YES;
+	[self deselectMenuExceptButton:self.mentionsButton];
 }
 
 - (IBAction) showFavorites:(id)sender
@@ -202,6 +218,18 @@
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/favorites" title:@"Favorites"];
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
+
+	self.favoritesButton.selected = YES;
+	[self deselectMenuExceptButton:self.favoritesButton];
+}
+
+- (IBAction) showDiscover:(id)sender
+{
+	RFDiscoverController* timeline_controller = [[RFDiscoverController alloc] initWithEndpoint:@"/hybrid/discover" title:@"Discover"];
+	[self notifyResetDetail:timeline_controller];
+
+	self.discoverButton.selected = YES;
+	[self deselectMenuExceptButton:self.discoverButton];
 }
 
 - (IBAction) showPosts:(id)sender
@@ -209,18 +237,27 @@
 	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"AllPosts" bundle:nil];
 	UIViewController* posts_controller = [storyboard instantiateInitialViewController];
 	[self notifyResetDetail:posts_controller];
+
+	self.postsButton.selected = YES;
+	[self deselectMenuExceptButton:self.postsButton];
 }
 
 - (IBAction) showHelp:(id)sender
 {
 	RFHelpController* help_controller = [[RFHelpController alloc] init];
 	[self notifyResetDetail:help_controller];
+
+	self.helpButton.selected = YES;
+	[self deselectMenuExceptButton:self.helpButton];
 }
 
 - (IBAction) showSettings:(id)sender
 {
 	RFSettingsController* settings_controller = [[RFSettingsController alloc] init];
 	[self notifyResetDetail:settings_controller];
+
+	self.settingsButton.selected = YES;
+	[self deselectMenuExceptButton:self.settingsButton];
 }
 
 - (IBAction) signOut:(id)sender

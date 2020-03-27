@@ -10,10 +10,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFMenuController">
             <connections>
                 <outlet property="discoverButton" destination="d4o-xs-Ush" id="kQc-iC-ekg"/>
-                <outlet property="discoverField" destination="B96-Lt-v68" id="Jho-2q-Vfx"/>
-                <outlet property="discoverLine" destination="61T-Br-Mwy" id="Gsr-ts-bXo"/>
+                <outlet property="favoritesButton" destination="6ar-f3-m0t" id="nfI-Cx-Y5T"/>
                 <outlet property="fullNameField" destination="Plj-M6-Zcz" id="lfl-8c-9Bk"/>
+                <outlet property="helpButton" destination="tYz-RX-OS1" id="PvP-XG-fUV"/>
+                <outlet property="mentionsButton" destination="EkV-QU-esD" id="6S6-mY-Q9Z"/>
+                <outlet property="postsButton" destination="2p6-oe-Qb5" id="oaf-iG-Xka"/>
                 <outlet property="profileImageView" destination="lne-rP-Pd0" id="haM-sZ-0kf"/>
+                <outlet property="settingsButton" destination="ZSH-re-ZTc" id="oto-bv-JPG"/>
+                <outlet property="timelineButton" destination="v4I-5E-llr" id="o2M-p9-J7F"/>
                 <outlet property="usernameField" destination="A4s-dV-BQU" id="ccA-hB-cJH"/>
                 <outlet property="view" destination="iN0-l3-epB" id="TxN-9C-G01"/>
             </connections>
@@ -70,19 +74,6 @@
                         <constraint firstItem="Plj-M6-Zcz" firstAttribute="leading" secondItem="lne-rP-Pd0" secondAttribute="trailing" constant="8" id="zld-qk-UIM"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2p6-oe-Qb5" customClass="RFMenuButton">
-                    <rect key="frame" x="0.0" y="281" width="375" height="50"/>
-                    <accessibility key="accessibilityConfiguration" label="Discover"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="cXE-eq-kdR"/>
-                    </constraints>
-                    <state key="normal">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="showPosts:" destination="-1" eventType="touchUpInside" id="lA9-cz-idi"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpy-sz-TRe">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
                     <accessibility key="accessibilityConfiguration" label="User profile"/>
@@ -90,7 +81,7 @@
                         <action selector="showUserProfile:" destination="-1" eventType="touchUpInside" id="qg3-eK-ym2"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4I-5E-llr" customClass="RFMenuButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4I-5E-llr" customClass="RFMenuButton">
                     <rect key="frame" x="0.0" y="81" width="375" height="50"/>
                     <accessibility key="accessibilityConfiguration" label="Timeline"/>
                     <constraints>
@@ -100,20 +91,17 @@
                         <action selector="showTimeline:" destination="-1" eventType="touchUpInside" id="7BH-6V-DX9"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkV-QU-esD" customClass="RFMenuButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EkV-QU-esD" customClass="RFMenuButton">
                     <rect key="frame" x="0.0" y="131" width="375" height="50"/>
                     <accessibility key="accessibilityConfiguration" label="Mentions"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="iHJ-7E-UbC"/>
                     </constraints>
-                    <state key="normal">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
                     <connections>
                         <action selector="showMentions:" destination="-1" eventType="touchUpInside" id="foE-0w-VO1"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ar-f3-m0t" customClass="RFMenuButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ar-f3-m0t" customClass="RFMenuButton">
                     <rect key="frame" x="0.0" y="181" width="375" height="50"/>
                     <accessibility key="accessibilityConfiguration" label="Favorites"/>
                     <constraints>
@@ -126,33 +114,33 @@
                         <action selector="showFavorites:" destination="-1" eventType="touchUpInside" id="ZB2-TN-Y6X"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cml-0g-CCo" customClass="RFMenuButton">
-                    <rect key="frame" x="0.0" y="728" width="375" height="50"/>
-                    <accessibility key="accessibilityConfiguration" label="Sign out"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4o-xs-Ush" customClass="RFMenuButton">
+                    <rect key="frame" x="0.0" y="231" width="375" height="50"/>
+                    <accessibility key="accessibilityConfiguration" label="Discover"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="RHD-Q2-hoa"/>
+                        <constraint firstAttribute="height" constant="50" id="pGp-f0-Rzb"/>
                     </constraints>
                     <state key="normal">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="signOut:" destination="-1" eventType="touchUpInside" id="pcc-zP-hvd"/>
+                        <action selector="showDiscover:" destination="-1" eventType="touchUpInside" id="Lrr-yd-7Lg"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSH-re-ZTc" customClass="RFMenuButton">
-                    <rect key="frame" x="0.0" y="678" width="375" height="50"/>
-                    <accessibility key="accessibilityConfiguration" label="Settings"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2p6-oe-Qb5" customClass="RFMenuButton">
+                    <rect key="frame" x="0.0" y="281" width="375" height="50"/>
+                    <accessibility key="accessibilityConfiguration" label="Discover"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="IGa-gw-2GG"/>
+                        <constraint firstAttribute="height" constant="50" id="cXE-eq-kdR"/>
                     </constraints>
                     <state key="normal">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="showSettings:" destination="-1" eventType="touchUpInside" id="Bum-pj-GH7"/>
+                        <action selector="showPosts:" destination="-1" eventType="touchUpInside" id="lA9-cz-idi"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYz-RX-OS1" customClass="RFMenuButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYz-RX-OS1" customClass="RFMenuButton">
                     <rect key="frame" x="0.0" y="628" width="375" height="50"/>
                     <accessibility key="accessibilityConfiguration" label="View help"/>
                     <constraints>
@@ -165,17 +153,30 @@
                         <action selector="showHelp:" destination="-1" eventType="touchUpInside" id="wJh-jN-23I"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4o-xs-Ush" customClass="RFMenuButton">
-                    <rect key="frame" x="0.0" y="231" width="375" height="50"/>
-                    <accessibility key="accessibilityConfiguration" label="Discover"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSH-re-ZTc" customClass="RFMenuButton">
+                    <rect key="frame" x="0.0" y="678" width="375" height="50"/>
+                    <accessibility key="accessibilityConfiguration" label="Settings"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="pGp-f0-Rzb"/>
+                        <constraint firstAttribute="height" constant="50" id="IGa-gw-2GG"/>
                     </constraints>
                     <state key="normal">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="showDiscover:" destination="-1" eventType="touchUpInside" id="Lrr-yd-7Lg"/>
+                        <action selector="showSettings:" destination="-1" eventType="touchUpInside" id="Bum-pj-GH7"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cml-0g-CCo" customClass="RFMenuButton">
+                    <rect key="frame" x="0.0" y="728" width="375" height="50"/>
+                    <accessibility key="accessibilityConfiguration" label="Sign out"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="RHD-Q2-hoa"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="signOut:" destination="-1" eventType="touchUpInside" id="pcc-zP-hvd"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timeline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOe-L8-xaI">
