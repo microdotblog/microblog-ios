@@ -60,23 +60,33 @@
 	dispatch_async(dispatch_get_main_queue(), ^
 	{
 		RFPopupNotificationViewController* vc = [RFPopupNotificationViewController new];
-		CGFloat margin = 4.0;
+		CGFloat margin = 6.0;
 		CGRect f = vc.view.frame;
-		f.origin.y = -f.size.height;
-		f.origin.x = margin;
-		f.size.width = controller.view.bounds.size.width - (margin * 2);
-		
-		vc.view.frame = f;
+		CGFloat offscreen_y = -f.size.height;
+
 		[controller.view addSubview:vc.view];
-		[controller addChildViewController:vc];
-		
+
+		NSLayoutConstraint* top_constraint = [NSLayoutConstraint constraintWithItem:vc.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:controller.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:offscreen_y];
+		[top_constraint setActive:YES];
+		NSLayoutConstraint* left_constraint = [NSLayoutConstraint constraintWithItem:vc.view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:controller.view attribute:NSLayoutAttributeLeading multiplier:1.0 constant:margin];
+		[left_constraint setActive:YES];
+		NSLayoutConstraint* right_constraint = [NSLayoutConstraint constraintWithItem:vc.view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:controller.view attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-margin];
+		[right_constraint setActive:YES];
+		NSLayoutConstraint* height_constraint = [NSLayoutConstraint constraintWithItem:vc.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:68.0];
+		[height_constraint setActive:YES];
+
+		[controller.view layoutIfNeeded];
+
 		vc.messageLabel.text = body;
 		vc.completionHandler = completionBlock;
 		
 		vc.view.layer.cornerRadius = 10.0;
 		vc.view.layer.borderWidth = 0.5;
 		vc.view.layer.masksToBounds = YES;
-		vc.view.layer.borderColor = UIColor.lightGrayColor.CGColor;
+		
+		if (@available(iOS 11.0, *)) {
+			vc.view.layer.borderColor = [UIColor colorNamed:@"color_notification_outline"].CGColor;
+		}
 
 		if (username.length > 0) {
 			NSString* profile_s = [NSString stringWithFormat:@"https://micro.blog/%@/avatar.jpg", username];
@@ -86,10 +96,10 @@
 			}];
 		}
 
-		f.origin.y = 44;
-		[UIView animateWithDuration:0.5 animations:^
+		[UIView animateWithDuration:0.3 animations:^
 		{
-			vc.view.frame = f;
+			top_constraint.constant = 44.0;
+			[controller.view layoutIfNeeded];
 		}
 		completion:^(BOOL finished)
 		{

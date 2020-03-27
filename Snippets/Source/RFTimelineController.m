@@ -21,6 +21,7 @@
 #import "UITraitCollection+Extras.h"
 #import "SSKeychain.h"
 #import "RFMacros.h"
+#import "RFPopupNotificationViewController.h"
 
 @import SafariServices;
 @import NYTPhotoViewer;
@@ -312,7 +313,7 @@
 	
 	RFPostController* post_controller = [[RFPostController alloc] initWithReplyTo:post_id replyUsername:post_username];
 	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
-	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];	
 }
 
 - (void) refreshTimeline
