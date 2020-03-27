@@ -20,6 +20,7 @@
 #import "RFConstants.h"
 #import "RFMacros.h"
 #import "UUDate.h"
+#import "UUAlert.h"
 
 static NSString* const kPostCellIdentifier = @"PostCell";
 
@@ -229,10 +230,67 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 
 - (void) deletePostNotification:(NSNotification *)notification
 {
+	if (self.selectedPost) {
+		NSString* destination_uid = [RFSettings selectedBlogUid];
+		if (destination_uid == nil) {
+			destination_uid = @"";
+		}
+
+		NSDictionary* info = @{
+			@"action": @"delete",
+			@"url": self.selectedPost.url,
+			@"mp-destination": destination_uid
+		};
+
+		RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
+		[client postWithObject:info completion:^(UUHttpResponse* response) {
+			RFDispatchMainAsync (^{
+				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
+					NSString* msg = response.parsedResponse[@"error_description"];
+					[UUAlertViewController uuShowOneButtonAlert:@"Error Deleting Post" message:msg button:@"OK" completionHandler:NULL];
+				}
+				else {
+					[self fetchPosts];
+				}
+			});
+		}];
+	}
 }
 
 - (void) publishPostNotification:(NSNotification *)notification
 {
+	if (self.selectedPost) {
+		NSString* destination_uid = [RFSettings selectedBlogUid];
+		if (destination_uid == nil) {
+			destination_uid = @"";
+		}
+
+		NSString* post_status = @"published";
+
+		NSDictionary* info = @{
+			@"action": @"update",
+			@"url": self.selectedPost.url,
+			@"mp-destination": destination_uid,
+			@"replace": @{
+				@"name": self.selectedPost.title,
+				@"content": self.selectedPost.text,
+				@"post-status": post_status
+			}
+		};
+
+		RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
+		[client postWithObject:info completion:^(UUHttpResponse* response) {
+			RFDispatchMainAsync (^{
+				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
+					NSString* msg = response.parsedResponse[@"error_description"];
+					[UUAlertViewController uuShowOneButtonAlert:@"Error Updating Post" message:msg button:@"OK" completionHandler:NULL];
+				}
+				else {
+					[self fetchPosts];
+				}
+			});
+		}];
+	}
 }
 
 #pragma mark -

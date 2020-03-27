@@ -137,13 +137,19 @@
 		destination_uid = @"";
 	}
 
+	NSString* post_status = @"";
+	if (self.post.isDraft) {
+		post_status = @"draft";
+	}
+
 	NSDictionary* info = @{
 		@"action": @"update",
 		@"url": self.post.url,
 		@"mp-destination": destination_uid,
 		@"replace": @{
 			@"name": self.titleField.text,
-			@"content": self.textView.text
+			@"content": self.textView.text,
+			@"post-status": post_status
 		}
 	};
 
