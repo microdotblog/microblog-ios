@@ -426,7 +426,10 @@
 	NSRange paragraph_r = NSMakeRange (0, self.string.length);
 //	UIFont* normal_font = [UIFont fontWithName:@"Avenir-Book" size:[UIFont rf_preferredPostingFontSize]];
 	UIFont* normal_font = [UIFont systemFontOfSize:[UIFont rf_preferredPostingFontSize]];
-	UIColor* c = [UIColor colorNamed:@"color_editing_paragraph"];
+	UIColor* c = [UIColor blackColor];
+	if (@available(iOS 11, *)) {
+		c = [UIColor colorNamed:@"color_editing_paragraph"];
+	}
 	[self safe_removeAttribute:NSForegroundColorAttributeName range:paragraph_r];
 	[self safe_removeAttribute:NSFontAttributeName range:paragraph_r];
 	[self safe_addAttribute:NSFontAttributeName value:normal_font range:paragraph_r];

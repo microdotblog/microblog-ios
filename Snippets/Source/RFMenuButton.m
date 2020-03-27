@@ -36,12 +36,15 @@
 
 - (void) updateStateBackground
 {
-	if (self.isHighlighted || self.isSelected) {
-		if ([UITraitCollection rf_isDarkMode]) {
-			self.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1.0];
+	if (@available(iOS 11, *)) {
+		if (self.isHighlighted) {
+			self.backgroundColor = [UIColor colorNamed:@"color_menu_button_highlighted"];
+		}
+		else if (self.isSelected) {
+			self.backgroundColor = [UIColor colorNamed:@"color_menu_button_selected"];
 		}
 		else {
-			self.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+			self.backgroundColor = [UIColor clearColor];
 		}
 	}
 	else {
