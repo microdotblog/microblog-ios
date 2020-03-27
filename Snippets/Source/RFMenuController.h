@@ -21,5 +21,7 @@
 @property (strong, nonatomic) IBOutlet UIButton* postsButton;
 @property (strong, nonatomic) IBOutlet UIButton* helpButton;
 @property (strong, nonatomic) IBOutlet UIButton* settingsButton;
+@property (strong, nonatomic) IBOutlet UIView* postsDivider;
+@property (strong, nonatomic) IBOutlet UILabel* postsField;
 
 @end

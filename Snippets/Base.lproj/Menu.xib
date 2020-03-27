@@ -15,6 +15,8 @@
                 <outlet property="helpButton" destination="tYz-RX-OS1" id="PvP-XG-fUV"/>
                 <outlet property="mentionsButton" destination="EkV-QU-esD" id="6S6-mY-Q9Z"/>
                 <outlet property="postsButton" destination="2p6-oe-Qb5" id="oaf-iG-Xka"/>
+                <outlet property="postsDivider" destination="qqo-hG-PyP" id="O57-ue-g0w"/>
+                <outlet property="postsField" destination="vjX-5B-ORx" id="t3B-AE-iH8"/>
                 <outlet property="profileImageView" destination="lne-rP-Pd0" id="haM-sZ-0kf"/>
                 <outlet property="settingsButton" destination="ZSH-re-ZTc" id="oto-bv-JPG"/>
                 <outlet property="timelineButton" destination="v4I-5E-llr" id="o2M-p9-J7F"/>
@@ -27,13 +29,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqo-hG-PyP" customClass="RFThinLineView">
-                    <rect key="frame" x="0.0" y="331" width="375" height="1"/>
-                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="8UC-bG-UaC"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKu-aF-vwl">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
                     <subviews>
@@ -312,6 +307,13 @@
                     <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="XhD-Qh-qGm"/>
+                    </constraints>
+                </view>
+                <view opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqo-hG-PyP" customClass="RFThinLineView">
+                    <rect key="frame" x="0.0" y="331" width="375" height="1"/>
+                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="8UC-bG-UaC"/>
                     </constraints>
                 </view>
                 <view opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61T-Br-Mwy" customClass="RFThinLineView">

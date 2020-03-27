@@ -44,6 +44,7 @@
 	
 	[self setupNavigation];
 	[self setupDefaultSource];
+	[self setupPostsButton];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -71,6 +72,15 @@
 - (void) setupDefaultSource
 {
 	self.timelineButton.selected = YES;
+}
+
+- (void) setupPostsButton
+{
+	if (![RFSettings hasSnippetsBlog]) {
+		self.postsDivider.hidden = YES;
+		self.postsButton.hidden = YES;
+		self.postsField.hidden = YES;
+	}
 }
 
 - (void) setupProfileInfo
