@@ -4,6 +4,7 @@
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -70,12 +71,22 @@
                                 <constraint firstItem="ZwK-7k-lNR" firstAttribute="leading" secondItem="p07-RB-zhL" secondAttribute="leading" id="ngE-0T-tcM"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kC-Jy-agA" customClass="RFBottomLineView">
+                            <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                            <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="eRp-3y-qeR"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="LRx-YB-TN4" secondAttribute="bottom" constant="4" id="BMa-uI-MA5"/>
+                        <constraint firstAttribute="trailing" secondItem="5kC-Jy-agA" secondAttribute="trailing" id="BWA-8U-Zaq"/>
+                        <constraint firstAttribute="bottom" secondItem="5kC-Jy-agA" secondAttribute="bottom" id="E1j-zC-cBv"/>
                         <constraint firstItem="LRx-YB-TN4" firstAttribute="centerY" secondItem="qEO-4T-5wM" secondAttribute="centerY" id="NV5-xH-4Zh"/>
                         <constraint firstItem="p07-RB-zhL" firstAttribute="top" secondItem="qEO-4T-5wM" secondAttribute="top" constant="8" id="OXj-aB-kpg"/>
+                        <constraint firstItem="5kC-Jy-agA" firstAttribute="leading" secondItem="qEO-4T-5wM" secondAttribute="leading" id="Poy-Z9-bFl"/>
                         <constraint firstItem="LRx-YB-TN4" firstAttribute="leading" secondItem="qEO-4T-5wM" secondAttribute="leading" constant="10" id="VJg-He-PdE"/>
                         <constraint firstItem="LRx-YB-TN4" firstAttribute="top" secondItem="qEO-4T-5wM" secondAttribute="top" constant="4" id="ZcP-OQ-Ztt"/>
                         <constraint firstAttribute="trailing" secondItem="p07-RB-zhL" secondAttribute="trailing" constant="8" id="le4-aB-HyM"/>
@@ -90,8 +101,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UX-qU-MK7">
                             <rect key="frame" x="8" y="8" width="200" height="191"/>
                             <subviews>
-                                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gmc-tU-QVO">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="189"/>
+                                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gmc-tU-QVO">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="191"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="200" id="lcD-gr-bSg"/>
@@ -99,10 +110,12 @@
                                     <viewLayoutGuide key="safeArea" id="Pep-Ac-b82"/>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" secondItem="gmc-tU-QVO" secondAttribute="height" id="6Ab-5x-Rpc"/>
                                 <constraint firstAttribute="width" secondItem="gmc-tU-QVO" secondAttribute="width" id="F3Y-Es-qMO"/>
+                                <constraint firstItem="gmc-tU-QVO" firstAttribute="centerY" secondItem="5UX-qU-MK7" secondAttribute="centerY" id="NaJ-02-9dB"/>
+                                <constraint firstItem="gmc-tU-QVO" firstAttribute="centerX" secondItem="5UX-qU-MK7" secondAttribute="centerX" id="dbb-iF-Ec0"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qro-9P-b2E">
@@ -138,7 +151,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="color_emoji_picker_background"/>
                     <constraints>
                         <constraint firstItem="Qro-9P-b2E" firstAttribute="top" secondItem="iyu-gX-rVp" secondAttribute="bottom" constant="12" id="6H4-c7-XyY"/>
                         <constraint firstAttribute="bottom" secondItem="Qro-9P-b2E" secondAttribute="bottom" constant="12" id="CUi-VG-biv"/>
@@ -172,5 +185,8 @@
     </objects>
     <resources>
         <image name="zoomButton" width="40" height="40"/>
+        <namedColor name="color_emoji_picker_background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

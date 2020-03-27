@@ -126,12 +126,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     [self updateTagmoji:NO];
     
     self.emojiPickerView.clipsToBounds = YES;
-    if ([UITraitCollection rf_isDarkMode]) {
-		self.emojiPickerView.layer.borderColor = UIColor.darkGrayColor.CGColor;
-    }
-    else {
-		self.emojiPickerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
-    }
+	if (@available(iOS 11.0, *)) {
+		self.emojiPickerView.layer.borderColor = [UIColor colorNamed:@"color_emoji_button_outline"].CGColor;
+	}
+	else {
+		self.emojiPickerView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+	}
     self.emojiPickerView.layer.borderWidth = 1.0;
     self.emojiPickerView.layer.cornerRadius = 5.0;
 }
