@@ -172,11 +172,7 @@
 {
     NSDictionary* info = [notification userInfo];
     CGRect kb_r = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-//	CGFloat kb_bottom = self.view.bounds.size.height - kb_r.origin.y;
-	CGFloat kb_bottom = 0 - kb_r.size.height;
-	if (@available(iOS 11.0, *)) {
-		kb_bottom = kb_bottom + self.view.safeAreaInsets.bottom;
-	}
+	CGFloat kb_bottom = 10 + kb_r.size.height;
 	
 	[UIView animateWithDuration:0.3 animations:^{
 		self.bottomConstraint.constant = kb_bottom;
@@ -187,7 +183,7 @@
 - (void) keyboardWillHideNotification:(NSNotification*)aNotification
 {
 	[UIView animateWithDuration:0.3 animations:^{
-		self.bottomConstraint.constant = 0;
+		self.bottomConstraint.constant = 10;
 		[self.view layoutIfNeeded];
 	}];
 }
