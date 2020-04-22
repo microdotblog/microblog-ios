@@ -17,11 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) IBOutlet UITextField* titleField;
 @property (strong, nonatomic) IBOutlet UITextView* textView;
 @property (strong, nonatomic) IBOutlet UILabel* remainingField;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint* bottomConstraint;
 
 @property (strong, nonatomic) RFPost* post;
 @property (strong, nonatomic) id textStorage;
 @property (strong, nonatomic) NSLayoutManager* textLayout;
+@property (strong, nonatomic) NSLayoutConstraint* bottomConstraint;
 
 @end
 

@@ -99,6 +99,10 @@
 		else if (old_c.secondItem == old_textview) {
 			NSLayoutConstraint* c = [NSLayoutConstraint constraintWithItem:old_c.firstItem attribute:old_c.firstAttribute relatedBy:old_c.relation toItem:self.textView attribute:old_c.secondAttribute multiplier:old_c.multiplier constant:old_c.constant];
 			[c setActive:YES];
+
+			if (old_c.firstAttribute == NSLayoutAttributeBottom) {
+				self.bottomConstraint = c;
+			}
 		}
 	}
 
