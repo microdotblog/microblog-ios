@@ -117,13 +117,15 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 			self.revealedView = controller.view;
 			revealed_r.origin.x = 0;
 			if ([controller isKindOfClass:[RFMenuController class]]) {
+				RFMenuController* menu_controller = (RFMenuController *)controller;
 				revealed_r.origin.y = [self.view.window rf_statusBarAndNavigationHeight];
 				revealed_r.size.height = revealed_r.size.height - [self.view.window rf_statusBarAndNavigationHeight];
+				menu_controller.bottomConstraint.constant = [self.view rf_bottomSafeArea];				
 			}
 			[self.view insertSubview:self.revealedView belowSubview:v];
 			[self.view sendSubviewToBack:self.revealedView];
 			self.revealedView.frame = revealed_r;
-
+			
 			if ([UITraitCollection rf_isDarkMode]) {
 				v.layer.shadowColor = [UIColor blackColor].CGColor;
 			}

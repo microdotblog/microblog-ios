@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFMenuController">
             <connections>
+                <outlet property="bottomConstraint" destination="NeW-8T-zV5" id="9aJ-KZ-ckJ"/>
                 <outlet property="discoverButton" destination="d4o-xs-Ush" id="kQc-iC-ekg"/>
                 <outlet property="favoritesButton" destination="6ar-f3-m0t" id="nfI-Cx-Y5T"/>
                 <outlet property="fullNameField" destination="Plj-M6-Zcz" id="lfl-8c-9Bk"/>
@@ -25,7 +26,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RFMenuView">
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="RFMenuView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -136,7 +137,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tYz-RX-OS1" customClass="RFMenuButton">
-                    <rect key="frame" x="0.0" y="628" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="662" width="375" height="50"/>
                     <accessibility key="accessibilityConfiguration" label="View help"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="zI4-Fp-MEL"/>
@@ -149,7 +150,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSH-re-ZTc" customClass="RFMenuButton">
-                    <rect key="frame" x="0.0" y="678" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="712" width="375" height="50"/>
                     <accessibility key="accessibilityConfiguration" label="Settings"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="IGa-gw-2GG"/>
@@ -162,7 +163,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cml-0g-CCo" customClass="RFMenuButton">
-                    <rect key="frame" x="0.0" y="728" width="375" height="50"/>
+                    <rect key="frame" x="0.0" y="762" width="375" height="50"/>
                     <accessibility key="accessibilityConfiguration" label="Sign out"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="RHD-Q2-hoa"/>
@@ -232,7 +233,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llw-bA-pNb">
-                    <rect key="frame" x="14" y="643" width="78" height="20.333333333333371"/>
+                    <rect key="frame" x="14" y="677" width="78" height="20.333333333333371"/>
                     <accessibility key="accessibilityConfiguration">
                         <bool key="isElement" value="NO"/>
                     </accessibility>
@@ -244,7 +245,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wW-WR-XZH">
-                    <rect key="frame" x="14" y="693" width="78" height="20.333333333333371"/>
+                    <rect key="frame" x="14" y="727" width="78" height="20.333333333333371"/>
                     <accessibility key="accessibilityConfiguration">
                         <bool key="isElement" value="NO"/>
                     </accessibility>
@@ -256,7 +257,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Out" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sym-oT-SMk">
-                    <rect key="frame" x="14" y="743" width="78" height="20.333333333333371"/>
+                    <rect key="frame" x="14" y="777" width="78" height="20.333333333333371"/>
                     <accessibility key="accessibilityConfiguration">
                         <bool key="isElement" value="NO"/>
                     </accessibility>
@@ -289,21 +290,21 @@
                     </constraints>
                 </view>
                 <view opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B4S-QT-5lv" customClass="RFThinLineView">
-                    <rect key="frame" x="0.0" y="728" width="375" height="1"/>
+                    <rect key="frame" x="0.0" y="762" width="375" height="1"/>
                     <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="A15-Jd-9qI"/>
                     </constraints>
                 </view>
                 <view opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tM4-jm-6Ab" customClass="RFThinLineView">
-                    <rect key="frame" x="0.0" y="677" width="375" height="1"/>
+                    <rect key="frame" x="0.0" y="711" width="375" height="1"/>
                     <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="VM8-uF-9iu"/>
                     </constraints>
                 </view>
                 <view opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpR-ef-4dr" customClass="RFThinLineView">
-                    <rect key="frame" x="0.0" y="627" width="375" height="1"/>
+                    <rect key="frame" x="0.0" y="661" width="375" height="1"/>
                     <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="XhD-Qh-qGm"/>

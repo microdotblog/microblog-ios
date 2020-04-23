@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (CGFloat) rf_statusBarHeight;
 - (CGFloat) rf_statusBarAndNavigationHeight;
+- (CGFloat) rf_bottomSafeArea;
 
 @end
 

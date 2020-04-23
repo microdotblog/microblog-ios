@@ -47,4 +47,23 @@
 	return [self rf_statusBarHeight] + 44.0;
 }
 
+- (CGFloat) rf_bottomSafeArea
+{
+	CGFloat result = 0;
+	
+	UIWindow* win = self.window;
+	
+#ifndef SHARING_EXTENSION
+	if (win == nil) {
+		win = [[[UIApplication sharedApplication] windows] firstObject];
+	}
+#endif
+
+	if (@available(iOS 11.0, *)) {
+		result = win.safeAreaInsets.bottom;
+	}
+	
+	return result;
+}
+
 @end

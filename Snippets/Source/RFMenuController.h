@@ -23,5 +23,6 @@
 @property (strong, nonatomic) IBOutlet UIButton* settingsButton;
 @property (strong, nonatomic) IBOutlet UIView* postsDivider;
 @property (strong, nonatomic) IBOutlet UILabel* postsField;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint* bottomConstraint;
 
 @end
