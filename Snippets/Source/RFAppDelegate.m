@@ -327,6 +327,7 @@
 	self.splitViewController = [[UISplitViewController alloc] init];
 	self.splitViewController.delegate = self;
     self.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
+    self.splitViewController.preferredPrimaryColumnWidthFraction = 0.3;
 
 	self.self.menuNavController = [[RFSwipeNavigationController alloc] initWithRootViewController:self.menuController];
 	self.navigationController = [[RFSwipeNavigationController alloc] initWithRootViewController:self.timelineController];
