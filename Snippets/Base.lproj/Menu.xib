@@ -34,7 +34,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@manton" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4s-dV-BQU">
-                            <rect key="frame" x="80" y="44" width="235" height="21"/>
+                            <rect key="frame" x="80" y="44" width="275" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="USR-Bt-AWl"/>
                             </constraints>
@@ -49,7 +49,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manton Reece" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Plj-M6-Zcz">
-                            <rect key="frame" x="80" y="20" width="235" height="21"/>
+                            <rect key="frame" x="80" y="20" width="275" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="lE5-zn-TIb"/>
                             </constraints>
@@ -60,10 +60,10 @@
                     <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="A4s-dV-BQU" secondAttribute="bottom" constant="16" id="3ue-yd-mue"/>
-                        <constraint firstAttribute="trailing" secondItem="A4s-dV-BQU" secondAttribute="trailing" constant="60" id="72O-cI-Lcx"/>
+                        <constraint firstAttribute="trailing" secondItem="A4s-dV-BQU" secondAttribute="trailing" constant="20" id="72O-cI-Lcx"/>
                         <constraint firstItem="A4s-dV-BQU" firstAttribute="leading" secondItem="lne-rP-Pd0" secondAttribute="trailing" constant="8" id="A6n-WU-inI"/>
                         <constraint firstItem="lne-rP-Pd0" firstAttribute="top" secondItem="sKu-aF-vwl" secondAttribute="top" constant="11" id="IVC-MF-eoo"/>
-                        <constraint firstAttribute="trailing" secondItem="Plj-M6-Zcz" secondAttribute="trailing" constant="60" id="bY7-oK-Hme"/>
+                        <constraint firstAttribute="trailing" secondItem="Plj-M6-Zcz" secondAttribute="trailing" constant="20" id="bY7-oK-Hme"/>
                         <constraint firstItem="Plj-M6-Zcz" firstAttribute="top" secondItem="sKu-aF-vwl" secondAttribute="top" constant="20" id="boa-mf-hug"/>
                         <constraint firstAttribute="height" constant="81" id="ltL-VD-D2C"/>
                         <constraint firstItem="lne-rP-Pd0" firstAttribute="leading" secondItem="sKu-aF-vwl" secondAttribute="leading" constant="12" id="xws-o6-uH0"/>
