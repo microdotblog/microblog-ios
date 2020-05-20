@@ -381,7 +381,13 @@
 	CGFloat fontsize = [UIFont rf_preferredTimelineFontSize];
 	long darkmode = [UITraitCollection rf_isDarkMode];
 
-	RFClient* client = [[RFClient alloc] initWithFormat:@"%@?width=%d&fontsize=%f&darkmode=%ld", self.endpoint, width, fontsize, darkmode];
+	// if URL already contains ?, don't append it
+	NSString* params_separator = @"?";
+	if ([self.endpoint containsString:@"?"]) {
+		params_separator = @"&";
+	}
+	
+	RFClient* client = [[RFClient alloc] initWithFormat:@"%@%@width=%d&fontsize=%f&darkmode=%ld", self.endpoint, params_separator, width, fontsize, darkmode];
 	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:client.url]]];
 }
 
