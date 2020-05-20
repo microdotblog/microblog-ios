@@ -118,8 +118,10 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 			revealed_r.origin.x = 0;
 			if ([controller isKindOfClass:[RFMenuController class]]) {
 				RFMenuController* menu_controller = (RFMenuController *)controller;
-				revealed_r.origin.y = [self.view.window rf_statusBarAndNavigationHeight];
-				revealed_r.size.height = revealed_r.size.height - [self.view.window rf_statusBarAndNavigationHeight];
+				CGFloat top_height = [self.view.window rf_statusBarHeight];
+				top_height += self.navigationBar.frame.size.height;
+				revealed_r.origin.y = top_height;
+				revealed_r.size.height = revealed_r.size.height - top_height;
 				menu_controller.bottomConstraint.constant = [self.view rf_bottomSafeArea];				
 			}
 			[self.view insertSubview:self.revealedView belowSubview:v];
@@ -153,7 +155,9 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 	else if (self.isSwipingForward) {
 		if (self.revealedView == nil) {
 			self.revealedView = self.nextController.view;
-			revealed_r.origin.y = [self.view.window rf_statusBarAndNavigationHeight];
+			CGFloat top_height = [self.view.window rf_statusBarHeight];
+			top_height += self.navigationBar.frame.size.height;
+			revealed_r.origin.y = top_height;
 			revealed_r.origin.x = v.bounds.size.width;
 			[self.view insertSubview:self.revealedView aboveSubview:v];
 			[self.view bringSubviewToFront:self.revealedView];

@@ -119,7 +119,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	[super viewWillAppear:animated];
 
-	self.progressHeaderTopConstraint.constant = 0; // [self.view rf_statusBarAndNavigationHeight];
+	self.progressHeaderTopConstraint.constant = 0;
 	self.progressHeaderHeightConstraint.constant = 0.0;
 	self.progressHeaderView.alpha = 0.0;
 
