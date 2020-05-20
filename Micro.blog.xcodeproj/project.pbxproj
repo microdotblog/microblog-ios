@@ -41,6 +41,7 @@
 		4B1F7FEB22526CDA00E8AF3E /* Upgrade.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE4225269E100E8AF3E /* Upgrade.xib */; };
 		4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */; };
 		4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */; };
+		4B2D93E32475CFFD000A6135 /* NYTPhotoViewer+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2D93E22475CFFD000A6135 /* NYTPhotoViewer+Extras.m */; };
 		4B2DC27922FE1AC00074D42A /* RFTagmojiController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DC27822FE1AC00074D42A /* RFTagmojiController.m */; };
 		4B2DC27C22FE1AEE0074D42A /* Tagmoji.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2DC27A22FE1AEE0074D42A /* Tagmoji.xib */; };
 		4B2DC27F22FE1BD80074D42A /* RFTagmojiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DC27E22FE1BD80074D42A /* RFTagmojiCell.m */; };
@@ -423,6 +424,8 @@
 		4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFMenuButton.m; path = Source/RFMenuButton.m; sourceTree = "<group>"; };
 		4B27AA8B1EB3F18D00CC3F3A /* RFDiscoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFDiscoverController.h; path = Source/RFDiscoverController.h; sourceTree = "<group>"; };
 		4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFDiscoverController.m; path = Source/RFDiscoverController.m; sourceTree = "<group>"; };
+		4B2D93E12475CFFD000A6135 /* NYTPhotoViewer+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NYTPhotoViewer+Extras.h"; path = "Source/NYTPhotoViewer+Extras.h"; sourceTree = "<group>"; };
+		4B2D93E22475CFFD000A6135 /* NYTPhotoViewer+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NYTPhotoViewer+Extras.m"; path = "Source/NYTPhotoViewer+Extras.m"; sourceTree = "<group>"; };
 		4B2DC27722FE1AC00074D42A /* RFTagmojiController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFTagmojiController.h; path = Source/RFTagmojiController.h; sourceTree = "<group>"; };
 		4B2DC27822FE1AC00074D42A /* RFTagmojiController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFTagmojiController.m; path = Source/RFTagmojiController.m; sourceTree = "<group>"; };
 		4B2DC27B22FE1AEE0074D42A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Tagmoji.xib; sourceTree = "<group>"; };
@@ -976,6 +979,8 @@
 				4B821C7C21B428CD006CE005 /* UIView+Extras.m */,
 				4BED552122FC6D6A00F55BEB /* UITraitCollection+Extras.h */,
 				4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */,
+				4B2D93E12475CFFD000A6135 /* NYTPhotoViewer+Extras.h */,
+				4B2D93E22475CFFD000A6135 /* NYTPhotoViewer+Extras.m */,
 				4B1712D91F069FB200267045 /* RFMenuView.h */,
 				4B1712DA1F069FB200267045 /* RFMenuView.m */,
 				C59C3B1C20923EFC0076A754 /* RFBlogTableViewCell.h */,
@@ -1666,6 +1671,7 @@
 				4BF8034D1B87AA2C00D6670C /* UUImageView.m in Sources */,
 				4B0D554F1B9381550076AD9F /* RFXMLRPCParser.m in Sources */,
 				C5CED71B1ECF792E0068F537 /* YUCITriangularPixellate.m in Sources */,
+				4B2D93E32475CFFD000A6135 /* NYTPhotoViewer+Extras.m in Sources */,
 				4B87147A1E64C56A00C69589 /* RFXMLLinkParser.m in Sources */,
 				4B400D192025270900C71AAF /* RFFeedCell.m in Sources */,
 				4B1EE1AB241AECA4004627F7 /* RFAllPostsController.m in Sources */,
