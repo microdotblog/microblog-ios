@@ -2210,7 +2210,7 @@
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 241;
+				CURRENT_PROJECT_VERSION = 242;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				ENABLE_BITCODE = NO;
@@ -2223,7 +2223,7 @@
 				INFOPLIST_FILE = Snippets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.8.3;
+				MARKETING_VERSION = 2.0;
 				OTHER_LDFLAGS = "-lxml2.2";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
@@ -2243,7 +2243,7 @@
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 241;
+				CURRENT_PROJECT_VERSION = 242;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				ENABLE_BITCODE = NO;
@@ -2256,7 +2256,7 @@
 				INFOPLIST_FILE = Snippets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.8.3;
+				MARKETING_VERSION = 2.0;
 				OTHER_LDFLAGS = "-lxml2.2";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
@@ -2287,7 +2287,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 241;
+				CURRENT_PROJECT_VERSION = 242;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2298,7 +2298,7 @@
 				INFOPLIST_FILE = "Micro.blog Sharing/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.8.3;
+				MARKETING_VERSION = 2.0;
 				OTHER_CFLAGS = "-DSHARING_EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios.sharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2327,7 +2327,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 241;
+				CURRENT_PROJECT_VERSION = 242;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2337,7 +2337,7 @@
 				INFOPLIST_FILE = "Micro.blog Sharing/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 1.8.3;
+				MARKETING_VERSION = 2.0;
 				OTHER_CFLAGS = "-DSHARING_EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios.sharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
