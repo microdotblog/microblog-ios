@@ -17,16 +17,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENO-h7-3An">
-                        <rect key="frame" x="20" y="16.5" width="256" height="21"/>
+                        <rect key="frame" x="12" y="16.5" width="268" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="ENO-h7-3An" secondAttribute="trailing" constant="16" id="C37-Hd-x3E"/>
-                    <constraint firstItem="ENO-h7-3An" firstAttribute="leading" secondItem="Cm8-3O-2JH" secondAttribute="leading" constant="20" symbolic="YES" id="vGT-fD-4Gf"/>
-                    <constraint firstItem="ENO-h7-3An" firstAttribute="centerY" secondItem="Cm8-3O-2JH" secondAttribute="centerY" id="yvB-Ls-VHd"/>
+                    <constraint firstItem="ENO-h7-3An" firstAttribute="centerY" secondItem="Cm8-3O-2JH" secondAttribute="centerY" id="2pr-2J-Eed"/>
+                    <constraint firstItem="ENO-h7-3An" firstAttribute="leading" secondItem="Cm8-3O-2JH" secondAttribute="leading" constant="12" id="CHC-dl-hmO"/>
+                    <constraint firstAttribute="trailing" secondItem="ENO-h7-3An" secondAttribute="trailing" constant="12" id="KzM-Ui-8u5"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

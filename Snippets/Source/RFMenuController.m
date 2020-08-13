@@ -47,7 +47,6 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	
 	[self setupNavigation];
 	[self setupDefaultSource];
-	[self setupPostsButton];
 	[self setupTable];
 }
 
@@ -75,16 +74,8 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (void) setupDefaultSource
 {
-//	self.timelineButton.selected = YES;
-}
-
-- (void) setupPostsButton
-{
-	if (![RFSettings hasSnippetsBlog]) {
-//		self.postsDivider.hidden = YES;
-//		self.postsButton.hidden = YES;
-//		self.postsField.hidden = YES;
-	}
+	NSIndexPath* index_path = [NSIndexPath indexPathForRow:0 inSection:0];
+	[self.tableView selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (void) setupProfileInfo
@@ -117,13 +108,15 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	[self.menuItems addObject:@"Discover"];
 
 	[self.menuItems addObject:@""];
+
+	if ([RFSettings hasSnippetsBlog]) {
+		[self.menuItems addObject:@"Posts"];
+		[self.menuItems addObject:@"Pages"];
+		[self.menuItems addObject:@"Uploads"];
+
+		[self.menuItems addObject:@""];
+	}
 	
-	[self.menuItems addObject:@"Posts"];
-	[self.menuItems addObject:@"Pages"];
-	[self.menuItems addObject:@"Uploads"];
-
-	[self.menuItems addObject:@""];
-
 	[self.menuItems addObject:@"Help"];
 	[self.menuItems addObject:@"Settings"];
 	[self.menuItems addObject:@"Sign Out"];
@@ -197,16 +190,6 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	return commands;
 }
 
-- (void) deselectMenuExceptButton:(UIButton *)selectedButton
-{
-//	NSArray* buttons = @[ self.timelineButton, self.mentionsButton, self.favoritesButton, self.discoverButton, self.postsButton, self.helpButton, self.settingsButton ];
-//	for (UIButton* button in buttons) {
-//		if (button != selectedButton) {
-//			button.selected = NO;
-//		}
-//	}
-}
-
 #pragma mark -
 
 - (IBAction) promptNewPost:(id)sender
@@ -236,9 +219,6 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] init];
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
-	
-//	self.timelineButton.selected = YES;
-//	[self deselectMenuExceptButton:self.timelineButton];
 }
 
 - (IBAction) showMentions:(id)sender
@@ -246,9 +226,6 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/mentions" title:@"Mentions"];
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
-
-//	self.mentionsButton.selected = YES;
-//	[self deselectMenuExceptButton:self.mentionsButton];
 }
 
 - (IBAction) showFavorites:(id)sender
@@ -256,18 +233,12 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/favorites" title:@"Favorites"];
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
-
-//	self.favoritesButton.selected = YES;
-//	[self deselectMenuExceptButton:self.favoritesButton];
 }
 
 - (IBAction) showDiscover:(id)sender
 {
 	RFDiscoverController* timeline_controller = [[RFDiscoverController alloc] initWithEndpoint:@"/hybrid/discover" title:@"Discover"];
 	[self notifyResetDetail:timeline_controller];
-
-//	self.discoverButton.selected = YES;
-//	[self deselectMenuExceptButton:self.discoverButton];
 }
 
 - (IBAction) showPosts:(id)sender
@@ -275,27 +246,26 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"AllPosts" bundle:nil];
 	UIViewController* posts_controller = [storyboard instantiateInitialViewController];
 	[self notifyResetDetail:posts_controller];
+}
 
-//	self.postsButton.selected = YES;
-//	[self deselectMenuExceptButton:self.postsButton];
+- (IBAction) showPages:(id)sender
+{
+}
+
+- (IBAction) showUploads:(id)sender
+{
 }
 
 - (IBAction) showHelp:(id)sender
 {
 	RFHelpController* help_controller = [[RFHelpController alloc] init];
 	[self notifyResetDetail:help_controller];
-
-//	self.helpButton.selected = YES;
-//	[self deselectMenuExceptButton:self.helpButton];
 }
 
 - (IBAction) showSettings:(id)sender
 {
 	RFSettingsController* settings_controller = [[RFSettingsController alloc] init];
 	[self notifyResetDetail:settings_controller];
-
-//	self.settingsButton.selected = YES;
-//	[self deselectMenuExceptButton:self.settingsButton];
 }
 
 - (IBAction) signOut:(id)sender
@@ -346,31 +316,37 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSInteger row = indexPath.row;
-	if (row == 0) {
+	NSString* title = [self.menuItems objectAtIndex:indexPath.row];
+	if ([title isEqualToString:@"Timeline"]) {
 		[self showTimeline:nil];
 	}
-	else if (row == 1) {
+	else if ([title isEqualToString:@"Mentions"]) {
 		[self showMentions:nil];
 	}
-	else if (row == 2) {
+	else if ([title isEqualToString:@"Bookmarks"]) {
 		[self showFavorites:nil];
 	}
-	else if (row == 3) {
+	else if ([title isEqualToString:@"Discover"]) {
 		[self showDiscover:nil];
 	}
-	else if (row == 4) {
-		// separator
-	}
-	else if (row == 5) {
+	else if ([title isEqualToString:@"Posts"]) {
 		[self showPosts:nil];
 	}
-//	else if (row == 6) {
-//		[self showPages:nil];
-//	}
-//	else if (row == 7) {
-//		[self showUploads:nil];
-//	}
+	else if ([title isEqualToString:@"Pages"]) {
+		[self showPages:nil];
+	}
+	else if ([title isEqualToString:@"Uploads"]) {
+		[self showUploads:nil];
+	}
+	else if ([title isEqualToString:@"Help"]) {
+		[self showHelp:nil];
+	}
+	else if ([title isEqualToString:@"Settings"]) {
+		[self showSettings:nil];
+	}
+	else if ([title isEqualToString:@"Sign Out"]) {
+		[self signOut:nil];
+	}
 }
 
 @end
