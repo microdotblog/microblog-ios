@@ -15,6 +15,7 @@
 #import "RFPostController.h"
 #import "RFHelpController.h"
 #import "RFAllPostsController.h"
+#import "RFMenuCell.h"
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "RFConstants.h"
@@ -25,6 +26,8 @@
 #import "UIBarButtonItem+Extras.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+
+static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 @implementation RFMenuController
 
@@ -45,6 +48,7 @@
 	[self setupNavigation];
 	[self setupDefaultSource];
 	[self setupPostsButton];
+	[self setupTable];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -71,15 +75,15 @@
 
 - (void) setupDefaultSource
 {
-	self.timelineButton.selected = YES;
+//	self.timelineButton.selected = YES;
 }
 
 - (void) setupPostsButton
 {
 	if (![RFSettings hasSnippetsBlog]) {
-		self.postsDivider.hidden = YES;
-		self.postsButton.hidden = YES;
-		self.postsField.hidden = YES;
+//		self.postsDivider.hidden = YES;
+//		self.postsButton.hidden = YES;
+//		self.postsField.hidden = YES;
 	}
 }
 
@@ -99,6 +103,30 @@
 		self.fullNameField.text = @"";
 		self.usernameField.text = @"";
 	}	
+}
+
+- (void) setupTable
+{
+	[self.tableView registerNib:[UINib nibWithNibName:@"MenuCell" bundle:nil] forCellReuseIdentifier:kMenuCellIdentifier];
+
+	self.menuItems = [[NSMutableArray alloc] init];
+	
+	[self.menuItems addObject:@"Timeline"];
+	[self.menuItems addObject:@"Mentions"];
+	[self.menuItems addObject:@"Bookmarks"];
+	[self.menuItems addObject:@"Discover"];
+
+	[self.menuItems addObject:@""];
+	
+	[self.menuItems addObject:@"Posts"];
+	[self.menuItems addObject:@"Pages"];
+	[self.menuItems addObject:@"Uploads"];
+
+	[self.menuItems addObject:@""];
+
+	[self.menuItems addObject:@"Help"];
+	[self.menuItems addObject:@"Settings"];
+	[self.menuItems addObject:@"Sign Out"];
 }
 
 - (void) checkUserDetails
@@ -171,12 +199,12 @@
 
 - (void) deselectMenuExceptButton:(UIButton *)selectedButton
 {
-	NSArray* buttons = @[ self.timelineButton, self.mentionsButton, self.favoritesButton, self.discoverButton, self.postsButton, self.helpButton, self.settingsButton ];
-	for (UIButton* button in buttons) {
-		if (button != selectedButton) {
-			button.selected = NO;
-		}
-	}
+//	NSArray* buttons = @[ self.timelineButton, self.mentionsButton, self.favoritesButton, self.discoverButton, self.postsButton, self.helpButton, self.settingsButton ];
+//	for (UIButton* button in buttons) {
+//		if (button != selectedButton) {
+//			button.selected = NO;
+//		}
+//	}
 }
 
 #pragma mark -
@@ -209,8 +237,8 @@
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
 	
-	self.timelineButton.selected = YES;
-	[self deselectMenuExceptButton:self.timelineButton];
+//	self.timelineButton.selected = YES;
+//	[self deselectMenuExceptButton:self.timelineButton];
 }
 
 - (IBAction) showMentions:(id)sender
@@ -219,8 +247,8 @@
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
 
-	self.mentionsButton.selected = YES;
-	[self deselectMenuExceptButton:self.mentionsButton];
+//	self.mentionsButton.selected = YES;
+//	[self deselectMenuExceptButton:self.mentionsButton];
 }
 
 - (IBAction) showFavorites:(id)sender
@@ -229,8 +257,8 @@
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
 
-	self.favoritesButton.selected = YES;
-	[self deselectMenuExceptButton:self.favoritesButton];
+//	self.favoritesButton.selected = YES;
+//	[self deselectMenuExceptButton:self.favoritesButton];
 }
 
 - (IBAction) showDiscover:(id)sender
@@ -238,8 +266,8 @@
 	RFDiscoverController* timeline_controller = [[RFDiscoverController alloc] initWithEndpoint:@"/hybrid/discover" title:@"Discover"];
 	[self notifyResetDetail:timeline_controller];
 
-	self.discoverButton.selected = YES;
-	[self deselectMenuExceptButton:self.discoverButton];
+//	self.discoverButton.selected = YES;
+//	[self deselectMenuExceptButton:self.discoverButton];
 }
 
 - (IBAction) showPosts:(id)sender
@@ -248,8 +276,8 @@
 	UIViewController* posts_controller = [storyboard instantiateInitialViewController];
 	[self notifyResetDetail:posts_controller];
 
-	self.postsButton.selected = YES;
-	[self deselectMenuExceptButton:self.postsButton];
+//	self.postsButton.selected = YES;
+//	[self deselectMenuExceptButton:self.postsButton];
 }
 
 - (IBAction) showHelp:(id)sender
@@ -257,8 +285,8 @@
 	RFHelpController* help_controller = [[RFHelpController alloc] init];
 	[self notifyResetDetail:help_controller];
 
-	self.helpButton.selected = YES;
-	[self deselectMenuExceptButton:self.helpButton];
+//	self.helpButton.selected = YES;
+//	[self deselectMenuExceptButton:self.helpButton];
 }
 
 - (IBAction) showSettings:(id)sender
@@ -266,8 +294,8 @@
 	RFSettingsController* settings_controller = [[RFSettingsController alloc] init];
 	[self notifyResetDetail:settings_controller];
 
-	self.settingsButton.selected = YES;
-	[self deselectMenuExceptButton:self.settingsButton];
+//	self.settingsButton.selected = YES;
+//	[self deselectMenuExceptButton:self.settingsButton];
 }
 
 - (IBAction) signOut:(id)sender
@@ -286,6 +314,63 @@
 - (void) notifyResetDetail:(UIViewController *)controller
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:kResetDetailNotification object:self userInfo:@{ kResetDetailControllerKey: controller }];
+}
+
+#pragma mark -
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return [self.menuItems count];
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	RFMenuCell* cell = [tableView dequeueReusableCellWithIdentifier:kMenuCellIdentifier forIndexPath:indexPath];
+	
+	NSString* title = [self.menuItems objectAtIndex:indexPath.row];
+	cell.titleField.text = title;
+	
+	return cell;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSString* title = [self.menuItems objectAtIndex:indexPath.row];
+	if (title.length > 0) {
+		return 44;
+	}
+	else {
+		return 15;
+	}
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSInteger row = indexPath.row;
+	if (row == 0) {
+		[self showTimeline:nil];
+	}
+	else if (row == 1) {
+		[self showMentions:nil];
+	}
+	else if (row == 2) {
+		[self showFavorites:nil];
+	}
+	else if (row == 3) {
+		[self showDiscover:nil];
+	}
+	else if (row == 4) {
+		// separator
+	}
+	else if (row == 5) {
+		[self showPosts:nil];
+	}
+//	else if (row == 6) {
+//		[self showPages:nil];
+//	}
+//	else if (row == 7) {
+//		[self showUploads:nil];
+//	}
 }
 
 @end
