@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSArray* allPosts; // RFPost
 @property (strong, nonatomic) NSArray* currentPosts; // RFPost
 @property (strong, nonatomic) RFPost* selectedPost;
+@property (assign, nonatomic) BOOL isShowingPages;
 
 @end
 

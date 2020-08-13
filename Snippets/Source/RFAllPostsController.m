@@ -59,7 +59,12 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 
 - (void) setupNavigation
 {
-	self.title = @"Posts";
+	if (self.isShowingPages) {
+		self.title = @"Pages";
+	}
+	else {
+		self.title = @"Posts";
+	}
 	
 	UIViewController* root_controller = [self.navigationController.viewControllers firstObject];
 	if (self.navigationController.topViewController != root_controller) {
@@ -99,9 +104,15 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 		destination_uid = @"";
 	}
 
+	NSString* channel = @"default";
+	if (self.isShowingPages) {
+		channel = @"pages";
+	}
+	
 	NSDictionary* args = @{
 		@"q": @"source",
-		@"mp-destination": destination_uid
+		@"mp-destination": destination_uid,
+		@"mp-channel": channel
 	};
 
 	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];

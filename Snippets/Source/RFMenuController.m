@@ -244,12 +244,21 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 - (IBAction) showPosts:(id)sender
 {
 	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"AllPosts" bundle:nil];
-	UIViewController* posts_controller = [storyboard instantiateInitialViewController];
+
+	RFAllPostsController* posts_controller = [storyboard instantiateInitialViewController];
+	posts_controller.isShowingPages = NO;
+	
 	[self notifyResetDetail:posts_controller];
 }
 
 - (IBAction) showPages:(id)sender
 {
+	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"AllPosts" bundle:nil];
+
+	RFAllPostsController* posts_controller = [storyboard instantiateInitialViewController];
+	posts_controller.isShowingPages = YES;
+	
+	[self notifyResetDetail:posts_controller];
 }
 
 - (IBAction) showUploads:(id)sender
