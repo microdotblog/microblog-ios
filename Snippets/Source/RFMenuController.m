@@ -263,6 +263,11 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (IBAction) showUploads:(id)sender
 {
+	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"AllUploads" bundle:nil];
+
+	UIViewController* uploads_controller = [storyboard instantiateInitialViewController];
+	
+	[self notifyResetDetail:uploads_controller];
 }
 
 - (IBAction) showHelp:(id)sender

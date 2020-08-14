@@ -81,6 +81,12 @@
 		4B5DDAC024E4A48C007674FF /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5DDABD24E4A48C007674FF /* MenuCell.xib */; };
 		4B5DDAC324E4A4B9007674FF /* RFMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DDAC224E4A4B9007674FF /* RFMenuCell.m */; };
 		4B5DDAC424E4A4B9007674FF /* RFMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DDAC224E4A4B9007674FF /* RFMenuCell.m */; };
+		4B5DDAC724E646D4007674FF /* AllUploads.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5DDAC524E646D4007674FF /* AllUploads.storyboard */; };
+		4B5DDAC824E646D4007674FF /* AllUploads.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5DDAC524E646D4007674FF /* AllUploads.storyboard */; };
+		4B5DDACB24E6CC2A007674FF /* RFAllUploadsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DDACA24E6CC2A007674FF /* RFAllUploadsController.m */; };
+		4B5DDACC24E6CC2A007674FF /* RFAllUploadsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DDACA24E6CC2A007674FF /* RFAllUploadsController.m */; };
+		4B5DDACF24E6CCD9007674FF /* RFUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DDACE24E6CCD9007674FF /* RFUpload.m */; };
+		4B5DDAD024E6CCD9007674FF /* RFUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DDACE24E6CCD9007674FF /* RFUpload.m */; };
 		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
 		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
 		4B64B2E7220930E4005B92A0 /* RFCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64B2E6220930E4005B92A0 /* RFCategoryCell.m */; };
@@ -482,6 +488,11 @@
 		4B5DDABE24E4A48C007674FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MenuCell.xib; sourceTree = "<group>"; };
 		4B5DDAC124E4A4B9007674FF /* RFMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFMenuCell.h; path = Source/RFMenuCell.h; sourceTree = "<group>"; };
 		4B5DDAC224E4A4B9007674FF /* RFMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFMenuCell.m; path = Source/RFMenuCell.m; sourceTree = "<group>"; };
+		4B5DDAC624E646D4007674FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AllUploads.storyboard; sourceTree = "<group>"; };
+		4B5DDAC924E6CC2A007674FF /* RFAllUploadsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFAllUploadsController.h; path = Source/RFAllUploadsController.h; sourceTree = "<group>"; };
+		4B5DDACA24E6CC2A007674FF /* RFAllUploadsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAllUploadsController.m; path = Source/RFAllUploadsController.m; sourceTree = "<group>"; };
+		4B5DDACD24E6CCD9007674FF /* RFUpload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFUpload.h; path = Source/RFUpload.h; sourceTree = "<group>"; };
+		4B5DDACE24E6CCD9007674FF /* RFUpload.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFUpload.m; path = Source/RFUpload.m; sourceTree = "<group>"; };
 		4B5F75501B8CABC50074D88E /* RFOptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFOptionsController.h; path = Source/RFOptionsController.h; sourceTree = "<group>"; };
 		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
 		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
@@ -902,6 +913,10 @@
 				4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */,
 				4B1EE1A9241AECA4004627F7 /* RFAllPostsController.h */,
 				4B1EE1AA241AECA4004627F7 /* RFAllPostsController.m */,
+				4B5DDAC924E6CC2A007674FF /* RFAllUploadsController.h */,
+				4B5DDACA24E6CC2A007674FF /* RFAllUploadsController.m */,
+				4B5DDACD24E6CCD9007674FF /* RFUpload.h */,
+				4B5DDACE24E6CCD9007674FF /* RFUpload.m */,
 				4BF13C67242C0B80009C6093 /* RFEditPostController.h */,
 				4BF13C68242C0B80009C6093 /* RFEditPostController.m */,
 				4B1EE1AF241AF040004627F7 /* RFPostCell.h */,
@@ -1038,6 +1053,7 @@
 				4B4D9B561ED5213E00315BBA /* FeaturedPhotoCell.xib */,
 				4BF123F21E882F4500B56138 /* Filters.xib */,
 				4B1EE1AC241AED1C004627F7 /* AllPosts.storyboard */,
+				4B5DDAC524E646D4007674FF /* AllUploads.storyboard */,
 				4BF123F51E882F5400B56138 /* FilterCell.xib */,
 				4B1BD2821D8754DC00B3C93D /* Help.xib */,
 				4B8714721E64C07800C69589 /* External.xib */,
@@ -1561,6 +1577,7 @@
 				4B400D15202524B500C71AAF /* FeedCell.xib in Resources */,
 				4B64B2EB22093139005B92A0 /* CategoryCell.xib in Resources */,
 				C5CED7161ECF792E0068F537 /* YUCIStarfieldGenerator.cikernel in Resources */,
+				4B5DDAC724E646D4007674FF /* AllUploads.storyboard in Resources */,
 				4B1F7FE6225269E100E8AF3E /* Upgrade.xib in Resources */,
 				4B12BAEA1E9FBFBC000E559F /* 1Password.xcassets in Resources */,
 				4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */,
@@ -1585,6 +1602,7 @@
 				4B1F7FEB22526CDA00E8AF3E /* Upgrade.xib in Resources */,
 				C507F3641F8831530013D2B7 /* Settings.xib in Resources */,
 				C507F3631F8831530013D2B7 /* Categories.xib in Resources */,
+				4B5DDAC824E646D4007674FF /* AllUploads.storyboard in Resources */,
 				C507F35E1F8831530013D2B7 /* Filters.xib in Resources */,
 				4B400D16202524B500C71AAF /* FeedCell.xib in Resources */,
 				C507F3621F8831530013D2B7 /* Wordpress.xib in Resources */,
@@ -1656,6 +1674,7 @@
 				4BA713412029127E0083948C /* MMHTMLParser.m in Sources */,
 				4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */,
 				4BA7133F2029127E0083948C /* MMScanner.m in Sources */,
+				4B5DDACF24E6CCD9007674FF /* RFUpload.m in Sources */,
 				4B821C7D21B428CD006CE005 /* UIView+Extras.m in Sources */,
 				4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */,
 				C5A515A921B3190300C15092 /* RFUserCache.m in Sources */,
@@ -1766,6 +1785,7 @@
 				C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */,
 				4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */,
 				C5A515A521B3160100C15092 /* RFAutoCompleteCollectionViewCell.m in Sources */,
+				4B5DDACB24E6CC2A007674FF /* RFAllUploadsController.m in Sources */,
 				C5CED7091ECF792E0068F537 /* YUCIHighPass.m in Sources */,
 				4B4D9B551ED520F800315BBA /* RFFeaturedPhoto.m in Sources */,
 				4BF803451B87AA2C00D6670C /* UUAlert.m in Sources */,
@@ -1828,6 +1848,7 @@
 				C507F32C1F8827BC0013D2B7 /* UUDate.m in Sources */,
 				C5B48B2A2294E59100776248 /* ZipException.m in Sources */,
 				C513F6E81F994197007319F0 /* UUAlert.m in Sources */,
+				4B5DDAD024E6CCD9007674FF /* RFUpload.m in Sources */,
 				C507F32B1F8827BC0013D2B7 /* UUDataCache.m in Sources */,
 				C507F31F1F88279B0013D2B7 /* RFXMLLinkParser.m in Sources */,
 				4BA7133A2029127E0083948C /* MMMarkdown.m in Sources */,
@@ -1849,6 +1870,7 @@
 				C507F3381F88282D0013D2B7 /* RFFilter.m in Sources */,
 				C507F31C1F88278F0013D2B7 /* RFPhoto.m in Sources */,
 				C5A515B121B31F4600C15092 /* RFAutoCompleteCache.m in Sources */,
+				4B5DDACC24E6CC2A007674FF /* RFAllUploadsController.m in Sources */,
 				C507F3211F8827A90013D2B7 /* RFXMLRPCParser.m in Sources */,
 				C5B48B282294E59100776248 /* ZipWriteStream.m in Sources */,
 				C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */,
@@ -2026,6 +2048,14 @@
 				4B5DDABE24E4A48C007674FF /* Base */,
 			);
 			name = MenuCell.xib;
+			sourceTree = "<group>";
+		};
+		4B5DDAC524E646D4007674FF /* AllUploads.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B5DDAC624E646D4007674FF /* Base */,
+			);
+			name = AllUploads.storyboard;
 			sourceTree = "<group>";
 		};
 		4B5F75531B8CABF30074D88E /* Options.xib */ = {
