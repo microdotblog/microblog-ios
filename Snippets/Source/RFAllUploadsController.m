@@ -225,7 +225,8 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	
 - (void) copyUpload:(RFUpload *)upload
 {
-	// ..
+	NSString* s = [NSString stringWithFormat:@"<img src=\"%@\" />", upload.url];
+	[[UIPasteboard generalPasteboard] setString:s];
 }
 
 - (void) deleteUpload:(RFUpload *)upload
