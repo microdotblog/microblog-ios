@@ -16,6 +16,7 @@
 
 @property (strong, nonnull) IBOutlet UIImageView* thumbnailView;
 @property (strong, nonnull) IBOutlet UILabel* videoDurationLabel;
+@property (strong, nonnull) IBOutlet UIView* selectionOverlay;
 
 @property (strong, nonnull) RFPhoto* photo;
 

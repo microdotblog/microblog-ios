@@ -84,9 +84,9 @@
 		4B5DDAC724E646D4007674FF /* AllUploads.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5DDAC524E646D4007674FF /* AllUploads.storyboard */; };
 		4B5DDAC824E646D4007674FF /* AllUploads.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5DDAC524E646D4007674FF /* AllUploads.storyboard */; };
 		4B5DDACB24E6CC2A007674FF /* RFAllUploadsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DDACA24E6CC2A007674FF /* RFAllUploadsController.m */; };
-		4B5DDACC24E6CC2A007674FF /* RFAllUploadsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DDACA24E6CC2A007674FF /* RFAllUploadsController.m */; };
 		4B5DDACF24E6CCD9007674FF /* RFUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DDACE24E6CCD9007674FF /* RFUpload.m */; };
 		4B5DDAD024E6CCD9007674FF /* RFUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DDACE24E6CCD9007674FF /* RFUpload.m */; };
+		4B5DDAD324E6EBAD007674FF /* RFNYTPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5DDAD224E6EBAC007674FF /* RFNYTPhoto.m */; };
 		4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5F75511B8CABC50074D88E /* RFOptionsController.m */; };
 		4B5F75551B8CABF30074D88E /* Options.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5F75531B8CABF30074D88E /* Options.xib */; };
 		4B64B2E7220930E4005B92A0 /* RFCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64B2E6220930E4005B92A0 /* RFCategoryCell.m */; };
@@ -493,6 +493,8 @@
 		4B5DDACA24E6CC2A007674FF /* RFAllUploadsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAllUploadsController.m; path = Source/RFAllUploadsController.m; sourceTree = "<group>"; };
 		4B5DDACD24E6CCD9007674FF /* RFUpload.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFUpload.h; path = Source/RFUpload.h; sourceTree = "<group>"; };
 		4B5DDACE24E6CCD9007674FF /* RFUpload.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFUpload.m; path = Source/RFUpload.m; sourceTree = "<group>"; };
+		4B5DDAD124E6EBAC007674FF /* RFNYTPhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFNYTPhoto.h; path = Source/RFNYTPhoto.h; sourceTree = "<group>"; };
+		4B5DDAD224E6EBAC007674FF /* RFNYTPhoto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFNYTPhoto.m; path = Source/RFNYTPhoto.m; sourceTree = "<group>"; };
 		4B5F75501B8CABC50074D88E /* RFOptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFOptionsController.h; path = Source/RFOptionsController.h; sourceTree = "<group>"; };
 		4B5F75511B8CABC50074D88E /* RFOptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFOptionsController.m; path = Source/RFOptionsController.m; sourceTree = "<group>"; };
 		4B5F75541B8CABF30074D88E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Options.xib; sourceTree = "<group>"; };
@@ -1003,6 +1005,8 @@
 				4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */,
 				4B2D93E12475CFFD000A6135 /* NYTPhotoViewer+Extras.h */,
 				4B2D93E22475CFFD000A6135 /* NYTPhotoViewer+Extras.m */,
+				4B5DDAD124E6EBAC007674FF /* RFNYTPhoto.h */,
+				4B5DDAD224E6EBAC007674FF /* RFNYTPhoto.m */,
 				4B1712D91F069FB200267045 /* RFMenuView.h */,
 				4B1712DA1F069FB200267045 /* RFMenuView.m */,
 				4B5DDAC124E4A4B9007674FF /* RFMenuCell.h */,
@@ -1738,6 +1742,7 @@
 				4BA9107F1B83CFFD00D58F83 /* RFSignInController.m in Sources */,
 				C58D8E2320ADF30900F22E42 /* RFPopupNotificationViewController.m in Sources */,
 				C5AF58C12294CEF300830C25 /* NSURL+UnzipKitExtensions.m in Sources */,
+				4B5DDAD324E6EBAD007674FF /* RFNYTPhoto.m in Sources */,
 				4B46632C1B8F51710034FC5C /* CSimpleMarkupParser.m in Sources */,
 				4BA910761B83CDC400D58F83 /* RFMenuController.m in Sources */,
 				C5CED6FF1ECF792E0068F537 /* YUCICrossZoomTransition.m in Sources */,
@@ -1870,7 +1875,6 @@
 				C507F3381F88282D0013D2B7 /* RFFilter.m in Sources */,
 				C507F31C1F88278F0013D2B7 /* RFPhoto.m in Sources */,
 				C5A515B121B31F4600C15092 /* RFAutoCompleteCache.m in Sources */,
-				4B5DDACC24E6CC2A007674FF /* RFAllUploadsController.m in Sources */,
 				C507F3211F8827A90013D2B7 /* RFXMLRPCParser.m in Sources */,
 				C5B48B282294E59100776248 /* ZipWriteStream.m in Sources */,
 				C5A66B0E1F88325E0063F325 /* CSimpleMarkupParser.m in Sources */,

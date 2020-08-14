@@ -11,10 +11,24 @@
 #import "RFUpload.h"
 #import "RFSelectBlogViewController.h"
 #import "RFClient.h"
+#import "RFPhotoCell.h"
+#import "RFPhoto.h"
 #import "RFMacros.h"
 #import "RFSettings.h"
+#import "RFOptionsController.h"
 #import "UUDate.h"
 #import "UIBarButtonItem+Extras.h"
+#import "UUAlert.h"
+#import "NYTPhotoViewer+Extras.h"
+#import "RFNYTPhoto.h"
+#import "RFConstants.h"
+
+@interface RFAllUploadsController() <NYTPhotosViewControllerDelegate, NYTPhotoViewerDataSource>
+
+@property (nonatomic, strong) NYTPhotosViewController* photoViewerController;
+@property (nonatomic, strong) RFNYTPhoto* photoToView;
+
+@end
 
 @implementation RFAllUploadsController
 
@@ -54,9 +68,9 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 - (void) setupNotifications
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedBlogNotification:) name:kPostToBlogSelectedNotification object:nil];
-//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editPostNotification:) name:kEditPostNotification object:nil];
-//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deletePostNotification:) name:kDeletePostNotification object:nil];
-//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(publishPostNotification:) name:kPublishPostNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openUploadNotification:) name:kOpenUploadNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(copyUploadNotification:) name:kCopyUploadNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteUploadNotification:) name:kDeleteUploadNotification object:nil];
 }
 
 - (void) fetchPosts
@@ -130,6 +144,120 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	[self fetchPosts];
 }
 
+- (void) openUploadNotification:(NSNotification *)notification
+{
+	NSArray* index_paths = [self.collectionView indexPathsForSelectedItems];
+	if (index_paths) {
+		NSIndexPath* index_path = [index_paths firstObject];
+		RFUpload* up = [self.allPosts objectAtIndex:index_path.item];
+		[self openUpload:up];
+	}
+}
+
+- (void) copyUploadNotification:(NSNotification *)notification
+{
+	NSArray* index_paths = [self.collectionView indexPathsForSelectedItems];
+	if (index_paths) {
+		NSIndexPath* index_path = [index_paths firstObject];
+		RFUpload* up = [self.allPosts objectAtIndex:index_path.item];
+		[self copyUpload:up];
+	}
+}
+
+- (void) deleteUploadNotification:(NSNotification *)notification
+{
+	NSArray* index_paths = [self.collectionView indexPathsForSelectedItems];
+	if (index_paths) {
+		NSIndexPath* index_path = [index_paths firstObject];
+		RFUpload* up = [self.allPosts objectAtIndex:index_path.item];
+		[self deleteUpload:up];
+	}
+}
+
+- (NSNumber*) numberOfPhotos
+{
+	return @(0);
+}
+
+- (NSInteger)indexOfPhoto:(id <NYTPhoto>)photo
+{
+	return 0;
+}
+
+- (nullable id <NYTPhoto>)photoAtIndex:(NSInteger)photoIndex
+{
+	return self.photoToView;
+}
+
+- (UIView * _Nullable)photosViewController:(NYTPhotosViewController *)photosViewController loadingViewForPhoto:(id <NYTPhoto>)photo
+{
+	UIActivityIndicatorView* activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	[activityIndicator startAnimating];
+	
+	return activityIndicator;
+}
+
+- (void) openUpload:(RFUpload *)upload
+{
+	self.photoToView = [[RFNYTPhoto alloc] init];
+	self.photoToView.image = nil;
+
+	self.photoViewerController = [[NYTPhotosViewController alloc] initWithDataSource:self initialPhoto:self.photoToView delegate:self];
+	self.photoViewerController.rightBarButtonItems = @[];
+	
+	[self presentViewController:self.photoViewerController animated:YES completion:^
+	{
+	}];
+
+	[UUHttpSession get:upload.url queryArguments:nil completionHandler:^(UUHttpResponse *response) {
+		UIImage* image = response.parsedResponse;
+		if (image && [image isKindOfClass:[UIImage class]])
+		{
+			dispatch_async(dispatch_get_main_queue(), ^
+			{
+				self.photoToView.image = image;
+				[self.photoViewerController updatePhoto:self.photoToView];
+				self.photoViewerController.pageViewController.dataSource = nil;
+			});
+		}
+	}];
+}
+	
+- (void) copyUpload:(RFUpload *)upload
+{
+	// ..
+}
+
+- (void) deleteUpload:(RFUpload *)upload
+{
+	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];
+	NSString* destination_uid = [RFSettings selectedBlogUid];
+	if (destination_uid == nil) {
+		destination_uid = @"";
+	}
+
+	NSDictionary* args = @{
+		@"action": @"delete",
+		@"mp-destination": destination_uid,
+		@"url": upload.url,
+	};
+
+	[self.progressSpinner startAnimating];
+	
+	[client postWithParams:args completion:^(UUHttpResponse* response) {
+		RFDispatchMainAsync (^{
+			if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
+				[self.progressSpinner stopAnimating];
+				NSString* msg = response.parsedResponse[@"error_description"];
+				[UUAlertViewController uuShowOneButtonAlert:@"Error Deleting Upload" message:msg button:@"OK" completionHandler:NULL];
+			}
+			else {
+				[self fetchPosts];
+			}
+		});
+	}];
+}
+
 #pragma mark -
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -139,38 +267,49 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	UICollectionViewCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:kUploadCellIdentifier forIndexPath:indexPath];
+	RFPhotoCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:kUploadCellIdentifier forIndexPath:indexPath];
 
+	RFUpload* up = [self.allPosts objectAtIndex:indexPath.item];
+	cell.thumbnailView.image = up.cachedImage;
+	
 	return cell;
 }
 
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
+- (void) collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	RFUpload* up = [self.allPosts objectAtIndex:indexPath.item];
+	if (up.cachedImage == nil) {
+		NSString* url = [NSString stringWithFormat:@"https://micro.blog/photos/200/%@", up.url];
 
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
+		[UUHttpSession get:url queryArguments:nil completionHandler:^(UUHttpResponse* response) {
+			if ([response.parsedResponse isKindOfClass:[UIImage class]]) {
+				UIImage* img = response.parsedResponse;
+				RFDispatchMain(^{
+					up.cachedImage = img;
+					[collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
+				});
+			}
+		}];
+	}
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
+- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
 	
+	RFDispatchMainAsync (^{
+		RFOptionsPopoverType popover_type = kOptionsPopoverUpload;
+		
+		CGRect r = cell.bounds;
+		
+		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:@"" username:@"" popoverType:popover_type];
+		[options_controller attachToView:cell atRect:r];
+		[self presentViewController:options_controller animated:YES completion:NULL];
+	});
 }
-*/
+
+- (void) collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+}
 
 @end

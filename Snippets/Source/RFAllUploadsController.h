@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class RFNYTPhoto;
+@class NYTPhotosViewController;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RFAllUploadsController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>

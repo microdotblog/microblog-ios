@@ -50,6 +50,9 @@
 	else if (self.popoverType == kOptionsPopoverEditWithPublish) {
 		self.view = self.editWithPublishView;
 	}
+	else if (self.popoverType == kOptionsPopoverUpload) {
+		self.view = self.uploadView;
+	}
 
 	if ([UITraitCollection rf_isDarkMode]) {
 		self.view.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
@@ -178,6 +181,31 @@
 {
 	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
 		[[NSNotificationCenter defaultCenter] postNotificationName:kPublishPostNotification object:self userInfo:@{ kPublishPostIDKey: self.postID }];
+	}];
+}
+
+- (IBAction) openUpload:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kOpenUploadNotification object:self userInfo:@{ kPublishPostIDKey: self.postID }];
+	}];
+}
+
+- (IBAction) copyUpload:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kCopyUploadNotification object:self userInfo:@{ kPublishPostIDKey: self.postID }];
+	}];
+}
+
+- (IBAction) deleteUpload:(id)sender
+{
+	[UUAlertViewController uuShowTwoButtonAlert:@"Delete this upload?" message:@"This upload will be deleted from your blog." buttonOne:@"Cancel" buttonTwo:@"Delete" completionHandler:^(NSInteger buttonIndex) {
+		if (buttonIndex == 1) {
+			[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+				[[NSNotificationCenter defaultCenter] postNotificationName:kDeleteUploadNotification object:self userInfo:@{ kPublishPostIDKey: self.postID }];
+			}];
+		}
 	}];
 }
 

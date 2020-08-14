@@ -78,4 +78,8 @@ static NSString* const kDidJustUpdatePostPrefKey = @"DidJustUpdatePost";
 #define kPublishPostNotification @"RFPublishPostNotification"
 #define kPublishPostIDKey @"post_id"
 
+#define kOpenUploadNotification @"RFOpenUploadNotification"
+#define kCopyUploadNotification @"RFCopyUploadNotification"
+#define kDeleteUploadNotification @"RFDeleteUploadNotification"
+
 #define APPSTORE 1
