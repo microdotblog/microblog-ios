@@ -61,7 +61,17 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	
 	UIViewController* root_controller = [self.navigationController.viewControllers firstObject];
 	if (self.navigationController.topViewController != root_controller) {
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
+		if (@available(iOS 13.0, *)) {
+			self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"chevron.left"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+		}
+		else {
+			self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
+		}
+	}
+	
+	if (@available(iOS 13.0, *)) {
+		UIImage* upload_img = [UIImage systemImageNamed:@"icloud.and.arrow.up"];
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:upload_img style:UIBarButtonItemStylePlain target:self action:@selector(chooseUpload:)];
 	}
 }
 
@@ -124,6 +134,10 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 - (void) back:(id)sender
 {
 	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) chooseUpload:(id)sender
+{
 }
 
 - (IBAction) blogHostnamePressed:(id)sender

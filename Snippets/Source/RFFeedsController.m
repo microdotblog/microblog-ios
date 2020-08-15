@@ -54,7 +54,13 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 - (void) setupNavigation
 {
 	self.navigationItem.title = @"Categories & Feeds";
+
+	if (@available(iOS 13.0, *)) {
+		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"chevron.left"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+	}
+	else {
 		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
+	}
 }
 
 - (void) setupTable

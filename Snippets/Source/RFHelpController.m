@@ -44,7 +44,12 @@
 
 	UIViewController* root_controller = [self.navigationController.viewControllers firstObject];
 	if (self.navigationController.topViewController != root_controller) {
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
+		if (@available(iOS 13.0, *)) {
+			self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"chevron.left"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+		}
+		else {
+			self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
+		}
 	}
 }
 

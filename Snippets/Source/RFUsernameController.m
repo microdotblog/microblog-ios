@@ -49,7 +49,14 @@
 - (void) setupNavigation
 {
 	self.title = @"Username";
-	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
+
+	if (@available(iOS 13.0, *)) {
+		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"chevron.left"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+	}
+	else {
+		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
+	}
+
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Register" style:UIBarButtonItemStylePlain target:self action:@selector(checkUsername:)];
 	if ([UITraitCollection rf_isDarkMode]) {
 		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];

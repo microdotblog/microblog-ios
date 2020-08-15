@@ -65,7 +65,13 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	self.usernameField.text = @"";
 	
 	if ([UIScreen mainScreen].traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
-		self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"new_post_button" target:self action:@selector(promptNewPost:)];
+		if (@available(iOS 13.0, *)) {
+			UIImage* upload_img = [UIImage systemImageNamed:@"square.and.pencil"];
+			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:upload_img style:UIBarButtonItemStylePlain target:self action:@selector(promptNewPost:)];
+		}
+		else {
+			self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"new_post_button" target:self action:@selector(promptNewPost:)];
+		}
 	}
 	else {
 		self.navigationItem.rightBarButtonItem = nil;
