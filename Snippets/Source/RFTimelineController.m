@@ -448,6 +448,14 @@
 			// e.g. /about/api
 			found_microblog_url = NO;
 		}
+		else if ([[pieces firstObject] isEqualToString:@"books"]) {
+			// e.g. /books/12345
+			found_microblog_url = NO;
+		}
+		else if ([[pieces firstObject] isEqualToString:@"bookmarks"]) {
+			// e.g. /bookmarks/12345
+			found_microblog_url = NO;
+		}
 		else if ([[pieces firstObject] isEqualToString:@"discover"]) {
 			// e.g. /discover
 			found_microblog_url = NO;
