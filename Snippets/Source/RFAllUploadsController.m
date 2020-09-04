@@ -317,6 +317,7 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 		@"url": upload.url,
 	};
 
+	self.hostnameButton.hidden = YES;
 	[self.progressSpinner startAnimating];
 	
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
