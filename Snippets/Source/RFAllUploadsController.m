@@ -401,7 +401,9 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 				UIImage* img = response.parsedResponse;
 				RFDispatchMain(^{
 					up.cachedImage = img;
-					[collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
+					if ([collectionView numberOfItemsInSection:0] > indexPath.item) {
+						[collectionView reloadItemsAtIndexPaths:@[ indexPath ]];
+					}
 				});
 			}
 		}];
