@@ -45,6 +45,7 @@
 @property (strong, nonatomic) NSString* replyPostID;
 @property (strong, nonatomic) NSString* replyUsername;
 @property (strong, nonatomic) NSString* initialText;
+@property (strong, nonatomic) NSString* channel;
 @property (strong, nonatomic) NSArray* attachedPhotos; // RFPhoto
 @property (strong, nonatomic) NSArray* queuedPhotos; // RFPhoto
 @property (strong, nonatomic) NSSet* selectedCategories; // NSString
@@ -54,5 +55,6 @@
 
 - (instancetype) initWithText:(NSString *)text;
 - (instancetype) initWithReplyTo:(NSString *)postID replyUsername:(NSString *)username;
+- (instancetype) initWithChannel:(NSString *)channel;
 
 @end

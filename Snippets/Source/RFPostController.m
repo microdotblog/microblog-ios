@@ -65,6 +65,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		self.edgesForExtendedLayout = UIRectEdgeTop;
 		self.selectedCategories = [NSSet set];
 		self.backgroundTaskIdentifier = UIBackgroundTaskInvalid;
+		self.channel = @"default";
 	}
 	
 	return self;
@@ -90,6 +91,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		self.attachedPhotos = @[];
 	
 		[RFAutoCompleteCache addAutoCompleteString:username];
+	}
+	
+	return self;
+}
+
+- (instancetype) initWithChannel:(NSString *)channel
+{
+	self = [self init];
+	if (self) {
+		self.channel = channel;
 	}
 	
 	return self;
@@ -158,15 +169,20 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupNavigation
 {
+	NSString* post_button = @"Post";
 	if (self.isReply) {
 		self.title = @"New Reply";
+	}
+	else if ([self.channel isEqualToString:@"pages"]) {
+		self.title = @"New Page";
+		post_button = @"Add Page";
 	}
 	else {
 		self.title = @"New Post";
 	}
 
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:post_button style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
 	if ([UITraitCollection rf_isDarkMode]) {
 		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 	}
@@ -349,12 +365,17 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) updateTitleHeader
 {
-	if (!self.isReply && ([self currentProcessedMarkup].length > 280)) {
+	if (!self.isReply && (([self currentProcessedMarkup].length > 280) || [self isPage])) {
 		self.titleHeaderHeightConstraint.constant = 44;
 	}
 	else {
 		self.titleHeaderHeightConstraint.constant = 0;
 	}
+}
+
+- (BOOL) isPage
+{
+	return [self.channel isEqualToString:@"pages"];
 }
 
 #pragma mark -
@@ -913,10 +934,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
 			NSMutableDictionary* args = [NSMutableDictionary dictionary];
 			NSString* uid = [RFSettings selectedBlogUid];
-			if (uid)
-			{
+			if (uid) {
 				[args setObject:uid forKey:@"mp-destination"];
 			}
+
+			[args setObject:self.channel forKey:@"mp-channel"];
 			[args setObject:self.titleField.text forKey:@"name"];
 			[args setObject:text forKey:@"content"];
 			

@@ -11,10 +11,12 @@
 #import "RFPostCell.h"
 #import "RFPost.h"
 #import "RFEditPostController.h"
+#import "RFPostController.h"
 #import "RFSelectBlogViewController.h"
 #import "RFSwipeNavigationController.h"
 #import "RFOptionsController.h"
 #import "UIBarButtonItem+Extras.h"
+#import "RFExternalController.h"
 #import "RFClient.h"
 #import "RFSettings.h"
 #import "RFConstants.h"
@@ -75,6 +77,18 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 			self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
 		}
 	}
+	
+	if (self.isShowingPages) {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New Page" style:UIBarButtonItemStylePlain target:self action:@selector(promptNewPage:)];
+	}
+	else {
+		if (@available(iOS 13.0, *)) {
+			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"square.and.pencil"] style:UIBarButtonItemStylePlain target:self action:@selector(promptNewPost:)];
+		}
+		else {
+			self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"new_post_button" target:self action:@selector(promptNewPost:)];
+		}
+	}
 }
 
 - (void) setupNotifications
@@ -83,6 +97,7 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editPostNotification:) name:kEditPostNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deletePostNotification:) name:kDeletePostNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(publishPostNotification:) name:kPublishPostNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePostingNotification:) name:kClosePostingNotification object:nil];
 }
 
 - (void) setupBlogName
@@ -193,6 +208,27 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 - (void) back:(id)sender
 {
 	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction) promptNewPost:(id)sender
+{
+	if ([RFSettings needsExternalBlogSetup]) {
+		RFExternalController* wordpress_controller = [[RFExternalController alloc] init];
+		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:wordpress_controller];
+		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+	}
+	else {
+		RFPostController* post_controller = [[RFPostController alloc] init];
+		UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
+		[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
+	}
+}
+
+- (void) promptNewPage:(id)sender
+{
+	RFPostController* post_controller = [[RFPostController alloc] initWithChannel:@"pages"];
+	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
+	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 - (IBAction) blogHostnamePressed:(id)sender
@@ -307,6 +343,11 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 			});
 		}];
 	}
+}
+
+- (void) closePostingNotification:(NSNotification *)notification
+{
+	[self fetchPosts];
 }
 
 #pragma mark -
