@@ -129,7 +129,15 @@
 	}
 	
 	if (self.isConversation) {
-		self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"reply_button" target:self action:@selector(promptNewReply:)];
+		UIImage* reply_img;
+		if (@available(iOS 13.0, *)) {
+			reply_img = [UIImage systemImageNamed:@"arrowshape.turn.up.left"];
+			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:reply_img style:UIBarButtonItemStylePlain target:self action:@selector(promptNewReply:)];
+		}
+		else {
+			reply_img = [UIImage imageNamed:@"reply_button"];
+			self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"reply_button" target:self action:@selector(promptNewReply:)];
+		}
 	}
 	else {
 		if (@available(iOS 13.0, *)) {

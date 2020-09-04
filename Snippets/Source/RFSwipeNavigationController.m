@@ -246,7 +246,16 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 
 		if (self.nextController) {
 			[self updateTitle:self.nextController.title withController:current_controller];
-			[self updateRightImage:[UIImage imageNamed:@"reply_button"] withController:current_controller];
+
+			UIImage* reply_img;
+			if (@available(iOS 13.0, *)) {
+				reply_img = [UIImage systemImageNamed:@"arrowshape.turn.up.left"];
+			}
+			else {
+				reply_img = [UIImage imageNamed:@"reply_button"];
+			}
+
+			[self updateRightImage:reply_img withController:current_controller];
 		}
 	}
 	else if (self.isSwipingBack) {
