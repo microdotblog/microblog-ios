@@ -24,8 +24,6 @@
 #import "UUAlert.h"
 #import "SSKeychain.h"
 #import "UIBarButtonItem+Extras.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
 
 static NSString* const kMenuCellIdentifier = @"MenuCell";
 
@@ -293,9 +291,6 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	[UUAlertViewController uuShowTwoButtonAlert:@"Sign out of Micro.blog?" message:@"Signing out will reset your settings and let you sign in with a new account or different microblog." buttonOne:@"Cancel" buttonTwo:@"Sign Out" completionHandler:^(NSInteger buttonIndex) {
 		if (buttonIndex == 1) {
 			[RFSettings clearAllSettings];
-
-			[Answers logCustomEventWithName:@"Sign Out" customAttributes:nil];
-
 			[[NSNotificationCenter defaultCenter] postNotificationName:kShowSigninNotification object:self];
 		}
 	}];

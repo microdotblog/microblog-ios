@@ -27,8 +27,6 @@
 #import "UITraitCollection+Extras.h"
 #import "RFPopupNotificationViewController.h"
 #import "RFAutoCompleteCache.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
 #import <SafariServices/SafariServices.h>
 #import "RFSettings.h"
 #import "RFAutoCompleteCache.h"
@@ -36,7 +34,6 @@
 #import <AuthenticationServices/AuthenticationServices.h>
 
 @import UserNotifications;
-
 
 @implementation RFAppDelegate
 
@@ -48,7 +45,6 @@
 	[UUDataCache uuSetCacheExpirationLength:24.0 * 60.0 * 60.0];
 	[UUDataCache uuPurgeExpiredContent];
 	
-	[self setupCrashlytics];
 	[self setupAppleID];
 	[self setupWindow];
 	[self setupAppearance];
@@ -241,11 +237,6 @@
 			}
 		}
 	}];
-}
-
-- (void) setupCrashlytics
-{
-	[Fabric with:@[ CrashlyticsKit ]];
 }
 
 - (void) setupAppleID

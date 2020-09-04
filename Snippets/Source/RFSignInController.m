@@ -15,8 +15,6 @@
 #import "UUAlert.h"
 #import "UILabel+MarkupExtensions.h"
 #import "UIView+Extras.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
 #import "SSKeychain.h"
 #import "RFAutoCompleteCache.h"
 #import "RFUsernameController.h"
@@ -239,7 +237,6 @@
 		NSString* error = [response.parsedResponse objectForKey:@"error"];
 		if (error) {
 			RFDispatchMainAsync ((^{
-				[Answers logLoginWithMethod:@"Token" success:@NO customAttributes:nil];
 				[self showMessage:[NSString stringWithFormat:@"Error signing in: %@", error]];
 			}));
 		}
@@ -304,7 +301,6 @@
 - (void) completeLoginProcess
 {
 	RFDispatchMainAsync (^{
-		[Answers logLoginWithMethod:@"Token" success:@YES customAttributes:nil];
 		[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self userInfo:@{
 			@"token": self.signinToken
 		}];
@@ -350,7 +346,6 @@
 				UIViewController* savedParent = self.presentingViewController;
 				dispatch_async(dispatch_get_main_queue(), ^
 				{
-					[Answers logLoginWithMethod:@"Token" success:@YES customAttributes:nil];
 					[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self userInfo:@{ @"token": self.signinToken }];
 					[self.presentingViewController dismissViewControllerAnimated:NO completion:^
 					{

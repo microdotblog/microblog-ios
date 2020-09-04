@@ -132,8 +132,6 @@
 		4BA910821B83D20C00D58F83 /* RFPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910811B83D20C00D58F83 /* RFPostController.m */; };
 		4BA910851B83D22900D58F83 /* Post.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA910831B83D22900D58F83 /* Post.xib */; };
 		4BA910981B84077000D58F83 /* UIBarButtonItem+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */; };
-		4BA910A11B84A54A00D58F83 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA9109F1B84A54A00D58F83 /* Fabric.framework */; };
-		4BA910A21B84A54A00D58F83 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA910A01B84A54A00D58F83 /* Crashlytics.framework */; };
 		4BBA71031F5DF9CE00B56A04 /* RFHighlightingTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA71021F5DF9CE00B56A04 /* RFHighlightingTextStorage.m */; };
 		4BBC298321B47C6E001E3BDB /* RFAutoCompleteCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A515A321B3160100C15092 /* RFAutoCompleteCollectionViewCell.m */; };
 		4BBC298421B47CB3001E3BDB /* RFAutoCompleteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A515AD21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib */; };
@@ -192,8 +190,6 @@
 		C507F3321F8827BC0013D2B7 /* UUString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803431B87AA2C00D6670C /* UUString.m */; };
 		C507F3331F8827C20013D2B7 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAEFF1B852BC9008097F7 /* SSKeychain.m */; };
 		C507F3341F8827C20013D2B7 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF011B852BC9008097F7 /* SSKeychainQuery.m */; };
-		C507F3351F8828090013D2B7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA9109F1B84A54A00D58F83 /* Fabric.framework */; };
-		C507F3361F88280C0013D2B7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BA910A01B84A54A00D58F83 /* Crashlytics.framework */; };
 		C507F3371F88281C0013D2B7 /* RFFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123F01E882F3000B56138 /* RFFiltersController.m */; };
 		C507F3381F88282D0013D2B7 /* RFFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123F91E88301500B56138 /* RFFilter.m */; };
 		C507F3391F8828310013D2B7 /* RFFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123FC1E88302B00B56138 /* RFFilterCell.m */; };
@@ -556,8 +552,6 @@
 		4BA910841B83D22900D58F83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Post.xib; sourceTree = "<group>"; };
 		4BA910961B84077000D58F83 /* UIBarButtonItem+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+Extras.h"; path = "Source/UIBarButtonItem+Extras.h"; sourceTree = "<group>"; };
 		4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+Extras.m"; path = "Source/UIBarButtonItem+Extras.m"; sourceTree = "<group>"; };
-		4BA9109F1B84A54A00D58F83 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
-		4BA910A01B84A54A00D58F83 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		4BBA71011F5DF9CE00B56A04 /* RFHighlightingTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFHighlightingTextStorage.h; path = Source/RFHighlightingTextStorage.h; sourceTree = "<group>"; };
 		4BBA71021F5DF9CE00B56A04 /* RFHighlightingTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFHighlightingTextStorage.m; path = Source/RFHighlightingTextStorage.m; sourceTree = "<group>"; };
 		4BD9D0C1242BF60600541D63 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLNode.m; path = Shared/HTMLParser/HTMLNode.m; sourceTree = SOURCE_ROOT; };
@@ -784,8 +778,6 @@
 				C5403B691F9E3C30002696EE /* libCTidy.a in Frameworks */,
 				4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */,
 				4B4BF25A21B1CE93002A84EE /* NYTPhotoViewer.framework in Frameworks */,
-				4BA910A21B84A54A00D58F83 /* Crashlytics.framework in Frameworks */,
-				4BA910A11B84A54A00D58F83 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,8 +786,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5D77D261F9E3B2000AB0144 /* libCTidy.a in Frameworks */,
-				C507F3361F88280C0013D2B7 /* Crashlytics.framework in Frameworks */,
-				C507F3351F8828090013D2B7 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1124,8 +1114,6 @@
 				4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */,
 				4B14E41F1E82F5B50032F54B /* Photos.framework */,
 				4B14E4201E82F5B50032F54B /* PhotosUI.framework */,
-				4BA9109F1B84A54A00D58F83 /* Fabric.framework */,
-				4BA910A01B84A54A00D58F83 /* Crashlytics.framework */,
 			);
 			name = Frameworks;
 			path = Snippets;
@@ -1413,7 +1401,6 @@
 				4BA2C96F1B2109D10038C0E5 /* Sources */,
 				4BA2C9701B2109D10038C0E5 /* Frameworks */,
 				4BA2C9711B2109D10038C0E5 /* Resources */,
-				4BA9109D1B84A51B00D58F83 /* ShellScript */,
 				4B4BF26221B1D042002A84EE /* ShellScript */,
 				C58FB69E1F87F5D70039823A /* Embed App Extensions */,
 				C5A5159A21B1B6EF00C15092 /* Embed Frameworks */,
@@ -1653,19 +1640,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-		4BA9109D1B84A51B00D58F83 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 8dad69922a39f4f51a31347f60f2e16d40193eb5 2492a44f53c59554cc623477936514640948a414be2668ba256d9d0ee55d9fb6\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
