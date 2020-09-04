@@ -135,6 +135,10 @@
 		4BBA71031F5DF9CE00B56A04 /* RFHighlightingTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA71021F5DF9CE00B56A04 /* RFHighlightingTextStorage.m */; };
 		4BBC298321B47C6E001E3BDB /* RFAutoCompleteCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A515A321B3160100C15092 /* RFAutoCompleteCollectionViewCell.m */; };
 		4BBC298421B47CB3001E3BDB /* RFAutoCompleteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A515AD21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib */; };
+		4BCFD41F2502DE5C0076168B /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BCFD41D2502DE5C0076168B /* Accounts.storyboard */; };
+		4BCFD4202502DE5C0076168B /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BCFD41D2502DE5C0076168B /* Accounts.storyboard */; };
+		4BCFD4232502E1CB0076168B /* RFAccountsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCFD4222502E1CB0076168B /* RFAccountsController.m */; };
+		4BCFD4242502E1CB0076168B /* RFAccountsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCFD4222502E1CB0076168B /* RFAccountsController.m */; };
 		4BD9D0C5242BF60600541D63 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C1242BF60600541D63 /* HTMLNode.m */; };
 		4BD9D0C6242BF60600541D63 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C3242BF60600541D63 /* HTMLParser.m */; };
 		4BED552322FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */; };
@@ -554,6 +558,9 @@
 		4BA910971B84077000D58F83 /* UIBarButtonItem+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+Extras.m"; path = "Source/UIBarButtonItem+Extras.m"; sourceTree = "<group>"; };
 		4BBA71011F5DF9CE00B56A04 /* RFHighlightingTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFHighlightingTextStorage.h; path = Source/RFHighlightingTextStorage.h; sourceTree = "<group>"; };
 		4BBA71021F5DF9CE00B56A04 /* RFHighlightingTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFHighlightingTextStorage.m; path = Source/RFHighlightingTextStorage.m; sourceTree = "<group>"; };
+		4BCFD41E2502DE5C0076168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Accounts.storyboard; sourceTree = "<group>"; };
+		4BCFD4212502E1CB0076168B /* RFAccountsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFAccountsController.h; path = Source/RFAccountsController.h; sourceTree = "<group>"; };
+		4BCFD4222502E1CB0076168B /* RFAccountsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAccountsController.m; path = Source/RFAccountsController.m; sourceTree = "<group>"; };
 		4BD9D0C1242BF60600541D63 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLNode.m; path = Shared/HTMLParser/HTMLNode.m; sourceTree = SOURCE_ROOT; };
 		4BD9D0C2242BF60600541D63 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLNode.h; path = Shared/HTMLParser/HTMLNode.h; sourceTree = SOURCE_ROOT; };
 		4BD9D0C3242BF60600541D63 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = Shared/HTMLParser/HTMLParser.m; sourceTree = SOURCE_ROOT; };
@@ -959,6 +966,8 @@
 				4BF123FC1E88302B00B56138 /* RFFilterCell.m */,
 				4B8714751E64C0DD00C69589 /* RFExternalController.h */,
 				4B8714761E64C0DD00C69589 /* RFExternalController.m */,
+				4BCFD4212502E1CB0076168B /* RFAccountsController.h */,
+				4BCFD4222502E1CB0076168B /* RFAccountsController.m */,
 				4B0D55531B93B3590076AD9F /* RFWordpressController.h */,
 				4B0D55541B93B3590076AD9F /* RFWordpressController.m */,
 				4B0D556A1B9552310076AD9F /* RFCategoriesController.h */,
@@ -1057,6 +1066,7 @@
 				4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */,
 				4B1F7FE4225269E100E8AF3E /* Upgrade.xib */,
 				4B15282D2327285D006F1DBE /* Username.xib */,
+				4BCFD41D2502DE5C0076168B /* Accounts.storyboard */,
 				4B94052C1E2933DE00B01E79 /* Images.xcassets */,
 				4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */,
 			);
@@ -1549,6 +1559,7 @@
 				4B5F75551B8CABF30074D88E /* Options.xib in Resources */,
 				C5CED6F91ECF792E0068F537 /* YUCICLAHE.cikernel in Resources */,
 				C5CED7141ECF792E0068F537 /* YUCISkyGenerator.cikernel in Resources */,
+				4BCFD41F2502DE5C0076168B /* Accounts.storyboard in Resources */,
 				C5CED7081ECF792E0068F537 /* YUCIHighPass.cikernel in Resources */,
 				4B0D55581B93B3F00076AD9F /* Wordpress.xib in Resources */,
 				4B9A7BAD1E82F1C1002A49E5 /* PhotoCell.xib in Resources */,
@@ -1609,6 +1620,7 @@
 				C507F35A1F8831530013D2B7 /* User.xib in Resources */,
 				4B400D1220244A6600C71AAF /* Feeds.xib in Resources */,
 				C507F35F1F8831530013D2B7 /* FilterCell.xib in Resources */,
+				4BCFD4202502DE5C0076168B /* Accounts.storyboard in Resources */,
 				C55044A21F8EBB7800C1D5F2 /* Images.xcassets in Resources */,
 				4BBC298421B47CB3001E3BDB /* RFAutoCompleteCollectionViewCell.xib in Resources */,
 				C507F3651F8831530013D2B7 /* SettingChoiceCell.xib in Resources */,
@@ -1726,6 +1738,7 @@
 				4BF8034E1B87AA2C00D6670C /* UUString.m in Sources */,
 				4BF8034A1B87AA2C00D6670C /* UUHttpResponseHandler.m in Sources */,
 				4BA713432029127E0083948C /* MMSpanParser.m in Sources */,
+				4BCFD4232502E1CB0076168B /* RFAccountsController.m in Sources */,
 				4BF123FD1E88302B00B56138 /* RFFilterCell.m in Sources */,
 				C5CED6FC1ECF792E0068F537 /* YUCIColorLookup.m in Sources */,
 				4BA910981B84077000D58F83 /* UIBarButtonItem+Extras.m in Sources */,
@@ -1834,6 +1847,7 @@
 				C507F3191F8827850013D2B7 /* RFHighlightingTextStorage.m in Sources */,
 				C507F31D1F8827950013D2B7 /* RFClient.m in Sources */,
 				C507F3231F8827A90013D2B7 /* RFXMLElementStack.m in Sources */,
+				4BCFD4242502E1CB0076168B /* RFAccountsController.m in Sources */,
 				C5A66B0F1F88325E0063F325 /* NSString+MarkupExtensions.m in Sources */,
 				C5B48B302294E59100776248 /* FileInZipInfo.m in Sources */,
 				4BA7133E2029127E0083948C /* MMGenerator.m in Sources */,
@@ -2106,6 +2120,14 @@
 				4BA910841B83D22900D58F83 /* Base */,
 			);
 			name = Post.xib;
+			sourceTree = "<group>";
+		};
+		4BCFD41D2502DE5C0076168B /* Accounts.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BCFD41E2502DE5C0076168B /* Base */,
+			);
+			name = Accounts.storyboard;
 			sourceTree = "<group>";
 		};
 		4BF123F21E882F4500B56138 /* Filters.xib */ = {

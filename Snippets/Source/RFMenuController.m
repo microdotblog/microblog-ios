@@ -15,6 +15,7 @@
 #import "RFPostController.h"
 #import "RFHelpController.h"
 #import "RFAllPostsController.h"
+#import "RFAccountsController.h"
 #import "RFMenuCell.h"
 #import "RFClient.h"
 #import "RFMacros.h"
@@ -212,10 +213,14 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (IBAction) showUserProfile:(id)sender
 {
-	NSString* username = [RFSettings snippetsUsername];
-	if (username) {
-		[[NSNotificationCenter defaultCenter] postNotificationName:kShowUserProfileNotification object:self userInfo:@{ kShowUserProfileUsernameKey: username }];
-	}
+	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Accounts" bundle:nil];
+	RFAccountsController* accounts_controller = [storyboard instantiateInitialViewController];
+	[self.navigationController presentViewController:accounts_controller animated:YES completion:NULL];
+	
+//	NSString* username = [RFSettings snippetsUsername];
+//	if (username) {
+//		[[NSNotificationCenter defaultCenter] postNotificationName:kShowUserProfileNotification object:self userInfo:@{ kShowUserProfileUsernameKey: username }];
+//	}
 }
 
 - (IBAction) showTimeline:(id)sender
