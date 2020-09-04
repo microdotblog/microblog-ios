@@ -1298,7 +1298,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) uploadPhoto:(RFPhoto *)photo completion:(void (^)(void))handler
 {
 	UIImage* img = photo.thumbnailImage;
-	NSData* d = UIImageJPEGRepresentation (img, 0.6);
+	NSData* d = UIImageJPEGRepresentation (img, 0.9);
 	if (d) {
 		if ([RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
 			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];

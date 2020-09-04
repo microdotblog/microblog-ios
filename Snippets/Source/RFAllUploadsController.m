@@ -21,7 +21,10 @@
 #import "UUAlert.h"
 #import "NYTPhotoViewer+Extras.h"
 #import "RFNYTPhoto.h"
+#import "UUImage.h"
 #import "RFConstants.h"
+
+@import MobileCoreServices;
 
 @interface RFAllUploadsController() <NYTPhotosViewControllerDelegate, NYTPhotoViewerDataSource>
 
@@ -29,6 +32,8 @@
 @property (nonatomic, strong) RFNYTPhoto* photoToView;
 
 @end
+
+#pragma mark -
 
 @implementation RFAllUploadsController
 
@@ -131,6 +136,51 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	}];
 }
 
+- (void) uploadData:(NSData *)data isVideo:(BOOL)isVideo
+{
+	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];
+	NSString* destination_uid = [RFSettings selectedBlogUid];
+	if (destination_uid == nil) {
+		destination_uid = @"";
+	}
+
+	NSDictionary* args = @{
+		@"mp-destination": destination_uid
+	};
+
+	self.hostnameButton.hidden = YES;
+	[self.progressSpinner startAnimating];
+
+	if (isVideo) {
+		[client uploadVideoData:data named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
+			RFDispatchMainAsync (^{
+				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
+					[self.progressSpinner stopAnimating];
+					NSString* msg = response.parsedResponse[@"error_description"];
+					[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Video" message:msg button:@"OK" completionHandler:NULL];
+				}
+				else {
+					[self fetchPosts];
+				}
+			});
+		}];
+	}
+	else {
+		[client uploadImageData:data named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
+			RFDispatchMainAsync (^{
+				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
+					[self.progressSpinner stopAnimating];
+					NSString* msg = response.parsedResponse[@"error_description"];
+					[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Photo" message:msg button:@"OK" completionHandler:NULL];
+				}
+				else {
+					[self fetchPosts];
+				}
+			});
+		}];
+	}
+}
+
 - (void) back:(id)sender
 {
 	[self.navigationController popViewControllerAnimated:YES];
@@ -138,6 +188,11 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 
 - (void) chooseUpload:(id)sender
 {
+	UIImagePickerController* picker_controller = [[UIImagePickerController alloc] init];
+	picker_controller.delegate = self;
+	picker_controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+	picker_controller.mediaTypes = @[ (NSString*)kUTTypeMovie, (NSString*)kUTTypeImage ];
+	[self presentViewController:picker_controller animated:YES completion:NULL];
 }
 
 - (IBAction) blogHostnamePressed:(id)sender
@@ -188,17 +243,19 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	}
 }
 
+#pragma mark -
+
 - (NSNumber*) numberOfPhotos
 {
 	return @(0);
 }
 
-- (NSInteger)indexOfPhoto:(id <NYTPhoto>)photo
+- (NSInteger) indexOfPhoto:(id <NYTPhoto>)photo
 {
 	return 0;
 }
 
-- (nullable id <NYTPhoto>)photoAtIndex:(NSInteger)photoIndex
+- (nullable id <NYTPhoto>) photoAtIndex:(NSInteger)photoIndex
 {
 	return self.photoToView;
 }
@@ -211,6 +268,8 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	return activityIndicator;
 }
 
+#pragma mark -
+
 - (void) openUpload:(RFUpload *)upload
 {
 	self.photoToView = [[RFNYTPhoto alloc] init];
@@ -219,9 +278,7 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	self.photoViewerController = [[NYTPhotosViewController alloc] initWithDataSource:self initialPhoto:self.photoToView delegate:self];
 	self.photoViewerController.rightBarButtonItems = @[];
 	
-	[self presentViewController:self.photoViewerController animated:YES completion:^
-	{
-	}];
+	[self presentViewController:self.photoViewerController animated:YES completion:NULL];
 
 	[UUHttpSession get:upload.url queryArguments:nil completionHandler:^(UUHttpResponse *response) {
 		UIImage* image = response.parsedResponse;
@@ -271,6 +328,49 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 			}
 		});
 	}];
+}
+
+#pragma mark -
+
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+	NSURL* reference_url = [info objectForKey:UIImagePickerControllerReferenceURL];
+	PHAsset* asset = [[PHAsset fetchAssetsWithALAssetURLs:@[ reference_url ] options:nil] lastObject];
+
+	if (asset) {
+		if (asset.mediaType == PHAssetMediaTypeVideo) {
+			RFPhoto* photo = [[RFPhoto alloc] initWithVideo:reference_url asset:asset];
+			[photo generateVideoURL:^(NSURL* url) {
+				NSData* d = [NSData dataWithContentsOfURL:photo.videoURL];
+				if (d) {
+					[self uploadData:d isVideo:YES];
+				}
+			}];
+		}
+		else {
+			PHImageManager* manager = [PHImageManager defaultManager];
+			PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
+			options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+			options.resizeMode = PHImageRequestOptionsResizeModeExact;
+			options.networkAccessAllowed = YES;
+			[manager requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+				UIImage* img = [UIImage imageWithData:imageData];
+				img = [img uuRemoveOrientation];
+
+				NSData* d = UIImageJPEGRepresentation (img, 0.9);
+				if (d) {
+					[self uploadData:d isVideo:NO];
+				}
+			}];
+		}
+
+		[self dismissViewControllerAnimated:YES completion:NULL];
+	}
+}
+
+- (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark -
