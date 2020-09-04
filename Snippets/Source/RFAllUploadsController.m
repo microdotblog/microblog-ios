@@ -78,6 +78,9 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 		UIImage* upload_img = [UIImage systemImageNamed:@"icloud.and.arrow.up"];
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:upload_img style:UIBarButtonItemStylePlain target:self action:@selector(chooseUpload:)];
 	}
+	else {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Upload..." style:UIBarButtonItemStylePlain target:self action:@selector(chooseUpload:)];
+	}
 }
 
 - (void) setupNotifications
