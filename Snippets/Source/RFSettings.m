@@ -131,11 +131,23 @@
 	return value.boolValue;
 }
 
++ (BOOL) loadUserDefaultBool:(NSString*)name useCurrentUser:(BOOL)useCurrentUser
+{
+	NSString* s = [self makeKey:name useCurrentUser:useCurrentUser];
+	return [self loadUserDefaultBool:s];
+}
+
 + (NSDictionary*) loadUserDefaultDictionary:(NSString*)name
 {
 	NSUserDefaults* sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kSharedGroupDefaults];
 	NSDictionary* dictionary = [sharedDefaults objectForKey:name];
 	return dictionary;
+}
+
++ (NSDictionary*) loadUserDefaultDictionary:(NSString*)name useCurrentUser:(BOOL)useCurrentUser
+{
+	NSString* s = [self makeKey:name useCurrentUser:useCurrentUser];
+	return [self loadUserDefaultDictionary:s];
 }
 
 + (void) removeObjectForKey:(NSString*)key
@@ -159,7 +171,7 @@
 
 + (BOOL) hasSnippetsBlog
 {
-	return [RFSettings loadUserDefaultBool:HasSnippetsBlog];
+	return [RFSettings loadUserDefaultBool:HasSnippetsBlog useCurrentUser:YES];
 }
 
 + (void) setHasSnippetsBlog:(BOOL)value
@@ -265,7 +277,7 @@
 
 + (NSString*) accountDefaultSite
 {
-	return [RFSettings loadUserDefault:AccountDefaultSite];
+	return [RFSettings loadUserDefault:AccountDefaultSite useCurrentUser:YES];
 }
 
 + (void) setAccountDefaultSite:(NSString*)endpoint
@@ -448,7 +460,7 @@
 
 + (NSDictionary*) selectedBlogInfo
 {
-	return [RFSettings loadUserDefaultDictionary:SelectedBlogInfo];
+	return [RFSettings loadUserDefaultDictionary:SelectedBlogInfo useCurrentUser:YES];
 }
 
 + (NSString*) selectedBlogUid
