@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString* username;
 
 + (NSArray *) allAccounts;
+- (NSString *) profileURL;
 
 @end
 

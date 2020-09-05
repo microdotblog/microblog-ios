@@ -28,4 +28,9 @@
 	return accounts;
 }
 
+- (NSString *) profileURL
+{
+	return [NSString stringWithFormat:@"https://micro.blog/%@/avatar.jpg", self.username];
+}
+
 @end

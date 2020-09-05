@@ -15,9 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RFAccountCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView* profileImageView;
+@property (strong, nonatomic) IBOutlet UILabel* plusField;
 @property (strong, nonatomic) IBOutlet UILabel* usernameField;
 
 - (void) setupWithAccount:(RFAccount *)account;
+- (void) setupForNewButton;
 
 @end
 

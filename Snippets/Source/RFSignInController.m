@@ -12,8 +12,10 @@
 #import "RFMacros.h"
 #import "RFConstants.h"
 #import "RFSettings.h"
+#import "RFAccount.h"
 #import "UUAlert.h"
 #import "UILabel+MarkupExtensions.h"
+#import "UIBarButtonItem+Extras.h"
 #import "UIView+Extras.h"
 #import "SSKeychain.h"
 #import "RFAutoCompleteCache.h"
@@ -59,6 +61,10 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
 	if ([UITraitCollection rf_isDarkMode]) {
 		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+	}
+
+	if ([[RFAccount allAccounts] count] > 0) {
+		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(cancel:)];
 	}
 }
 
@@ -148,6 +154,11 @@
 		
 		[controller performRequests];
 	}
+}
+
+- (IBAction) cancel:(id)sender
+{
+	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 #pragma mark -

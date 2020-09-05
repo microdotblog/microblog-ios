@@ -10,6 +10,7 @@
 
 #import "RFAccount.h"
 #import "RFAccountCell.h"
+#import "RFConstants.h"
 
 static NSString* const kAccountCellIdentifier = @"AccountCell";
 
@@ -36,17 +37,36 @@ static NSString* const kAccountCellIdentifier = @"AccountCell";
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return [self.accounts count];
+	return [self.accounts count] + 1;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	RFAccountCell* cell = [tableView dequeueReusableCellWithIdentifier:kAccountCellIdentifier forIndexPath:indexPath];
 	
-	RFAccount* a = [self.accounts objectAtIndex:indexPath.row];
-	[cell setupWithAccount:a];
+	if (indexPath.row < [self.accounts count]) {
+		RFAccount* a = [self.accounts objectAtIndex:indexPath.row];
+		[cell setupWithAccount:a];
+	}
+	else {
+		[cell setupForNewButton];
+	}
 	
 	return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.row < [self.accounts count]) {
+		// switch account
+		// ...
+	}
+	else {
+		// prompt to sign in to new account
+		[self dismissViewControllerAnimated:YES completion:^{
+			[[NSNotificationCenter defaultCenter] postNotificationName:kShowSigninNotification object:self];
+		}];
+	}
 }
 
 @end
