@@ -411,8 +411,13 @@
 - (void) loadTimelineNotification:(NSNotification *)notification
 {
 	NSString* token = [notification.userInfo objectForKey:@"token"];
-	[RFSettings setSnippetsPassword:token useCurrentUser:YES];
-	[self loadTimelineForToken:token];
+	if (token) {
+		[RFSettings setSnippetsPassword:token useCurrentUser:YES];
+		[self loadTimelineForToken:token];
+	}
+	else {
+		[self refreshTimeline];
+	}
 }
 
 - (void) openPostingNotification:(NSNotification *)notification

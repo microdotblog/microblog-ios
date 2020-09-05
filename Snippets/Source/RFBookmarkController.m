@@ -10,6 +10,8 @@
 
 #import "RFClient.h"
 #import "UIBarButtonItem+Extras.h"
+#import "RFConstants.h"
+#import "RFMacros.h"
 
 @implementation RFBookmarkController
 
@@ -18,12 +20,13 @@
 	[super viewDidLoad];
 	
 	[self setupNavigation];
+	[self setupClipboard];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	
+		
 	[self.urlField becomeFirstResponder];
 }
 
@@ -35,16 +38,34 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save Bookmark" style:UIBarButtonItemStylePlain target:self action:@selector(saveBookmark:)];
 }
 
+- (void) setupClipboard
+{
+	NSString* url = [UIPasteboard generalPasteboard].string;
+	if (url && [url containsString:@"http"]) {
+		self.urlField.text = url;
+	}
+}
+
 - (IBAction) saveBookmark:(id)sender
 {
 	[self.progressSpinner startAnimating];
 	
-	// save bookmark
-	// ...
+	NSString* url = self.urlField.text;
 	
-	[self dismissViewControllerAnimated:YES completion:^{
-		// notify bookmarks to update
-		// ...
+	// save bookmark
+	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
+	NSDictionary* args = @{
+		@"h": @"entry",
+		@"content": @"",
+		@"bookmark-of": url
+	};
+	[client postWithParams:args completion:^(UUHttpResponse* response) {
+		RFDispatchMainAsync (^{
+			[self dismissViewControllerAnimated:YES completion:^{
+				// notify bookmarks to update
+				[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self];
+			}];
+		});
 	}];
 }
 
