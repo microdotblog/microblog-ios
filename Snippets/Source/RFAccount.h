@@ -16,7 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSArray *) allAccounts;
 + (instancetype) defaultAccount;
+- (NSString *) password;
 - (NSString *) profileURL;
+- (void) setDefault;
 
 @end
 

@@ -15,6 +15,7 @@
 #import "RFClient.h"
 #import "RFConstants.h"
 #import "RFSettings.h"
+#import "RFAccount.h"
 #import "UIBarButtonItem+Extras.h"
 #import "UIFont+Extras.h"
 #import "UIView+Extras.h"
@@ -324,10 +325,13 @@
 	if (showSpinner) {
 		[self.refreshControl beginRefreshing];
 	}
-	
-	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
-	if (token) {
-		[self loadTimelineForToken:token];
+
+	RFAccount* a = [RFAccount defaultAccount];
+	if (a) {
+		NSString* token = [a password];
+		if (token) {
+			[self loadTimelineForToken:token];
+		}
 	}
 }
 
@@ -392,7 +396,7 @@
 - (void) loadTimelineNotification:(NSNotification *)notification
 {
 	NSString* token = [notification.userInfo objectForKey:@"token"];
-	[SSKeychain setPassword:token forService:@"Snippets" account:@"default"];
+	[RFSettings setSnippetsPassword:token useCurrentUser:YES];
 	[self loadTimelineForToken:token];
 }
 

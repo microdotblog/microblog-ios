@@ -260,6 +260,8 @@
 
 			self.signinToken = new_token;
 
+			[RFSettings addAccountUsername:username];
+			
 			[RFSettings setSnippetsAccountFullName:full_name];
 			[RFSettings setSnippetsUsername:username];
 			[RFSettings setAccountDefaultSite:default_site];

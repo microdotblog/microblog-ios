@@ -215,7 +215,20 @@
 
 + (NSString*) snippetsPassword
 {
-	return [SSKeychain passwordForService:@"Snippets" account:@"default"];
+	return [self snippetsPasswordForCurrentUser:YES];
+}
+
++ (NSString*) snippetsPasswordForCurrentUser:(BOOL)useCurrentUser
+{
+	NSString* s = @"default";
+	if (useCurrentUser) {
+		NSString* username = [self snippetsUsername];
+		if (username) {
+			s = username;
+		}
+	}
+
+	return [SSKeychain passwordForService:@"Snippets" account:s];
 }
 
 + (void) setSnippetsPassword:(NSString*)password
@@ -268,6 +281,26 @@
 + (void) setAccountUsernames:(NSArray *)usernames
 {
 	[self setUserDefault:usernames forKey:AccountUsernames];
+}
+
++ (void) addAccountUsername:(NSString *)username
+{
+	NSMutableArray* new_usernames;
+	NSArray* usernames = [self accountsUsernames];
+	if ([usernames count] == 0) {
+		new_usernames = [NSMutableArray array];
+		NSString* current_username = [self snippetsUsername];
+		if (current_username) {
+			[new_usernames addObject:current_username];
+		}
+		[new_usernames addObject:username];
+	}
+	else if (![usernames containsObject:username]) {
+		new_usernames = [usernames mutableCopy];
+		[new_usernames addObject:username];
+	}
+
+	[self setAccountUsernames:new_usernames];
 }
 
 + (NSString*) externalMicropubMe

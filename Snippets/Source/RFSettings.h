@@ -24,17 +24,20 @@
 
 + (NSArray *) 	accountsUsernames;
 + (void) 		setAccountUsernames:(NSArray *)usernames;
++ (void)		addAccountUsername:(NSString *)username;
 
 //Snippets specific settings
 + (BOOL) 			hasSnippetsBlog;
 + (NSString*) 		snippetsUsername;
 + (NSString*) 		snippetsPassword;
++ (NSString*) 		snippetsPasswordForCurrentUser:(BOOL)useCurrentUser;
 + (NSString*) 		snippetsAccountFullName;
 + (NSDictionary*) 	selectedBlogInfo;
 + (NSString*)		selectedBlogUid;
 + (void) 			setHasSnippetsBlog:(BOOL)value;
 + (void)			setSnippetsUsername:(NSString*)username;
 + (void) 			setSnippetsPassword:(NSString*)password;
++ (void) 			setSnippetsPassword:(NSString*)password useCurrentUser:(BOOL)useCurrentUser;
 + (void) 			setAccountDefaultSite:(NSString*)value;
 + (void) 			setSnippetsAccountFullName:(NSString*)value;
 + (void)			setSelectedBlogInfo:(NSDictionary*)blogInfo;

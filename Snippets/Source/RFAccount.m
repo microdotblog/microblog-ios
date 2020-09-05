@@ -9,6 +9,7 @@
 #import "RFAccount.h"
 
 #import "RFSettings.h"
+#import "SSKeychain.h"
 
 @implementation RFAccount
 
@@ -59,7 +60,7 @@
 
 - (NSString *) password
 {
-	return nil;
+	return [SSKeychain passwordForService:@"Snippets" account:self.username];
 }
 
 - (NSString *) profileURL

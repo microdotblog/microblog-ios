@@ -59,7 +59,11 @@ static NSString* const kAccountCellIdentifier = @"AccountCell";
 {
 	if (indexPath.row < [self.accounts count]) {
 		// switch account
-		// ...
+		RFAccount* a = [self.accounts objectAtIndex:indexPath.row];
+		[a setDefault];
+		[self dismissViewControllerAnimated:YES completion:^{
+			[[NSNotificationCenter defaultCenter] postNotificationName:kRefreshUserNotification object:self];
+		}];
 	}
 	else {
 		// prompt to sign in to new account

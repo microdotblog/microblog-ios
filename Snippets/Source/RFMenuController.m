@@ -46,6 +46,7 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	[super viewDidLoad];
 	
 	[self setupNavigation];
+	[self setupNotifications];
 	[self setupDefaultSource];
 	[self setupTable];
 }
@@ -76,6 +77,11 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	else {
 		self.navigationItem.rightBarButtonItem = nil;
 	}
+}
+
+- (void) setupNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshUserNotification:) name:kRefreshUserNotification object:nil];
 }
 
 - (void) setupDefaultSource
@@ -133,37 +139,47 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (void) checkUserDetails
 {
-	NSString* token = [SSKeychain passwordForService:@"Snippets" account:@"default"];
-	if (token) {
-		RFClient* client = [[RFClient alloc] initWithPath:@"/account/verify"];
-		NSDictionary* params = @{
-			@"token": token
-		};
-		[client postWithParams:params completion:^(UUHttpResponse* response) {
-			if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]]) {
-				NSString* full_name = [response.parsedResponse objectForKey:@"full_name"];
-				NSString* username = [response.parsedResponse objectForKey:@"username"];
+	RFAccount* a = [RFAccount defaultAccount];
+	if (a) {
+		NSString* token = [a password];
+		if (token) {
+			RFClient* client = [[RFClient alloc] initWithPath:@"/account/verify"];
+			NSDictionary* params = @{
+				@"token": token
+			};
+			[client postWithParams:params completion:^(UUHttpResponse* response) {
+				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]]) {
+					NSString* full_name = [response.parsedResponse objectForKey:@"full_name"];
+					NSString* username = [response.parsedResponse objectForKey:@"username"];
 
-				[RFSettings setSnippetsAccountFullName:full_name];
-				[RFSettings setSnippetsUsername:username];
+					[RFSettings setSnippetsAccountFullName:full_name];
+					[RFSettings setSnippetsUsername:username];
+					[RFSettings setSnippetsPassword:token useCurrentUser:YES];
 
+					RFDispatchMain (^{
+						[self setupProfileInfo];
+					});
+				}
+			}];
+			
+			// Update the list of blogs assigned to the users...
+			client = [[RFClient alloc] initWithPath:@"/micropub?q=config"];
+			[client getWithQueryArguments:nil completion:^(UUHttpResponse* response)
+			{
+				NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
+				[RFSettings setBlogList:blogs];
 				RFDispatchMain (^{
 					[self setupProfileInfo];
 				});
-			}
-		}];
-		
-		// Update the list of blogs assigned to the users...
-		client = [[RFClient alloc] initWithPath:@"/micropub?q=config"];
-		[client getWithQueryArguments:nil completion:^(UUHttpResponse* response)
-		{
-			NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
-			[RFSettings setBlogList:blogs];
-			RFDispatchMain (^{
-				[self setupProfileInfo];
-			});
-		}];
+			}];
+		}
 	}
+}
+
+- (void) refreshUserNotification:(NSNotification *)notification
+{
+	[self setupProfileInfo];
+	[self checkUserDetails];
 }
 
 - (IBAction) onSwitchMicroBlog:(id)sender
