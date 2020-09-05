@@ -13,6 +13,21 @@
 
 @implementation RFAccountCell
 
+- (void) awakeFromNib
+{
+	[super awakeFromNib];
+
+	[self setupSelectionBackground];
+}
+
+- (void) setupSelectionBackground
+{
+	UIView* selected_view = [[UIView alloc] initWithFrame:self.bounds];
+	selected_view.backgroundColor = [UIColor clearColor];
+	self.selectedBackgroundView = selected_view;
+}
+
+
 - (void) setupWithAccount:(RFAccount *)account
 {
 	self.usernameField.text = [NSString stringWithFormat:@"@%@", account.username];
