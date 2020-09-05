@@ -10,6 +10,7 @@
 #import "SSKeychain.h"
 #import "RFConstants.h"
 
+// external settings are global regardless of current account
 #define ExternalBlogFormat 				@"ExternalBlogFormat"
 #define ExternalMicropubTokenEndpoint 	@"ExternalMicropubTokenEndpoint"
 #define ExternalMicropubState			@"ExternalMicropubState"
@@ -22,22 +23,27 @@
 #define ExternalMicropubPostingEndpoint	@"ExternalMicropubPostingEndpoint"
 #define ExternalBlogEndpoint			@"ExternalBlogEndpoint"
 #define ExternalMicropubMe				@"ExternalMicropubMe"
-#define AccountDefaultSite				@"AccountDefaultSite"
-#define PlainSharedURLsPreferred		@"PlainSharedURLsPreferred"
 #define ExternalBlogIsPreferred			@"ExternalBlogIsPreferred"
-#define HasSnippetsBlog					@"HasSnippetsBlog"
-#define AccountUsername					@"AccountUsername"
-#define AccountEmail					@"AccountEmail"
-#define AccountFullName					@"AccountFullName"
-#define AccountGravatarURL				@"AccountGravatarURL"
-#define IsFullAccess					@"IsFullAccess"
+
+// more global prefs
 #define LatestDraftTitle				@"LatestDraftTitle"
 #define LatestDraftText					@"LatestDraftText"
 #define PreferredContentSize			@"PreferredContentSize"
+#define PlainSharedURLsPreferred		@"PlainSharedURLsPreferred"
+#define kLastStatusBarHeightPrefKey		@"LastStatusBarHeight"
+
+// this is the current account
+#define AccountUsername					@"AccountUsername"
+
+// all configured accounts
+#define AccountUsernames				@"AccountUsernames"
+
+// updated based on current account (and have _username variants)
+#define AccountFullName					@"AccountFullName"
+#define AccountDefaultSite				@"AccountDefaultSite"
+#define HasSnippetsBlog					@"HasSnippetsBlog"
 #define SelectedBlogInfo				@"Microblog::SelectedBlog"
 #define BlogList						@"Micro.blog list"
-
-static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 
 @implementation RFSettings
 
@@ -49,6 +55,25 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 	
 	[sharedDefaults synchronize];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void) setUserDefault:(NSObject*)object forKey:(NSString*)key useCurrentUser:(BOOL)useCurrentUser
+{
+	NSString* s = [self makeKey:key useCurrentUser:useCurrentUser];
+	[self setUserDefault:object forKey:s];
+}
+
++ (NSString *) makeKey:(NSString *)key useCurrentUser:(BOOL)useCurrentUser
+{
+	NSString* s = key;
+	if (useCurrentUser) {
+		NSString* username = [self snippetsUsername];
+		if (username) {
+			s = [NSString stringWithFormat:@"%@_%@", key, username];
+		}
+	}
+	
+	return s;
 }
 
 + (NSString*) loadUserDefault:(NSString*)name
@@ -65,6 +90,12 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 	return value;
 }
 
++ (NSString*) loadUserDefault:(NSString*)name useCurrentUser:(BOOL)useCurrentUser
+{
+	NSString* s = [self makeKey:name useCurrentUser:useCurrentUser];
+	return [self loadUserDefault:s];
+}
+
 + (NSArray*) loadUserDefaultArray:(NSString*)name
 {
 	NSUserDefaults* sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName: kSharedGroupDefaults];
@@ -77,6 +108,12 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 	}
 	
 	return value;
+}
+
++ (NSArray*) loadUserDefaultArray:(NSString*)name useCurrentUser:(BOOL)useCurrentUser
+{
+	NSString* s = [self makeKey:name useCurrentUser:useCurrentUser];
+	return [self loadUserDefaultArray:s];
 }
 
 + (BOOL) loadUserDefaultBool:(NSString*)name
@@ -111,6 +148,12 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
++ (void) removeObjectForKey:(NSString*)key username:(NSString *)username
+{
+	NSString* s = [NSString stringWithFormat:@"%@_%@", key, username];
+	[self removeObjectForKey:s];
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -121,7 +164,7 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 
 + (void) setHasSnippetsBlog:(BOOL)value
 {
-	[RFSettings setUserDefault:@(value) forKey:HasSnippetsBlog];
+	[RFSettings setUserDefault:@(value) forKey:HasSnippetsBlog useCurrentUser:YES];
 }
 
 
@@ -177,7 +220,20 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 
 + (void) setSnippetsPassword:(NSString*)password
 {
-	[SSKeychain setPassword:password forService:@"Snippets" account:@"default"];
+	[self setSnippetsPassword:password useCurrentUser:NO];
+}
+
++ (void) setSnippetsPassword:(NSString*)password useCurrentUser:(BOOL)useCurrentUser
+{
+	NSString* s = @"default";
+	if (useCurrentUser) {
+		NSString* username = [self snippetsUsername];
+		if (username) {
+			s = username;
+		}
+	}
+	
+	[SSKeychain setPassword:password forService:@"Snippets" account:s];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -201,11 +257,18 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 
 + (void) setAccountDefaultSite:(NSString*)endpoint
 {
-	[RFSettings setUserDefault:endpoint forKey:AccountDefaultSite];
+	[RFSettings setUserDefault:endpoint forKey:AccountDefaultSite useCurrentUser:YES];
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
++ (NSArray *) accountsUsernames
+{
+	return [self loadUserDefaultArray:AccountUsernames];
+}
 
++ (void) setAccountUsernames:(NSArray *)usernames
+{
+	[self setUserDefault:usernames forKey:AccountUsernames];
+}
 
 + (NSString*) externalMicropubMe
 {
@@ -347,7 +410,7 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 
 + (void) setSelectedBlogInfo:(NSDictionary*)blogInfo
 {
-	[RFSettings setUserDefault:blogInfo forKey:SelectedBlogInfo];
+	[RFSettings setUserDefault:blogInfo forKey:SelectedBlogInfo useCurrentUser:YES];
 }
 
 + (NSDictionary*) selectedBlogInfo
@@ -372,12 +435,12 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 
 + (NSArray*) blogList
 {
-	return [RFSettings loadUserDefaultArray:BlogList];
+	return [RFSettings loadUserDefaultArray:BlogList useCurrentUser:YES];
 }
 
 + (void) setBlogList:(NSArray*)blogList
 {
-	[RFSettings setUserDefault:blogList forKey:BlogList];
+	[RFSettings setUserDefault:blogList forKey:BlogList useCurrentUser:YES];
 }
 
 
@@ -397,55 +460,28 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 
 + (NSString*) snippetsAccountFullName
 {
-	return [RFSettings loadUserDefault:AccountFullName];
+	return [RFSettings loadUserDefault:AccountFullName useCurrentUser:YES];
 }
 
 + (void) setSnippetsAccountFullName:(NSString*)value
 {
-	[RFSettings setUserDefault:value forKey:AccountFullName];
+	[RFSettings setUserDefault:value forKey:AccountFullName useCurrentUser:YES];
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-+ (NSString*) snippetsAccountEmail
-{
-	return [RFSettings loadUserDefault:AccountEmail];
-}
-
-+ (void) setSnippetsAccountEmail:(NSString*)value
-{
-	[RFSettings setUserDefault:value forKey:AccountEmail];
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-+ (NSString*) snippetsGravatarURL
-{
-	return [RFSettings loadUserDefault:AccountGravatarURL];
-}
-
-+ (void) setSnippetsGravatarURL:(NSString*)value
-{
-	[RFSettings setUserDefault:value forKey:AccountGravatarURL];
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-+ (BOOL) isSnippetsFullAccess
-{
-	return [RFSettings loadUserDefaultBool:IsFullAccess];
-}
-
-+ (void) setSnippetsFullAccess:(BOOL)fullAccess
-{
-	[RFSettings setUserDefault:@(fullAccess) forKey:IsFullAccess];
-}
-
 
 + (void) clearAllSettings
 {
+	NSArray* usernames = [self accountsUsernames];
+	for (NSString* username in usernames) {
+		[self removeObjectForKey:AccountFullName username:username];
+		[self removeObjectForKey:AccountDefaultSite username:username];
+		[self removeObjectForKey:HasSnippetsBlog username:username];
+		[self removeObjectForKey:SelectedBlogInfo username:username];
+		[self removeObjectForKey:BlogList username:username];
+		[SSKeychain deletePasswordForService:@"Snippets" account:username];
+	}
+	
 	[RFSettings removeObjectForKey:AccountUsername];
-	[RFSettings removeObjectForKey:AccountGravatarURL];
+	[RFSettings removeObjectForKey:AccountUsernames];
 	[RFSettings removeObjectForKey:AccountDefaultSite];
 
 	[RFSettings removeObjectForKey:HasSnippetsBlog];
@@ -463,9 +499,9 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 	[RFSettings removeObjectForKey:ExternalMicropubMediaEndpoint];
 	[RFSettings removeObjectForKey:ExternalMicropubState];
 
-	[RFSettings removeObjectForKey:@"Micro.blog list"];
-	[RFSettings removeObjectForKey:@"RFAutoCompleteCache"];
+	[RFSettings removeObjectForKey:BlogList];
 	[RFSettings removeObjectForKey:SelectedBlogInfo];
+	[RFSettings removeObjectForKey:@"RFAutoCompleteCache"];
 
 	[SSKeychain deletePasswordForService:@"Snippets" account:@"default"];
 	[SSKeychain deletePasswordForService:@"ExternalBlog" account:@"default"];
@@ -490,10 +526,7 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 	[RFSettings migrateValueForKey:ExternalBlogIsPreferred];
 	[RFSettings migrateValueForKey:HasSnippetsBlog];
 	[RFSettings migrateValueForKey:AccountUsername];
-	[RFSettings migrateValueForKey:AccountEmail];
 	[RFSettings migrateValueForKey:AccountFullName];
-	[RFSettings migrateValueForKey:AccountGravatarURL];
-	[RFSettings migrateValueForKey:IsFullAccess];
 	[RFSettings migrateValueForKey:BlogList];
 }
 
@@ -503,6 +536,37 @@ static NSString* const kLastStatusBarHeightPrefKey = @"LastStatusBarHeight";
 	NSObject* object = [[NSUserDefaults standardUserDefaults] objectForKey:key];
 	[sharedDefaults setObject:object forKey:key];
 	[sharedDefaults synchronize];
+}
+
++ (void) migrateCurrentUserKeys
+{
+	id full_name = [self loadUserDefault:AccountFullName];
+	if (full_name) {
+		[self setSnippetsAccountFullName:full_name];
+	}
+
+	id default_site = [self loadUserDefault:AccountDefaultSite];
+	if (default_site) {
+		[self setAccountDefaultSite:default_site];
+	}
+
+	BOOL has_snippets_blog = [self loadUserDefaultBool:HasSnippetsBlog];
+	[self setHasSnippetsBlog:has_snippets_blog];
+
+	id selected_blog_info = [self loadUserDefaultDictionary:SelectedBlogInfo];
+	if (selected_blog_info) {
+		[self setSelectedBlogInfo:selected_blog_info];
+	}
+
+	id blog_list = [self loadUserDefaultArray:BlogList];
+	if (blog_list) {
+		[self setBlogList:blog_list];
+	}
+	
+	NSString* password = [self snippetsPassword];
+	if ([password length] > 0) {
+		[self setSnippetsPassword:password useCurrentUser:YES];
+	}
 }
 
 + (NSString *) draftTitle

@@ -255,10 +255,7 @@
 			NSString* new_token = [response.parsedResponse objectForKey:@"token"];
 			NSString* full_name = [response.parsedResponse objectForKey:@"full_name"];
 			NSString* username = [response.parsedResponse objectForKey:@"username"];
-			NSString* email = [response.parsedResponse objectForKey:@"email"];
-			NSString* gravatar_url = [response.parsedResponse objectForKey:@"gravatar_url"];
 			NSNumber* has_site = [response.parsedResponse objectForKey:@"has_site"];
-			NSNumber* is_fullaccess = [response.parsedResponse objectForKey:@"is_fullaccess"];
 			NSString* default_site = [response.parsedResponse objectForKey:@"default_site"];
 
 			self.signinToken = new_token;
@@ -266,10 +263,7 @@
 			[RFSettings setSnippetsAccountFullName:full_name];
 			[RFSettings setSnippetsUsername:username];
 			[RFSettings setAccountDefaultSite:default_site];
-			[RFSettings setSnippetsAccountEmail:email];
-			[RFSettings setSnippetsGravatarURL:gravatar_url];
 			[RFSettings setHasSnippetsBlog:[has_site boolValue]];
-			[RFSettings setSnippetsFullAccess:[is_fullaccess boolValue]];
 			[SSKeychain setPassword:new_token forService:@"Snippets" account:@"default"];
 
 			[self checkForMultipleBlogs];

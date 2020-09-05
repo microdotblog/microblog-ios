@@ -16,6 +16,7 @@
 #import "RFHelpController.h"
 #import "RFAllPostsController.h"
 #import "RFAccountsController.h"
+#import "RFAccount.h"
 #import "RFMenuCell.h"
 #import "RFClient.h"
 #import "RFMacros.h"
@@ -87,13 +88,16 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 {
 	NSString* full_name = [RFSettings snippetsAccountFullName];
 	NSString* username = [RFSettings snippetsUsername];
-	NSString* gravatar_url = [RFSettings snippetsGravatarURL];
+	
+	RFAccount* a = [[RFAccount alloc] init];
+	a.username = username;
+	NSString* avatar_url = [a profileURL];
 
 	if (full_name && username) {
 		self.fullNameField.text = full_name;
 		self.usernameField.text = [NSString stringWithFormat:@"@%@", username];
 		self.profileImageView.layer.cornerRadius = self.profileImageView.bounds.size.width / 2.0;
-		[self.profileImageView uuLoadImageFromURL:[NSURL URLWithString:gravatar_url] defaultImage:nil loadCompleteHandler:NULL];
+		[self.profileImageView uuLoadImageFromURL:[NSURL URLWithString:avatar_url] defaultImage:nil loadCompleteHandler:NULL];
 	}
 	else {
 		self.fullNameField.text = @"";
@@ -139,11 +143,9 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 			if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]]) {
 				NSString* full_name = [response.parsedResponse objectForKey:@"full_name"];
 				NSString* username = [response.parsedResponse objectForKey:@"username"];
-				NSString* gravatar_url = [response.parsedResponse objectForKey:@"gravatar_url"];
 
 				[RFSettings setSnippetsAccountFullName:full_name];
 				[RFSettings setSnippetsUsername:username];
-				[RFSettings setSnippetsGravatarURL:gravatar_url];
 
 				RFDispatchMain (^{
 					[self setupProfileInfo];

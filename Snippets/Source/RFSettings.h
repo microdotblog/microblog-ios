@@ -20,26 +20,23 @@
 + (BOOL) 		prefersExternalBlog;
 + (void) 		setPrefersPlainSharedURLs:(BOOL)value;
 + (void) 		setPrefersExternalBlog:(BOOL)value;
-+ (NSString*) 	accountDefaultSite;
++ (NSString *) 	accountDefaultSite;
+
++ (NSArray *) 	accountsUsernames;
++ (void) 		setAccountUsernames:(NSArray *)usernames;
 
 //Snippets specific settings
 + (BOOL) 			hasSnippetsBlog;
 + (NSString*) 		snippetsUsername;
 + (NSString*) 		snippetsPassword;
-+ (NSString*) 		snippetsAccountEmail;
 + (NSString*) 		snippetsAccountFullName;
-+ (NSString*) 		snippetsGravatarURL;
-+ (BOOL) 			isSnippetsFullAccess;
 + (NSDictionary*) 	selectedBlogInfo;
 + (NSString*)		selectedBlogUid;
 + (void) 			setHasSnippetsBlog:(BOOL)value;
 + (void)			setSnippetsUsername:(NSString*)username;
 + (void) 			setSnippetsPassword:(NSString*)password;
 + (void) 			setAccountDefaultSite:(NSString*)value;
-+ (void) 			setSnippetsAccountEmail:(NSString*)value;
 + (void) 			setSnippetsAccountFullName:(NSString*)value;
-+ (void) 			setSnippetsGravatarURL:(NSString*)value;
-+ (void) 			setSnippetsFullAccess:(BOOL)fullAccess;
 + (void)			setSelectedBlogInfo:(NSDictionary*)blogInfo;
 + (NSArray*)		blogList;
 + (void)			setBlogList:(NSArray*)blogList;
@@ -87,5 +84,6 @@
 + (void) setLastStatusBarHeight:(float)value;
 
 + (void) migrateAllKeys;
++ (void) migrateCurrentUserKeys;
 
 @end
