@@ -140,6 +140,14 @@
 			self.navigationItem.rightBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"reply_button" target:self action:@selector(promptNewReply:)];
 		}
 	}
+	else if ([self.title isEqualToString:@"Bookmarks"]) {
+		if (@available(iOS 13.0, *)) {
+			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"plus"] style:UIBarButtonItemStylePlain target:self action:@selector(promptNewBookmark:)];
+		}
+		else {
+			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStylePlain target:self action:@selector(promptNewBookmark:)];
+		}
+	}
 	else {
 		if (@available(iOS 13.0, *)) {
 			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"square.and.pencil"] style:UIBarButtonItemStylePlain target:self action:@selector(promptNewPost:)];
@@ -313,6 +321,13 @@
 	RFPostController* post_controller = [[RFPostController alloc] initWithReplyTo:post_id replyUsername:post_username];
 	UINavigationController* nav_controller = [[UINavigationController alloc] initWithRootViewController:post_controller];
 	[self.navigationController presentViewController:nav_controller animated:YES completion:NULL];	
+}
+
+- (IBAction) promptNewBookmark:(id)sender
+{
+	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Bookmark" bundle:nil];
+	UIViewController* nav_controller = [storyboard instantiateInitialViewController];
+	[self presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 - (void) refreshTimeline
