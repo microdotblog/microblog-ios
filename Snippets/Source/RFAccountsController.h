@@ -10,9 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RFAccountsController : UIViewController
+@interface RFAccountsController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonnull) IBOutlet UIView* containerView;
+@property (strong, nonatomic) IBOutlet UIView* containerView;
+
+@property (strong, nonatomic) NSArray* accounts;
 
 @end
 

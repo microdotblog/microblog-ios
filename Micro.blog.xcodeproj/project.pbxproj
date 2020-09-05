@@ -139,6 +139,10 @@
 		4BCFD4202502DE5C0076168B /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BCFD41D2502DE5C0076168B /* Accounts.storyboard */; };
 		4BCFD4232502E1CB0076168B /* RFAccountsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCFD4222502E1CB0076168B /* RFAccountsController.m */; };
 		4BCFD4242502E1CB0076168B /* RFAccountsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCFD4222502E1CB0076168B /* RFAccountsController.m */; };
+		4BCFD4272503D75E0076168B /* RFAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCFD4262503D75E0076168B /* RFAccount.m */; };
+		4BCFD4282503D75E0076168B /* RFAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCFD4262503D75E0076168B /* RFAccount.m */; };
+		4BCFD42B2503D8FA0076168B /* RFAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCFD42A2503D8FA0076168B /* RFAccountCell.m */; };
+		4BCFD42C2503D8FA0076168B /* RFAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCFD42A2503D8FA0076168B /* RFAccountCell.m */; };
 		4BD9D0C5242BF60600541D63 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C1242BF60600541D63 /* HTMLNode.m */; };
 		4BD9D0C6242BF60600541D63 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C3242BF60600541D63 /* HTMLParser.m */; };
 		4BED552322FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */; };
@@ -561,6 +565,10 @@
 		4BCFD41E2502DE5C0076168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Accounts.storyboard; sourceTree = "<group>"; };
 		4BCFD4212502E1CB0076168B /* RFAccountsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFAccountsController.h; path = Source/RFAccountsController.h; sourceTree = "<group>"; };
 		4BCFD4222502E1CB0076168B /* RFAccountsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAccountsController.m; path = Source/RFAccountsController.m; sourceTree = "<group>"; };
+		4BCFD4252503D75E0076168B /* RFAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFAccount.h; path = Source/RFAccount.h; sourceTree = "<group>"; };
+		4BCFD4262503D75E0076168B /* RFAccount.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAccount.m; path = Source/RFAccount.m; sourceTree = "<group>"; };
+		4BCFD4292503D8FA0076168B /* RFAccountCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFAccountCell.h; path = Source/RFAccountCell.h; sourceTree = "<group>"; };
+		4BCFD42A2503D8FA0076168B /* RFAccountCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAccountCell.m; path = Source/RFAccountCell.m; sourceTree = "<group>"; };
 		4BD9D0C1242BF60600541D63 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLNode.m; path = Shared/HTMLParser/HTMLNode.m; sourceTree = SOURCE_ROOT; };
 		4BD9D0C2242BF60600541D63 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLNode.h; path = Shared/HTMLParser/HTMLNode.h; sourceTree = SOURCE_ROOT; };
 		4BD9D0C3242BF60600541D63 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = Shared/HTMLParser/HTMLParser.m; sourceTree = SOURCE_ROOT; };
@@ -940,6 +948,8 @@
 				4B5078D01B965C79002A4F80 /* RFSettingsController.m */,
 				4B43700A1EC7AF3300B46D56 /* RFSettings.h */,
 				4B43700B1EC7AF3300B46D56 /* RFSettings.m */,
+				4BCFD4252503D75E0076168B /* RFAccount.h */,
+				4BCFD4262503D75E0076168B /* RFAccount.m */,
 				4BA910801B83D20C00D58F83 /* RFPostController.h */,
 				4BA910811B83D20C00D58F83 /* RFPostController.m */,
 				4B400D0B202448DB00C71AAF /* RFFeedsController.h */,
@@ -968,6 +978,8 @@
 				4B8714761E64C0DD00C69589 /* RFExternalController.m */,
 				4BCFD4212502E1CB0076168B /* RFAccountsController.h */,
 				4BCFD4222502E1CB0076168B /* RFAccountsController.m */,
+				4BCFD4292503D8FA0076168B /* RFAccountCell.h */,
+				4BCFD42A2503D8FA0076168B /* RFAccountCell.m */,
 				4B0D55531B93B3590076AD9F /* RFWordpressController.h */,
 				4B0D55541B93B3590076AD9F /* RFWordpressController.m */,
 				4B0D556A1B9552310076AD9F /* RFCategoriesController.h */,
@@ -1664,6 +1676,7 @@
 				4BA713412029127E0083948C /* MMHTMLParser.m in Sources */,
 				4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */,
 				4BA7133F2029127E0083948C /* MMScanner.m in Sources */,
+				4BCFD42B2503D8FA0076168B /* RFAccountCell.m in Sources */,
 				4B5DDACF24E6CCD9007674FF /* RFUpload.m in Sources */,
 				4B821C7D21B428CD006CE005 /* UIView+Extras.m in Sources */,
 				4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */,
@@ -1763,6 +1776,7 @@
 				4B400D0D202448DB00C71AAF /* RFFeedsController.m in Sources */,
 				4BF803511B87AACF00D6670C /* RFClient.m in Sources */,
 				4B1F7FE22251B3D300E8AF3E /* SDAVAssetExportSession.m in Sources */,
+				4BCFD4272503D75E0076168B /* RFAccount.m in Sources */,
 				4B0D55551B93B3590076AD9F /* RFWordpressController.m in Sources */,
 				4B64B2E7220930E4005B92A0 /* RFCategoryCell.m in Sources */,
 				4B5DDAC324E4A4B9007674FF /* RFMenuCell.m in Sources */,
@@ -1827,10 +1841,12 @@
 				C5A66B0C1F88325E0063F325 /* CColorConverter.m in Sources */,
 				4B1F7FE32251B3E400E8AF3E /* SDAVAssetExportSession.m in Sources */,
 				C507F3341F8827C20013D2B7 /* SSKeychainQuery.m in Sources */,
+				4BCFD42C2503D8FA0076168B /* RFAccountCell.m in Sources */,
 				4BA713422029127E0083948C /* MMHTMLParser.m in Sources */,
 				C5B48B2C2294E59100776248 /* ZipFile.m in Sources */,
 				C5AF58BC2294CECD00830C25 /* UZKArchive.m in Sources */,
 				C507F3261F8827A90013D2B7 /* RFMenuButton.m in Sources */,
+				4BCFD4282503D75E0076168B /* RFAccount.m in Sources */,
 				C5B48B3C2294E5A300776248 /* zip.c in Sources */,
 				C507F3281F8827A90013D2B7 /* UIFont+Extras.m in Sources */,
 				C507F3181F8827820013D2B7 /* RFSettings.m in Sources */,
