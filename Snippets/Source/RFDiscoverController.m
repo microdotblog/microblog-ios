@@ -82,12 +82,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) setupEmojiPicker
 {
     self.stackViewContainerView.hidden = YES;
-    if ([UITraitCollection rf_isDarkMode]) {
-		self.stackViewContainerView.layer.borderColor = UIColor.darkGrayColor.CGColor;
-    }
-    else {
-		self.stackViewContainerView.layer.borderColor = UIColor.lightGrayColor.CGColor;
-    }
     self.stackViewContainerView.layer.borderWidth = 0.5;
     self.stackViewContainerView.layer.cornerRadius = 5.0;
 
@@ -126,12 +120,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     [self updateTagmoji:NO];
     
     self.emojiPickerView.clipsToBounds = YES;
-	if (@available(iOS 11.0, *)) {
-		self.emojiPickerView.layer.borderColor = [UIColor colorNamed:@"color_emoji_button_outline"].CGColor;
-	}
-	else {
-		self.emojiPickerView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-	}
+	self.emojiPickerView.layer.borderColor = [UIColor colorNamed:@"color_emoji_button_outline"].CGColor;
     self.emojiPickerView.layer.borderWidth = 1.0;
     self.emojiPickerView.layer.cornerRadius = 5.0;
 }
@@ -171,7 +160,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				
 				[button setTitle:title forState:UIControlStateNormal];
 				button.titleLabel.font = [UIFont systemFontOfSize:15];
-				[button setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+				[button setTitleColor:[UIColor colorNamed:@"color_popover_buttons"] forState:UIControlStateNormal];
 				[button.titleLabel sizeToFit];
 				button.tag = [self.tagmoji indexOfObject:dictionary];
 				

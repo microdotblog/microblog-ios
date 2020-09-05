@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17140" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17115"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,7 +33,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Favorite">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="favorite:" destination="-1" eventType="touchUpInside" id="6ZR-70-3P3"/>
@@ -43,7 +44,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Conversation">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="conversation:" destination="-1" eventType="touchUpInside" id="oAp-Mc-b6N"/>
@@ -54,7 +55,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Reply">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="reply:" destination="-1" eventType="touchUpInside" id="Udf-Wp-PWj"/>
@@ -65,7 +66,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Share...">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="share:" destination="-1" eventType="touchUpInside" id="s3s-18-0jw"/>
@@ -80,7 +81,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="pFk-u0-PD6"/>
-            <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" name="color_popover_background"/>
             <constraints>
                 <constraint firstItem="KaJ-Nc-xp3" firstAttribute="top" secondItem="pFk-u0-PD6" secondAttribute="top" id="Gbn-BT-Zp4"/>
                 <constraint firstItem="KaJ-Nc-xp3" firstAttribute="centerX" secondItem="Yfk-8I-dMD" secondAttribute="centerX" id="iYK-FM-hNI"/>
@@ -100,7 +101,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Unfavorite">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="unfavorite:" destination="-1" eventType="touchUpInside" id="HGi-U4-GaP"/>
@@ -111,7 +112,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Conversation">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="conversation:" destination="-1" eventType="touchUpInside" id="p7w-LT-UG1"/>
@@ -122,7 +123,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Reply">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="reply:" destination="-1" eventType="touchUpInside" id="6VG-xH-PxX"/>
@@ -133,7 +134,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Share...">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="share:" destination="-1" eventType="touchUpInside" id="wkC-Lb-0Im"/>
@@ -148,7 +149,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="UUf-Ds-mSz"/>
-            <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" name="color_popover_background"/>
             <constraints>
                 <constraint firstItem="N9H-2Q-Y2G" firstAttribute="top" secondItem="UUf-Ds-mSz" secondAttribute="top" id="W5k-kh-YAg"/>
                 <constraint firstItem="N9H-2Q-Y2G" firstAttribute="centerX" secondItem="eOy-dA-XqP" secondAttribute="centerX" id="Wtt-4Z-c7S"/>
@@ -168,7 +169,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Remove">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="removePost:" destination="-1" eventType="touchUpInside" id="QRK-Oa-zbH"/>
@@ -179,7 +180,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Reply">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="reply:" destination="-1" eventType="touchUpInside" id="zrf-Pu-OJb"/>
@@ -190,7 +191,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Share...">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="share:" destination="-1" eventType="touchUpInside" id="lon-1f-nMG"/>
@@ -205,7 +206,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="gaH-KR-3wR"/>
-            <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" name="color_popover_background"/>
             <constraints>
                 <constraint firstItem="njp-e4-jBu" firstAttribute="top" secondItem="gaH-KR-3wR" secondAttribute="top" id="PNQ-n7-Mo4"/>
                 <constraint firstItem="njp-e4-jBu" firstAttribute="centerX" secondItem="gaH-KR-3wR" secondAttribute="centerX" id="zjO-Cz-Aab"/>
@@ -225,7 +226,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Delete">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="deletePost:" destination="-1" eventType="touchUpInside" id="UY6-Rc-oWJ"/>
@@ -236,7 +237,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Edit">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="editPost:" destination="-1" eventType="touchUpInside" id="BEH-zf-2Sp"/>
@@ -251,7 +252,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="DL6-bw-FSz"/>
-            <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" name="color_popover_background"/>
             <constraints>
                 <constraint firstItem="gF4-Ct-fpR" firstAttribute="centerX" secondItem="DL6-bw-FSz" secondAttribute="centerX" id="Any-Il-j8S"/>
                 <constraint firstItem="gF4-Ct-fpR" firstAttribute="top" secondItem="DL6-bw-FSz" secondAttribute="top" id="qT0-4p-sNp"/>
@@ -271,7 +272,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Delete">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="deletePost:" destination="-1" eventType="touchUpInside" id="Xwk-lp-q7y"/>
@@ -282,7 +283,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Edit">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="editPost:" destination="-1" eventType="touchUpInside" id="vVV-0G-JIQ"/>
@@ -293,7 +294,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Publish">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="publishPost:" destination="-1" eventType="touchUpInside" id="WxZ-8V-RPF"/>
@@ -308,7 +309,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="8oK-4a-WCc"/>
-            <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" name="color_popover_background"/>
             <constraints>
                 <constraint firstItem="Qjy-vf-2Fh" firstAttribute="top" secondItem="8oK-4a-WCc" secondAttribute="top" id="VcH-Y2-bqB"/>
                 <constraint firstItem="Qjy-vf-2Fh" firstAttribute="centerX" secondItem="8oK-4a-WCc" secondAttribute="centerX" id="ogm-ja-B9b"/>
@@ -328,7 +329,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Open">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="openUpload:" destination="-1" eventType="touchUpInside" id="2om-5x-AUE"/>
@@ -339,7 +340,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Copy HTML">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="copyUpload:" destination="-1" eventType="touchUpInside" id="84Q-cw-meO"/>
@@ -350,7 +351,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="Delete">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" name="color_popover_buttons"/>
                             </state>
                             <connections>
                                 <action selector="deleteUpload:" destination="-1" eventType="touchUpInside" id="tBI-Um-Us6"/>
@@ -365,7 +366,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="p5D-d7-tU3"/>
-            <color key="backgroundColor" white="0.10000000000000001" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" name="color_popover_background"/>
             <constraints>
                 <constraint firstItem="6SH-4X-Ukm" firstAttribute="top" secondItem="p5D-d7-tU3" secondAttribute="top" id="23A-eW-ho4"/>
                 <constraint firstItem="6SH-4X-Ukm" firstAttribute="centerX" secondItem="p5D-d7-tU3" secondAttribute="centerX" constant="6" id="XNa-as-N4h"/>
@@ -374,4 +375,12 @@
             <point key="canvasLocation" x="497.8125" y="733.09859154929575"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="color_popover_background">
+            <color white="0.15384690463542938" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="color_popover_buttons">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
 </document>
