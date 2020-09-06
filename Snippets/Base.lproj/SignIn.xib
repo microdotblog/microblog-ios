@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -41,7 +42,7 @@
                             </constraints>
                         </activityIndicatorView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="og7-T2-Oy9" secondAttribute="trailing" constant="7" id="YEs-TK-CuZ"/>
                         <constraint firstItem="og7-T2-Oy9" firstAttribute="top" secondItem="phR-tm-5p6" secondAttribute="top" constant="12" id="YTU-9y-a3Y"/>
@@ -68,7 +69,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New to Micro.blog? Sign up with your Apple ID:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-IB-pTa">
-                    <rect key="frame" x="31" y="285" width="258" height="36"/>
+                    <rect key="frame" x="31" y="288" width="258" height="36"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="258" id="eZ4-DO-hI1"/>
                     </constraints>
@@ -76,7 +77,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZD-8e-rD1">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1ZD-8e-rD1">
                     <rect key="frame" x="31" y="158" width="258" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="258" id="QQV-j5-m22"/>
@@ -90,7 +91,7 @@
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTE-zP-eNE" customClass="RFThinLineView">
                     <rect key="frame" x="0.0" y="272" width="320" height="1"/>
-                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="separatorColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="qNy-No-J2u"/>
                     </constraints>
@@ -105,7 +106,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="5m8-7r-f4A" firstAttribute="leading" secondItem="9Zr-YD-fRb" secondAttribute="leading" constant="17" id="8SJ-h1-OiW"/>
                         <constraint firstItem="5m8-7r-f4A" firstAttribute="top" secondItem="9Zr-YD-fRb" secondAttribute="top" constant="7" id="96q-dz-6qt"/>
@@ -115,7 +116,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ua-ob-xZF" customClass="ASAuthorizationAppleIDButton">
-                    <rect key="frame" x="60" y="334" width="200" height="40"/>
+                    <rect key="frame" x="60" y="339" width="200" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="QfZ-zJ-QM5"/>
                         <constraint firstAttribute="height" constant="40" id="SAl-yF-Mvb"/>
@@ -125,7 +126,7 @@
                     </connections>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fTE-zP-eNE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0ns-hk-nfY"/>
                 <constraint firstItem="6V4-1T-7uy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1ju-3m-hYa"/>
@@ -142,12 +143,23 @@
                 <constraint firstAttribute="trailing" secondItem="fTE-zP-eNE" secondAttribute="trailing" id="YJO-OH-ADp"/>
                 <constraint firstItem="1ZD-8e-rD1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Yjm-KY-fJH"/>
                 <constraint firstItem="nqK-IB-pTa" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="akN-xv-pvl"/>
-                <constraint firstItem="nqK-IB-pTa" firstAttribute="top" secondItem="fTE-zP-eNE" secondAttribute="bottom" constant="12" id="d22-25-rOc"/>
+                <constraint firstItem="nqK-IB-pTa" firstAttribute="top" secondItem="fTE-zP-eNE" secondAttribute="bottom" constant="15" id="d22-25-rOc"/>
                 <constraint firstItem="phR-tm-5p6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jiE-R0-bK0"/>
-                <constraint firstItem="1ua-ob-xZF" firstAttribute="top" secondItem="nqK-IB-pTa" secondAttribute="bottom" constant="13" id="k2g-Tz-o5s"/>
+                <constraint firstItem="1ua-ob-xZF" firstAttribute="top" secondItem="nqK-IB-pTa" secondAttribute="bottom" constant="15" id="k2g-Tz-o5s"/>
                 <constraint firstItem="9Zr-YD-fRb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="otr-jQ-b1x"/>
             </constraints>
             <point key="canvasLocation" x="138.75" y="153.16901408450704"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
