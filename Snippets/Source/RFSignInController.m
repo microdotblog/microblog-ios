@@ -329,48 +329,49 @@
     [self setupFollowerAutoComplete];
     
 	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub?q=config"];
-	[client getWithQueryArguments:nil completion:^(UUHttpResponse* response)
-	{
+	[client getWithQueryArguments:nil completion:^(UUHttpResponse* response) {
 		NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
-		[RFSettings setBlogList:blogs];
+		RFDispatchMainAsync ((^{
+			[RFSettings setBlogList:blogs];
 
-		if (blogs.count > 0)
-		{
-			if (blogs.count > 1)
+			if (blogs.count > 0)
 			{
-				// set the blog info for the current default
-				for (NSDictionary* blogInfo in blogs) {
-					if ([blogInfo[@"name"] isEqualToString:[RFSettings accountDefaultSite]]) {
-						[RFSettings setSelectedBlogInfo:blogInfo];
-						break;
-					}
-				}
-			
-				// prompt for them to select a client-side default
-				UIViewController* savedParent = self.presentingViewController;
-				dispatch_async(dispatch_get_main_queue(), ^
+				if (blogs.count > 1)
 				{
-					[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self userInfo:@{ @"token": self.signinToken }];
-					[self.presentingViewController dismissViewControllerAnimated:NO completion:^
+					// set the blog info for the current default
+					for (NSDictionary* blogInfo in blogs) {
+						if ([blogInfo[@"name"] isEqualToString:[RFSettings accountDefaultSite]]) {
+							[RFSettings setSelectedBlogInfo:blogInfo];
+							break;
+						}
+					}
+				
+					// prompt for them to select a client-side default
+					UIViewController* savedParent = self.presentingViewController;
+					dispatch_async(dispatch_get_main_queue(), ^
 					{
-						UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Blogs" bundle:nil];
-						UIViewController* controller = [storyboard instantiateViewControllerWithIdentifier:@"BlogsNavigation"];
-						[savedParent presentViewController:controller animated:NO completion:NULL];
-					}];
-				});
+						[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self userInfo:@{ @"token": self.signinToken }];
+						[self.presentingViewController dismissViewControllerAnimated:NO completion:^
+						{
+							UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Blogs" bundle:nil];
+							UIViewController* controller = [storyboard instantiateViewControllerWithIdentifier:@"BlogsNavigation"];
+							[savedParent presentViewController:controller animated:NO completion:NULL];
+						}];
+					});
+				}
+				else
+				{
+					// only 1 blog, set it as default
+					NSDictionary* blogInfo = blogs.firstObject;
+					[RFSettings setSelectedBlogInfo:blogInfo];
+					[self completeLoginProcess];
+				}
 			}
 			else
 			{
-				// only 1 blog, set it as default
-				NSDictionary* blogInfo = blogs.firstObject;
-				[RFSettings setSelectedBlogInfo:blogInfo];
 				[self completeLoginProcess];
 			}
-		}
-		else
-		{
-			[self completeLoginProcess];
-		}
+		}));
 	}];
 }
 
