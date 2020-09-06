@@ -209,23 +209,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
 	RFSearchController* search_controller = [[RFSearchController alloc] init];
 	[self.navigationController pushViewController:search_controller animated:YES];
-	
-//	if (!self.searchBar) {
-//		[self showSearch];
-//	}
-//	else {
-//		[self hideSearch];
-//
-//		self.endpoint = @"/hybrid/discover";
-//		[self refreshTimeline];
-//	}
-}
-
-- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-	self.endpoint = [NSString stringWithFormat:@"/hybrid/discover/search?q=%@", [searchBar.text rf_urlEncoded]];
-	[self refreshTimeline];
-	[self hideSearch];
 }
 
 - (UITextField *) findTextFieldInView:(UIView *)v
@@ -243,56 +226,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 	
 	return result;
-}
-
-- (void) showSearch
-{
-	CGRect r = self.view.bounds;
-	r.origin.y = 44 + [self.view rf_statusBarHeight];
-	r.size.height = 44;
-	self.searchBar = [[UISearchBar alloc] initWithFrame:r];
-	self.searchBar.alpha = 0.0;
-	self.searchBar.delegate = self;
-
-	self.backdropView = [[UIView alloc] initWithFrame:self.view.bounds];
-	self.backdropView.backgroundColor = [UIColor blackColor];
-	self.backdropView.alpha = 0.0;
-	
-	UITapGestureRecognizer* tap_gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleSearch:)];
-	[self.backdropView addGestureRecognizer:tap_gesture];
-
-	[self.view addSubview:self.backdropView];
-	[self.view addSubview:self.searchBar];
-
-	UITextField* field = [self findTextFieldInView:self.searchBar];
-	if (field) {
-		// to avoid animation glitch, temporary hide the cursor
-		field.tintColor = [UIColor clearColor];
-	}
-
-	[UIView animateWithDuration:0.3 animations:^{
-		self.searchBar.alpha = 1.0;
-		self.backdropView.alpha = 0.15;
-	} completion:^(BOOL finished) {
-		[self.searchBar becomeFirstResponder];
-		
-		RFDispatchSeconds (1.0, ^{
-			field.tintColor = nil;
-		});
-	}];
-}
-
-- (void) hideSearch
-{
-	[UIView animateWithDuration:0.3 animations:^{
-		self.searchBar.alpha = 0.0;
-		self.backdropView.alpha = 0.0;
-	} completion:^(BOOL finished) {
-		[self.searchBar removeFromSuperview];
-		[self.backdropView removeFromSuperview];
-		self.searchBar = nil;
-		self.backdropView = nil;
-	}];
 }
 
 - (void) showPhotos
