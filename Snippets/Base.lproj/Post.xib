@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -64,7 +65,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now publishing to your microblog." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuZ-E2-gY3">
                                     <rect key="frame" x="32" y="12.5" width="278" height="19.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" systemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -85,7 +86,7 @@
                             <rect key="frame" x="0.0" y="44" width="320" height="44"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uf1-p8-p6f">
-                                    <rect key="frame" x="15" y="12" width="290" height="20"/>
+                                    <rect key="frame" x="15" y="11.5" width="290" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
@@ -100,7 +101,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="uf1-p8-p6f" firstAttribute="centerY" secondItem="KVQ-Eh-uyS" secondAttribute="centerY" id="0wo-VT-xhJ"/>
                                 <constraint firstItem="lT8-aw-Eq7" firstAttribute="leading" secondItem="KVQ-Eh-uyS" secondAttribute="leading" id="Det-hd-22k"/>
@@ -123,7 +124,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I8I-kA-x0u">
                             <rect key="frame" x="0.0" y="498" width="320" height="34"/>
                             <subviews>
-                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiA-DF-hAa">
+                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiA-DF-hAa">
                                     <rect key="frame" x="286" y="0.0" width="34" height="34"/>
                                     <accessibility key="accessibilityConfiguration" label="Post settings"/>
                                     <constraints>
@@ -134,9 +135,9 @@
                                         <action selector="settingsPressed:" destination="-1" eventType="touchUpInside" id="0B7-1Q-3u9"/>
                                     </connections>
                                 </button>
-                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6of-5U-PI0">
+                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6of-5U-PI0">
                                     <rect key="frame" x="102" y="0.0" width="34" height="34"/>
-                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                     <accessibility key="accessibilityConfiguration" label="Markdown link"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34" id="5qe-gv-kZ6"/>
@@ -146,9 +147,9 @@
                                         <action selector="linkPressed:" destination="-1" eventType="touchUpInside" id="YfY-QV-3os"/>
                                     </connections>
                                 </button>
-                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gl-6r-27N">
+                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Gl-6r-27N">
                                     <rect key="frame" x="68" y="0.0" width="34" height="34"/>
-                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                     <accessibility key="accessibilityConfiguration" label="Markdown italics"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="34" id="9Nn-AH-GTL"/>
@@ -158,9 +159,9 @@
                                         <action selector="italicsPressed:" destination="-1" eventType="touchUpInside" id="qx4-pN-PG5"/>
                                     </connections>
                                 </button>
-                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6s7-RJ-qLM">
+                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6s7-RJ-qLM">
                                     <rect key="frame" x="34" y="0.0" width="34" height="34"/>
-                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                     <accessibility key="accessibilityConfiguration" label="Markdown bold"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34" id="P4N-TY-fBt"/>
@@ -171,9 +172,9 @@
                                         <action selector="boldPressed:" destination="-1" eventType="touchUpInside" id="Qw3-Ye-zmX"/>
                                     </connections>
                                 </button>
-                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vZ-FK-rFO">
+                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vZ-FK-rFO">
                                     <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
-                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                     <accessibility key="accessibilityConfiguration" label="Add photo"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="34" id="oMW-jt-Qsf"/>
@@ -183,9 +184,9 @@
                                         <action selector="showPhotos:" destination="-1" eventType="touchUpInside" id="aeN-gY-cXQ"/>
                                     </connections>
                                 </button>
-                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6os-a6-fTT">
+                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6os-a6-fTT">
                                     <rect key="frame" x="137" y="0.0" width="149" height="34"/>
-                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                     <accessibility key="accessibilityConfiguration" label="Select blog"/>
                                     <connections>
                                         <action selector="blogHostnamePressed:" destination="-1" eventType="touchUpInside" id="kqq-0B-4nJ"/>
@@ -232,35 +233,35 @@
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3P0-OZ-HYq" customClass="RFVerticalLineView">
                                     <rect key="frame" x="136" y="0.0" width="1" height="34"/>
-                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" systemColor="separatorColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="1" id="ECA-rh-6zT"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wws-YI-Nr0" customClass="RFVerticalLineView">
                                     <rect key="frame" x="102" y="0.0" width="1" height="34"/>
-                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" systemColor="separatorColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="1" id="z1c-hl-hdM"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbM-Ug-ApQ" customClass="RFVerticalLineView">
                                     <rect key="frame" x="68" y="0.0" width="1" height="34"/>
-                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" systemColor="separatorColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="1" id="f4G-Vb-MHi"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqz-qQ-S4M" customClass="RFVerticalLineView">
                                     <rect key="frame" x="34" y="0.0" width="1" height="34"/>
-                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" systemColor="separatorColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="1" id="QRW-iX-VxD"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWw-bk-EkH" customClass="RFVerticalLineView">
                                     <rect key="frame" x="286" y="0.0" width="1" height="34"/>
-                                    <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" systemColor="separatorColor"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="1" id="nsC-Qa-y3C"/>
                                         <constraint firstAttribute="height" constant="34" id="ra7-lV-hN3"/>
@@ -287,7 +288,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="DWX-HH-zje" firstAttribute="leading" secondItem="oqz-qQ-S4M" secondAttribute="trailing" id="3V5-0i-tdm"/>
                                 <constraint firstItem="oqz-qQ-S4M" firstAttribute="leading" secondItem="7vZ-FK-rFO" secondAttribute="trailing" id="718-GT-gbR"/>
@@ -335,7 +336,7 @@
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="va1-Ew-xJV">
                             <rect key="frame" x="0.0" y="438" width="320" height="60"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="1h0-9I-T6F"/>
                             </constraints>
@@ -352,7 +353,7 @@
                         </collectionView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ic-hx-PZp" customClass="RFBottomLineView">
                             <rect key="frame" x="0.0" y="497" width="320" height="1"/>
-                            <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" systemColor="separatorColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="xLE-Zb-4bJ"/>
                             </constraints>
@@ -378,7 +379,7 @@
                                     </connections>
                                 </collectionView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="kyc-qr-Kyh" secondAttribute="trailing" id="39d-46-mck"/>
                                 <constraint firstAttribute="bottom" secondItem="kyc-qr-Kyh" secondAttribute="bottom" id="TK5-rt-K0H"/>
@@ -388,7 +389,7 @@
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="280" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjg-el-aBq">
                             <rect key="frame" x="241" y="470" width="71" height="24"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <accessibility key="accessibilityConfiguration" hint="Characters remaining"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="0jo-Pq-HPJ"/>
@@ -399,7 +400,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="I8I-kA-x0u" firstAttribute="trailing" secondItem="X7B-bm-JGs" secondAttribute="trailing" id="2JL-Ee-LC2"/>
                         <constraint firstItem="KVQ-Eh-uyS" firstAttribute="top" secondItem="ihB-7W-Vup" secondAttribute="bottom" id="3Je-NZ-385"/>
@@ -428,19 +429,31 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="uMy-xx-iVQ"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="VbH-di-quh" firstAttribute="top" secondItem="uMy-xx-iVQ" secondAttribute="top" id="DDE-S7-Fmo"/>
                 <constraint firstAttribute="trailing" secondItem="VbH-di-quh" secondAttribute="trailing" id="EtI-8F-n08"/>
                 <constraint firstItem="VbH-di-quh" firstAttribute="bottom" secondItem="uMy-xx-iVQ" secondAttribute="bottom" id="EzA-4q-Hmf"/>
                 <constraint firstItem="VbH-di-quh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="K6B-pq-R5p"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="uMy-xx-iVQ"/>
             <point key="canvasLocation" x="138.75" y="153.16901408450704"/>
         </view>
     </objects>
     <resources>
         <image name="post_camera" width="16" height="16"/>
         <image name="post_settings" width="16" height="16"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
