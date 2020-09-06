@@ -354,7 +354,10 @@
 	long darkmode = [UITraitCollection rf_isDarkMode];
 	
 	RFClient* client;
-	if ([self.endpoint isEqualToString:@"/hybrid/mentions"]) {
+	if (self.endpoint.length == 0) {
+		// don't load anything
+	}
+	else if ([self.endpoint isEqualToString:@"/hybrid/mentions"]) {
 		[self loadTimelineAppendingCommonParams];
 	}
 	else if ([self.endpoint isEqualToString:@"/hybrid/favorites"]) {

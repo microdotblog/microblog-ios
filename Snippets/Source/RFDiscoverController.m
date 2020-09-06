@@ -11,6 +11,7 @@
 #import "RFFeaturedPhoto.h"
 #import "RFFeaturedPhotoCell.h"
 #import "RFTagmojiController.h"
+#import "RFSearchController.h"
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "RFConstants.h"
@@ -72,7 +73,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) setupSearchButton
 {
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleSearch:)];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearch:)];
 }
 
 - (void) setupEmojiPicker
@@ -204,17 +205,20 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	[self.overlayButton removeFromSuperview];
 }
 
-- (void) toggleSearch:(id)sender
+- (void) showSearch:(id)sender
 {
-	if (!self.searchBar) {
-		[self showSearch];
-	}
-	else {
-		[self hideSearch];
-		
-		self.endpoint = @"/hybrid/discover";
-		[self refreshTimeline];
-	}
+	RFSearchController* search_controller = [[RFSearchController alloc] init];
+	[self.navigationController pushViewController:search_controller animated:YES];
+	
+//	if (!self.searchBar) {
+//		[self showSearch];
+//	}
+//	else {
+//		[self hideSearch];
+//
+//		self.endpoint = @"/hybrid/discover";
+//		[self refreshTimeline];
+//	}
 }
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar

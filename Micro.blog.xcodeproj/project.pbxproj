@@ -147,6 +147,9 @@
 		4BCFD430250422FC0076168B /* Bookmark.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BCFD42D250422FC0076168B /* Bookmark.storyboard */; };
 		4BCFD433250423200076168B /* RFBookmarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCFD432250423200076168B /* RFBookmarkController.m */; };
 		4BCFD434250423200076168B /* RFBookmarkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCFD432250423200076168B /* RFBookmarkController.m */; };
+		4BCFD437250526780076168B /* RFSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BCFD436250526770076168B /* RFSearchController.m */; };
+		4BCFD43B250526940076168B /* Search.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BCFD439250526940076168B /* Search.xib */; };
+		4BCFD43C250526940076168B /* Search.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BCFD439250526940076168B /* Search.xib */; };
 		4BD9D0C5242BF60600541D63 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C1242BF60600541D63 /* HTMLNode.m */; };
 		4BD9D0C6242BF60600541D63 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C3242BF60600541D63 /* HTMLParser.m */; };
 		4BED552322FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */; };
@@ -576,6 +579,9 @@
 		4BCFD42E250422FC0076168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Bookmark.storyboard; sourceTree = "<group>"; };
 		4BCFD431250423200076168B /* RFBookmarkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFBookmarkController.h; path = Source/RFBookmarkController.h; sourceTree = "<group>"; };
 		4BCFD432250423200076168B /* RFBookmarkController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFBookmarkController.m; path = Source/RFBookmarkController.m; sourceTree = "<group>"; };
+		4BCFD435250526770076168B /* RFSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFSearchController.h; sourceTree = "<group>"; };
+		4BCFD436250526770076168B /* RFSearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFSearchController.m; sourceTree = "<group>"; };
+		4BCFD43A250526940076168B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Search.xib; sourceTree = "<group>"; };
 		4BD9D0C1242BF60600541D63 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLNode.m; path = Shared/HTMLParser/HTMLNode.m; sourceTree = SOURCE_ROOT; };
 		4BD9D0C2242BF60600541D63 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLNode.h; path = Shared/HTMLParser/HTMLNode.h; sourceTree = SOURCE_ROOT; };
 		4BD9D0C3242BF60600541D63 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = Shared/HTMLParser/HTMLParser.m; sourceTree = SOURCE_ROOT; };
@@ -1045,6 +1051,8 @@
 				4B1F7FE822526A0D00E8AF3E /* RFUpgradeController.m */,
 				4BCFD431250423200076168B /* RFBookmarkController.h */,
 				4BCFD432250423200076168B /* RFBookmarkController.m */,
+				4BCFD435250526770076168B /* RFSearchController.h */,
+				4BCFD436250526770076168B /* RFSearchController.m */,
 			);
 			name = Source;
 			path = Snippets;
@@ -1057,6 +1065,7 @@
 				C5A515AE21B3196100C15092 /* RFPopupNotificationViewController.xib */,
 				C59C3B1720923DE50076A754 /* Blogs.storyboard */,
 				C5DEFA0922D6D6D1009D5FAF /* Discover.xib */,
+				4BCFD439250526940076168B /* Search.xib */,
 				4B2DC27A22FE1AEE0074D42A /* Tagmoji.xib */,
 				4B2DC28022FE1C0E0074D42A /* TagmojiCell.xib */,
 				4BA2C9771B2109D10038C0E5 /* Info.plist */,
@@ -1557,6 +1566,7 @@
 			files = (
 				4BCFD42F250422FC0076168B /* Bookmark.storyboard in Resources */,
 				C5CED7031ECF792E0068F537 /* YUCIFlashTransition.cikernel in Resources */,
+				4BCFD43B250526940076168B /* Search.xib in Resources */,
 				C5CED6FB1ECF792E0068F537 /* YUCIColorLookup.cikernel in Resources */,
 				C5CED7181ECF792E0068F537 /* YUCISurfaceBlur.cikernel in Resources */,
 				4BF123FF1E88343600B56138 /* Filters.plist in Resources */,
@@ -1623,6 +1633,7 @@
 				C507F35C1F8831530013D2B7 /* SignIn.xib in Resources */,
 				C507F35B1F8831530013D2B7 /* Options.xib in Resources */,
 				C507F3601F8831530013D2B7 /* Help.xib in Resources */,
+				4BCFD43C250526940076168B /* Search.xib in Resources */,
 				C507F35D1F8831530013D2B7 /* FeaturedPhotoCell.xib in Resources */,
 				C507F3611F8831530013D2B7 /* External.xib in Resources */,
 				4B1F7FEB22526CDA00E8AF3E /* Upgrade.xib in Resources */,
@@ -1801,6 +1812,7 @@
 				C5CED7171ECF792E0068F537 /* YUCIStarfieldGenerator.m in Sources */,
 				4BED552322FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */,
 				4B46632D1B8F51710034FC5C /* NSString+MarkupExtensions.m in Sources */,
+				4BCFD437250526780076168B /* RFSearchController.m in Sources */,
 				C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */,
 				4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */,
 				C5A515A521B3160100C15092 /* RFAutoCompleteCollectionViewCell.m in Sources */,
@@ -2166,6 +2178,14 @@
 				4BCFD42E250422FC0076168B /* Base */,
 			);
 			name = Bookmark.storyboard;
+			sourceTree = "<group>";
+		};
+		4BCFD439250526940076168B /* Search.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BCFD43A250526940076168B /* Base */,
+			);
+			name = Search.xib;
 			sourceTree = "<group>";
 		};
 		4BF123F21E882F4500B56138 /* Filters.xib */ = {
