@@ -585,32 +585,36 @@
 
 + (void) migrateCurrentUserKeys
 {
-	id full_name = [self loadUserDefault:AccountFullName];
-	if (full_name) {
-		[self setSnippetsAccountFullName:full_name];
-	}
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:@"HasMigratedCurrentUser"]) {
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasMigratedCurrentUser"];
 
-	id default_site = [self loadUserDefault:AccountDefaultSite];
-	if (default_site) {
-		[self setAccountDefaultSite:default_site];
-	}
+		id full_name = [self loadUserDefault:AccountFullName];
+		if (full_name) {
+			[self setSnippetsAccountFullName:full_name];
+		}
 
-	BOOL has_snippets_blog = [self loadUserDefaultBool:HasSnippetsBlog];
-	[self setHasSnippetsBlog:has_snippets_blog];
+		id default_site = [self loadUserDefault:AccountDefaultSite];
+		if (default_site) {
+			[self setAccountDefaultSite:default_site];
+		}
 
-	id selected_blog_info = [self loadUserDefaultDictionary:SelectedBlogInfo];
-	if (selected_blog_info) {
-		[self setSelectedBlogInfo:selected_blog_info];
-	}
+		BOOL has_snippets_blog = [self loadUserDefaultBool:HasSnippetsBlog];
+		[self setHasSnippetsBlog:has_snippets_blog];
 
-	id blog_list = [self loadUserDefaultArray:BlogList];
-	if (blog_list) {
-		[self setBlogList:blog_list];
-	}
-	
-	NSString* password = [self snippetsPasswordForCurrentUser:NO];
-	if ([password length] > 0) {
-		[self setSnippetsPassword:password useCurrentUser:YES];
+		id selected_blog_info = [self loadUserDefaultDictionary:SelectedBlogInfo];
+		if (selected_blog_info) {
+			[self setSelectedBlogInfo:selected_blog_info];
+		}
+
+		id blog_list = [self loadUserDefaultArray:BlogList];
+		if (blog_list) {
+			[self setBlogList:blog_list];
+		}
+		
+		NSString* password = [self snippetsPasswordForCurrentUser:NO];
+		if ([password length] > 0) {
+			[self setSnippetsPassword:password useCurrentUser:YES];
+		}
 	}
 }
 

@@ -46,6 +46,8 @@
 
 	[self setupNavigation];
 	[self setupNotifications];
+	
+	[self hideMessage];
 }
 
 - (void) viewDidLayoutSubviews
@@ -57,11 +59,14 @@
 
 - (void) setupNavigation
 {
-	self.title = @"Welcome";
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
 
 	if ([[RFAccount allAccounts] count] > 0) {
+		self.title = @"Add Account";
 		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_closeBarButtonWithTarget:self action:@selector(cancel:)];
+	}
+	else {
+		self.title = @"Welcome";
 	}
 }
 
@@ -83,9 +88,19 @@
 				button = [ASAuthorizationAppleIDButton buttonWithType:ASAuthorizationAppleIDButtonTypeDefault style:ASAuthorizationAppleIDButtonStyleBlack];
 			}
 			button.cornerRadius = 5.0;
+			button.translatesAutoresizingMaskIntoConstraints = NO;
 			button.frame = self.signInWithAppleButton.frame;
 			[button addTarget:self action:@selector(signInWithApple:) forControlEvents:UIControlEventTouchUpInside];
 			[self.signInWithAppleButton.superview addSubview:button];
+
+			NSLayoutConstraint* top_constraint = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.signInWithAppleIntro attribute:NSLayoutAttributeBottom multiplier:1.0 constant:15];
+			[top_constraint setActive:YES];
+			NSLayoutConstraint* center_constraint = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+			[center_constraint setActive:YES];
+			NSLayoutConstraint* width_constraint = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:button.frame.size.width];
+			[width_constraint setActive:YES];
+			NSLayoutConstraint* height_constraint = [NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:button.frame.size.height];
+			[height_constraint setActive:YES];
 
 			[self.signInWithAppleButton removeFromSuperview];
 			self.signInWithAppleButton = nil;
@@ -211,6 +226,12 @@
 
 #pragma mark -
 
+- (void) hideMessage
+{
+	self.messageTopConstraint.constant = -65;
+	self.messageContainer.alpha = 0.0;
+}
+
 - (void) showMessage:(NSString *)message
 {
 	self.messageField.text = message;
@@ -224,7 +245,7 @@
 	
 	if (self.messageContainer.alpha == 0.0) {
 		[UIView animateWithDuration:0.3 animations:^{
-			self.messageTopConstraint.constant = 44 + [self.view rf_statusBarHeight];
+			self.messageTopConstraint.constant = 0;
 			self.messageContainer.alpha = 1.0;
 			[self.view layoutIfNeeded];
 		}];
