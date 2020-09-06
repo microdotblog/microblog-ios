@@ -319,7 +319,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 //	[self.markdownLinkButton setBackgroundImage:img forState:UIControlStateNormal];
 //	[self.settingsButton setBackgroundImage:img forState:UIControlStateNormal];
 
-	if (self.isReply) {
+	if (self.isReply || [self isPage]) {
 		self.photoButtonLeftConstraint.constant = -34;
 		self.settingsButtonRightConstraint.constant = -34;
 	}
