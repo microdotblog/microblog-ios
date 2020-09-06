@@ -284,7 +284,7 @@
 			[RFSettings setSnippetsUsername:username];
 			[RFSettings setAccountDefaultSite:default_site];
 			[RFSettings setHasSnippetsBlog:[has_site boolValue]];
-			[SSKeychain setPassword:new_token forService:@"Snippets" account:@"default"];
+			[RFSettings setSnippetsPassword:new_token useCurrentUser:YES];
 
 			[self checkForMultipleBlogs];
 		}
