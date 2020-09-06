@@ -35,7 +35,7 @@
 - (void) setupNavigation
 {
 	if (self.isCancelable) {
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(cancel:)];
+		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_closeBarButtonWithTarget:self action:@selector(cancel:)];
 	}
 }
 

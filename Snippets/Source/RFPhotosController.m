@@ -63,10 +63,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:blank_img style:UIBarButtonItemStylePlain target:self action:@selector(closePhotos:)];
 	}
 
-	if ([UITraitCollection rf_isDarkMode]) {
-		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
-	}
-
 	[self.navigationController.navigationBar setBackgroundImage:blank_img forBarMetrics:UIBarMetricsDefault];
 	[self.navigationController.navigationBar setShadowImage:blank_img];
 }
@@ -117,13 +113,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 	[self.navigationController.navigationBar setShadowImage:nil];
-	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(closePhotos:)];
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_backBarButtonWithTarget:self action:@selector(closePhotos:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Library..." style:UIBarButtonItemStylePlain target:self action:@selector(chooseFromLibrary:)];
 	self.title = @"Photos";
-
-	if ([UITraitCollection rf_isDarkMode]) {
-		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
-	}
 }
 
 - (void) collapsePhotos

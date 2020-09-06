@@ -139,10 +139,6 @@
 	else {
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Follow" style:UIBarButtonItemStylePlain target:self action:@selector(follow:)];
 	}
-
-	if ([UITraitCollection rf_isDarkMode]) {
-		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
-	}
 }
 
 - (void) follow:(id)sender

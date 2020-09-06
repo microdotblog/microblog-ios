@@ -179,14 +179,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		self.title = @"New Post";
 	}
 
-	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_closeBarButtonWithTarget:self action:@selector(close:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:post_button style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
-	if ([UITraitCollection rf_isDarkMode]) {
-		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
-	}
-	else {
-		self.navigationItem.rightBarButtonItem.tintColor = [UIColor blackColor];
-	}
 }
 
 - (void) setupFont

@@ -38,7 +38,7 @@ static NSString* const kTagmojiCellIdentifier = @"TagmojiCell";
 {
 	self.title = @"Topics";
 
-	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"close_button" target:self action:@selector(close:)];
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_closeBarButtonWithTarget:self action:@selector(close:)];
 }
 
 - (void) setupCollectionView

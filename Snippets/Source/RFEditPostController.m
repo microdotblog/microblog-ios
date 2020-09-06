@@ -35,20 +35,8 @@
 {
 	self.title = @"Edit Post";
 
-	if (@available(iOS 13.0, *)) {
-		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"chevron.left"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
-	}
-	else {
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
-	}
-
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_backBarButtonWithTarget:self action:@selector(back:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Update" style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
-	if ([UITraitCollection rf_isDarkMode]) {
-		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
-	}
-	else {
-		self.navigationItem.rightBarButtonItem.tintColor = [UIColor blackColor];
-	}
 }
 
 - (void) setupNotifications

@@ -53,17 +53,8 @@ static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 {
 	self.title = @"Blog Categories";
 	
-	if (@available(iOS 13.0, *)) {
-		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"chevron.left"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
-	}
-	else {
-		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
-	}
-
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_backBarButtonWithTarget:self action:@selector(back:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
-	if ([UITraitCollection rf_isDarkMode]) {
-		self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
-	}
 }
 
 - (void) setupFormats

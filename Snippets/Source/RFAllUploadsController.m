@@ -66,12 +66,7 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	
 	UIViewController* root_controller = [self.navigationController.viewControllers firstObject];
 	if (self.navigationController.topViewController != root_controller) {
-		if (@available(iOS 13.0, *)) {
-			self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"chevron.left"] style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
-		}
-		else {
-			self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_barButtonWithImageNamed:@"back_button" target:self action:@selector(back:)];
-		}
+		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_backBarButtonWithTarget:self action:@selector(back:)];
 	}
 	
 	if (@available(iOS 13.0, *)) {

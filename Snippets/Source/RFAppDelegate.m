@@ -299,14 +299,15 @@
 	UIFont* bar_font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
 	UIFont* button_font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
 
-	[[UINavigationBar appearance] setTitleTextAttributes:@{
-		NSForegroundColorAttributeName: c,
-		NSFontAttributeName: bar_font
-	}];
-	[[UIBarButtonItem appearance] setTitleTextAttributes:@{
-		NSForegroundColorAttributeName: c,
-		NSFontAttributeName: button_font
-	} forState:UIControlStateNormal];
+//	[[UINavigationBar appearance] setTitleTextAttributes:@{
+//		NSForegroundColorAttributeName: c,
+//		NSFontAttributeName: bar_font
+//	}];
+
+	//	[[UIBarButtonItem appearance] setTitleTextAttributes:@{
+//		NSForegroundColorAttributeName: c,
+//		NSFontAttributeName: button_font
+//	} forState:UIControlStateNormal];
 }
 
 - (void) setupTimeline

@@ -28,6 +28,26 @@
 	return item;
 }
 
++ (UIBarButtonItem *) rf_closeBarButtonWithTarget:(id)target action:(SEL)action
+{
+	if (@available(iOS 13.0, *)) {
+		return [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"xmark"] style:UIBarButtonItemStylePlain target:target action:action];
+	}
+	else {
+		return [self rf_barButtonWithImageNamed:@"close_button" target:target action:action];
+	}
+}
+
++ (UIBarButtonItem *) rf_backBarButtonWithTarget:(id)target action:(SEL)action
+{
+	if (@available(iOS 13.0, *)) {
+		return [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"chevron.left"] style:UIBarButtonItemStylePlain target:target action:action];
+	}
+	else {
+		return [self rf_barButtonWithImageNamed:@"back_button" target:target action:action];
+	}
+}
+
 - (UIImage *) rf_customImage
 {
 	UIImageView* v = self.customView;
