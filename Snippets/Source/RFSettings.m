@@ -608,7 +608,7 @@
 		[self setBlogList:blog_list];
 	}
 	
-	NSString* password = [self snippetsPassword];
+	NSString* password = [self snippetsPasswordForCurrentUser:NO];
 	if ([password length] > 0) {
 		[self setSnippetsPassword:password useCurrentUser:YES];
 	}
