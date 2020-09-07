@@ -466,7 +466,7 @@ NS_DESIGNATED_INITIALIZER
 
                     if (!createSuccess) {
                         [self assignError:&strongError code:UZKErrorCodeOutputError
-                                   detail:[NSString localizedStringWithFormat:NSLocalizedStringFromTableInBundle(@"Error creating current file (%d) '%@'", @"UnzipKit", _resources, @"Detailed error string"),
+                                   detail:[NSString localizedStringWithFormat:NSLocalizedStringFromTableInBundle(@"Error creating current file (%@) '%@'", @"UnzipKit", _resources, @"Detailed error string"),
                                            strongError, info.filename]];
                         return;
                     }
@@ -1133,7 +1133,7 @@ compressionMethod:(UZKCompressionMethod)method
                 free(extrafield);
                 free(commentary);
                 return [self assignError:error code:UZKErrorCodeDeleteFile
-                                  detail:[NSString localizedStringWithFormat:NSLocalizedStringFromTableInBundle(@"Error getting size_local_extra for file while deleting %@", @"UnzipKit", _resources, @"Detailed error string"),
+                                  detail:[NSString localizedStringWithFormat:NSLocalizedStringFromTableInBundle(@"Error getting size_local_extra for file %@ while deleting %@", @"UnzipKit", _resources, @"Detailed error string"),
                                           currentFileName, filePath]];
             }
             

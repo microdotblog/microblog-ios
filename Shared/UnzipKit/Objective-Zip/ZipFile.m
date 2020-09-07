@@ -35,7 +35,7 @@
 #import "ZipException.h"
 #import "ZipReadStream.h"
 #import "ZipWriteStream.h"
-#import "FIleInZipInfo.h"
+#import "FileInZipInfo.h"
 
 #define FILE_IN_ZIP_MAX_NAME_LENGTH (512)
 
@@ -112,7 +112,7 @@
 	
 	NSDate *now= [NSDate date];
 	NSCalendar *calendar= [NSCalendar currentCalendar];
-	NSDateComponents *date= [calendar components:(NSSecondCalendarUnit | NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:now];	
+	NSDateComponents *date= [calendar components:(NSCalendarUnitSecond | NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear) fromDate:now];
 	zip_fileinfo zi;
 	zi.tmz_date.tm_sec= (uInt)[date second];
 	zi.tmz_date.tm_min= (uInt)[date minute];
@@ -148,7 +148,7 @@
 	}
 	
 	NSCalendar *calendar= [NSCalendar currentCalendar];
-	NSDateComponents *date= [calendar components:(NSSecondCalendarUnit | NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:fileDate];	
+	NSDateComponents *date= [calendar components:(NSCalendarUnitSecond | NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear) fromDate:fileDate];	
 	zip_fileinfo zi;
 	zi.tmz_date.tm_sec= (uInt)[date second];
 	zi.tmz_date.tm_min= (uInt)[date minute];
@@ -184,7 +184,7 @@
 	}
 	
 	NSCalendar *calendar= [NSCalendar currentCalendar];
-	NSDateComponents *date= [calendar components:(NSSecondCalendarUnit | NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:fileDate];	
+	NSDateComponents *date= [calendar components:(NSCalendarUnitSecond | NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear) fromDate:fileDate];	
 	zip_fileinfo zi;
 	zi.tmz_date.tm_sec= (uInt)[date second];
 	zi.tmz_date.tm_min= (uInt)[date minute];
