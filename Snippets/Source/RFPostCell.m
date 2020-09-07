@@ -114,7 +114,7 @@
 	RFPhotoCell* photo_cell = (RFPhotoCell *)cell;
 
 	if (photo.thumbnailImage == nil) {
-		NSString* url = [NSString stringWithFormat:@"https://photos.micro.blog/200/%@", photo.publishedURL];
+		NSString* url = [NSString stringWithFormat:@"https://micro.blog/photos/200/%@", photo.publishedURL];
 
 		[UUHttpSession get:url queryArguments:nil completionHandler:^(UUHttpResponse* response) {
 			if ([response.parsedResponse isKindOfClass:[UIImage class]]) {
