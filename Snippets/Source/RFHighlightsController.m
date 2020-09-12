@@ -24,12 +24,6 @@
 	[super viewDidLoad];
 	
 	[self setupNavigation];
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
-	
 	[self fetchHighlights];
 }
 
@@ -46,6 +40,7 @@
 
 - (void) fetchHighlights
 {
+	self.tableView.alpha = 0.0;
 	[self.progressSpinner startAnimating];
 
 	NSDictionary* args = @{};
@@ -72,6 +67,10 @@
 				[self.tableView reloadData];
 				[self.progressSpinner stopAnimating];
 			});
+
+			[UIView animateWithDuration:0.3 animations:^{
+				self.tableView.alpha = 1.0;
+			}];
 		}
 	}];
 }
