@@ -14,6 +14,7 @@
 #import "RFExternalController.h"
 #import "RFPostController.h"
 #import "RFHelpController.h"
+#import "RFBookmarksController.h"
 #import "RFAllPostsController.h"
 #import "RFAccountsController.h"
 #import "RFAccount.h"
@@ -257,7 +258,7 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (IBAction) showFavorites:(id)sender
 {
-	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/favorites" title:@"Bookmarks"];
+	RFTimelineController* timeline_controller = [[RFBookmarksController alloc] initWithEndpoint:@"/hybrid/favorites" title:@"Bookmarks"];
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
 }

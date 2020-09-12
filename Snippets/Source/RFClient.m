@@ -12,8 +12,8 @@
 #import "SSKeychain.h"
 #import "RFAccount.h"
 
-//static NSString* const kServerSchemeAndHostname = @"http://localhost:3000";
-static NSString* const kServerSchemeAndHostname = @"https://micro.blog";
+static NSString* const kServerSchemeAndHostname = @"http://localhost:3000";
+//static NSString* const kServerSchemeAndHostname = @"https://micro.blog";
 
 @implementation RFClient
 

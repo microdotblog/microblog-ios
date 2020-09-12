@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFBookmarksController">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="KAi-WG-JDU"/>
+                <outlet property="webView" destination="vhf-OX-aS8" id="5TY-up-cxg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhf-OX-aS8">
+                    <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <dataDetectorType key="dataDetectorTypes"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="hX9-XY-LLw"/>
+                    </connections>
+                </webView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXh-GT-e4k">
+                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5X-ur-Bd8">
+                            <rect key="frame" x="20" y="7" width="80" height="30"/>
+                            <state key="normal" title="5 highlights"/>
+                            <connections>
+                                <action selector="showHighlights:" destination="-1" eventType="touchUpInside" id="glY-Qu-Xsh"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="52h-jo-wpr"/>
+                        <constraint firstItem="H5X-ur-Bd8" firstAttribute="centerY" secondItem="xXh-GT-e4k" secondAttribute="centerY" id="Qn1-uK-c8Q"/>
+                        <constraint firstItem="H5X-ur-Bd8" firstAttribute="leading" secondItem="xXh-GT-e4k" secondAttribute="leading" constant="20" id="jkB-ga-Eo8"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vhf-OX-aS8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="57N-CN-xOp"/>
+                <constraint firstItem="xXh-GT-e4k" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="EWJ-PP-8bb"/>
+                <constraint firstItem="xXh-GT-e4k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="FD7-9n-23x"/>
+                <constraint firstAttribute="bottom" secondItem="vhf-OX-aS8" secondAttribute="bottom" id="OfU-v5-dJe"/>
+                <constraint firstItem="vhf-OX-aS8" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Skm-U6-4pZ"/>
+                <constraint firstItem="vhf-OX-aS8" firstAttribute="top" secondItem="xXh-GT-e4k" secondAttribute="bottom" id="jED-14-YKG"/>
+                <constraint firstItem="xXh-GT-e4k" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="mgC-tb-bXN"/>
+            </constraints>
+            <point key="canvasLocation" x="-30.434782608695656" y="118.52678571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

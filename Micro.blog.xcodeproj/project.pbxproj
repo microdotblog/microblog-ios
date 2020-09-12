@@ -52,6 +52,8 @@
 		4B376856250D44C4001932AB /* RFHighlightsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B376855250D44C4001932AB /* RFHighlightsController.m */; };
 		4B376859250D4560001932AB /* RFHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B376858250D4560001932AB /* RFHighlight.m */; };
 		4B37685C250D4572001932AB /* RFHighlightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B37685B250D4572001932AB /* RFHighlightCell.m */; };
+		4B37685F250D4A56001932AB /* Bookmarks.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B37685D250D4A56001932AB /* Bookmarks.xib */; };
+		4B376862250D4AC5001932AB /* RFBookmarksController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B376861250D4AC5001932AB /* RFBookmarksController.m */; };
 		4B37DEF61F9FD3C7007A25AF /* Filters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123FE1E88343600B56138 /* Filters.plist */; };
 		4B3BD0DF1E82B5F800F4B4E0 /* RFPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */; };
 		4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B3BD0E01E82B61700F4B4E0 /* Photos.xib */; };
@@ -470,6 +472,9 @@
 		4B376858250D4560001932AB /* RFHighlight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFHighlight.m; path = Source/RFHighlight.m; sourceTree = "<group>"; };
 		4B37685A250D4572001932AB /* RFHighlightCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFHighlightCell.h; path = Source/RFHighlightCell.h; sourceTree = "<group>"; };
 		4B37685B250D4572001932AB /* RFHighlightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFHighlightCell.m; path = Source/RFHighlightCell.m; sourceTree = "<group>"; };
+		4B37685E250D4A56001932AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Bookmarks.xib; sourceTree = "<group>"; };
+		4B376860250D4AC5001932AB /* RFBookmarksController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFBookmarksController.h; path = Source/RFBookmarksController.h; sourceTree = "<group>"; };
+		4B376861250D4AC5001932AB /* RFBookmarksController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFBookmarksController.m; path = Source/RFBookmarksController.m; sourceTree = "<group>"; };
 		4B3BD0DD1E82B5F800F4B4E0 /* RFPhotosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFPhotosController.h; path = Source/RFPhotosController.h; sourceTree = "<group>"; };
 		4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFPhotosController.m; path = Source/RFPhotosController.m; sourceTree = "<group>"; };
 		4B3BD0E11E82B61700F4B4E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Photos.xib; sourceTree = "<group>"; };
@@ -1066,6 +1071,8 @@
 				4B1F7FE822526A0D00E8AF3E /* RFUpgradeController.m */,
 				4BCFD431250423200076168B /* RFBookmarkController.h */,
 				4BCFD432250423200076168B /* RFBookmarkController.m */,
+				4B376860250D4AC5001932AB /* RFBookmarksController.h */,
+				4B376861250D4AC5001932AB /* RFBookmarksController.m */,
 				4B376854250D44C4001932AB /* RFHighlightsController.h */,
 				4B376855250D44C4001932AB /* RFHighlightsController.m */,
 				4B376857250D4560001932AB /* RFHighlight.h */,
@@ -1123,6 +1130,7 @@
 				4B15282D2327285D006F1DBE /* Username.xib */,
 				4BCFD41D2502DE5C0076168B /* Accounts.storyboard */,
 				4BCFD42D250422FC0076168B /* Bookmark.storyboard */,
+				4B37685D250D4A56001932AB /* Bookmarks.xib */,
 				4B94052C1E2933DE00B01E79 /* Images.xcassets */,
 				4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */,
 			);
@@ -1644,6 +1652,7 @@
 				4B4D9B581ED5213E00315BBA /* FeaturedPhotoCell.xib in Resources */,
 				C5CED7121ECF792E0068F537 /* YUCIRGBToneCurve.cikernel in Resources */,
 				C5CED70D1ECF792E0068F537 /* YUCIHSLToRGB.cikernel in Resources */,
+				4B37685F250D4A56001932AB /* Bookmarks.xib in Resources */,
 				C5CED6F51ECF792E0068F537 /* YUCIBilateralFilter.cikernel in Resources */,
 				C5CED7071ECF792E0068F537 /* YUCIGreenBlueChannelOverlayBlend.cikernel in Resources */,
 			);
@@ -1823,6 +1832,7 @@
 				4BF123F11E882F3000B56138 /* RFFiltersController.m in Sources */,
 				C5CED6F61ECF792E0068F537 /* YUCIBilateralFilter.m in Sources */,
 				C59C3B1B20923E220076A754 /* RFSelectBlogViewController.m in Sources */,
+				4B376862250D4AC5001932AB /* RFBookmarksController.m in Sources */,
 				4BA2C9A61B210C0E0038C0E5 /* RFAppDelegate.m in Sources */,
 				4BA910821B83D20C00D58F83 /* RFPostController.m in Sources */,
 				4B400D0D202448DB00C71AAF /* RFFeedsController.m in Sources */,
@@ -2064,6 +2074,14 @@
 				4B2DC28122FE1C0E0074D42A /* Base */,
 			);
 			name = TagmojiCell.xib;
+			sourceTree = "<group>";
+		};
+		4B37685D250D4A56001932AB /* Bookmarks.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B37685E250D4A56001932AB /* Base */,
+			);
+			name = Bookmarks.xib;
 			sourceTree = "<group>";
 		};
 		4B3BD0E01E82B61700F4B4E0 /* Photos.xib */ = {

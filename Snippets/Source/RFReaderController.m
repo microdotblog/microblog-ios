@@ -23,7 +23,6 @@
 	if (a) {
 		NSString* token = [a password];
 		if (token) {
-			token = @"A408F6AB53A3F59F12E4"; // testing localhost
 			NSString* auth = [NSString stringWithFormat:@"Bearer %@", token];
 			[request addValue:auth forHTTPHeaderField:@"Authorization"];
 		}
