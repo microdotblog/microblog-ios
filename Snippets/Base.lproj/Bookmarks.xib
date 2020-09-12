@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFBookmarksController">
             <connections>
+                <outlet property="highlightsCountButton" destination="H5X-ur-Bd8" id="UWa-NI-fuT"/>
+                <outlet property="highlightsHeightConstraint" destination="52h-jo-wpr" id="c3W-cW-aoi"/>
+                <outlet property="progressSpinner" destination="oIa-xV-Zda" id="4xc-3U-nUr"/>
                 <outlet property="view" destination="iN0-l3-epB" id="KAi-WG-JDU"/>
                 <outlet property="webView" destination="vhf-OX-aS8" id="5TY-up-cxg"/>
             </connections>
@@ -31,9 +34,12 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXh-GT-e4k">
                     <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5X-ur-Bd8">
-                            <rect key="frame" x="20" y="7" width="80" height="30"/>
-                            <state key="normal" title="5 highlights"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5X-ur-Bd8">
+                            <rect key="frame" x="20" y="6" width="85" height="32"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="5 highlights">
+                                <color key="titleColor" systemColor="linkColor"/>
+                            </state>
                             <connections>
                                 <action selector="showHighlights:" destination="-1" eventType="touchUpInside" id="glY-Qu-Xsh"/>
                             </connections>
@@ -45,12 +51,17 @@
                                 <constraint firstAttribute="height" constant="0.5" id="axR-qz-cil"/>
                             </constraints>
                         </view>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="oIa-xV-Zda">
+                            <rect key="frame" x="374" y="12" width="20" height="20"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="52h-jo-wpr"/>
                         <constraint firstAttribute="bottom" secondItem="HLl-nt-TVB" secondAttribute="bottom" id="BWP-6x-KW1"/>
                         <constraint firstItem="H5X-ur-Bd8" firstAttribute="centerY" secondItem="xXh-GT-e4k" secondAttribute="centerY" id="Qn1-uK-c8Q"/>
+                        <constraint firstAttribute="trailing" secondItem="oIa-xV-Zda" secondAttribute="trailing" constant="20" id="WKS-ll-ni8"/>
+                        <constraint firstItem="oIa-xV-Zda" firstAttribute="centerY" secondItem="H5X-ur-Bd8" secondAttribute="centerY" id="WoA-0R-vdl"/>
                         <constraint firstAttribute="trailing" secondItem="HLl-nt-TVB" secondAttribute="trailing" id="Wrf-gP-J0R"/>
                         <constraint firstItem="HLl-nt-TVB" firstAttribute="leading" secondItem="xXh-GT-e4k" secondAttribute="leading" id="gy2-N3-puj"/>
                         <constraint firstItem="H5X-ur-Bd8" firstAttribute="leading" secondItem="xXh-GT-e4k" secondAttribute="leading" constant="20" id="jkB-ga-Eo8"/>
@@ -72,6 +83,9 @@
         </view>
     </objects>
     <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
