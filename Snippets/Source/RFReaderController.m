@@ -9,13 +9,20 @@
 #import "RFReaderController.h"
 
 #import "RFAccount.h"
+#import "UIBarButtonItem+Extras.h"
 
 @implementation RFReaderController
 
 - (void) viewDidLoad
 {
 	[super viewDidLoad];
-	
+
+	[self setupReader];
+	[self setupNavigation];
+}
+
+- (void) setupReader
+{
 	NSString* url = @"http://localhost:3000/bookmarks/123";
 	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
 	
@@ -29,6 +36,17 @@
 	}
 	
 	[self.webView loadRequest:request];
+}
+
+- (void) setupNavigation
+{
+//	self.title = @"Reader";
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_backBarButtonWithTarget:self action:@selector(back:)];
+}
+
+- (void) back:(id)sender
+{
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

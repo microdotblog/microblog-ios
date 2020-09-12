@@ -15,12 +15,15 @@
 #import "RFClient.h"
 #import "RFMacros.h"
 #import "RFConstants.h"
+#import "UIBarButtonItem+Extras.h"
 
 @implementation RFHighlightsController
 
 - (void) viewDidLoad
 {
 	[super viewDidLoad];
+	
+	[self setupNavigation];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -28,6 +31,17 @@
 	[super viewDidAppear:animated];
 	
 	[self fetchHighlights];
+}
+
+- (void) setupNavigation
+{
+	self.title = @"Highlights";
+	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_backBarButtonWithTarget:self action:@selector(back:)];
+}
+
+- (void) back:(id)sender
+{
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) fetchHighlights
@@ -61,6 +75,8 @@
 		}
 	}];
 }
+
+#pragma mark -
 
 - (NSInteger) tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
