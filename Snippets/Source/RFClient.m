@@ -52,7 +52,7 @@ static NSString* const kServerSchemeAndHostname = @"https://micro.blog";
 	if (a) {
 		NSString* token = [a password];
 		if (token) {
-			[headers setObject:[NSString stringWithFormat:@"Token %@", token] forKey:@"Authorization"];
+			[headers setObject:[NSString stringWithFormat:@"Bearer %@", token] forKey:@"Authorization"];
 		}
 		request.headerFields = headers;
 	}

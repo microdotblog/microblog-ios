@@ -320,9 +320,16 @@
 
 - (IBAction) promptNewBookmark:(id)sender
 {
-	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Bookmark" bundle:nil];
-	UIViewController* nav_controller = [storyboard instantiateInitialViewController];
-	[self presentViewController:nav_controller animated:YES completion:NULL];
+	if (true) {
+		UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Bookmark" bundle:nil];
+		UIViewController* reader_controller = [storyboard instantiateViewControllerWithIdentifier:@"Reader"];
+		[self.navigationController pushViewController:reader_controller animated:YES];
+	}
+	else {
+		UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Bookmark" bundle:nil];
+		UIViewController* nav_controller = [storyboard instantiateInitialViewController];
+		[self presentViewController:nav_controller animated:YES completion:NULL];
+	}
 }
 
 - (void) refreshTimeline

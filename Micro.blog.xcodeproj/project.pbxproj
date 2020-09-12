@@ -47,6 +47,11 @@
 		4B2DC27F22FE1BD80074D42A /* RFTagmojiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DC27E22FE1BD80074D42A /* RFTagmojiCell.m */; };
 		4B2DC28222FE1C0E0074D42A /* TagmojiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2DC28022FE1C0E0074D42A /* TagmojiCell.xib */; };
 		4B2DEDD61BF8D14B00F3152B /* RFUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DEDD51BF8D14B00F3152B /* RFUserController.m */; };
+		4B376850250D2F9A001932AB /* RFReaderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B37684F250D2F99001932AB /* RFReaderController.m */; };
+		4B376853250D342E001932AB /* RFReaderWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B376852250D342E001932AB /* RFReaderWebView.m */; };
+		4B376856250D44C4001932AB /* RFHighlightsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B376855250D44C4001932AB /* RFHighlightsController.m */; };
+		4B376859250D4560001932AB /* RFHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B376858250D4560001932AB /* RFHighlight.m */; };
+		4B37685C250D4572001932AB /* RFHighlightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B37685B250D4572001932AB /* RFHighlightCell.m */; };
 		4B37DEF61F9FD3C7007A25AF /* Filters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BF123FE1E88343600B56138 /* Filters.plist */; };
 		4B3BD0DF1E82B5F800F4B4E0 /* RFPhotosController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */; };
 		4B3BD0E21E82B61700F4B4E0 /* Photos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B3BD0E01E82B61700F4B4E0 /* Photos.xib */; };
@@ -455,6 +460,16 @@
 		4B2DC28122FE1C0E0074D42A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TagmojiCell.xib; sourceTree = "<group>"; };
 		4B2DEDD41BF8D14B00F3152B /* RFUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFUserController.h; path = Source/RFUserController.h; sourceTree = "<group>"; };
 		4B2DEDD51BF8D14B00F3152B /* RFUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFUserController.m; path = Source/RFUserController.m; sourceTree = "<group>"; };
+		4B37684E250D2F99001932AB /* RFReaderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFReaderController.h; path = Source/RFReaderController.h; sourceTree = "<group>"; };
+		4B37684F250D2F99001932AB /* RFReaderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFReaderController.m; path = Source/RFReaderController.m; sourceTree = "<group>"; };
+		4B376851250D342E001932AB /* RFReaderWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFReaderWebView.h; path = Source/RFReaderWebView.h; sourceTree = "<group>"; };
+		4B376852250D342E001932AB /* RFReaderWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFReaderWebView.m; path = Source/RFReaderWebView.m; sourceTree = "<group>"; };
+		4B376854250D44C4001932AB /* RFHighlightsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFHighlightsController.h; path = Source/RFHighlightsController.h; sourceTree = "<group>"; };
+		4B376855250D44C4001932AB /* RFHighlightsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFHighlightsController.m; path = Source/RFHighlightsController.m; sourceTree = "<group>"; };
+		4B376857250D4560001932AB /* RFHighlight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFHighlight.h; path = Source/RFHighlight.h; sourceTree = "<group>"; };
+		4B376858250D4560001932AB /* RFHighlight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFHighlight.m; path = Source/RFHighlight.m; sourceTree = "<group>"; };
+		4B37685A250D4572001932AB /* RFHighlightCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFHighlightCell.h; path = Source/RFHighlightCell.h; sourceTree = "<group>"; };
+		4B37685B250D4572001932AB /* RFHighlightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFHighlightCell.m; path = Source/RFHighlightCell.m; sourceTree = "<group>"; };
 		4B3BD0DD1E82B5F800F4B4E0 /* RFPhotosController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFPhotosController.h; path = Source/RFPhotosController.h; sourceTree = "<group>"; };
 		4B3BD0DE1E82B5F800F4B4E0 /* RFPhotosController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFPhotosController.m; path = Source/RFPhotosController.m; sourceTree = "<group>"; };
 		4B3BD0E11E82B61700F4B4E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Photos.xib; sourceTree = "<group>"; };
@@ -1051,8 +1066,18 @@
 				4B1F7FE822526A0D00E8AF3E /* RFUpgradeController.m */,
 				4BCFD431250423200076168B /* RFBookmarkController.h */,
 				4BCFD432250423200076168B /* RFBookmarkController.m */,
+				4B376854250D44C4001932AB /* RFHighlightsController.h */,
+				4B376855250D44C4001932AB /* RFHighlightsController.m */,
+				4B376857250D4560001932AB /* RFHighlight.h */,
+				4B376858250D4560001932AB /* RFHighlight.m */,
+				4B37685A250D4572001932AB /* RFHighlightCell.h */,
+				4B37685B250D4572001932AB /* RFHighlightCell.m */,
 				4BCFD435250526770076168B /* RFSearchController.h */,
 				4BCFD436250526770076168B /* RFSearchController.m */,
+				4B37684E250D2F99001932AB /* RFReaderController.h */,
+				4B37684F250D2F99001932AB /* RFReaderController.m */,
+				4B376851250D342E001932AB /* RFReaderWebView.h */,
+				4B376852250D342E001932AB /* RFReaderWebView.m */,
 			);
 			name = Source;
 			path = Snippets;
@@ -1707,6 +1732,7 @@
 				4B5F75521B8CABC50074D88E /* RFOptionsController.m in Sources */,
 				4BA2C9A31B210A9A0038C0E5 /* RFTimelineController.m in Sources */,
 				4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */,
+				4B376853250D342E001932AB /* RFReaderWebView.m in Sources */,
 				4B9A7BAA1E82F149002A49E5 /* RFPhoto.m in Sources */,
 				C5CED70A1ECF792E0068F537 /* YUCIHighPassSkinSmoothing.m in Sources */,
 				C5B48B3B2294E5A300776248 /* zip.c in Sources */,
@@ -1723,9 +1749,11 @@
 				4B400D1D2027535700C71AAF /* RFFeed.m in Sources */,
 				4B1BAF031B852BC9008097F7 /* SSKeychainQuery.m in Sources */,
 				4B43700C1EC7AF3300B46D56 /* RFSettings.m in Sources */,
+				4B376850250D2F9A001932AB /* RFReaderController.m in Sources */,
 				C5CED7151ECF792E0068F537 /* YUCISkyGenerator.m in Sources */,
 				4B10602C1F0D39FB0045AB1A /* UIFont+Extras.m in Sources */,
 				4BF8034D1B87AA2C00D6670C /* UUImageView.m in Sources */,
+				4B376859250D4560001932AB /* RFHighlight.m in Sources */,
 				4B0D554F1B9381550076AD9F /* RFXMLRPCParser.m in Sources */,
 				C5CED71B1ECF792E0068F537 /* YUCITriangularPixellate.m in Sources */,
 				4B2D93E32475CFFD000A6135 /* NYTPhotoViewer+Extras.m in Sources */,
@@ -1799,6 +1827,7 @@
 				4BA910821B83D20C00D58F83 /* RFPostController.m in Sources */,
 				4B400D0D202448DB00C71AAF /* RFFeedsController.m in Sources */,
 				4BF803511B87AACF00D6670C /* RFClient.m in Sources */,
+				4B376856250D44C4001932AB /* RFHighlightsController.m in Sources */,
 				4B1F7FE22251B3D300E8AF3E /* SDAVAssetExportSession.m in Sources */,
 				4BCFD4272503D75E0076168B /* RFAccount.m in Sources */,
 				4B0D55551B93B3590076AD9F /* RFWordpressController.m in Sources */,
@@ -1815,6 +1844,7 @@
 				4BCFD437250526780076168B /* RFSearchController.m in Sources */,
 				C5CED71C1ECF792E0068F537 /* YUCIUtilities.m in Sources */,
 				4B5D21EC1E9DF44000AC101E /* RFMicropub.m in Sources */,
+				4B37685C250D4572001932AB /* RFHighlightCell.m in Sources */,
 				C5A515A521B3160100C15092 /* RFAutoCompleteCollectionViewCell.m in Sources */,
 				4B5DDACB24E6CC2A007674FF /* RFAllUploadsController.m in Sources */,
 				C5CED7091ECF792E0068F537 /* YUCIHighPass.m in Sources */,
