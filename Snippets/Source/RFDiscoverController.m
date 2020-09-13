@@ -169,9 +169,11 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
         for (int i = 0; i < 3; i++)
         {
             NSUInteger index = arc4random_uniform((int)featuredEmoji.count);
-            NSString* emoji = [featuredEmoji objectAtIndex:index];
-            emojiList = [emojiList stringByAppendingString:emoji];
-            [featuredEmoji removeObject:emoji];
+			if (featuredEmoji.count > index) {
+				NSString* emoji = [featuredEmoji objectAtIndex:index];
+				emojiList = [emojiList stringByAppendingString:emoji];
+				[featuredEmoji removeObject:emoji];
+			}
         }
         
         self.emojiLabel.text = emojiList;
