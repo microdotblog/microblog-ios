@@ -11,6 +11,8 @@
 #import "RFAccount.h"
 #import "RFAccountCell.h"
 #import "RFConstants.h"
+#import "RFSettings.h"
+#import "UUAlert.h"
 
 static NSString* const kAccountCellIdentifier = @"AccountCell";
 
@@ -29,8 +31,14 @@ static NSString* const kAccountCellIdentifier = @"AccountCell";
 	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (IBAction) newAccount:(id)sender
+- (IBAction) signOut:(id)sender
 {
+	[UUAlertViewController uuShowTwoButtonAlert:@"Sign out of Micro.blog?" message:@"Signing out will reset your settings and let you sign in with a new account or different microblog." buttonOne:@"Cancel" buttonTwo:@"Sign Out" completionHandler:^(NSInteger buttonIndex) {
+		if (buttonIndex == 1) {
+			[RFSettings clearAllSettings];
+			[[NSNotificationCenter defaultCenter] postNotificationName:kShowSigninNotification object:self];
+		}
+	}];
 }
 
 #pragma mark -

@@ -27,7 +27,7 @@
                                 <rect key="frame" x="41.5" y="253" width="331" height="400"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AGt-ns-60Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="331" height="400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="355"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountCell" rowHeight="60" id="tYH-RP-XXK" customClass="RFAccountCell">
@@ -86,15 +86,28 @@
                                             <outlet property="delegate" destination="t2c-9h-GYv" id="t4N-iJ-o0b"/>
                                         </connections>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcp-bo-TGZ">
+                                        <rect key="frame" x="90.5" y="360" width="150" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="J5T-R4-JtD"/>
+                                            <constraint firstAttribute="height" constant="30" id="Y4m-kh-7eT"/>
+                                        </constraints>
+                                        <state key="normal" title="Sign Out"/>
+                                        <connections>
+                                            <action selector="signOut:" destination="t2c-9h-GYv" eventType="touchUpInside" id="Mb1-tJ-ISd"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="2bj-0R-bNP"/>
                                     <constraint firstItem="AGt-ns-60Z" firstAttribute="top" secondItem="vMg-en-AGT" secondAttribute="top" id="7PS-Fn-5vS"/>
-                                    <constraint firstAttribute="bottom" secondItem="AGt-ns-60Z" secondAttribute="bottom" id="Tpe-bF-Xbf"/>
+                                    <constraint firstAttribute="bottom" secondItem="mcp-bo-TGZ" secondAttribute="bottom" constant="10" id="KEQ-D3-gzJ"/>
+                                    <constraint firstItem="mcp-bo-TGZ" firstAttribute="top" secondItem="AGt-ns-60Z" secondAttribute="bottom" constant="5" id="bbx-0i-J0I"/>
                                     <constraint firstAttribute="trailing" secondItem="AGt-ns-60Z" secondAttribute="trailing" id="cob-Rv-8vX"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="350" id="dfZ-Jy-0dz"/>
                                     <constraint firstItem="AGt-ns-60Z" firstAttribute="leading" secondItem="vMg-en-AGT" secondAttribute="leading" id="mbw-JQ-vAC"/>
+                                    <constraint firstItem="mcp-bo-TGZ" firstAttribute="centerX" secondItem="vMg-en-AGT" secondAttribute="centerX" id="nt9-5l-5pN"/>
                                 </constraints>
                             </view>
                         </subviews>
