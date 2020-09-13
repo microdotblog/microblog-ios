@@ -12,6 +12,7 @@
 #import "RFWordpressController.h"
 #import "RFExternalController.h"
 #import "RFCategoriesController.h"
+#import "RFReaderController.h"
 #import "RFClient.h"
 #import "RFConstants.h"
 #import "RFSettings.h"
@@ -320,16 +321,9 @@
 
 - (IBAction) promptNewBookmark:(id)sender
 {
-	if (true) {
-		UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Bookmark" bundle:nil];
-		UIViewController* reader_controller = [storyboard instantiateViewControllerWithIdentifier:@"Reader"];
-		[self.navigationController pushViewController:reader_controller animated:YES];
-	}
-	else {
-		UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Bookmark" bundle:nil];
-		UIViewController* nav_controller = [storyboard instantiateInitialViewController];
-		[self presentViewController:nav_controller animated:YES completion:NULL];
-	}
+	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Bookmark" bundle:nil];
+	UIViewController* nav_controller = [storyboard instantiateInitialViewController];
+	[self presentViewController:nav_controller animated:YES completion:NULL];
 }
 
 - (void) refreshTimeline
@@ -479,7 +473,7 @@
 	
 	NSString* hostname = [url host];
 	NSString* path = [url path];
-	if ([hostname isEqualToString:@"micro.blog"]) {
+	if ([hostname isEqualToString:[RFClient serverHostname]]) {
 		NSMutableArray* pieces = [[path componentsSeparatedByString:@"/"] mutableCopy];
 		[pieces removeObjectAtIndex:0];
 		if ([path containsString:@"/account/"]) {
@@ -501,7 +495,8 @@
 		}
 		else if ([[pieces firstObject] isEqualToString:@"bookmarks"]) {
 			// e.g. /bookmarks/12345
-			found_microblog_url = NO;
+			found_microblog_url = YES;
+			[self showReaderWithPath:path];
 		}
 		else if ([[pieces firstObject] isEqualToString:@"discover"]) {
 			// e.g. /discover
@@ -541,6 +536,14 @@
 - (void) showConversationWithPostID:(NSString *)postID
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:kShowConversationNotification object:self userInfo:@{ kShowConversationPostIDKey: postID }];
+}
+
+- (void) showReaderWithPath:(NSString *)path
+{
+	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Bookmark" bundle:nil];
+	RFReaderController* reader_controller = [storyboard instantiateViewControllerWithIdentifier:@"Reader"];
+	reader_controller.path = path;
+	[self.navigationController pushViewController:reader_controller animated:YES];
 }
 
 #pragma mark -

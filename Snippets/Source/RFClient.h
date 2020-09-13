@@ -17,6 +17,9 @@
 - (instancetype) initWithPath:(NSString *)path;
 - (instancetype) initWithFormat:(NSString *)path, ...;
 
++ (NSString *) serverHostnameWithScheme;
++ (NSString *) serverHostname;
+
 - (UUHttpRequest *) getWithQueryArguments:(NSDictionary *)args completion:(void (^)(UUHttpResponse* response))handler;
 
 - (UUHttpRequest *) postWithParams:(NSDictionary *)params completion:(void (^)(UUHttpResponse* response))handler;

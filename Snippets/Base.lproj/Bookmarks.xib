@@ -34,8 +34,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXh-GT-e4k">
                     <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5X-ur-Bd8">
-                            <rect key="frame" x="20" y="6" width="85" height="32"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5X-ur-Bd8">
+                            <rect key="frame" x="20" y="6" width="334" height="32"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="5 highlights">
                                 <color key="titleColor" systemColor="linkColor"/>
@@ -57,6 +57,7 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="oIa-xV-Zda" firstAttribute="leading" secondItem="H5X-ur-Bd8" secondAttribute="trailing" constant="20" id="4MZ-QY-5eA"/>
                         <constraint firstAttribute="height" constant="44" id="52h-jo-wpr"/>
                         <constraint firstAttribute="bottom" secondItem="HLl-nt-TVB" secondAttribute="bottom" id="BWP-6x-KW1"/>
                         <constraint firstItem="H5X-ur-Bd8" firstAttribute="centerY" secondItem="xXh-GT-e4k" secondAttribute="centerY" id="Qn1-uK-c8Q"/>

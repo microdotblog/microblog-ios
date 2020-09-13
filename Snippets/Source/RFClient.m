@@ -12,9 +12,6 @@
 #import "SSKeychain.h"
 #import "RFAccount.h"
 
-static NSString* const kServerSchemeAndHostname = @"http://localhost:3000";
-//static NSString* const kServerSchemeAndHostname = @"https://micro.blog";
-
 @implementation RFClient
 
 - (instancetype) initWithPath:(NSString *)path
@@ -22,7 +19,7 @@ static NSString* const kServerSchemeAndHostname = @"http://localhost:3000";
 	self = [super init];
 	if (self) {
 		self.path = path;
-		self.url = [NSString stringWithFormat:@"%@%@", kServerSchemeAndHostname, self.path];
+		self.url = [NSString stringWithFormat:@"%@%@", [RFClient serverHostnameWithScheme], self.path];
 	}
 	
 	return self;
@@ -35,10 +32,22 @@ static NSString* const kServerSchemeAndHostname = @"http://localhost:3000";
 		va_list args;
 		va_start (args, path);
 		self.path = [[NSString alloc] initWithFormat:path arguments:args];
-		self.url = [NSString stringWithFormat:@"%@%@", kServerSchemeAndHostname, self.path];
+		self.url = [NSString stringWithFormat:@"%@%@", [RFClient serverHostnameWithScheme], self.path];
 	}
 	
 	return self;
+}
+
++ (NSString *) serverHostnameWithScheme
+{
+//	return @"https://micro.blog";
+	return @"http://localhost:3000";
+}
+
++ (NSString *) serverHostname
+{
+	//	return @"micro.blog";
+		return @"localhost";
 }
 
 - (void) setupRequest:(UUHttpRequest *)request

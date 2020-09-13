@@ -10,9 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RFReaderController : UIViewController
+@interface RFReaderController : UIViewController <UIWebViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWebView* webView;
+
+@property (strong, nonatomic) NSString* path; // e.g. /bookmarks/123
 
 @end
 
