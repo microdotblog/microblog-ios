@@ -18,5 +18,6 @@
 @property (strong, nonatomic) IBOutlet UITableView* tableView;
 
 @property (strong, nonatomic) NSMutableArray* menuItems;
+@property (strong, nonatomic) NSMutableArray* menuIcons;
 
 @end

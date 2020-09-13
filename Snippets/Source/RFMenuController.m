@@ -117,25 +117,44 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	[self.tableView registerNib:[UINib nibWithNibName:@"MenuCell" bundle:nil] forCellReuseIdentifier:kMenuCellIdentifier];
 
 	self.menuItems = [[NSMutableArray alloc] init];
-	
+	self.menuIcons = [[NSMutableArray alloc] init];
+
 	[self.menuItems addObject:@"Timeline"];
+	[self.menuIcons addObject:@"bubble.left.and.bubble.right"];
+	
 	[self.menuItems addObject:@"Mentions"];
+	[self.menuIcons addObject:@"at"];
+
 	[self.menuItems addObject:@"Bookmarks"];
+	[self.menuIcons addObject:@"star"];
+
 	[self.menuItems addObject:@"Discover"];
+	[self.menuIcons addObject:@"magnifyingglass"];
 
 	[self.menuItems addObject:@""];
+	[self.menuIcons addObject:@""];
 
 	if ([RFSettings hasSnippetsBlog]) {
 		[self.menuItems addObject:@"Posts"];
+		[self.menuIcons addObject:@"doc"];
+
 		[self.menuItems addObject:@"Pages"];
+		[self.menuIcons addObject:@"rectangle.stack"];
+
 		[self.menuItems addObject:@"Uploads"];
+		[self.menuIcons addObject:@"photo.on.rectangle"];
 
 		[self.menuItems addObject:@""];
+		[self.menuIcons addObject:@""];
 	}
 	
 	[self.menuItems addObject:@"Help"];
+	[self.menuIcons addObject:@"questionmark.circle"];
+
 	[self.menuItems addObject:@"Settings"];
-	[self.menuItems addObject:@"Sign Out"];
+	[self.menuIcons addObject:@"gearshape"];
+
+//	[self.menuItems addObject:@"Sign Out"];
 }
 
 - (void) checkUserDetails
@@ -337,7 +356,8 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	RFMenuCell* cell = [tableView dequeueReusableCellWithIdentifier:kMenuCellIdentifier forIndexPath:indexPath];
 	
 	NSString* title = [self.menuItems objectAtIndex:indexPath.row];
-	cell.titleField.text = title;
+	NSString* icon_name = [self.menuIcons objectAtIndex:indexPath.row];
+	[cell setupWithTitle:title icon:icon_name];
 	
 	return cell;
 }

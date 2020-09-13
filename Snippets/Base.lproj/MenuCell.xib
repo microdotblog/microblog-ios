@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17140" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17115"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,17 +23,35 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e0v-rH-jN9">
+                        <rect key="frame" x="12" y="16" width="22" height="22"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="D3n-84-Dpz"/>
+                            <constraint firstAttribute="width" constant="22" id="Lig-jv-zfn"/>
+                        </constraints>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="e0v-rH-jN9" firstAttribute="leading" secondItem="Cm8-3O-2JH" secondAttribute="leading" constant="12" id="0hF-b3-YqU"/>
                     <constraint firstItem="ENO-h7-3An" firstAttribute="centerY" secondItem="Cm8-3O-2JH" secondAttribute="centerY" id="2pr-2J-Eed"/>
                     <constraint firstItem="ENO-h7-3An" firstAttribute="leading" secondItem="Cm8-3O-2JH" secondAttribute="leading" constant="12" id="CHC-dl-hmO"/>
                     <constraint firstAttribute="trailing" secondItem="ENO-h7-3An" secondAttribute="trailing" constant="12" id="KzM-Ui-8u5"/>
+                    <constraint firstItem="e0v-rH-jN9" firstAttribute="centerY" secondItem="Cm8-3O-2JH" secondAttribute="centerY" id="eay-Sf-2dG"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="iconView" destination="e0v-rH-jN9" id="VlY-81-V6u"/>
+                <outlet property="leftConstraint" destination="CHC-dl-hmO" id="OMi-Hg-pMm"/>
                 <outlet property="titleField" destination="ENO-h7-3An" id="R3D-dg-avp"/>
             </connections>
             <point key="canvasLocation" x="104.34782608695653" y="30.803571428571427"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

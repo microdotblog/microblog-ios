@@ -23,7 +23,7 @@
 
 - (void) setupReader
 {
-	NSString* url = @"http://localhost:3000/bookmarks/123";
+	NSString* url = @"http://localhost:3000/hybrid/bookmarks/123";
 	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
 	
 	RFAccount* a = [RFAccount defaultAccount];

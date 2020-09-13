@@ -17,6 +17,19 @@
 	[self setupSelectionBackground];
 }
 
+- (void) setupWithTitle:(NSString *)title icon:(NSString *)iconName
+{
+	self.titleField.text = title;
+	
+	if (@available(iOS 13.0, *)) {
+		self.leftConstraint.constant = 40;
+		self.iconView.image = [UIImage systemImageNamed:iconName];
+	}
+	else {
+		self.leftConstraint.constant = 12;
+	}
+}
+
 - (void) setupSelectionBackground
 {
 	UIView* selected_view = [[UIView alloc] initWithFrame:self.bounds];
