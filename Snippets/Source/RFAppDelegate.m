@@ -366,6 +366,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUserFollowingNotification:) name:kShowUserFollowingNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUserDiscoverNotification:) name:kShowUserDiscoverNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTopicNotification:) name:kShowTopicNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNewPostNotification:) name:kShowNewPostNotification object:nil];
 
 	if (@available(iOS 13.0, *)) {
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appleCredentialRevoked:) name:ASAuthorizationAppleIDProviderCredentialRevokedNotification object:nil];
@@ -428,22 +429,31 @@
 	[self showProfileWithUsername:username];
 }
 
-- (void) showUserFollowingNotification:(NSNotification*)notification
+- (void) showUserFollowingNotification:(NSNotification *)notification
 {
 	NSString* username = [notification.userInfo objectForKey:kShowUserFollowingUsernameKey];
 	[self showUserFollowingWithUsername:username];
 }
 
-- (void) showUserDiscoverNotification:(NSNotification*)notification
+- (void) showUserDiscoverNotification:(NSNotification *)notification
 {
 	NSString* username = [notification.userInfo objectForKey:kShowUserDiscoverUsernameKey];
 	[self showUserDiscoverWithUsername:username];
 }
 
-- (void) showTopicNotification:(NSNotification*)notification
+- (void) showTopicNotification:(NSNotification *)notification
 {
 	NSString* term = [notification.userInfo objectForKey:kShowTopicKey];
 	[self showTopicWithSearch:term];
+}
+
+- (void) showNewPostNotification:(NSNotification *)notification
+{
+	NSString* s = [notification.userInfo objectForKey:kShowNewPostText];
+	if (s == nil) {
+		s = @"";
+	}
+	[self showNewPostWithText:s];
 }
 
 - (void) appleCredentialRevoked:(NSNotification *)notification

@@ -53,6 +53,9 @@
 	else if (self.popoverType == kOptionsPopoverUpload) {
 		self.view = self.uploadView;
 	}
+	else if (self.popoverType == kOptionsPopoverHighlight) {
+		self.view = self.highlightView;
+	}
 
 	if ([UITraitCollection rf_isDarkMode]) {
 		self.view.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
@@ -204,6 +207,31 @@
 		if (buttonIndex == 1) {
 			[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
 				[[NSNotificationCenter defaultCenter] postNotificationName:kDeleteUploadNotification object:self userInfo:@{ kPublishPostIDKey: self.postID }];
+			}];
+		}
+	}];
+}
+
+- (IBAction) newPostFromHighlight:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kNewPostFromHighlightNotification object:self];
+	}];
+}
+
+- (IBAction) copyHighlight:(id)sender
+{
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+		[[NSNotificationCenter defaultCenter] postNotificationName:kCopyHighlightNotification object:self];
+	}];
+}
+
+- (IBAction) deleteHighlight:(id)sender
+{
+	[UUAlertViewController uuShowTwoButtonAlert:@"Delete this highlight?" message:@"This highlight will be deleted from the bookmark." buttonOne:@"Cancel" buttonTwo:@"Delete" completionHandler:^(NSInteger buttonIndex) {
+		if (buttonIndex == 1) {
+			[self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+				[[NSNotificationCenter defaultCenter] postNotificationName:kDeleteHighlightNotification object:self];
 			}];
 		}
 	}];

@@ -14,6 +14,7 @@
                 <outlet property="defaultView" destination="Yfk-8I-dMD" id="Qku-gW-qIY"/>
                 <outlet property="editPostView" destination="rax-Me-zBf" id="YfF-L5-mqc"/>
                 <outlet property="editWithPublishView" destination="Lh4-Qx-5fH" id="hYc-j4-FOf"/>
+                <outlet property="highlightView" destination="rmr-aR-kfK" id="6av-kF-qHM"/>
                 <outlet property="uploadView" destination="19m-Ma-Hcj" id="fcB-2Z-jYH"/>
                 <outlet property="view" destination="Yfk-8I-dMD" id="mtV-JX-RCz"/>
                 <outlet property="withDeleteView" destination="7eE-jX-OpT" id="SsN-eB-aT3"/>
@@ -374,10 +375,67 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="457" y="731"/>
         </view>
+        <view contentMode="scaleToFill" id="rmr-aR-kfK">
+            <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1M-54-LOD">
+                    <rect key="frame" x="19.5" y="0.0" width="260" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTq-sJ-izk">
+                            <rect key="frame" x="0.0" y="0.0" width="92" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="New Post...">
+                                <color key="titleColor" name="color_popover_buttons"/>
+                            </state>
+                            <connections>
+                                <action selector="newPostFromHighlight:" destination="-1" eventType="touchUpInside" id="paL-5U-GUD"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irJ-5J-VfS">
+                            <rect key="frame" x="103" y="0.0" width="63" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Copy">
+                                <color key="titleColor" name="color_popover_buttons"/>
+                            </state>
+                            <connections>
+                                <action selector="copyHighlight:" destination="-1" eventType="touchUpInside" id="4HM-Gj-9wj"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R67-J0-BKb">
+                            <rect key="frame" x="187" y="0.0" width="55" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Delete">
+                                <color key="titleColor" name="color_popover_buttons"/>
+                            </state>
+                            <connections>
+                                <action selector="deleteHighlight:" destination="-1" eventType="touchUpInside" id="bu5-1P-e5G"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="260" id="8sC-Be-zVI"/>
+                        <constraint firstAttribute="height" constant="44" id="wrG-bV-jdi"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="AuY-vA-O04"/>
+            <color key="backgroundColor" name="color_popover_background"/>
+            <constraints>
+                <constraint firstItem="p1M-54-LOD" firstAttribute="top" secondItem="AuY-vA-O04" secondAttribute="top" id="hcu-bF-2MQ"/>
+                <constraint firstItem="p1M-54-LOD" firstAttribute="centerX" secondItem="AuY-vA-O04" secondAttribute="centerX" constant="6" id="rrK-Jc-rwO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="479.0625" y="844.0140845070423"/>
+        </view>
     </objects>
     <resources>
         <namedColor name="color_popover_background">
-            <color white="0.15384690463542938" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.15399999916553497" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <namedColor name="color_popover_buttons">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

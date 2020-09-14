@@ -10,12 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class RFHighlight;
+
 @interface RFHighlightsController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView* tableView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* progressSpinner;
 
 @property (strong, nonatomic) NSArray* highlights; // RFHighlight
+@property (strong, nonatomic) RFHighlight* selectedHighlight;
 
 @end
 

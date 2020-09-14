@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RFHighlight : NSObject
 
+@property (strong, nonatomic) NSNumber* highlightID;
 @property (strong, nonatomic) NSString* selectionText;
 @property (strong, nonatomic) NSString* linkTitle;
 @property (strong, nonatomic) NSDate* createdAt;

@@ -10,6 +10,7 @@
 
 #import "RFHighlight.h"
 #import "RFHighlightCell.h"
+#import "RFOptionsController.h"
 #import "UUHttpSession.h"
 #import "UUDate.h"
 #import "RFClient.h"
@@ -24,6 +25,8 @@
 	[super viewDidLoad];
 	
 	[self setupNavigation];
+	[self setupNotifications];
+	
 	[self fetchHighlights];
 }
 
@@ -31,6 +34,13 @@
 {
 	self.title = @"Highlights";
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_backBarButtonWithTarget:self action:@selector(back:)];
+}
+
+- (void) setupNotifications
+{
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newPostFromHighlightNotification:) name:kNewPostFromHighlightNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(copyHighlightNotification:) name:kCopyHighlightNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteHighlightNotification:) name:kDeleteHighlightNotification object:nil];
 }
 
 - (void) back:(id)sender
@@ -53,6 +63,7 @@
 			NSArray* items = [response.parsedResponse objectForKey:@"items"];
 			for (NSDictionary* item in items) {
 				RFHighlight* h = [[RFHighlight alloc] init];
+				h.highlightID = [item objectForKey:@"id"];
 				h.linkTitle = [item objectForKey:@"title"];
 				h.selectionText = [item objectForKey:@"content_text"];
 
@@ -66,12 +77,33 @@
 				self.highlights = new_highlights;
 				[self.tableView reloadData];
 				[self.progressSpinner stopAnimating];
-			});
 
-			[UIView animateWithDuration:0.3 animations:^{
-				self.tableView.alpha = 1.0;
-			}];
+				[UIView animateWithDuration:0.3 animations:^{
+					self.tableView.alpha = 1.0;
+				}];
+			});
 		}
+	}];
+}
+
+- (void) newPostFromHighlightNotification:(NSNotification *)notification
+{
+	NSString* s = [NSString stringWithFormat:@"> %@", self.selectedHighlight.selectionText];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kShowNewPostNotification object:self userInfo:@{ kShowNewPostText: s }];
+}
+
+- (void) copyHighlightNotification:(NSNotification *)notification
+{
+	[[UIPasteboard generalPasteboard] setString:self.selectedHighlight.selectionText];
+}
+
+- (void) deleteHighlightNotification:(NSNotification *)notification
+{
+	RFClient* client = [[RFClient alloc] initWithFormat:@"/posts/bookmarks/highlights/%@", self.selectedHighlight.highlightID];
+	[client deleteWithObject:nil completion:^(UUHttpResponse *response) {
+		RFDispatchMainAsync(^{
+			[self fetchHighlights];
+		});
 	}];
 }
 
@@ -91,6 +123,21 @@
 	cell.titleField.text = h.linkTitle;
 	
 	return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	self.selectedHighlight = [self.highlights objectAtIndex:indexPath.row];
+	
+	RFDispatchMainAsync (^{
+		RFOptionsPopoverType popover_type = kOptionsPopoverHighlight;
+		
+		CGRect r = [tableView rectForRowAtIndexPath:indexPath];
+
+		RFOptionsController* options_controller = [[RFOptionsController alloc] initWithPostID:@"" username:@"" popoverType:popover_type];
+		[options_controller attachToView:tableView atRect:r];
+		[self presentViewController:options_controller animated:YES completion:NULL];
+	});
 }
 
 @end

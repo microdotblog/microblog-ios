@@ -15,7 +15,8 @@ typedef enum {
 	kOptionsPopoverWithDelete = 2,
 	kOptionsPopoverEditPost = 3,
 	kOptionsPopoverEditWithPublish = 4,
-	kOptionsPopoverUpload = 5
+	kOptionsPopoverUpload = 5,
+	kOptionsPopoverHighlight = 6
 } RFOptionsPopoverType;
 
 @interface RFOptionsController : RFViewController <UIPopoverPresentationControllerDelegate>
@@ -26,6 +27,7 @@ typedef enum {
 @property (strong, nonatomic) IBOutlet UIView* editPostView;
 @property (strong, nonatomic) IBOutlet UIView* editWithPublishView;
 @property (strong, nonatomic) IBOutlet UIView* uploadView;
+@property (strong, nonatomic) IBOutlet UIView* highlightView;
 
 @property (strong, nonatomic) NSString* postID;
 @property (strong, nonatomic) NSString* username;

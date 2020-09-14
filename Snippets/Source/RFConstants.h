@@ -36,6 +36,9 @@ static NSString* const kSelectTagmojiInfoKey = @"info";
 #define kShowTopicNotification @"RFShowTopicNotification"
 #define kShowTopicKey @"topic"
 
+#define kShowNewPostNotification @"RFShowNewPostNotification"
+#define kShowNewPostText @"text"
+
 #define kShowReplyPostNotification @"RFShowReplyPostNotification"
 #define kShowReplyPostIDKey @"post_id"
 #define kShowReplyPostUsernameKey @"username"
@@ -83,5 +86,9 @@ static NSString* const kDidJustUpdatePostPrefKey = @"DidJustUpdatePost";
 #define kOpenUploadNotification @"RFOpenUploadNotification"
 #define kCopyUploadNotification @"RFCopyUploadNotification"
 #define kDeleteUploadNotification @"RFDeleteUploadNotification"
+
+#define kNewPostFromHighlightNotification @"RFNewPostFromHighlight"
+#define kCopyHighlightNotification @"RFCopyHighlightNotification"
+#define kDeleteHighlightNotification @"RFDeleteHighlightNotification"
 
 #define APPSTORE 1
