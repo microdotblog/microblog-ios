@@ -392,6 +392,8 @@
 			{
 				[self completeLoginProcess];
 			}
+
+			[[NSNotificationCenter defaultCenter] postNotificationName:kRefreshUserNotification object:self];
 		}));
 	}];
 }

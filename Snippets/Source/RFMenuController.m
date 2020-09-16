@@ -220,6 +220,7 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (void) refreshMenuNotification:(NSNotification *)notification
 {
+	[self setupProfileInfo];
 	[self setupMenu];
 	[self.tableView reloadData];
 }

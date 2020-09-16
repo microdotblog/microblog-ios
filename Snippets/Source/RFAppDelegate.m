@@ -105,34 +105,31 @@
 - (void) applicationDidBecomeActive:(UIApplication *)application
 {
 	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub?q=config"];
-	[client getWithQueryArguments:nil completion:^(UUHttpResponse* response)
-	 {
-		 if (response.parsedResponse)
-		 {
-			 if ([response.parsedResponse isKindOfClass:[NSDictionary class]])
-			 {
-				 NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
-				 if (blogs)
-				 {
-					 [RFSettings setBlogList:blogs];
-					 
-					 NSDictionary* selectedBlogInfo = [RFSettings selectedBlogInfo];
-					 NSString* selectedUid = [selectedBlogInfo objectForKey:@"uid"];
-					 
-					 for (NSDictionary* blogInfo in blogs)
-					 {
-						 NSString* uid = [blogInfo objectForKey:@"uid"];
-						 if ([uid isEqualToString:selectedUid])
-						 {
-							 [RFSettings setSelectedBlogInfo:blogInfo];
-						 }
-					 }
-					 
-					 [[NSNotificationCenter defaultCenter] postNotificationName:kRefreshMenuNotification object:self];
-				 }
-			 }
-		 }
-	 }];}
+	[client getWithQueryArguments:nil completion:^(UUHttpResponse* response) {
+		if (response.parsedResponse) {
+			if ([response.parsedResponse isKindOfClass:[NSDictionary class]]) {
+				NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
+				if (blogs) {
+					RFDispatchMainAsync(^{
+						[RFSettings setBlogList:blogs];
+
+						NSDictionary* selectedBlogInfo = [RFSettings selectedBlogInfo];
+						NSString* selectedUid = [selectedBlogInfo objectForKey:@"uid"];
+
+						for (NSDictionary* blogInfo in blogs) {
+							NSString* uid = [blogInfo objectForKey:@"uid"];
+							if ([uid isEqualToString:selectedUid]) {
+								[RFSettings setSelectedBlogInfo:blogInfo];
+							}
+						}
+
+						[[NSNotificationCenter defaultCenter] postNotificationName:kRefreshMenuNotification object:self];
+					});
+				}
+			}
+		}
+	}];
+}
 
 - (void) applicationWillTerminate:(UIApplication *)application
 {
