@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhf-OX-aS8">
+                <webView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhf-OX-aS8">
                     <rect key="frame" x="0.0" y="44" width="414" height="704"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <dataDetectorType key="dataDetectorTypes"/>
@@ -68,7 +68,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vhf-OX-aS8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="57N-CN-xOp"/>
                 <constraint firstItem="xXh-GT-e4k" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="EWJ-PP-8bb"/>
