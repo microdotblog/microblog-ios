@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,21 +22,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DI5-UM-y9f">
-                    <rect key="frame" x="0.0" y="64" width="375" height="728"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="odF-X1-Mvm"/>
-                        <outlet property="delegate" destination="-1" id="OtG-3t-W1Z"/>
-                    </connections>
-                </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpy-sz-TRe">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                    <accessibility key="accessibilityConfiguration" label="User profile"/>
-                    <connections>
-                        <action selector="showUserProfile:" destination="-1" eventType="touchUpInside" id="qg3-eK-ym2"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKu-aF-vwl">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
@@ -87,6 +72,24 @@
                         <constraint firstItem="Plj-M6-Zcz" firstAttribute="leading" secondItem="lne-rP-Pd0" secondAttribute="trailing" constant="8" id="zld-qk-UIM"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DI5-UM-y9f">
+                    <rect key="frame" x="0.0" y="64" width="375" height="728"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="odF-X1-Mvm"/>
+                        <outlet property="delegate" destination="-1" id="OtG-3t-W1Z"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpy-sz-TRe">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <accessibility key="accessibilityConfiguration" label="User profile"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="lDj-5C-mIa"/>
+                    </constraints>
+                    <connections>
+                        <action selector="showUserProfile:" destination="-1" eventType="touchUpInside" id="qg3-eK-ym2"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
@@ -94,7 +97,6 @@
                 <constraint firstItem="DI5-UM-y9f" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6pH-MC-2DY"/>
                 <constraint firstItem="hpy-sz-TRe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="M2D-Wt-oiI"/>
                 <constraint firstAttribute="trailing" secondItem="sKu-aF-vwl" secondAttribute="trailing" id="Qjm-xa-Yha"/>
-                <constraint firstItem="DI5-UM-y9f" firstAttribute="top" secondItem="hpy-sz-TRe" secondAttribute="bottom" id="Ufh-8d-eb8"/>
                 <constraint firstAttribute="trailing" secondItem="hpy-sz-TRe" secondAttribute="trailing" id="aZF-GG-0OC"/>
                 <constraint firstItem="hpy-sz-TRe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ghI-YQ-9y5"/>
                 <constraint firstAttribute="bottom" secondItem="DI5-UM-y9f" secondAttribute="bottom" constant="20" symbolic="YES" id="lMA-uC-eD6"/>

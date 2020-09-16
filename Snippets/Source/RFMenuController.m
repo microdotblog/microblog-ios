@@ -171,27 +171,41 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 			};
 			[client postWithParams:params completion:^(UUHttpResponse* response) {
 				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]]) {
-					NSString* full_name = [response.parsedResponse objectForKey:@"full_name"];
-					NSString* username = [response.parsedResponse objectForKey:@"username"];
-
-					[RFSettings setSnippetsAccountFullName:full_name];
-					[RFSettings setSnippetsUsername:username];
-					[RFSettings setSnippetsPassword:token useCurrentUser:YES];
-
-					RFDispatchMain (^{
-						[self setupProfileInfo];
-					});
-
-					// Update the list of blogs assigned to the users...
-					RFClient* client = [[RFClient alloc] initWithPath:@"/micropub?q=config"];
-					[client getWithQueryArguments:nil completion:^(UUHttpResponse* response) {
-						NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
-						[RFSettings setBlogList:blogs];
+					NSString* error = [response.parsedResponse objectForKey:@"error"];
+					if (error != nil) {
 						RFDispatchMain (^{
-							[self setupMenu];
-							[self.tableView reloadData];
+							[UUAlertViewController uuShowTwoButtonAlert:error message:@"Signing out will reset your settings and let you sign in with a new account or different microblog." buttonOne:@"Cancel" buttonTwo:@"Sign Out" completionHandler:^(NSInteger buttonIndex) {
+								if (buttonIndex == 1) {
+									[RFSettings clearAllSettings];
+									[[NSNotificationCenter defaultCenter] postNotificationName:kShowSigninNotification object:self];
+								}
+							}];
 						});
-					}];
+					}
+					else {
+						NSString* full_name = [response.parsedResponse objectForKey:@"full_name"];
+						NSString* username = [response.parsedResponse objectForKey:@"username"];
+
+						[RFSettings setSnippetsAccountFullName:full_name];
+						[RFSettings setSnippetsUsername:username];
+						[RFSettings setSnippetsPassword:token useCurrentUser:YES];
+
+						RFDispatchMain (^{
+							[self setupProfileInfo];
+						});
+
+						// download the user's blogs
+						RFClient* client = [[RFClient alloc] initWithPath:@"/micropub?q=config"];
+						[client getWithQueryArguments:nil completion:^(UUHttpResponse* response) {
+							NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
+							[RFSettings setBlogList:blogs];
+							
+							RFDispatchMain (^{
+								[self setupMenu];
+								[self.tableView reloadData];
+							});
+						}];
+					}
 				}
 			}];
 		}
@@ -208,15 +222,6 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 {
 	[self setupMenu];
 	[self.tableView reloadData];
-}
-
-- (IBAction) onSwitchMicroBlog:(id)sender
-{
-	NSArray* availableMicroBlogs = [RFSettings blogList];
-	if (availableMicroBlogs.count > 1)
-	{
-		[[NSNotificationCenter defaultCenter] postNotificationName:kMicroblogSelectNotification object:nil];
-	}
 }
 
 - (BOOL) canBecomeFirstResponder
