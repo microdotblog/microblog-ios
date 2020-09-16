@@ -620,14 +620,34 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 {
     NSDictionary* info = [notification userInfo];
     CGRect kb_r = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-//	CGFloat kb_bottom = self.view.bounds.size.height - kb_r.origin.y;
-	CGFloat kb_bottom = 0 - kb_r.size.height;
-	kb_bottom = kb_bottom + self.view.safeAreaInsets.bottom;
-	
-	[UIView animateWithDuration:0.3 animations:^{
-		self.bottomConstraint.constant = kb_bottom;
-		[self.view layoutIfNeeded];
-	}];
+	__block CGFloat kb_bottom = kb_r.size.height - self.view.safeAreaInsets.bottom;
+
+	if (!RFIsPhone()) {
+		// delay to make sure form sheet is in position
+		RFDispatchSeconds(0.4, ^{
+			// for iPad, take into account modal form sheet position too
+			UIWindow* win = self.view.window;
+			CGRect view_r = [self.view convertRect:self.view.frame toView:win];
+			CGFloat bottom_inset = kb_r.size.height - (win.frame.size.height - view_r.size.height - view_r.origin.y);
+			if (bottom_inset > 0) {
+				kb_bottom = bottom_inset;
+			}
+			else {
+				kb_bottom = 0;
+			}
+		
+			[UIView animateWithDuration:0.3 animations:^{
+				self.bottomConstraint.constant = kb_bottom;
+				[self.view layoutIfNeeded];
+			}];
+		});
+	}
+	else {
+		[UIView animateWithDuration:0.3 animations:^{
+			self.bottomConstraint.constant = kb_bottom;
+			[self.view layoutIfNeeded];
+		}];
+	}
 }
  
 - (void) keyboardWillHideNotification:(NSNotification*)aNotification

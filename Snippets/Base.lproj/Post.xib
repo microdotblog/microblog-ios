@@ -430,11 +430,11 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="uMy-xx-iVQ"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="VbH-di-quh" firstAttribute="top" secondItem="uMy-xx-iVQ" secondAttribute="top" id="DDE-S7-Fmo"/>
                 <constraint firstAttribute="trailing" secondItem="VbH-di-quh" secondAttribute="trailing" id="EtI-8F-n08"/>
-                <constraint firstItem="VbH-di-quh" firstAttribute="bottom" secondItem="uMy-xx-iVQ" secondAttribute="bottom" id="EzA-4q-Hmf"/>
+                <constraint firstItem="uMy-xx-iVQ" firstAttribute="bottom" secondItem="VbH-di-quh" secondAttribute="bottom" id="EzA-4q-Hmf"/>
                 <constraint firstItem="VbH-di-quh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="K6B-pq-R5p"/>
             </constraints>
             <point key="canvasLocation" x="138.75" y="153.16901408450704"/>
