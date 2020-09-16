@@ -59,9 +59,7 @@
 	}
 #endif
 
-	if (@available(iOS 11.0, *)) {
-		result = win.safeAreaInsets.bottom;
-	}
+	result = win.safeAreaInsets.bottom;
 	
 	return result;
 }

@@ -622,9 +622,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
     CGRect kb_r = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
 //	CGFloat kb_bottom = self.view.bounds.size.height - kb_r.origin.y;
 	CGFloat kb_bottom = 0 - kb_r.size.height;
-	if (@available(iOS 11.0, *)) {
-		kb_bottom = kb_bottom + self.view.safeAreaInsets.bottom;
-	}
+	kb_bottom = kb_bottom + self.view.safeAreaInsets.bottom;
 	
 	[UIView animateWithDuration:0.3 animations:^{
 		self.bottomConstraint.constant = kb_bottom;
@@ -1513,12 +1511,8 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (UIDropProposal *) dropInteraction:(UIDropInteraction *)interaction sessionDidUpdate:(id<UIDropSession>)session NS_AVAILABLE_IOS(11.0)
 {
-	if (@available(iOS 11.0, *)) {
-		UIDropProposal* proposal = [[UIDropProposal alloc] initWithDropOperation:UIDropOperationCopy];
-		return proposal;
-	} else {
-		return nil;
-	}
+	UIDropProposal* proposal = [[UIDropProposal alloc] initWithDropOperation:UIDropOperationCopy];
+	return proposal;
 }
 
 - (void) dropInteraction:(UIDropInteraction *)interaction performDrop:(id<UIDropSession>)session NS_AVAILABLE_IOS(11.0)

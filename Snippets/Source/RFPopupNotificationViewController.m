@@ -84,9 +84,7 @@
 		vc.view.layer.borderWidth = 0.5;
 		vc.view.layer.masksToBounds = YES;
 		
-		if (@available(iOS 11.0, *)) {
-			vc.view.layer.borderColor = [UIColor colorNamed:@"color_notification_outline"].CGColor;
-		}
+		vc.view.layer.borderColor = [UIColor colorNamed:@"color_notification_outline"].CGColor;
 
 		if (username.length > 0) {
 			NSString* profile_s = [NSString stringWithFormat:@"https://micro.blog/%@/avatar.jpg", username];
