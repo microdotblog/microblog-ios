@@ -64,6 +64,12 @@
 				[self.progressSpinner stopAnimating];
 			}));
 		}
+		else {
+			RFDispatchMainAsync ((^{
+				self.highlightsHeightConstraint.constant = 0;
+				[self.progressSpinner stopAnimating];
+			}));
+		}
 	}];
 }
 
