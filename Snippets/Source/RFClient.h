@@ -19,6 +19,7 @@
 
 + (NSString *) serverHostnameWithScheme;
 + (NSString *) serverHostname;
++ (NSURLRequest *) authorizedRequestWithURL:(NSString *)url;
 
 - (UUHttpRequest *) getWithQueryArguments:(NSDictionary *)args completion:(void (^)(UUHttpResponse* response))handler;
 

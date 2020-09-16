@@ -50,6 +50,22 @@
 //		return @"localhost";
 }
 
++ (NSURLRequest *) authorizedRequestWithURL:(NSString *)url
+{
+	NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+	
+	RFAccount* a = [RFAccount defaultAccount];
+	if (a) {
+		NSString* token = [a password];
+		if (token) {
+			NSString* auth = [NSString stringWithFormat:@"Bearer %@", token];
+			[request addValue:auth forHTTPHeaderField:@"Authorization"];
+		}
+	}
+	
+	return request;
+}
+
 - (void) setupRequest:(UUHttpRequest *)request
 {
 	NSMutableDictionary* headers = [request.headerFields mutableCopy];

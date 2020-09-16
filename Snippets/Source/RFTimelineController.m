@@ -386,8 +386,9 @@
 		[self loadTimelineAppendingCommonParams];
 	}
 	else {
+		// TODO: later we can just call timeline since token is in header
 		client = [[RFClient alloc] initWithFormat:@"/hybrid/signin?token=%@&width=%d&fontsize=%f&minutes=%ld&darkmode=%ld", token, width, fontsize, timezone_offset, darkmode];
-		[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:client.url]]];
+		[self.webView loadRequest:[RFClient authorizedRequestWithURL:client.url]];
 	}
 }
 
@@ -404,7 +405,7 @@
 	}
 	
 	RFClient* client = [[RFClient alloc] initWithFormat:@"%@%@width=%d&fontsize=%f&darkmode=%ld", self.endpoint, params_separator, width, fontsize, darkmode];
-	[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:client.url]]];
+	[self.webView loadRequest:[RFClient authorizedRequestWithURL:client.url]];
 }
 
 - (void) loadTimelineNotification:(NSNotification *)notification
