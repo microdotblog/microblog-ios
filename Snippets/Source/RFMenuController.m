@@ -157,6 +157,12 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 	[self.menuItems addObject:@"Settings"];
 	[self.menuIcons addObject:@"gearshape"];
+
+	NSIndexPath* index_path = [self.tableView indexPathForSelectedRow];
+	[self.tableView reloadData];
+	if (index_path) {
+		[self.tableView selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
+	}
 }
 
 - (void) checkUserDetails
@@ -202,7 +208,6 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 							
 							RFDispatchMain (^{
 								[self setupMenu];
-								[self.tableView reloadData];
 							});
 						}];
 					}
@@ -222,7 +227,6 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 {
 	[self setupProfileInfo];
 	[self setupMenu];
-	[self.tableView reloadData];
 }
 
 - (BOOL) canBecomeFirstResponder
