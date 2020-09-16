@@ -83,6 +83,7 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 - (void) setupNotifications
 {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshUserNotification:) name:kRefreshUserNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMenuNotification:) name:kRefreshMenuNotification object:nil];
 }
 
 - (void) setupDefaultSource
@@ -115,7 +116,10 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 - (void) setupTable
 {
 	[self.tableView registerNib:[UINib nibWithNibName:@"MenuCell" bundle:nil] forCellReuseIdentifier:kMenuCellIdentifier];
+}
 
+- (void) setupMenu
+{
 	self.menuItems = [[NSMutableArray alloc] init];
 	self.menuIcons = [[NSMutableArray alloc] init];
 
@@ -153,8 +157,6 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 	[self.menuItems addObject:@"Settings"];
 	[self.menuIcons addObject:@"gearshape"];
-
-//	[self.menuItems addObject:@"Sign Out"];
 }
 
 - (void) checkUserDetails
@@ -179,18 +181,18 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 					RFDispatchMain (^{
 						[self setupProfileInfo];
 					});
+
+					// Update the list of blogs assigned to the users...
+					RFClient* client = [[RFClient alloc] initWithPath:@"/micropub?q=config"];
+					[client getWithQueryArguments:nil completion:^(UUHttpResponse* response) {
+						NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
+						[RFSettings setBlogList:blogs];
+						RFDispatchMain (^{
+							[self setupMenu];
+							[self.tableView reloadData];
+						});
+					}];
 				}
-			}];
-			
-			// Update the list of blogs assigned to the users...
-			client = [[RFClient alloc] initWithPath:@"/micropub?q=config"];
-			[client getWithQueryArguments:nil completion:^(UUHttpResponse* response)
-			{
-				NSArray* blogs = [response.parsedResponse objectForKey:@"destination"];
-				[RFSettings setBlogList:blogs];
-				RFDispatchMain (^{
-					[self setupProfileInfo];
-				});
 			}];
 		}
 	}
@@ -200,6 +202,12 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 {
 	[self setupProfileInfo];
 	[self checkUserDetails];
+}
+
+- (void) refreshMenuNotification:(NSNotification *)notification
+{
+	[self setupMenu];
+	[self.tableView reloadData];
 }
 
 - (IBAction) onSwitchMicroBlog:(id)sender

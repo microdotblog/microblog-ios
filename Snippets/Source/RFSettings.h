@@ -34,7 +34,6 @@
 + (NSString*) 		snippetsAccountFullName;
 + (NSDictionary*) 	selectedBlogInfo;
 + (NSString*)		selectedBlogUid;
-+ (void) 			setHasSnippetsBlog:(BOOL)value;
 + (void)			setSnippetsUsername:(NSString*)username;
 + (void) 			setSnippetsPassword:(NSString*)password;
 + (void) 			setSnippetsPassword:(NSString*)password useCurrentUser:(BOOL)useCurrentUser;

@@ -47,6 +47,8 @@ static NSString* const kSelectTagmojiInfoKey = @"info";
 
 #define kRefreshUserNotification @"RFRefreshUserNotification"
 
+#define kRefreshMenuNotification @"RFRefreshMenuNotification"
+
 #define kPostWasFavoritedNotification @"RFPostWasFavoritedNotification"
 #define kPostWasUnfavoritedNotification @"RFPostWasUnfavoritedNotification"
 #define kPostWasDeletedNotification @"RFPostWasDeletedNotification"

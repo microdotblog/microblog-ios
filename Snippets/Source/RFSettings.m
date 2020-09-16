@@ -41,7 +41,6 @@
 // updated based on current account (and have _username variants)
 #define AccountFullName					@"AccountFullName"
 #define AccountDefaultSite				@"AccountDefaultSite"
-#define HasSnippetsBlog					@"HasSnippetsBlog"
 #define SelectedBlogInfo				@"Microblog::SelectedBlog"
 #define BlogList						@"Micro.blog list"
 
@@ -171,14 +170,9 @@
 
 + (BOOL) hasSnippetsBlog
 {
-	return [RFSettings loadUserDefaultBool:HasSnippetsBlog useCurrentUser:YES];
+	NSArray* blogs = [self blogList];
+	return (blogs.count > 0);
 }
-
-+ (void) setHasSnippetsBlog:(BOOL)value
-{
-	[RFSettings setUserDefault:@(value) forKey:HasSnippetsBlog useCurrentUser:YES];
-}
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -519,7 +513,6 @@
 	for (NSString* username in usernames) {
 		[self removeObjectForKey:AccountFullName username:username];
 		[self removeObjectForKey:AccountDefaultSite username:username];
-		[self removeObjectForKey:HasSnippetsBlog username:username];
 		[self removeObjectForKey:SelectedBlogInfo username:username];
 		[self removeObjectForKey:BlogList username:username];
 		[SSKeychain deletePasswordForService:@"Snippets" account:username];
@@ -529,7 +522,6 @@
 	[RFSettings removeObjectForKey:AccountUsernames];
 	[RFSettings removeObjectForKey:AccountDefaultSite];
 
-	[RFSettings removeObjectForKey:HasSnippetsBlog];
 	[RFSettings removeObjectForKey:PlainSharedURLsPreferred];
 
 	[RFSettings removeObjectForKey:ExternalBlogUsername];
@@ -569,7 +561,6 @@
 	[RFSettings migrateValueForKey:ExternalMicropubMe];
 	[RFSettings migrateValueForKey:AccountDefaultSite];
 	[RFSettings migrateValueForKey:ExternalBlogIsPreferred];
-	[RFSettings migrateValueForKey:HasSnippetsBlog];
 	[RFSettings migrateValueForKey:AccountUsername];
 	[RFSettings migrateValueForKey:AccountFullName];
 	[RFSettings migrateValueForKey:BlogList];
@@ -597,9 +588,6 @@
 		if (default_site) {
 			[self setAccountDefaultSite:default_site];
 		}
-
-		BOOL has_snippets_blog = [self loadUserDefaultBool:HasSnippetsBlog];
-		[self setHasSnippetsBlog:has_snippets_blog];
 
 		id selected_blog_info = [self loadUserDefaultDictionary:SelectedBlogInfo];
 		if (selected_blog_info) {

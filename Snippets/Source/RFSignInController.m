@@ -273,7 +273,6 @@
 			NSString* new_token = [response.parsedResponse objectForKey:@"token"];
 			NSString* full_name = [response.parsedResponse objectForKey:@"full_name"];
 			NSString* username = [response.parsedResponse objectForKey:@"username"];
-			NSNumber* has_site = [response.parsedResponse objectForKey:@"has_site"];
 			NSString* default_site = [response.parsedResponse objectForKey:@"default_site"];
 
 			self.signinToken = new_token;
@@ -283,7 +282,6 @@
 			[RFSettings setSnippetsAccountFullName:full_name];
 			[RFSettings setSnippetsUsername:username];
 			[RFSettings setAccountDefaultSite:default_site];
-			[RFSettings setHasSnippetsBlog:[has_site boolValue]];
 			[RFSettings setSnippetsPassword:new_token useCurrentUser:YES];
 
 			[self checkForMultipleBlogs];
@@ -387,6 +385,8 @@
 					[RFSettings setSelectedBlogInfo:blogInfo];
 					[self completeLoginProcess];
 				}
+
+				[[NSNotificationCenter defaultCenter] postNotificationName:kRefreshMenuNotification object:self];
 			}
 			else
 			{

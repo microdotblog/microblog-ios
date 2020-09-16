@@ -127,6 +127,8 @@
 							 [RFSettings setSelectedBlogInfo:blogInfo];
 						 }
 					 }
+					 
+					 [[NSNotificationCenter defaultCenter] postNotificationName:kRefreshMenuNotification object:self];
 				 }
 			 }
 		 }

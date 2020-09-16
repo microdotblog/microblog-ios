@@ -40,14 +40,14 @@
 
 + (NSString *) serverHostnameWithScheme
 {
-//	return @"https://micro.blog";
-	return @"http://localhost:3000";
+	return @"https://micro.blog";
+//	return @"http://localhost:3000";
 }
 
 + (NSString *) serverHostname
 {
-	//	return @"micro.blog";
-		return @"localhost";
+		return @"micro.blog";
+//		return @"localhost";
 }
 
 - (void) setupRequest:(UUHttpRequest *)request
