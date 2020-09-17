@@ -69,7 +69,24 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 		self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_backBarButtonWithTarget:self action:@selector(back:)];
 	}
 	
-	if (@available(iOS 13.0, *)) {
+	if (@available(iOS 14.0, *)) {
+		UIImage* upload_img = [UIImage systemImageNamed:@"icloud.and.arrow.up"];
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:upload_img style:UIBarButtonItemStylePlain target:self action:NULL];
+		
+		UIImage* library_img = [UIImage systemImageNamed:@"photo"];
+		UIAction* library_action = [UIAction actionWithTitle:@"Photo Library" image:library_img identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+			[self chooseUpload:nil];
+		}];
+
+		UIImage* files_img = [UIImage systemImageNamed:@"folder"];
+		UIAction* files_action = [UIAction actionWithTitle:@"Files" image:files_img identifier:nil handler:^(__kindof UIAction * _Nonnull action) {
+			[self chooseFiles:nil];
+		}];
+
+		NSArray* items = @[ library_action, files_action ];
+		self.navigationItem.rightBarButtonItem.menu = [UIMenu menuWithChildren:items];
+	}
+	else if (@available(iOS 13.0, *)) {
 		UIImage* upload_img = [UIImage systemImageNamed:@"icloud.and.arrow.up"];
 		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:upload_img style:UIBarButtonItemStylePlain target:self action:@selector(chooseUpload:)];
 	}
@@ -136,6 +153,11 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 
 - (void) uploadData:(NSData *)data isVideo:(BOOL)isVideo
 {
+	return [self uploadData:data isVideo:isVideo otherFilename:nil contentType:nil];
+}
+
+- (void) uploadData:(NSData *)data isVideo:(BOOL)isVideo otherFilename:(NSString *)filename contentType:(NSString *)contentType
+{
 	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];
 	NSString* destination_uid = [RFSettings selectedBlogUid];
 	if (destination_uid == nil) {
@@ -149,7 +171,21 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	self.hostnameButton.hidden = YES;
 	[self.progressSpinner startAnimating];
 
-	if (isVideo) {
+	if (filename) {
+		[client uploadFileData:data named:@"file" filename:filename contentType:contentType httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
+			RFDispatchMainAsync (^{
+				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
+					[self.progressSpinner stopAnimating];
+					NSString* msg = response.parsedResponse[@"error_description"];
+					[UUAlertViewController uuShowOneButtonAlert:@"Error Uploading Video" message:msg button:@"OK" completionHandler:NULL];
+				}
+				else {
+					[self fetchPosts];
+				}
+			});
+		}];
+	}
+	else if (isVideo) {
 		[client uploadVideoData:data named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
 			RFDispatchMainAsync (^{
 				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
@@ -189,7 +225,16 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	UIImagePickerController* picker_controller = [[UIImagePickerController alloc] init];
 	picker_controller.delegate = self;
 	picker_controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-	picker_controller.mediaTypes = @[ (NSString*)kUTTypeMovie, (NSString*)kUTTypeImage ];
+	picker_controller.mediaTypes = @[ (NSString *)kUTTypeMovie, (NSString *)kUTTypeImage ];
+	[self presentViewController:picker_controller animated:YES completion:NULL];
+}
+
+- (void) chooseFiles:(id)sender
+{
+	NSArray* types = @[ (NSString *)kUTTypeImage, (NSString *)kUTTypeMovie, (NSString *)kUTTypeAudio, (NSString *)kUTTypePDF, (NSString *)kUTTypeText ];
+	UIDocumentPickerViewController* picker_controller = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:types inMode:UIDocumentPickerModeImport];
+	picker_controller.delegate = self;
+	picker_controller.allowsMultipleSelection = NO;
 	[self presentViewController:picker_controller animated:YES completion:NULL];
 }
 
@@ -370,6 +415,21 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 - (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
 	[self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark -
+
+- (void) documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray <NSURL *>*)urls
+{
+	NSURL* url = [urls firstObject];
+
+	NSString* filename = [url lastPathComponent];
+	NSString* e = [url pathExtension];
+	NSString* uti = (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)e, NULL);
+	NSString* content_type = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)uti, kUTTagClassMIMEType);
+	
+	NSData* d = [NSData dataWithContentsOfURL:url];
+	[self uploadData:d isVideo:NO otherFilename:filename contentType:content_type];
 }
 
 #pragma mark -

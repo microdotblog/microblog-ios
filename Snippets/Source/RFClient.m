@@ -179,7 +179,7 @@
 	return [UUHttpSession executeRequest:request completionHandler:handler];
 }
 
-- (UUHttpRequest *) uploadImageData:(NSData *)imageData named:(NSString *)imageName httpMethod:(NSString *)method queryArguments:(NSDictionary *)args completion:(void (^)(UUHttpResponse* response))handler
+- (UUHttpRequest *) uploadFileData:(NSData *)imageData named:(NSString *)imageName filename:(NSString *)filename contentType:(NSString *)contentType httpMethod:(NSString *)method queryArguments:(NSDictionary *)args completion:(void (^)(UUHttpResponse* response))handler
 {
 	NSString* boundary = [[NSProcessInfo processInfo] globallyUniqueString];
 	NSMutableData* d = [NSMutableData data];
@@ -193,8 +193,8 @@
 
 	if (imageData) {
 		[d appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-		[d appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"image.jpg\"\r\n", imageName] dataUsingEncoding:NSUTF8StringEncoding]];
-		[d appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+		[d appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", imageName, filename] dataUsingEncoding:NSUTF8StringEncoding]];
+		[d appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", contentType] dataUsingEncoding:NSUTF8StringEncoding]];
 		[d appendData:imageData];
 		[d appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
 	}
@@ -219,44 +219,14 @@
 	return [UUHttpSession executeRequest:request completionHandler:handler];
 }
 
+- (UUHttpRequest *) uploadImageData:(NSData *)imageData named:(NSString *)imageName httpMethod:(NSString *)method queryArguments:(NSDictionary *)args completion:(void (^)(UUHttpResponse* response))handler
+{
+	return [self uploadFileData:imageData named:imageName filename:@"image.jpg" contentType:@"image/jpeg" httpMethod:method queryArguments:args completion:handler];
+}
+
 - (UUHttpRequest *) uploadVideoData:(NSData *)videoData named:(NSString *)imageName httpMethod:(NSString *)method queryArguments:(NSDictionary *)args completion:(void (^)(UUHttpResponse* response))handler
 {
-	NSString* boundary = [[NSProcessInfo processInfo] globallyUniqueString];
-	NSMutableData* d = [NSMutableData data];
-	
-	for (NSString* k in [args allKeys]) {
-		NSString* val = [args objectForKey:k];
-		[d appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-		[d appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", k] dataUsingEncoding:NSUTF8StringEncoding]];
-		[d appendData:[[NSString stringWithFormat:@"%@\r\n", val] dataUsingEncoding:NSUTF8StringEncoding]];
-	}
-	
-	if (videoData) {
-		[d appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-		[d appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"video.mov\"\r\n", imageName] dataUsingEncoding:NSUTF8StringEncoding]];
-		[d appendData:[@"Content-Type: video/mov\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-		[d appendData:videoData];
-		[d appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-	}
-	
-	[d appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-	
-	UUHttpRequest* request;
-	
-	if ([[method uppercaseString] isEqualToString:@"PUT"]) {
-		request = [UUHttpRequest putRequest:self.url queryArguments:nil body:d contentType:@"application/json"];
-	}
-	else {
-		request = [UUHttpRequest postRequest:self.url queryArguments:nil body:d contentType:@"application/json"];
-	}
-	[self setupRequest:request];
-	
-	NSString* content_type = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
-	NSMutableDictionary* headers = [request.headerFields mutableCopy];
-	[headers setObject:content_type forKey:@"Content-Type"];
-	request.headerFields = headers;
-	
-	return [UUHttpSession executeRequest:request completionHandler:handler];
+	return [self uploadFileData:videoData named:imageName filename:@"video.mov" contentType:@"video/mov" httpMethod:method queryArguments:args completion:handler];
 }
 
 #pragma mark -

@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RFAllUploadsController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate>
+@interface RFAllUploadsController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView* progressSpinner;
 @property (strong, nonatomic) IBOutlet UIButton* hostnameButton;
