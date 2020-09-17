@@ -30,7 +30,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="USR-Bt-AWl"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lne-rP-Pd0">
@@ -45,7 +45,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="lE5-zn-TIb"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ama-Jl-vmK" customClass="RFThinLineView">
