@@ -161,9 +161,7 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 			}
 			
 			RFDispatchMainAsync (^{
-				if (search.length == 0) {
-					self.allPosts = new_posts;
-				}
+				self.allPosts = new_posts;
 				self.currentPosts = new_posts;
 				[self.tableView reloadData];
 				[self.progressSpinner stopAnimating];
@@ -181,21 +179,17 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 - (void) searchPosts:(NSString *)text
 {
 	NSString* q = [text lowercaseString];
-	if (q.length == 0) {
-		self.currentPosts = self.allPosts;
-	}
-	else {
-		NSMutableArray* filtered_posts = [NSMutableArray array];
-		for (RFPost* post in self.allPosts) {
-			if ([[post.title lowercaseString] containsString:q] || [[post.text lowercaseString] containsString:q]) {
-				[filtered_posts addObject:post];
-			}
-		}
+	[self fetchPostsForSearch:q];
 		
-		self.currentPosts = filtered_posts;
-	}
-	
-	[self.tableView reloadData];
+//	NSMutableArray* filtered_posts = [NSMutableArray array];
+//	for (RFPost* post in self.allPosts) {
+//		if ([[post.title lowercaseString] containsString:q] || [[post.text lowercaseString] containsString:q]) {
+//			[filtered_posts addObject:post];
+//		}
+//	}
+//
+//	self.currentPosts = filtered_posts;
+//	[self.tableView reloadData];
 }
 
 - (RFSwipeNavigationController *) swipeNavigationController
