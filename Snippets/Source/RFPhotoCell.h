@@ -15,6 +15,7 @@
 @interface RFPhotoCell : UICollectionViewCell
 
 @property (strong, nonnull) IBOutlet UIImageView* thumbnailView;
+@property (strong, nonnull) IBOutlet UIImageView* iconView;
 @property (strong, nonnull) IBOutlet UILabel* videoDurationLabel;
 @property (strong, nonnull) IBOutlet UIView* selectionOverlay;
 

@@ -464,7 +464,26 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	RFPhotoCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:kUploadCellIdentifier forIndexPath:indexPath];
 
 	RFUpload* up = [self.allPosts objectAtIndex:indexPath.item];
-	cell.thumbnailView.image = up.cachedImage;
+	if ([up isPhoto]) {
+		cell.thumbnailView.image = up.cachedImage;
+		cell.iconView.image = nil;
+	}
+	else if (@available(iOS 13.0, *)) {
+		cell.thumbnailView.image = nil;
+		if ([up isVideo]) {
+			cell.iconView.image = [UIImage systemImageNamed:@"film"];
+		}
+		else if ([up isAudio]) {
+			cell.iconView.image = [UIImage systemImageNamed:@"waveform"];
+		}
+		else {
+			cell.iconView.image = [UIImage systemImageNamed:@"doc"];
+		}
+	}
+	else {
+		cell.thumbnailView.image = nil;
+		cell.iconView.image = nil;
+	}
 	
 	return cell;
 }

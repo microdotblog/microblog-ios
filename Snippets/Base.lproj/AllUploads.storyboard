@@ -78,6 +78,13 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0aO-Pk-O3H">
                                                     <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                                                 </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jHv-Iq-mKo">
+                                                    <rect key="frame" x="35" y="35" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="ENH-Ue-3H1"/>
+                                                        <constraint firstAttribute="width" constant="40" id="NmP-Jo-k7n"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <view hidden="YES" alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUu-Lt-WdY">
                                                     <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -87,7 +94,9 @@
                                                 <constraint firstItem="0aO-Pk-O3H" firstAttribute="leading" secondItem="BGM-Dw-PDk" secondAttribute="leading" id="1Y5-tB-CTg"/>
                                                 <constraint firstAttribute="bottom" secondItem="FUu-Lt-WdY" secondAttribute="bottom" id="3XX-M2-6ln"/>
                                                 <constraint firstAttribute="bottom" secondItem="0aO-Pk-O3H" secondAttribute="bottom" id="6kG-kw-wQw"/>
+                                                <constraint firstItem="jHv-Iq-mKo" firstAttribute="centerX" secondItem="BGM-Dw-PDk" secondAttribute="centerX" id="MTs-Vi-mml"/>
                                                 <constraint firstItem="0aO-Pk-O3H" firstAttribute="top" secondItem="BGM-Dw-PDk" secondAttribute="top" id="UbR-oo-bYz"/>
+                                                <constraint firstItem="jHv-Iq-mKo" firstAttribute="centerY" secondItem="BGM-Dw-PDk" secondAttribute="centerY" id="f1x-QK-B5H"/>
                                                 <constraint firstAttribute="trailing" secondItem="0aO-Pk-O3H" secondAttribute="trailing" id="nVV-Kq-H26"/>
                                                 <constraint firstAttribute="trailing" secondItem="FUu-Lt-WdY" secondAttribute="trailing" id="oX2-BN-3SD"/>
                                                 <constraint firstItem="FUu-Lt-WdY" firstAttribute="leading" secondItem="BGM-Dw-PDk" secondAttribute="leading" id="ri7-5R-PBU"/>
@@ -95,6 +104,7 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="iconView" destination="jHv-Iq-mKo" id="6oN-7I-XCc"/>
                                             <outlet property="selectionOverlay" destination="FUu-Lt-WdY" id="nBw-Aa-TYi"/>
                                             <outlet property="thumbnailView" destination="0aO-Pk-O3H" id="ZU7-fB-Met"/>
                                         </connections>
