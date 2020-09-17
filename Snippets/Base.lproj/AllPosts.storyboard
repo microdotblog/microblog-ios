@@ -168,7 +168,7 @@
                                             <outlet property="delegate" destination="jDs-uE-Nfa" id="KGU-Uu-ofQ"/>
                                         </connections>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnO-aC-LRJ" customClass="RFThinLineView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnO-aC-LRJ" customClass="RFBottomLineView">
                                         <rect key="frame" x="0.0" y="63" width="414" height="1"/>
                                         <color key="backgroundColor" systemColor="separatorColor"/>
                                         <constraints>

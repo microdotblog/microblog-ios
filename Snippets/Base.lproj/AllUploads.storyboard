@@ -38,7 +38,7 @@
                                             <constraint firstAttribute="width" constant="20" id="nw7-qM-Yps"/>
                                         </constraints>
                                     </activityIndicatorView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnO-aC-LRJ" customClass="RFThinLineView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnO-aC-LRJ" customClass="RFBottomLineView">
                                         <rect key="frame" x="0.0" y="63" width="414" height="1"/>
                                         <color key="backgroundColor" systemColor="separatorColor"/>
                                         <constraints>

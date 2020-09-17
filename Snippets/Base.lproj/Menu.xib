@@ -48,7 +48,7 @@
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ama-Jl-vmK" customClass="RFThinLineView">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ama-Jl-vmK" customClass="RFBottomLineView">
                             <rect key="frame" x="0.0" y="63" width="375" height="1"/>
                             <color key="backgroundColor" systemColor="separatorColor"/>
                             <constraints>
