@@ -50,7 +50,10 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 
 	NSIndexPath* index_path;
 
-	if ([RFSettings prefersPlainSharedURLs]) {
+	if ([RFSettings prefersBookmarkSharedURLs]) {
+		index_path = [NSIndexPath indexPathForRow:2 inSection:0];
+	}
+	else if ([RFSettings prefersPlainSharedURLs]) {
 		index_path = [NSIndexPath indexPathForRow:1 inSection:0];
 	}
 	else {
@@ -88,7 +91,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 
 - (void) setupSharing
 {
-	self.sharingNames = @[ @"Markdown link", @"Plain URL" ];
+	self.sharingNames = @[ @"Markdown link", @"Plain URL", @"Save as bookmark" ];
 
 	[self.sharingTableView registerNib:[UINib nibWithNibName:@"SettingChoiceCell" bundle:nil] forCellReuseIdentifier:kServerCellIdentifier];
 	self.sharingTableView.layer.cornerRadius = 5.0;
@@ -214,7 +217,39 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 	
 	if (tableView == self.sharingTableView) {
 		cell.nameField.text = [self.sharingNames objectAtIndex:indexPath.row];
-		cell.checkmarkView.hidden = (indexPath.row > 0);
+		if ([RFSettings prefersBookmarkSharedURLs]) {
+			if (indexPath.row == 0) {
+				cell.checkmarkView.hidden = YES;
+			}
+			else if (indexPath.row == 1) {
+				cell.checkmarkView.hidden = YES;
+			}
+			else if (indexPath.row == 2) {
+				cell.checkmarkView.hidden = NO;
+			}
+		}
+		else if ([RFSettings prefersPlainSharedURLs]) {
+			if (indexPath.row == 0) {
+				cell.checkmarkView.hidden = YES;
+			}
+			else if (indexPath.row == 1) {
+				cell.checkmarkView.hidden = NO;
+			}
+			else if (indexPath.row == 2) {
+				cell.checkmarkView.hidden = YES;
+			}
+		}
+		else {
+			if (indexPath.row == 0) {
+				cell.checkmarkView.hidden = NO;
+			}
+			else if (indexPath.row == 1) {
+				cell.checkmarkView.hidden = YES;
+			}
+			else if (indexPath.row == 2) {
+				cell.checkmarkView.hidden = YES;
+			}
+		}
 	}
 	else if (tableView == self.serversTableView) {
 		cell.nameField.text = [self.serverNames objectAtIndex:indexPath.row];
@@ -238,8 +273,14 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (tableView == self.sharingTableView) {
-		BOOL prefer_plain_urls = (indexPath.row == 1);
-		[RFSettings setPrefersPlainSharedURLs:prefer_plain_urls];
+		if (indexPath.row == 2) {
+			[RFSettings setPrefersBookmarkSharedURLs:YES];
+		}
+		else {
+			BOOL prefer_plain_urls = (indexPath.row == 1);
+			[RFSettings setPrefersPlainSharedURLs:prefer_plain_urls];
+			[RFSettings setPrefersBookmarkSharedURLs:NO];
+		}
 	}
 	else if (tableView == self.serversTableView) {
 		BOOL prefer_external_blog = (indexPath.row == 1);

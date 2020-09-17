@@ -17,8 +17,10 @@
 + (BOOL) needsExternalBlogSetup;
 
 + (BOOL) 		prefersPlainSharedURLs;
++ (BOOL) 		prefersBookmarkSharedURLs;
 + (BOOL) 		prefersExternalBlog;
 + (void) 		setPrefersPlainSharedURLs:(BOOL)value;
++ (void) 		setPrefersBookmarkSharedURLs:(BOOL)value;
 + (void) 		setPrefersExternalBlog:(BOOL)value;
 + (NSString *) 	accountDefaultSite;
 

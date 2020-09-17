@@ -26,13 +26,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When writing a new post, publish to:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pab-LB-1n2">
-                    <rect key="frame" x="15" y="226.5" width="346" height="20.5"/>
+                    <rect key="frame" x="15" y="276.5" width="346" height="20.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T30-Wk-89C">
-                    <rect key="frame" x="12" y="259" width="351" height="90"/>
+                    <rect key="frame" x="12" y="309" width="351" height="90"/>
                     <color key="backgroundColor" name="color_grouped_background"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="90" id="kkd-so-whw"/>
@@ -43,13 +43,13 @@
                     </connections>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use category:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HU1-KD-ny1">
-                    <rect key="frame" x="15" y="369" width="320" height="21"/>
+                    <rect key="frame" x="15" y="419" width="320" height="21"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SFL-G3-6LV">
-                    <rect key="frame" x="12" y="402" width="351" height="251"/>
+                    <rect key="frame" x="12" y="452" width="351" height="201"/>
                     <color key="backgroundColor" name="color_grouped_background"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Sag-3b-y67"/>
@@ -57,7 +57,7 @@
                     </connections>
                 </tableView>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lD3-Mf-yAL">
-                    <rect key="frame" x="343" y="369.5" width="20" height="20"/>
+                    <rect key="frame" x="343" y="419.5" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="EfZ-ve-xDz"/>
                         <constraint firstAttribute="height" constant="20" id="cyU-aE-V9t"/>
@@ -90,17 +90,17 @@
                         <constraint firstItem="q9C-zN-V6g" firstAttribute="centerY" secondItem="iT7-6A-x3v" secondAttribute="centerY" id="vgX-gP-CXq"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When sharing URLs from other apps, include:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riI-1R-JAZ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When sharing URLs from other apps:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="riI-1R-JAZ">
                     <rect key="frame" x="15" y="84" width="345" height="20.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UQT-f1-fD9">
-                    <rect key="frame" x="12" y="116.5" width="351" height="90"/>
+                    <rect key="frame" x="12" y="116.5" width="351" height="140"/>
                     <color key="backgroundColor" name="color_grouped_background"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="90" id="JuN-oP-UaN"/>
+                        <constraint firstAttribute="height" constant="140" id="JuN-oP-UaN"/>
                     </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="8Pu-z5-rg1"/>

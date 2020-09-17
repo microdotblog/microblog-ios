@@ -30,6 +30,7 @@
 #define LatestDraftText					@"LatestDraftText"
 #define PreferredContentSize			@"PreferredContentSize"
 #define PlainSharedURLsPreferred		@"PlainSharedURLsPreferred"
+#define BookmarkSharedURLsPreferred		@"BookmarkSharedURLsPreferred"
 #define kLastStatusBarHeightPrefKey		@"LastStatusBarHeight"
 
 // this is the current account
@@ -208,6 +209,16 @@
 + (void) setPrefersPlainSharedURLs:(BOOL)value
 {
 	[RFSettings setUserDefault:@(value) forKey:PlainSharedURLsPreferred];
+}
+
++ (BOOL) prefersBookmarkSharedURLs
+{
+	return [RFSettings loadUserDefaultBool:BookmarkSharedURLsPreferred];
+}
+
++ (void) setPrefersBookmarkSharedURLs:(BOOL)value
+{
+	[RFSettings setUserDefault:@(value) forKey:BookmarkSharedURLsPreferred];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
