@@ -25,6 +25,7 @@
 #import "RFConstants.h"
 
 @import MobileCoreServices;
+@import SafariServices;
 
 @interface RFAllUploadsController() <NYTPhotosViewControllerDelegate, NYTPhotoViewerDataSource>
 
@@ -315,31 +316,50 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 
 - (void) openUpload:(RFUpload *)upload
 {
-	self.photoToView = [[RFNYTPhoto alloc] init];
-	self.photoToView.image = nil;
+	if ([upload isPhoto]) {
+		self.photoToView = [[RFNYTPhoto alloc] init];
+		self.photoToView.image = nil;
 
-	self.photoViewerController = [[NYTPhotosViewController alloc] initWithDataSource:self initialPhoto:self.photoToView delegate:self];
-	self.photoViewerController.rightBarButtonItems = @[];
-	
-	[self presentViewController:self.photoViewerController animated:YES completion:NULL];
+		self.photoViewerController = [[NYTPhotosViewController alloc] initWithDataSource:self initialPhoto:self.photoToView delegate:self];
+		self.photoViewerController.rightBarButtonItems = @[];
+		
+		[self presentViewController:self.photoViewerController animated:YES completion:NULL];
 
-	[UUHttpSession get:upload.url queryArguments:nil completionHandler:^(UUHttpResponse *response) {
-		UIImage* image = response.parsedResponse;
-		if (image && [image isKindOfClass:[UIImage class]])
-		{
-			dispatch_async(dispatch_get_main_queue(), ^
+		[UUHttpSession get:upload.url queryArguments:nil completionHandler:^(UUHttpResponse *response) {
+			UIImage* image = response.parsedResponse;
+			if (image && [image isKindOfClass:[UIImage class]])
 			{
-				self.photoToView.image = image;
-				[self.photoViewerController updatePhoto:self.photoToView];
-				self.photoViewerController.pageViewController.dataSource = nil;
-			});
-		}
-	}];
+				dispatch_async(dispatch_get_main_queue(), ^
+				{
+					self.photoToView.image = image;
+					[self.photoViewerController updatePhoto:self.photoToView];
+					self.photoViewerController.pageViewController.dataSource = nil;
+				});
+			}
+		}];
+	}
+	else {
+		SFSafariViewController* safari_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:upload.url]];
+		[self presentViewController:safari_controller animated:YES completion:NULL];
+	}
 }
 	
 - (void) copyUpload:(RFUpload *)upload
 {
-	NSString* s = [NSString stringWithFormat:@"<img src=\"%@\" />", upload.url];
+	NSString* s;
+	if ([upload isPhoto]) {
+		s = [NSString stringWithFormat:@"<img src=\"%@\" />", upload.url];
+	}
+	else if ([upload isVideo]) {
+		s = [NSString stringWithFormat:@"<video src=\"%@\" controls=\"controls\" playsinline=\"playsinline\" preload=\"none\"></video>", upload.url];
+	}
+	else if ([upload isAudio]) {
+		s = [NSString stringWithFormat:@"<audio src=\"%@\" controls=\"controls\" preload=\"metadata\" />", upload.url];
+	}
+	else {
+		s = [NSString stringWithFormat:@"<a href=\"%@\">%@</a>", upload.url, [upload filename]];
+	}
+
 	[[UIPasteboard generalPasteboard] setString:s];
 }
 
