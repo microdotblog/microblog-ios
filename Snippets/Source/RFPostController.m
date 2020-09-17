@@ -358,7 +358,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) updateTitleHeader
 {
 	if (!self.isReply && (([self currentProcessedMarkup].length > 280) || [self isPage])) {
-		self.titleHeaderHeightConstraint.constant = 44;
+		self.titleHeaderHeightConstraint.constant = 64;
 	}
 	else {
 		self.titleHeaderHeightConstraint.constant = 0;
