@@ -156,7 +156,12 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	[self.menuIcons addObject:@"questionmark.circle"];
 
 	[self.menuItems addObject:@"Settings"];
-	[self.menuIcons addObject:@"gearshape"];
+	if (@available(iOS 14.0, *)) {
+		[self.menuIcons addObject:@"gearshape"];
+	}
+	else {
+		[self.menuIcons addObject:@"gear"];
+	}
 
 	NSIndexPath* index_path = [self.tableView indexPathForSelectedRow];
 	[self.tableView reloadData];
