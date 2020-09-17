@@ -180,7 +180,6 @@
 		4BF803511B87AACF00D6670C /* RFClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803501B87AACF00D6670C /* RFClient.m */; };
 		4BF8035B1B8898D900D6670C /* RFThinLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF8035A1B8898D900D6670C /* RFThinLineView.m */; };
 		4BF870651F679070005C9849 /* RFBrowserActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF870641F679070005C9849 /* RFBrowserActivity.m */; };
-		C507F30C1F8827420013D2B7 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C507F30B1F8827420013D2B7 /* ShareViewController.m */; };
 		C507F30F1F8827420013D2B7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C507F30D1F8827420013D2B7 /* MainInterface.storyboard */; };
 		C507F3131F8827420013D2B7 /* Micro.blog Sharing.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C507F3081F8827420013D2B7 /* Micro.blog Sharing.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C507F3171F8827780013D2B7 /* RFPostController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA910811B83D20C00D58F83 /* RFPostController.m */; };
@@ -645,8 +644,6 @@
 		4BF870631F679070005C9849 /* RFBrowserActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFBrowserActivity.h; path = Source/RFBrowserActivity.h; sourceTree = "<group>"; };
 		4BF870641F679070005C9849 /* RFBrowserActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFBrowserActivity.m; path = Source/RFBrowserActivity.m; sourceTree = "<group>"; };
 		C507F3081F8827420013D2B7 /* Micro.blog Sharing.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Micro.blog Sharing.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C507F30A1F8827420013D2B7 /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
-		C507F30B1F8827420013D2B7 /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		C507F30E1F8827420013D2B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		C507F3101F8827420013D2B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5666B621F23C95F00AE13DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/User.xib; sourceTree = "<group>"; };
@@ -1233,8 +1230,6 @@
 			isa = PBXGroup;
 			children = (
 				C5A4AC011F9A507400415646 /* Micro.blog Sharing.entitlements */,
-				C507F30A1F8827420013D2B7 /* ShareViewController.h */,
-				C507F30B1F8827420013D2B7 /* ShareViewController.m */,
 				4B49A0C82329FA2F00F82DF5 /* RFShareController.h */,
 				4B49A0C92329FA2F00F82DF5 /* RFShareController.m */,
 				C507F30D1F8827420013D2B7 /* MainInterface.storyboard */,
@@ -1892,7 +1887,6 @@
 				C507F31B1F88278C0013D2B7 /* RFPhotoCell.m in Sources */,
 				C507F3311F8827BC0013D2B7 /* UUImage.m in Sources */,
 				4B5DDAC424E4A4B9007674FF /* RFMenuCell.m in Sources */,
-				C507F30C1F8827420013D2B7 /* ShareViewController.m in Sources */,
 				C52DB57A225D0D2100172077 /* RFBlogTableViewCell.m in Sources */,
 				C507F3291F8827A90013D2B7 /* RFMenuView.m in Sources */,
 				C507F3251F8827A90013D2B7 /* UIBarButtonItem+Extras.m in Sources */,
@@ -2390,7 +2384,7 @@
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 252;
+				CURRENT_PROJECT_VERSION = 253;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				ENABLE_BITCODE = NO;
@@ -2422,7 +2416,7 @@
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 252;
+				CURRENT_PROJECT_VERSION = 253;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				ENABLE_BITCODE = NO;
@@ -2465,7 +2459,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 252;
+				CURRENT_PROJECT_VERSION = 253;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2504,7 +2498,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 252;
+				CURRENT_PROJECT_VERSION = 253;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

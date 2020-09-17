@@ -140,7 +140,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		{
 			[UUAlertViewController setActiveViewController:self];
 		
-			[UUAlertViewController uuShowOneButtonAlert:nil message:@"You need to configure your weblog settings first. Please launch Micro.blog and sign in to your account." button:@"OK" completionHandler:^(NSInteger buttonIndex)
+			[UUAlertViewController uuShowOneButtonAlert:nil message:@"You need to configure your blog settings first. Please launch Micro.blog and sign in to your account." button:@"OK" completionHandler:^(NSInteger buttonIndex)
 			 {
 				 [UUAlertViewController setActiveViewController:nil];
 			 

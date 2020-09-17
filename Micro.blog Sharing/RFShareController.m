@@ -9,6 +9,8 @@
 #import "RFShareController.h"
 
 #import "RFPostController.h"
+#import "RFSettings.h"
+#import "RFBookmarkController.h"
 
 @implementation RFShareController
 
@@ -16,8 +18,15 @@
 {
 	[super awakeFromNib];
 	
-	RFPostController* post_controller = [[RFPostController alloc] init];
-	[self pushViewController:post_controller animated:NO];
+	if ([RFSettings prefersBookmarkSharedURLs]) {
+		UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Bookmark" bundle:nil];
+		RFBookmarkController* bookmark_controller = [storyboard instantiateViewControllerWithIdentifier:@"NewBookmark"];
+		[self pushViewController:bookmark_controller animated:NO];
+	}
+	else {
+		RFPostController* post_controller = [[RFPostController alloc] init];
+		[self pushViewController:post_controller animated:NO];
+	}
 }
 
 @end

@@ -29,7 +29,7 @@
         <!--Bookmark Controller-->
         <scene sceneID="Ivj-rM-BZw">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="AyM-xa-joN" customClass="RFBookmarkController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewBookmark" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="AyM-xa-joN" customClass="RFBookmarkController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XTp-F0-A6h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

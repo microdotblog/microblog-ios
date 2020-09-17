@@ -13,6 +13,8 @@
 #import "RFConstants.h"
 #import "RFMacros.h"
 
+@import MobileCoreServices;
+
 @implementation RFBookmarkController
 
 - (void) viewDidLoad
@@ -40,9 +42,32 @@
 
 - (void) setupClipboard
 {
-	NSString* url = [UIPasteboard generalPasteboard].string;
-	if (url && [url containsString:@"http"]) {
-		self.urlField.text = url;
+	if (self.extensionContext) {
+		NSExtensionItem* item = [self.extensionContext.inputItems firstObject];
+		NSItemProvider* provider = [item.attachments firstObject];
+		if ([provider hasItemConformingToTypeIdentifier:@"public.url"]) {
+			[provider loadItemForTypeIdentifier:@"public.url" options:nil completionHandler:^(id item, NSError* error) {
+				NSURL* url = [(NSURL *)item copy];
+				RFDispatchMainAsync(^{
+					self.urlField.text = [url absoluteString];
+				});
+			}];
+		}
+		else if ([provider hasItemConformingToTypeIdentifier:(NSString *)kUTTypePropertyList]) {
+			[provider loadItemForTypeIdentifier:(NSString *)kUTTypePropertyList options:nil completionHandler:^(id item, NSError* error) {
+				NSDictionary* info = (NSDictionary *)item;
+				NSDictionary* results = info[NSExtensionJavaScriptPreprocessingResultsKey];
+				RFDispatchMainAsync(^{
+					self.urlField.text = [results objectForKey:@"url"];
+				});
+			}];
+		}
+	}
+	else {
+		NSString* url = [UIPasteboard generalPasteboard].string;
+		if (url && [url containsString:@"http"]) {
+			self.urlField.text = url;
+		}
 	}
 }
 
@@ -62,8 +87,14 @@
 	[client postWithParams:args completion:^(UUHttpResponse* response) {
 		RFDispatchMainAsync (^{
 			[self dismissViewControllerAnimated:YES completion:^{
-				// notify bookmarks to update
-				[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self];
+				if (self.extensionContext) {
+					[self.extensionContext completeRequestReturningItems:nil completionHandler:^(BOOL expired) {
+					}];
+				}
+				else {
+					// notify bookmarks to update
+					[[NSNotificationCenter defaultCenter] postNotificationName:kLoadTimelineNotification object:self];
+				}
 			}];
 		});
 	}];
@@ -71,7 +102,15 @@
 
 - (IBAction) cancel:(id)sender
 {
-	[self dismissViewControllerAnimated:YES completion:NULL];
+	if (self.extensionContext) {
+		[self dismissViewControllerAnimated:YES completion:^{
+			[self.extensionContext completeRequestReturningItems:nil completionHandler:^(BOOL expired) {
+			}];
+		}];
+	}
+	else {
+		[self dismissViewControllerAnimated:YES completion:NULL];
+	}
 }
 
 @end
