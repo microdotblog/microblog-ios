@@ -108,6 +108,11 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 
 - (void) fetchPosts
 {
+	[self fetchPostsForSearch:@""];
+}
+
+- (void) fetchPostsForSearch:(NSString *)search
+{
 	self.allPosts = @[];
 	self.currentPosts = @[];
 	self.hostnameButton.hidden = YES;
@@ -127,7 +132,8 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 	NSDictionary* args = @{
 		@"q": @"source",
 		@"mp-destination": destination_uid,
-		@"mp-channel": channel
+		@"mp-channel": channel,
+		@"filter": search
 	};
 
 	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
@@ -155,7 +161,9 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 			}
 			
 			RFDispatchMainAsync (^{
-				self.allPosts = new_posts;
+				if (search.length == 0) {
+					self.allPosts = new_posts;
+				}
 				self.currentPosts = new_posts;
 				[self.tableView reloadData];
 				[self.progressSpinner stopAnimating];
