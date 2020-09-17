@@ -29,32 +29,32 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJR-UI-7g4">
-                    <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                    <rect key="frame" x="0.0" y="108" width="375" height="704"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="UTz-6t-RTa"/>
                     </connections>
                 </webView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEO-4T-5wM">
-                    <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="64"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some recent posts from the community." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRx-YB-TN4">
-                            <rect key="frame" x="10" y="4" width="260" height="36"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <rect key="frame" x="15" y="4" width="248" height="56"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="p07-RB-zhL">
-                            <rect key="frame" x="286" y="8" width="81" height="28"/>
+                            <rect key="frame" x="279" y="8" width="81" height="48"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="📚🏀🍿" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fV-G1-kqv">
-                                    <rect key="frame" x="6" y="4" width="69" height="20"/>
+                                    <rect key="frame" x="6" y="4" width="69" height="40"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwK-7k-lNR">
-                                    <rect key="frame" x="0.0" y="0.0" width="81" height="28"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="81" height="48"/>
                                     <connections>
                                         <action selector="onSelectEmoji:" destination="-1" eventType="touchUpInside" id="DyH-S6-z59"/>
                                     </connections>
@@ -73,7 +73,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kC-Jy-agA" customClass="RFBottomLineView">
-                            <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="63" width="375" height="1"/>
                             <color key="backgroundColor" systemColor="separatorColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="eRp-3y-qeR"/>
@@ -88,16 +88,16 @@
                         <constraint firstItem="LRx-YB-TN4" firstAttribute="centerY" secondItem="qEO-4T-5wM" secondAttribute="centerY" id="NV5-xH-4Zh"/>
                         <constraint firstItem="p07-RB-zhL" firstAttribute="top" secondItem="qEO-4T-5wM" secondAttribute="top" constant="8" id="OXj-aB-kpg"/>
                         <constraint firstItem="5kC-Jy-agA" firstAttribute="leading" secondItem="qEO-4T-5wM" secondAttribute="leading" id="Poy-Z9-bFl"/>
-                        <constraint firstItem="LRx-YB-TN4" firstAttribute="leading" secondItem="qEO-4T-5wM" secondAttribute="leading" constant="10" id="VJg-He-PdE"/>
+                        <constraint firstItem="LRx-YB-TN4" firstAttribute="leading" secondItem="qEO-4T-5wM" secondAttribute="leading" constant="15" id="VJg-He-PdE"/>
                         <constraint firstItem="LRx-YB-TN4" firstAttribute="top" secondItem="qEO-4T-5wM" secondAttribute="top" constant="4" id="ZcP-OQ-Ztt"/>
-                        <constraint firstAttribute="trailing" secondItem="p07-RB-zhL" secondAttribute="trailing" constant="8" id="le4-aB-HyM"/>
+                        <constraint firstAttribute="trailing" secondItem="p07-RB-zhL" secondAttribute="trailing" constant="15" id="le4-aB-HyM"/>
                         <constraint firstAttribute="bottom" secondItem="p07-RB-zhL" secondAttribute="bottom" constant="8" id="pLh-gB-dFV"/>
                         <constraint firstItem="p07-RB-zhL" firstAttribute="leading" secondItem="LRx-YB-TN4" secondAttribute="trailing" constant="16" id="tQI-xV-Vz9"/>
-                        <constraint firstAttribute="height" constant="44" id="xtk-nc-4g6"/>
+                        <constraint firstAttribute="height" constant="64" id="xtk-nc-4g6"/>
                     </constraints>
                 </view>
                 <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="924-dz-CX6">
-                    <rect key="frame" x="149" y="98" width="216" height="254"/>
+                    <rect key="frame" x="149" y="118" width="216" height="254"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UX-qU-MK7">
                             <rect key="frame" x="8" y="8" width="200" height="191"/>

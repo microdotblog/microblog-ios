@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhf-OX-aS8">
-                    <rect key="frame" x="0.0" y="44" width="414" height="704"/>
+                    <rect key="frame" x="0.0" y="64" width="414" height="684"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <dataDetectorType key="dataDetectorTypes"/>
                     <connections>
@@ -31,11 +31,11 @@
                     </connections>
                 </webView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xXh-GT-e4k">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5X-ur-Bd8">
-                            <rect key="frame" x="20" y="6" width="334" height="32"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <rect key="frame" x="20" y="15.5" width="334" height="33"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <state key="normal" title="5 highlights">
                                 <color key="titleColor" systemColor="linkColor"/>
                             </state>
@@ -44,20 +44,20 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLl-nt-TVB">
-                            <rect key="frame" x="0.0" y="43.5" width="414" height="0.5"/>
+                            <rect key="frame" x="0.0" y="63.5" width="414" height="0.5"/>
                             <color key="backgroundColor" systemColor="separatorColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="axR-qz-cil"/>
                             </constraints>
                         </view>
                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="oIa-xV-Zda">
-                            <rect key="frame" x="374" y="12" width="20" height="20"/>
+                            <rect key="frame" x="374" y="22" width="20" height="20"/>
                         </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="oIa-xV-Zda" firstAttribute="leading" secondItem="H5X-ur-Bd8" secondAttribute="trailing" constant="20" id="4MZ-QY-5eA"/>
-                        <constraint firstAttribute="height" constant="44" id="52h-jo-wpr"/>
+                        <constraint firstAttribute="height" constant="64" id="52h-jo-wpr"/>
                         <constraint firstAttribute="bottom" secondItem="HLl-nt-TVB" secondAttribute="bottom" id="BWP-6x-KW1"/>
                         <constraint firstItem="H5X-ur-Bd8" firstAttribute="centerY" secondItem="xXh-GT-e4k" secondAttribute="centerY" id="Qn1-uK-c8Q"/>
                         <constraint firstAttribute="trailing" secondItem="oIa-xV-Zda" secondAttribute="trailing" constant="20" id="WKS-ll-ni8"/>

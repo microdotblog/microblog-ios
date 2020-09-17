@@ -108,7 +108,7 @@
 	NSString* name = [blogInfo objectForKey:@"name"];
 	
 	cell.nameField.text = name;
-	cell.subtitleField.text = uid;
+//	cell.subtitleField.text = uid;
 	
 	return cell;
 }
