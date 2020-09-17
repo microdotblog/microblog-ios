@@ -51,6 +51,15 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="88A-W9-wtf">
+                                                            <rect key="frame" x="24" y="22" width="22" height="15.5"/>
+                                                            <color key="tintColor" systemColor="labelColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="22" id="TEo-ci-fN5"/>
+                                                                <constraint firstAttribute="width" constant="22" id="w4o-qW-2kK"/>
+                                                            </constraints>
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                                        </imageView>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DL9-5g-ypk">
                                                             <rect key="frame" x="20" y="13" width="30" height="30"/>
                                                             <constraints>
@@ -69,13 +78,16 @@
                                                         <constraint firstItem="DL9-5g-ypk" firstAttribute="centerX" secondItem="gaw-Lr-5Vh" secondAttribute="centerX" id="HNG-le-VLo"/>
                                                         <constraint firstItem="iPh-NJ-txM" firstAttribute="centerY" secondItem="gaw-Lr-5Vh" secondAttribute="centerY" id="Rwo-O3-uhr"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="iPh-NJ-txM" secondAttribute="trailing" constant="42" id="TVx-uB-sqh"/>
+                                                        <constraint firstItem="88A-W9-wtf" firstAttribute="centerY" secondItem="gaw-Lr-5Vh" secondAttribute="centerY" id="ar5-mz-mmq"/>
                                                         <constraint firstItem="gaw-Lr-5Vh" firstAttribute="centerY" secondItem="Z9I-dH-BaL" secondAttribute="centerY" id="j2j-5Y-A3i"/>
+                                                        <constraint firstItem="88A-W9-wtf" firstAttribute="centerX" secondItem="gaw-Lr-5Vh" secondAttribute="centerX" id="jQG-Q3-Bxj"/>
                                                         <constraint firstItem="iPh-NJ-txM" firstAttribute="leading" secondItem="gaw-Lr-5Vh" secondAttribute="trailing" constant="15" id="s2c-fm-51V"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="plusField" destination="DL9-5g-ypk" id="TBg-2y-17P"/>
+                                                    <outlet property="plusImageField" destination="88A-W9-wtf" id="49H-MV-6LV"/>
                                                     <outlet property="profileImageView" destination="gaw-Lr-5Vh" id="3Cd-tN-KNq"/>
                                                     <outlet property="usernameField" destination="iPh-NJ-txM" id="E1y-Ia-Io0"/>
                                                 </connections>
@@ -134,6 +146,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) IBOutlet UIImageView* profileImageView;
 @property (strong, nonatomic) IBOutlet UILabel* plusField;
+@property (strong, nonatomic) IBOutlet UIImageView* plusImageField;
 @property (strong, nonatomic) IBOutlet UILabel* usernameField;
 
 - (void) setupWithAccount:(RFAccount *)account;
