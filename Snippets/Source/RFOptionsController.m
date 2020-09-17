@@ -50,6 +50,9 @@
 	else if (self.popoverType == kOptionsPopoverEditWithPublish) {
 		self.view = self.editWithPublishView;
 	}
+	else if (self.popoverType == kOptionsPopoverEditDeleteOnly) {
+		self.view = self.editDeleteOnlyView;
+	}
 	else if (self.popoverType == kOptionsPopoverUpload) {
 		self.view = self.uploadView;
 	}

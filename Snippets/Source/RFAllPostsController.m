@@ -143,6 +143,7 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 				post.title = [[props objectForKey:@"name"] firstObject];
 				post.text = [[props objectForKey:@"content"] firstObject];
 				post.url = [[props objectForKey:@"url"] firstObject];
+				post.isTemplate = [[[props objectForKey:@"microblog-template"] firstObject] boolValue];
 
 				NSString* date_s = [[props objectForKey:@"published"] firstObject];
 				post.postedAt = [NSDate uuDateFromRfc3339String:date_s];
@@ -370,6 +371,9 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 		RFOptionsPopoverType popover_type = kOptionsPopoverEditPost;
 		if (self.selectedPost.isDraft) {
 			popover_type = kOptionsPopoverEditWithPublish;
+		}
+		else if (self.selectedPost.isTemplate) {
+			popover_type = kOptionsPopoverEditDeleteOnly;
 		}
 		
 		CGRect r = [tableView rectForRowAtIndexPath:indexPath];

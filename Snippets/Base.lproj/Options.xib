@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFOptionsController">
             <connections>
                 <outlet property="defaultView" destination="Yfk-8I-dMD" id="Qku-gW-qIY"/>
+                <outlet property="editDeleteOnlyView" destination="jKY-jv-7bq" id="ZQY-wB-ltL"/>
                 <outlet property="editPostView" destination="rax-Me-zBf" id="YfF-L5-mqc"/>
                 <outlet property="editWithPublishView" destination="Lh4-Qx-5fH" id="hYc-j4-FOf"/>
                 <outlet property="highlightView" destination="rmr-aR-kfK" id="6av-kF-qHM"/>
@@ -373,7 +374,7 @@
                 <constraint firstItem="6SH-4X-Ukm" firstAttribute="centerX" secondItem="p5D-d7-tU3" secondAttribute="centerX" constant="6" id="XNa-as-N4h"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="457" y="731"/>
+            <point key="canvasLocation" x="457" y="821"/>
         </view>
         <view contentMode="scaleToFill" id="rmr-aR-kfK">
             <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
@@ -430,7 +431,42 @@
                 <constraint firstItem="p1M-54-LOD" firstAttribute="centerX" secondItem="AuY-vA-O04" secondAttribute="centerX" constant="6" id="rrK-Jc-rwO"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="479.0625" y="844.0140845070423"/>
+            <point key="canvasLocation" x="479" y="934"/>
+        </view>
+        <view contentMode="scaleToFill" id="jKY-jv-7bq">
+            <rect key="frame" x="0.0" y="0.0" width="127" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfr-i5-QfE">
+                    <rect key="frame" x="23.5" y="0.0" width="80" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jU5-KV-jq2">
+                            <rect key="frame" x="13" y="0.0" width="55" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Delete">
+                                <color key="titleColor" name="color_popover_buttons"/>
+                            </state>
+                            <connections>
+                                <action selector="deletePost:" destination="-1" eventType="touchUpInside" id="eXq-TV-kz3"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="8r9-dV-npY"/>
+                        <constraint firstAttribute="height" constant="44" id="J1o-cj-mGl"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="5Jd-DZ-cMf"/>
+            <color key="backgroundColor" name="color_popover_background"/>
+            <constraints>
+                <constraint firstItem="xfr-i5-QfE" firstAttribute="top" secondItem="5Jd-DZ-cMf" secondAttribute="top" id="SX8-M2-oYI"/>
+                <constraint firstItem="xfr-i5-QfE" firstAttribute="centerX" secondItem="5Jd-DZ-cMf" secondAttribute="centerX" id="dHN-8d-9jM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="329" y="723"/>
         </view>
     </objects>
     <resources>
