@@ -286,27 +286,6 @@
 {
 	NSString* content_size = [UIApplication sharedApplication].preferredContentSizeCategory;
 	[RFSettings setPreferredContentSize:content_size];
-
-	UIColor* c = [UIColor colorWithWhite:0.259 alpha:1.000];
-
-	if (@available(iOS 13.0, *)) {
-		c = [UIColor colorNamed:@"color_nav_title"];
-	}
-
-//	UIFont* bar_font = [UIFont fontWithName:@"AvenirNext-Regular" size:16];
-//	UIFont* button_font = [UIFont fontWithName:@"AvenirNext-Medium" size:16];
-	UIFont* bar_font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
-	UIFont* button_font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
-
-//	[[UINavigationBar appearance] setTitleTextAttributes:@{
-//		NSForegroundColorAttributeName: c,
-//		NSFontAttributeName: bar_font
-//	}];
-
-	//	[[UIBarButtonItem appearance] setTitleTextAttributes:@{
-//		NSForegroundColorAttributeName: c,
-//		NSFontAttributeName: button_font
-//	} forState:UIControlStateNormal];
 }
 
 - (void) setupTimeline
