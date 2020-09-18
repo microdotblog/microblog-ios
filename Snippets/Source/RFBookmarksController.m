@@ -56,7 +56,7 @@
 					else {
 						s = [NSString stringWithFormat:@"%ld highlights", (long)num];
 					}
-					
+										
 					[self.highlightsCountButton setTitle:s forState:UIControlStateNormal];
 					self.highlightsCountButton.hidden = NO;
 				}
