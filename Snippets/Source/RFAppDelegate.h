@@ -22,5 +22,7 @@
 @property (strong, nonatomic) RFMenuController* menuController;
 @property (strong, nonatomic) RFTimelineController* timelineController;
 
+@property (assign, nonatomic) BOOL isDelayingSelection;
+
 @end
 

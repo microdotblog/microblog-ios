@@ -358,6 +358,14 @@
 	[[UIApplication sharedApplication] setShortcutItems:@[ post_item ]];
 }
 
+- (void) delaySelection
+{
+	self.isDelayingSelection = YES;
+	[NSTimer scheduledTimerWithTimeInterval:0.5 repeats:NO block:^(NSTimer * _Nonnull timer) {
+			self.isDelayingSelection = NO;
+	}];
+}
+
 #pragma mark -
 
 - (void) showSigninNotification:(NSNotification *)notification
@@ -455,6 +463,8 @@
 	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
 		[timeline_controller setSelected:NO withPostID:post_id];
 	}
+	
+	[self delaySelection];
 }
 
 - (void) resetDetailNotification:(NSNotification *)notification
@@ -500,6 +510,10 @@
 
 - (void) showOptionsMenuWithPostID:(NSString *)postID
 {
+	if (self.isDelayingSelection) {
+		return;
+	}
+	
 	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
 	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
 		[timeline_controller setSelected:YES withPostID:postID];
