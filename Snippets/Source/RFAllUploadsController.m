@@ -470,6 +470,7 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	}
 	else if (@available(iOS 13.0, *)) {
 		cell.thumbnailView.image = nil;
+		cell.thumbnailView.backgroundColor = [UIColor colorNamed:@"color_upload_kind_background"];
 		if ([up isVideo]) {
 			cell.iconView.image = [UIImage systemImageNamed:@"film"];
 		}
