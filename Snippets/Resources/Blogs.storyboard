@@ -40,26 +40,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5gb-FS-LFL">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5gb-FS-LFL">
                                 <rect key="frame" x="15" y="97.5" width="345" height="554.5"/>
                                 <color key="backgroundColor" name="color_grouped_background"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BlogCell" rowHeight="50" id="K7z-hi-yic" customClass="RFBlogTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="345" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BlogCell" rowHeight="55" id="K7z-hi-yic" customClass="RFBlogTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="345" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K7z-hi-yic" id="2T0-5V-TjJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="manton.micro.blog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4de-qd-fDB">
-                                                    <rect key="frame" x="16" y="14.5" width="313" height="21"/>
+                                                    <rect key="frame" x="16" y="17" width="313" height="21"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jlY-Bn-8a3">
-                                                    <rect key="frame" x="0.0" y="49.5" width="345" height="0.5"/>
+                                                    <rect key="frame" x="0.0" y="54.5" width="345" height="0.5"/>
                                                     <color key="backgroundColor" systemColor="separatorColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="qIA-Zl-T3D"/>
