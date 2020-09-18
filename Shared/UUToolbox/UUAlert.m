@@ -86,6 +86,9 @@ UIViewController* activeViewController = nil;
 		if ([buttonTitle isEqualToString:@"Delete"]) {
 			alertStyle = UIAlertActionStyleDestructive;
 		}
+		else if ([buttonTitle isEqualToString:@"Remove"]) {
+			alertStyle = UIAlertActionStyleDestructive;
+		}
 
 		UIAlertAction* alertAction = [UIAlertAction actionWithTitle:buttonTitle style:alertStyle handler:^(UIAlertAction * _Nonnull action)
 		{
@@ -162,7 +165,7 @@ UIViewController* activeViewController = nil;
 		alertController.displayWindow = displayWindow;
 	
 		displayWindow.rootViewController = [UIViewController new];
-		displayWindow.tintColor = [UIColor colorWithWhite:0.25 alpha:0.8];
+//		displayWindow.tintColor = [UIColor colorWithWhite:0.25 alpha:0.8];
 		//alertController.displayWindow.tintColor = [UIApplication sharedApplication].keyWindow.tintColor;
 
 		displayWindow.windowLevel = UIWindowLevelAlert;
