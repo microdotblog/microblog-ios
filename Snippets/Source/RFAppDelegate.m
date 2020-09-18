@@ -362,7 +362,7 @@
 - (void) delaySelection
 {
 	self.isDelayingSelection = YES;
-	[NSTimer scheduledTimerWithTimeInterval:0.5 repeats:NO block:^(NSTimer * _Nonnull timer) {
+	[NSTimer scheduledTimerWithTimeInterval:0.4 repeats:NO block:^(NSTimer * _Nonnull timer) {
 			self.isDelayingSelection = NO;
 	}];
 }
@@ -537,6 +537,10 @@
 
 - (void) showPhotoWithURL:(NSString *)photoURL
 {
+	if (self.isDelayingSelection) {
+		return;
+	}
+
 	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
 	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
 		[timeline_controller openImageViewer:photoURL];
@@ -545,6 +549,10 @@
 
 - (void) showVideoWithURL:(NSString *)videoURL
 {
+	if (self.isDelayingSelection) {
+		return;
+	}
+
 	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
 	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
 		[timeline_controller openVideoViewer:videoURL];
