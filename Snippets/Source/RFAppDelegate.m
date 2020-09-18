@@ -345,6 +345,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showUserDiscoverNotification:) name:kShowUserDiscoverNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTopicNotification:) name:kShowTopicNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNewPostNotification:) name:kShowNewPostNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timelineDidStopScrollingNotification:) name:kTimelineDidStopScrollingNotification object:nil];
 
 	if (@available(iOS 13.0, *)) {
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appleCredentialRevoked:) name:ASAuthorizationAppleIDProviderCredentialRevokedNotification object:nil];
@@ -442,6 +443,11 @@
 	[self showNewPostWithText:s];
 }
 
+- (void) timelineDidStopScrollingNotification:(NSNotification *)notification
+{
+	[self delaySelection];
+}
+
 - (void) appleCredentialRevoked:(NSNotification *)notification
 {
 	// TODO: sign user out
@@ -515,7 +521,7 @@
 	}
 	
 	RFTimelineController* timeline_controller = (RFTimelineController *) [self activeNavigationController].topViewController;
-	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {
+	if ([timeline_controller isKindOfClass:[RFTimelineController class]]) {		
 		[timeline_controller setSelected:YES withPostID:postID];
 		CGRect r = [timeline_controller rectOfPostID:postID];
 		RFOptionsPopoverType popover_type = [timeline_controller popoverTypeOfPostID:postID];

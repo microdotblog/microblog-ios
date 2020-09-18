@@ -588,6 +588,10 @@
 	}
 }
 
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+	[[NSNotificationCenter defaultCenter] postNotificationName:kTimelineDidStopScrollingNotification object:self];
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NYTPhotosViewControllerDelegate
