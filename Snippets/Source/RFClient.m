@@ -81,6 +81,8 @@
 		}
 		request.headerFields = headers;
 	}
+
+	request.shouldHandleCookies = NO;
 }
 
 #pragma mark -

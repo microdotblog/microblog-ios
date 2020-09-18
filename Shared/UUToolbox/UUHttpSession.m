@@ -44,6 +44,7 @@ const NSTimeInterval kUUDefaultHttpRequestTimeout = 60.0f;
         self.url = url;
         self.httpMethod = UUHttpMethodGet;
 		self.processMimeTypes = YES;
+		self.shouldHandleCookies = YES;
     }
     
     return self;
@@ -436,6 +437,7 @@ const NSTimeInterval kUUDefaultHttpRequestTimeout = 60.0f;
     NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:fullUrl]];
     [req setHTTPMethod:[self httpVerbString:request.httpMethod]];
     [req setTimeoutInterval:request.timeout];
+	[req setHTTPShouldHandleCookies:request.shouldHandleCookies];
     
     if (request.headerFields)
     {

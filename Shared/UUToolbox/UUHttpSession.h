@@ -31,6 +31,7 @@ typedef void (^UUHttpSessionResponseHandler)(UUHttpResponse* response);
 @property (atomic, assign) NSTimeInterval	timeout;
 @property (atomic, strong) NSURLCredential* credentials;
 @property (atomic, assign) BOOL				processMimeTypes;
+@property (atomic, assign) BOOL				shouldHandleCookies;
 
 @property (atomic, strong, readonly) NSURLRequest*    httpRequest;
 
