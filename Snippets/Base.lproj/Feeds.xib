@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFFeedsController">
             <connections>
                 <outlet property="categoriesTable" destination="DQV-Q0-iqC" id="eL2-3i-pt4"/>
+                <outlet property="draftOrPublishTable" destination="zXA-qc-q5B" id="Efw-Bu-d7m"/>
                 <outlet property="feedsTable" destination="6QG-s9-s4S" id="ygO-Lh-12d"/>
                 <outlet property="view" destination="iN0-l3-epB" id="xgk-80-SRB"/>
             </connections>
@@ -23,10 +24,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6QG-s9-s4S">
-                    <rect key="frame" x="12" y="461" width="351" height="192"/>
+                    <rect key="frame" x="12" y="503" width="351" height="150"/>
                     <color key="backgroundColor" name="color_grouped_background"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="192" id="IX9-YC-JTN"/>
+                        <constraint firstAttribute="height" constant="150" id="IX9-YC-JTN"/>
                     </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="nxB-0E-Myq"/>
@@ -34,42 +35,65 @@
                     </connections>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOd-P4-p1e">
-                    <rect key="frame" x="16" y="381.5" width="343" height="64.5"/>
+                    <rect key="frame" x="16" y="423.5" width="343" height="64.5"/>
                     <string key="text">Disable cross-posting by unchecking your feed here. This setting will be remembered across Micro.blog until it is changed again.</string>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select categories for this post:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3e-3e-Zsw">
-                    <rect key="frame" x="16" y="20" width="343" height="20.5"/>
+                    <rect key="frame" x="16" y="211.5" width="343" height="20.5"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When sending this post to Micro.blog:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUA-EQ-VYs">
+                    <rect key="frame" x="16" y="30" width="343" height="20.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DQV-Q0-iqC">
-                    <rect key="frame" x="12" y="55.5" width="351" height="304"/>
+                    <rect key="frame" x="12" y="247" width="351" height="154.5"/>
                     <color key="backgroundColor" name="color_grouped_background"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="3ve-5C-9VL"/>
                         <outlet property="delegate" destination="-1" id="Ca9-bd-HX7"/>
                     </connections>
                 </tableView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zXA-qc-q5B">
+                    <rect key="frame" x="12" y="65.5" width="351" height="124"/>
+                    <color key="backgroundColor" name="color_grouped_background"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="124" id="gnC-I2-iVB"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="MFf-Zq-x8a"/>
+                        <outlet property="delegate" destination="-1" id="SDE-hb-dUB"/>
+                    </connections>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="d3e-3e-Zsw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="1FR-Ea-Aej"/>
+                <constraint firstItem="zXA-qc-q5B" firstAttribute="top" secondItem="KUA-EQ-VYs" secondAttribute="bottom" constant="15" id="04w-gC-enb"/>
                 <constraint firstItem="jOd-P4-p1e" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="2F8-vG-7Bh"/>
                 <constraint firstItem="d3e-3e-Zsw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="4yf-Ab-Vnb"/>
                 <constraint firstItem="6QG-s9-s4S" firstAttribute="top" secondItem="jOd-P4-p1e" secondAttribute="bottom" constant="15" id="7aj-6Q-Szm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zXA-qc-q5B" secondAttribute="trailing" constant="12" id="8ir-zO-3zK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KUA-EQ-VYs" secondAttribute="trailing" constant="16" id="KlN-oJ-5sF"/>
                 <constraint firstItem="DQV-Q0-iqC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="L7f-MQ-ny2"/>
                 <constraint firstItem="DQV-Q0-iqC" firstAttribute="top" secondItem="d3e-3e-Zsw" secondAttribute="bottom" constant="15" id="NNJ-zR-eFF"/>
                 <constraint firstItem="6QG-s9-s4S" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-12" id="NhD-n8-1aB"/>
                 <constraint firstItem="6QG-s9-s4S" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="PnX-fr-IGo"/>
+                <constraint firstItem="d3e-3e-Zsw" firstAttribute="top" secondItem="zXA-qc-q5B" secondAttribute="bottom" constant="22" id="R7x-PX-Ynq"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jOd-P4-p1e" secondAttribute="trailing" constant="16" id="UdQ-d7-Av5"/>
+                <constraint firstItem="zXA-qc-q5B" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="Z3A-wW-CD1"/>
                 <constraint firstItem="jOd-P4-p1e" firstAttribute="top" secondItem="DQV-Q0-iqC" secondAttribute="bottom" constant="22" id="fNT-2Z-yVc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="DQV-Q0-iqC" secondAttribute="trailing" constant="12" id="fTV-Qw-JV7"/>
+                <constraint firstItem="KUA-EQ-VYs" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="hIX-Db-5nW"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6QG-s9-s4S" secondAttribute="bottom" constant="14" id="tTw-Mi-3vu"/>
+                <constraint firstItem="KUA-EQ-VYs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="vYf-CH-2AU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="d3e-3e-Zsw" secondAttribute="trailing" constant="16" id="wSU-hR-X5O"/>
             </constraints>
             <point key="canvasLocation" x="34.399999999999999" y="54.422788605697157"/>

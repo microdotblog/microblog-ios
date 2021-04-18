@@ -10,12 +10,14 @@
 
 @interface RFFeedsController : RFViewController
 
+@property (strong, nonatomic) IBOutlet UITableView* draftOrPublishTable;
 @property (strong, nonatomic) IBOutlet UITableView* categoriesTable;
 @property (strong, nonatomic) IBOutlet UITableView* feedsTable;
 
 @property (strong, nonatomic) NSArray* categories; // NSString
 @property (strong, nonatomic) NSSet* selectedCategories; // NSString
 @property (strong, nonatomic) NSArray* feeds; // NSDictionary
+@property (assign, nonatomic) BOOL isDraft;
 
 - (id) initWithSelectedCategories:(NSSet *)selectedCategories;
 

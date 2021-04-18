@@ -106,6 +106,10 @@
 		4B8714741E64C07800C69589 /* External.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8714721E64C07800C69589 /* External.xib */; };
 		4B8714771E64C0DD00C69589 /* RFExternalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714761E64C0DD00C69589 /* RFExternalController.m */; };
 		4B87147A1E64C56A00C69589 /* RFXMLLinkParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8714791E64C56A00C69589 /* RFXMLLinkParser.m */; };
+		4B936D04262CDA2200702364 /* RFDraftOrPublishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B936D03262CDA2200702364 /* RFDraftOrPublishCell.m */; };
+		4B936D05262CDA2200702364 /* RFDraftOrPublishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B936D03262CDA2200702364 /* RFDraftOrPublishCell.m */; };
+		4B936D0A262CDA5100702364 /* DraftOrPublishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B936D08262CDA5100702364 /* DraftOrPublishCell.xib */; };
+		4B936D0B262CDA5100702364 /* DraftOrPublishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B936D08262CDA5100702364 /* DraftOrPublishCell.xib */; };
 		4B94052D1E2933DE00B01E79 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B94052C1E2933DE00B01E79 /* Images.xcassets */; };
 		4B9A7BA71E82F107002A49E5 /* RFPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A7BA61E82F107002A49E5 /* RFPhotoCell.m */; };
 		4B9A7BAA1E82F149002A49E5 /* RFPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A7BA91E82F149002A49E5 /* RFPhoto.m */; };
@@ -540,6 +544,9 @@
 		4B8714761E64C0DD00C69589 /* RFExternalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFExternalController.m; path = Source/RFExternalController.m; sourceTree = "<group>"; };
 		4B8714781E64C56A00C69589 /* RFXMLLinkParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFXMLLinkParser.h; path = Source/RFXMLLinkParser.h; sourceTree = "<group>"; };
 		4B8714791E64C56A00C69589 /* RFXMLLinkParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFXMLLinkParser.m; path = Source/RFXMLLinkParser.m; sourceTree = "<group>"; };
+		4B936D02262CDA2200702364 /* RFDraftOrPublishCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFDraftOrPublishCell.h; path = Source/RFDraftOrPublishCell.h; sourceTree = "<group>"; };
+		4B936D03262CDA2200702364 /* RFDraftOrPublishCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFDraftOrPublishCell.m; path = Source/RFDraftOrPublishCell.m; sourceTree = "<group>"; };
+		4B936D09262CDA5100702364 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DraftOrPublishCell.xib; sourceTree = "<group>"; };
 		4B94052C1E2933DE00B01E79 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4B9A7BA51E82F107002A49E5 /* RFPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFPhotoCell.h; path = Source/RFPhotoCell.h; sourceTree = "<group>"; };
 		4B9A7BA61E82F107002A49E5 /* RFPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFPhotoCell.m; path = Source/RFPhotoCell.m; sourceTree = "<group>"; };
@@ -990,6 +997,8 @@
 				4B400D182025270900C71AAF /* RFFeedCell.m */,
 				4B64B2E5220930E4005B92A0 /* RFCategoryCell.h */,
 				4B64B2E6220930E4005B92A0 /* RFCategoryCell.m */,
+				4B936D02262CDA2200702364 /* RFDraftOrPublishCell.h */,
+				4B936D03262CDA2200702364 /* RFDraftOrPublishCell.m */,
 				4BBA71011F5DF9CE00B56A04 /* RFHighlightingTextStorage.h */,
 				4BBA71021F5DF9CE00B56A04 /* RFHighlightingTextStorage.m */,
 				4B3BD0DD1E82B5F800F4B4E0 /* RFPhotosController.h */,
@@ -1110,6 +1119,7 @@
 				4B400D0E2024491400C71AAF /* Feeds.xib */,
 				4B400D13202524B500C71AAF /* FeedCell.xib */,
 				4B64B2E922093139005B92A0 /* CategoryCell.xib */,
+				4B936D08262CDA5100702364 /* DraftOrPublishCell.xib */,
 				4B3BD0E01E82B61700F4B4E0 /* Photos.xib */,
 				4B9A7BAB1E82F1C1002A49E5 /* PhotoCell.xib */,
 				4B4D9B561ED5213E00315BBA /* FeaturedPhotoCell.xib */,
@@ -1623,6 +1633,7 @@
 				4BCFD41F2502DE5C0076168B /* Accounts.storyboard in Resources */,
 				C5CED7081ECF792E0068F537 /* YUCIHighPass.cikernel in Resources */,
 				4B0D55581B93B3F00076AD9F /* Wordpress.xib in Resources */,
+				4B936D0A262CDA5100702364 /* DraftOrPublishCell.xib in Resources */,
 				4B9A7BAD1E82F1C1002A49E5 /* PhotoCell.xib in Resources */,
 				4B94052D1E2933DE00B01E79 /* Images.xcassets in Resources */,
 				C5A515B021B3196100C15092 /* RFPopupNotificationViewController.xib in Resources */,
@@ -1685,6 +1696,7 @@
 				4B400D1220244A6600C71AAF /* Feeds.xib in Resources */,
 				C507F35F1F8831530013D2B7 /* FilterCell.xib in Resources */,
 				4BCFD4202502DE5C0076168B /* Accounts.storyboard in Resources */,
+				4B936D0B262CDA5100702364 /* DraftOrPublishCell.xib in Resources */,
 				C55044A21F8EBB7800C1D5F2 /* Images.xcassets in Resources */,
 				4BBC298421B47CB3001E3BDB /* RFAutoCompleteCollectionViewCell.xib in Resources */,
 				C507F3651F8831530013D2B7 /* SettingChoiceCell.xib in Resources */,
@@ -1778,6 +1790,7 @@
 				4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */,
 				4BF803461B87AA2C00D6670C /* UUDataCache.m in Sources */,
 				C5CED7041ECF792E0068F537 /* YUCIFlashTransition.m in Sources */,
+				4B936D04262CDA2200702364 /* RFDraftOrPublishCell.m in Sources */,
 				4BA7133B2029127E0083948C /* MMParser.m in Sources */,
 				4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */,
 				4B1EE1B4241B22EB004627F7 /* RFPost.m in Sources */,
@@ -1881,6 +1894,7 @@
 				C5A66B0D1F88325E0063F325 /* CMarkupTransformer.m in Sources */,
 				C507F3321F8827BC0013D2B7 /* UUString.m in Sources */,
 				4B64B2E8220930E4005B92A0 /* RFCategoryCell.m in Sources */,
+				4B936D05262CDA2200702364 /* RFDraftOrPublishCell.m in Sources */,
 				C507F32D1F8827BC0013D2B7 /* UUDictionary.m in Sources */,
 				C507F31E1F8827970013D2B7 /* RFMicropub.m in Sources */,
 				C507F3371F88281C0013D2B7 /* RFFiltersController.m in Sources */,
@@ -2158,6 +2172,14 @@
 			name = External.xib;
 			sourceTree = "<group>";
 		};
+		4B936D08262CDA5100702364 /* DraftOrPublishCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B936D09262CDA5100702364 /* Base */,
+			);
+			name = DraftOrPublishCell.xib;
+			sourceTree = "<group>";
+		};
 		4B9A7BAB1E82F1C1002A49E5 /* PhotoCell.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2384,7 +2406,7 @@
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 257;
+				CURRENT_PROJECT_VERSION = 258;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				ENABLE_BITCODE = NO;
@@ -2396,7 +2418,7 @@
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = Snippets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				OTHER_LDFLAGS = "-lxml2.2";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
@@ -2416,7 +2438,7 @@
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 257;
+				CURRENT_PROJECT_VERSION = 258;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				ENABLE_BITCODE = NO;
@@ -2428,7 +2450,7 @@
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = Snippets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				OTHER_LDFLAGS = "-lxml2.2";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
@@ -2459,7 +2481,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 257;
+				CURRENT_PROJECT_VERSION = 258;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2469,7 +2491,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Micro.blog Sharing/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				OTHER_CFLAGS = "-DSHARING_EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios.sharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2498,7 +2520,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 257;
+				CURRENT_PROJECT_VERSION = 258;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2507,7 +2529,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Micro.blog Sharing/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				OTHER_CFLAGS = "-DSHARING_EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios.sharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";

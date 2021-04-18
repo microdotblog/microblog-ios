@@ -11,6 +11,7 @@
 
 #import "RFFeedCell.h"
 #import "RFCategoryCell.h"
+#import "RFDraftOrPublishCell.h"
 #import "RFFeed.h"
 #import "RFClient.h"
 #import "RFMicropub.h"
@@ -19,6 +20,7 @@
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
 
+static NSString* const kDraftOrPublishCellIdentifier = @"DraftOrPublishCell";
 static NSString* const kCategoryCellIdentifier = @"CategoryCell";
 static NSString* const kFeedCellIdentifier = @"FeedCell";
 
@@ -51,6 +53,14 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 	[self fetchFeeds];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+	NSIndexPath* index_path = [NSIndexPath indexPathForRow:0 inSection:0];
+	[self.draftOrPublishTable selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
+}
+
 - (void) setupNavigation
 {
 	self.navigationItem.title = @"Categories & Feeds";
@@ -60,6 +70,9 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 
 - (void) setupTable
 {
+	[self.draftOrPublishTable registerNib:[UINib nibWithNibName:@"DraftOrPublishCell" bundle:nil] forCellReuseIdentifier:kDraftOrPublishCellIdentifier];
+	self.draftOrPublishTable.layer.cornerRadius = 5.0;
+
 	[self.categoriesTable registerNib:[UINib nibWithNibName:@"CategoryCell" bundle:nil] forCellReuseIdentifier:kCategoryCellIdentifier];
 	self.categoriesTable.layer.cornerRadius = 5.0;
 
@@ -173,7 +186,10 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (tableView == self.categoriesTable) {
+	if (tableView == self.draftOrPublishTable) {
+		return 2;
+	}
+	else if (tableView == self.categoriesTable) {
 		return self.categories.count;
 	}
 	else {
@@ -183,7 +199,23 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (tableView == self.categoriesTable) {
+	if (tableView == self.draftOrPublishTable) {
+		RFDraftOrPublishCell* cell = [tableView dequeueReusableCellWithIdentifier:kDraftOrPublishCellIdentifier forIndexPath:indexPath];
+		
+		NSString* s;
+		if (indexPath.row == 0) {
+			s = @"Publish to your blog";
+		}
+		else {
+			s = @"Save as a draft";
+		}
+
+		cell.nameField.text = s;
+		cell.checkmarkView.hidden = YES;
+		
+		return cell;
+	}
+	else if (tableView == self.categoriesTable) {
 		RFCategoryCell* cell = [tableView dequeueReusableCellWithIdentifier:kCategoryCellIdentifier forIndexPath:indexPath];
 		
 		NSString* category_name = [self.categories objectAtIndex:indexPath.row];
@@ -212,7 +244,10 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 
 - (NSIndexPath *) tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (tableView == self.categoriesTable) {
+	if (tableView == self.draftOrPublishTable) {
+		return indexPath;
+	}
+	else if (tableView == self.categoriesTable) {
 		return indexPath;
 	}
 	else {
@@ -228,7 +263,9 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (tableView == self.categoriesTable) {
+	if (tableView == self.draftOrPublishTable) {
+	}
+	else if (tableView == self.categoriesTable) {
 		NSString* category_name = [self.categories objectAtIndex:indexPath.row];
 		self.selectedCategories = [self.selectedCategories setByAddingObject:category_name];
 	}
@@ -240,7 +277,9 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 
 - (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (tableView == self.categoriesTable) {
+	if (tableView == self.draftOrPublishTable) {
+	}
+	else if (tableView == self.categoriesTable) {
 		NSString* category_name = [self.categories objectAtIndex:indexPath.row];
 		NSMutableSet* new_selected = [self.selectedCategories mutableCopy];
 		[new_selected removeObject:category_name];
