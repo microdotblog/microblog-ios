@@ -27,6 +27,7 @@
 #import "UUAlert.h"
 #import "SSKeychain.h"
 #import "UIBarButtonItem+Extras.h"
+#import <SafariServices/SafariServices.h>
 
 static NSString* const kMenuCellIdentifier = @"MenuCell";
 
@@ -342,8 +343,10 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (IBAction) showHelp:(id)sender
 {
-	RFHelpController* help_controller = [[RFHelpController alloc] init];
-	[self notifyResetDetail:help_controller];
+//	RFHelpController* help_controller = [[RFHelpController alloc] init];
+	SFSafariViewController* help_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://help.micro.blog/"]];
+	[self presentViewController:help_controller animated:YES completion:NULL];
+//	[self notifyResetDetail:help_controller];
 }
 
 - (IBAction) showSettings:(id)sender
