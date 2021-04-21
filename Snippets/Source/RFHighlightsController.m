@@ -65,6 +65,7 @@
 				RFHighlight* h = [[RFHighlight alloc] init];
 				h.highlightID = [item objectForKey:@"id"];
 				h.linkTitle = [item objectForKey:@"title"];
+				h.linkURL = [item objectForKey:@"url"];
 				h.selectionText = [item objectForKey:@"content_text"];
 
 				NSString* date_s = [item objectForKey:@"date_published"];
@@ -88,7 +89,12 @@
 
 - (void) newPostFromHighlightNotification:(NSNotification *)notification
 {
-	NSString* s = [NSString stringWithFormat:@"> %@", self.selectedHighlight.selectionText];
+	NSString* title = self.selectedHighlight.linkTitle;
+	NSString* url = self.selectedHighlight.linkURL;
+	NSString* selection = self.selectedHighlight.selectionText;
+	
+	NSString* s = [NSString stringWithFormat:@"[%@](%@)\n\n> %@", title, url, selection];
+	
 	[[NSNotificationCenter defaultCenter] postNotificationName:kShowNewPostNotification object:self userInfo:@{ kShowNewPostText: s }];
 }
 

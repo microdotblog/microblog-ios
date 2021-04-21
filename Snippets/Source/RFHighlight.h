@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSNumber* highlightID;
 @property (strong, nonatomic) NSString* selectionText;
 @property (strong, nonatomic) NSString* linkTitle;
+@property (strong, nonatomic) NSString* linkURL;
 @property (strong, nonatomic) NSDate* createdAt;
 
 @end
