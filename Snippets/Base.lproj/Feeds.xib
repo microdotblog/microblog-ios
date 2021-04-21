@@ -61,7 +61,7 @@
                         <outlet property="delegate" destination="-1" id="Ca9-bd-HX7"/>
                     </connections>
                 </tableView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zXA-qc-q5B">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zXA-qc-q5B">
                     <rect key="frame" x="12" y="65.5" width="351" height="124"/>
                     <color key="backgroundColor" name="color_grouped_background"/>
                     <constraints>

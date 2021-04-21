@@ -158,6 +158,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	if (self.feedsController) {
 		self.selectedCategories = self.feedsController.selectedCategories;
+		self.isDraft = self.feedsController.isDraft;
+
+		[self setupNavigation];
 	}
 
 	RFDispatchSeconds (0.1, ^{
@@ -174,6 +177,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	else if ([self.channel isEqualToString:@"pages"]) {
 		self.title = @"New Page";
 		post_button = @"Add Page";
+	}
+	else if (self.isDraft) {
+		self.title = @"New Draft";
+		post_button = @"Save";
 	}
 	else {
 		self.title = @"New Post";
@@ -920,6 +927,16 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	}
 }
 
+- (NSString *) currentStatus
+{
+	if (self.isDraft) {
+		return @"draft";
+	}
+	else {
+		return @"published";
+	}
+}
+
 - (void) uploadText:(NSString *)text
 {
 	if (self.isReply) {
@@ -938,7 +955,13 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 		}];
 	}
 	else {
-		[self showProgressHeader:@"Now publishing to your microblog..."];
+		if (self.isDraft) {
+			[self showProgressHeader:@"Saving your draft..."];
+		}
+		else {
+			[self showProgressHeader:@"Now publishing to your microblog..."];
+		}
+		
 		if ([RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
 			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
 			NSMutableDictionary* args = [NSMutableDictionary dictionary];
@@ -974,6 +997,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				[args setObject:video_alts forKey:@"mp-video-alt[]"];
 			}
 
+			[args setObject:[self currentStatus] forKey:@"post-status"];
 			if (self.selectedCategories.count > 0) {
 				[args setObject:[self.selectedCategories allObjects] forKey:@"category[]"];
 			}
@@ -1029,6 +1053,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				[args setObject:text forKey:@"content"];
 			}
 
+			[args setObject:[self currentStatus] forKey:@"post-status"];
 			if (self.selectedCategories.count > 0) {
 				[args setObject:[self.selectedCategories allObjects] forKey:@"category[]"];
 			}
@@ -1068,7 +1093,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			if ([RFSettings externalBlogUsesWordPress]) {
 				NSMutableDictionary* content = [NSMutableDictionary dictionary];
 				
-				content[@"post_status"] = @"publish";
+				if (self.isDraft) {
+					content[@"post_status"] = @"draft";
+				}
+				else {
+					content[@"post_status"] = @"publish";
+				}
 				content[@"post_title"] = self.titleField.text;
 				content[@"post_content"] = post_text;
 				if (post_format.length > 0) {

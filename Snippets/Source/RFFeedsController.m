@@ -57,13 +57,19 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 {
 	[super viewDidAppear:animated];
 	
-	NSIndexPath* index_path = [NSIndexPath indexPathForRow:0 inSection:0];
-	[self.draftOrPublishTable selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
+	if (self.isDraft) {
+		NSIndexPath* index_path = [NSIndexPath indexPathForRow:1 inSection:0];
+		[self.draftOrPublishTable selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
+	}
+	else {
+		NSIndexPath* index_path = [NSIndexPath indexPathForRow:0 inSection:0];
+		[self.draftOrPublishTable selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
+	}
 }
 
 - (void) setupNavigation
 {
-	self.navigationItem.title = @"Categories & Feeds";
+	self.navigationItem.title = @"Options & Feeds";
 
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_backBarButtonWithTarget:self action:@selector(back:)];
 }
@@ -264,6 +270,16 @@ static NSString* const kFeedCellIdentifier = @"FeedCell";
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (tableView == self.draftOrPublishTable) {
+		if (indexPath.row == 0) {
+			NSIndexPath* index_path = [NSIndexPath indexPathForRow:1 inSection:0];
+			[self.draftOrPublishTable deselectRowAtIndexPath:index_path animated:NO];
+			self.isDraft = NO;
+		}
+		else {
+			NSIndexPath* index_path = [NSIndexPath indexPathForRow:0 inSection:0];
+			[self.draftOrPublishTable deselectRowAtIndexPath:index_path animated:NO];
+			self.isDraft = YES;
+		}
 	}
 	else if (tableView == self.categoriesTable) {
 		NSString* category_name = [self.categories objectAtIndex:indexPath.row];

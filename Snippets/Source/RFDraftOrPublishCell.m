@@ -15,6 +15,13 @@
 	[super setSelected:selected animated:animated];
 
 	self.checkmarkView.hidden = !selected;
+	
+	if (selected) {
+		self.nameField.font = [UIFont systemFontOfSize:16 weight:UIFontWeightMedium];
+	}
+	else {
+		self.nameField.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
+	}
 }
 
 @end
