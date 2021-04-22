@@ -163,6 +163,8 @@
 		4BCFD43C250526940076168B /* Search.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BCFD439250526940076168B /* Search.xib */; };
 		4BD9D0C5242BF60600541D63 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C1242BF60600541D63 /* HTMLNode.m */; };
 		4BD9D0C6242BF60600541D63 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C3242BF60600541D63 /* HTMLParser.m */; };
+		4BDDA2392631C5820004B0B8 /* AllReplies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BDDA2372631C5820004B0B8 /* AllReplies.storyboard */; };
+		4BDDA23F2631C5F10004B0B8 /* RFAllRepliesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDDA23E2631C5F10004B0B8 /* RFAllRepliesController.m */; };
 		4BED552322FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */; };
 		4BED552422FC6D6A00F55BEB /* UITraitCollection+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */; };
 		4BF123F11E882F3000B56138 /* RFFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF123F01E882F3000B56138 /* RFFiltersController.m */; };
@@ -612,6 +614,9 @@
 		4BD9D0C2242BF60600541D63 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLNode.h; path = Shared/HTMLParser/HTMLNode.h; sourceTree = SOURCE_ROOT; };
 		4BD9D0C3242BF60600541D63 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLParser.m; path = Shared/HTMLParser/HTMLParser.m; sourceTree = SOURCE_ROOT; };
 		4BD9D0C4242BF60600541D63 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLParser.h; path = Shared/HTMLParser/HTMLParser.h; sourceTree = SOURCE_ROOT; };
+		4BDDA2382631C5820004B0B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AllReplies.storyboard; sourceTree = "<group>"; };
+		4BDDA23D2631C5F10004B0B8 /* RFAllRepliesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFAllRepliesController.h; path = Source/RFAllRepliesController.h; sourceTree = "<group>"; };
+		4BDDA23E2631C5F10004B0B8 /* RFAllRepliesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFAllRepliesController.m; path = Source/RFAllRepliesController.m; sourceTree = "<group>"; };
 		4BED552122FC6D6A00F55BEB /* UITraitCollection+Extras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UITraitCollection+Extras.h"; path = "Source/UITraitCollection+Extras.h"; sourceTree = "<group>"; };
 		4BED552222FC6D6A00F55BEB /* UITraitCollection+Extras.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UITraitCollection+Extras.m"; path = "Source/UITraitCollection+Extras.m"; sourceTree = "<group>"; };
 		4BF123EF1E882F3000B56138 /* RFFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFiltersController.h; path = Source/RFFiltersController.h; sourceTree = "<group>"; };
@@ -959,6 +964,8 @@
 				4B1EE1AA241AECA4004627F7 /* RFAllPostsController.m */,
 				4B5DDAC924E6CC2A007674FF /* RFAllUploadsController.h */,
 				4B5DDACA24E6CC2A007674FF /* RFAllUploadsController.m */,
+				4BDDA23D2631C5F10004B0B8 /* RFAllRepliesController.h */,
+				4BDDA23E2631C5F10004B0B8 /* RFAllRepliesController.m */,
 				4B5DDACD24E6CCD9007674FF /* RFUpload.h */,
 				4B5DDACE24E6CCD9007674FF /* RFUpload.m */,
 				4BF13C67242C0B80009C6093 /* RFEditPostController.h */,
@@ -1126,6 +1133,7 @@
 				4BF123F21E882F4500B56138 /* Filters.xib */,
 				4B1EE1AC241AED1C004627F7 /* AllPosts.storyboard */,
 				4B5DDAC524E646D4007674FF /* AllUploads.storyboard */,
+				4BDDA2372631C5820004B0B8 /* AllReplies.storyboard */,
 				4BF123F51E882F5400B56138 /* FilterCell.xib */,
 				4B1BD2821D8754DC00B3C93D /* Help.xib */,
 				4B8714721E64C07800C69589 /* External.xib */,
@@ -1647,6 +1655,7 @@
 				4B1BD2841D8754DC00B3C93D /* Help.xib in Resources */,
 				4B8714741E64C07800C69589 /* External.xib in Resources */,
 				C5CED7051ECF792E0068F537 /* YUCIFXAA.cikernel in Resources */,
+				4BDDA2392631C5820004B0B8 /* AllReplies.storyboard in Resources */,
 				C5A515AF21B3196100C15092 /* RFAutoCompleteCollectionViewCell.xib in Resources */,
 				4B400D15202524B500C71AAF /* FeedCell.xib in Resources */,
 				4B64B2EB22093139005B92A0 /* CategoryCell.xib in Resources */,
@@ -1812,6 +1821,7 @@
 				C5AF58C12294CEF300830C25 /* NSURL+UnzipKitExtensions.m in Sources */,
 				4B5DDAD324E6EBAD007674FF /* RFNYTPhoto.m in Sources */,
 				4B46632C1B8F51710034FC5C /* CSimpleMarkupParser.m in Sources */,
+				4BDDA23F2631C5F10004B0B8 /* RFAllRepliesController.m in Sources */,
 				4BA910761B83CDC400D58F83 /* RFMenuController.m in Sources */,
 				C5CED6FF1ECF792E0068F537 /* YUCICrossZoomTransition.m in Sources */,
 				4BA713372029127E0083948C /* MMElement.m in Sources */,
@@ -2250,6 +2260,14 @@
 				4BCFD43A250526940076168B /* Base */,
 			);
 			name = Search.xib;
+			sourceTree = "<group>";
+		};
+		4BDDA2372631C5820004B0B8 /* AllReplies.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4BDDA2382631C5820004B0B8 /* Base */,
+			);
+			name = AllReplies.storyboard;
 			sourceTree = "<group>";
 		};
 		4BF123F21E882F4500B56138 /* Filters.xib */ = {

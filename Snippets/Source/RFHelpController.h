@@ -10,8 +10,4 @@
 
 @interface RFHelpController : RFViewController <UIWebViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UIWebView* webView;
-
-@property (strong, nonatomic) NSURL* url;
-
 @end

@@ -17,7 +17,6 @@
 {
 	self = [super initWithNibName:@"Help" bundle:nil];
 	if (self) {
-		self.url = [NSURL URLWithString:@"http://help.micro.blog/"];
 	}
 	
 	return self;
@@ -28,7 +27,6 @@
 	[super viewDidLoad];
 	
 	[self setupNavigation];
-	[self setupBrowser];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -40,7 +38,7 @@
 
 - (void) setupNavigation
 {
-	self.title = self.url.host;
+	self.title = @"Help";
 
 	UIViewController* root_controller = [self.navigationController.viewControllers firstObject];
 	if (self.navigationController.topViewController != root_controller) {
@@ -48,39 +46,18 @@
 	}
 }
 
-- (void) setupBrowser
-{
-	self.webView.delegate = self;
-	[self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
-}
-
 - (void) back:(id)sender
 {
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void) webViewDidStartLoad:(UIWebView *)webView
+- (IBAction) sendEmail:(id)sender
 {
-	// hide until we're done loading
-	self.webView.alpha = 0.0;
+	NSString* subject = @"Micro.blog iOS (1.2.3, @username)";
 }
 
-- (void) webViewDidFinishLoad:(UIWebView *)webView
+- (IBAction) openHelpCenter:(id)sender
 {
-	// hide the header and background image and move the content up
-	NSString* js = @"\
-		document.getElementsByClassName('banner')[0].style.display = 'none';\
-		document.getElementsByClassName('main')[0].style.paddingTop = '0px';\
-		document.getElementsByTagName('body')[0].style.background = '#fff';\
-	";
-	[self.webView stringByEvaluatingJavaScriptFromString:js];
-	
-	// fade back in
-	RFDispatchSeconds(0.1, ^{
-		[UIView animateWithDuration:0.3 animations:^{
-			self.webView.alpha = 1.0;
-		}];
-	});
 }
 
 @end

@@ -16,6 +16,7 @@
 #import "RFHelpController.h"
 #import "RFBookmarksController.h"
 #import "RFAllPostsController.h"
+#import "RFAllRepliesController.h"
 #import "RFAccountsController.h"
 #import "RFAccount.h"
 #import "RFMenuCell.h"
@@ -153,6 +154,9 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 		[self.menuIcons addObject:@""];
 	}
 	
+	[self.menuItems addObject:@"Replies"];
+	[self.menuIcons addObject:@"bubble.left"];
+
 	[self.menuItems addObject:@"Help"];
 	[self.menuIcons addObject:@"questionmark.circle"];
 
@@ -341,12 +345,22 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	[self notifyResetDetail:uploads_controller];
 }
 
+- (IBAction) showReplies:(id)sender
+{
+	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"AllReplies" bundle:nil];
+
+	RFAllRepliesController* posts_controller = [storyboard instantiateInitialViewController];
+	
+	[self notifyResetDetail:posts_controller];
+}
+
 - (IBAction) showHelp:(id)sender
 {
-//	RFHelpController* help_controller = [[RFHelpController alloc] init];
-	SFSafariViewController* help_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://help.micro.blog/"]];
-	[self presentViewController:help_controller animated:YES completion:NULL];
-//	[self notifyResetDetail:help_controller];
+//	SFSafariViewController* help_controller = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"https://help.micro.blog/"]];
+//	[self presentViewController:help_controller animated:YES completion:NULL];
+
+	RFHelpController* help_controller = [[RFHelpController alloc] init];
+	[self notifyResetDetail:help_controller];
 }
 
 - (IBAction) showSettings:(id)sender
@@ -412,6 +426,9 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	}
 	else if ([title isEqualToString:@"Uploads"]) {
 		[self showUploads:nil];
+	}
+	else if ([title isEqualToString:@"Replies"]) {
+		[self showReplies:nil];
 	}
 	else if ([title isEqualToString:@"Help"]) {
 		[self showHelp:nil];
