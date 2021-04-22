@@ -141,6 +141,7 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	RFEditPostController* edit_controller = [segue destinationViewController];
+	edit_controller.isReply = YES;
 	edit_controller.post = self.selectedPost;
 }
 

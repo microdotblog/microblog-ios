@@ -33,7 +33,12 @@
 
 - (void) setupNavigation
 {
-	self.title = @"Edit Post";
+	if (self.isReply) {
+		self.title = @"Edit Reply";
+	}
+	else {
+		self.title = @"Edit Post";
+	}
 
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_backBarButtonWithTarget:self action:@selector(back:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Update" style:UIBarButtonItemStylePlain target:self action:@selector(sendPost:)];
@@ -53,7 +58,9 @@
 
 - (void) setupTitle
 {
-	self.titleField.text = self.post.title;
+	if (!self.isReply) {
+		self.titleField.text = self.post.title;
+	}
 }
 
 - (void) setupText
@@ -136,21 +143,35 @@
 		destination_uid = @"";
 	}
 
-	NSString* post_status = @"";
-	if (self.post.isDraft) {
-		post_status = @"draft";
+	NSDictionary* info;
+	
+	if (self.isReply) {
+		info = @{
+			@"action": @"update",
+			@"url": self.post.url,
+			@"mp-destination": destination_uid,
+			@"replace": @{
+				@"content": self.textView.text
+			}
+		};
 	}
-
-	NSDictionary* info = @{
-		@"action": @"update",
-		@"url": self.post.url,
-		@"mp-destination": destination_uid,
-		@"replace": @{
-			@"name": self.titleField.text,
-			@"content": self.textView.text,
-			@"post-status": post_status
+	else {
+		NSString* post_status = @"";
+		if (self.post.isDraft) {
+			post_status = @"draft";
 		}
-	};
+
+		info = @{
+			@"action": @"update",
+			@"url": self.post.url,
+			@"mp-destination": destination_uid,
+			@"replace": @{
+				@"name": self.titleField.text,
+				@"content": self.textView.text,
+				@"post-status": post_status
+			}
+		};
+	}
 
 	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub"];
 	[client postWithObject:info completion:^(UUHttpResponse* response) {

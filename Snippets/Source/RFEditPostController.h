@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) id textStorage;
 @property (strong, nonatomic) NSLayoutManager* textLayout;
 @property (strong, nonatomic) NSLayoutConstraint* bottomConstraint;
+@property (assign, nonatomic) BOOL isReply;
 
 @end
 
