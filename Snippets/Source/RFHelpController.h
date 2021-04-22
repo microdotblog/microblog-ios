@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface RFHelpController : RFViewController <UIWebViewDelegate>
+@interface RFHelpController : RFViewController <MFMailComposeViewControllerDelegate>
+
+@property (strong, nonatomic) IBOutlet UIButton* emailButton;
+@property (strong, nonatomic) IBOutlet UIButton* helpButton;
 
 @end

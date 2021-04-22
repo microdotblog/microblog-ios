@@ -10,6 +10,7 @@
 #import "RFHelpController.h"
 #import "RFMacros.h"
 #import "UIBarButtonItem+Extras.h"
+#import "RFSettings.h"
 
 @implementation RFHelpController
 
@@ -27,13 +28,7 @@
 	[super viewDidLoad];
 	
 	[self setupNavigation];
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
-	
-	[self setupNavigation];
+	[self setupButtons];
 }
 
 - (void) setupNavigation
@@ -46,6 +41,12 @@
 	}
 }
 
+- (void) setupButtons
+{
+	self.emailButton.layer.cornerRadius = 5;
+	self.helpButton.layer.cornerRadius = 5;
+}
+
 - (void) back:(id)sender
 {
 	[self.navigationController popViewControllerAnimated:YES];
@@ -53,11 +54,33 @@
 
 - (IBAction) sendEmail:(id)sender
 {
-	NSString* subject = @"Micro.blog iOS (1.2.3, @username)";
+	if (![MFMailComposeViewController canSendMail]) {
+		return;
+	}
+
+	NSDictionary* info = [[NSBundle mainBundle] infoDictionary];
+	NSString* version = [info objectForKey:@"CFBundleShortVersionString"];
+	NSString* username = [RFSettings snippetsUsername];
+	
+	NSString* subject = [NSString stringWithFormat:@"Micro.blog iOS (%@, @%@)", version, username];
+
+	MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+	controller.mailComposeDelegate = self;
+	 
+	[controller setToRecipients:@[@"help@micro.blog"]];
+	[controller setSubject:subject];
+	 
+	[self presentViewController:controller animated:YES completion:NULL];
 }
 
 - (IBAction) openHelpCenter:(id)sender
 {
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://help.micro.blog/"] options:@{} completionHandler:NULL];
+}
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end
