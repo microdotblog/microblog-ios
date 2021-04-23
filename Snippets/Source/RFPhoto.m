@@ -20,6 +20,9 @@
 	if (self) {
 		self.asset = asset;
 		self.altText = @"";
+
+		NSString* filename = [[self.asset valueForKey:@"filename"] lowercaseString];
+		self.isPNG = [[filename pathExtension] isEqualToString:@"png"];
 	}
 	
 	return self;
@@ -117,6 +120,20 @@
 				}
 			});
 		}];
+	}];
+}
+
+- (void) generateImage:(void(^)(UIImage* image))completionBlock
+{
+	PHImageManager* manager = [PHImageManager defaultManager];
+	PHImageRequestOptions* options = [[PHImageRequestOptions alloc] init];
+	options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+	options.resizeMode = PHImageRequestOptionsResizeModeExact;
+	options.networkAccessAllowed = YES;
+	[manager requestImageDataForAsset:self.asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+		UIImage* img = [UIImage imageWithData:imageData];
+		img = [img uuRemoveOrientation];
+		completionBlock(img);
 	}];
 }
 

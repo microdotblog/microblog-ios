@@ -13,6 +13,7 @@
 static NSString* const kAttachVideoNotification = @"RFAttachVideoNotification";
 static NSString* const kAttachPhotoNotification = @"RFAttachPhotoNotification";
 static NSString* const kAttachPhotoKey = @"photo";
+static NSString* const kAttachIsPNGKey = @"is_png";
 static NSString* const kAttachVideoKey = @"video";
 static NSString* const kAttachVideoThumbnailKey = @"thumbnail";
 
@@ -23,6 +24,7 @@ static NSString* const kAttachVideoThumbnailKey = @"thumbnail";
 @property (strong) NSString* publishedURL;
 @property (strong) NSString* altText;
 @property (strong) NSURL* videoURL;
+@property (assign) BOOL isPNG;
 
 - (id) initWithAsset:(PHAsset *)asset;
 - (id) initWithThumbnail:(UIImage *)image;
@@ -33,6 +35,7 @@ static NSString* const kAttachVideoThumbnailKey = @"thumbnail";
 	
 - (void) generateVideoThumbnail:(void(^)(UIImage* thumbnail))completionBlock;
 - (void) generateVideoURL:(void(^)(NSURL* url))completionBlock;
+- (void) generateImage:(void(^)(UIImage* image))completionBlock;
 
 + (NSDictionary *) videoSettingsForSize:(CGSize)size;
 + (NSDictionary *) audioSettings;

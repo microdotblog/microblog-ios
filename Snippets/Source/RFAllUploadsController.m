@@ -201,7 +201,7 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 		}];
 	}
 	else {
-		[client uploadImageData:data named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
+		[client uploadImageData:data named:@"file" filename:@"image.jpg" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
 			RFDispatchMainAsync (^{
 				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
 					[self.progressSpinner stopAnimating];

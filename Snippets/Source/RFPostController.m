@@ -589,6 +589,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	UIImage* img = [notification.userInfo objectForKey:kAttachPhotoKey];
 	RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:img];
+	photo.isPNG = [[notification.userInfo objectForKey:kAttachIsPNGKey] boolValue];
 	NSMutableArray* new_photos = [self.attachedPhotos mutableCopy];
 	[new_photos addObject:photo];
 	self.attachedPhotos = new_photos;
@@ -1336,7 +1337,17 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) uploadPhoto:(RFPhoto *)photo completion:(void (^)(void))handler
 {
 	UIImage* img = photo.thumbnailImage;
-	NSData* d = UIImageJPEGRepresentation (img, 0.9);
+	NSData* d;
+	NSString* filename;
+	
+	if (photo.isPNG) {
+		d = UIImagePNGRepresentation (img);
+		filename = @"image.png";
+	}
+	else {
+		d = UIImageJPEGRepresentation (img, 0.9);
+		filename = @"image.jpg";
+	}
 	if (d) {
 		if ([RFSettings hasSnippetsBlog] && ![RFSettings prefersExternalBlog]) {
 			RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];
@@ -1347,7 +1358,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 				[args setObject:uid forKey:@"mp-destination"];
 			}
 			
-			[client uploadImageData:d named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
+			[client uploadImageData:d named:@"file" filename:filename httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
 				NSDictionary* headers = response.httpResponse.allHeaderFields;
 				NSString* image_url = headers[@"Location"];
 				RFDispatchMainAsync (^{
@@ -1368,7 +1379,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			RFMicropub* client = [[RFMicropub alloc] initWithURL:micropub_endpoint];
 			NSDictionary* args = @{
 			};
-			[client uploadImageData:d named:@"file" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
+			[client uploadImageData:d named:@"file" filename:filename httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
 				NSDictionary* headers = response.httpResponse.allHeaderFields;
 				NSString* image_url = headers[@"Location"];
 				RFDispatchMainAsync (^{

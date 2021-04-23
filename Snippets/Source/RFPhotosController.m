@@ -168,8 +168,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	PHAsset* asset = [[PHAsset fetchAssetsWithALAssetURLs:@[ reference_url ] options:nil] lastObject];
 
 	if (asset) {
-		if (asset.mediaType == PHAssetMediaTypeVideo)
-		{
+		if (asset.mediaType == PHAssetMediaTypeVideo) {
 			RFPhoto* photo = [[RFPhoto alloc] initWithVideo:reference_url asset:asset];
 			
 			[photo generateVideoThumbnail:^(UIImage *thumbnail) {
@@ -187,12 +186,21 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 			}];
 		}
 		else {
-
 			[self dismissViewControllerAnimated:YES completion:^{
 				RFPhoto* photo = [[RFPhoto alloc] initWithAsset:asset];
-			
-				RFFiltersController* filters_controller = [[RFFiltersController alloc] initWithPhoto:photo];
-				[self.navigationController pushViewController:filters_controller animated:YES];
+				if ([photo isPNG]) {
+					[photo generateImage:^(UIImage* image) {
+						NSDictionary* info = @{
+							kAttachPhotoKey: image,
+							kAttachIsPNGKey: @YES
+						};
+						[[NSNotificationCenter defaultCenter] postNotificationName:kAttachPhotoNotification object:self userInfo:info];
+					}];
+				}
+				else {
+					RFFiltersController* filters_controller = [[RFFiltersController alloc] initWithPhoto:photo];
+					[self.navigationController pushViewController:filters_controller animated:YES];
+				}
 			}];
 		}
 	}
@@ -231,13 +239,22 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	PHAsset* asset = [self.photosResult objectAtIndex:indexPath.item];
 	RFPhoto* photo = [[RFPhoto alloc] initWithAsset:asset];
 	
-	if (asset.mediaType == PHAssetMediaTypeImage)
-	{
-		RFFiltersController* filters_controller = [[RFFiltersController alloc] initWithPhoto:photo];
-		[self.navigationController pushViewController:filters_controller animated:YES];
+	if (asset.mediaType == PHAssetMediaTypeImage) {
+		if ([photo isPNG]) {
+			[photo generateImage:^(UIImage* image) {
+				NSDictionary* info = @{
+					kAttachPhotoKey: image,
+					kAttachIsPNGKey: @YES
+				};
+				[[NSNotificationCenter defaultCenter] postNotificationName:kAttachPhotoNotification object:self userInfo:info];
+			}];
+		}
+		else {
+			RFFiltersController* filters_controller = [[RFFiltersController alloc] initWithPhoto:photo];
+			[self.navigationController pushViewController:filters_controller animated:YES];
+		}
 	}
-	else if (asset.mediaType == PHAssetMediaTypeVideo)
-	{
+	else if (asset.mediaType == PHAssetMediaTypeVideo) {
 		[self checkVideoUpload:photo completion:^(BOOL canUpload) {
 			if (canUpload) {
 				self.busyIndicator.hidden = NO;

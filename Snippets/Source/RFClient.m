@@ -221,9 +221,18 @@
 	return [UUHttpSession executeRequest:request completionHandler:handler];
 }
 
-- (UUHttpRequest *) uploadImageData:(NSData *)imageData named:(NSString *)imageName httpMethod:(NSString *)method queryArguments:(NSDictionary *)args completion:(void (^)(UUHttpResponse* response))handler
+- (UUHttpRequest *) uploadImageData:(NSData *)imageData named:(NSString *)imageName filename:(NSString *)filename httpMethod:(NSString *)method queryArguments:(NSDictionary *)args completion:(void (^)(UUHttpResponse* response))handler
 {
-	return [self uploadFileData:imageData named:imageName filename:@"image.jpg" contentType:@"image/jpeg" httpMethod:method queryArguments:args completion:handler];
+	NSString* content_type;
+	
+	if ([[filename pathExtension] isEqualToString:@"png"]) {
+		content_type = @"image/png";
+	}
+	else {
+		content_type = @"image/jpeg";
+	}
+	
+	return [self uploadFileData:imageData named:imageName filename:filename contentType:content_type httpMethod:method queryArguments:args completion:handler];
 }
 
 - (UUHttpRequest *) uploadVideoData:(NSData *)videoData named:(NSString *)imageName httpMethod:(NSString *)method queryArguments:(NSDictionary *)args completion:(void (^)(UUHttpResponse* response))handler
