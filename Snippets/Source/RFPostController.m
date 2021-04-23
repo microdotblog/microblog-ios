@@ -849,15 +849,21 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (IBAction) linkPressed:(id)sender
 {
 	NSRange r;
+	NSString* insert_s = @"";
+	NSString* url = [UIPasteboard generalPasteboard].string;
+	if ([url uuStartsWithSubstring:@"http"]) {
+		insert_s = url;
+	}
+	
 	UITextRange* text_r = self.textView.selectedTextRange;
 	if ([text_r isEmpty]) {
-		[self.textView insertText:@"[]()"];
+		[self.textView insertText:[NSString stringWithFormat:@"[](%@)", insert_s]];
 		r = self.textView.selectedRange;
 		r.location = r.location - 3;
 		self.textView.selectedRange = r;
 	}
 	else {
-		[self replaceSelectionBySurrounding:@[ @"[", @"]()" ]];
+		[self replaceSelectionBySurrounding:@[ @"[", [NSString stringWithFormat:@"](%@)", insert_s] ]];
 		r = self.textView.selectedRange;
 		r.location = r.location - 1;
 		self.textView.selectedRange = r;
