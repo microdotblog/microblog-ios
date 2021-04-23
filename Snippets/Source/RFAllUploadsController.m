@@ -152,12 +152,12 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	}];
 }
 
-- (void) uploadData:(NSData *)data isVideo:(BOOL)isVideo
+- (void) uploadData:(NSData *)data isPhoto:(BOOL)isPhoto isVideo:(BOOL)isVideo
 {
-	return [self uploadData:data isVideo:isVideo otherFilename:nil contentType:nil];
+	return [self uploadData:data isPhoto:isPhoto isVideo:isVideo otherFilename:nil contentType:nil];
 }
 
-- (void) uploadData:(NSData *)data isVideo:(BOOL)isVideo otherFilename:(NSString *)filename contentType:(NSString *)contentType
+- (void) uploadData:(NSData *)data isPhoto:(BOOL)isPhoto isVideo:(BOOL)isVideo otherFilename:(NSString *)filename contentType:(NSString *)contentType
 {
 	RFClient* client = [[RFClient alloc] initWithPath:@"/micropub/media"];
 	NSString* destination_uid = [RFSettings selectedBlogUid];
@@ -172,7 +172,7 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	self.hostnameButton.hidden = YES;
 	[self.progressSpinner startAnimating];
 
-	if (filename) {
+	if (!isPhoto && filename) {
 		[client uploadFileData:data named:@"file" filename:filename contentType:contentType httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
 			RFDispatchMainAsync (^{
 				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
@@ -201,7 +201,7 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 		}];
 	}
 	else {
-		[client uploadImageData:data named:@"file" filename:@"image.jpg" httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
+		[client uploadImageData:data named:@"file" filename:filename httpMethod:@"POST" queryArguments:args completion:^(UUHttpResponse* response) {
 			RFDispatchMainAsync (^{
 				if (response.parsedResponse && [response.parsedResponse isKindOfClass:[NSDictionary class]] && response.parsedResponse[@"error"]) {
 					[self.progressSpinner stopAnimating];
@@ -407,7 +407,7 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 			[photo generateVideoURL:^(NSURL* url) {
 				NSData* d = [NSData dataWithContentsOfURL:photo.videoURL];
 				if (d) {
-					[self uploadData:d isVideo:YES];
+					[self uploadData:d isPhoto:NO isVideo:YES];
 				}
 			}];
 		}
@@ -420,10 +420,23 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 			[manager requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
 				UIImage* img = [UIImage imageWithData:imageData];
 				img = [img uuRemoveOrientation];
+				
+				NSString* filename;
 
-				NSData* d = UIImageJPEGRepresentation (img, 0.9);
-				if (d) {
-					[self uploadData:d isVideo:NO];
+				RFPhoto* photo = [[RFPhoto alloc] initWithAsset:asset];
+				if (photo.isPNG) {
+					NSData* d = UIImagePNGRepresentation (img);
+					if (d) {
+						filename = @"image.png";
+						[self uploadData:d isPhoto:YES isVideo:NO otherFilename:filename contentType:nil];
+					}
+				}
+				else {
+					NSData* d = UIImageJPEGRepresentation (img, 0.9);
+					if (d) {
+						filename = @"image.jpg";
+						[self uploadData:d isPhoto:YES isVideo:NO otherFilename:filename contentType:nil];
+					}
 				}
 			}];
 		}
@@ -449,7 +462,7 @@ static NSString* const kUploadCellIdentifier = @"UploadCell";
 	NSString* content_type = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)uti, kUTTagClassMIMEType);
 	
 	NSData* d = [NSData dataWithContentsOfURL:url];
-	[self uploadData:d isVideo:NO otherFilename:filename contentType:content_type];
+	[self uploadData:d isPhoto:NO isVideo:NO otherFilename:filename contentType:content_type];
 }
 
 #pragma mark -
