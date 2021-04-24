@@ -860,13 +860,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	if ([text_r isEmpty]) {
 		[self.textView insertText:[NSString stringWithFormat:@"[](%@)", insert_s]];
 		r = self.textView.selectedRange;
-		r.location = r.location - 3;
+		r.location = r.location - 3 - insert_s.length;
 		self.textView.selectedRange = r;
 	}
 	else {
 		[self replaceSelectionBySurrounding:@[ @"[", [NSString stringWithFormat:@"](%@)", insert_s] ]];
 		r = self.textView.selectedRange;
-		r.location = r.location - 1;
+		if (insert_s.length == 0) {
+			r.location = r.location - 1;
+		}
 		self.textView.selectedRange = r;
 	}
 }
