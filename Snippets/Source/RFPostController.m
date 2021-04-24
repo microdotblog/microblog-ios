@@ -1742,65 +1742,52 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 - (void) loadExtensionImage:(NSItemProvider*)itemProvider inputItems:(NSMutableArray*)inputItems
 {
-//	[itemProvider loadItemForTypeIdentifier:(NSString*)kUTTypeImage options:nil completionHandler:^(UIImage* image, NSError * _Null_unspecified error)
-//	{
-//		if (image)
-//		{
-			// test to change color space from Display P3 to sRGB
-			// idea was to reduce memory, but it creates unrotated image
-#if 0
-			if (@available(iOS 11.0, *)) {
-				CGImageRef cg = image.CGImage;
-				CGColorSpaceRef colorspace = CGImageGetColorSpace(cg);
-				if ([(NSString *)CGColorSpaceGetName(colorspace) isEqualToString:kCGColorSpaceDisplayP3]) {
-					colorspace = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
-					if (colorspace) {
-						CGImageRef new_cg = CGImageCreateCopyWithColorSpace(cg, colorspace);
-						if (new_cg) {
-							image = [[UIImage alloc] initWithCGImage:new_cg];
-							CGImageRelease(new_cg);
-						}
-					}
-				}
-			}
-#endif
+	if (@available(iOS 11.0, *))
+	{
+		[itemProvider loadInPlaceFileRepresentationForTypeIdentifier:(NSString*)kUTTypeImage completionHandler:^(NSURL * _Nullable url, BOOL isInPlace, NSError * _Nullable error)
+		{
+			CGFloat max_size = 1800;
+			
+			CFDictionaryRef options = (__bridge CFDictionaryRef) @{
+				(id)kCGImageSourceCreateThumbnailFromImageAlways: (id)kCFBooleanTrue,
+				(id)kCGImageSourceCreateThumbnailWithTransform: (id)kCFBooleanTrue,
+				(id)kCGImageSourceThumbnailMaxPixelSize: (id)@(max_size)
+			};
+			
+			CGImageSourceRef cg_source = CGImageSourceCreateWithURL((__bridge CFURLRef)url, NULL);
+			CGImageRef cg_img = CGImageSourceCreateThumbnailAtIndex (cg_source, 0, options);
+			
+			UIImage* image = [UIImage imageWithCGImage:cg_img];
+			
+			CGImageRelease (cg_img);
+			CFRelease (cg_source);
 
-//			[self processImageForAppExtension:image withInputItems:inputItems];
-//		}
-//		else
-		if (@available(iOS 11.0, *))
-		{
-			[itemProvider loadInPlaceFileRepresentationForTypeIdentifier:(NSString*)kUTTypeImage completionHandler:^(NSURL * _Nullable url, BOOL isInPlace, NSError * _Nullable error)
+			if (image)
 			{
-				NSData* data = [NSData dataWithContentsOfURL:url];
-				UIImage* image = [UIImage imageWithData:data];
-				if (image)
+				[self processImageForAppExtension:image withInputItems:inputItems];
+			}
+			else
+			{
+				[itemProvider loadFileRepresentationForTypeIdentifier:(NSString *)kUTTypeImage completionHandler:^(NSURL * _Nullable url, NSError * _Nullable error)
 				{
-					[self processImageForAppExtension:image withInputItems:inputItems];
-				}
-				else
-				{
-					[itemProvider loadFileRepresentationForTypeIdentifier:(NSString *)kUTTypeImage completionHandler:^(NSURL * _Nullable url, NSError * _Nullable error)
+					NSData* data = [NSData dataWithContentsOfURL:url];
+					UIImage* image = [UIImage imageWithData:data];
+					if (image)
 					{
-						NSData* data = [NSData dataWithContentsOfURL:url];
-						UIImage* image = [UIImage imageWithData:data];
-						if (image)
-						{
-							[self processImageForAppExtension:image withInputItems:inputItems];
-						}
-						else // If we get here, we have exhausted our ability to load an image...
-						{
-							[self processAppExtensionItems:inputItems];
-						}
-					}];
-				}
-			}];
-		}
-		else // If we get here, we have exhausted our ability to load an image...
-		{
-			[self processAppExtensionItems:inputItems];
-		}
-//	}];
+						[self processImageForAppExtension:image withInputItems:inputItems];
+					}
+					else // If we get here, we have exhausted our ability to load an image...
+					{
+						[self processAppExtensionItems:inputItems];
+					}
+				}];
+			}
+		}];
+	}
+	else // If we get here, we have exhausted our ability to load an image...
+	{
+		[self processAppExtensionItems:inputItems];
+	}
 }
 
 - (void) loadExtensionPropertyList:(NSItemProvider*)itemProvider inputItems:(NSMutableArray*)inputItems
