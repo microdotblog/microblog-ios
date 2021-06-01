@@ -17,7 +17,6 @@
 #import "UIBarButtonItem+Extras.h"
 #import "UUAlert.h"
 #import "RFSettings.h"
-#import "OnePasswordExtension.h"
 #import "UITraitCollection+Extras.h"
 
 @implementation RFWordpressController
@@ -38,7 +37,6 @@
 	[super viewDidLoad];
 
 	[self setupNavigation];
-	[self setupOnePassword];
 }
 
 - (void) setupNavigation
@@ -47,13 +45,6 @@
 	
 	self.navigationItem.leftBarButtonItem = [UIBarButtonItem rf_closeBarButtonWithTarget:self action:@selector(close:)];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStylePlain target:self action:@selector(finish:)];
-}
-
-- (void) setupOnePassword
-{
-	if ([[OnePasswordExtension sharedExtension] isAppExtensionAvailable]) {
-		self.onePasswordButton.hidden = NO;
-	}
 }
 
 - (NSString *) normalizeURL:(NSString *)url
@@ -121,19 +112,6 @@
 }
 
 #pragma mark -
-
-- (IBAction) fillOnePassword:(id)sender
-{
-	NSString* find_website = self.websiteURL;
-	[[OnePasswordExtension sharedExtension] findLoginForURLString:find_website forViewController:self sender:sender completion:^(NSDictionary* login_info, NSError* error) {
-		if (error == nil) {
-			if (self.usernameField.text.length == 0) {
-				self.usernameField.text = [login_info objectForKey:AppExtensionUsernameKey];
-			}
-			self.passwordField.text = [login_info objectForKey:AppExtensionPasswordKey];
-		}
-	}];
-}
 
 - (IBAction) close:(id)sender
 {

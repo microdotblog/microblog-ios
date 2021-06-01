@@ -17,8 +17,6 @@
 		4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B0D55701B95586F0076AD9F /* SettingChoiceCell.xib */; };
 		4B0D55751B9559EC0076AD9F /* RFSettingChoiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */; };
 		4B10602C1F0D39FB0045AB1A /* UIFont+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */; };
-		4B12BAEA1E9FBFBC000E559F /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */; };
-		4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */; };
 		4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E41F1E82F5B50032F54B /* Photos.framework */; };
 		4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B14E4201E82F5B50032F54B /* PhotosUI.framework */; };
 		4B15282F2327285D006F1DBE /* Username.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B15282D2327285D006F1DBE /* Username.xib */; };
@@ -206,7 +204,6 @@
 		C507F3271F8827A90013D2B7 /* NSString+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B46631B1B8EA5C20034FC5C /* NSString+Extras.m */; };
 		C507F3281F8827A90013D2B7 /* UIFont+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */; };
 		C507F3291F8827A90013D2B7 /* RFMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1712DA1F069FB200267045 /* RFMenuView.m */; };
-		C507F32A1F8827AE0013D2B7 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */; };
 		C507F32B1F8827BC0013D2B7 /* UUDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803331B87AA2C00D6670C /* UUDataCache.m */; };
 		C507F32C1F8827BC0013D2B7 /* UUDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803351B87AA2C00D6670C /* UUDate.m */; };
 		C507F32D1F8827BC0013D2B7 /* UUDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF803371B87AA2C00D6670C /* UUDictionary.m */; };
@@ -242,7 +239,6 @@
 		C52DB57A225D0D2100172077 /* RFBlogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C59C3B1D20923EFC0076A754 /* RFBlogTableViewCell.m */; };
 		C5403B691F9E3C30002696EE /* libCTidy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D77D1D1F9E3B1B00AB0144 /* libCTidy.a */; };
 		C55044A21F8EBB7800C1D5F2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B94052C1E2933DE00B01E79 /* Images.xcassets */; };
-		C55044A31F8EBB7B00C1D5F2 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */; };
 		C5666B631F23C95F00AE13DC /* User.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5666B611F23C95F00AE13DC /* User.xib */; };
 		C58942611FE245F400A30EB9 /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = C589425F1FE245F400A30EB9 /* GetURL.js */; };
 		C58D8E2320ADF30900F22E42 /* RFPopupNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C58D8E2120ADF30900F22E42 /* RFPopupNotificationViewController.m */; };
@@ -420,9 +416,6 @@
 		4B0D55741B9559EC0076AD9F /* RFSettingChoiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFSettingChoiceCell.m; path = Source/RFSettingChoiceCell.m; sourceTree = "<group>"; };
 		4B10602A1F0D39FB0045AB1A /* UIFont+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+Extras.h"; path = "Source/UIFont+Extras.h"; sourceTree = "<group>"; };
 		4B10602B1F0D39FB0045AB1A /* UIFont+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+Extras.m"; path = "Source/UIFont+Extras.m"; sourceTree = "<group>"; };
-		4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = 1Password.xcassets; path = Shared/1Password/1Password.xcassets; sourceTree = SOURCE_ROOT; };
-		4B12BAEC1E9FBFDD000E559F /* OnePasswordExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OnePasswordExtension.h; path = Shared/1Password/OnePasswordExtension.h; sourceTree = SOURCE_ROOT; };
-		4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OnePasswordExtension.m; path = Shared/1Password/OnePasswordExtension.m; sourceTree = SOURCE_ROOT; };
 		4B14E41F1E82F5B50032F54B /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		4B14E4201E82F5B50032F54B /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
 		4B15282E2327285D006F1DBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Username.xib; sourceTree = "<group>"; };
@@ -852,15 +845,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4B12BAEB1E9FBFC5000E559F /* 1Password */ = {
-			isa = PBXGroup;
-			children = (
-				4B12BAEC1E9FBFDD000E559F /* OnePasswordExtension.h */,
-				4B12BAED1E9FBFDD000E559F /* OnePasswordExtension.m */,
-			);
-			name = 1Password;
-			sourceTree = "<group>";
-		};
 		4B1712D51F05BEF100267045 /* SloppySwiping */ = {
 			isa = PBXGroup;
 			children = (
@@ -1143,7 +1127,6 @@
 				4BCFD42D250422FC0076168B /* Bookmark.storyboard */,
 				4B37685D250D4A56001932AB /* Bookmarks.xib */,
 				4B94052C1E2933DE00B01E79 /* Images.xcassets */,
-				4B12BAE91E9FBFBC000E559F /* 1Password.xcassets */,
 			);
 			name = Resources;
 			path = Snippets;
@@ -1157,7 +1140,6 @@
 				4BA71323202912710083948C /* MMMarkdown */,
 				4B1712D51F05BEF100267045 /* SloppySwiping */,
 				C5CED6B71ECF792E0068F537 /* VividFilters */,
-				4B12BAEB1E9FBFC5000E559F /* 1Password */,
 				4B46631D1B8F51670034FC5C /* MarkupLabel */,
 				4BF8032D1B87AA2600D6670C /* UUToolbox */,
 				4BD9D0C0242BF5F800541D63 /* HTMLParser */,
@@ -1662,7 +1644,6 @@
 				C5CED7161ECF792E0068F537 /* YUCIStarfieldGenerator.cikernel in Resources */,
 				4B5DDAC724E646D4007674FF /* AllUploads.storyboard in Resources */,
 				4B1F7FE6225269E100E8AF3E /* Upgrade.xib in Resources */,
-				4B12BAEA1E9FBFBC000E559F /* 1Password.xcassets in Resources */,
 				4B0D55721B95586F0076AD9F /* SettingChoiceCell.xib in Resources */,
 				4B4D9B581ED5213E00315BBA /* FeaturedPhotoCell.xib in Resources */,
 				C5CED7121ECF792E0068F537 /* YUCIRGBToneCurve.cikernel in Resources */,
@@ -1695,7 +1676,6 @@
 				C507F3571F88314B0013D2B7 /* PhotoCell.xib in Resources */,
 				C58942611FE245F400A30EB9 /* GetURL.js in Resources */,
 				C52DB578225D0CC100172077 /* Blogs.storyboard in Resources */,
-				C55044A31F8EBB7B00C1D5F2 /* 1Password.xcassets in Resources */,
 				C507F3581F8831530013D2B7 /* Menu.xib in Resources */,
 				C507F30F1F8827420013D2B7 /* MainInterface.storyboard in Resources */,
 				4B5DDAC024E4A48C007674FF /* MenuCell.xib in Resources */,
@@ -1801,7 +1781,6 @@
 				C5CED7041ECF792E0068F537 /* YUCIFlashTransition.m in Sources */,
 				4B936D04262CDA2200702364 /* RFDraftOrPublishCell.m in Sources */,
 				4BA7133B2029127E0083948C /* MMParser.m in Sources */,
-				4B12BAEE1E9FBFDD000E559F /* OnePasswordExtension.m in Sources */,
 				4B1EE1B4241B22EB004627F7 /* RFPost.m in Sources */,
 				4B46632A1B8F51710034FC5C /* CColorConverter.m in Sources */,
 				4BD9D0C6242BF60600541D63 /* HTMLParser.m in Sources */,
@@ -1894,7 +1873,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C507F3301F8827BC0013D2B7 /* UUHttpSession.m in Sources */,
-				C507F32A1F8827AE0013D2B7 /* OnePasswordExtension.m in Sources */,
 				C5B48B3E2294E5A300776248 /* mztools.c in Sources */,
 				4BA713442029127E0083948C /* MMSpanParser.m in Sources */,
 				4B49A0CA2329FA2F00F82DF5 /* RFShareController.m in Sources */,
@@ -2444,6 +2422,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Snippets/Micro.blog-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2479,6 +2458,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Snippets/Micro.blog-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2524,6 +2504,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios.sharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2566,6 +2547,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios.sharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
