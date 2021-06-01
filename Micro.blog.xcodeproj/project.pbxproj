@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -41,6 +41,7 @@
 		4B1F7FEB22526CDA00E8AF3E /* Upgrade.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B1F7FE4225269E100E8AF3E /* Upgrade.xib */; };
 		4B27AA8A1EB3D85B00CC3F3A /* RFMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA891EB3D85B00CC3F3A /* RFMenuButton.m */; };
 		4B27AA8D1EB3F18D00CC3F3A /* RFDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27AA8C1EB3F18D00CC3F3A /* RFDiscoverController.m */; };
+		4B28164F2666BEB800711CC9 /* NYTPhotoViewer in Frameworks */ = {isa = PBXBuildFile; productRef = 4B28164E2666BEB800711CC9 /* NYTPhotoViewer */; };
 		4B2D93E32475CFFD000A6135 /* NYTPhotoViewer+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2D93E22475CFFD000A6135 /* NYTPhotoViewer+Extras.m */; };
 		4B2DC27922FE1AC00074D42A /* RFTagmojiController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2DC27822FE1AC00074D42A /* RFTagmojiController.m */; };
 		4B2DC27C22FE1AEE0074D42A /* Tagmoji.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B2DC27A22FE1AEE0074D42A /* Tagmoji.xib */; };
@@ -76,8 +77,6 @@
 		4B46632E1B8F51710034FC5C /* UIFont+StyleUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663271B8F51710034FC5C /* UIFont+StyleUtilities.m */; };
 		4B46632F1B8F51710034FC5C /* UILabel+MarkupExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */; };
 		4B49A0CA2329FA2F00F82DF5 /* RFShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B49A0C92329FA2F00F82DF5 /* RFShareController.m */; };
-		4B4BF25A21B1CE93002A84EE /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */; };
-		4B4BF25D21B1CE94002A84EE /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */; };
 		4B4D9B551ED520F800315BBA /* RFFeaturedPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D9B541ED520F800315BBA /* RFFeaturedPhoto.m */; };
 		4B4D9B581ED5213E00315BBA /* FeaturedPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B4D9B561ED5213E00315BBA /* FeaturedPhotoCell.xib */; };
 		4B4D9B5B1ED521BB00315BBA /* RFFeaturedPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4D9B5A1ED521BB00315BBA /* RFFeaturedPhotoCell.m */; };
@@ -509,8 +508,6 @@
 		4B4663291B8F51710034FC5C /* UILabel+MarkupExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+MarkupExtensions.m"; path = "Shared/MarkupLabel/UILabel+MarkupExtensions.m"; sourceTree = SOURCE_ROOT; };
 		4B49A0C82329FA2F00F82DF5 /* RFShareController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RFShareController.h; sourceTree = "<group>"; };
 		4B49A0C92329FA2F00F82DF5 /* RFShareController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RFShareController.m; sourceTree = "<group>"; };
-		4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NYTPhotoViewer.framework; path = Shared/Carthage/NYTPhotoViewer.framework; sourceTree = SOURCE_ROOT; };
-		4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Shared/Carthage/FLAnimatedImage.framework; sourceTree = SOURCE_ROOT; };
 		4B4D9B531ED520F800315BBA /* RFFeaturedPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFFeaturedPhoto.h; path = Source/RFFeaturedPhoto.h; sourceTree = "<group>"; };
 		4B4D9B541ED520F800315BBA /* RFFeaturedPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFFeaturedPhoto.m; path = Source/RFFeaturedPhoto.m; sourceTree = "<group>"; };
 		4B4D9B571ED5213E00315BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FeaturedPhotoCell.xib; sourceTree = "<group>"; };
@@ -830,11 +827,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B75B72B2326BAE200725DDD /* AuthenticationServices.framework in Frameworks */,
+				4B28164F2666BEB800711CC9 /* NYTPhotoViewer in Frameworks */,
 				4B14E4211E82F5B50032F54B /* Photos.framework in Frameworks */,
-				4B4BF25D21B1CE94002A84EE /* FLAnimatedImage.framework in Frameworks */,
 				C5403B691F9E3C30002696EE /* libCTidy.a in Frameworks */,
 				4B14E4221E82F5B50032F54B /* PhotosUI.framework in Frameworks */,
-				4B4BF25A21B1CE93002A84EE /* NYTPhotoViewer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1199,8 +1195,6 @@
 			isa = PBXGroup;
 			children = (
 				4B75B72A2326BAE200725DDD /* AuthenticationServices.framework */,
-				4B4BF25921B1CE93002A84EE /* FLAnimatedImage.framework */,
-				4B4BF25621B1CE93002A84EE /* NYTPhotoViewer.framework */,
 				4B14E41F1E82F5B50032F54B /* Photos.framework */,
 				4B14E4201E82F5B50032F54B /* PhotosUI.framework */,
 			);
@@ -1498,6 +1492,9 @@
 				C507F3121F8827420013D2B7 /* PBXTargetDependency */,
 			);
 			name = Micro.blog;
+			packageProductDependencies = (
+				4B28164E2666BEB800711CC9 /* NYTPhotoViewer */,
+			);
 			productName = Snippets;
 			productReference = 4BA2C9731B2109D10038C0E5 /* Micro.blog.app */;
 			productType = "com.apple.product-type.application";
@@ -1594,6 +1591,9 @@
 				Base,
 			);
 			mainGroup = 4BA2C96A1B2109D10038C0E5;
+			packageReferences = (
+				4B28164D2666BEB800711CC9 /* XCRemoteSwiftPackageReference "NYTPhotoViewer" */,
+			);
 			productRefGroup = 4BA2C9741B2109D10038C0E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2435,7 +2435,10 @@
 				);
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = Snippets/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 2.1;
 				OTHER_LDFLAGS = "-lxml2.2";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
@@ -2467,7 +2470,10 @@
 				);
 				HEADER_SEARCH_PATHS = "${SDKROOT}/usr/include/libxml2";
 				INFOPLIST_FILE = Snippets/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 2.1;
 				OTHER_LDFLAGS = "-lxml2.2";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
@@ -2508,7 +2514,11 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Micro.blog Sharing/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 2.1;
 				OTHER_CFLAGS = "-DSHARING_EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios.sharing;
@@ -2546,7 +2556,11 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Micro.blog Sharing/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 2.1;
 				OTHER_CFLAGS = "-DSHARING_EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios.sharing;
@@ -2656,6 +2670,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4B28164D2666BEB800711CC9 /* XCRemoteSwiftPackageReference "NYTPhotoViewer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/NYTimes/NYTPhotoViewer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4B28164E2666BEB800711CC9 /* NYTPhotoViewer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B28164D2666BEB800711CC9 /* XCRemoteSwiftPackageReference "NYTPhotoViewer" */;
+			productName = NYTPhotoViewer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4BA2C96B1B2109D10038C0E5 /* Project object */;
 }
