@@ -16,11 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) NSString* title;
 @property (strong) NSString* text;
 @property (strong) NSString* url;
+@property (strong) NSString* channel;
 @property (strong) NSDate* postedAt;
 @property (assign) BOOL isDraft;
 @property (assign) BOOL isTemplate;
 
 - (NSString *) summary;
+- (BOOL) isPage;
 
 @end
 

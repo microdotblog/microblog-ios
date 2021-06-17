@@ -149,6 +149,7 @@ static NSString* const kPostCellIdentifier = @"PostCell";
 				post.title = [[props objectForKey:@"name"] firstObject];
 				post.text = [[props objectForKey:@"content"] firstObject];
 				post.url = [[props objectForKey:@"url"] firstObject];
+				post.channel = channel;
 				post.isTemplate = [[[props objectForKey:@"microblog-template"] firstObject] boolValue];
 
 				NSString* date_s = [[props objectForKey:@"published"] firstObject];

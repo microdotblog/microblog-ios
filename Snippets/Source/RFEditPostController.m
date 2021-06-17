@@ -36,6 +36,9 @@
 	if (self.isReply) {
 		self.title = @"Edit Reply";
 	}
+	else if ([self.post isPage]) {
+		self.title = @"Edit Page";
+	}
 	else {
 		self.title = @"Edit Post";
 	}
