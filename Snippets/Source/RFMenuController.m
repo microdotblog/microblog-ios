@@ -403,6 +403,17 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	}
 }
 
+- (BOOL) tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSString* title = [self.menuItems objectAtIndex:indexPath.row];
+	if (title.length > 0) {
+		return YES;
+	}
+	else {
+		return NO;
+	}
+}
+
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	NSString* title = [self.menuItems objectAtIndex:indexPath.row];

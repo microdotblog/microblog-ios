@@ -2402,7 +2402,7 @@
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 261;
+				CURRENT_PROJECT_VERSION = 262;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				ENABLE_BITCODE = NO;
@@ -2417,7 +2417,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				OTHER_LDFLAGS = "-lxml2.2";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
@@ -2438,7 +2438,7 @@
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 261;
+				CURRENT_PROJECT_VERSION = 262;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				ENABLE_BITCODE = NO;
@@ -2453,7 +2453,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				OTHER_LDFLAGS = "-lxml2.2";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
