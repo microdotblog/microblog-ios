@@ -72,7 +72,7 @@ static NSString* const kAccountCellIdentifier = @"AccountCell";
 		RFAccount* a = [self.accounts objectAtIndex:indexPath.row];
 		[a setDefault];
 		[self dismissViewControllerAnimated:YES completion:^{
-			[[NSNotificationCenter defaultCenter] postNotificationName:kRefreshUserNotification object:self];
+			[[NSNotificationCenter defaultCenter] postNotificationName:kRefreshUserNotification object:self userInfo:@{ kRefreshUserGoToTimelineKey: @YES }];
 		}];
 	}
 	else {

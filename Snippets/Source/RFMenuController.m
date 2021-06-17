@@ -231,6 +231,14 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 {
 	[self setupProfileInfo];
 	[self checkUserDetails];
+
+	RFDispatchSeconds(0.5, ^{
+		if ([[notification.userInfo objectForKey:kRefreshUserGoToTimelineKey] boolValue]) {
+			NSIndexPath* index_path = [NSIndexPath indexPathForRow:0 inSection:0];
+			[self.tableView selectRowAtIndexPath:index_path animated:NO scrollPosition:UITableViewScrollPositionNone];
+			[self showTimeline:nil];
+		}
+	});
 }
 
 - (void) refreshMenuNotification:(NSNotification *)notification
