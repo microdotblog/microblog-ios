@@ -408,8 +408,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	NSMutableArray* commands = [NSMutableArray array];
 	
 	UIKeyCommand* close_key = [UIKeyCommand keyCommandWithInput:@"W" modifierFlags:UIKeyModifierCommand action:@selector(close:) discoverabilityTitle:@"Close"];
-	
+	UIKeyCommand* send_key = [UIKeyCommand keyCommandWithInput:@"\r" modifierFlags:UIKeyModifierCommand action:@selector(sendPost:) discoverabilityTitle:@"Send Post"];
+
 	[commands addObject:close_key];
+	[commands addObject:send_key];
 	
 	return commands;
 }

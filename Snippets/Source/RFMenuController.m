@@ -257,14 +257,28 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 	NSMutableArray* commands = [NSMutableArray array];
 	
 	UIKeyCommand* newpost_key = [UIKeyCommand keyCommandWithInput:@"N" modifierFlags:UIKeyModifierCommand action:@selector(promptNewPost:) discoverabilityTitle:@"New Post"];
+	
 	UIKeyCommand* timeline_key = [UIKeyCommand keyCommandWithInput:@"1" modifierFlags:UIKeyModifierCommand action:@selector(showTimeline:) discoverabilityTitle:@"Timeline"];
 	UIKeyCommand* mentions_key = [UIKeyCommand keyCommandWithInput:@"2" modifierFlags:UIKeyModifierCommand action:@selector(showMentions:) discoverabilityTitle:@"Mentions"];
 	UIKeyCommand* favorites_key = [UIKeyCommand keyCommandWithInput:@"3" modifierFlags:UIKeyModifierCommand action:@selector(showFavorites:) discoverabilityTitle:@"Bookmarks"];
-	
+	UIKeyCommand* discover_key = [UIKeyCommand keyCommandWithInput:@"4" modifierFlags:UIKeyModifierCommand action:@selector(showDiscover:) discoverabilityTitle:@"Discover"];
+
+	UIKeyCommand* posts_key = [UIKeyCommand keyCommandWithInput:@"5" modifierFlags:UIKeyModifierCommand action:@selector(showPosts:) discoverabilityTitle:@"Posts"];
+	UIKeyCommand* pages_key = [UIKeyCommand keyCommandWithInput:@"6" modifierFlags:UIKeyModifierCommand action:@selector(showPages:) discoverabilityTitle:@"Pages"];
+	UIKeyCommand* uploads_key = [UIKeyCommand keyCommandWithInput:@"7" modifierFlags:UIKeyModifierCommand action:@selector(showUploads:) discoverabilityTitle:@"Uploads"];
+
 	[commands addObject:newpost_key];
+
 	[commands addObject:timeline_key];
 	[commands addObject:mentions_key];
 	[commands addObject:favorites_key];
+	[commands addObject:discover_key];
+
+	if ([RFSettings hasSnippetsBlog]) {
+		[commands addObject:posts_key];
+		[commands addObject:pages_key];
+		[commands addObject:uploads_key];
+	}
 	
 	return commands;
 }
@@ -299,6 +313,9 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (IBAction) showTimeline:(id)sender
 {
+	NSIndexPath* index_path = [NSIndexPath indexPathForRow:0 inSection:0];
+	[self.tableView selectRowAtIndexPath:index_path animated:YES scrollPosition:UITableViewScrollPositionNone];
+
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] init];
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
@@ -306,6 +323,9 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (IBAction) showMentions:(id)sender
 {
+	NSIndexPath* index_path = [NSIndexPath indexPathForRow:1 inSection:0];
+	[self.tableView selectRowAtIndexPath:index_path animated:YES scrollPosition:UITableViewScrollPositionNone];
+
 	RFTimelineController* timeline_controller = [[RFTimelineController alloc] initWithEndpoint:@"/hybrid/mentions" title:@"Mentions"];
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
@@ -313,6 +333,9 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (IBAction) showFavorites:(id)sender
 {
+	NSIndexPath* index_path = [NSIndexPath indexPathForRow:2 inSection:0];
+	[self.tableView selectRowAtIndexPath:index_path animated:YES scrollPosition:UITableViewScrollPositionNone];
+
 	RFTimelineController* timeline_controller = [[RFBookmarksController alloc] initWithEndpoint:@"/hybrid/favorites" title:@"Bookmarks"];
 	timeline_controller.menuController = self;
 	[self notifyResetDetail:timeline_controller];
@@ -320,12 +343,18 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (IBAction) showDiscover:(id)sender
 {
+	NSIndexPath* index_path = [NSIndexPath indexPathForRow:3 inSection:0];
+	[self.tableView selectRowAtIndexPath:index_path animated:YES scrollPosition:UITableViewScrollPositionNone];
+
 	RFDiscoverController* timeline_controller = [[RFDiscoverController alloc] initWithEndpoint:@"/hybrid/discover" title:@"Discover"];
 	[self notifyResetDetail:timeline_controller];
 }
 
 - (IBAction) showPosts:(id)sender
 {
+	NSIndexPath* index_path = [NSIndexPath indexPathForRow:5 inSection:0];
+	[self.tableView selectRowAtIndexPath:index_path animated:YES scrollPosition:UITableViewScrollPositionNone];
+
 	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"AllPosts" bundle:nil];
 
 	RFAllPostsController* posts_controller = [storyboard instantiateInitialViewController];
@@ -336,6 +365,9 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (IBAction) showPages:(id)sender
 {
+	NSIndexPath* index_path = [NSIndexPath indexPathForRow:6 inSection:0];
+	[self.tableView selectRowAtIndexPath:index_path animated:YES scrollPosition:UITableViewScrollPositionNone];
+
 	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"AllPosts" bundle:nil];
 
 	RFAllPostsController* posts_controller = [storyboard instantiateInitialViewController];
@@ -346,6 +378,9 @@ static NSString* const kMenuCellIdentifier = @"MenuCell";
 
 - (IBAction) showUploads:(id)sender
 {
+	NSIndexPath* index_path = [NSIndexPath indexPathForRow:7 inSection:0];
+	[self.tableView selectRowAtIndexPath:index_path animated:YES scrollPosition:UITableViewScrollPositionNone];
+
 	UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"AllUploads" bundle:nil];
 
 	UIViewController* uploads_controller = [storyboard instantiateInitialViewController];
