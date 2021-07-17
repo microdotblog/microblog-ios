@@ -70,8 +70,14 @@
 
 - (void) attachToView:(UIView *)view atRect:(CGRect)rect
 {
+	CGRect r = rect;
+	
+	if (r.origin.y < 0) {
+		r.origin.y = 0;
+	}
+	
 	self.popoverPresentationController.sourceView = view;
-	self.popoverPresentationController.sourceRect = rect;
+	self.popoverPresentationController.sourceRect = r;
 }
 
 - (void) sendUnselectedNotification
