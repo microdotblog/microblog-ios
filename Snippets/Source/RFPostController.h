@@ -43,6 +43,7 @@
 @property (assign, nonatomic) BOOL isSent;
 @property (assign, nonatomic) BOOL isReply;
 @property (assign, nonatomic) BOOL isDraft;
+@property (assign, nonatomic) BOOL isAnimatingTitle;
 @property (strong, nonatomic) NSString* replyPostID;
 @property (strong, nonatomic) NSString* replyUsername;
 @property (strong, nonatomic) NSString* initialText;

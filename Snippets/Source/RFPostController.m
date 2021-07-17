@@ -365,9 +365,15 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) updateTitleHeader
 {
 	if (!self.isReply && (([self currentProcessedMarkup].length > 280) || [self isPage])) {
+		if (self.titleHeaderHeightConstraint.constant == 0) {
+			self.isAnimatingTitle = YES;
+		}
 		self.titleHeaderHeightConstraint.constant = 64;
 	}
 	else {
+		if (self.titleHeaderHeightConstraint.constant == 64) {
+			self.isAnimatingTitle = YES;
+		}
 		self.titleHeaderHeightConstraint.constant = 0;
 	}
 }
@@ -470,7 +476,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	NSDictionary* dictionary = notification.object;
 	NSArray* array = dictionary[@"array"];
 	self.activeReplacementString = dictionary[@"string"];
-	
+
 	dispatch_async(dispatch_get_main_queue(), ^
 	{
 		[self.autoCompleteCollectionView setContentOffset:CGPointZero animated:FALSE];
@@ -682,10 +688,14 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) textViewDidChange:(UITextView *)textView
 {
 	[self updateRemainingChars];
+
+	self.isAnimatingTitle = NO;
 	
 	[UIView animateWithDuration:0.3 animations:^{
 		[self updateTitleHeader];
-		[self.view layoutIfNeeded];
+		if (self.isAnimatingTitle) {
+			[self.view layoutIfNeeded];
+		}
 	} completion:^(BOOL finished) {
 		if ([self currentProcessedMarkup].length <= 280) {
 			self.titleField.text = @"";
