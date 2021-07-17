@@ -42,9 +42,7 @@
 	[RFSettings migrateAllKeys];
 	[RFSettings migrateCurrentUserKeys];
 	
-	// We should only cache images for 24 hours...
-	[UUDataCache uuSetCacheExpirationLength:24.0 * 60.0 * 60.0];
-	[UUDataCache uuPurgeExpiredContent];
+	[UUDataCache uuClearCacheContents];
 	
 	[self setupAppleID];
 	[self setupWindow];
