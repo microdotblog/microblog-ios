@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="4864" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnY-ie-t8x">
-                    <rect key="frame" x="0.0" y="230.5" width="375" height="436.5"/>
+                    <rect key="frame" x="0.0" y="235" width="375" height="432"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <dataDetectorType key="dataDetectorTypes"/>
                     <connections>
@@ -38,7 +38,7 @@
                     </connections>
                 </webView>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zMe-wL-fBq">
-                    <rect key="frame" x="0.0" y="62" width="375" height="124.5"/>
+                    <rect key="frame" x="0.0" y="62" width="375" height="129"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzu-rG-D5f">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
@@ -92,13 +92,16 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="This is my bio. It's pretty great, right?" lineBreakMode="tailTruncation" numberOfLines="99" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PN5-iQ-and">
-                            <rect key="frame" x="14" y="92" width="345" height="20.5"/>
+                            <rect key="frame" x="14" y="92" width="345" height="25"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="qPl-I5-Ss5"/>
+                            </constraints>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qID-0k-fNf">
-                            <rect key="frame" x="329" y="100.5" width="40" height="24"/>
+                            <rect key="frame" x="329" y="105" width="40" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="hk2-Pb-vPX"/>
                                 <constraint firstAttribute="width" constant="40" id="rF0-gt-cWi"/>
@@ -112,7 +115,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyZ-JH-oYd" customClass="RFBottomLineView">
-                            <rect key="frame" x="0.0" y="123.5" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="128" width="375" height="1"/>
                             <color key="backgroundColor" systemColor="separatorColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="ekq-cH-cKj"/>
@@ -138,7 +141,7 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fQ-oE-lsZ">
-                    <rect key="frame" x="0.0" y="186.5" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="191" width="375" height="44"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFr-bN-FXx" customClass="RFBottomLineView">
                             <rect key="frame" x="0.0" y="43" width="375" height="1"/>
