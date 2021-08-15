@@ -29,6 +29,7 @@
 #import "UUAlert.h"
 #import "UUString.h"
 #import "UUImage.h"
+#import "UUHttpSession.h"
 #import "SSKeychain.h"
 #import "MMMarkdown.h"
 #import "RFUserCache.h"
@@ -39,6 +40,7 @@
 #import "RFUpgradeController.h"
 #import "UnzipKit.h"
 #import "UITraitCollection+Extras.h"
+#import "HTMLParser.h"
 
 //#import "Microblog-Swift.h"
 
@@ -1814,7 +1816,10 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 		dispatch_async(dispatch_get_main_queue(), ^
 		{
-			if (title && url && text) {
+			if ([url.host isEqualToString:@"glass.photo"]) {
+				[self insertGlassPhoto:url];
+			}
+			else if (title && url && text) {
 				[self insertSharedURL:url withTitle:title andText:text];
 			}
 			else if (title) {
@@ -1943,7 +1948,6 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
             return;
         }
         
-
 		AVURLAsset* asset = [AVURLAsset assetWithURL:url];
 		BOOL playable = NO;
 		for (AVAssetTrack* track in asset.tracks)
@@ -2101,5 +2105,51 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 	self.textView.selectedRange = r;
 }
 
+- (void) insertGlassPhoto:(NSURL *)pageURL
+{
+	// download web page HTML
+	// extract photo reference and description
+	// download photo
+	
+	UUHttpRequest* request = [UUHttpRequest getRequest:[pageURL absoluteString] queryArguments:NULL];
+	[UUHttpSession executeRequest:request completionHandler:^(UUHttpResponse* response) {
+		if ([response.parsedResponse isKindOfClass:[NSString class]]) {
+			RFDispatchMain (^{
+				NSString* s = response.parsedResponse;
+
+				NSString* found_src = nil;
+				NSString* found_description = nil;
+				
+				NSError* error = nil;
+				HTMLParser* p = [[HTMLParser alloc] initWithString:s error:&error];
+				if (error == nil) {
+					HTMLNode* body = [p body];
+					NSArray* div_tags = [body findChildTags:@"div"];
+					for (HTMLNode* div_tag in div_tags) {
+						NSString* class = [div_tag getAttributeNamed:@"class"];
+						if ([class containsString:@"image"]) {
+							NSArray* img_tags = [div_tag findChildTags:@"img"];
+							HTMLNode* img_tag = [img_tags firstObject];
+							if (img_tag) {
+								found_src = [img_tag getAttributeNamed:@"src"];
+							}
+						}
+						else if ([class containsString:@"meta"]) {
+							NSArray* p_tags = [div_tag findChildTags:@"p"];
+							for (HTMLNode* p_tag in p_tags) {
+								NSString* class = [p_tag getAttributeNamed:@"class"];
+								if ([class containsString:@"description"]) {
+									found_description = @"";
+								}
+							}
+						}
+					}
+				}
+				
+				[UUAlertViewController uuShowAlertWithTitle:@"Test" message:found_src buttonTitle:@"OK" completionHandler:NULL];
+			});
+		}
+	}];
+}
 
 @end

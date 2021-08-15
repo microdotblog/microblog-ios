@@ -97,6 +97,8 @@
 		4B64B2E8220930E4005B92A0 /* RFCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64B2E6220930E4005B92A0 /* RFCategoryCell.m */; };
 		4B64B2EB22093139005B92A0 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B64B2E922093139005B92A0 /* CategoryCell.xib */; };
 		4B64B2EC22093139005B92A0 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B64B2E922093139005B92A0 /* CategoryCell.xib */; };
+		4B70354526C97FAF00DD9ABD /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C3242BF60600541D63 /* HTMLParser.m */; };
+		4B70354626C97FB100DD9ABD /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD9D0C1242BF60600541D63 /* HTMLNode.m */; };
 		4B75B72B2326BAE200725DDD /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B75B72A2326BAE200725DDD /* AuthenticationServices.framework */; };
 		4B821C7D21B428CD006CE005 /* UIView+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIView+Extras.m */; };
 		4B821C7E21B428D3006CE005 /* UIView+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B821C7C21B428CD006CE005 /* UIView+Extras.m */; };
@@ -1910,8 +1912,10 @@
 				C507F3261F8827A90013D2B7 /* RFMenuButton.m in Sources */,
 				4BCFD4282503D75E0076168B /* RFAccount.m in Sources */,
 				C5B48B3C2294E5A300776248 /* zip.c in Sources */,
+				4B70354626C97FB100DD9ABD /* HTMLNode.m in Sources */,
 				C507F3281F8827A90013D2B7 /* UIFont+Extras.m in Sources */,
 				C507F3181F8827820013D2B7 /* RFSettings.m in Sources */,
+				4B70354526C97FAF00DD9ABD /* HTMLParser.m in Sources */,
 				C507F3221F8827A90013D2B7 /* RFXMLRSDParser.m in Sources */,
 				C5B48B3A2294E5A300776248 /* ioapi.c in Sources */,
 				4BA713362029127E0083948C /* MMDocument.m in Sources */,
@@ -2402,7 +2406,7 @@
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 264;
+				CURRENT_PROJECT_VERSION = 265;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				ENABLE_BITCODE = NO;
@@ -2417,7 +2421,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.2;
 				OTHER_LDFLAGS = "-lxml2.2";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
@@ -2438,7 +2442,7 @@
 				CODE_SIGN_ENTITLEMENTS = Snippets/Snippets.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 264;
+				CURRENT_PROJECT_VERSION = 265;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				ENABLE_BITCODE = NO;
@@ -2453,7 +2457,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.2;
 				OTHER_LDFLAGS = "-lxml2.2";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios;
 				PRODUCT_MODULE_NAME = Microblog;
@@ -2485,7 +2489,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 264;
+				CURRENT_PROJECT_VERSION = 265;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2499,7 +2503,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.2;
 				OTHER_CFLAGS = "-DSHARING_EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios.sharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2529,7 +2533,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 264;
+				CURRENT_PROJECT_VERSION = 265;
 				DEVELOPMENT_TEAM = 3F9MDJ6K4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2542,7 +2546,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.2;
 				OTHER_CFLAGS = "-DSHARING_EXTENSION";
 				PRODUCT_BUNDLE_IDENTIFIER = blog.micro.ios.sharing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
