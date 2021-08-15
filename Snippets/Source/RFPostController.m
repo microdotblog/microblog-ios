@@ -1816,10 +1816,7 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 		dispatch_async(dispatch_get_main_queue(), ^
 		{
-			if ([url.host isEqualToString:@"glass.photo"]) {
-				[self insertGlassPhoto:url];
-			}
-			else if (title && url && text) {
+			if (title && url && text) {
 				[self insertSharedURL:url withTitle:title andText:text];
 			}
 			else if (title) {
@@ -2057,7 +2054,12 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 - (void) insertSharedURL:(NSURL *)url withTitle:(NSString *)title andText:(NSString *)text
 {
 	NSString* s;
-	
+
+	if ([url.host isEqualToString:@"glass.photo"]) {
+		[self insertGlassPhoto:url];
+		return;
+	}
+
 	if ([RFSettings prefersPlainSharedURLs]) {
 		s = [NSString stringWithFormat:@" %@", url.absoluteString];
 	}
@@ -2139,14 +2141,42 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 							for (HTMLNode* p_tag in p_tags) {
 								NSString* class = [p_tag getAttributeNamed:@"class"];
 								if ([class containsString:@"description"]) {
-									found_description = @"";
+									found_description = [p_tag contents];
 								}
 							}
 						}
 					}
 				}
-				
-				[UUAlertViewController uuShowAlertWithTitle:@"Test" message:found_src buttonTitle:@"OK" completionHandler:NULL];
+
+				if (found_src) {
+					NSString* new_text = @"";
+					if (found_description) {
+						new_text = found_description;
+					}
+					
+					[self.textView insertText:new_text];
+					[self showProgressHeader:@"Downloading photo from Glass..."];
+
+					UUHttpRequest* request = [UUHttpRequest getRequest:found_src queryArguments:NULL];
+					[UUHttpSession executeRequest:request completionHandler:^(UUHttpResponse* response) {
+						if ([response.parsedResponse isKindOfClass:[UIImage class]]) {
+							RFDispatchMain (^{
+								UIImage* img = response.parsedResponse;
+								RFPhoto* photo = [[RFPhoto alloc] initWithThumbnail:img];
+
+								self.attachedPhotos = @[ photo ];
+								[self.collectionView reloadData];
+
+								[self showPhotosBar];
+								
+								RFDispatchSeconds (1, ^{
+									// wait a second because sometimes it's too fast to see
+									[self hideProgressHeader];
+								});
+							});
+						}
+					}];
+				}
 			});
 		}
 	}];
