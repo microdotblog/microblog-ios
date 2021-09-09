@@ -1657,6 +1657,9 @@ static NSString* const kPhotoCellIdentifier = @"PhotoCell";
 
 	RFPhoto* photo = [self.attachedPhotos objectAtIndex:indexPath.item];
 	cell.thumbnailView.contentMode = UIViewContentModeScaleAspectFit;
+	cell.thumbnailView.isAccessibilityElement = YES;
+	cell.thumbnailView.accessibilityLabel = @"attached photo";
+	
 	[cell setupWithPhoto:photo];
 	
 	return cell;
