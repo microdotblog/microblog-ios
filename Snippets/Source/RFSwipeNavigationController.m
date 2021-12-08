@@ -53,8 +53,13 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 	UIViewController* current_controller = [self.viewControllers lastObject];
 
 //	NSLog (@"pt: %f, v: %f", pt.x, v.x);
-
+	
 	if (gesture.state == UIGestureRecognizerStateBegan) {
+		self.movedView = [current_controller.view snapshotViewAfterScreenUpdates:NO];
+//		[self.view addSubview:self.movedView];
+//		[self.view bringSubviewToFront:current_controller.view];
+		[self.view insertSubview:self.movedView belowSubview:self.navigationBar];
+
 		if (v.x > 0.0) {
 			if (self.viewControllers.count > 1) {
 				self.isSwipingBack = YES;
@@ -114,7 +119,8 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 	if (self.isSwipingBack) {
 		if (self.revealedView == nil) {
 			UIViewController* controller = [self.viewControllers objectAtIndex:self.viewControllers.count - 2];
-			self.revealedView = controller.view;
+//			self.revealedView = controller.view;
+			self.revealedView = [controller.view snapshotViewAfterScreenUpdates:YES];
 			revealed_r.origin.x = 0;
 			if ([controller isKindOfClass:[RFMenuController class]]) {
 				RFMenuController* menu_controller = (RFMenuController *)controller;
@@ -124,8 +130,9 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 				revealed_r.size.height = revealed_r.size.height - top_height;
 				menu_controller.bottomConstraint.constant = [self.view rf_bottomSafeArea];				
 			}
-			[self.view insertSubview:self.revealedView belowSubview:v];
-			[self.view sendSubviewToBack:self.revealedView];
+//			[self.view insertSubview:self.revealedView belowSubview:v];
+//			[self.view sendSubviewToBack:self.revealedView];
+			[self.view insertSubview:self.revealedView belowSubview:self.navigationBar];
 			self.revealedView.frame = revealed_r;
 			
 			if ([UITraitCollection rf_isDarkMode]) {
@@ -143,7 +150,8 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 	
 		if (x >= 0) {
 			top_r.origin.x = x;
-			v.frame = top_r;
+//			v.frame = top_r;
+			self.movedView.frame = top_r;
 			
 			revealed_r.origin.x = -v.bounds.size.width + x;
 			if (revealed_r.origin.x > 0) {
@@ -201,7 +209,8 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 
 		if (x <= 0) {
 			top_r.origin.x = x;
-			v.frame = top_r;
+//			v.frame = top_r;
+			self.movedView.frame = top_r;
 
 			revealed_r.origin.x = v.bounds.size.width + x;
 			if (revealed_r.origin.x < 0) {
@@ -268,7 +277,8 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 	}
 
 	[UIView animateWithDuration:animation_seconds animations:^{
-		v.frame = top_r;
+//		v.frame = top_r;
+		self.movedView.frame = top_r;
 		self.revealedView.frame = revealed_r;
 		
 		if (hide_bar_item) {
@@ -292,13 +302,15 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 		[self.revealedView removeFromSuperview];
 		[self.revealedLine removeFromSuperview];
 		[self.revealedBackground removeFromSuperview];
-
+		[self.movedView removeFromSuperview];
+		
 		v.layer.shadowColor = nil;
 		v.layer.shadowOpacity = 0;
 
 		self.revealedView = nil;
 		self.revealedLine = nil;
 		self.revealedBackground = nil;
+		self.movedView = nil;
 		self.nextController = nil;
 	}];
 }

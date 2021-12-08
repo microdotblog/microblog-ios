@@ -16,6 +16,7 @@
 @property (strong, nonatomic) UIView* revealedView;
 @property (strong, nonatomic) UIView* revealedLine;
 @property (strong, nonatomic) UIView* revealedBackground;
+@property (strong, nonatomic) UIView* movedView;
 @property (strong, nonatomic) UIViewController* nextController;
 
 - (id) initWithRootViewController:(UIViewController *)controller;
