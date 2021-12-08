@@ -284,6 +284,13 @@
 {
 	NSString* content_size = [UIApplication sharedApplication].preferredContentSizeCategory;
 	[RFSettings setPreferredContentSize:content_size];
+
+	if (@available(iOS 15.0, *)) {
+		UINavigationBarAppearance* nav_appearance = [[UINavigationBarAppearance alloc] init];
+		[nav_appearance configureWithOpaqueBackground];
+		[UINavigationBar appearance].standardAppearance = nav_appearance;
+		[UINavigationBar appearance].scrollEdgeAppearance = nav_appearance;
+	}
 }
 
 - (void) setupTimeline
