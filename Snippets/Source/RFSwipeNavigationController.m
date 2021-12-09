@@ -54,6 +54,10 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 
 //	NSLog (@"pt: %f, v: %f", pt.x, v.x);
 	
+	if ([current_controller isKindOfClass:[RFMenuController class]]) {
+		return;
+	}
+	
 	if (gesture.state == UIGestureRecognizerStateBegan) {
 		self.movedView = [current_controller.view snapshotViewAfterScreenUpdates:NO];
 //		[self.view addSubview:self.movedView];
