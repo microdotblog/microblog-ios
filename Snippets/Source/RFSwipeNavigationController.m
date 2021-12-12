@@ -60,8 +60,6 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 	
 	if (gesture.state == UIGestureRecognizerStateBegan) {
 		self.movedView = [current_controller.view snapshotViewAfterScreenUpdates:NO];
-//		[self.view addSubview:self.movedView];
-//		[self.view bringSubviewToFront:current_controller.view];
 		[self.view insertSubview:self.movedView belowSubview:self.navigationBar];
 
 		if (v.x > 0.0) {
@@ -123,7 +121,6 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 	if (self.isSwipingBack) {
 		if (self.revealedView == nil) {
 			UIViewController* controller = [self.viewControllers objectAtIndex:self.viewControllers.count - 2];
-//			self.revealedView = controller.view;
 			self.revealedView = [controller.view snapshotViewAfterScreenUpdates:YES];
 			revealed_r.origin.x = 0;
 			if ([controller isKindOfClass:[RFMenuController class]]) {
@@ -134,8 +131,6 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 				revealed_r.size.height = revealed_r.size.height - top_height;
 				menu_controller.bottomConstraint.constant = [self.view rf_bottomSafeArea];				
 			}
-//			[self.view insertSubview:self.revealedView belowSubview:v];
-//			[self.view sendSubviewToBack:self.revealedView];
 			[self.view insertSubview:self.revealedView belowSubview:self.navigationBar];
 			self.revealedView.frame = revealed_r;
 			
@@ -154,7 +149,6 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 	
 		if (x >= 0) {
 			top_r.origin.x = x;
-//			v.frame = top_r;
 			self.movedView.frame = top_r;
 			
 			revealed_r.origin.x = -v.bounds.size.width + x;
@@ -213,7 +207,6 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 
 		if (x <= 0) {
 			top_r.origin.x = x;
-//			v.frame = top_r;
 			self.movedView.frame = top_r;
 
 			revealed_r.origin.x = v.bounds.size.width + x;
@@ -281,7 +274,6 @@ static CGFloat const kSwipeDropAnimationDuration = 0.3;
 	}
 
 	[UIView animateWithDuration:animation_seconds animations:^{
-//		v.frame = top_r;
 		self.movedView.frame = top_r;
 		self.revealedView.frame = revealed_r;
 		
