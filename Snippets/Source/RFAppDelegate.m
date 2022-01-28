@@ -628,8 +628,8 @@
 	NSString* state = [[url uuFindQueryStringArg:@"state"] uuUrlDecoded];
 	NSString* me = [[url uuFindQueryStringArg:@"me"] uuUrlDecoded];
 
-	if (!code || !state || !me) {
-		NSString* msg = [NSString stringWithFormat:@"Authorization \"code\", \"state\", or \"me\" parameters were missing."];
+	if (!code || !state) {
+		NSString* msg = [NSString stringWithFormat:@"Authorization \"code\" or \"state\" parameters were missing."];
 		[UUAlertViewController uuShowOneButtonAlert:@"Micropub Error" message:msg button:@"OK" completionHandler:NULL];
 		return;
 	}
@@ -641,14 +641,17 @@
 		[UUAlertViewController uuShowOneButtonAlert:@"Micropub Error" message:@"Authorization state did not match." button:@"OK" completionHandler:NULL];
 	}
 	else {
-		NSDictionary* info = @{
-			@"grant_type": @"authorization_code",
-			@"me": me,
-			@"code": code,
-			@"redirect_uri": @"https://micro.blog/micropub/redirect",
-			@"client_id": @"https://micro.blog/",
-			@"state": state
-		};
+		NSMutableDictionary* info = [NSMutableDictionary dictionary];
+
+		info[@"grant_type"] = @"authorization_code";
+		info[@"code"] = code;
+		info[@"redirect_uri"] = @"https://micro.blog/micropub/redirect";
+		info[@"client_id"] = @"https://micro.blog/";
+		info[@"state"] = state;
+
+		if (me) {
+			info[@"me"] = me;
+		}
 		
 		RFMicropub* mp = [[RFMicropub alloc] initWithURL:saved_endpoint];
 		[mp postWithParams:info completion:^(UUHttpResponse* response) {
