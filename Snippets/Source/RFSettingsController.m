@@ -99,7 +99,7 @@ static NSString* const kServerCellIdentifier = @"ServerCell";
 
 - (void) setupServers
 {
-	self.serverNames = @[ @"Micro.blog hosted weblog", @"WordPress or Micropub blog" ];
+	self.serverNames = @[ @"Micro.blog hosted blog", @"WordPress or Micropub blog" ];
 
 	[self.serversTableView registerNib:[UINib nibWithNibName:@"SettingChoiceCell" bundle:nil] forCellReuseIdentifier:kServerCellIdentifier];
 	self.serversTableView.layer.cornerRadius = 5.0;

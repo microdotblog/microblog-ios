@@ -123,7 +123,7 @@
 			else {
 				RFDispatchMainAsync (^{
 					[self.progressSpinner stopAnimating];
-					[UUAlertViewController uuShowTwoButtonAlert:@"Error Discovering Settings" message:@"Could not find the XML-RPC endpoint or Micropub API for your weblog. Please see help.micro.blog for troubleshooting tips." buttonOne:@"Visit Help" buttonTwo:@"OK" completionHandler:^(NSInteger buttonIndex) {
+					[UUAlertViewController uuShowTwoButtonAlert:@"Error Discovering Settings" message:@"Could not find the XML-RPC endpoint or Micropub API for your blog. Please see help.micro.blog for troubleshooting tips." buttonOne:@"Visit Help" buttonTwo:@"OK" completionHandler:^(NSInteger buttonIndex) {
 						if (buttonIndex == 0) {
 							[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://help.micro.blog/"] options:@{} completionHandler:^(BOOL success)
 							{
